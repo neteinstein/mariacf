@@ -244,7 +244,7 @@ function desenharSeringas(ml, medId) {
     cont.getBoundingClientRect();
   }
   const cores =
-    medId === 'ibuprofeno' ? ['#ffb3a6', '#f2705e'] : ['#8ff0de', '#19c2a8'];
+    medId === 'ibuprofeno' ? ['#fbc4ac', '#e2572f'] : ['#9fdfc7', '#00a676'];
   [...cont.children].forEach((wrap, i) => {
     const s = lista[i];
     const frac = Math.min(s.volume / s.capacidade, 1);
