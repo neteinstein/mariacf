@@ -31,7 +31,10 @@ jobs:
       - name: Preparar site
         run: |
           mkdir _site
-          cp -r index.html calculadora-doses calculadora-imc-asc calculadora-dpp sobre assets _site/
+          cp -r index.html calculadora-doses calculadora-imc-asc calculadora-dpp \
+            calculadora-risco-cardiovascular calculadora-funcao-renal calculadora-anticoagulacao \
+            calculadora-saude-mental calculadora-respiratoria calculadora-crescimento \
+            sobre assets _site/
 
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'
