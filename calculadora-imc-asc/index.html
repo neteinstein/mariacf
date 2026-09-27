@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora de IMC e ASC · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Calcule o Índice de Massa Corporal (IMC) e a área de superfície corporal (ASC) a partir do peso e da altura, com a categoria de IMC da OMS.">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="Calculadora de IMC e Área de Superfície Corporal">
+  <meta property="og:description" content="IMC, categoria (OMS) e área de superfície corporal, a partir do peso e da altura.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Nutrição · Avaliação corporal</span>
+      <h1 class="display">Calculadora de <em>IMC</em> e ASC</h1>
+      <p class="lead">Indique o peso e a altura de um adulto. Calculamos o Índice de Massa Corporal, a categoria segundo a Organização Mundial de Saúde e a área de superfície corporal.</p>
+    </section>
+
+    <div class="calc">
+      <form class="panel reveal" id="calc-form" autocomplete="off" novalidate>
+        <div class="step">
+          <label class="step-label" for="peso"><span class="step-num">1</span> Peso</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="peso" data-step="-0.5" aria-label="Diminuir peso 0,5 kg">−</button>
+            <div class="weight-field">
+              <input id="peso" name="peso" type="number" inputmode="decimal" min="20" max="300" step="0.1" value="70" aria-describedby="peso-unid">
+              <span class="unit" id="peso-unid">kg</span>
+            </div>
+            <button class="stepper" type="button" data-alvo="peso" data-step="0.5" aria-label="Aumentar peso 0,5 kg">+</button>
+          </div>
+          <input class="slider" id="peso-slider" type="range" min="20" max="300" step="0.5" value="70" aria-label="Peso em quilogramas">
+          <div class="slider-scale" aria-hidden="true"><span>20 kg</span><span>100</span><span>200</span><span>300 kg</span></div>
+        </div>
+
+        <div class="step">
+          <label class="step-label" for="altura"><span class="step-num">2</span> Altura</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="altura" data-step="-1" aria-label="Diminuir altura 1 cm">−</button>
+            <div class="weight-field">
+              <input id="altura" name="altura" type="number" inputmode="decimal" min="100" max="250" step="1" value="170" aria-describedby="altura-unid">
+              <span class="unit" id="altura-unid">cm</span>
+            </div>
+            <button class="stepper" type="button" data-alvo="altura" data-step="1" aria-label="Aumentar altura 1 cm">+</button>
+          </div>
+          <input class="slider" id="altura-slider" type="range" min="100" max="250" step="1" value="170" aria-label="Altura em centímetros">
+          <div class="slider-scale" aria-hidden="true"><span>100 cm</span><span>150</span><span>200</span><span>250 cm</span></div>
+        </div>
+      </form>
+
+      <section class="panel result imc-result reveal" id="resultado" aria-live="polite" aria-labelledby="res-kicker">
+        <div id="res-ok">
+          <div class="result-head">
+            <div class="result-kicker" id="res-kicker">Índice de Massa Corporal</div>
+            <div class="dose-line">
+              <div class="dose-big"><span id="res-imc">0</span><span class="u">kg/m²</span></div>
+              <span class="badge" id="res-badge">—</span>
+            </div>
+            <div class="dose-sub" id="res-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="imc-gauge" id="imc-gauge" aria-hidden="true">
+              <div class="imc-gauge-track"></div>
+              <div class="imc-gauge-marker" id="imc-marker"></div>
+            </div>
+
+            <div class="stats">
+              <div class="stat"><div class="k">ASC (Mosteller)</div><div class="v" id="st-mosteller">—</div></div>
+              <div class="stat"><div class="k">ASC (Du Bois)</div><div class="v" id="st-dubois">—</div></div>
+            </div>
+
+            <div class="notices" id="notices"></div>
+          </div>
+        </div>
+        <div class="empty" id="res-empty" hidden>
+          <div class="big-emoji" aria-hidden="true">⚖️</div>
+          <p class="motivo" id="res-motivo"></p>
+        </div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">📊</div>
+        <h3>Categorias de IMC (OMS)</h3>
+        <ul>
+          <li><strong>&lt; 18,5:</strong> Baixo peso</li>
+          <li><strong>18,5–24,9:</strong> Peso normal</li>
+          <li><strong>25–29,9:</strong> Excesso de peso</li>
+          <li><strong>30–34,9:</strong> Obesidade grau I</li>
+          <li><strong>35–39,9:</strong> Obesidade grau II</li>
+          <li><strong>≥ 40:</strong> Obesidade grau III</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">📐</div>
+        <h3>Sobre a área de superfície corporal</h3>
+        <ul>
+          <li>Usada, por exemplo, para calcular doses de alguns medicamentos e parâmetros clínicos.</li>
+          <li>Mostramos duas fórmulas de referência — Mosteller e Du Bois & Du Bois — que costumam dar valores muito próximos.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🩺</div>
+        <h3>Limitações do IMC</h3>
+        <ul>
+          <li>Não distingue massa gorda de massa muscular — pode sobrestimar o risco em pessoas muito musculadas.</li>
+          <li>Não se aplica da mesma forma a crianças, grávidas ou pessoas idosas.</li>
+          <li>Em caso de dúvida, fale com o seu médico ou nutricionista.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      Esta calculadora é um apoio informativo, válido para adultos, e não substitui a avaliação do seu médico ou nutricionista. As categorias de IMC seguem a classificação da Organização Mundial de Saúde e podem não refletir o risco individual de saúde.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/imc-asc.js" type="module"></script>
+</body>
+</html>

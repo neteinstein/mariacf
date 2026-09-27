@@ -13,6 +13,8 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 | Ferramenta | Caminho | Estado |
 | --- | --- | --- |
 | Calculadora de doses (paracetamol e ibuprofeno em xarope) | `/calculadora-doses/` | ✅ |
+| Calculadora de IMC e área de superfície corporal | `/calculadora-imc-asc/` | ✅ |
+| Calculadora da data provável de parto | `/calculadora-dpp/` | ✅ |
 
 ### Calculadora de doses
 
@@ -22,6 +24,23 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
   e guarda os valores no URL para partilhar (ex.: `?peso=12&med=ibuprofeno&c=20`).
 
 A lógica de cálculo está em `assets/js/doses-core.js`, com testes em `tests/`.
+
+### Calculadora de IMC e área de superfície corporal
+
+- IMC = peso (kg) / altura (m)², com a categoria segundo a Organização Mundial de Saúde.
+- Área de superfície corporal pelas fórmulas de Mosteller e de Du Bois & Du Bois.
+- Válida para adultos (peso 20–300 kg, altura 100–250 cm).
+
+A lógica de cálculo está em `assets/js/imc-asc-core.js`, com testes em `tests/`.
+
+### Calculadora da data provável de parto
+
+- Método da última menstruação: regra de Naegele (DUM + 280 dias), ajustada à duração real do ciclo.
+- Método da ecografia: reconstrói a data equivalente de início da gravidez a partir da idade
+  gestacional medida no exame (5–42 semanas).
+- Mostra a idade gestacional atual, o trimestre e os dias em falta para a DPP.
+
+A lógica de cálculo está em `assets/js/dpp-core.js`, com testes em `tests/`.
 
 ## Desenvolvimento
 
