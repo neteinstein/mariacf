@@ -535,6 +535,81 @@ h3 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
+/* ---------- Ferramentas: pesquisa e filtros ---------- */
+
+.tools-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  margin-bottom: 22px;
+}
+
+.tools-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 260px;
+  min-width: 220px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: var(--surface-strong);
+  color: var(--ink-mute);
+  transition: border-color 0.25s;
+}
+
+.tools-search:focus-within {
+  border-color: var(--teal);
+  color: var(--ink);
+}
+
+.tools-search input {
+  flex: 1;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--ink);
+  min-width: 0;
+}
+
+.tools-search input:focus {
+  outline: none;
+}
+
+.tools-search input::-webkit-search-cancel-button {
+  cursor: pointer;
+}
+
+.tools-toolbar .tabbar {
+  margin-bottom: 0;
+  flex: 2 1 480px;
+}
+
+.tools-vazio {
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  border: 1px dashed var(--line);
+  color: var(--ink-mute);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tools-section-title {
+  grid-column: 1 / -1;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 8px 0 -6px;
+}
+
+.tools-section-title:first-child {
+  margin-top: 0;
+}
+
 /* ---------- Tool cards ---------- */
 
 .tools {

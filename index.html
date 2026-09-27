@@ -70,8 +70,29 @@
         <h2 id="ferramentas-titulo">Ferramentas</h2>
       </div>
 
-      <div class="tools">
-        <a class="tool featured reveal" href="calculadora-doses/">
+      <div class="tools-toolbar reveal">
+        <div class="tools-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" id="busca-ferramentas" placeholder="Procurar por nome, especialidade ou sintoma…" aria-label="Procurar ferramentas">
+        </div>
+        <div class="tabbar" id="filtros-categoria" role="group" aria-label="Filtrar por categoria">
+          <button class="tabbtn" type="button" data-categoria="todas" aria-selected="true">Todas</button>
+          <button class="tabbtn" type="button" data-categoria="pediatria" aria-selected="false">Pediatria</button>
+          <button class="tabbtn" type="button" data-categoria="obstetricia" aria-selected="false">Obstetrícia</button>
+          <button class="tabbtn" type="button" data-categoria="nutricao" aria-selected="false">Nutrição</button>
+          <button class="tabbtn" type="button" data-categoria="cardiovascular" aria-selected="false">Risco cardiovascular</button>
+          <button class="tabbtn" type="button" data-categoria="renal" aria-selected="false">Função renal</button>
+          <button class="tabbtn" type="button" data-categoria="anticoagulacao" aria-selected="false">Anticoagulação</button>
+          <button class="tabbtn" type="button" data-categoria="saude-mental" aria-selected="false">Saúde mental</button>
+          <button class="tabbtn" type="button" data-categoria="respiratorio" aria-selected="false">Respiratório</button>
+        </div>
+      </div>
+
+      <p class="tools-vazio reveal" id="tools-vazio" hidden>Sem resultados. Experimente outra palavra ou escolha «Todas».</p>
+
+      <div class="tools" id="tools-grid">
+        <h3 class="tools-section-title" data-categoria="pediatria">Pediatria</h3>
+        <a class="tool featured reveal" data-categoria="pediatria" href="calculadora-doses/">
           <svg class="tool-deco" viewBox="0 0 300 80" aria-hidden="true">
             <rect x="60" y="18" width="170" height="44" rx="10" fill="rgba(255,255,255,.22)" stroke="rgba(255,255,255,.8)" stroke-width="3"/>
             <rect x="63" y="21" width="110" height="38" rx="8" fill="rgba(255,255,255,.55)"/>
@@ -95,22 +116,23 @@
           </span>
         </a>
 
-        <a class="tool reveal tint-violet" href="calculadora-imc-asc/">
+        <a class="tool reveal tint-coral" data-categoria="pediatria" href="calculadora-crescimento/">
           <div class="tool-top">
-            <span class="tool-icon" aria-hidden="true">📏</span>
+            <span class="tool-icon" aria-hidden="true">👶</span>
           </div>
-          <div class="tool-title">Calculadora de IMC e ASC</div>
-          <p class="tool-desc">Índice de Massa Corporal, categoria (OMS) e área de superfície corporal, a partir do peso e da altura.</p>
+          <div class="tool-title">Crescimento infantil (OMS)</div>
+          <p class="tool-desc">Z-score e percentis de peso, comprimento e perímetro cefálico, dos 0 aos 24 meses.</p>
           <div class="tags">
-            <span class="tag">Nutrição</span>
-            <span class="tag">Adultos</span>
+            <span class="tag">Pediatria</span>
+            <span class="tag">Pacientes</span>
           </div>
           <span class="go">Abrir calculadora
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </span>
         </a>
 
-        <a class="tool reveal tint-coral" href="calculadora-dpp/">
+        <h3 class="tools-section-title" data-categoria="obstetricia">Obstetrícia</h3>
+        <a class="tool reveal tint-coral" data-categoria="obstetricia" href="calculadora-dpp/">
           <div class="tool-top">
             <span class="tool-icon" aria-hidden="true">🤰</span>
           </div>
@@ -125,7 +147,24 @@
           </span>
         </a>
 
-        <a class="tool reveal tint-violet" href="calculadora-risco-cardiovascular/">
+        <h3 class="tools-section-title" data-categoria="nutricao">Nutrição</h3>
+        <a class="tool reveal tint-violet" data-categoria="nutricao" href="calculadora-imc-asc/">
+          <div class="tool-top">
+            <span class="tool-icon" aria-hidden="true">📏</span>
+          </div>
+          <div class="tool-title">Calculadora de IMC e ASC</div>
+          <p class="tool-desc">Índice de Massa Corporal, categoria (OMS) e área de superfície corporal, a partir do peso e da altura.</p>
+          <div class="tags">
+            <span class="tag">Nutrição</span>
+            <span class="tag">Adultos</span>
+          </div>
+          <span class="go">Abrir calculadora
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </span>
+        </a>
+
+        <h3 class="tools-section-title" data-categoria="cardiovascular">Risco cardiovascular e metabolismo</h3>
+        <a class="tool reveal tint-violet" data-categoria="cardiovascular" href="calculadora-risco-cardiovascular/">
           <div class="tool-top">
             <span class="tool-icon" aria-hidden="true">❤️</span>
           </div>
@@ -140,7 +179,8 @@
           </span>
         </a>
 
-        <a class="tool reveal tint-coral" href="calculadora-funcao-renal/">
+        <h3 class="tools-section-title" data-categoria="renal">Função renal e ajuste de fármacos</h3>
+        <a class="tool reveal tint-coral" data-categoria="renal" href="calculadora-funcao-renal/">
           <div class="tool-top">
             <span class="tool-icon" aria-hidden="true">🫘</span>
           </div>
@@ -155,7 +195,8 @@
           </span>
         </a>
 
-        <a class="tool reveal tint-violet" href="calculadora-anticoagulacao/">
+        <h3 class="tools-section-title" data-categoria="anticoagulacao">Cardiologia e anticoagulação</h3>
+        <a class="tool reveal tint-violet" data-categoria="anticoagulacao" href="calculadora-anticoagulacao/">
           <div class="tool-top">
             <span class="tool-icon" aria-hidden="true">🫀</span>
           </div>
@@ -170,7 +211,8 @@
           </span>
         </a>
 
-        <a class="tool reveal tint-coral" href="calculadora-saude-mental/">
+        <h3 class="tools-section-title" data-categoria="saude-mental">Saúde mental e rastreio</h3>
+        <a class="tool reveal tint-coral" data-categoria="saude-mental" href="calculadora-saude-mental/">
           <div class="tool-top">
             <span class="tool-icon" aria-hidden="true">🧠</span>
           </div>
@@ -185,7 +227,8 @@
           </span>
         </a>
 
-        <a class="tool reveal tint-violet" href="calculadora-respiratoria/">
+        <h3 class="tools-section-title" data-categoria="respiratorio">Doenças respiratórias</h3>
+        <a class="tool reveal tint-violet" data-categoria="respiratorio" href="calculadora-respiratoria/">
           <div class="tool-top">
             <span class="tool-icon" aria-hidden="true">🫁</span>
           </div>
@@ -193,21 +236,6 @@
           <p class="tool-desc">Impacto da DPOC, controlo da asma e probabilidade de faringite estreptocócica.</p>
           <div class="tags">
             <span class="tag">Respiratório</span>
-            <span class="tag">Pacientes</span>
-          </div>
-          <span class="go">Abrir calculadora
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </span>
-        </a>
-
-        <a class="tool reveal tint-coral" href="calculadora-crescimento/">
-          <div class="tool-top">
-            <span class="tool-icon" aria-hidden="true">👶</span>
-          </div>
-          <div class="tool-title">Crescimento infantil (OMS)</div>
-          <p class="tool-desc">Z-score e percentis de peso, comprimento e perímetro cefálico, dos 0 aos 24 meses.</p>
-          <div class="tags">
-            <span class="tag">Pediatria</span>
             <span class="tag">Pacientes</span>
           </div>
           <span class="go">Abrir calculadora
@@ -242,5 +270,6 @@
   </footer>
 
   <script src="assets/js/site.js" type="module"></script>
+  <script src="assets/js/home-filtro.js" type="module"></script>
 </body>
 </html>
