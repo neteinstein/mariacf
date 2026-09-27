@@ -3,6 +3,11 @@
 Coleção de pequenas ferramentas para médicos e pacientes, publicada com GitHub Pages.
 Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 
+## Páginas
+
+- `/` — página inicial com as ferramentas
+- `/sobre/` — percurso da Dra. Maria, trabalhos científicos publicados e artigos no Ponto SJ
+
 ## Ferramentas
 
 | Ferramenta | Caminho | Estado |
@@ -30,7 +35,7 @@ npm test                      # testes da lógica de doses (Node 18+)
 
 O site é publicado pelo workflow `.github/workflows/pages.yml` a cada push para `main`
 (também pode ser corrido à mão em *Actions → Deploy GitHub Pages → Run workflow*).
-O workflow corre os testes e publica apenas `index.html`, `calculadora-doses/` e `assets/`.
+O workflow corre os testes e publica apenas `index.html`, `calculadora-doses/`, `sobre/` e `assets/`.
 Nos pull requests corre só os testes e a preparação do site, sem publicar.
 
 Configuração única: em **Settings → Pages → Build and deployment**, escolher *Source: GitHub Actions*.
