@@ -1983,3 +1983,174 @@ a.pub:hover {
     transform: none;
   }
 }
+
+/* ---------- Componentes partilhados: calculadoras clínicas com pontuação ---------- */
+
+.tabbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.tabbtn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid var(--line);
+  background: var(--surface-strong);
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s, color 0.25s, transform 0.3s var(--spring);
+}
+
+.tabbtn:hover { transform: translateY(-2px); }
+
+.tabbtn[aria-selected='true'] {
+  border-color: var(--teal);
+  background: linear-gradient(160deg, var(--teal-soft), var(--surface-strong) 70%);
+  color: var(--teal);
+}
+
+.tabbtn:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.checklist {
+  display: grid;
+  gap: 10px;
+}
+
+.check-item {
+  position: relative;
+}
+
+.check-item input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.check-item label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 2px solid var(--line);
+  background: var(--surface-strong);
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s, transform 0.3s var(--spring);
+}
+
+.check-item label:hover { transform: translateY(-2px); }
+
+.check-item .box {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+  border: 2px solid var(--line);
+  background: var(--surface);
+  flex: none;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.check-item .box svg {
+  width: 15px;
+  height: 15px;
+  stroke: #fff;
+  opacity: 0;
+  transform: scale(0.6);
+  transition: opacity 0.2s, transform 0.25s var(--spring);
+}
+
+.check-item input:checked + label .box {
+  border-color: var(--teal);
+  background: var(--teal);
+}
+
+.check-item input:checked + label .box svg { opacity: 1; transform: scale(1); }
+
+.check-item input:checked + label {
+  border-color: var(--teal);
+  background: linear-gradient(160deg, var(--teal-soft), var(--surface-strong) 75%);
+}
+
+.check-item input:focus-visible + label {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.check-item .txt {
+  flex: 1;
+  line-height: 1.3;
+}
+
+.check-item .txt strong {
+  display: block;
+  font-size: 0.96rem;
+}
+
+.check-item .txt small {
+  color: var(--ink-mute);
+  font-size: 0.8rem;
+}
+
+.check-item .pts {
+  flex: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--ink-mute);
+  min-width: 2ch;
+  text-align: right;
+}
+
+.check-item input:checked + label .pts { color: var(--teal); }
+
+.qitem + .qitem {
+  margin-top: 22px;
+  padding-top: 22px;
+  border-top: 1px dashed var(--line);
+}
+
+.qitem .chips { margin-top: 10px; }
+
+.score-result[data-nivel='baixo'] .result-head { --c: var(--teal); }
+.score-result[data-nivel='moderado'] .result-head { --c: var(--sun); }
+.score-result[data-nivel='alto'] .result-head { --c: var(--coral); }
+.score-result[data-nivel='muito-alto'] .result-head { --c: var(--danger); }
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.field-row > .step {
+  min-width: 0;
+}
+
+.field-row .weight {
+  flex-wrap: wrap;
+}
+
+.field-row .weight-field {
+  min-width: 0;
+}
+
+.field-row .weight-field input {
+  min-width: 0;
+  width: 7ch;
+}
+
+@media (max-width: 640px) {
+  .field-row {
+    grid-template-columns: 1fr;
+  }
+}

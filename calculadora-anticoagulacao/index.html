@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CHA₂DS₂-VASc e HAS-BLED · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Calcule o risco tromboembólico (CHA₂DS₂-VASc) e hemorrágico (HAS-BLED) na fibrilhação auricular, para apoiar a decisão de hipocoagulação.">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="CHA₂DS₂-VASc e HAS-BLED">
+  <meta property="og:description" content="Risco tromboembólico e hemorrágico na fibrilhação auricular.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Cardiologia · Anticoagulação</span>
+      <h1 class="display">CHA₂DS₂-VASc e <em>HAS-BLED</em></h1>
+      <p class="lead">Risco tromboembólico e risco hemorrágico na fibrilhação auricular, para apoiar a decisão de iniciar hipocoagulação oral.</p>
+    </section>
+
+    <div class="tabbar" role="tablist" aria-label="Escolher escala">
+      <button class="tabbtn" type="button" data-tab="chadsvasc" role="tab" aria-selected="true">CHA₂DS₂-VASc</button>
+      <button class="tabbtn" type="button" data-tab="hasbled" role="tab" aria-selected="false">HAS-BLED</button>
+    </div>
+
+    <div class="calc" data-painel="chadsvasc">
+      <form class="panel reveal" id="chadsvasc-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">C</span> Fatores de risco</legend>
+          <div class="checklist">
+            <div class="check-item">
+              <input type="checkbox" id="c-icc">
+              <label for="c-icc"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Insuficiência cardíaca / disfunção do VE</strong><small>Insuficiência cardíaca congestiva ou fração de ejeção reduzida</small></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="c-hta">
+              <label for="c-hta"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Hipertensão arterial</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="c-idade75">
+              <label for="c-idade75"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Idade ≥ 75 anos</strong></span><span class="pts">2</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="c-dm">
+              <label for="c-dm"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Diabetes mellitus</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="c-avc">
+              <label for="c-avc"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>AVC, AIT ou tromboembolismo prévio</strong></span><span class="pts">2</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="c-vasc">
+              <label for="c-vasc"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Doença vascular</strong><small>EAM prévio, doença arterial periférica ou placa aórtica</small></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="c-idade65">
+              <label for="c-idade65"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Idade 65–74 anos</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="c-sexo">
+              <label for="c-sexo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Sexo feminino</strong></span><span class="pts">1</span></label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+      <section class="panel result score-result reveal" id="chadsvasc-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker">Pontuação CHA₂DS₂-VASc</div>
+          <div class="dose-line">
+            <div class="dose-big"><span id="cv-pontos">0</span><span class="u">/ 9</span></div>
+          </div>
+          <div class="dose-sub" id="cv-recomendacao"></div>
+        </div>
+        <div class="result-body">
+          <div class="notices">
+            <div class="notice">A anticoagulação é sempre uma decisão individualizada — o ponto isolado do sexo feminino não a indica por si só.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="hasbled" hidden>
+      <form class="panel reveal" id="hasbled-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">H</span> Fatores de risco hemorrágico</legend>
+          <div class="checklist">
+            <div class="check-item">
+              <input type="checkbox" id="h-hta">
+              <label for="h-hta"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Hipertensão não controlada</strong><small>Pressão arterial sistólica &gt; 160 mmHg</small></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="h-renal">
+              <label for="h-renal"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Função renal alterada</strong><small>Diálise, transplante renal ou creatinina &gt; 2,26 mg/dL (200 µmol/L)</small></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="h-hepatica">
+              <label for="h-hepatica"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Função hepática alterada</strong><small>Cirrose ou bilirrubina/transamínases &gt; 2–3× o normal</small></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="h-avc">
+              <label for="h-avc"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>AVC prévio</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="h-hemorragia">
+              <label for="h-hemorragia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Hemorragia prévia ou predisposição</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="h-inr">
+              <label for="h-inr"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>INR lábil</strong><small>Sob varfarina, com tempo em intervalo terapêutico &lt; 60%</small></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="h-idoso">
+              <label for="h-idoso"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Idade &gt; 65 anos</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="h-farmacos">
+              <label for="h-farmacos"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Fármacos predisponentes</strong><small>Antiagregantes plaquetários ou AINEs</small></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="h-alcool">
+              <label for="h-alcool"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Consumo excessivo de álcool</strong><small>≥ 8 unidades por semana</small></span><span class="pts">1</span></label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+
+      <section class="panel result score-result reveal" id="hasbled-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker">Pontuação HAS-BLED</div>
+          <div class="dose-line">
+            <div class="dose-big"><span id="hb-pontos">0</span><span class="u">/ 9</span></div>
+          </div>
+          <div class="dose-sub" id="hb-recomendacao"></div>
+        </div>
+        <div class="result-body">
+          <div class="notices">
+            <div class="notice">Uma pontuação elevada não contraindica a hipocoagulação — sinaliza a necessidade de corrigir fatores modificáveis e vigiar mais de perto.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🫀</div>
+        <h3>CHA₂DS₂-VASc</h3>
+        <ul>
+          <li>Estima o risco anual de AVC isquémico em doentes com fibrilhação auricular não valvular.</li>
+          <li>0 pontos (homem) ou 1 (só sexo feminino): risco baixo, hipocoagulação geralmente não recomendada.</li>
+          <li>≥ 2 pontos: hipocoagulação oral geralmente recomendada, salvo contraindicação.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🩸</div>
+        <h3>HAS-BLED</h3>
+        <ul>
+          <li>Estima o risco de hemorragia major em doentes anticoagulados ou candidatos a anticoagulação.</li>
+          <li>≥ 3 pontos indica risco elevado — reforça a vigilância, não substitui a decisão de anticoagular.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🩺</div>
+        <h3>Como usar em conjunto</h3>
+        <ul>
+          <li>O CHA₂DS₂-VASc define a necessidade de anticoagulação; o HAS-BLED identifica e ajuda a corrigir fatores de risco hemorrágico modificáveis.</li>
+          <li>Um HAS-BLED elevado não é, por si só, motivo para não anticoagular.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      Estas escalas são um apoio informativo à decisão clínica e não substituem a avaliação individualizada do médico assistente, nomeadamente quanto a contraindicações, interações e preferências do doente.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/anticoagulacao.js" type="module"></script>
+</body>
+</html>
