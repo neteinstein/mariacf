@@ -3,32 +3,32 @@
    ========================================================================== */
 
 :root {
-  --bg: #f7f3ec;
-  --bg-2: #efe8dc;
-  --ink: #17242e;
-  --ink-soft: #4b5a66;
-  --ink-mute: #7b8893;
-  --line: rgba(23, 36, 46, 0.1);
-  --surface: rgba(255, 255, 255, 0.62);
-  --surface-strong: rgba(255, 255, 255, 0.86);
+  --bg: #f4f8f6;
+  --bg-2: #e7f1ec;
+  --ink: #1c2b27;
+  --ink-soft: #4a5b56;
+  --ink-mute: #77877f;
+  --line: rgba(11, 61, 54, 0.12);
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.92);
   --surface-border: rgba(255, 255, 255, 0.9);
 
-  --teal: #0f8f83;
-  --teal-2: #19c2a8;
-  --teal-soft: #d4f3ec;
-  --coral: #f2705e;
-  --coral-soft: #fde2dc;
-  --violet: #8b6cf6;
-  --violet-soft: #e9e2ff;
-  --sun: #f5b841;
-  --sun-soft: #fdf0d2;
+  --teal: #006d4c;
+  --teal-2: #00a676;
+  --teal-soft: #d7f0e6;
+  --coral: #e2572f;
+  --coral-soft: #fbe1d7;
+  --violet: #0b3d36;
+  --violet-soft: #dbe9e5;
+  --sun: #ecab2e;
+  --sun-soft: #fbedd0;
   --danger: #c2413a;
   --danger-soft: #fde4e1;
 
-  --blob-1: #9fe8d9;
-  --blob-2: #ffc4b6;
-  --blob-3: #cfc2ff;
-  --blob-4: #ffe2a3;
+  --blob-1: #a9e4cf;
+  --blob-2: #c9dfd6;
+  --blob-3: #7fbfa8;
+  --blob-4: #ffd9a3;
 
   --shadow-sm: 0 1px 2px rgba(23, 36, 46, 0.06), 0 2px 8px rgba(23, 36, 46, 0.05);
   --shadow: 0 10px 30px -10px rgba(23, 36, 46, 0.18), 0 2px 6px rgba(23, 36, 46, 0.05);
@@ -46,29 +46,29 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #0b1317;
-    --bg-2: #0f1a1f;
-    --ink: #eaf3f1;
-    --ink-soft: #b3c3c6;
-    --ink-mute: #7f9297;
-    --line: rgba(234, 243, 241, 0.1);
-    --surface: rgba(22, 36, 42, 0.55);
-    --surface-strong: rgba(24, 40, 47, 0.85);
+    --bg: #0a1512;
+    --bg-2: #0e1c18;
+    --ink: #eaf4f0;
+    --ink-soft: #b3c8c1;
+    --ink-mute: #7f9791;
+    --line: rgba(234, 244, 240, 0.1);
+    --surface: rgba(20, 39, 34, 0.55);
+    --surface-strong: rgba(22, 43, 38, 0.85);
     --surface-border: rgba(255, 255, 255, 0.08);
-    --teal: #3fd9c1;
-    --teal-2: #19c2a8;
-    --teal-soft: rgba(63, 217, 193, 0.14);
-    --coral: #ff8a78;
-    --coral-soft: rgba(255, 138, 120, 0.14);
-    --violet: #a993ff;
-    --violet-soft: rgba(169, 147, 255, 0.15);
+    --teal: #2fcf9a;
+    --teal-2: #00a676;
+    --teal-soft: rgba(47, 207, 154, 0.14);
+    --coral: #ff8f6b;
+    --coral-soft: rgba(255, 143, 107, 0.14);
+    --violet: #6fb3a4;
+    --violet-soft: rgba(111, 179, 164, 0.15);
     --sun: #ffc861;
     --sun-soft: rgba(255, 200, 97, 0.14);
     --danger: #ff8a80;
     --danger-soft: rgba(255, 138, 128, 0.14);
-    --blob-1: #0f5c52;
-    --blob-2: #6a2f2a;
-    --blob-3: #3b2f7a;
+    --blob-1: #0f5c4a;
+    --blob-2: #1f4b3d;
+    --blob-3: #0b3d36;
     --blob-4: #5c4413;
     --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
@@ -77,29 +77,29 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #0b1317;
-  --bg-2: #0f1a1f;
-  --ink: #eaf3f1;
-  --ink-soft: #b3c3c6;
-  --ink-mute: #7f9297;
-  --line: rgba(234, 243, 241, 0.1);
-  --surface: rgba(22, 36, 42, 0.55);
-  --surface-strong: rgba(24, 40, 47, 0.85);
+  --bg: #0a1512;
+  --bg-2: #0e1c18;
+  --ink: #eaf4f0;
+  --ink-soft: #b3c8c1;
+  --ink-mute: #7f9791;
+  --line: rgba(234, 244, 240, 0.1);
+  --surface: rgba(20, 39, 34, 0.55);
+  --surface-strong: rgba(22, 43, 38, 0.85);
   --surface-border: rgba(255, 255, 255, 0.08);
-  --teal: #3fd9c1;
-  --teal-2: #19c2a8;
-  --teal-soft: rgba(63, 217, 193, 0.14);
-  --coral: #ff8a78;
-  --coral-soft: rgba(255, 138, 120, 0.14);
-  --violet: #a993ff;
-  --violet-soft: rgba(169, 147, 255, 0.15);
+  --teal: #2fcf9a;
+  --teal-2: #00a676;
+  --teal-soft: rgba(47, 207, 154, 0.14);
+  --coral: #ff8f6b;
+  --coral-soft: rgba(255, 143, 107, 0.14);
+  --violet: #6fb3a4;
+  --violet-soft: rgba(111, 179, 164, 0.15);
   --sun: #ffc861;
   --sun-soft: rgba(255, 200, 97, 0.14);
   --danger: #ff8a80;
   --danger-soft: rgba(255, 138, 128, 0.14);
-  --blob-1: #0f5c52;
-  --blob-2: #6a2f2a;
-  --blob-3: #3b2f7a;
+  --blob-1: #0f5c4a;
+  --blob-2: #1f4b3d;
+  --blob-3: #0b3d36;
   --blob-4: #5c4413;
   --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
