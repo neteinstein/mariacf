@@ -62,18 +62,5 @@ document.querySelectorAll('.tool').forEach((card) => {
   });
 });
 
-// Filtro de ferramentas (Todos / Pacientes / Profissionais)
-const filtros = document.querySelectorAll('[data-filter]');
-filtros.forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const f = btn.dataset.filter;
-    filtros.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-    document.querySelectorAll('.tool[data-audience]').forEach((card) => {
-      const publico = card.dataset.audience.split(' ');
-      card.classList.toggle('hidden', f !== 'todos' && !publico.includes(f));
-    });
-  });
-});
-
 const ano = document.getElementById('ano');
 if (ano) ano.textContent = new Date().getFullYear();
