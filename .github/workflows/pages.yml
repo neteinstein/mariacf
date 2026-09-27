@@ -31,7 +31,7 @@ jobs:
       - name: Preparar site
         run: |
           mkdir _site
-          cp -r index.html calculadora-doses assets _site/
+          cp -r index.html calculadora-doses sobre assets _site/
 
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'
