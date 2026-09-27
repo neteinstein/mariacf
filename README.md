@@ -13,7 +13,6 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 | Ferramenta | Caminho | Estado |
 | --- | --- | --- |
 | Calculadora de doses (paracetamol e ibuprofeno em xarope) | `/calculadora-doses/` | ✅ |
-| Risco cardiovascular, IMC, vacinas, data do parto, função renal | — | Em breve |
 
 ### Calculadora de doses
 
