@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CURB-65, Wells e QTc · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Gravidade de pneumonia (CURB-65), probabilidade de TVP e TEP (Wells) e correção do intervalo QT (QTc), para apoiar decisões de urgência.">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="CURB-65, Wells e QTc">
+  <meta property="og:description" content="Gravidade e risco agudo: pneumonia, tromboembolismo e QT.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Urgência · Gravidade e risco agudo</span>
+      <h1 class="display">CURB-65, Wells e <em>QTc</em></h1>
+      <p class="lead">Gravidade de pneumonia, probabilidade clínica de trombose venosa profunda e de embolia pulmonar, e correção do intervalo QT.</p>
+    </section>
+
+    <div class="tabbar" role="tablist" aria-label="Escolher calculadora">
+      <button class="tabbtn" type="button" data-tab="curb65" role="tab" aria-selected="true">CURB-65</button>
+      <button class="tabbtn" type="button" data-tab="tvp" role="tab" aria-selected="false">Wells · TVP</button>
+      <button class="tabbtn" type="button" data-tab="tep" role="tab" aria-selected="false">Wells · TEP</button>
+      <button class="tabbtn" type="button" data-tab="qtc" role="tab" aria-selected="false">QTc</button>
+    </div>
+
+    <div class="calc" data-painel="curb65">
+      <form class="panel reveal" id="curb-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">C</span> Critérios</legend>
+          <div class="checklist">
+            <div class="check-item">
+              <input type="checkbox" id="cu-confusao">
+              <label for="cu-confusao"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Confusão de novo</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="cu-ureia">
+              <label for="cu-ureia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Ureia &gt; 7 mmol/L (ou azoto ureico &gt; 20 mg/dL)</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="cu-fr">
+              <label for="cu-fr"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Frequência respiratória ≥ 30/min</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="cu-pa">
+              <label for="cu-pa"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Pressão arterial baixa</strong><small>PAS &lt; 90 mmHg ou PAD ≤ 60 mmHg</small></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="cu-idade">
+              <label for="cu-idade"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Idade ≥ 65 anos</strong></span><span class="pts">1</span></label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="curb-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker">Pontuação CURB-65</div>
+          <div class="dose-line"><div class="dose-big"><span id="cu-pontos">0</span><span class="u">/ 5</span></div></div>
+          <div class="dose-sub" id="cu-recomendacao"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="tvp" hidden>
+      <form class="panel reveal" id="tvp-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">T</span> Critérios de Wells (TVP)</legend>
+          <div class="checklist">
+            <div class="check-item">
+              <input type="checkbox" id="tvp-cancroAtivo">
+              <label for="tvp-cancroAtivo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Cancro ativo</strong><small>Tratamento em curso, nos últimos 6 meses, ou paliativo</small></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tvp-paralisiaOuImobilizacao">
+              <label for="tvp-paralisiaOuImobilizacao"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Paralisia, paresia ou imobilização gessada recente de um membro inferior</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tvp-acamado3diasOuCirurgia">
+              <label for="tvp-acamado3diasOuCirurgia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Acamado &gt; 3 dias ou cirurgia major nas últimas 12 semanas</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tvp-dorLocalizada">
+              <label for="tvp-dorLocalizada"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor localizada no trajeto do sistema venoso profundo</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tvp-pernaTodaEdemaciada">
+              <label for="tvp-pernaTodaEdemaciada"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Perna toda edemaciada</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tvp-edemaGemelar3cm">
+              <label for="tvp-edemaGemelar3cm"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Edema da perna sintomática &gt; 3 cm em relação à assintomática</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tvp-edemaComFovea">
+              <label for="tvp-edemaComFovea"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Edema com cacifo, confinado à perna sintomática</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tvp-veiasColaterais">
+              <label for="tvp-veiasColaterais"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Veias superficiais colaterais (não varicosas)</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tvp-tvpPrevia">
+              <label for="tvp-tvpPrevia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>TVP previamente documentada</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tvp-diagnosticoAlternativo">
+              <label for="tvp-diagnosticoAlternativo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Diagnóstico alternativo pelo menos tão provável como TVP</strong></span><span class="pts">−2</span></label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="tvp-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker" id="tvp-probabilidade">TVP improvável</div>
+          <div class="dose-line"><div class="dose-big"><span id="tvp-pontos">0</span><span class="u">pontos</span></div></div>
+          <div class="dose-sub" id="tvp-recomendacao"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="tep" hidden>
+      <form class="panel reveal" id="tep-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">T</span> Critérios de Wells (TEP)</legend>
+          <div class="checklist">
+            <div class="check-item">
+              <input type="checkbox" id="tep-sinaisTVP">
+              <label for="tep-sinaisTVP"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Sinais clínicos de TVP</strong><small>Edema e dor à palpação do sistema venoso profundo</small></span><span class="pts">3</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tep-tepDiagnosticoMaisProvavel">
+              <label for="tep-tepDiagnosticoMaisProvavel"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>TEP é o diagnóstico mais provável, ou tão provável como outros</strong></span><span class="pts">3</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tep-frequenciaCardiaca100">
+              <label for="tep-frequenciaCardiaca100"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Frequência cardíaca &gt; 100/min</strong></span><span class="pts">1,5</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tep-imobilizacaoOuCirurgia">
+              <label for="tep-imobilizacaoOuCirurgia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Imobilização ≥ 3 dias ou cirurgia nas últimas 4 semanas</strong></span><span class="pts">1,5</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tep-tvpTepPrevio">
+              <label for="tep-tvpTepPrevio"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>TVP ou TEP prévios</strong></span><span class="pts">1,5</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tep-hemoptises">
+              <label for="tep-hemoptises"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Hemoptises</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="tep-neoplasia">
+              <label for="tep-neoplasia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Neoplasia tratada nos últimos 6 meses ou paliativa</strong></span><span class="pts">1</span></label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="tep-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker" id="tep-probabilidade">TEP improvável</div>
+          <div class="dose-line"><div class="dose-big"><span id="tep-pontos">0</span><span class="u">pontos</span></div></div>
+          <div class="dose-sub" id="tep-recomendacao"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="qtc" hidden>
+      <form class="panel reveal" id="qtc-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="qtc-qt"><span class="step-num">1</span> Intervalo QT</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="qtc-qt" data-step="-5" aria-label="Diminuir QT">−</button>
+              <div class="weight-field"><input id="qtc-qt" type="number" inputmode="numeric" min="200" max="700" step="1" value="400"><span class="unit">ms</span></div>
+              <button class="stepper" type="button" data-alvo="qtc-qt" data-step="5" aria-label="Aumentar QT">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="qtc-fc"><span class="step-num">2</span> Frequência cardíaca</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="qtc-fc" data-step="-1" aria-label="Diminuir FC">−</button>
+              <div class="weight-field"><input id="qtc-fc" type="number" inputmode="numeric" min="30" max="220" step="1" value="70"><span class="unit">bpm</span></div>
+              <button class="stepper" type="button" data-alvo="qtc-fc" data-step="1" aria-label="Aumentar FC">+</button>
+            </div>
+          </div>
+        </div>
+        <label class="choice" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:2px solid var(--line)">
+          <input type="checkbox" id="qtc-sexo" style="position:static;opacity:1;width:auto">
+          Sexo feminino
+        </label>
+      </form>
+      <section class="panel result score-result reveal" id="qtc-resultado" aria-live="polite">
+        <div id="qtc-ok">
+          <div class="result-head">
+            <div class="result-kicker">QTc (Bazett)</div>
+            <div class="dose-line"><div class="dose-big"><span id="qtc-bazett">0</span><span class="u">ms</span></div></div>
+            <div class="dose-sub" id="qtc-limiar"></div>
+          </div>
+          <div class="result-body">
+            <div class="stats">
+              <div class="stat"><div class="k">QTc (Fridericia)</div><div class="v" id="qtc-fridericia" style="font-size:1.2rem">—</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="qtc-vazio" hidden><div class="big-emoji" aria-hidden="true">🫀</div><p class="motivo" id="qtc-motivo"></p></div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🫁</div>
+        <h3>CURB-65</h3>
+        <ul>
+          <li>0–1: ambulatório · 2: internamento curto ou vigilância próxima · 3–5: internamento, considerar UCI.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🩸</div>
+        <h3>Wells (TVP e TEP)</h3>
+        <ul>
+          <li>Versão dicotomizada: "improvável" tem alto valor preditivo negativo combinado com D-dímeros normais.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">📉</div>
+        <h3>QTc</h3>
+        <ul>
+          <li>QTc &gt; 500 ms associa-se a maior risco de torsades de pointes — reveja a medicação em curso.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      Estas escalas são um apoio informativo à decisão clínica e não substituem a avaliação individualizada do médico assistente.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/urgencia.js" type="module"></script>
+</body>
+</html>

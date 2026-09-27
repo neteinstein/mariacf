@@ -31,10 +31,11 @@ jobs:
       - name: Preparar site
         run: |
           mkdir _site
-          cp -r index.html calculadora-doses calculadora-imc-asc calculadora-dpp \
-            calculadora-risco-cardiovascular calculadora-funcao-renal calculadora-anticoagulacao \
-            calculadora-saude-mental calculadora-respiratoria calculadora-crescimento \
-            sobre assets _site/
+          # Copia tudo para o site publicado, exceto ficheiros de desenvolvimento
+          # (testes, configuração do projeto, workflows, git). Isto evita que uma
+          # nova pasta de calculadora fique esquecida na lista e dê 404 em produção.
+          shopt -s extglob
+          cp -r !(_site|tests|node_modules|.git|.github|package.json|package-lock.json|README.md) _site/
 
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'

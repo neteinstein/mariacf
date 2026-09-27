@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LDL, sódio, cálcio e eAG · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Calcule o LDL (Friedewald), o sódio corrigido para hiperglicemia, o cálcio corrigido pela albumina e a glicemia média estimada (eAG) a partir da HbA1c.">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="LDL, sódio, cálcio e eAG">
+  <meta property="og:description" content="Fórmulas laboratoriais de uso frequente em MGF.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Laboratorial · Fórmulas de bolso</span>
+      <h1 class="display">LDL, sódio, cálcio e <em>eAG</em></h1>
+      <p class="lead">Quatro fórmulas laboratoriais de uso frequente em consulta: LDL calculado, sódio corrigido para hiperglicemia, cálcio corrigido pela albumina e glicemia média estimada a partir da HbA1c.</p>
+    </section>
+
+    <div class="tabbar" role="tablist" aria-label="Escolher fórmula">
+      <button class="tabbtn" type="button" data-tab="ldl" role="tab" aria-selected="true">LDL (Friedewald)</button>
+      <button class="tabbtn" type="button" data-tab="na" role="tab" aria-selected="false">Sódio corrigido</button>
+      <button class="tabbtn" type="button" data-tab="ca" role="tab" aria-selected="false">Cálcio corrigido</button>
+      <button class="tabbtn" type="button" data-tab="eag" role="tab" aria-selected="false">eAG</button>
+    </div>
+
+    <div class="calc" data-painel="ldl">
+      <form class="panel reveal" id="ldl-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="ldl-ct"><span class="step-num">1</span> Colesterol total</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="ldl-ct" data-step="-5" aria-label="Diminuir colesterol total">−</button>
+              <div class="weight-field"><input id="ldl-ct" type="number" inputmode="numeric" min="50" max="500" step="1" value="200"><span class="unit">mg/dL</span></div>
+              <button class="stepper" type="button" data-alvo="ldl-ct" data-step="5" aria-label="Aumentar colesterol total">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="ldl-hdl"><span class="step-num">2</span> HDL</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="ldl-hdl" data-step="-2" aria-label="Diminuir HDL">−</button>
+              <div class="weight-field"><input id="ldl-hdl" type="number" inputmode="numeric" min="10" max="150" step="1" value="50"><span class="unit">mg/dL</span></div>
+              <button class="stepper" type="button" data-alvo="ldl-hdl" data-step="2" aria-label="Aumentar HDL">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <label class="step-label" for="ldl-tg"><span class="step-num">3</span> Triglicéridos</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="ldl-tg" data-step="-10" aria-label="Diminuir triglicéridos">−</button>
+            <div class="weight-field"><input id="ldl-tg" type="number" inputmode="numeric" min="20" max="1000" step="1" value="100"><span class="unit">mg/dL</span></div>
+            <button class="stepper" type="button" data-alvo="ldl-tg" data-step="10" aria-label="Aumentar triglicéridos">+</button>
+          </div>
+        </div>
+      </form>
+      <section class="panel result reveal" id="ldl-resultado" aria-live="polite">
+        <div id="ldl-ok">
+          <div class="result-head">
+            <div class="result-kicker">LDL calculado (Friedewald)</div>
+            <div class="dose-line"><div class="dose-big"><span id="ldl-valor">0</span><span class="u">mg/dL</span></div></div>
+          </div>
+        </div>
+        <div class="empty" id="ldl-vazio" hidden><div class="big-emoji" aria-hidden="true">🩸</div><p class="motivo" id="ldl-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="na" hidden>
+      <form class="panel reveal" id="na-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="na-medido"><span class="step-num">1</span> Sódio medido</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="na-medido" data-step="-1" aria-label="Diminuir sódio">−</button>
+              <div class="weight-field"><input id="na-medido" type="number" inputmode="numeric" min="100" max="180" step="1" value="130"><span class="unit">mEq/L</span></div>
+              <button class="stepper" type="button" data-alvo="na-medido" data-step="1" aria-label="Aumentar sódio">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="na-glicemia"><span class="step-num">2</span> Glicemia</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="na-glicemia" data-step="-10" aria-label="Diminuir glicemia">−</button>
+              <div class="weight-field"><input id="na-glicemia" type="number" inputmode="numeric" min="50" max="1000" step="1" value="100"><span class="unit">mg/dL</span></div>
+              <button class="stepper" type="button" data-alvo="na-glicemia" data-step="10" aria-label="Aumentar glicemia">+</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <section class="panel result reveal" id="na-resultado" aria-live="polite">
+        <div id="na-ok">
+          <div class="result-head">
+            <div class="result-kicker">Sódio corrigido (Katz)</div>
+            <div class="dose-line"><div class="dose-big"><span id="na-valor">0</span><span class="u">mEq/L</span></div></div>
+          </div>
+        </div>
+        <div class="empty" id="na-vazio" hidden><div class="big-emoji" aria-hidden="true">🧂</div><p class="motivo" id="na-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="ca" hidden>
+      <form class="panel reveal" id="ca-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="ca-medido"><span class="step-num">1</span> Cálcio medido</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="ca-medido" data-step="-0.1" aria-label="Diminuir cálcio">−</button>
+              <div class="weight-field"><input id="ca-medido" type="number" inputmode="decimal" min="4" max="16" step="0.1" value="8.5"><span class="unit">mg/dL</span></div>
+              <button class="stepper" type="button" data-alvo="ca-medido" data-step="0.1" aria-label="Aumentar cálcio">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="ca-albumina"><span class="step-num">2</span> Albumina</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="ca-albumina" data-step="-0.1" aria-label="Diminuir albumina">−</button>
+              <div class="weight-field"><input id="ca-albumina" type="number" inputmode="decimal" min="1" max="6" step="0.1" value="4.0"><span class="unit">g/dL</span></div>
+              <button class="stepper" type="button" data-alvo="ca-albumina" data-step="0.1" aria-label="Aumentar albumina">+</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <section class="panel result reveal" id="ca-resultado" aria-live="polite">
+        <div id="ca-ok">
+          <div class="result-head">
+            <div class="result-kicker">Cálcio corrigido</div>
+            <div class="dose-line"><div class="dose-big"><span id="ca-valor">0</span><span class="u">mg/dL</span></div></div>
+          </div>
+        </div>
+        <div class="empty" id="ca-vazio" hidden><div class="big-emoji" aria-hidden="true">🦴</div><p class="motivo" id="ca-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="eag" hidden>
+      <form class="panel reveal" id="eag-form" autocomplete="off">
+        <div class="step">
+          <label class="step-label" for="eag-hba1c"><span class="step-num">1</span> HbA1c</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="eag-hba1c" data-step="-0.1" aria-label="Diminuir HbA1c">−</button>
+            <div class="weight-field"><input id="eag-hba1c" type="number" inputmode="decimal" min="4" max="16" step="0.1" value="7.0"><span class="unit">%</span></div>
+            <button class="stepper" type="button" data-alvo="eag-hba1c" data-step="0.1" aria-label="Aumentar HbA1c">+</button>
+          </div>
+          <p class="step-hint">Valor em % (NGSP/DCCT). Se tiver o resultado em mmol/mol (IFCC), divida por 10,929 e some 2,15 para converter.</p>
+        </div>
+      </form>
+      <section class="panel result reveal" id="eag-resultado" aria-live="polite">
+        <div id="eag-ok">
+          <div class="result-head">
+            <div class="result-kicker">Glicemia média estimada (eAG)</div>
+            <div class="dose-line"><div class="dose-big"><span id="eag-valor">0</span><span class="u">mg/dL</span></div></div>
+          </div>
+        </div>
+        <div class="empty" id="eag-vazio" hidden><div class="big-emoji" aria-hidden="true">🩹</div><p class="motivo" id="eag-motivo"></p></div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🩸</div>
+        <h3>LDL de Friedewald</h3>
+        <ul>
+          <li>Só é válida com triglicéridos &lt; 400 mg/dL — acima disso, peça o LDL direto ao laboratório.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🧂</div>
+        <h3>Sódio corrigido</h3>
+        <ul>
+          <li>Estima o sódio "real" na presença de hiperglicemia, que dilui artificialmente o sódio medido.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🦴</div>
+        <h3>Cálcio corrigido</h3>
+        <ul>
+          <li>Cerca de 40% do cálcio circula ligado à albumina — hipoalbuminemia subestima o cálcio total.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      Estas fórmulas são um apoio informativo e não substituem a avaliação clínica do médico assistente.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/laboratorial.js" type="module"></script>
+</body>
+</html>
