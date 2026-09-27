@@ -28,7 +28,12 @@ npm test                      # testes da lógica de doses (Node 18+)
 
 ## Publicação (GitHub Pages)
 
-Em **Settings → Pages**, escolher *Deploy from a branch*, ramo `main`, pasta `/ (root)`.
+O site é publicado pelo workflow `.github/workflows/pages.yml` a cada push para `main`
+(também pode ser corrido à mão em *Actions → Deploy GitHub Pages → Run workflow*).
+O workflow corre os testes e publica apenas `index.html`, `calculadora-doses/` e `assets/`.
+Nos pull requests corre só os testes e a preparação do site, sem publicar.
+
+Configuração única: em **Settings → Pages → Build and deployment**, escolher *Source: GitHub Actions*.
 
 ## Aviso
 
