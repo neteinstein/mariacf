@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calculadora de Doses · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Calcule a dose de paracetamol (Ben-u-ron®) e ibuprofeno (Brufen®, Nurofen®, Ib-u-ron®) em xarope para crianças, a partir do peso.">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="Calculadora de Doses Pediátricas">
+  <meta property="og:description" content="Paracetamol e ibuprofeno em xarope: quantos mL dar, a partir do peso da criança.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Pediatria · Febre e dor</span>
+      <h1 class="display">Calculadora de <em>doses</em></h1>
+      <p class="lead">Pese a criança, escolha o medicamento e a concentração do frasco. Mostramos quantos mL dar, de quantas em quantas horas, e como fica na seringa.</p>
+    </section>
+
+    <div class="calc">
+      <form class="panel reveal" id="calc-form" autocomplete="off" novalidate>
+        <div class="step">
+          <label class="step-label" for="peso"><span class="step-num">1</span> Peso da criança</label>
+          <p class="step-hint">Use o peso atual — a dose depende do peso, não da idade.</p>
+          <div class="weight">
+            <button class="stepper" type="button" data-step="-0.5" aria-label="Diminuir peso 0,5 kg">−</button>
+            <div class="weight-field">
+              <input id="peso" name="peso" type="number" inputmode="decimal" min="3" max="60" step="0.1" value="12" aria-describedby="peso-unid">
+              <span class="unit" id="peso-unid">kg</span>
+            </div>
+            <button class="stepper" type="button" data-step="0.5" aria-label="Aumentar peso 0,5 kg">+</button>
+          </div>
+          <input class="slider" id="peso-slider" type="range" min="3" max="60" step="0.5" value="12" aria-label="Peso em quilogramas">
+          <div class="slider-scale" aria-hidden="true"><span>3 kg</span><span>20</span><span>40</span><span>60 kg</span></div>
+        </div>
+
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">2</span> Medicamento</legend>
+          <div class="choices">
+            <div class="choice para">
+              <input type="radio" name="med" id="med-para" value="paracetamol" checked>
+              <label for="med-para">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Paracetamol</span>
+                <span class="brands">Ben-u-ron®, Panasorb®, genéricos</span>
+              </label>
+            </div>
+            <div class="choice ibu">
+              <input type="radio" name="med" id="med-ibu" value="ibuprofeno">
+              <label for="med-ibu">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Ibuprofeno</span>
+                <span class="brands">Brufen®, Ib-u-ron®, Nurofen®, genéricos</span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">3</span> Concentração do frasco</legend>
+          <p class="step-hint">Está no rótulo, em mg/mL (ou “mg em 5 mL”).</p>
+          <div class="chips" id="conc-chips"></div>
+        </fieldset>
+      </form>
+
+      <section class="panel result reveal" id="resultado" data-med="paracetamol" aria-live="polite" aria-labelledby="res-kicker">
+        <div id="res-ok">
+          <div class="result-head">
+            <div class="result-kicker" id="res-kicker">Dar por toma</div>
+            <div class="dose-line">
+              <div class="dose-big"><span id="res-ml">0</span><span class="u">mL</span></div>
+              <div class="dose-every" id="res-every">de 6 em 6 horas</div>
+            </div>
+            <div class="dose-sub" id="res-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="syringes" id="syringes" aria-hidden="true"></div>
+
+            <div class="stats">
+              <div class="stat"><div class="k">Por toma</div><div class="v" id="st-mg">—</div></div>
+              <div class="stat"><div class="k">Máx. por dia</div><div class="v" id="st-tomas">—</div></div>
+              <div class="stat"><div class="k">Máx. em 24 h</div><div class="v" id="st-max">—</div></div>
+            </div>
+
+            <div class="schedule">
+              <h3><span>Horário das próximas tomas</span>
+                <label><span class="sr-only">Hora da primeira toma</span><input type="time" id="hora"></label>
+              </h3>
+              <ol class="timeline" id="timeline"></ol>
+            </div>
+
+            <div class="notices" id="notices"></div>
+          </div>
+        </div>
+        <div class="empty" id="res-empty" hidden>
+          <div class="big-emoji" aria-hidden="true">⚖️</div>
+          <p class="motivo" id="res-motivo"></p>
+        </div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🥄</div>
+        <h3>Como dar o xarope</h3>
+        <ul>
+          <li>Use sempre a seringa doseadora — colheres de cozinha não são rigorosas.</li>
+          <li>Confirme a concentração no rótulo: o mesmo medicamento existe em forças diferentes.</li>
+          <li>O ibuprofeno deve ser dado, de preferência, com ou após alimentos.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">⏱️</div>
+        <h3>Intervalos e limites</h3>
+        <ul>
+          <li><strong>Paracetamol:</strong> 15 mg/kg por toma, de 6/6 h (máx. 4 tomas em 24 h).</li>
+          <li><strong>Ibuprofeno:</strong> 10 mg/kg por toma, de 8/8 h (máx. 3 tomas em 24 h).</li>
+          <li>Não ultrapasse as tomas diárias, mesmo que a febre volte.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">📞</div>
+        <h3>Quando procurar ajuda</h3>
+        <ul>
+          <li>Bebé com menos de 3 meses com febre.</li>
+          <li>Febre há mais de 48–72 h, prostração, dificuldade em respirar, manchas na pele que não desaparecem ao pressionar.</li>
+          <li>Em dúvida, ligue <strong>SNS 24 — 808 24 24 24</strong>. Emergência: <strong>112</strong>.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      Esta calculadora é um apoio informativo baseado nos Resumos das Características do Medicamento (INFARMED) e não substitui a avaliação do seu médico, enfermeiro ou farmacêutico. Os valores são arredondados a 0,1 mL. Confirme sempre a concentração do frasco e siga a indicação do profissional de saúde que acompanha a criança.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/doses.js" type="module"></script>
+</body>
+</html>
