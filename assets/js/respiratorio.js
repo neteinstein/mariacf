@@ -82,20 +82,52 @@ CAT_PERGUNTAS.forEach((par, i) => {
   );
 });
 const catResultado = $('#cat-resultado');
+let catAtual = null;
 
 function atualizarCAT() {
   const r = calcularCAT(lerRespostas(catForm, 'cat', 8));
   const ok = $('#cat-ok');
   const vazio = $('#cat-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-cat');
+  if (!r.ok) {
+    catAtual = null;
+    ok.hidden = true;
+    vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
+    return;
+  }
+  catAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   catResultado.dataset.nivel = r.nivel;
   $('#cat-pontos').textContent = r.pontos;
   $('#cat-impacto').textContent = r.impacto;
 }
 catForm.addEventListener('change', atualizarCAT);
 atualizarCAT();
+
+function resumoCAT(r) {
+  const linhas = [
+    'CAT — COPD Assessment Test',
+    `Pontuação: ${r.pontos} / ${r.max}`,
+    r.impacto,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-cat').addEventListener('click', () => {
+  if (!catAtual) return;
+  const assunto = `CAT — ${catAtual.pontos} / ${catAtual.max}`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoCAT(catAtual))}`;
+});
+
+$('#btn-print-cat').addEventListener('click', () => {
+  window.print();
+});
 
 /* ---------- ACT ---------- */
 
@@ -113,20 +145,52 @@ ACT_PERGUNTAS.forEach((p, i) => {
   );
 });
 const actResultado = $('#act-resultado');
+let actAtual = null;
 
 function atualizarACT() {
   const r = calcularACT(lerRespostas(actForm, 'act', 5));
   const ok = $('#act-ok');
   const vazio = $('#act-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-act');
+  if (!r.ok) {
+    actAtual = null;
+    ok.hidden = true;
+    vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
+    return;
+  }
+  actAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   actResultado.dataset.nivel = r.nivel;
   $('#act-pontos').textContent = r.pontos;
   $('#act-controlo').textContent = r.controlo;
 }
 actForm.addEventListener('change', atualizarACT);
 atualizarACT();
+
+function resumoACT(r) {
+  const linhas = [
+    'ACT — Asthma Control Test',
+    `Pontuação: ${r.pontos} / ${r.max}`,
+    r.controlo,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-act').addEventListener('click', () => {
+  if (!actAtual) return;
+  const assunto = `ACT — ${actAtual.pontos} / ${actAtual.max}`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoACT(actAtual))}`;
+});
+
+$('#btn-print-act').addEventListener('click', () => {
+  window.print();
+});
 
 /* ---------- Centor / McIsaac ---------- */
 
@@ -145,6 +209,8 @@ $$('.stepper').forEach((btn) => {
   });
 });
 
+let centorAtual = null;
+
 function atualizarCentor() {
   const criterios = {
     febre: $('#ce-febre').checked,
@@ -155,14 +221,19 @@ function atualizarCentor() {
   const r = calcularCentor(criterios, centorIdade.value);
   const ok = $('#centor-ok');
   const vazio = $('#centor-vazio');
+  const acoes = $('#result-actions-centor');
   if (!r.ok) {
+    centorAtual = null;
     ok.hidden = true;
     vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
     $('#centor-motivo').textContent = r.motivo;
     return;
   }
+  centorAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   centorResultado.dataset.nivel = r.nivel;
   $('#centor-pontos').textContent = r.pontos;
   $('#centor-risco').textContent = `Risco estimado de estreptococo: ${r.risco}`;
@@ -171,6 +242,29 @@ function atualizarCentor() {
 centorForm.addEventListener('change', atualizarCentor);
 centorIdade.addEventListener('input', atualizarCentor);
 atualizarCentor();
+
+function resumoCentor(r) {
+  const linhas = [
+    'Centor/McIsaac — probabilidade de faringite estreptocócica',
+    `Pontuação: ${r.pontos}`,
+    `Risco estimado de estreptococo: ${r.risco}`,
+    r.recomendacao,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-centor').addEventListener('click', () => {
+  if (!centorAtual) return;
+  const assunto = `Centor/McIsaac — ${centorAtual.pontos} pontos`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoCentor(centorAtual))}`;
+});
+
+$('#btn-print-centor').addEventListener('click', () => {
+  window.print();
+});
 
 const params = new URLSearchParams(location.search);
 const inicial = ['cat', 'act', 'centor'].includes(params.get('calc')) ? params.get('calc') : 'cat';

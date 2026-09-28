@@ -65,19 +65,42 @@ const apgarForm = $('#apgar-form');
 montar($('#apgar-perguntas'), APGAR_PERGUNTAS, 'ap');
 const apgarResultado = $('#apgar-resultado');
 
+let apgarAtual = null;
+
 function atualizarAPGAR() {
   const r = calcularAPGARFamiliar(ler(apgarForm, 'ap', 5));
   const ok = $('#apgar-ok');
   const vazio = $('#apgar-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-apgar');
+  if (!r.ok) { apgarAtual = null; ok.hidden = true; vazio.hidden = false; if (acoes) acoes.hidden = true; return; }
+  apgarAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   apgarResultado.dataset.nivel = r.nivel;
   $('#ap-pontos').textContent = r.pontos;
   $('#ap-funcao').textContent = r.funcao;
 }
 apgarForm.addEventListener('change', atualizarAPGAR);
 atualizarAPGAR();
+
+function resumoAPGAR(r) {
+  return [
+    `APGAR familiar — ${r.pontos} / 10`,
+    r.funcao,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ].join('\n');
+}
+
+$('#btn-email-apgar').addEventListener('click', () => {
+  if (!apgarAtual) return;
+  const assunto = `APGAR familiar — ${apgarAtual.pontos} / 10`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoAPGAR(apgarAtual))}`;
+});
+
+$('#btn-print-apgar').addEventListener('click', () => window.print());
 
 /* ---------- EPDS ---------- */
 
@@ -98,13 +121,18 @@ const epdsForm = $('#epds-form');
 montar($('#epds-perguntas'), EPDS_PERGUNTAS, 'ep');
 const epdsResultado = $('#epds-resultado');
 
+let epdsAtual = null;
+
 function atualizarEPDS() {
   const r = calcularEPDS(ler(epdsForm, 'ep', 10));
   const ok = $('#epds-ok');
   const vazio = $('#epds-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-epds');
+  if (!r.ok) { epdsAtual = null; ok.hidden = true; vazio.hidden = false; if (acoes) acoes.hidden = true; return; }
+  epdsAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   epdsResultado.dataset.nivel = r.nivel;
   $('#ep-pontos').textContent = r.pontos;
   $('#ep-gravidade').textContent = r.gravidade;
@@ -112,6 +140,24 @@ function atualizarEPDS() {
 }
 epdsForm.addEventListener('change', atualizarEPDS);
 atualizarEPDS();
+
+function resumoEPDS(r) {
+  const linhas = [
+    `EPDS (rastreio de depressão pós-parto) — ${r.pontos} / 30`,
+    r.gravidade,
+  ];
+  if (r.itemRisco) linhas.push('Assinalou ideias de fazer mal a si mesma — avalie o risco de suicídio e considere referenciação urgente.');
+  linhas.push('', 'Informação de apoio — não substitui aconselhamento médico.', location.href);
+  return linhas.join('\n');
+}
+
+$('#btn-email-epds').addEventListener('click', () => {
+  if (!epdsAtual) return;
+  const assunto = `EPDS — ${epdsAtual.pontos} / 30`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoEPDS(epdsAtual))}`;
+});
+
+$('#btn-print-epds').addEventListener('click', () => window.print());
 
 /* ---------- Zarit ---------- */
 
@@ -145,19 +191,42 @@ const zaritForm = $('#zarit-form');
 montar($('#zarit-perguntas'), ZARIT_PERGUNTAS, 'za');
 const zaritResultado = $('#zarit-resultado');
 
+let zaritAtual = null;
+
 function atualizarZarit() {
   const r = calcularZarit(ler(zaritForm, 'za', 22));
   const ok = $('#zarit-ok');
   const vazio = $('#zarit-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-zarit');
+  if (!r.ok) { zaritAtual = null; ok.hidden = true; vazio.hidden = false; if (acoes) acoes.hidden = true; return; }
+  zaritAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   zaritResultado.dataset.nivel = r.nivel;
   $('#za-pontos').textContent = r.pontos;
   $('#za-sobrecarga').textContent = r.sobrecarga;
 }
 zaritForm.addEventListener('change', atualizarZarit);
 atualizarZarit();
+
+function resumoZarit(r) {
+  return [
+    `Escala de Zarit (sobrecarga do cuidador) — ${r.pontos} / 88`,
+    r.sobrecarga,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ].join('\n');
+}
+
+$('#btn-email-zarit').addEventListener('click', () => {
+  if (!zaritAtual) return;
+  const assunto = `Escala de Zarit — ${zaritAtual.pontos} / 88`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoZarit(zaritAtual))}`;
+});
+
+$('#btn-print-zarit').addEventListener('click', () => window.print());
 
 /* ---------- Fagerström ---------- */
 
@@ -176,6 +245,8 @@ FAGERSTROM_PERGUNTAS.forEach((p, i) => {
 });
 const fagResultado = $('#fag-resultado');
 
+let fagAtual = null;
+
 function atualizarFagerstrom() {
   const respostas = {};
   FAGERSTROM_PERGUNTAS.forEach((p) => {
@@ -185,15 +256,36 @@ function atualizarFagerstrom() {
   const r = calcularFagerstrom(respostas);
   const ok = $('#fag-ok');
   const vazio = $('#fag-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-fag');
+  if (!r.ok) { fagAtual = null; ok.hidden = true; vazio.hidden = false; if (acoes) acoes.hidden = true; return; }
+  fagAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   fagResultado.dataset.nivel = r.nivel;
   $('#fa-pontos').textContent = r.pontos;
   $('#fa-dependencia').textContent = r.dependencia;
 }
 fagForm.addEventListener('change', atualizarFagerstrom);
 atualizarFagerstrom();
+
+function resumoFagerstrom(r) {
+  return [
+    `Teste de Fagerström (dependência da nicotina) — ${r.pontos} / 10`,
+    r.dependencia,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ].join('\n');
+}
+
+$('#btn-email-fag').addEventListener('click', () => {
+  if (!fagAtual) return;
+  const assunto = `Teste de Fagerström — ${fagAtual.pontos} / 10`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoFagerstrom(fagAtual))}`;
+});
+
+$('#btn-print-fag').addEventListener('click', () => window.print());
 
 /* ---------- Morisky ---------- */
 
@@ -211,6 +303,8 @@ MORISKY_PERGUNTAS.forEach((p, i) => {
 });
 const morResultado = $('#mor-resultado');
 
+let morAtual = null;
+
 function atualizarMorisky() {
   const respostas = {};
   MORISKY_PERGUNTAS.forEach((p) => {
@@ -220,15 +314,36 @@ function atualizarMorisky() {
   const r = calcularMorisky(respostas);
   const ok = $('#mor-ok');
   const vazio = $('#mor-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-mor');
+  if (!r.ok) { morAtual = null; ok.hidden = true; vazio.hidden = false; if (acoes) acoes.hidden = true; return; }
+  morAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   morResultado.dataset.nivel = r.nivel;
   $('#mo-pontos').textContent = r.pontos;
   $('#mo-adesao').textContent = r.adesao;
 }
 morForm.addEventListener('change', atualizarMorisky);
 atualizarMorisky();
+
+function resumoMorisky(r) {
+  return [
+    `Teste de Morisky (adesão à terapêutica) — ${r.pontos} / 4`,
+    r.adesao,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ].join('\n');
+}
+
+$('#btn-email-mor').addEventListener('click', () => {
+  if (!morAtual) return;
+  const assunto = `Teste de Morisky — ${morAtual.pontos} / 4`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoMorisky(morAtual))}`;
+});
+
+$('#btn-print-mor').addEventListener('click', () => window.print());
 
 const params = new URLSearchParams(location.search);
 const validos = ['apgar', 'epds', 'zarit', 'fagerstrom', 'morisky'];

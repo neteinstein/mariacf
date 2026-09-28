@@ -26,23 +26,50 @@ $$('.stepper').forEach((btn) => {
   });
 });
 
-function ligar({ prefixo, calcular, ler, escrever }) {
+/* ---------- Ações: email e impressão ---------- */
+
+function resumoTexto(titulo, linhas) {
+  return [titulo, ...linhas, '', 'Informação de apoio — não substitui aconselhamento médico.', location.href].join('\n');
+}
+
+function ligar({ prefixo, calcular, ler, escrever, titulo, resumo }) {
   const form = $(`#${prefixo}-form`);
+  let resultadoAtual = null;
+
   function atualizar() {
     const r = calcular(...ler());
     const ok = $(`#${prefixo}-ok`);
     const vazio = $(`#${prefixo}-vazio`);
+    const acoes = $(`#result-actions-${prefixo}`);
     if (!r.ok) {
+      resultadoAtual = null;
       ok.hidden = true;
       vazio.hidden = false;
+      if (acoes) acoes.hidden = true;
       $(`#${prefixo}-motivo`).textContent = r.motivo;
       return;
     }
+    resultadoAtual = r;
     ok.hidden = false;
     vazio.hidden = true;
+    if (acoes) acoes.hidden = false;
     escrever(r);
   }
   form.addEventListener('input', atualizar);
+
+  const btnEmail = $(`#btn-email-${prefixo}`);
+  const btnPrint = $(`#btn-print-${prefixo}`);
+  if (btnEmail) {
+    btnEmail.addEventListener('click', () => {
+      if (!resultadoAtual) return;
+      const corpo = resumo(resultadoAtual);
+      location.href = `mailto:?subject=${encodeURIComponent(titulo)}&body=${encodeURIComponent(corpo)}`;
+    });
+  }
+  if (btnPrint) {
+    btnPrint.addEventListener('click', () => window.print());
+  }
+
   atualizar();
 }
 
@@ -51,6 +78,13 @@ ligar({
   calcular: calcularLDLFriedewald,
   ler: () => [$('#ldl-ct').value.replace(',', '.'), $('#ldl-hdl').value.replace(',', '.'), $('#ldl-tg').value.replace(',', '.')],
   escrever: (r) => { $('#ldl-valor').textContent = r.ldl; },
+  titulo: 'LDL calculado (Friedewald)',
+  resumo: () => resumoTexto('LDL calculado (Friedewald)', [
+    `Colesterol total: ${$('#ldl-ct').value} mg/dL`,
+    `HDL: ${$('#ldl-hdl').value} mg/dL`,
+    `Triglicéridos: ${$('#ldl-tg').value} mg/dL`,
+    `LDL calculado: ${$('#ldl-valor').textContent} mg/dL`,
+  ]),
 });
 
 ligar({
@@ -58,6 +92,12 @@ ligar({
   calcular: calcularSodioCorrigido,
   ler: () => [$('#na-medido').value.replace(',', '.'), $('#na-glicemia').value.replace(',', '.')],
   escrever: (r) => { $('#na-valor').textContent = r.sodioCorrigido.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 }); },
+  titulo: 'Sódio corrigido (Katz)',
+  resumo: () => resumoTexto('Sódio corrigido (Katz)', [
+    `Sódio medido: ${$('#na-medido').value} mEq/L`,
+    `Glicemia: ${$('#na-glicemia').value} mg/dL`,
+    `Sódio corrigido: ${$('#na-valor').textContent} mEq/L`,
+  ]),
 });
 
 ligar({
@@ -65,6 +105,12 @@ ligar({
   calcular: calcularCalcioCorrigido,
   ler: () => [$('#ca-medido').value.replace(',', '.'), $('#ca-albumina').value.replace(',', '.')],
   escrever: (r) => { $('#ca-valor').textContent = r.calcioCorrigido.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 }); },
+  titulo: 'Cálcio corrigido',
+  resumo: () => resumoTexto('Cálcio corrigido', [
+    `Cálcio medido: ${$('#ca-medido').value} mg/dL`,
+    `Albumina: ${$('#ca-albumina').value} g/dL`,
+    `Cálcio corrigido: ${$('#ca-valor').textContent} mg/dL`,
+  ]),
 });
 
 ligar({
@@ -72,6 +118,11 @@ ligar({
   calcular: calcularEAG,
   ler: () => [$('#eag-hba1c').value.replace(',', '.')],
   escrever: (r) => { $('#eag-valor').textContent = r.eag; },
+  titulo: 'Glicemia média estimada (eAG)',
+  resumo: () => resumoTexto('Glicemia média estimada (eAG)', [
+    `HbA1c: ${$('#eag-hba1c').value} %`,
+    `eAG: ${$('#eag-valor').textContent} mg/dL`,
+  ]),
 });
 
 ligar({
@@ -82,6 +133,14 @@ ligar({
     $('#ag-resultado').dataset.nivel = r.nivel;
     $('#ag-valor').textContent = r.gap.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   },
+  titulo: 'Anion gap',
+  resumo: () => resumoTexto('Anion gap', [
+    `Sódio: ${$('#ag-sodio').value} mEq/L`,
+    `Cloro: ${$('#ag-cloro').value} mEq/L`,
+    `Bicarbonato: ${$('#ag-bicarbonato').value} mEq/L`,
+    `Anion gap: ${$('#ag-valor').textContent} mEq/L`,
+    'Intervalo de referência habitual: 8–16 mEq/L',
+  ]),
 });
 
 ligar({
@@ -92,6 +151,14 @@ ligar({
     $('#osm-resultado').dataset.nivel = r.nivel;
     $('#osm-valor').textContent = r.osmolaridade;
   },
+  titulo: 'Osmolaridade sérica calculada',
+  resumo: () => resumoTexto('Osmolaridade sérica calculada', [
+    `Sódio: ${$('#osm-sodio').value} mEq/L`,
+    `Glicemia: ${$('#osm-glicemia').value} mg/dL`,
+    `Ureia: ${$('#osm-ureia').value} mg/dL`,
+    `Osmolaridade calculada: ${$('#osm-valor').textContent} mOsm/kg`,
+    'Intervalo normal habitual: 275–295 mOsm/kg',
+  ]),
 });
 
 ligar({
@@ -102,6 +169,14 @@ ligar({
     $('#agua-valor').textContent = r.defice.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
     $('#agua-tbw').textContent = `Água corporal total estimada: ${r.aguaCorporalTotal.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} L`;
   },
+  titulo: 'Défice de água livre',
+  resumo: () => resumoTexto('Défice de água livre', [
+    `Peso: ${$('#agua-peso').value} kg`,
+    `Sódio atual: ${$('#agua-sodio').value} mEq/L`,
+    `Sexo feminino: ${$('#agua-sexo').checked ? 'Sim' : 'Não'}`,
+    `Défice de água livre: ${$('#agua-valor').textContent} L`,
+    $('#agua-tbw').textContent,
+  ]),
 });
 $('#agua-sexo').addEventListener('change', () => $('#agua-form').dispatchEvent(new Event('input', { bubbles: true })));
 
@@ -113,6 +188,13 @@ ligar({
     $('#homa-resultado').dataset.nivel = r.nivel;
     $('#homa-valor').textContent = r.homa.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
   },
+  titulo: 'HOMA-IR',
+  resumo: () => resumoTexto('HOMA-IR', [
+    `Glicemia em jejum: ${$('#homa-glicemia').value} mg/dL`,
+    `Insulina em jejum: ${$('#homa-insulina').value} µU/mL`,
+    `HOMA-IR: ${$('#homa-valor').textContent}`,
+    '≥ 2,5 sugere insulinorresistência.',
+  ]),
 });
 
 const params = new URLSearchParams(location.search);

@@ -122,21 +122,28 @@ function animarNumero(el, alvo) {
 
 /* ---------- Atualizar ---------- */
 
+let resultadoAtual = null;
+
 function atualizar() {
   const r = calcularIMC(pesoInput.value.replace(',', '.'), alturaInput.value.replace(',', '.'));
 
   const ok = $('#res-ok');
   const vazio = $('#res-empty');
+  const acoes = $('#result-actions');
 
   if (!r.ok) {
+    resultadoAtual = null;
     ok.hidden = true;
     vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
     $('#res-motivo').textContent = r.motivo;
     return;
   }
 
+  resultadoAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
 
   resultado.dataset.categoria = r.categoria.id;
   animarNumero($('#res-imc'), r.imc);
@@ -152,6 +159,33 @@ function atualizar() {
   const q = new URLSearchParams({ peso: String(r.peso), altura: String(r.altura) });
   history.replaceState(null, '', `?${q}`);
 }
+
+/* ---------- Ações: email e impressão ---------- */
+
+function resumoTexto(r) {
+  const linhas = [
+    'Calculadora de IMC e ASC',
+    `Peso: ${nf1.format(r.peso)} kg · Altura: ${r.altura} cm`,
+    `IMC: ${nf1.format(r.imc)} kg/m² — ${r.categoria.nome}`,
+    `Área de superfície corporal (Mosteller): ${nf2.format(r.ascMosteller)} m²`,
+    `Área de superfície corporal (Du Bois): ${nf2.format(r.ascDuBois)} m²`,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email').addEventListener('click', () => {
+  if (!resultadoAtual) return;
+  const assunto = `IMC ${nf1.format(resultadoAtual.imc)} kg/m² — ${resultadoAtual.categoria.nome}`;
+  const corpo = resumoTexto(resultadoAtual);
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+});
+
+$('#btn-print').addEventListener('click', () => {
+  window.print();
+});
 
 sincronizarSlider('peso');
 sincronizarSlider('altura');

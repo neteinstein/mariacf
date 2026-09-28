@@ -114,6 +114,8 @@ document.querySelectorAll('.stepper[data-alvo="ciclo"]').forEach((btn) => {
 
 const NOME_TRIMESTRE = { 1: '1.º trimestre', 2: '2.º trimestre', 3: '3.º trimestre' };
 
+let resultadoAtual = null;
+
 function atualizar() {
   const metodo = estadoMetodo();
   const r =
@@ -123,16 +125,21 @@ function atualizar() {
 
   const ok = $('#res-ok');
   const vazio = $('#res-empty');
+  const acoes = $('#result-actions');
 
   if (!r.ok) {
+    resultadoAtual = null;
     ok.hidden = true;
     vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
     $('#res-motivo').textContent = r.motivo;
     return;
   }
 
+  resultadoAtual = { ...r, metodo };
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
 
   $('#res-dpp').textContent = fmtData.format(r.dpp);
   $('#res-sub').textContent =
@@ -172,6 +179,36 @@ function atualizar() {
   }
   history.replaceState(null, '', `?${q}`);
 }
+
+/* ---------- Ações: email e impressão ---------- */
+
+function resumoTexto(r) {
+  const linhas = [
+    'Calculadora da Data Provável de Parto',
+    r.metodo === 'eco'
+      ? `A partir da ecografia de ${fmtData.format(paraData(dataEcoInput.value))}`
+      : `A partir da última menstruação em ${fmtData.format(paraData(dumInput.value))}`,
+    `Data provável de parto: ${fmtData.format(r.dpp)}`,
+    `Idade gestacional: ${r.semanas} semanas e ${r.dias} dias (${NOME_TRIMESTRE[r.trimestre] || '—'})`,
+    r.atrasada
+      ? `Após a DPP: ${Math.abs(r.diasRestantes)} dias`
+      : `Faltam: ${r.diasRestantes} dias`,
+  ];
+  if (r.atrasada) linhas.push('A DPP já passou. Confirme a evolução da gravidez com o seu obstetra.');
+  linhas.push('', 'Informação de apoio — não substitui aconselhamento médico.', location.href);
+  return linhas.join('\n');
+}
+
+$('#btn-email').addEventListener('click', () => {
+  if (!resultadoAtual) return;
+  const assunto = `Data provável de parto — ${fmtData.format(resultadoAtual.dpp)}`;
+  const corpo = resumoTexto(resultadoAtual);
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+});
+
+$('#btn-print').addEventListener('click', () => {
+  window.print();
+});
 
 mostrarPasso();
 sincronizarCiclo();

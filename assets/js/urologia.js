@@ -45,6 +45,8 @@ $('#ipss-qv').appendChild(criarPergunta('ip-qv', 'QV', 'Se tivesse de passar o r
 
 const ipssResultado = $('#ipss-resultado');
 
+let resultadoAtual = null;
+
 function atualizar() {
   const respostas = [];
   for (let i = 1; i <= 7; i += 1) {
@@ -56,13 +58,47 @@ function atualizar() {
   const r = calcularIPSS(respostas, qv);
   const ok = $('#ipss-ok');
   const vazio = $('#ipss-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions');
+  if (!r.ok) {
+    resultadoAtual = null;
+    ok.hidden = true;
+    vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
+    return;
+  }
+  resultadoAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   ipssResultado.dataset.nivel = r.nivel;
   $('#ip-pontos').textContent = r.pontos;
   $('#ip-gravidade').textContent = r.gravidade;
   $('#ip-qv').textContent = r.qualidadeVida === null ? '' : `Qualidade de vida: ${r.qualidadeVida} / 6`;
 }
 ipssForm.addEventListener('change', atualizar);
+
+/* ---------- Ações: email e impressão ---------- */
+
+function resumoTexto(r) {
+  const linhas = [
+    `Questionário IPSS · Pontuação ${r.pontos} / 35`,
+    r.gravidade,
+  ];
+  if (r.qualidadeVida !== null) linhas.push(`Qualidade de vida: ${r.qualidadeVida} / 6`);
+  linhas.push('', 'Interpretação: 0–7 sintomas ligeiros · 8–19 moderados · 20–35 graves.');
+  linhas.push('', 'Informação de apoio — não substitui aconselhamento médico.', location.href);
+  return linhas.join('\n');
+}
+
+$('#btn-email').addEventListener('click', () => {
+  if (!resultadoAtual) return;
+  const assunto = `IPSS — ${resultadoAtual.pontos} / 35`;
+  const corpo = resumoTexto(resultadoAtual);
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+});
+
+$('#btn-print').addEventListener('click', () => {
+  window.print();
+});
+
 atualizar();

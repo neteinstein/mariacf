@@ -48,6 +48,7 @@ BISHOP_ITENS.forEach(([campo, texto, opcoes], i) => {
   $('#bishop-perguntas').appendChild(criarPergunta(`bi-${campo}`, i + 1, texto, opcoes));
 });
 const bishopResultado = $('#bishop-resultado');
+let bishopAtual = null;
 
 function atualizarBishop() {
   const valores = {};
@@ -58,15 +59,46 @@ function atualizarBishop() {
   const r = calcularBishop(valores);
   const ok = $('#bishop-ok');
   const vazio = $('#bishop-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-bishop');
+  if (!r.ok) {
+    bishopAtual = null;
+    ok.hidden = true;
+    vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
+    return;
+  }
+  bishopAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   bishopResultado.dataset.nivel = r.nivel;
   $('#bi-pontos').textContent = r.pontos;
   $('#bi-recomendacao').textContent = r.recomendacao;
 }
 bishopForm.addEventListener('change', atualizarBishop);
 atualizarBishop();
+
+function resumoBishop(r) {
+  const linhas = [
+    'Bishop score (favorabilidade do colo para indução)',
+    `Pontuação: ${r.pontos} / ${r.max}`,
+    r.recomendacao,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-bishop').addEventListener('click', () => {
+  if (!bishopAtual) return;
+  const assunto = `Bishop score — ${bishopAtual.pontos} / ${bishopAtual.max}`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoBishop(bishopAtual))}`;
+});
+
+$('#btn-print-bishop').addEventListener('click', () => {
+  window.print();
+});
 
 /* ---------- Apgar ---------- */
 
@@ -83,6 +115,7 @@ APGAR_ITENS.forEach(([campo, texto, opcoes], i) => {
   $('#apgar-perguntas').appendChild(criarPergunta(`ap-${campo}`, i + 1, texto, opcoes));
 });
 const apgarResultado = $('#apgar-resultado');
+let apgarAtual = null;
 
 function atualizarApgar() {
   const valores = {};
@@ -93,9 +126,18 @@ function atualizarApgar() {
   const r = calcularApgar(valores);
   const ok = $('#apgar-ok');
   const vazio = $('#apgar-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-apgar');
+  if (!r.ok) {
+    apgarAtual = null;
+    ok.hidden = true;
+    vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
+    return;
+  }
+  apgarAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   apgarResultado.dataset.nivel = r.nivel;
   $('#ap-pontos').textContent = r.pontos;
   $('#ap-gravidade').textContent = r.gravidade;
@@ -103,10 +145,34 @@ function atualizarApgar() {
 apgarForm.addEventListener('change', atualizarApgar);
 atualizarApgar();
 
+function resumoApgar(r) {
+  const linhas = [
+    'Índice de Apgar neonatal',
+    `Pontuação: ${r.pontos} / ${r.max}`,
+    r.gravidade,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-apgar').addEventListener('click', () => {
+  if (!apgarAtual) return;
+  const assunto = `Índice de Apgar — ${apgarAtual.pontos} / ${apgarAtual.max}`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoApgar(apgarAtual))}`;
+});
+
+$('#btn-print-apgar').addEventListener('click', () => {
+  window.print();
+});
+
 /* ---------- GCS pediátrico ---------- */
 
 const gcsForm = $('#gcsp-form');
 const gcsResultado = $('#gcsp-resultado');
+
+let gcspAtual = null;
 
 function atualizarGCSPediatrico() {
   const r = calcularGlasgowPediatrico(
@@ -117,9 +183,32 @@ function atualizarGCSPediatrico() {
   gcsResultado.dataset.nivel = r.nivel;
   $('#gcsp-pontos').textContent = r.pontos;
   $('#gcsp-gravidade').textContent = r.gravidade;
+  gcspAtual = r.ok === false ? null : r;
 }
 gcsForm.addEventListener('change', atualizarGCSPediatrico);
 atualizarGCSPediatrico();
+
+function resumoGCSP(r) {
+  const linhas = [
+    'Escala de Coma de Glasgow pediátrica',
+    `Pontuação: ${r.pontos} / ${r.max}`,
+    r.gravidade,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-gcsp').addEventListener('click', () => {
+  if (!gcspAtual) return;
+  const assunto = `Glasgow pediátrico — ${gcspAtual.pontos} / ${gcspAtual.max}`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoGCSP(gcspAtual))}`;
+});
+
+$('#btn-print-gcsp').addEventListener('click', () => {
+  window.print();
+});
 
 const params = new URLSearchParams(location.search);
 const validos = ['bishop', 'apgar', 'gcsp'];

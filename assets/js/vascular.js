@@ -29,6 +29,7 @@ $$('.stepper').forEach((btn) => {
 
 const itbForm = $('#itb-form');
 const itbResultado = $('#itb-resultado');
+let itbAtual = null;
 
 function atualizarITB() {
   const r = calcularITB({
@@ -39,9 +40,19 @@ function atualizarITB() {
   });
   const ok = $('#itb-ok');
   const vazio = $('#itb-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; $('#itb-motivo').textContent = r.motivo; return; }
+  const acoes = $('#result-actions-itb');
+  if (!r.ok) {
+    itbAtual = null;
+    ok.hidden = true;
+    vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
+    $('#itb-motivo').textContent = r.motivo;
+    return;
+  }
+  itbAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   const piorNivel = ['baixo', 'moderado', 'alto', 'muito-alto'];
   const nivel = piorNivel[Math.max(piorNivel.indexOf(r.direito.nivel), piorNivel.indexOf(r.esquerdo.nivel))];
   itbResultado.dataset.nivel = nivel;
@@ -53,27 +64,84 @@ function atualizarITB() {
 itbForm.addEventListener('input', atualizarITB);
 atualizarITB();
 
+function resumoITB(r) {
+  const linhas = [
+    'Índice tornozelo-braço (ITB)',
+    `Direito: ${r.itbDireito.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} — ${r.direito.descricao}`,
+    `Esquerdo: ${r.itbEsquerdo.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 })} — ${r.esquerdo.descricao}`,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-itb').addEventListener('click', () => {
+  if (!itbAtual) return;
+  const assunto = `Índice tornozelo-braço — D ${itbAtual.itbDireito} / E ${itbAtual.itbEsquerdo}`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoITB(itbAtual))}`;
+});
+
+$('#btn-print-itb').addEventListener('click', () => {
+  window.print();
+});
+
 /* ---------- Peso ideal / ajustado ---------- */
 
 const piForm = $('#pi-form');
 const piResultado = $('#pi-resultado');
+let piAtual = null;
 
 function atualizarPesoIdeal() {
   const r = calcularPesoIdealAjustado($('#pi-altura').value, $('#pi-sexo').checked, $('#pi-peso').value.replace(',', '.'));
   const ok = $('#pi-ok');
   const vazio = $('#pi-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; $('#pi-motivo').textContent = r.motivo; return; }
+  const acoes = $('#result-actions-peso-ideal');
+  if (!r.ok) {
+    piAtual = null;
+    ok.hidden = true;
+    vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
+    $('#pi-motivo').textContent = r.motivo;
+    return;
+  }
+  piAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   $('#pi-ideal').textContent = r.pesoIdeal.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   $('#pi-ajustado').textContent = r.pesoAjustado.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-  $('#pi-nota').textContent = r.usarAjustado
+  piAtual.nota = r.usarAjustado
     ? 'Peso real > 120% do peso ideal — considere usar o peso ajustado para dosear fármacos hidrofílicos.'
     : 'Peso real próximo do ideal — o peso ajustado raramente é necessário aqui.';
+  $('#pi-nota').textContent = piAtual.nota;
 }
 piForm.addEventListener('input', atualizarPesoIdeal);
 piForm.addEventListener('change', atualizarPesoIdeal);
 atualizarPesoIdeal();
+
+function resumoPesoIdeal(r) {
+  const linhas = [
+    'Peso ideal e ajustado (fórmula de Devine)',
+    `Peso ideal: ${r.pesoIdeal.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} kg`,
+    `Peso ajustado: ${r.pesoAjustado.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} kg`,
+    r.nota,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-peso-ideal').addEventListener('click', () => {
+  if (!piAtual) return;
+  const assunto = `Peso ideal/ajustado — ${piAtual.pesoIdeal} kg`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoPesoIdeal(piAtual))}`;
+});
+
+$('#btn-print-peso-ideal').addEventListener('click', () => {
+  window.print();
+});
 
 const params = new URLSearchParams(location.search);
 selecionar(params.get('calc') === 'peso-ideal' ? 'peso-ideal' : 'itb');

@@ -67,19 +67,43 @@ const barthelForm = $('#barthel-form');
 montar($('#barthel-perguntas'), BARTHEL_ITENS, 'ba');
 const barthelResultado = $('#barthel-resultado');
 
+let resultadoBarthel = null;
+
 function atualizarBarthel() {
   const r = calcularBarthel(ler(barthelForm, BARTHEL_ITENS, 'ba'));
   const ok = $('#barthel-ok');
   const vazio = $('#barthel-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-ba');
+  if (!r.ok) { resultadoBarthel = null; ok.hidden = true; vazio.hidden = false; if (acoes) acoes.hidden = true; return; }
+  resultadoBarthel = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   barthelResultado.dataset.nivel = r.nivel;
   $('#ba-pontos').textContent = r.pontos;
   $('#ba-grau').textContent = r.grau;
 }
 barthelForm.addEventListener('change', atualizarBarthel);
 atualizarBarthel();
+
+function resumoTextoBarthel(r) {
+  const linhas = [
+    'Índice de Barthel',
+    `Pontuação: ${r.pontos} / 100`,
+    `Classificação: ${r.grau}`,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-ba').addEventListener('click', () => {
+  if (!resultadoBarthel) return;
+  const assunto = `Índice de Barthel — ${resultadoBarthel.pontos}/100 (${resultadoBarthel.grau})`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoTextoBarthel(resultadoBarthel))}`;
+});
+$('#btn-print-ba').addEventListener('click', () => window.print());
 
 /* ---------- Escala de Morse ---------- */
 
@@ -96,19 +120,43 @@ const morseForm = $('#morse-form');
 montar($('#morse-perguntas'), MORSE_ITENS, 'mo');
 const morseResultado = $('#morse-resultado');
 
+let resultadoMorse = null;
+
 function atualizarMorse() {
   const r = calcularMorse(ler(morseForm, MORSE_ITENS, 'mo'));
   const ok = $('#morse-ok');
   const vazio = $('#morse-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-mo');
+  if (!r.ok) { resultadoMorse = null; ok.hidden = true; vazio.hidden = false; if (acoes) acoes.hidden = true; return; }
+  resultadoMorse = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   morseResultado.dataset.nivel = r.nivel;
   $('#mo-pontos').textContent = r.pontos;
   $('#mo-risco').textContent = r.risco;
 }
 morseForm.addEventListener('change', atualizarMorse);
 atualizarMorse();
+
+function resumoTextoMorse(r) {
+  const linhas = [
+    'Escala de Morse — Risco de queda',
+    `Pontuação: ${r.pontos} / 125`,
+    `Classificação: ${r.risco}`,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-mo').addEventListener('click', () => {
+  if (!resultadoMorse) return;
+  const assunto = `Escala de Morse — ${resultadoMorse.pontos}/125 (${resultadoMorse.risco})`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoTextoMorse(resultadoMorse))}`;
+});
+$('#btn-print-mo').addEventListener('click', () => window.print());
 
 /* ---------- Escala de Braden ---------- */
 
@@ -125,19 +173,43 @@ const bradenForm = $('#braden-form');
 montar($('#braden-perguntas'), BRADEN_ITENS, 'br');
 const bradenResultado = $('#braden-resultado');
 
+let resultadoBraden = null;
+
 function atualizarBraden() {
   const r = calcularBraden(ler(bradenForm, BRADEN_ITENS, 'br'));
   const ok = $('#braden-ok');
   const vazio = $('#braden-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-br');
+  if (!r.ok) { resultadoBraden = null; ok.hidden = true; vazio.hidden = false; if (acoes) acoes.hidden = true; return; }
+  resultadoBraden = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   bradenResultado.dataset.nivel = r.nivel;
   $('#br-pontos').textContent = r.pontos;
   $('#br-risco').textContent = r.risco;
 }
 bradenForm.addEventListener('change', atualizarBraden);
 atualizarBraden();
+
+function resumoTextoBraden(r) {
+  const linhas = [
+    'Escala de Braden — Risco de úlcera de pressão',
+    `Pontuação: ${r.pontos} / 23`,
+    `Classificação: ${r.risco}`,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-br').addEventListener('click', () => {
+  if (!resultadoBraden) return;
+  const assunto = `Escala de Braden — ${resultadoBraden.pontos}/23 (${resultadoBraden.risco})`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoTextoBraden(resultadoBraden))}`;
+});
+$('#btn-print-br').addEventListener('click', () => window.print());
 
 /* ---------- MMSE / MoCA (interpretador de pontuação) ---------- */
 
@@ -155,6 +227,8 @@ $$('.stepper').forEach((btn) => {
 const cogForm = $('#cog-form');
 const cogResultado = $('#cog-resultado');
 
+let resultadoCognitivo = null;
+
 function atualizarCognitivo() {
   const instrumento = $('input[name="cog-instrumento"]:checked')?.value ?? 'mmse';
   const pontos = $('#cog-pontos').value;
@@ -163,9 +237,19 @@ function atualizarCognitivo() {
 
   const ok = $('#cog-ok');
   const vazio = $('#cog-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; $('#cog-motivo').textContent = r.motivo; return; }
+  const acoes = $('#result-actions-cog');
+  if (!r.ok) {
+    resultadoCognitivo = null;
+    ok.hidden = true;
+    vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
+    $('#cog-motivo').textContent = r.motivo;
+    return;
+  }
+  resultadoCognitivo = { ...r, instrumento, anosEscolaridade: anos };
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   cogResultado.dataset.nivel = r.nivel;
   $('#cog-classificacao').textContent = r.alterado ? 'Sugestivo de défice cognitivo' : 'Dentro do esperado para a escolaridade';
   $('#cog-detalhe').textContent =
@@ -176,6 +260,33 @@ function atualizarCognitivo() {
 cogForm.addEventListener('input', atualizarCognitivo);
 cogForm.addEventListener('change', atualizarCognitivo);
 atualizarCognitivo();
+
+function resumoTextoCognitivo(r) {
+  const classificacao = r.alterado ? 'Sugestivo de défice cognitivo' : 'Dentro do esperado para a escolaridade';
+  const detalhe =
+    r.instrumento === 'mmse'
+      ? `Pontuação ${r.pontos}/30 · corte de referência ${r.corte} (cortes validados para a população portuguesa, Guerreiro 1994)`
+      : `Pontuação ${r.pontos}/30 (ajustada: ${r.pontosAjustados}) · corte de referência 26`;
+  const linhas = [
+    `Classificação de pontuação ${r.instrumento === 'mmse' ? 'MMSE' : 'MoCA'}`,
+    `Anos de escolaridade: ${r.anosEscolaridade}`,
+    `Classificação: ${classificacao}`,
+    detalhe,
+    'Esta ferramenta não reproduz os itens do MMSE ou do MoCA — apenas classifica uma pontuação já obtida com o teste oficial.',
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-cog').addEventListener('click', () => {
+  if (!resultadoCognitivo) return;
+  const nome = resultadoCognitivo.instrumento === 'mmse' ? 'MMSE' : 'MoCA';
+  const assunto = `Classificação ${nome} — ${resultadoCognitivo.pontos}/30`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoTextoCognitivo(resultadoCognitivo))}`;
+});
+$('#btn-print-cog').addEventListener('click', () => window.print());
 
 /* ---------- GDS-15 ---------- */
 
@@ -204,6 +315,8 @@ GDS15_PERGUNTAS.forEach(([texto, opcoes], i) => {
 });
 const gdsResultado = $('#gds-resultado');
 
+let resultadoGDS = null;
+
 function atualizarGDS() {
   const respostas = [];
   for (let i = 1; i <= 15; i += 1) {
@@ -213,15 +326,37 @@ function atualizarGDS() {
   const r = calcularGDS15(respostas);
   const ok = $('#gds-ok');
   const vazio = $('#gds-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-gds');
+  if (!r.ok) { resultadoGDS = null; ok.hidden = true; vazio.hidden = false; if (acoes) acoes.hidden = true; return; }
+  resultadoGDS = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   gdsResultado.dataset.nivel = r.nivel;
   $('#gds-pontos').textContent = r.pontos;
   $('#gds-gravidade').textContent = r.gravidade;
 }
 gdsForm.addEventListener('change', atualizarGDS);
 atualizarGDS();
+
+function resumoTextoGDS(r) {
+  const linhas = [
+    'Escala de Depressão Geriátrica (GDS-15)',
+    `Pontuação: ${r.pontos} / 15`,
+    `Classificação: ${r.gravidade}`,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-gds').addEventListener('click', () => {
+  if (!resultadoGDS) return;
+  const assunto = `GDS-15 — ${resultadoGDS.pontos}/15 (${resultadoGDS.gravidade})`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoTextoGDS(resultadoGDS))}`;
+});
+$('#btn-print-gds').addEventListener('click', () => window.print());
 
 /* ---------- Charlson ---------- */
 
@@ -236,15 +371,20 @@ const CHARLSON_CAMPOS = [
 const charlsonForm = $('#charlson-form');
 const charlsonResultado = $('#charlson-resultado');
 
+let resultadoCharlson = null;
+
 function atualizarCharlson() {
   const comorbilidades = {};
   CHARLSON_CAMPOS.forEach((c) => { comorbilidades[c] = $(`#ch-${c}`).checked; });
   const r = calcularCharlson(comorbilidades, $('#ch-idade').value);
   const ok = $('#charlson-ok');
   const vazio = $('#charlson-vazio');
-  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  const acoes = $('#result-actions-ch');
+  if (!r.ok) { resultadoCharlson = null; ok.hidden = true; vazio.hidden = false; if (acoes) acoes.hidden = true; return; }
+  resultadoCharlson = { ...r, idade: $('#ch-idade').value };
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
   charlsonResultado.dataset.nivel = r.nivel;
   $('#ch-pontos').textContent = r.pontos;
   $('#ch-sobrevivencia').textContent = `Sobrevivência estimada a 10 anos: ~${r.sobrevivencia10Anos}% (estimativa aproximada)`;
@@ -252,6 +392,26 @@ function atualizarCharlson() {
 charlsonForm.addEventListener('input', atualizarCharlson);
 charlsonForm.addEventListener('change', atualizarCharlson);
 atualizarCharlson();
+
+function resumoTextoCharlson(r) {
+  const linhas = [
+    'Índice de comorbilidade de Charlson',
+    `Idade: ${r.idade} anos`,
+    `Pontuação: ${r.pontos} (comorbilidades: ${r.pontosComorbilidades} · idade: ${r.pontosIdade})`,
+    `Sobrevivência estimada a 10 anos: ~${r.sobrevivencia10Anos}% (estimativa aproximada)`,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-ch').addEventListener('click', () => {
+  if (!resultadoCharlson) return;
+  const assunto = `Índice de Charlson — ${resultadoCharlson.pontos} pontos`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoTextoCharlson(resultadoCharlson))}`;
+});
+$('#btn-print-ch').addEventListener('click', () => window.print());
 
 const params = new URLSearchParams(location.search);
 const validos = ['barthel', 'morse', 'braden', 'cognitivo', 'gds15', 'charlson'];
