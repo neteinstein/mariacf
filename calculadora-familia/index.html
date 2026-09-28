@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>APGAR familiar, EPDS, Zarit e Fagerström · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Função familiar (APGAR familiar), depressão pós-parto (EPDS), sobrecarga do cuidador (Zarit) e dependência da nicotina (Fagerström).">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="APGAR familiar, EPDS, Zarit e Fagerström">
+  <meta property="og:description" content="Avaliação psicossocial e familiar em MGF.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Família e rastreio psicossocial</span>
+      <h1 class="display">APGAR familiar, EPDS, Zarit e <em>Fagerström</em></h1>
+      <p class="lead">Função familiar, rastreio de depressão pós-parto, sobrecarga do cuidador informal e dependência da nicotina — quatro instrumentos frequentes na consulta de medicina geral e familiar.</p>
+    </section>
+
+    <div class="tabbar" role="tablist" aria-label="Escolher instrumento">
+      <button class="tabbtn" type="button" data-tab="apgar" role="tab" aria-selected="true">APGAR familiar</button>
+      <button class="tabbtn" type="button" data-tab="epds" role="tab" aria-selected="false">EPDS</button>
+      <button class="tabbtn" type="button" data-tab="zarit" role="tab" aria-selected="false">Zarit</button>
+      <button class="tabbtn" type="button" data-tab="fagerstrom" role="tab" aria-selected="false">Fagerström</button>
+    </div>
+
+    <div class="calc" data-painel="apgar">
+      <form class="panel reveal" id="apgar-form" autocomplete="off">
+        <div id="apgar-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="apgar-resultado" aria-live="polite">
+        <div id="apgar-ok">
+          <div class="result-head">
+            <div class="result-kicker">APGAR familiar</div>
+            <div class="dose-line"><div class="dose-big"><span id="ap-pontos">0</span><span class="u">/ 10</span></div></div>
+            <div class="dose-sub" id="ap-funcao"></div>
+          </div>
+        </div>
+        <div class="empty" id="apgar-vazio"><div class="big-emoji" aria-hidden="true">👨‍👩‍👧</div><p class="motivo">Responda a todas as perguntas para ver a pontuação.</p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="epds" hidden>
+      <form class="panel reveal" id="epds-form" autocomplete="off">
+        <p class="step-hint" style="margin-left:0">Nos últimos 7 dias:</p>
+        <div id="epds-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="epds-resultado" aria-live="polite">
+        <div id="epds-ok">
+          <div class="result-head">
+            <div class="result-kicker">Pontuação EPDS</div>
+            <div class="dose-line"><div class="dose-big"><span id="ep-pontos">0</span><span class="u">/ 30</span></div></div>
+            <div class="dose-sub" id="ep-gravidade"></div>
+          </div>
+          <div class="result-body">
+            <div class="notices">
+              <div class="notice" id="ep-alerta" hidden>Assinalou ideias de fazer mal a si mesma — avalie o risco de suicídio e considere referenciação urgente.</div>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="epds-vazio"><div class="big-emoji" aria-hidden="true">🤱</div><p class="motivo">Responda a todas as perguntas para ver a pontuação.</p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="zarit" hidden>
+      <form class="panel reveal" id="zarit-form" autocomplete="off">
+        <div id="zarit-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="zarit-resultado" aria-live="polite">
+        <div id="zarit-ok">
+          <div class="result-head">
+            <div class="result-kicker">Escala de Zarit</div>
+            <div class="dose-line"><div class="dose-big"><span id="za-pontos">0</span><span class="u">/ 88</span></div></div>
+            <div class="dose-sub" id="za-sobrecarga"></div>
+          </div>
+        </div>
+        <div class="empty" id="zarit-vazio"><div class="big-emoji" aria-hidden="true">🧑‍🦳</div><p class="motivo">Responda a todas as perguntas para ver a pontuação.</p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="fagerstrom" hidden>
+      <form class="panel reveal" id="fag-form" autocomplete="off">
+        <div id="fag-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="fag-resultado" aria-live="polite">
+        <div id="fag-ok">
+          <div class="result-head">
+            <div class="result-kicker">Teste de Fagerström</div>
+            <div class="dose-line"><div class="dose-big"><span id="fa-pontos">0</span><span class="u">/ 10</span></div></div>
+            <div class="dose-sub" id="fa-dependencia"></div>
+          </div>
+        </div>
+        <div class="empty" id="fag-vazio"><div class="big-emoji" aria-hidden="true">🚬</div><p class="motivo">Responda a todas as perguntas para ver a pontuação.</p></div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">👨‍👩‍👧</div>
+        <h3>APGAR familiar</h3>
+        <ul>
+          <li>7–10: função familiar boa · 4–6: disfunção moderada · 0–3: disfunção acentuada.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🤱</div>
+        <h3>EPDS</h3>
+        <ul>
+          <li>&lt; 10: baixa probabilidade · 10–12: possível depressão ligeira · ≥ 13: provável depressão.</li>
+          <li>Qualquer resposta positiva ao item 10 exige avaliação do risco de suicídio, independentemente do total.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🧑‍🦳</div>
+        <h3>Escala de Zarit</h3>
+        <ul>
+          <li>≤ 46: sem sobrecarga · 47–55: sobrecarga moderada · ≥ 56: sobrecarga intensa.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🚬</div>
+        <h3>Fagerström</h3>
+        <ul>
+          <li>0–4: dependência baixa · 5: moderada · 6–7: elevada · 8–10: muito elevada.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      Estes instrumentos são um apoio informativo ao rastreio e não substituem a avaliação clínica do médico assistente.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/familia.js" type="module"></script>
+</body>
+</html>

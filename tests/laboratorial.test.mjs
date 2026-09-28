@@ -6,6 +6,8 @@ import {
   calcularCalcioCorrigido,
   calcularEAG,
   hba1cMmolMolParaPercent,
+  calcularAnionGap,
+  calcularOsmolaridade,
 } from '../assets/js/laboratorial-core.js';
 
 test('LDL Friedewald: CT 200, HDL 50, TG 100 → LDL 130', () => {
@@ -53,4 +55,29 @@ test('valores em falta são inválidos', () => {
   assert.equal(calcularSodioCorrigido(130, '').ok, false);
   assert.equal(calcularCalcioCorrigido('', 4).ok, false);
   assert.equal(calcularEAG('').ok, false);
+});
+
+test('Anion gap: Na 140, Cl 104, HCO3 24 → 12 (normal)', () => {
+  const r = calcularAnionGap(140, 104, 24);
+  assert.equal(r.gap, 12);
+  assert.equal(r.nivel, 'baixo');
+});
+
+test('Anion gap: elevado sinaliza acidose de anion gap aumentado', () => {
+  const r = calcularAnionGap(140, 95, 10);
+  assert.equal(r.gap, 35);
+  assert.equal(r.nivel, 'alto');
+});
+
+test('Osmolaridade: Na 140, glicemia 90, ureia 28 → normal', () => {
+  const r = calcularOsmolaridade(140, 90, 28);
+  // 2*140 + 90/18 + 28/2.8 = 280 + 5 + 10 = 295
+  assert.equal(r.osmolaridade, 295);
+  assert.equal(r.nivel, 'baixo');
+});
+
+test('Osmolaridade: hiperglicemia grave eleva a osmolaridade', () => {
+  const r = calcularOsmolaridade(140, 600, 28);
+  assert.ok(r.osmolaridade > 295);
+  assert.equal(r.nivel, 'alto');
 });

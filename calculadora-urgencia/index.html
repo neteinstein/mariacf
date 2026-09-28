@@ -57,6 +57,9 @@
       <button class="tabbtn" type="button" data-tab="tvp" role="tab" aria-selected="false">Wells · TVP</button>
       <button class="tabbtn" type="button" data-tab="tep" role="tab" aria-selected="false">Wells · TEP</button>
       <button class="tabbtn" type="button" data-tab="qtc" role="tab" aria-selected="false">QTc</button>
+      <button class="tabbtn" type="button" data-tab="gcs" role="tab" aria-selected="false">Glasgow</button>
+      <button class="tabbtn" type="button" data-tab="heart" role="tab" aria-selected="false">HEART</button>
+      <button class="tabbtn" type="button" data-tab="news2" role="tab" aria-selected="false">NEWS2</button>
     </div>
 
     <div class="calc" data-painel="curb65">
@@ -240,6 +243,177 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="gcs" hidden>
+      <form class="panel reveal" id="gcs-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">E</span> Abertura ocular</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="gcs-e" id="gcs-e4" value="4" checked><label for="gcs-e4"><strong>Espontânea</strong><span>4</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-e" id="gcs-e3" value="3"><label for="gcs-e3"><strong>Ao estímulo verbal</strong><span>3</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-e" id="gcs-e2" value="2"><label for="gcs-e2"><strong>À dor</strong><span>2</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-e" id="gcs-e1" value="1"><label for="gcs-e1"><strong>Ausente</strong><span>1</span></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">V</span> Resposta verbal</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="gcs-v" id="gcs-v5" value="5" checked><label for="gcs-v5"><strong>Orientada</strong><span>5</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-v" id="gcs-v4" value="4"><label for="gcs-v4"><strong>Confusa</strong><span>4</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-v" id="gcs-v3" value="3"><label for="gcs-v3"><strong>Palavras inapropriadas</strong><span>3</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-v" id="gcs-v2" value="2"><label for="gcs-v2"><strong>Sons incompreensíveis</strong><span>2</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-v" id="gcs-v1" value="1"><label for="gcs-v1"><strong>Ausente</strong><span>1</span></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">M</span> Resposta motora</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="gcs-m" id="gcs-m6" value="6" checked><label for="gcs-m6"><strong>Obedece a ordens</strong><span>6</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-m" id="gcs-m5" value="5"><label for="gcs-m5"><strong>Localiza a dor</strong><span>5</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-m" id="gcs-m4" value="4"><label for="gcs-m4"><strong>Retirada à dor</strong><span>4</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-m" id="gcs-m3" value="3"><label for="gcs-m3"><strong>Flexão anormal</strong><span>3</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-m" id="gcs-m2" value="2"><label for="gcs-m2"><strong>Extensão anormal</strong><span>2</span></label></div>
+            <div class="chip"><input type="radio" name="gcs-m" id="gcs-m1" value="1"><label for="gcs-m1"><strong>Ausente</strong><span>1</span></label></div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="gcs-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker">Escala de Coma de Glasgow</div>
+          <div class="dose-line"><div class="dose-big"><span id="gcs-pontos">15</span><span class="u">/ 15</span></div></div>
+          <div class="dose-sub" id="gcs-gravidade"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="heart" hidden>
+      <form class="panel reveal" id="heart-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">H</span> História</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="heart-historia" id="he-h0" value="0" checked><label for="he-h0"><strong>Pouco sugestiva</strong><span>0</span></label></div>
+            <div class="chip"><input type="radio" name="heart-historia" id="he-h1" value="1"><label for="he-h1"><strong>Moderadamente sugestiva</strong><span>1</span></label></div>
+            <div class="chip"><input type="radio" name="heart-historia" id="he-h2" value="2"><label for="he-h2"><strong>Muito sugestiva</strong><span>2</span></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">E</span> ECG</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="heart-ecg" id="he-e0" value="0" checked><label for="he-e0"><strong>Normal</strong><span>0</span></label></div>
+            <div class="chip"><input type="radio" name="heart-ecg" id="he-e1" value="1"><label for="he-e1"><strong>Alteração inespecífica da repolarização</strong><span>1</span></label></div>
+            <div class="chip"><input type="radio" name="heart-ecg" id="he-e2" value="2"><label for="he-e2"><strong>Desvio significativo do segmento ST</strong><span>2</span></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">A</span> Idade</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="heart-idade" id="he-a0" value="0" checked><label for="he-a0"><strong>&lt; 45 anos</strong><span>0</span></label></div>
+            <div class="chip"><input type="radio" name="heart-idade" id="he-a1" value="1"><label for="he-a1"><strong>45–65 anos</strong><span>1</span></label></div>
+            <div class="chip"><input type="radio" name="heart-idade" id="he-a2" value="2"><label for="he-a2"><strong>≥ 65 anos</strong><span>2</span></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">R</span> Fatores de risco cardiovascular</legend>
+          <p class="step-hint">HTA, dislipidemia, diabetes, obesidade, tabagismo, história familiar ou doença aterosclerótica conhecida</p>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="heart-fatoresRisco" id="he-f0" value="0" checked><label for="he-f0"><strong>Nenhum</strong><span>0</span></label></div>
+            <div class="chip"><input type="radio" name="heart-fatoresRisco" id="he-f1" value="1"><label for="he-f1"><strong>1–2 fatores</strong><span>1</span></label></div>
+            <div class="chip"><input type="radio" name="heart-fatoresRisco" id="he-f2" value="2"><label for="he-f2"><strong>≥ 3 fatores ou doença aterosclerótica</strong><span>2</span></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">T</span> Troponina</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="heart-troponina" id="he-t0" value="0" checked><label for="he-t0"><strong>≤ limite normal</strong><span>0</span></label></div>
+            <div class="chip"><input type="radio" name="heart-troponina" id="he-t1" value="1"><label for="he-t1"><strong>1–3× o limite normal</strong><span>1</span></label></div>
+            <div class="chip"><input type="radio" name="heart-troponina" id="he-t2" value="2"><label for="he-t2"><strong>&gt; 3× o limite normal</strong><span>2</span></label></div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="heart-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker">HEART score</div>
+          <div class="dose-line"><div class="dose-big"><span id="heart-pontos">0</span><span class="u">/ 10</span></div></div>
+          <div class="dose-sub" id="heart-risco"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="news2" hidden>
+      <form class="panel reveal" id="news-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="news-fr"><span class="step-num">1</span> Freq. respiratória</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="news-fr" data-step="-1" aria-label="Diminuir frequência respiratória">−</button>
+              <div class="weight-field"><input id="news-fr" type="number" inputmode="numeric" min="4" max="60" step="1" value="16"><span class="unit">/min</span></div>
+              <button class="stepper" type="button" data-alvo="news-fr" data-step="1" aria-label="Aumentar frequência respiratória">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="news-spo2"><span class="step-num">2</span> SpO₂</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="news-spo2" data-step="-1" aria-label="Diminuir SpO2">−</button>
+              <div class="weight-field"><input id="news-spo2" type="number" inputmode="numeric" min="50" max="100" step="1" value="98"><span class="unit">%</span></div>
+              <button class="stepper" type="button" data-alvo="news-spo2" data-step="1" aria-label="Aumentar SpO2">+</button>
+            </div>
+          </div>
+        </div>
+        <label class="choice" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:2px solid var(--line)">
+          <input type="checkbox" id="news-o2" style="position:static;opacity:1;width:auto">
+          Com oxigénio suplementar
+        </label>
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="news-pas"><span class="step-num">3</span> PA sistólica</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="news-pas" data-step="-1" aria-label="Diminuir PAS">−</button>
+              <div class="weight-field"><input id="news-pas" type="number" inputmode="numeric" min="40" max="260" step="1" value="120"><span class="unit">mmHg</span></div>
+              <button class="stepper" type="button" data-alvo="news-pas" data-step="1" aria-label="Aumentar PAS">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="news-fc"><span class="step-num">4</span> Freq. cardíaca</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="news-fc" data-step="-1" aria-label="Diminuir frequência cardíaca">−</button>
+              <div class="weight-field"><input id="news-fc" type="number" inputmode="numeric" min="20" max="220" step="1" value="70"><span class="unit">bpm</span></div>
+              <button class="stepper" type="button" data-alvo="news-fc" data-step="1" aria-label="Aumentar frequência cardíaca">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <label class="step-label" for="news-temp"><span class="step-num">5</span> Temperatura</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="news-temp" data-step="-0.1" aria-label="Diminuir temperatura">−</button>
+            <div class="weight-field"><input id="news-temp" type="number" inputmode="decimal" min="30" max="42" step="0.1" value="36.8"><span class="unit">°C</span></div>
+            <button class="stepper" type="button" data-alvo="news-temp" data-step="0.1" aria-label="Aumentar temperatura">+</button>
+          </div>
+        </div>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">6</span> Estado de consciência</legend>
+          <div class="choices">
+            <div class="choice">
+              <input type="radio" name="news-consciencia" id="news-alerta" value="alerta" checked>
+              <label for="news-alerta"><span class="pill" aria-hidden="true"></span><span class="name">Alerta</span></label>
+            </div>
+            <div class="choice">
+              <input type="radio" name="news-consciencia" id="news-nao-alerta" value="nao-alerta">
+              <label for="news-nao-alerta"><span class="pill" aria-hidden="true"></span><span class="name">Não alerta</span><span class="brands">Confusão de novo, resposta à voz, à dor ou não responsivo</span></label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="news-resultado" aria-live="polite">
+        <div id="news-ok">
+          <div class="result-head">
+            <div class="result-kicker">NEWS2</div>
+            <div class="dose-line"><div class="dose-big"><span id="news-pontos">0</span><span class="u">/ 20</span></div></div>
+            <div class="dose-sub" id="news-resposta"></div>
+          </div>
+        </div>
+        <div class="empty" id="news-vazio" hidden><div class="big-emoji" aria-hidden="true">📟</div><p class="motivo" id="news-motivo"></p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🫁</div>
@@ -260,6 +434,28 @@
         <h3>QTc</h3>
         <ul>
           <li>QTc &gt; 500 ms associa-se a maior risco de torsades de pointes — reveja a medicação em curso.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🧠</div>
+        <h3>Glasgow</h3>
+        <ul>
+          <li>13–15: ligeiro · 9–12: moderado · ≤ 8: grave, considerar proteção da via aérea.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🫀</div>
+        <h3>HEART score</h3>
+        <ul>
+          <li>0–3: baixo risco · 4–6: moderado · 7–10: alto risco de evento cardíaco major a 6 semanas.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">📟</div>
+        <h3>NEWS2</h3>
+        <ul>
+          <li>Escala 1 (não usar em doentes com risco de insuficiência respiratória hipercápnica, ex. DPOC grave).</li>
+          <li>Um único parâmetro muito alterado já implica resposta clínica urgente, mesmo com total baixo.</li>
         </ul>
       </article>
     </section>

@@ -57,6 +57,8 @@
       <button class="tabbtn" type="button" data-tab="na" role="tab" aria-selected="false">Sódio corrigido</button>
       <button class="tabbtn" type="button" data-tab="ca" role="tab" aria-selected="false">Cálcio corrigido</button>
       <button class="tabbtn" type="button" data-tab="eag" role="tab" aria-selected="false">eAG</button>
+      <button class="tabbtn" type="button" data-tab="ag" role="tab" aria-selected="false">Anion gap</button>
+      <button class="tabbtn" type="button" data-tab="osm" role="tab" aria-selected="false">Osmolaridade</button>
     </div>
 
     <div class="calc" data-painel="ldl">
@@ -186,6 +188,88 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="ag" hidden>
+      <form class="panel reveal" id="ag-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="ag-sodio"><span class="step-num">1</span> Sódio</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="ag-sodio" data-step="-1" aria-label="Diminuir sódio">−</button>
+              <div class="weight-field"><input id="ag-sodio" type="number" inputmode="numeric" min="100" max="180" step="1" value="140"><span class="unit">mEq/L</span></div>
+              <button class="stepper" type="button" data-alvo="ag-sodio" data-step="1" aria-label="Aumentar sódio">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="ag-cloro"><span class="step-num">2</span> Cloro</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="ag-cloro" data-step="-1" aria-label="Diminuir cloro">−</button>
+              <div class="weight-field"><input id="ag-cloro" type="number" inputmode="numeric" min="70" max="140" step="1" value="104"><span class="unit">mEq/L</span></div>
+              <button class="stepper" type="button" data-alvo="ag-cloro" data-step="1" aria-label="Aumentar cloro">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <label class="step-label" for="ag-bicarbonato"><span class="step-num">3</span> Bicarbonato</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="ag-bicarbonato" data-step="-1" aria-label="Diminuir bicarbonato">−</button>
+            <div class="weight-field"><input id="ag-bicarbonato" type="number" inputmode="numeric" min="2" max="45" step="1" value="24"><span class="unit">mEq/L</span></div>
+            <button class="stepper" type="button" data-alvo="ag-bicarbonato" data-step="1" aria-label="Aumentar bicarbonato">+</button>
+          </div>
+        </div>
+      </form>
+      <section class="panel result score-result reveal" id="ag-resultado" aria-live="polite">
+        <div id="ag-ok">
+          <div class="result-head">
+            <div class="result-kicker">Anion gap</div>
+            <div class="dose-line"><div class="dose-big"><span id="ag-valor">0</span><span class="u">mEq/L</span></div></div>
+            <div class="dose-sub">Intervalo de referência habitual: 8–16 mEq/L</div>
+          </div>
+        </div>
+        <div class="empty" id="ag-vazio" hidden><div class="big-emoji" aria-hidden="true">🧪</div><p class="motivo" id="ag-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="osm" hidden>
+      <form class="panel reveal" id="osm-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="osm-sodio"><span class="step-num">1</span> Sódio</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="osm-sodio" data-step="-1" aria-label="Diminuir sódio">−</button>
+              <div class="weight-field"><input id="osm-sodio" type="number" inputmode="numeric" min="100" max="180" step="1" value="140"><span class="unit">mEq/L</span></div>
+              <button class="stepper" type="button" data-alvo="osm-sodio" data-step="1" aria-label="Aumentar sódio">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="osm-glicemia"><span class="step-num">2</span> Glicemia</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="osm-glicemia" data-step="-10" aria-label="Diminuir glicemia">−</button>
+              <div class="weight-field"><input id="osm-glicemia" type="number" inputmode="numeric" min="20" max="1000" step="1" value="90"><span class="unit">mg/dL</span></div>
+              <button class="stepper" type="button" data-alvo="osm-glicemia" data-step="10" aria-label="Aumentar glicemia">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <label class="step-label" for="osm-ureia"><span class="step-num">3</span> Ureia</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="osm-ureia" data-step="-2" aria-label="Diminuir ureia">−</button>
+            <div class="weight-field"><input id="osm-ureia" type="number" inputmode="numeric" min="5" max="300" step="1" value="28"><span class="unit">mg/dL</span></div>
+            <button class="stepper" type="button" data-alvo="osm-ureia" data-step="2" aria-label="Aumentar ureia">+</button>
+          </div>
+        </div>
+      </form>
+      <section class="panel result score-result reveal" id="osm-resultado" aria-live="polite">
+        <div id="osm-ok">
+          <div class="result-head">
+            <div class="result-kicker">Osmolaridade sérica calculada</div>
+            <div class="dose-line"><div class="dose-big"><span id="osm-valor">0</span><span class="u">mOsm/kg</span></div></div>
+            <div class="dose-sub">Intervalo normal habitual: 275–295 mOsm/kg</div>
+          </div>
+        </div>
+        <div class="empty" id="osm-vazio" hidden><div class="big-emoji" aria-hidden="true">💧</div><p class="motivo" id="osm-motivo"></p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🩸</div>
@@ -206,6 +290,20 @@
         <h3>Cálcio corrigido</h3>
         <ul>
           <li>Cerca de 40% do cálcio circula ligado à albumina — hipoalbuminemia subestima o cálcio total.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🧪</div>
+        <h3>Anion gap</h3>
+        <ul>
+          <li>Elevado sugere acidose metabólica com anion gap aumentado (ex. cetoacidose, acidose láctica, intoxicações).</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">💧</div>
+        <h3>Osmolaridade calculada</h3>
+        <ul>
+          <li>Um hiato osmolar elevado (medida − calculada &gt; 10) sugere osmoles não medidos, como álcoois tóxicos.</li>
         </ul>
       </article>
     </section>

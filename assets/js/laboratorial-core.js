@@ -1,10 +1,13 @@
-// LDL calculado (Friedewald), sódio corrigido, cálcio corrigido e glicemia
-// média estimada (eAG) — fórmulas laboratoriais de uso frequente em MGF.
+// LDL calculado (Friedewald), sódio corrigido, cálcio corrigido, glicemia
+// média estimada (eAG), anion gap e osmolaridade sérica calculada —
+// fórmulas laboratoriais de uso frequente em MGF.
 // Sem dependências do DOM para poder ser testado em Node.
 //
 // Referências: Friedewald WT et al., Clin Chem 1972; Katz MA, NEJM 1973
 // (sódio corrigido); Payne RB et al., Br Med J 1973 (cálcio corrigido);
-// Nathan DM et al. (grupo ADAG), Diabetes Care 2008 (eAG).
+// Nathan DM et al. (grupo ADAG), Diabetes Care 2008 (eAG); Emmett M &
+// Narins RG, Medicine 1977 (anion gap); Smithline N & Gardner KD, JAMA
+// 1976 (osmolaridade calculada).
 
 const arred = (n, casas = 0) => {
   const f = 10 ** casas;
@@ -62,4 +65,36 @@ export function calcularEAG(hba1cPercent) {
 /** Converte HbA1c de mmol/mol (IFCC) para % (NGSP/DCCT). */
 export function hba1cMmolMolParaPercent(mmolMol) {
   return Number(mmolMol) / 10.929 + 2.15;
+}
+
+/** Anion gap (mEq/L), sem potássio. Intervalo de referência habitual: 8–16 mEq/L. */
+export function calcularAnionGap(sodio, cloro, bicarbonato) {
+  const na = Number(sodio);
+  const cl = Number(cloro);
+  const hco3 = Number(bicarbonato);
+
+  if (!Number.isFinite(na) || na <= 0) return { ok: false, motivo: 'Indique o sódio.' };
+  if (!Number.isFinite(cl) || cl <= 0) return { ok: false, motivo: 'Indique o cloro.' };
+  if (!Number.isFinite(hco3) || hco3 <= 0) return { ok: false, motivo: 'Indique o bicarbonato.' };
+
+  const gap = na - (cl + hco3);
+  const nivel = gap > 16 ? 'alto' : gap < 8 ? 'moderado' : 'baixo';
+
+  return { ok: true, gap: arred(gap, 1), nivel };
+}
+
+/** Osmolaridade sérica calculada (mOsm/kg). Glicemia e ureia em mg/dL. Intervalo normal: ~275–295 mOsm/kg. */
+export function calcularOsmolaridade(sodio, glicemia, ureia) {
+  const na = Number(sodio);
+  const gli = Number(glicemia);
+  const ur = Number(ureia);
+
+  if (!Number.isFinite(na) || na <= 0) return { ok: false, motivo: 'Indique o sódio.' };
+  if (!Number.isFinite(gli) || gli <= 0) return { ok: false, motivo: 'Indique a glicemia.' };
+  if (!Number.isFinite(ur) || ur <= 0) return { ok: false, motivo: 'Indique a ureia.' };
+
+  const osm = 2 * na + gli / 18 + ur / 2.8;
+  const nivel = osm > 295 ? 'alto' : osm < 275 ? 'moderado' : 'baixo';
+
+  return { ok: true, osmolaridade: arred(osm, 0), nivel };
 }

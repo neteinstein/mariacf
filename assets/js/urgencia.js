@@ -1,4 +1,4 @@
-import { calcularCURB65, calcularWellsTVP, calcularWellsTEP, calcularQTc } from './urgencia-core.js';
+import { calcularCURB65, calcularWellsTVP, calcularWellsTEP, calcularQTc, calcularGlasgow, calcularHEART, calcularNEWS2 } from './urgencia-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -115,6 +115,69 @@ qtcForm.addEventListener('input', atualizarQTc);
 qtcForm.addEventListener('change', atualizarQTc);
 atualizarQTc();
 
+/* ---------- Glasgow ---------- */
+
+const gcsForm = $('#gcs-form');
+const gcsResultado = $('#gcs-resultado');
+
+function atualizarGCS() {
+  const r = calcularGlasgow(
+    $('input[name="gcs-e"]:checked')?.value,
+    $('input[name="gcs-v"]:checked')?.value,
+    $('input[name="gcs-m"]:checked')?.value
+  );
+  gcsResultado.dataset.nivel = r.nivel;
+  $('#gcs-pontos').textContent = r.pontos;
+  $('#gcs-gravidade').textContent = r.gravidade;
+}
+gcsForm.addEventListener('change', atualizarGCS);
+atualizarGCS();
+
+/* ---------- HEART ---------- */
+
+const heartForm = $('#heart-form');
+const heartResultado = $('#heart-resultado');
+
+function atualizarHEART() {
+  const campos = ['historia', 'ecg', 'idade', 'fatoresRisco', 'troponina'];
+  const pontuacoes = {};
+  campos.forEach((c) => { pontuacoes[c] = $(`input[name="heart-${c}"]:checked`)?.value; });
+  const r = calcularHEART(pontuacoes);
+  heartResultado.dataset.nivel = r.nivel;
+  $('#heart-pontos').textContent = r.pontos;
+  $('#heart-risco').textContent = r.risco;
+}
+heartForm.addEventListener('change', atualizarHEART);
+atualizarHEART();
+
+/* ---------- NEWS2 ---------- */
+
+const newsForm = $('#news-form');
+const newsResultado = $('#news-resultado');
+
+function atualizarNEWS2() {
+  const r = calcularNEWS2({
+    freqRespiratoria: $('#news-fr').value,
+    spo2: $('#news-spo2').value,
+    oxigenioSuplementar: $('#news-o2').checked,
+    pressaoSistolica: $('#news-pas').value,
+    freqCardiaca: $('#news-fc').value,
+    consciencia: $('input[name="news-consciencia"]:checked')?.value,
+    temperatura: $('#news-temp').value.replace(',', '.'),
+  });
+  const ok = $('#news-ok');
+  const vazio = $('#news-vazio');
+  if (!r.ok) { ok.hidden = true; vazio.hidden = false; $('#news-motivo').textContent = r.motivo; return; }
+  ok.hidden = false;
+  vazio.hidden = true;
+  newsResultado.dataset.nivel = r.nivel;
+  $('#news-pontos').textContent = r.pontos;
+  $('#news-resposta').textContent = r.resposta;
+}
+newsForm.addEventListener('input', atualizarNEWS2);
+newsForm.addEventListener('change', atualizarNEWS2);
+atualizarNEWS2();
+
 const params = new URLSearchParams(location.search);
-const validos = ['curb65', 'tvp', 'tep', 'qtc'];
+const validos = ['curb65', 'tvp', 'tep', 'qtc', 'gcs', 'heart', 'news2'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'curb65');

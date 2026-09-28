@@ -1,4 +1,4 @@
-import { calcularLDLFriedewald, calcularSodioCorrigido, calcularCalcioCorrigido, calcularEAG } from './laboratorial-core.js';
+import { calcularLDLFriedewald, calcularSodioCorrigido, calcularCalcioCorrigido, calcularEAG, calcularAnionGap, calcularOsmolaridade } from './laboratorial-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -74,6 +74,26 @@ ligar({
   escrever: (r) => { $('#eag-valor').textContent = r.eag; },
 });
 
+ligar({
+  prefixo: 'ag',
+  calcular: calcularAnionGap,
+  ler: () => [$('#ag-sodio').value.replace(',', '.'), $('#ag-cloro').value.replace(',', '.'), $('#ag-bicarbonato').value.replace(',', '.')],
+  escrever: (r) => {
+    $('#ag-resultado').dataset.nivel = r.nivel;
+    $('#ag-valor').textContent = r.gap.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  },
+});
+
+ligar({
+  prefixo: 'osm',
+  calcular: calcularOsmolaridade,
+  ler: () => [$('#osm-sodio').value.replace(',', '.'), $('#osm-glicemia').value.replace(',', '.'), $('#osm-ureia').value.replace(',', '.')],
+  escrever: (r) => {
+    $('#osm-resultado').dataset.nivel = r.nivel;
+    $('#osm-valor').textContent = r.osmolaridade;
+  },
+});
+
 const params = new URLSearchParams(location.search);
-const validos = ['ldl', 'na', 'ca', 'eag'];
+const validos = ['ldl', 'na', 'ca', 'eag', 'ag', 'osm'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'ldl');
