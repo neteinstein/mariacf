@@ -830,6 +830,12 @@ a.tool:hover .go svg {
   transform: rotate(-6deg);
 }
 
+.avatar-foto {
+  display: block;
+  object-fit: cover;
+  background: var(--surface);
+}
+
 .about h2 {
   font-size: 1.6rem;
 }
