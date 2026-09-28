@@ -7,10 +7,11 @@ const vazio = document.getElementById('tools-vazio');
 const contagem = document.getElementById('tools-contagem');
 
 if (grid && busca && filtros) {
+  // A mesma ferramenta pode aparecer em várias categorias; a contagem usa o href.
   const cartas = Array.from(grid.querySelectorAll('.tool'));
-  const titulos = Array.from(grid.querySelectorAll('.tools-section-title'));
+  const seccoes = Array.from(grid.querySelectorAll('.tools-section'));
   const botoes = Array.from(filtros.querySelectorAll('.tabbtn'));
-  const totalFerramentas = cartas.length;
+  const totalFerramentas = new Set(cartas.map((c) => c.getAttribute('href'))).size;
 
   const normalizar = (s) =>
     s
@@ -26,31 +27,32 @@ if (grid && busca && filtros) {
   function aplicar() {
     const termo = normalizar(busca.value.trim());
     let algumVisivel = false;
-    let visiveis = 0;
+    const visiveis = new Set();
 
-    titulos.forEach((titulo) => {
-      const cat = titulo.dataset.categoria;
-      const cartasDaSeccao = cartas.filter((c) => c.dataset.categoria === cat);
-      let seccaoVisivel = false;
+    seccoes.forEach((seccao) => {
+      const cartasDaSeccao = Array.from(seccao.querySelectorAll('.tool'));
+      const combinaCategoria = categoriaAtiva === 'todas' || categoriaAtiva === seccao.dataset.categoria;
+      let visiveisNaSeccao = 0;
 
       cartasDaSeccao.forEach((carta) => {
-        const combinaCategoria = categoriaAtiva === 'todas' || categoriaAtiva === cat;
         const combinaTexto = !termo || textoCarta.get(carta).includes(termo);
         const visivel = combinaCategoria && combinaTexto;
         carta.hidden = !visivel;
         if (visivel) {
-          seccaoVisivel = true;
+          visiveisNaSeccao += 1;
           algumVisivel = true;
-          visiveis += 1;
+          visiveis.add(carta.getAttribute('href'));
         }
       });
 
-      titulo.hidden = !seccaoVisivel;
+      seccao.hidden = visiveisNaSeccao === 0;
+      seccao.classList.toggle('multi', visiveisNaSeccao > 1);
     });
 
     vazio.hidden = algumVisivel;
     if (contagem) {
-      contagem.textContent = visiveis === totalFerramentas ? `(${totalFerramentas})` : `(${visiveis} de ${totalFerramentas})`;
+      contagem.textContent =
+        visiveis.size === totalFerramentas ? `(${totalFerramentas})` : `(${visiveis.size} de ${totalFerramentas})`;
     }
 
     const params = new URLSearchParams(location.search);
