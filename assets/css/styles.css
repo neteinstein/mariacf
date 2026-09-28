@@ -2302,6 +2302,12 @@ a.pub:hover {
   min-width: 0;
 }
 
+.field-row > .step + .step {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+
 .field-row .weight {
   flex-wrap: wrap;
 }
@@ -2312,11 +2318,23 @@ a.pub:hover {
 
 .field-row .weight-field input {
   min-width: 0;
-  width: 7ch;
+  width: 3ch;
+  font-size: clamp(2rem, 6vw, 2.8rem);
 }
 
 @media (max-width: 640px) {
   .field-row {
     grid-template-columns: 1fr;
+  }
+
+  .field-row > .step + .step {
+    margin-top: 30px;
+    padding-top: 26px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .field-row .weight-field input {
+    width: 4.2ch;
+    font-size: clamp(3.4rem, 10vw, 4.6rem);
   }
 }
