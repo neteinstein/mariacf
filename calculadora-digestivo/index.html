@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blatchford, Rockall e BISAP · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Risco de hemorragia digestiva alta (Blatchford, Rockall pré-endoscópico) e gravidade de pancreatite aguda (BISAP).">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="Blatchford, Rockall e BISAP">
+  <meta property="og:description" content="Hemorragia digestiva alta e pancreatite aguda.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Gastrenterologia · Gravidade</span>
+      <h1 class="display">Blatchford, Rockall e <em>BISAP</em></h1>
+      <p class="lead">Risco de hemorragia digestiva alta e gravidade de pancreatite aguda, para apoiar a decisão de referenciação urgente.</p>
+    </section>
+
+    <div class="tabbar" role="tablist" aria-label="Escolher calculadora">
+      <button class="tabbtn" type="button" data-tab="blatchford" role="tab" aria-selected="true">Blatchford</button>
+      <button class="tabbtn" type="button" data-tab="rockall" role="tab" aria-selected="false">Rockall (pré-endoscópico)</button>
+      <button class="tabbtn" type="button" data-tab="bisap" role="tab" aria-selected="false">BISAP</button>
+    </div>
+
+    <div class="calc" data-painel="blatchford">
+      <form class="panel reveal" id="bl-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="bl-ureia"><span class="step-num">1</span> Ureia</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="bl-ureia" data-step="-1" aria-label="Diminuir ureia">−</button>
+              <div class="weight-field"><input id="bl-ureia" type="number" inputmode="decimal" min="1" max="60" step="0.5" value="5"><span class="unit">mmol/L</span></div>
+              <button class="stepper" type="button" data-alvo="bl-ureia" data-step="1" aria-label="Aumentar ureia">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="bl-hb"><span class="step-num">2</span> Hemoglobina</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="bl-hb" data-step="-0.5" aria-label="Diminuir hemoglobina">−</button>
+              <div class="weight-field"><input id="bl-hb" type="number" inputmode="decimal" min="3" max="20" step="0.1" value="14"><span class="unit">g/dL</span></div>
+              <button class="stepper" type="button" data-alvo="bl-hb" data-step="0.5" aria-label="Aumentar hemoglobina">+</button>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <label class="step-label" for="bl-pas"><span class="step-num">3</span> PA sistólica</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="bl-pas" data-step="-1" aria-label="Diminuir PAS">−</button>
+            <div class="weight-field"><input id="bl-pas" type="number" inputmode="numeric" min="50" max="220" step="1" value="120"><span class="unit">mmHg</span></div>
+            <button class="stepper" type="button" data-alvo="bl-pas" data-step="1" aria-label="Aumentar PAS">+</button>
+          </div>
+        </div>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">4</span> Outros fatores</legend>
+          <div class="checklist">
+            <div class="check-item"><input type="checkbox" id="bl-sexo"><label for="bl-sexo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Sexo feminino</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="bl-pulso"><label for="bl-pulso"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Pulso ≥ 100/min</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="bl-melena"><label for="bl-melena"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Melenas</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="bl-sincope"><label for="bl-sincope"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Síncope</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="bl-hepatica"><label for="bl-hepatica"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Doença hepática conhecida</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="bl-icc"><label for="bl-icc"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Insuficiência cardíaca</strong></span></label></div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="bl-resultado" aria-live="polite">
+        <div id="bl-ok">
+          <div class="result-head">
+            <div class="result-kicker">Score de Blatchford</div>
+            <div class="dose-line"><div class="dose-big"><span id="bl-pontos">0</span></div></div>
+            <div class="dose-sub" id="bl-recomendacao"></div>
+          </div>
+        </div>
+        <div class="empty" id="bl-vazio" hidden><div class="big-emoji" aria-hidden="true">🩸</div><p class="motivo" id="bl-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="rockall" hidden>
+      <form class="panel reveal" id="ro-form" autocomplete="off">
+        <div class="step">
+          <label class="step-label" for="ro-idade"><span class="step-num">1</span> Idade</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="ro-idade" data-step="-1" aria-label="Diminuir idade">−</button>
+            <div class="weight-field"><input id="ro-idade" type="number" inputmode="numeric" min="18" max="110" step="1" value="50"><span class="unit">anos</span></div>
+            <button class="stepper" type="button" data-alvo="ro-idade" data-step="1" aria-label="Aumentar idade">+</button>
+          </div>
+        </div>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">2</span> Estado hemodinâmico</legend>
+          <div class="choices" style="grid-template-columns:1fr 1fr 1fr">
+            <div class="choice"><input type="radio" name="ro-choque" id="ro-c0" value="nenhum" checked><label for="ro-c0"><span class="pill" aria-hidden="true"></span><span class="name">Sem choque</span></label></div>
+            <div class="choice"><input type="radio" name="ro-choque" id="ro-c1" value="taquicardia"><label for="ro-c1"><span class="pill" aria-hidden="true"></span><span class="name">Taquicardia</span><span class="brands">PAS ≥ 100, FC ≥ 100</span></label></div>
+            <div class="choice"><input type="radio" name="ro-choque" id="ro-c2" value="hipotensao"><label for="ro-c2"><span class="pill" aria-hidden="true"></span><span class="name">Hipotensão</span><span class="brands">PAS &lt; 100</span></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">3</span> Comorbilidades</legend>
+          <div class="choices" style="grid-template-columns:1fr 1fr 1fr">
+            <div class="choice"><input type="radio" name="ro-comorbilidade" id="ro-m0" value="nenhuma" checked><label for="ro-m0"><span class="pill" aria-hidden="true"></span><span class="name">Nenhuma major</span></label></div>
+            <div class="choice"><input type="radio" name="ro-comorbilidade" id="ro-m1" value="major"><label for="ro-m1"><span class="pill" aria-hidden="true"></span><span class="name">ICC/cardiopatia isquémica</span><span class="brands">ou outra comorbilidade major</span></label></div>
+            <div class="choice"><input type="radio" name="ro-comorbilidade" id="ro-m2" value="grave"><label for="ro-m2"><span class="pill" aria-hidden="true"></span><span class="name">Insuf. renal/hepática</span><span class="brands">ou neoplasia disseminada</span></label></div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="ro-resultado" aria-live="polite">
+        <div id="ro-ok">
+          <div class="result-head">
+            <div class="result-kicker">Rockall pré-endoscópico</div>
+            <div class="dose-line"><div class="dose-big"><span id="ro-pontos">0</span><span class="u">/ 7</span></div></div>
+          </div>
+        </div>
+        <div class="empty" id="ro-vazio" hidden><div class="big-emoji" aria-hidden="true">🩸</div><p class="motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="bisap" hidden>
+      <form class="panel reveal" id="bi-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">B</span> Critérios (primeiras 24h)</legend>
+          <div class="checklist">
+            <div class="check-item"><input type="checkbox" id="bi-ureia"><label for="bi-ureia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Ureia elevada</strong><small>&gt; 25 mg/dL (&gt; 9 mmol/L)</small></span><span class="pts">1</span></label></div>
+            <div class="check-item"><input type="checkbox" id="bi-mental"><label for="bi-mental"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Estado mental alterado</strong></span><span class="pts">1</span></label></div>
+            <div class="check-item"><input type="checkbox" id="bi-sirs"><label for="bi-sirs"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>SIRS</strong><small>≥ 2 de: FC &gt; 90, FR &gt; 20, temperatura &lt; 36 ou &gt; 38 °C, leucócitos alterados</small></span><span class="pts">1</span></label></div>
+            <div class="check-item"><input type="checkbox" id="bi-idade"><label for="bi-idade"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Idade &gt; 60 anos</strong></span><span class="pts">1</span></label></div>
+            <div class="check-item"><input type="checkbox" id="bi-derrame"><label for="bi-derrame"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Derrame pleural</strong><small>Na imagem</small></span><span class="pts">1</span></label></div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="bi-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker">BISAP</div>
+          <div class="dose-line"><div class="dose-big"><span id="bi-pontos">0</span><span class="u">/ 5</span></div></div>
+          <div class="dose-sub" id="bi-recomendacao"></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🩸</div>
+        <h3>Blatchford</h3>
+        <ul>
+          <li>0: risco muito baixo, pode ser seguido em ambulatório · &gt; 0: referenciar para avaliação.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🔬</div>
+        <h3>Rockall pré-endoscópico</h3>
+        <ul>
+          <li>Versão só com dados clínicos — o score completo soma achados endoscópicos, não incluídos aqui.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🫃</div>
+        <h3>BISAP</h3>
+        <ul>
+          <li>≥ 3 pontos associa-se a maior risco de gravidade e mortalidade na pancreatite aguda.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      Estas escalas são um apoio informativo à decisão clínica e não substituem a avaliação individualizada do médico assistente.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/digestivo.js" type="module"></script>
+</body>
+</html>

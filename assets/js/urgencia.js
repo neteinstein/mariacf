@@ -1,5 +1,5 @@
 import { calcularCURB65, calcularWellsTVP, calcularWellsTEP, calcularQTc, calcularGlasgow, calcularHEART, calcularNEWS2 } from './urgencia-core.js';
-import { calcularCRB65, calcularPERC, calcularOttawaTornozelo, calcularOttawaJoelho, calcularAlvarado } from './urgencia2-core.js';
+import { calcularCRB65, calcularPERC, calcularOttawaTornozelo, calcularOttawaJoelho, calcularAlvarado, calcularIndiceChoque } from './urgencia2-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -265,6 +265,25 @@ function atualizarAlvarado() {
 alvaradoForm.addEventListener('change', atualizarAlvarado);
 atualizarAlvarado();
 
+/* ---------- Índice de choque ---------- */
+
+const icForm = $('#ic-form');
+const icResultado = $('#ic-resultado');
+
+function atualizarIndiceChoque() {
+  const r = calcularIndiceChoque($('#ic-fc').value, $('#ic-pas').value);
+  const ok = $('#ic-ok');
+  const vazio = $('#ic-vazio');
+  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  ok.hidden = false;
+  vazio.hidden = true;
+  icResultado.dataset.nivel = r.nivel;
+  $('#ic-valor').textContent = r.indice.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  $('#ic-interpretacao').textContent = r.interpretacao;
+}
+icForm.addEventListener('input', atualizarIndiceChoque);
+atualizarIndiceChoque();
+
 const params = new URLSearchParams(location.search);
-const validos = ['curb65', 'tvp', 'tep', 'qtc', 'gcs', 'heart', 'news2', 'crb65', 'perc', 'ottawa', 'alvarado'];
+const validos = ['curb65', 'tvp', 'tep', 'qtc', 'gcs', 'heart', 'news2', 'crb65', 'perc', 'ottawa', 'alvarado', 'choque'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'curb65');

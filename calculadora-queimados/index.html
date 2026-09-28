@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Regra dos 9 · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Estime a percentagem de superfície corporal queimada em adultos, pela regra dos 9 (Wallace).">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="Regra dos 9">
+  <meta property="og:description" content="Superfície corporal queimada em adultos.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Queimados</span>
+      <h1 class="display">Regra dos <em>9</em></h1>
+      <p class="lead">Estimativa rápida da percentagem de superfície corporal queimada em adultos, pela regra dos 9 de Wallace.</p>
+    </section>
+
+    <div class="calc">
+      <form class="panel reveal" id="qu-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">%</span> Regiões atingidas</legend>
+          <div class="checklist">
+            <div class="check-item"><input type="checkbox" id="qu-cabecaPescoco"><label for="qu-cabecaPescoco"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Cabeça e pescoço</strong></span><span class="pts">9%</span></label></div>
+            <div class="check-item"><input type="checkbox" id="qu-membroSuperiorDireito"><label for="qu-membroSuperiorDireito"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Membro superior direito</strong></span><span class="pts">9%</span></label></div>
+            <div class="check-item"><input type="checkbox" id="qu-membroSuperiorEsquerdo"><label for="qu-membroSuperiorEsquerdo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Membro superior esquerdo</strong></span><span class="pts">9%</span></label></div>
+            <div class="check-item"><input type="checkbox" id="qu-troncoAnterior"><label for="qu-troncoAnterior"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Tronco anterior</strong></span><span class="pts">18%</span></label></div>
+            <div class="check-item"><input type="checkbox" id="qu-troncoPosterior"><label for="qu-troncoPosterior"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Tronco posterior</strong></span><span class="pts">18%</span></label></div>
+            <div class="check-item"><input type="checkbox" id="qu-membroInferiorDireito"><label for="qu-membroInferiorDireito"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Membro inferior direito</strong></span><span class="pts">18%</span></label></div>
+            <div class="check-item"><input type="checkbox" id="qu-membroInferiorEsquerdo"><label for="qu-membroInferiorEsquerdo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Membro inferior esquerdo</strong></span><span class="pts">18%</span></label></div>
+            <div class="check-item"><input type="checkbox" id="qu-perineo"><label for="qu-perineo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Períneo</strong></span><span class="pts">1%</span></label></div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="qu-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker">Superfície corporal queimada</div>
+          <div class="dose-line"><div class="dose-big"><span id="qu-pontos">0</span><span class="u">%</span></div></div>
+          <div class="dose-sub" id="qu-gravidade"></div>
+        </div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🔥</div>
+        <h3>Só para adultos</h3>
+        <ul>
+          <li>Em crianças as proporções corporais são muito diferentes (cabeça maior, pernas menores) — use uma tabela pediátrica própria (ex. Lund-Browder).</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🏥</div>
+        <h3>Quando referenciar</h3>
+        <ul>
+          <li>≥ 10% de superfície queimada, queimaduras de espessura total, ou envolvimento de face, mãos, pés, períneo ou grandes articulações justificam avaliação hospitalar.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      Esta calculadora é um apoio informativo e não substitui a avaliação clínica do médico assistente.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/queimados.js" type="module"></script>
+</body>
+</html>

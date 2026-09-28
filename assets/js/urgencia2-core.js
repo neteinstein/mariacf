@@ -1,10 +1,12 @@
-// CRB-65, PERC, regras de Ottawa (tornozelo/joelho) e score de Alvarado —
-// decisão de referenciação, exames de imagem e exclusão de TEP.
+// CRB-65, PERC, regras de Ottawa (tornozelo/joelho), score de Alvarado e
+// índice de choque — decisão de referenciação, exames de imagem, exclusão
+// de TEP e triagem de instabilidade hemodinâmica.
 // Sem dependências do DOM para poder ser testado em Node.
 //
 // Referências: Lim WS et al., Thorax 2003 (CRB-65); Kline JA et al., J
 // Thromb Haemost 2004 (PERC); Stiell IG et al., BMJ 1995/JAMA 1993 (regras
-// de Ottawa); Alvarado A, Ann Emerg Med 1986 (score de Alvarado).
+// de Ottawa); Alvarado A, Ann Emerg Med 1986 (score de Alvarado); Allgöwer
+// M & Burri C, Chirurg 1967 (índice de choque).
 
 /** CRB-65: confusão, FR, PA, idade — sem análises. */
 export function calcularCRB65(fatores = {}) {
@@ -96,4 +98,22 @@ export function calcularAlvarado(fatores = {}) {
   else { nivel = 'muito-alto'; recomendacao = 'Muito provável apendicite — referenciar para cirurgia com urgência.'; }
 
   return { ok: true, pontos, max: 10, nivel, recomendacao };
+}
+
+/** Índice de choque = frequência cardíaca / PA sistólica. Normal ~0,5–0,7. */
+export function calcularIndiceChoque(freqCardiaca, pressaoSistolica) {
+  const fc = Number(freqCardiaca);
+  const pas = Number(pressaoSistolica);
+
+  if (!Number.isFinite(fc) || fc <= 0) return { ok: false, motivo: 'Indique a frequência cardíaca.' };
+  if (!Number.isFinite(pas) || pas <= 0) return { ok: false, motivo: 'Indique a pressão arterial sistólica.' };
+
+  const indice = fc / pas;
+  let nivel;
+  let interpretacao;
+  if (indice < 0.7) { nivel = 'baixo'; interpretacao = 'Normal'; }
+  else if (indice < 1.0) { nivel = 'moderado'; interpretacao = 'Limítrofe — vigiar de perto'; }
+  else { nivel = 'alto'; interpretacao = 'Sugestivo de instabilidade hemodinâmica/choque'; }
+
+  return { ok: true, indice: Math.round(indice * 100) / 100, nivel, interpretacao };
 }

@@ -1,4 +1,4 @@
-import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, calcularGDS15 } from './geriatria-core.js';
+import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, calcularGDS15, calcularCharlson } from './geriatria-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -223,6 +223,36 @@ function atualizarGDS() {
 gdsForm.addEventListener('change', atualizarGDS);
 atualizarGDS();
 
+/* ---------- Charlson ---------- */
+
+const CHARLSON_CAMPOS = [
+  'enfarteMiocardio', 'icc', 'doencaVascularPeriferica', 'doencaCerebrovascular',
+  'demencia', 'doencaPulmonarCronica', 'doencaTecidoConjuntivo', 'ulceraPeptica',
+  'doencaHepaticaLigeira', 'diabetesSemComplicacoes', 'hemiplegia', 'doencaRenalModeradaGrave',
+  'diabetesComComplicacoes', 'tumorSemMetastase', 'leucemia', 'linfoma',
+  'doencaHepaticaModeradaGrave', 'tumorMetastatico', 'sida',
+];
+
+const charlsonForm = $('#charlson-form');
+const charlsonResultado = $('#charlson-resultado');
+
+function atualizarCharlson() {
+  const comorbilidades = {};
+  CHARLSON_CAMPOS.forEach((c) => { comorbilidades[c] = $(`#ch-${c}`).checked; });
+  const r = calcularCharlson(comorbilidades, $('#ch-idade').value);
+  const ok = $('#charlson-ok');
+  const vazio = $('#charlson-vazio');
+  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  ok.hidden = false;
+  vazio.hidden = true;
+  charlsonResultado.dataset.nivel = r.nivel;
+  $('#ch-pontos').textContent = r.pontos;
+  $('#ch-sobrevivencia').textContent = `Sobrevivência estimada a 10 anos: ~${r.sobrevivencia10Anos}% (estimativa aproximada)`;
+}
+charlsonForm.addEventListener('input', atualizarCharlson);
+charlsonForm.addEventListener('change', atualizarCharlson);
+atualizarCharlson();
+
 const params = new URLSearchParams(location.search);
-const validos = ['barthel', 'morse', 'braden', 'cognitivo', 'gds15'];
+const validos = ['barthel', 'morse', 'braden', 'cognitivo', 'gds15', 'charlson'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'barthel');

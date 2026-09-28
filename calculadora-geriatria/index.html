@@ -58,6 +58,7 @@
       <button class="tabbtn" type="button" data-tab="braden" role="tab" aria-selected="false">Escala de Braden</button>
       <button class="tabbtn" type="button" data-tab="cognitivo" role="tab" aria-selected="false">MMSE / MoCA</button>
       <button class="tabbtn" type="button" data-tab="gds15" role="tab" aria-selected="false">GDS-15</button>
+      <button class="tabbtn" type="button" data-tab="charlson" role="tab" aria-selected="false">Charlson</button>
     </div>
 
     <div class="calc" data-painel="barthel">
@@ -172,6 +173,110 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="charlson" hidden>
+      <form class="panel reveal" id="charlson-form" autocomplete="off">
+        <div class="step">
+          <label class="step-label" for="ch-idade"><span class="step-num">1</span> Idade</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="ch-idade" data-step="-1" aria-label="Diminuir idade">−</button>
+            <div class="weight-field"><input id="ch-idade" type="number" inputmode="numeric" min="18" max="110" step="1" value="65"><span class="unit">anos</span></div>
+            <button class="stepper" type="button" data-alvo="ch-idade" data-step="1" aria-label="Aumentar idade">+</button>
+          </div>
+        </div>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">2</span> Comorbilidades</legend>
+          <div class="checklist">
+            <div class="check-item">
+              <input type="checkbox" id="ch-enfarteMiocardio">
+              <label for="ch-enfarteMiocardio"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Enfarte do miocárdio</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-icc">
+              <label for="ch-icc"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Insuficiência cardíaca congestiva</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-doencaVascularPeriferica">
+              <label for="ch-doencaVascularPeriferica"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Doença vascular periférica</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-doencaCerebrovascular">
+              <label for="ch-doencaCerebrovascular"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Doença cerebrovascular</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-demencia">
+              <label for="ch-demencia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Demência</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-doencaPulmonarCronica">
+              <label for="ch-doencaPulmonarCronica"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Doença pulmonar crónica</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-doencaTecidoConjuntivo">
+              <label for="ch-doencaTecidoConjuntivo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Doença do tecido conjuntivo</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-ulceraPeptica">
+              <label for="ch-ulceraPeptica"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Úlcera péptica</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-doencaHepaticaLigeira">
+              <label for="ch-doencaHepaticaLigeira"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Doença hepática ligeira</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-diabetesSemComplicacoes">
+              <label for="ch-diabetesSemComplicacoes"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Diabetes sem complicações</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-hemiplegia">
+              <label for="ch-hemiplegia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Hemiplegia</strong></span><span class="pts">2</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-doencaRenalModeradaGrave">
+              <label for="ch-doencaRenalModeradaGrave"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Doença renal moderada a grave</strong></span><span class="pts">2</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-diabetesComComplicacoes">
+              <label for="ch-diabetesComComplicacoes"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Diabetes com complicações de órgão-alvo</strong></span><span class="pts">2</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-tumorSemMetastase">
+              <label for="ch-tumorSemMetastase"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Tumor sólido (sem metástases)</strong></span><span class="pts">2</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-leucemia">
+              <label for="ch-leucemia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Leucemia</strong></span><span class="pts">2</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-linfoma">
+              <label for="ch-linfoma"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Linfoma</strong></span><span class="pts">2</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-doencaHepaticaModeradaGrave">
+              <label for="ch-doencaHepaticaModeradaGrave"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Doença hepática moderada a grave</strong></span><span class="pts">3</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-tumorMetastatico">
+              <label for="ch-tumorMetastatico"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Tumor sólido metastático</strong></span><span class="pts">6</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="ch-sida">
+              <label for="ch-sida"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>SIDA</strong></span><span class="pts">6</span></label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="charlson-resultado" aria-live="polite">
+        <div id="charlson-ok">
+          <div class="result-head">
+            <div class="result-kicker">Índice de comorbilidade de Charlson</div>
+            <div class="dose-line"><div class="dose-big"><span id="ch-pontos">0</span></div></div>
+            <div class="dose-sub" id="ch-sobrevivencia"></div>
+          </div>
+        </div>
+        <div class="empty" id="charlson-vazio" hidden><div class="big-emoji" aria-hidden="true">📋</div><p class="motivo"></p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🧓</div>
@@ -200,6 +305,14 @@
         <ul>
           <li>0–4: normal · 5–8: depressão ligeira · 9–11: moderada · 12–15: grave.</li>
           <li>Mais adequada que o PHQ-9 para rastreio de depressão em idosos.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">📋</div>
+        <h3>Índice de Charlson</h3>
+        <ul>
+          <li>Estima o prognóstico a longo prazo a partir das comorbilidades e da idade — quanto maior, pior o prognóstico.</li>
+          <li>A estimativa de sobrevivência a 10 anos é aproximada (fórmula original de 1987).</li>
         </ul>
       </article>
     </section>

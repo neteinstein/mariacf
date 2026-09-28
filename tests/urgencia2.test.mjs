@@ -6,6 +6,7 @@ import {
   calcularOttawaTornozelo,
   calcularOttawaJoelho,
   calcularAlvarado,
+  calcularIndiceChoque,
 } from '../assets/js/urgencia2-core.js';
 
 test('CRB-65: sem fatores → 0, baixo', () => {
@@ -71,4 +72,20 @@ test('Alvarado: todos os fatores → 10, muito-alto', () => {
   });
   assert.equal(r.pontos, 10);
   assert.equal(r.nivel, 'muito-alto');
+});
+
+test('Índice de choque: FC 80, PAS 120 → 0.67, normal', () => {
+  const r = calcularIndiceChoque(80, 120);
+  assert.equal(r.indice, 0.67);
+  assert.equal(r.nivel, 'baixo');
+});
+
+test('Índice de choque: FC 130, PAS 90 → 1.44, sugestivo de choque', () => {
+  const r = calcularIndiceChoque(130, 90);
+  assert.equal(r.indice, 1.44);
+  assert.equal(r.nivel, 'alto');
+});
+
+test('Índice de choque: valores em falta são inválidos', () => {
+  assert.equal(calcularIndiceChoque('', 120).ok, false);
 });

@@ -64,6 +64,7 @@
       <button class="tabbtn" type="button" data-tab="perc" role="tab" aria-selected="false">PERC</button>
       <button class="tabbtn" type="button" data-tab="ottawa" role="tab" aria-selected="false">Ottawa</button>
       <button class="tabbtn" type="button" data-tab="alvarado" role="tab" aria-selected="false">Alvarado</button>
+      <button class="tabbtn" type="button" data-tab="choque" role="tab" aria-selected="false">Índice de choque</button>
     </div>
 
     <div class="calc" data-painel="curb65">
@@ -536,6 +537,39 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="choque" hidden>
+      <form class="panel reveal" id="ic-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="ic-fc"><span class="step-num">1</span> Frequência cardíaca</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="ic-fc" data-step="-1" aria-label="Diminuir frequência cardíaca">−</button>
+              <div class="weight-field"><input id="ic-fc" type="number" inputmode="numeric" min="20" max="220" step="1" value="80"><span class="unit">bpm</span></div>
+              <button class="stepper" type="button" data-alvo="ic-fc" data-step="1" aria-label="Aumentar frequência cardíaca">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="ic-pas"><span class="step-num">2</span> PA sistólica</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="ic-pas" data-step="-1" aria-label="Diminuir PAS">−</button>
+              <div class="weight-field"><input id="ic-pas" type="number" inputmode="numeric" min="40" max="260" step="1" value="120"><span class="unit">mmHg</span></div>
+              <button class="stepper" type="button" data-alvo="ic-pas" data-step="1" aria-label="Aumentar PAS">+</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <section class="panel result score-result reveal" id="ic-resultado" aria-live="polite">
+        <div id="ic-ok">
+          <div class="result-head">
+            <div class="result-kicker">Índice de choque (FC / PAS)</div>
+            <div class="dose-line"><div class="dose-big"><span id="ic-valor">0</span></div></div>
+            <div class="dose-sub" id="ic-interpretacao"></div>
+          </div>
+        </div>
+        <div class="empty" id="ic-vazio" hidden><div class="big-emoji" aria-hidden="true">💓</div><p class="motivo"></p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🫁</div>
@@ -606,6 +640,13 @@
         <h3>Score de Alvarado</h3>
         <ul>
           <li>1–4: baixa probabilidade · 5–6: possível apendicite · 7–8: provável · 9–10: muito provável.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">💓</div>
+        <h3>Índice de choque</h3>
+        <ul>
+          <li>&lt; 0,7: normal · 0,7–1,0: limítrofe · &gt; 1,0: sugestivo de instabilidade hemodinâmica.</li>
         </ul>
       </article>
     </section>

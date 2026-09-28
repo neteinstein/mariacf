@@ -7,7 +7,8 @@
 // Morse JM et al., Can J Aging 1989 (Morse); Bergstrom N et al., Nurs Res
 // 1987 (Braden); Folstein MF et al., J Psychiatr Res 1975 e Guerreiro M et
 // al. (validação portuguesa), 1994 (MMSE); Nasreddine ZS et al., JAGS 2005
-// (MoCA); Sheikh JI & Yesavage JA, Clin Gerontol 1986 (GDS-15).
+// (MoCA); Sheikh JI & Yesavage JA, Clin Gerontol 1986 (GDS-15); Charlson ME
+// et al., J Chronic Dis 1987 (índice de comorbilidade de Charlson).
 //
 // Nota: o MMSE e o MoCA são instrumentos protegidos (o MMSE é comercial
 // desde 2001). Esta calculadora não reproduz os itens dos testes — apenas
@@ -119,4 +120,54 @@ export function calcularGDS15(respostas = []) {
   else { nivel = 'muito-alto'; gravidade = 'Depressão grave'; }
 
   return { ok: true, pontos, max: 15, nivel, gravidade };
+}
+
+const PONTOS_COMORBILIDADE_CHARLSON = {
+  enfarteMiocardio: 1, icc: 1, doencaVascularPeriferica: 1, doencaCerebrovascular: 1,
+  demencia: 1, doencaPulmonarCronica: 1, doencaTecidoConjuntivo: 1, ulceraPeptica: 1,
+  doencaHepaticaLigeira: 1, diabetesSemComplicacoes: 1,
+  hemiplegia: 2, doencaRenalModeradaGrave: 2, diabetesComComplicacoes: 2,
+  tumorSemMetastase: 2, leucemia: 2, linfoma: 2,
+  doencaHepaticaModeradaGrave: 3,
+  tumorMetastatico: 6, sida: 6,
+};
+
+function pontosIdadeCharlson(idade) {
+  if (idade < 50) return 0;
+  if (idade < 60) return 1;
+  if (idade < 70) return 2;
+  if (idade < 80) return 3;
+  if (idade < 90) return 4;
+  return 5;
+}
+
+/** Índice de comorbilidade de Charlson, com ajuste pela idade. */
+export function calcularCharlson(comorbilidades = {}, idade) {
+  const a = Number(idade);
+  if (idade === '' || !Number.isFinite(a) || a < 0) return { ok: false, motivo: 'Indique a idade.' };
+
+  const pontosComorbilidades = Object.entries(PONTOS_COMORBILIDADE_CHARLSON).reduce(
+    (acc, [chave, pts]) => acc + (comorbilidades[chave] ? pts : 0),
+    0
+  );
+  const pontosIdade = pontosIdadeCharlson(a);
+  const pontos = pontosComorbilidades + pontosIdade;
+
+  // Sobrevivência estimada a 10 anos (Charlson et al., 1987): 0,983^(e^(0,9 × índice)).
+  const sobrevivencia10Anos = Math.pow(0.983, Math.exp(0.9 * pontos));
+
+  let nivel;
+  if (pontos <= 1) nivel = 'baixo';
+  else if (pontos <= 3) nivel = 'moderado';
+  else if (pontos <= 5) nivel = 'alto';
+  else nivel = 'muito-alto';
+
+  return {
+    ok: true,
+    pontosComorbilidades,
+    pontosIdade,
+    pontos,
+    nivel,
+    sobrevivencia10Anos: Math.round(sobrevivencia10Anos * 1000) / 10,
+  };
 }

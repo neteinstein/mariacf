@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, calcularGDS15 } from '../assets/js/geriatria-core.js';
+import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, calcularGDS15, calcularCharlson } from '../assets/js/geriatria-core.js';
 
 const barthelIndependente = {
   alimentacao: 10, banho: 5, higiene: 5, vestir: 10, intestino: 10,
@@ -87,4 +87,27 @@ test('GDS-15: 15 → depressão grave', () => {
 
 test('GDS-15: respostas em falta são inválidas', () => {
   assert.equal(calcularGDS15([1, 1, 1]).ok, false);
+});
+
+test('Charlson: jovem sem comorbilidades → 0, baixo', () => {
+  const r = calcularCharlson({}, 45);
+  assert.equal(r.pontos, 0);
+  assert.equal(r.nivel, 'baixo');
+});
+
+test('Charlson: idade soma pontos por década acima de 40', () => {
+  assert.equal(calcularCharlson({}, 55).pontosIdade, 1);
+  assert.equal(calcularCharlson({}, 75).pontosIdade, 3);
+  assert.equal(calcularCharlson({}, 95).pontosIdade, 5);
+});
+
+test('Charlson: tumor metastático + SIDA → 12 pontos de comorbilidade', () => {
+  const r = calcularCharlson({ tumorMetastatico: true, sida: true }, 45);
+  assert.equal(r.pontosComorbilidades, 12);
+  assert.equal(r.pontos, 12);
+  assert.equal(r.nivel, 'muito-alto');
+});
+
+test('Charlson: idade em falta é inválida', () => {
+  assert.equal(calcularCharlson({}, '').ok, false);
 });
