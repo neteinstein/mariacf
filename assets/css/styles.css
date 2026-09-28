@@ -989,6 +989,57 @@ fieldset.step legend + .step-hint {
   display: none;
 }
 
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 0.86rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s var(--spring), box-shadow 0.2s, border-color 0.2s;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+  border-color: var(--teal);
+  box-shadow: 0 10px 20px -14px var(--teal);
+}
+
+.action-btn svg {
+  flex-shrink: 0;
+}
+
+@media print {
+  .site-header,
+  .page-hero,
+  .panel:not(.result),
+  .info-grid,
+  .disclaimer,
+  .site-footer,
+  .result-actions,
+  .backdrop {
+    display: none !important;
+  }
+
+  .result {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
 .motivo {
   margin: 12px 0 0;
   font-weight: 600;

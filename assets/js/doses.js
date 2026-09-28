@@ -132,7 +132,7 @@ document.querySelectorAll('.stepper').forEach((btn) => {
   let repete;
   const passo = () => {
     const atual = Number.isFinite(estado.peso) ? estado.peso : 12;
-    const novo = Math.round((atual + parseFloat(btn.dataset.step)) * 2) / 2;
+    const novo = Math.round((atual + parseFloat(btn.dataset.step)) * 10) / 10;
     estado.peso = Math.min(Math.max(novo, PESO_MIN), PESO_MAX);
     pesoInput.value = estado.peso;
     sincronizarSlider();
@@ -309,6 +309,7 @@ function aviso(texto, tipo = '') {
 /* ---------- Atualizar ---------- */
 
 let medAnterior = null;
+let resultadoAtual = null;
 
 function atualizar() {
   resultado.dataset.med = estado.med;
@@ -316,16 +317,21 @@ function atualizar() {
 
   const ok = $('#res-ok');
   const vazio = $('#res-empty');
+  const acoes = $('#result-actions');
 
   if (!r.ok) {
+    resultadoAtual = null;
     ok.hidden = true;
     vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
     $('#res-motivo').textContent = r.motivo;
     return;
   }
 
+  resultadoAtual = r;
   ok.hidden = false;
   vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
 
   animarNumero($('#res-ml'), r.ml);
   $('#res-every').textContent = `de ${r.intervaloHoras} em ${r.intervaloHoras} horas`;
@@ -374,6 +380,31 @@ function atualizar() {
   const q = new URLSearchParams({ peso: String(r.peso), med: estado.med, c: String(r.mgPorMl) });
   history.replaceState(null, '', `?${q}`);
 }
+
+/* ---------- Ações: email e impressão ---------- */
+
+function resumoTexto(r) {
+  const linhas = [
+    `Calculadora de doses · ${r.medicamento.nome} (${nf.format(r.mgPorMl)} mg/mL)`,
+    `Peso da criança: ${nf.format(r.peso)} kg`,
+    `Dar ${nf1.format(r.ml)} mL por toma, de ${r.intervaloHoras} em ${r.intervaloHoras} horas`,
+    `Máximo de ${r.tomasPorDia} tomas em 24 horas (${nf.format(r.mlMaxDia)} mL/dia)`,
+  ];
+  if (r.limitado) linhas.push(`Dose limitada ao máximo de ${nf.format(r.medicamento.maxMgPorToma)} mg por toma.`);
+  linhas.push('', 'Informação de apoio — não substitui aconselhamento médico.', location.href);
+  return linhas.join('\n');
+}
+
+$('#btn-email').addEventListener('click', () => {
+  if (!resultadoAtual) return;
+  const assunto = `Dose de ${resultadoAtual.medicamento.nome} — ${nf.format(resultadoAtual.peso)} kg`;
+  const corpo = resumoTexto(resultadoAtual);
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+});
+
+$('#btn-print').addEventListener('click', () => {
+  window.print();
+});
 
 desenharChips();
 sincronizarSlider();

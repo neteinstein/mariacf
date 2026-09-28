@@ -58,14 +58,14 @@
           <label class="step-label" for="peso"><span class="step-num">1</span> Peso da criança</label>
           <p class="step-hint">Use o peso atual — a dose depende do peso, não da idade.</p>
           <div class="weight">
-            <button class="stepper" type="button" data-step="-0.5" aria-label="Diminuir peso 0,5 kg">−</button>
+            <button class="stepper" type="button" data-step="-0.1" aria-label="Diminuir peso 0,1 kg">−</button>
             <div class="weight-field">
               <input id="peso" name="peso" type="number" inputmode="decimal" min="3" max="60" step="0.1" value="12" aria-describedby="peso-unid">
               <span class="unit" id="peso-unid">kg</span>
             </div>
-            <button class="stepper" type="button" data-step="0.5" aria-label="Aumentar peso 0,5 kg">+</button>
+            <button class="stepper" type="button" data-step="0.1" aria-label="Aumentar peso 0,1 kg">+</button>
           </div>
-          <input class="slider" id="peso-slider" type="range" min="3" max="60" step="0.5" value="12" aria-label="Peso em quilogramas">
+          <input class="slider" id="peso-slider" type="range" min="3" max="60" step="0.1" value="12" aria-label="Peso em quilogramas">
           <div class="slider-scale" aria-hidden="true"><span>3 kg</span><span>20</span><span>40</span><span>60 kg</span></div>
         </div>
 
@@ -125,6 +125,17 @@
             </div>
 
             <div class="notices" id="notices"></div>
+
+            <div class="result-actions" id="result-actions">
+              <button class="action-btn" type="button" id="btn-email">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="res-empty" hidden>
