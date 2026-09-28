@@ -535,6 +535,15 @@ h3 {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
 }
 
+.tools-count {
+  font-family: var(--font-body);
+  font-size: 0.5em;
+  font-weight: 700;
+  color: var(--ink-mute);
+  vertical-align: middle;
+  font-variant-numeric: tabular-nums;
+}
+
 /* ---------- Ferramentas: pesquisa e filtros ---------- */
 
 .tools-toolbar {

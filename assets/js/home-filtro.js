@@ -4,11 +4,13 @@ const grid = document.getElementById('tools-grid');
 const busca = document.getElementById('busca-ferramentas');
 const filtros = document.getElementById('filtros-categoria');
 const vazio = document.getElementById('tools-vazio');
+const contagem = document.getElementById('tools-contagem');
 
 if (grid && busca && filtros) {
   const cartas = Array.from(grid.querySelectorAll('.tool'));
   const titulos = Array.from(grid.querySelectorAll('.tools-section-title'));
   const botoes = Array.from(filtros.querySelectorAll('.tabbtn'));
+  const totalFerramentas = cartas.length;
 
   const normalizar = (s) =>
     s
@@ -24,6 +26,7 @@ if (grid && busca && filtros) {
   function aplicar() {
     const termo = normalizar(busca.value.trim());
     let algumVisivel = false;
+    let visiveis = 0;
 
     titulos.forEach((titulo) => {
       const cat = titulo.dataset.categoria;
@@ -38,6 +41,7 @@ if (grid && busca && filtros) {
         if (visivel) {
           seccaoVisivel = true;
           algumVisivel = true;
+          visiveis += 1;
         }
       });
 
@@ -45,6 +49,9 @@ if (grid && busca && filtros) {
     });
 
     vazio.hidden = algumVisivel;
+    if (contagem) {
+      contagem.textContent = visiveis === totalFerramentas ? `(${totalFerramentas})` : `(${visiveis} de ${totalFerramentas})`;
+    }
 
     const params = new URLSearchParams(location.search);
     if (termo) params.set('q', busca.value.trim());
