@@ -1,4 +1,4 @@
-import { calcularLDLFriedewald, calcularSodioCorrigido, calcularCalcioCorrigido, calcularEAG, calcularAnionGap, calcularOsmolaridade } from './laboratorial-core.js';
+import { calcularLDLFriedewald, calcularSodioCorrigido, calcularCalcioCorrigido, calcularEAG, calcularAnionGap, calcularOsmolaridade, calcularDeficeAguaLivre, calcularHOMAIR } from './laboratorial-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -94,6 +94,27 @@ ligar({
   },
 });
 
+ligar({
+  prefixo: 'agua',
+  calcular: (peso, na) => calcularDeficeAguaLivre(peso, na, $('#agua-sexo').checked),
+  ler: () => [$('#agua-peso').value.replace(',', '.'), $('#agua-sodio').value.replace(',', '.')],
+  escrever: (r) => {
+    $('#agua-valor').textContent = r.defice.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+    $('#agua-tbw').textContent = `Água corporal total estimada: ${r.aguaCorporalTotal.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} L`;
+  },
+});
+$('#agua-sexo').addEventListener('change', () => $('#agua-form').dispatchEvent(new Event('input', { bubbles: true })));
+
+ligar({
+  prefixo: 'homa',
+  calcular: calcularHOMAIR,
+  ler: () => [$('#homa-glicemia').value.replace(',', '.'), $('#homa-insulina').value.replace(',', '.')],
+  escrever: (r) => {
+    $('#homa-resultado').dataset.nivel = r.nivel;
+    $('#homa-valor').textContent = r.homa.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  },
+});
+
 const params = new URLSearchParams(location.search);
-const validos = ['ldl', 'na', 'ca', 'eag', 'ag', 'osm'];
+const validos = ['ldl', 'na', 'ca', 'eag', 'ag', 'osm', 'agua', 'homa'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'ldl');

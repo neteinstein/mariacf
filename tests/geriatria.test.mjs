@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA } from '../assets/js/geriatria-core.js';
+import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, calcularGDS15 } from '../assets/js/geriatria-core.js';
 
 const barthelIndependente = {
   alimentacao: 10, banho: 5, higiene: 5, vestir: 10, intestino: 10,
@@ -71,4 +71,20 @@ test('MoCA: 26 pontos, 15 anos de escolaridade → sem ajuste, normal', () => {
   const r = classificarMoCA(26, 15);
   assert.equal(r.pontosAjustados, 26);
   assert.equal(r.alterado, false);
+});
+
+test('GDS-15: 0 → sem sintomas', () => {
+  const r = calcularGDS15(new Array(15).fill(0));
+  assert.equal(r.pontos, 0);
+  assert.equal(r.nivel, 'baixo');
+});
+
+test('GDS-15: 15 → depressão grave', () => {
+  const r = calcularGDS15(new Array(15).fill(1));
+  assert.equal(r.pontos, 15);
+  assert.equal(r.nivel, 'muito-alto');
+});
+
+test('GDS-15: respostas em falta são inválidas', () => {
+  assert.equal(calcularGDS15([1, 1, 1]).ok, false);
 });

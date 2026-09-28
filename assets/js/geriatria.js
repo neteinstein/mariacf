@@ -1,4 +1,4 @@
-import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA } from './geriatria-core.js';
+import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, calcularGDS15 } from './geriatria-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -177,6 +177,52 @@ cogForm.addEventListener('input', atualizarCognitivo);
 cogForm.addEventListener('change', atualizarCognitivo);
 atualizarCognitivo();
 
+/* ---------- GDS-15 ---------- */
+
+const OPCOES_SIM_NAO = [['Não', 0], ['Sim', 1]];
+const GDS15_PERGUNTAS = [
+  ['Está satisfeito(a) com a sua vida?', [['Sim', 0], ['Não', 1]]],
+  ['Abandonou muitas das suas atividades e interesses?', OPCOES_SIM_NAO],
+  ['Sente que a sua vida está vazia?', OPCOES_SIM_NAO],
+  ['Sente-se muitas vezes aborrecido(a)?', OPCOES_SIM_NAO],
+  ['Está bem-disposto(a) a maior parte do tempo?', [['Sim', 0], ['Não', 1]]],
+  ['Tem medo que algo de mau lhe vá acontecer?', OPCOES_SIM_NAO],
+  ['Sente-se feliz a maior parte do tempo?', [['Sim', 0], ['Não', 1]]],
+  ['Sente-se muitas vezes desamparado(a)?', OPCOES_SIM_NAO],
+  ['Prefere ficar em casa em vez de sair e fazer coisas novas?', OPCOES_SIM_NAO],
+  ['Sente que tem mais problemas de memória do que a maioria das pessoas?', OPCOES_SIM_NAO],
+  ['Acha que é maravilhoso estar vivo(a) neste momento?', [['Sim', 0], ['Não', 1]]],
+  ['Sente-se um pouco inútil, tal como está agora?', OPCOES_SIM_NAO],
+  ['Sente-se cheio(a) de energia?', [['Sim', 0], ['Não', 1]]],
+  ['Sente que a sua situação é sem esperança?', OPCOES_SIM_NAO],
+  ['Acha que a maioria das pessoas está melhor do que você?', OPCOES_SIM_NAO],
+];
+
+const gdsForm = $('#gds-form');
+GDS15_PERGUNTAS.forEach(([texto, opcoes], i) => {
+  $('#gds-perguntas').appendChild(criarPergunta(`gds-q${i + 1}`, i + 1, texto, opcoes));
+});
+const gdsResultado = $('#gds-resultado');
+
+function atualizarGDS() {
+  const respostas = [];
+  for (let i = 1; i <= 15; i += 1) {
+    const marcado = gdsForm.querySelector(`input[name="gds-q${i}"]:checked`);
+    respostas.push(marcado ? Number(marcado.value) : NaN);
+  }
+  const r = calcularGDS15(respostas);
+  const ok = $('#gds-ok');
+  const vazio = $('#gds-vazio');
+  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  ok.hidden = false;
+  vazio.hidden = true;
+  gdsResultado.dataset.nivel = r.nivel;
+  $('#gds-pontos').textContent = r.pontos;
+  $('#gds-gravidade').textContent = r.gravidade;
+}
+gdsForm.addEventListener('change', atualizarGDS);
+atualizarGDS();
+
 const params = new URLSearchParams(location.search);
-const validos = ['barthel', 'morse', 'braden', 'cognitivo'];
+const validos = ['barthel', 'morse', 'braden', 'cognitivo', 'gds15'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'barthel');

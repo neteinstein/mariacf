@@ -1,13 +1,14 @@
 // LDL calculado (Friedewald), sódio corrigido, cálcio corrigido, glicemia
-// média estimada (eAG), anion gap e osmolaridade sérica calculada —
-// fórmulas laboratoriais de uso frequente em MGF.
+// média estimada (eAG), anion gap, osmolaridade sérica calculada, défice
+// de água livre e HOMA-IR — fórmulas laboratoriais de uso frequente em MGF.
 // Sem dependências do DOM para poder ser testado em Node.
 //
 // Referências: Friedewald WT et al., Clin Chem 1972; Katz MA, NEJM 1973
 // (sódio corrigido); Payne RB et al., Br Med J 1973 (cálcio corrigido);
 // Nathan DM et al. (grupo ADAG), Diabetes Care 2008 (eAG); Emmett M &
 // Narins RG, Medicine 1977 (anion gap); Smithline N & Gardner KD, JAMA
-// 1976 (osmolaridade calculada).
+// 1976 (osmolaridade calculada); Adrogué HJ & Madias NE, N Engl J Med 2000
+// (défice de água livre); Matthews DR et al., Diabetologia 1985 (HOMA-IR).
 
 const arred = (n, casas = 0) => {
   const f = 10 ** casas;
@@ -97,4 +98,34 @@ export function calcularOsmolaridade(sodio, glicemia, ureia) {
   const nivel = osm > 295 ? 'alto' : osm < 275 ? 'moderado' : 'baixo';
 
   return { ok: true, osmolaridade: arred(osm, 0), nivel };
+}
+
+/** Défice de água livre (L), para correção de hipernatremia. Peso em kg, sódio atual em mEq/L. */
+export function calcularDeficeAguaLivre(pesoKg, sodioAtual, sexoFeminino) {
+  const peso = Number(pesoKg);
+  const na = Number(sodioAtual);
+
+  if (!Number.isFinite(peso) || peso <= 0) return { ok: false, motivo: 'Indique o peso.' };
+  if (!Number.isFinite(na) || na <= 0) return { ok: false, motivo: 'Indique o sódio atual.' };
+  if (na <= 140) return { ok: false, motivo: 'Esta fórmula aplica-se a hipernatremia (sódio > 140 mEq/L).' };
+
+  const fatorAgua = sexoFeminino ? 0.5 : 0.6;
+  const aguaCorporalTotal = peso * fatorAgua;
+  const defice = aguaCorporalTotal * (na / 140 - 1);
+
+  return { ok: true, defice: arred(defice, 1), aguaCorporalTotal: arred(aguaCorporalTotal, 1) };
+}
+
+/** HOMA-IR: resistência à insulina. Glicemia em jejum (mg/dL), insulina em jejum (µU/mL). */
+export function calcularHOMAIR(glicemiaJejum, insulinaJejum) {
+  const gli = Number(glicemiaJejum);
+  const ins = Number(insulinaJejum);
+
+  if (!Number.isFinite(gli) || gli <= 0) return { ok: false, motivo: 'Indique a glicemia em jejum.' };
+  if (!Number.isFinite(ins) || ins <= 0) return { ok: false, motivo: 'Indique a insulina em jejum.' };
+
+  const homa = (gli * ins) / 405;
+  const nivel = homa >= 2.5 ? 'alto' : 'baixo';
+
+  return { ok: true, homa: arred(homa, 2), nivel };
 }

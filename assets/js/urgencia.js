@@ -1,4 +1,5 @@
 import { calcularCURB65, calcularWellsTVP, calcularWellsTEP, calcularQTc, calcularGlasgow, calcularHEART, calcularNEWS2 } from './urgencia-core.js';
+import { calcularCRB65, calcularPERC, calcularOttawaTornozelo, calcularOttawaJoelho, calcularAlvarado } from './urgencia2-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -178,6 +179,92 @@ newsForm.addEventListener('input', atualizarNEWS2);
 newsForm.addEventListener('change', atualizarNEWS2);
 atualizarNEWS2();
 
+/* ---------- CRB-65 ---------- */
+
+const crbForm = $('#crb-form');
+const crbResultado = $('#crb-resultado');
+
+function atualizarCRB() {
+  const r = calcularCRB65({
+    confusao: $('#crb-confusao').checked,
+    freqRespiratoria: $('#crb-fr').checked,
+    pressaoArterial: $('#crb-pa').checked,
+    idade65: $('#crb-idade').checked,
+  });
+  crbResultado.dataset.nivel = r.nivel;
+  $('#crb-pontos').textContent = r.pontos;
+  $('#crb-recomendacao').textContent = r.recomendacao;
+}
+crbForm.addEventListener('change', atualizarCRB);
+atualizarCRB();
+
+/* ---------- PERC ---------- */
+
+const percForm = $('#perc-form');
+const percResultado = $('#perc-resultado');
+
+function atualizarPERC() {
+  const campos = ['idade50', 'fc100', 'spo295', 'edemaUnilateral', 'hemoptises', 'cirurgiaOuTrauma', 'tvpTepPrevio', 'hormonasExogenas'];
+  const fatores = {};
+  campos.forEach((c) => { fatores[c] = $(`#perc-${c}`).checked; });
+  const r = calcularPERC(fatores);
+  percResultado.dataset.nivel = r.nivel;
+  $('#perc-positivos').textContent = `${r.positivos} / 8 critérios presentes`;
+  $('#perc-veredito').textContent = r.negativo ? 'PERC negativo' : 'PERC positivo';
+  $('#perc-recomendacao').textContent = r.recomendacao;
+}
+percForm.addEventListener('change', atualizarPERC);
+atualizarPERC();
+
+/* ---------- Ottawa ---------- */
+
+const ottawaForm = $('#ottawa-form');
+
+function atualizarOttawa() {
+  const tornozelo = calcularOttawaTornozelo({
+    dorZonaMaleolar: $('#ot-dorZonaMaleolar').checked,
+    dorMaleoloLateral: $('#ot-dorMaleoloLateral').checked,
+    dorMaleoloMedial: $('#ot-dorMaleoloMedial').checked,
+    dorZonaMedioPe: $('#ot-dorZonaMedioPe').checked,
+    dor5Metatarso: $('#ot-dor5Metatarso').checked,
+    dorNavicular: $('#ot-dorNavicular').checked,
+    incapazSuportarPeso: $('#ot-incapazSuportarPesoTornozelo').checked,
+  });
+  const joelho = calcularOttawaJoelho({
+    idade55: $('#ot-idade55').checked,
+    dorCabecaPeroneo: $('#ot-dorCabecaPeroneo').checked,
+    dorIsoladaPatela: $('#ot-dorIsoladaPatela').checked,
+    incapazFletir90: $('#ot-incapazFletir90').checked,
+    incapazSuportarPeso: $('#ot-incapazSuportarPesoJoelho').checked,
+  });
+
+  $('#ot-tornozelo-veredito').textContent = tornozelo.radiografiaTornozelo ? 'Radiografia do tornozelo indicada' : 'Radiografia do tornozelo não indicada';
+  $('#ot-tornozelo-veredito').closest('.stat').dataset.nivel = tornozelo.radiografiaTornozelo ? 'alto' : 'baixo';
+  $('#ot-pe-veredito').textContent = tornozelo.radiografiaPe ? 'Radiografia do pé indicada' : 'Radiografia do pé não indicada';
+  $('#ot-pe-veredito').closest('.stat').dataset.nivel = tornozelo.radiografiaPe ? 'alto' : 'baixo';
+  $('#ot-joelho-veredito').textContent = joelho.indicada ? 'Radiografia do joelho indicada' : 'Radiografia do joelho não indicada';
+  $('#ot-joelho-veredito').closest('.stat').dataset.nivel = joelho.indicada ? 'alto' : 'baixo';
+}
+ottawaForm.addEventListener('change', atualizarOttawa);
+atualizarOttawa();
+
+/* ---------- Alvarado ---------- */
+
+const alvaradoForm = $('#alvarado-form');
+const alvaradoResultado = $('#alvarado-resultado');
+
+function atualizarAlvarado() {
+  const campos = ['migracaoDor', 'anorexia', 'nauseasVomitos', 'dorFID', 'reboundPositivo', 'febre', 'leucocitose', 'desvioEsquerdo'];
+  const fatores = {};
+  campos.forEach((c) => { fatores[c] = $(`#al-${c}`).checked; });
+  const r = calcularAlvarado(fatores);
+  alvaradoResultado.dataset.nivel = r.nivel;
+  $('#al-pontos').textContent = r.pontos;
+  $('#al-recomendacao').textContent = r.recomendacao;
+}
+alvaradoForm.addEventListener('change', atualizarAlvarado);
+atualizarAlvarado();
+
 const params = new URLSearchParams(location.search);
-const validos = ['curb65', 'tvp', 'tep', 'qtc', 'gcs', 'heart', 'news2'];
+const validos = ['curb65', 'tvp', 'tep', 'qtc', 'gcs', 'heart', 'news2', 'crb65', 'perc', 'ottawa', 'alvarado'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'curb65');

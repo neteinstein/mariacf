@@ -1,12 +1,15 @@
-// APGAR familiar, EPDS, Escala de Zarit e Teste de Fagerström — instrumentos
-// de avaliação psicossocial e familiar frequentes em MGF.
+// APGAR familiar, EPDS, Escala de Zarit, Teste de Fagerström e Teste de
+// Morisky — instrumentos de avaliação psicossocial e familiar frequentes
+// em MGF.
 // Sem dependências do DOM para poder ser testado em Node.
 //
 // Referências: Smilkstein G, J Fam Pract 1978 (APGAR familiar); Cox JL,
 // Holden JM & Sagovsky R, Br J Psychiatry 1987, e Areias ME et al.
 // (validação portuguesa), 1996 (EPDS); Zarit SH, Reever KE & Bach-Peterson
 // J, Gerontologist 1980, e Sequeira C (validação portuguesa), 2010 (Zarit);
-// Heatherton TF et al., Br J Addict 1991 (Fagerström/FTND).
+// Heatherton TF et al., Br J Addict 1991 (Fagerström/FTND); Morisky DE,
+// Green LW & Levine DM, Med Care 1986 (escala original de 4 itens de
+// adesão à terapêutica).
 //
 // Nota: o EPDS e a Escala de Zarit podem ser reproduzidos livremente para
 // uso clínico e de investigação, desde que citados os autores originais.
@@ -77,4 +80,20 @@ export function calcularFagerstrom(respostas = {}) {
   else { nivel = 'muito-alto'; dependencia = 'Dependência muito elevada'; }
 
   return { ok: true, pontos, max: 10, nivel, dependencia };
+}
+
+/** Teste de Morisky (versão original de 4 itens, 1986): adesão à terapêutica. */
+export function calcularMorisky(respostas = {}) {
+  const campos = ['esquecimento', 'descuido', 'paraQuandoBem', 'paraQuandoMal'];
+  const valores = campos.map((c) => Number(respostas[c]));
+  const pontos = soma(valores, 4);
+  if (pontos === null) return { ok: false, motivo: 'Responda a todas as perguntas.' };
+
+  let nivel;
+  let adesao;
+  if (pontos === 0) { nivel = 'baixo'; adesao = 'Alta adesão'; }
+  else if (pontos <= 2) { nivel = 'moderado'; adesao = 'Adesão média'; }
+  else { nivel = 'alto'; adesao = 'Baixa adesão'; }
+
+  return { ok: true, pontos, max: 4, nivel, adesao };
 }

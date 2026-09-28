@@ -8,6 +8,8 @@ import {
   hba1cMmolMolParaPercent,
   calcularAnionGap,
   calcularOsmolaridade,
+  calcularDeficeAguaLivre,
+  calcularHOMAIR,
 } from '../assets/js/laboratorial-core.js';
 
 test('LDL Friedewald: CT 200, HDL 50, TG 100 → LDL 130', () => {
@@ -79,5 +81,28 @@ test('Osmolaridade: Na 140, glicemia 90, ureia 28 → normal', () => {
 test('Osmolaridade: hiperglicemia grave eleva a osmolaridade', () => {
   const r = calcularOsmolaridade(140, 600, 28);
   assert.ok(r.osmolaridade > 295);
+  assert.equal(r.nivel, 'alto');
+});
+
+test('Défice de água livre: homem 70kg, Na 160 → défice positivo', () => {
+  const r = calcularDeficeAguaLivre(70, 160, false);
+  // TBW = 70*0.6 = 42; défice = 42*(160/140-1) = 42*0.142857 = 6.0
+  assert.equal(r.aguaCorporalTotal, 42);
+  assert.equal(r.defice, 6);
+});
+
+test('Défice de água livre: só válido em hipernatremia', () => {
+  assert.equal(calcularDeficeAguaLivre(70, 138, false).ok, false);
+});
+
+test('HOMA-IR: glicemia 90, insulina 10 → 2.22, sem resistência', () => {
+  const r = calcularHOMAIR(90, 10);
+  assert.equal(r.homa, 2.22);
+  assert.equal(r.nivel, 'baixo');
+});
+
+test('HOMA-IR: valores elevados → resistência à insulina', () => {
+  const r = calcularHOMAIR(120, 25);
+  // 120*25/405 = 7.41
   assert.equal(r.nivel, 'alto');
 });

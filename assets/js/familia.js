@@ -1,4 +1,4 @@
-import { calcularAPGARFamiliar, calcularEPDS, calcularZarit, calcularFagerstrom } from './familia-core.js';
+import { calcularAPGARFamiliar, calcularEPDS, calcularZarit, calcularFagerstrom, calcularMorisky } from './familia-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -195,6 +195,41 @@ function atualizarFagerstrom() {
 fagForm.addEventListener('change', atualizarFagerstrom);
 atualizarFagerstrom();
 
+/* ---------- Morisky ---------- */
+
+const MORISKY_PERGUNTAS = [
+  { campo: 'esquecimento', texto: 'Alguma vez se esqueceu de tomar os seus medicamentos?' },
+  { campo: 'descuido', texto: 'Às vezes é descuidado(a) quanto ao horário de tomar os medicamentos?' },
+  { campo: 'paraQuandoBem', texto: 'Quando se sente bem, alguma vez deixa de tomar os medicamentos?' },
+  { campo: 'paraQuandoMal', texto: 'Quando se sente mal com os medicamentos, alguma vez para de os tomar?' },
+];
+const OPCOES_SIM_NAO = [['Não', 0], ['Sim', 1]];
+
+const morForm = $('#mor-form');
+MORISKY_PERGUNTAS.forEach((p, i) => {
+  $('#mor-perguntas').appendChild(criarPergunta(`mor-${p.campo}`, i + 1, p.texto, OPCOES_SIM_NAO));
+});
+const morResultado = $('#mor-resultado');
+
+function atualizarMorisky() {
+  const respostas = {};
+  MORISKY_PERGUNTAS.forEach((p) => {
+    const marcado = morForm.querySelector(`input[name="mor-${p.campo}"]:checked`);
+    respostas[p.campo] = marcado ? Number(marcado.value) : NaN;
+  });
+  const r = calcularMorisky(respostas);
+  const ok = $('#mor-ok');
+  const vazio = $('#mor-vazio');
+  if (!r.ok) { ok.hidden = true; vazio.hidden = false; return; }
+  ok.hidden = false;
+  vazio.hidden = true;
+  morResultado.dataset.nivel = r.nivel;
+  $('#mo-pontos').textContent = r.pontos;
+  $('#mo-adesao').textContent = r.adesao;
+}
+morForm.addEventListener('change', atualizarMorisky);
+atualizarMorisky();
+
 const params = new URLSearchParams(location.search);
-const validos = ['apgar', 'epds', 'zarit', 'fagerstrom'];
+const validos = ['apgar', 'epds', 'zarit', 'fagerstrom', 'morisky'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'apgar');

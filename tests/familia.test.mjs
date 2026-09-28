@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { calcularAPGARFamiliar, calcularEPDS, calcularZarit, calcularFagerstrom } from '../assets/js/familia-core.js';
+import { calcularAPGARFamiliar, calcularEPDS, calcularZarit, calcularFagerstrom, calcularMorisky } from '../assets/js/familia-core.js';
 
 test('APGAR familiar: 10 → função boa', () => {
   const r = calcularAPGARFamiliar(new Array(5).fill(2));
@@ -72,4 +72,16 @@ test('Fagerström: 10 → dependência muito elevada', () => {
   });
   assert.equal(r.pontos, 10);
   assert.equal(r.nivel, 'muito-alto');
+});
+
+test('Morisky: 0 → alta adesão', () => {
+  const r = calcularMorisky({ esquecimento: 0, descuido: 0, paraQuandoBem: 0, paraQuandoMal: 0 });
+  assert.equal(r.pontos, 0);
+  assert.equal(r.nivel, 'baixo');
+});
+
+test('Morisky: 4 → baixa adesão', () => {
+  const r = calcularMorisky({ esquecimento: 1, descuido: 1, paraQuandoBem: 1, paraQuandoMal: 1 });
+  assert.equal(r.pontos, 4);
+  assert.equal(r.nivel, 'alto');
 });

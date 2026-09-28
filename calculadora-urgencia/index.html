@@ -60,6 +60,10 @@
       <button class="tabbtn" type="button" data-tab="gcs" role="tab" aria-selected="false">Glasgow</button>
       <button class="tabbtn" type="button" data-tab="heart" role="tab" aria-selected="false">HEART</button>
       <button class="tabbtn" type="button" data-tab="news2" role="tab" aria-selected="false">NEWS2</button>
+      <button class="tabbtn" type="button" data-tab="crb65" role="tab" aria-selected="false">CRB-65</button>
+      <button class="tabbtn" type="button" data-tab="perc" role="tab" aria-selected="false">PERC</button>
+      <button class="tabbtn" type="button" data-tab="ottawa" role="tab" aria-selected="false">Ottawa</button>
+      <button class="tabbtn" type="button" data-tab="alvarado" role="tab" aria-selected="false">Alvarado</button>
     </div>
 
     <div class="calc" data-painel="curb65">
@@ -414,6 +418,124 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="crb65" hidden>
+      <form class="panel reveal" id="crb-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">C</span> Critérios (sem análises)</legend>
+          <div class="checklist">
+            <div class="check-item">
+              <input type="checkbox" id="crb-confusao">
+              <label for="crb-confusao"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Confusão de novo</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="crb-fr">
+              <label for="crb-fr"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Frequência respiratória ≥ 30/min</strong></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="crb-pa">
+              <label for="crb-pa"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Pressão arterial baixa</strong><small>PAS &lt; 90 mmHg ou PAD ≤ 60 mmHg</small></span><span class="pts">1</span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="crb-idade">
+              <label for="crb-idade"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Idade ≥ 65 anos</strong></span><span class="pts">1</span></label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="crb-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker">Pontuação CRB-65</div>
+          <div class="dose-line"><div class="dose-big"><span id="crb-pontos">0</span><span class="u">/ 4</span></div></div>
+          <div class="dose-sub" id="crb-recomendacao"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="perc" hidden>
+      <form class="panel reveal" id="perc-form" autocomplete="off">
+        <p class="step-hint" style="margin-left:0">Só é válida quando a probabilidade clínica de TEP já é considerada baixa (gestalt clínico).</p>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">P</span> Critérios</legend>
+          <div class="checklist">
+            <div class="check-item"><input type="checkbox" id="perc-idade50"><label for="perc-idade50"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Idade ≥ 50 anos</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="perc-fc100"><label for="perc-fc100"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Frequência cardíaca ≥ 100/min</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="perc-spo295"><label for="perc-spo295"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>SpO₂ &lt; 95% em ar ambiente</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="perc-edemaUnilateral"><label for="perc-edemaUnilateral"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Edema unilateral da perna</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="perc-hemoptises"><label for="perc-hemoptises"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Hemoptises</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="perc-cirurgiaOuTrauma"><label for="perc-cirurgiaOuTrauma"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Cirurgia ou traumatismo recente</strong><small>Com anestesia geral, últimas 4 semanas</small></span></label></div>
+            <div class="check-item"><input type="checkbox" id="perc-tvpTepPrevio"><label for="perc-tvpTepPrevio"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>TVP ou TEP prévios</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="perc-hormonasExogenas"><label for="perc-hormonasExogenas"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Uso de hormonas exógenas</strong><small>Contracetivos orais, terapêutica hormonal, estrogénios</small></span></label></div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="perc-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker" id="perc-veredito">PERC negativo</div>
+          <div class="dose-sub" id="perc-positivos"></div>
+          <div class="dose-sub" id="perc-recomendacao" style="margin-top:8px"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="ottawa" hidden>
+      <form class="panel reveal" id="ottawa-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">T</span> Tornozelo / pé</legend>
+          <div class="checklist">
+            <div class="check-item"><input type="checkbox" id="ot-dorZonaMaleolar"><label for="ot-dorZonaMaleolar"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor na zona maleolar</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="ot-dorMaleoloLateral"><label for="ot-dorMaleoloLateral"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor óssea na margem posterior/ponta do maléolo lateral</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="ot-dorMaleoloMedial"><label for="ot-dorMaleoloMedial"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor óssea na margem posterior/ponta do maléolo medial</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="ot-dorZonaMedioPe"><label for="ot-dorZonaMedioPe"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor na zona média do pé</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="ot-dor5Metatarso"><label for="ot-dor5Metatarso"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor à palpação da base do 5.º metatarso</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="ot-dorNavicular"><label for="ot-dorNavicular"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor à palpação do osso navicular</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="ot-incapazSuportarPesoTornozelo"><label for="ot-incapazSuportarPesoTornozelo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Incapacidade de suportar peso</strong><small>4 passos, imediatamente e na urgência</small></span></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">J</span> Joelho</legend>
+          <div class="checklist">
+            <div class="check-item"><input type="checkbox" id="ot-idade55"><label for="ot-idade55"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Idade ≥ 55 anos</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="ot-dorCabecaPeroneo"><label for="ot-dorCabecaPeroneo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor isolada à palpação da cabeça do perónio</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="ot-dorIsoladaPatela"><label for="ot-dorIsoladaPatela"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor isolada à palpação da patela</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="ot-incapazFletir90"><label for="ot-incapazFletir90"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Incapacidade de fletir a 90°</strong></span></label></div>
+            <div class="check-item"><input type="checkbox" id="ot-incapazSuportarPesoJoelho"><label for="ot-incapazSuportarPesoJoelho"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Incapacidade de suportar peso</strong><small>4 passos, imediatamente e na urgência</small></span></label></div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel reveal" style="padding:24px">
+        <div class="stats" style="grid-template-columns:1fr">
+          <div class="stat score-result" id="ot-stat-tornozelo"><div class="k">Tornozelo</div><div class="v" id="ot-tornozelo-veredito" style="font-size:1.1rem">—</div></div>
+          <div class="stat score-result" id="ot-stat-pe"><div class="k">Pé</div><div class="v" id="ot-pe-veredito" style="font-size:1.1rem">—</div></div>
+          <div class="stat score-result" id="ot-stat-joelho"><div class="k">Joelho</div><div class="v" id="ot-joelho-veredito" style="font-size:1.1rem">—</div></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="alvarado" hidden>
+      <form class="panel reveal" id="alvarado-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">A</span> Sintomas e sinais</legend>
+          <div class="checklist">
+            <div class="check-item"><input type="checkbox" id="al-migracaoDor"><label for="al-migracaoDor"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Migração da dor para a fossa ilíaca direita</strong></span><span class="pts">1</span></label></div>
+            <div class="check-item"><input type="checkbox" id="al-anorexia"><label for="al-anorexia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Anorexia</strong></span><span class="pts">1</span></label></div>
+            <div class="check-item"><input type="checkbox" id="al-nauseasVomitos"><label for="al-nauseasVomitos"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Náuseas ou vómitos</strong></span><span class="pts">1</span></label></div>
+            <div class="check-item"><input type="checkbox" id="al-dorFID"><label for="al-dorFID"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor à palpação da fossa ilíaca direita</strong></span><span class="pts">2</span></label></div>
+            <div class="check-item"><input type="checkbox" id="al-reboundPositivo"><label for="al-reboundPositivo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Dor à descompressão (rebound)</strong></span><span class="pts">1</span></label></div>
+            <div class="check-item"><input type="checkbox" id="al-febre"><label for="al-febre"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Febre ≥ 37,3 °C</strong></span><span class="pts">1</span></label></div>
+            <div class="check-item"><input type="checkbox" id="al-leucocitose"><label for="al-leucocitose"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Leucocitose &gt; 10.000/mm³</strong></span><span class="pts">2</span></label></div>
+            <div class="check-item"><input type="checkbox" id="al-desvioEsquerdo"><label for="al-desvioEsquerdo"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Desvio esquerdo / neutrofilia &gt; 75%</strong></span><span class="pts">1</span></label></div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="alvarado-resultado" aria-live="polite">
+        <div class="result-head">
+          <div class="result-kicker">Score de Alvarado</div>
+          <div class="dose-line"><div class="dose-big"><span id="al-pontos">0</span><span class="u">/ 10</span></div></div>
+          <div class="dose-sub" id="al-recomendacao"></div>
+        </div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🫁</div>
@@ -456,6 +578,34 @@
         <ul>
           <li>Escala 1 (não usar em doentes com risco de insuficiência respiratória hipercápnica, ex. DPOC grave).</li>
           <li>Um único parâmetro muito alterado já implica resposta clínica urgente, mesmo com total baixo.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🫁</div>
+        <h3>CRB-65</h3>
+        <ul>
+          <li>Versão do CURB-65 sem análises — útil em consulta sem acesso imediato a laboratório.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🩸</div>
+        <h3>PERC</h3>
+        <ul>
+          <li>Só se aplica quando a probabilidade clínica de TEP já é baixa — não substitui o Wells.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🦶</div>
+        <h3>Regras de Ottawa</h3>
+        <ul>
+          <li>Decidem se vale a pena pedir radiografia num traumatismo do tornozelo, pé ou joelho.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🔍</div>
+        <h3>Score de Alvarado</h3>
+        <ul>
+          <li>1–4: baixa probabilidade · 5–6: possível apendicite · 7–8: provável · 9–10: muito provável.</li>
         </ul>
       </article>
     </section>

@@ -2201,6 +2201,14 @@ a.pub:hover {
 .score-result[data-nivel='alto'] .result-head { --c: var(--coral); }
 .score-result[data-nivel='muito-alto'] .result-head { --c: var(--danger); }
 
+/* Variante compacta: aplica a cor de risco diretamente a um .stat, sem .result-head */
+.stat[data-nivel='baixo'] { border-color: var(--teal); }
+.stat[data-nivel='moderado'] { border-color: var(--sun); }
+.stat[data-nivel='alto'] { border-color: var(--coral); }
+.stat[data-nivel='alto'] .v { color: var(--coral); }
+.stat[data-nivel='muito-alto'] { border-color: var(--danger); }
+.stat[data-nivel='muito-alto'] .v { color: var(--danger); }
+
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;

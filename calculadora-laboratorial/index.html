@@ -59,6 +59,8 @@
       <button class="tabbtn" type="button" data-tab="eag" role="tab" aria-selected="false">eAG</button>
       <button class="tabbtn" type="button" data-tab="ag" role="tab" aria-selected="false">Anion gap</button>
       <button class="tabbtn" type="button" data-tab="osm" role="tab" aria-selected="false">Osmolaridade</button>
+      <button class="tabbtn" type="button" data-tab="agua" role="tab" aria-selected="false">Défice de água livre</button>
+      <button class="tabbtn" type="button" data-tab="homa" role="tab" aria-selected="false">HOMA-IR</button>
     </div>
 
     <div class="calc" data-painel="ldl">
@@ -270,6 +272,76 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="agua" hidden>
+      <form class="panel reveal" id="agua-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="agua-peso"><span class="step-num">1</span> Peso</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="agua-peso" data-step="-1" aria-label="Diminuir peso">−</button>
+              <div class="weight-field"><input id="agua-peso" type="number" inputmode="numeric" min="20" max="200" step="1" value="70"><span class="unit">kg</span></div>
+              <button class="stepper" type="button" data-alvo="agua-peso" data-step="1" aria-label="Aumentar peso">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="agua-sodio"><span class="step-num">2</span> Sódio atual</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="agua-sodio" data-step="-1" aria-label="Diminuir sódio">−</button>
+              <div class="weight-field"><input id="agua-sodio" type="number" inputmode="numeric" min="120" max="200" step="1" value="150"><span class="unit">mEq/L</span></div>
+              <button class="stepper" type="button" data-alvo="agua-sodio" data-step="1" aria-label="Aumentar sódio">+</button>
+            </div>
+          </div>
+        </div>
+        <label class="choice" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:2px solid var(--line)">
+          <input type="checkbox" id="agua-sexo" style="position:static;opacity:1;width:auto">
+          Sexo feminino
+        </label>
+      </form>
+      <section class="panel result reveal" id="agua-resultado" aria-live="polite">
+        <div id="agua-ok">
+          <div class="result-head">
+            <div class="result-kicker">Défice de água livre</div>
+            <div class="dose-line"><div class="dose-big"><span id="agua-valor">0</span><span class="u">L</span></div></div>
+            <div class="dose-sub" id="agua-tbw"></div>
+          </div>
+        </div>
+        <div class="empty" id="agua-vazio" hidden><div class="big-emoji" aria-hidden="true">🚰</div><p class="motivo" id="agua-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="homa" hidden>
+      <form class="panel reveal" id="homa-form" autocomplete="off">
+        <div class="field-row">
+          <div class="step">
+            <label class="step-label" for="homa-glicemia"><span class="step-num">1</span> Glicemia em jejum</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="homa-glicemia" data-step="-1" aria-label="Diminuir glicemia">−</button>
+              <div class="weight-field"><input id="homa-glicemia" type="number" inputmode="numeric" min="50" max="400" step="1" value="90"><span class="unit">mg/dL</span></div>
+              <button class="stepper" type="button" data-alvo="homa-glicemia" data-step="1" aria-label="Aumentar glicemia">+</button>
+            </div>
+          </div>
+          <div class="step">
+            <label class="step-label" for="homa-insulina"><span class="step-num">2</span> Insulina em jejum</label>
+            <div class="weight">
+              <button class="stepper" type="button" data-alvo="homa-insulina" data-step="-0.5" aria-label="Diminuir insulina">−</button>
+              <div class="weight-field"><input id="homa-insulina" type="number" inputmode="decimal" min="1" max="100" step="0.5" value="10"><span class="unit">µU/mL</span></div>
+              <button class="stepper" type="button" data-alvo="homa-insulina" data-step="0.5" aria-label="Aumentar insulina">+</button>
+            </div>
+          </div>
+        </div>
+      </form>
+      <section class="panel result score-result reveal" id="homa-resultado" aria-live="polite">
+        <div id="homa-ok">
+          <div class="result-head">
+            <div class="result-kicker">HOMA-IR</div>
+            <div class="dose-line"><div class="dose-big"><span id="homa-valor">0</span></div></div>
+            <div class="dose-sub">≥ 2,5 sugere insulinorresistência</div>
+          </div>
+        </div>
+        <div class="empty" id="homa-vazio" hidden><div class="big-emoji" aria-hidden="true">🍬</div><p class="motivo" id="homa-motivo"></p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🩸</div>
@@ -304,6 +376,20 @@
         <h3>Osmolaridade calculada</h3>
         <ul>
           <li>Um hiato osmolar elevado (medida − calculada &gt; 10) sugere osmoles não medidos, como álcoois tóxicos.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🚰</div>
+        <h3>Défice de água livre</h3>
+        <ul>
+          <li>Estima o volume a repor em hipernatremia — corrija gradualmente, evitando descidas rápidas do sódio.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🍬</div>
+        <h3>HOMA-IR</h3>
+        <ul>
+          <li>Estima a resistência à insulina a partir da glicemia e insulina em jejum, sem necessidade de prova de tolerância.</li>
         </ul>
       </article>
     </section>

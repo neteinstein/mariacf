@@ -57,6 +57,7 @@
       <button class="tabbtn" type="button" data-tab="epds" role="tab" aria-selected="false">EPDS</button>
       <button class="tabbtn" type="button" data-tab="zarit" role="tab" aria-selected="false">Zarit</button>
       <button class="tabbtn" type="button" data-tab="fagerstrom" role="tab" aria-selected="false">Fagerström</button>
+      <button class="tabbtn" type="button" data-tab="morisky" role="tab" aria-selected="false">Morisky</button>
     </div>
 
     <div class="calc" data-painel="apgar">
@@ -129,6 +130,22 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="morisky" hidden>
+      <form class="panel reveal" id="mor-form" autocomplete="off">
+        <div id="mor-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="mor-resultado" aria-live="polite">
+        <div id="mor-ok">
+          <div class="result-head">
+            <div class="result-kicker">Teste de Morisky</div>
+            <div class="dose-line"><div class="dose-big"><span id="mo-pontos">0</span><span class="u">/ 4</span></div></div>
+            <div class="dose-sub" id="mo-adesao"></div>
+          </div>
+        </div>
+        <div class="empty" id="mor-vazio"><div class="big-emoji" aria-hidden="true">💊</div><p class="motivo">Responda a todas as perguntas para ver a pontuação.</p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">👨‍👩‍👧</div>
@@ -157,6 +174,13 @@
         <h3>Fagerström</h3>
         <ul>
           <li>0–4: dependência baixa · 5: moderada · 6–7: elevada · 8–10: muito elevada.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">💊</div>
+        <h3>Teste de Morisky</h3>
+        <ul>
+          <li>0: alta adesão · 1–2: adesão média · 3–4: baixa adesão à terapêutica.</li>
         </ul>
       </article>
     </section>

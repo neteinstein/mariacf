@@ -57,6 +57,7 @@
       <button class="tabbtn" type="button" data-tab="morse" role="tab" aria-selected="false">Escala de Morse</button>
       <button class="tabbtn" type="button" data-tab="braden" role="tab" aria-selected="false">Escala de Braden</button>
       <button class="tabbtn" type="button" data-tab="cognitivo" role="tab" aria-selected="false">MMSE / MoCA</button>
+      <button class="tabbtn" type="button" data-tab="gds15" role="tab" aria-selected="false">GDS-15</button>
     </div>
 
     <div class="calc" data-painel="barthel">
@@ -155,6 +156,22 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="gds15" hidden>
+      <form class="panel reveal" id="gds-form" autocomplete="off">
+        <div id="gds-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="gds-resultado" aria-live="polite">
+        <div id="gds-ok">
+          <div class="result-head">
+            <div class="result-kicker">Escala de Depressão Geriátrica (GDS-15)</div>
+            <div class="dose-line"><div class="dose-big"><span id="gds-pontos">0</span><span class="u">/ 15</span></div></div>
+            <div class="dose-sub" id="gds-gravidade"></div>
+          </div>
+        </div>
+        <div class="empty" id="gds-vazio"><div class="big-emoji" aria-hidden="true">🧓</div><p class="motivo">Responda a todas as perguntas para ver a pontuação.</p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🧓</div>
@@ -175,6 +192,14 @@
         <h3>Escala de Braden</h3>
         <ul>
           <li>≤ 9: risco muito elevado · 10–12: elevado · 13–14: moderado · 15–18: baixo · 19–23: sem risco significativo.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🧓</div>
+        <h3>GDS-15</h3>
+        <ul>
+          <li>0–4: normal · 5–8: depressão ligeira · 9–11: moderada · 12–15: grave.</li>
+          <li>Mais adequada que o PHQ-9 para rastreio de depressão em idosos.</li>
         </ul>
       </article>
     </section>

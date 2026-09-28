@@ -1,12 +1,13 @@
-// Índice de Barthel, Escala de Morse, Escala de Braden e um interpretador
-// de pontuação do MMSE/MoCA — avaliação geriátrica em cuidados primários.
+// Índice de Barthel, Escala de Morse, Escala de Braden, um interpretador
+// de pontuação do MMSE/MoCA, e a Escala de Depressão Geriátrica (GDS-15) —
+// avaliação geriátrica em cuidados primários.
 // Sem dependências do DOM para poder ser testado em Node.
 //
 // Referências: Mahoney FI & Barthel DW, Md State Med J 1965 (Barthel);
 // Morse JM et al., Can J Aging 1989 (Morse); Bergstrom N et al., Nurs Res
 // 1987 (Braden); Folstein MF et al., J Psychiatr Res 1975 e Guerreiro M et
 // al. (validação portuguesa), 1994 (MMSE); Nasreddine ZS et al., JAGS 2005
-// (MoCA).
+// (MoCA); Sheikh JI & Yesavage JA, Clin Gerontol 1986 (GDS-15).
 //
 // Nota: o MMSE e o MoCA são instrumentos protegidos (o MMSE é comercial
 // desde 2001). Esta calculadora não reproduz os itens dos testes — apenas
@@ -100,4 +101,22 @@ export function classificarMoCA(pontos, anosEscolaridade) {
   const alterado = ajustado < 26;
 
   return { ok: true, pontos: p, pontosAjustados: ajustado, nivel: alterado ? 'alto' : 'baixo', alterado };
+}
+
+/** GDS-15 (Escala de Depressão Geriátrica, versão curta): 15 itens, 1 ponto cada quando a resposta é "patológica". */
+export function calcularGDS15(respostas = []) {
+  const valores = respostas.slice(0, 15).map(Number);
+  if (valores.length < 15 || valores.some((v) => !Number.isFinite(v))) {
+    return { ok: false, motivo: 'Responda a todas as perguntas.' };
+  }
+  const pontos = valores.reduce((a, b) => a + b, 0);
+
+  let nivel;
+  let gravidade;
+  if (pontos <= 4) { nivel = 'baixo'; gravidade = 'Sem sintomas depressivos significativos'; }
+  else if (pontos <= 8) { nivel = 'moderado'; gravidade = 'Depressão ligeira'; }
+  else if (pontos <= 11) { nivel = 'alto'; gravidade = 'Depressão moderada'; }
+  else { nivel = 'muito-alto'; gravidade = 'Depressão grave'; }
+
+  return { ok: true, pontos, max: 15, nivel, gravidade };
 }
