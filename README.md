@@ -53,7 +53,8 @@ npm test                      # testes da lógica de doses (Node 18+)
 
 O site é publicado pelo workflow `.github/workflows/pages.yml` a cada push para `main`
 (também pode ser corrido à mão em *Actions → Deploy GitHub Pages → Run workflow*).
-O workflow corre os testes e publica apenas `index.html`, `calculadora-doses/`, `sobre/` e `assets/`.
+O workflow corre os testes e publica todo o repositório (página inicial, `sobre/`, todas as pastas
+`calculadora-*/` e `assets/`), exceto `tests/`, `.github/`, `package.json` e este README.
 Nos pull requests corre só os testes e a preparação do site, sem publicar.
 
 Configuração única: em **Settings → Pages → Build and deployment**, escolher *Source: GitHub Actions*.
