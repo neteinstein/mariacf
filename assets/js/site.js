@@ -31,6 +31,17 @@ document.querySelectorAll('.theme-toggle').forEach((btn) => {
   });
 });
 
+// Mostrar o URL absoluto do site no cabeçalho apenas na impressão (o domínio nunca é fixo no código).
+const brand = document.querySelector('.site-header .brand');
+const brandText = brand?.querySelector('.brand-text');
+if (brand && brandText) {
+  const home = new URL(brand.getAttribute('href'), document.baseURI).href;
+  const printUrl = document.createElement('span');
+  printUrl.className = 'print-url';
+  printUrl.textContent = home;
+  brandText.appendChild(printUrl);
+}
+
 // Revelar elementos ao entrar no ecrã
 const reveals = document.querySelectorAll('.reveal');
 if ('IntersectionObserver' in window) {

@@ -1022,8 +1022,11 @@ fieldset.step legend + .step-hint {
   flex-shrink: 0;
 }
 
+.print-url {
+  display: none;
+}
+
 @media print {
-  .site-header,
   .page-hero,
   .panel:not(.result),
   .info-grid,
@@ -1032,6 +1035,37 @@ fieldset.step legend + .step-hint {
   .result-actions,
   .backdrop {
     display: none !important;
+  }
+
+  .site-header {
+    display: block !important;
+    position: static;
+    padding: 0 0 12px;
+    margin-bottom: 16px;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid #ccc;
+    color: #000;
+  }
+
+  .site-header .header-actions {
+    display: none !important;
+  }
+
+  .brand-mark {
+    box-shadow: none;
+  }
+
+  .brand-sub {
+    color: #555;
+  }
+
+  .print-url {
+    display: block;
+    font-size: 0.75rem;
+    color: #555;
+    margin-top: 2px;
   }
 
   .result {
