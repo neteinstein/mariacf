@@ -2372,3 +2372,25 @@ a.pub:hover {
     font-size: clamp(3.4rem, 10vw, 4.6rem);
   }
 }
+
+/* ---------- Contactos SNS ---------- */
+
+.contactos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.contacto-num {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(1.7rem, 4vw, 2.2rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--tint, var(--teal));
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.contacto-num:hover {
+  text-decoration: underline;
+}

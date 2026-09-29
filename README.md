@@ -6,6 +6,7 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 ## Páginas
 
 - `/` — página inicial com as ferramentas
+- `/sns/` — contactos úteis do SNS (112, SNS 24 e outras linhas de ajuda)
 - `/sobre/` — percurso da Dra. Maria, trabalhos científicos publicados e artigos no Ponto SJ
 
 ## Ferramentas
