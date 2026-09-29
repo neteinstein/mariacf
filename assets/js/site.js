@@ -73,5 +73,13 @@ document.querySelectorAll('.tool').forEach((card) => {
   });
 });
 
+// Funcionamento sem rede e instalação como aplicação (o service worker vive na raiz do site).
+if ('serviceWorker' in navigator && brand) {
+  const raiz = new URL(brand.getAttribute('href'), document.baseURI);
+  navigator.serviceWorker.register(new URL('sw.js', raiz), { scope: raiz.pathname }).catch(() => {
+    /* sem service worker: o site continua a funcionar normalmente com rede */
+  });
+}
+
 const ano = document.getElementById('ano');
 if (ano) ano.textContent = new Date().getFullYear();

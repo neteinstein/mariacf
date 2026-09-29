@@ -4,11 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>LDL, sódio, cálcio e eAG · Dra. Maria Cortês Ferreira</title>
-  <meta name="description" content="Calcule o LDL (Friedewald), o sódio corrigido para hiperglicemia, o cálcio corrigido pela albumina e a glicemia média estimada (eAG) a partir da HbA1c.">
+  <meta name="description" content="Calcule o LDL (Friedewald), o sódio corrigido para hiperglicemia, o cálcio corrigido pela albumina e a glicemia média estimada (eAG) a partir da HbA1c, e converta análises entre mg/dL e mmol/L.">
   <meta name="theme-color" content="#0f8f83">
   <meta property="og:title" content="LDL, sódio, cálcio e eAG">
   <meta property="og:description" content="Fórmulas laboratoriais de uso frequente em MGF.">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,7 +51,7 @@
     <section class="page-hero reveal">
       <span class="eyebrow"><span class="dot"></span> Laboratorial · Fórmulas de bolso</span>
       <h1 class="display">LDL, sódio, cálcio e <em>eAG</em></h1>
-      <p class="lead">Quatro fórmulas laboratoriais de uso frequente em consulta: LDL calculado, sódio corrigido para hiperglicemia, cálcio corrigido pela albumina e glicemia média estimada a partir da HbA1c.</p>
+      <p class="lead">Fórmulas laboratoriais de uso frequente em consulta — LDL calculado, sódio e cálcio corrigidos, glicemia média estimada, anion gap, osmolaridade, défice de água livre e HOMA-IR — e um conversor entre unidades convencionais (mg/dL) e SI (mmol/L).</p>
     </section>
 
     <div class="tabbar" role="tablist" aria-label="Escolher fórmula">
@@ -61,6 +63,7 @@
       <button class="tabbtn" type="button" data-tab="osm" role="tab" aria-selected="false">Osmolaridade</button>
       <button class="tabbtn" type="button" data-tab="agua" role="tab" aria-selected="false">Défice de água livre</button>
       <button class="tabbtn" type="button" data-tab="homa" role="tab" aria-selected="false">HOMA-IR</button>
+      <button class="tabbtn" type="button" data-tab="conv" role="tab" aria-selected="false">Conversão de unidades</button>
     </div>
 
     <div class="calc" data-painel="ldl">
@@ -422,6 +425,67 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="conv" hidden>
+      <form class="panel reveal" id="conv-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">1</span> Análise</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-glicose" value="glicose" checked><label for="conv-analito-glicose"><strong>Glicose</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-hba1c" value="hba1c"><label for="conv-analito-hba1c"><strong>HbA1c</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-colesterol" value="colesterol"><label for="conv-analito-colesterol"><strong>Colesterol</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-trigliceridos" value="trigliceridos"><label for="conv-analito-trigliceridos"><strong>Triglicéridos</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-creatinina" value="creatinina"><label for="conv-analito-creatinina"><strong>Creatinina</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-ureia" value="ureia"><label for="conv-analito-ureia"><strong>Ureia</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-acidoUrico" value="acidoUrico"><label for="conv-analito-acidoUrico"><strong>Ácido úrico</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-bilirrubina" value="bilirrubina"><label for="conv-analito-bilirrubina"><strong>Bilirrubina</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-calcio" value="calcio"><label for="conv-analito-calcio"><strong>Cálcio</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-hemoglobina" value="hemoglobina"><label for="conv-analito-hemoglobina"><strong>Hemoglobina</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-albumina" value="albumina"><label for="conv-analito-albumina"><strong>Albumina</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-ferro" value="ferro"><label for="conv-analito-ferro"><strong>Ferro</strong></label></div>
+            <div class="chip"><input type="radio" name="conv-analito" id="conv-analito-vitaminaD" value="vitaminaD"><label for="conv-analito-vitaminaD"><strong>Vitamina D</strong></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">2</span> Sentido da conversão</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="conv-direcao" id="conv-direcao-paraSI" value="paraSI" checked><label for="conv-direcao-paraSI"><strong>mg/dL → mmol/L</strong><span>Convencional → SI</span></label></div>
+            <div class="chip"><input type="radio" name="conv-direcao" id="conv-direcao-paraConvencional" value="paraConvencional"><label for="conv-direcao-paraConvencional"><strong>mmol/L → mg/dL</strong><span>SI → convencional</span></label></div>
+          </div>
+        </fieldset>
+        <div class="step">
+          <label class="step-label" for="conv-valor"><span class="step-num">3</span> Valor</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="conv-valor" data-step="-1" aria-label="Diminuir valor">−</button>
+            <div class="weight-field"><input id="conv-valor" type="number" inputmode="decimal" min="0" max="10000" step="0.01" value="100"><span class="unit"><span id="conv-unidade">mg/dL</span></span></div>
+            <button class="stepper" type="button" data-alvo="conv-valor" data-step="1" aria-label="Aumentar valor">+</button>
+          </div>
+        </div>
+      </form>
+      <section class="panel result reveal" id="conv-resultado" aria-live="polite">
+        <div id="conv-ok">
+          <div class="result-head">
+            <div class="result-kicker">Conversão de unidades</div>
+            <div class="dose-line"><div class="dose-big"><span id="conv-resultado-valor">0</span><span class="u" id="conv-resultado-unidade"></span></div></div>
+            <div class="dose-sub" id="conv-sub"></div>
+          </div>
+          <div class="result-body">
+
+            <div class="result-actions" id="result-actions-conv">
+              <button class="action-btn" type="button" id="btn-email-conv">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-conv">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="conv-vazio" hidden><div class="big-emoji" aria-hidden="true">🔁</div><p class="motivo" id="conv-motivo"></p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🩸</div>
@@ -470,6 +534,14 @@
         <h3>HOMA-IR</h3>
         <ul>
           <li>Estima a resistência à insulina a partir da glicemia e insulina em jejum, sem necessidade de prova de tolerância.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🔁</div>
+        <h3>Conversão de unidades</h3>
+        <ul>
+          <li>Glicose ÷ 18 · colesterol ÷ 38,7 · triglicéridos ÷ 88,6 (mg/dL → mmol/L). Creatinina × 88,4 (mg/dL → µmol/L).</li>
+          <li>HbA1c: mmol/mol = (% − 2,15) × 10,929 (equação IFCC–NGSP).</li>
         </ul>
       </article>
     </section>

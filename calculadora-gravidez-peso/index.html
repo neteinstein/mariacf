@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aumento de peso na gravidez · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Aumento de peso recomendado na gravidez segundo o IMC antes da gravidez (IOM 2009), com comparação com o peso atual.">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="Aumento de peso na gravidez">
+  <meta property="og:description" content="Quanto peso é recomendado ganhar na gravidez.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Obstetrícia · Nutrição</span>
+      <h1 class="display">Aumento de peso na <em>gravidez</em></h1>
+      <p class="lead">Quanto peso é recomendado ganhar durante a gravidez, segundo o IMC antes de engravidar — e se o aumento até agora está dentro do esperado para as semanas de gestação.</p>
+    </section>
+
+    <div class="calc">
+      <form class="panel reveal" id="gp-form" autocomplete="off">
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="gp-altura"><span class="step-num">1</span> Altura</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="gp-altura" data-step="-1" aria-label="Diminuir altura">−</button>
+                <div class="weight-field"><input id="gp-altura" type="number" inputmode="numeric" min="120" max="220" step="1" value="165"><span class="unit">cm</span></div>
+                <button class="stepper" type="button" data-alvo="gp-altura" data-step="1" aria-label="Aumentar altura">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="gp-pre"><span class="step-num">2</span> Peso antes da gravidez</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="gp-pre" data-step="-0.5" aria-label="Diminuir peso antes da gravidez">−</button>
+                <div class="weight-field"><input id="gp-pre" type="number" inputmode="decimal" min="30" max="250" step="0.1" value="62"><span class="unit">kg</span></div>
+                <button class="stepper" type="button" data-alvo="gp-pre" data-step="0.5" aria-label="Aumentar peso antes da gravidez">+</button>
+              </div>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="gp-semanas"><span class="step-num">3</span> Semanas de gravidez</label>
+              <p class="step-hint">Opcional, para comparar com o peso atual.</p>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="gp-semanas" data-step="-1" aria-label="Diminuir semanas">−</button>
+                <div class="weight-field"><input id="gp-semanas" type="number" inputmode="numeric" min="1" max="42" step="1" value="20"><span class="unit">semanas</span></div>
+                <button class="stepper" type="button" data-alvo="gp-semanas" data-step="1" aria-label="Aumentar semanas">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="gp-atual"><span class="step-num">4</span> Peso atual</label>
+              <p class="step-hint">Opcional.</p>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="gp-atual" data-step="-0.5" aria-label="Diminuir peso atual">−</button>
+                <div class="weight-field"><input id="gp-atual" type="number" inputmode="decimal" min="30" max="260" step="0.1" value="67"><span class="unit">kg</span></div>
+                <button class="stepper" type="button" data-alvo="gp-atual" data-step="0.5" aria-label="Aumentar peso atual">+</button>
+              </div>
+            </div>
+        </div>
+        <label class="choice" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:2px solid var(--line)">
+          <input type="checkbox" id="gp-gemelar" style="position:static;opacity:1;width:auto">
+          Gravidez gemelar
+        </label>
+      </form>
+      <section class="panel result score-result reveal" id="gp-resultado" aria-live="polite">
+        <div id="gp-ok">
+          <div class="result-head">
+            <div class="result-kicker">Aumento de peso recomendado</div>
+            <div class="dose-line"><div class="dose-big"><span id="gp-intervalo">—</span><span class="u">kg no total</span></div></div>
+            <div class="dose-sub" id="gp-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="stats">
+              <div class="stat"><div class="k">IMC antes da gravidez</div><div class="v" id="gp-imc">—</div></div>
+              <div class="stat"><div class="k">Ritmo (2.º e 3.º trim.)</div><div class="v" id="gp-ritmo" style="font-size:1.1rem">—</div></div>
+              <div class="stat" id="gp-ganho-stat"><div class="k">Aumento até agora</div><div class="v" id="gp-ganho" style="font-size:1.1rem">—</div></div>
+            </div>
+            <div class="notices" id="gp-notas"></div>
+            <div class="result-actions" id="result-actions-gp">
+              <button class="action-btn" type="button" id="btn-email-gp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-gp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="gp-vazio" hidden><div class="big-emoji" aria-hidden="true">🤰</div><p class="motivo" id="gp-motivo"></p></div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">⚖️</div>
+        <h3>Recomendações (IOM 2009)</h3>
+        <ul>
+          <li><strong>Baixo peso</strong> (IMC &lt; 18,5): 12,5–18 kg · <strong>Normal</strong> (18,5–24,9): 11,5–16 kg.</li>
+          <li><strong>Excesso de peso</strong> (25–29,9): 7–11,5 kg · <strong>Obesidade</strong> (≥ 30): 5–9 kg.</li>
+          <li>No 1.º trimestre, o aumento esperado é pequeno: cerca de 0,5 a 2 kg.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🥗</div>
+        <h3>Alimentação e atividade</h3>
+        <ul>
+          <li>Não é preciso «comer por dois»: no 2.º trimestre bastam cerca de 340 kcal a mais por dia, e 450 kcal no 3.º.</li>
+          <li>Atividade física moderada, 150 minutos por semana, é segura e recomendada na maioria das gravidezes.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      As recomendações do Institute of Medicine (2009) são uma referência geral. O seu médico ou enfermeiro de família pode adaptar os objetivos à sua situação.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/gravidez-peso.js" type="module"></script>
+</body>
+</html>

@@ -8,7 +8,11 @@
 // 1987 (Braden); Folstein MF et al., J Psychiatr Res 1975 e Guerreiro M et
 // al. (validação portuguesa), 1994 (MMSE); Nasreddine ZS et al., JAGS 2005
 // (MoCA); Sheikh JI & Yesavage JA, Clin Gerontol 1986 (GDS-15); Charlson ME
-// et al., J Chronic Dis 1987 (índice de comorbilidade de Charlson).
+// et al., J Chronic Dis 1987 (índice de comorbilidade de Charlson); Lawton
+// MP & Brody EM, Gerontologist 1969 (AIVD); Rockwood K et al., CMAJ 2005 e
+// Clinical Frailty Scale v2.0, 2020 (fragilidade); Podsiadlo D & Richardson
+// S, JAGS 1991 e CDC STEADI (Timed Up and Go); Rubenstein LZ et al., J
+// Gerontol 2001 e Kaiser MJ et al., J Nutr Health Aging 2009 (MNA-SF).
 //
 // Nota: o MMSE e o MoCA são instrumentos protegidos (o MMSE é comercial
 // desde 2001). Esta calculadora não reproduz os itens dos testes — apenas
@@ -170,4 +174,71 @@ export function calcularCharlson(comorbilidades = {}, idade) {
     nivel,
     sobrevivencia10Anos: Math.round(sobrevivencia10Anos * 1000) / 10,
   };
+}
+
+/**
+ * Escala de Lawton-Brody (atividades instrumentais da vida diária): 8 itens,
+ * 1 ponto por item em que a pessoa é (suficientemente) autónoma. Total 0–8.
+ */
+export function calcularLawton(itens = {}) {
+  const campos = ['telefone', 'compras', 'refeicoes', 'lida', 'roupa', 'transportes', 'medicacao', 'dinheiro'];
+  const valores = campos.map((c) => Number(itens[c]));
+  const pontos = soma(valores);
+  if (pontos === null) return { ok: false, motivo: 'Preencha todos os itens.' };
+
+  let nivel;
+  let grau;
+  if (pontos === 8) { nivel = 'baixo'; grau = 'Independente'; }
+  else if (pontos >= 6) { nivel = 'moderado'; grau = 'Dependência ligeira'; }
+  else if (pontos >= 4) { nivel = 'alto'; grau = 'Dependência moderada'; }
+  else if (pontos >= 2) { nivel = 'muito-alto'; grau = 'Dependência grave'; }
+  else { nivel = 'muito-alto'; grau = 'Dependência total'; }
+
+  return { ok: true, pontos, max: 8, nivel, grau };
+}
+
+const NIVEIS_CFS = {
+  1: ['baixo', 'Muito em forma'],
+  2: ['baixo', 'Em forma'],
+  3: ['baixo', 'Gere bem as suas doenças'],
+  4: ['moderado', 'Vive com fragilidade muito ligeira'],
+  5: ['moderado', 'Vive com fragilidade ligeira'],
+  6: ['alto', 'Vive com fragilidade moderada'],
+  7: ['muito-alto', 'Vive com fragilidade grave'],
+  8: ['muito-alto', 'Vive com fragilidade muito grave'],
+  9: ['muito-alto', 'Doente terminal'],
+};
+
+/** Clinical Frailty Scale (Rockwood), níveis 1–9. */
+export function classificarCFS(nivelCFS) {
+  const n = Number(nivelCFS);
+  if (!Number.isInteger(n) || !NIVEIS_CFS[n]) return { ok: false, motivo: 'Escolha o nível que melhor descreve a pessoa.' };
+  const [nivel, descricao] = NIVEIS_CFS[n];
+  return { ok: true, pontos: n, nivel, descricao, fragil: n >= 5 };
+}
+
+/** Timed Up and Go (segundos para levantar, andar 3 m, voltar e sentar). */
+export function classificarTUG(segundos) {
+  const s = Number(segundos);
+  if (segundos === '' || !Number.isFinite(s) || s <= 0 || s > 300) return { ok: false, motivo: 'Indique o tempo em segundos.' };
+  if (s < 12) return { ok: true, segundos: s, nivel: 'baixo', descricao: 'Mobilidade normal — sem aumento do risco de queda' };
+  if (s < 20) return { ok: true, segundos: s, nivel: 'moderado', descricao: 'Risco de queda aumentado (≥ 12 s) — avaliar marcha, equilíbrio e medicação' };
+  if (s < 30) return { ok: true, segundos: s, nivel: 'alto', descricao: 'Mobilidade limitada (≥ 20 s) — provável necessidade de apoio na marcha' };
+  return { ok: true, segundos: s, nivel: 'muito-alto', descricao: 'Mobilidade muito limitada (≥ 30 s) — dependência provável nas deslocações' };
+}
+
+/** MNA-SF (Mini Nutritional Assessment, versão curta): 6 itens, total 0–14. */
+export function calcularMNASF(itens = {}) {
+  const campos = ['ingestao', 'perdaPeso', 'mobilidade', 'stress', 'neuropsicologico', 'imcOuPerna'];
+  const valores = campos.map((c) => Number(itens[c]));
+  const pontos = soma(valores);
+  if (pontos === null) return { ok: false, motivo: 'Preencha todos os itens.' };
+
+  let nivel;
+  let estado;
+  if (pontos >= 12) { nivel = 'baixo'; estado = 'Estado nutricional normal'; }
+  else if (pontos >= 8) { nivel = 'moderado'; estado = 'Risco de desnutrição'; }
+  else { nivel = 'alto'; estado = 'Desnutrição'; }
+
+  return { ok: true, pontos, max: 14, nivel, estado };
 }

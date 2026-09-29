@@ -1,4 +1,4 @@
-import { calcularPHQ9, calcularGAD7, calcularAUDIT } from './saude-mental-core.js';
+import { calcularPHQ9, calcularGAD7, calcularAUDIT, calcularASRS } from './saude-mental-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -43,7 +43,7 @@ const AUDIT_PERGUNTAS = [
   { texto: 'Algum familiar, amigo, médico ou profissional de saúde já manifestou preocupação com o seu consumo ou sugeriu que reduzisse?', opcoes: SIM_NAO3, pontosPersonalizados: [0, 2, 4] },
 ];
 
-function criarPergunta({ id, numero, texto, opcoes, pontos }) {
+function criarPergunta({ id, numero, texto, opcoes, pontos, mostrarPontos = true }) {
   const fieldset = document.createElement('fieldset');
   fieldset.className = 'step qitem';
   const legend = document.createElement('legend');
@@ -58,7 +58,8 @@ function criarPergunta({ id, numero, texto, opcoes, pontos }) {
     const chip = document.createElement('div');
     chip.className = 'chip';
     const inputId = `${id}-op${i}`;
-    chip.innerHTML = `<input type="radio" name="${id}" id="${inputId}" value="${p}"><label for="${inputId}"><strong>${opcao}</strong><span>${p} ponto${p === 1 ? '' : 's'}</span></label>`;
+    const sub = mostrarPontos ? `<span>${p} ponto${p === 1 ? '' : 's'}</span>` : '';
+    chip.innerHTML = `<input type="radio" name="${id}" id="${inputId}" value="${p}"><label for="${inputId}"><strong>${opcao}</strong>${sub}</label>`;
     chips.appendChild(chip);
   });
   fieldset.appendChild(chips);
@@ -74,6 +75,7 @@ function montarFormulario(container, perguntas, prefixo) {
         texto: typeof p === 'string' ? p : p.texto,
         opcoes: typeof p === 'string' ? OPCOES_FREQ4 : p.opcoes,
         pontos: typeof p === 'string' ? null : p.pontosPersonalizados,
+        mostrarPontos: typeof p === 'string' || p.mostrarPontos !== false,
       })
     );
   });
@@ -267,6 +269,69 @@ $('#btn-print-audit').addEventListener('click', () => {
   window.print();
 });
 
+/* ---------- ASRS v1.1 (parte A) ---------- */
+
+const FREQ_ASRS = ['Nunca', 'Raramente', 'Às vezes', 'Frequentemente', 'Muito frequentemente'];
+const ASRS_PERGUNTAS = [
+  'tem dificuldade em acabar os pormenores finais de um projeto, depois de feitas as partes mais difíceis?',
+  'tem dificuldade em pôr as coisas em ordem quando tem de fazer uma tarefa que exige organização?',
+  'tem problemas em lembrar-se de compromissos ou obrigações?',
+  'quando tem uma tarefa que exige muita concentração, evita ou adia começá-la?',
+  'mexe ou torce as mãos ou os pés quando tem de estar sentado(a) muito tempo?',
+  'sente-se demasiado ativo(a) e compelido(a) a fazer coisas, como se tivesse um motor ligado?',
+].map((texto) => ({ texto: `Com que frequência ${texto}`, opcoes: FREQ_ASRS, mostrarPontos: false }));
+
+const asrsForm = $('#asrs-form');
+montarFormulario($('#asrs-perguntas'), ASRS_PERGUNTAS, 'asrs');
+const asrsResultado = $('#asrs-resultado');
+let asrsAtual = null;
+
+function atualizarASRS() {
+  const r = calcularASRS(lerRespostas(asrsForm, 'asrs', 6));
+  const ok = $('#asrs-ok');
+  const vazio = $('#asrs-vazio');
+  const acoes = $('#result-actions-asrs');
+  if (!r.ok) {
+    asrsAtual = null;
+    ok.hidden = true;
+    vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
+    return;
+  }
+  asrsAtual = r;
+  ok.hidden = false;
+  vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
+  asrsResultado.dataset.nivel = r.nivel;
+  $('#asrs-pontos').textContent = r.assinalados;
+  $('#asrs-sub').textContent = r.positivo ? 'Rastreio positivo' : 'Rastreio negativo';
+  $('#asrs-conduta').textContent = r.interpretacao;
+}
+asrsForm.addEventListener('change', atualizarASRS);
+atualizarASRS();
+
+function resumoASRS(r) {
+  const linhas = [
+    'ASRS v1.1 — parte A (PHDA no adulto)',
+    `Itens na zona assinalada: ${r.assinalados} / 6`,
+    r.interpretacao,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ];
+  return linhas.join('\n');
+}
+
+$('#btn-email-asrs').addEventListener('click', () => {
+  if (!asrsAtual) return;
+  const assunto = `ASRS — ${asrsAtual.assinalados} / 6 (${asrsAtual.positivo ? 'positivo' : 'negativo'})`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoASRS(asrsAtual))}`;
+});
+
+$('#btn-print-asrs').addEventListener('click', () => {
+  window.print();
+});
+
 const params = new URLSearchParams(location.search);
-const inicial = ['phq9', 'gad7', 'audit'].includes(params.get('calc')) ? params.get('calc') : 'phq9';
+const inicial = ['phq9', 'gad7', 'audit', 'asrs'].includes(params.get('calc')) ? params.get('calc') : 'phq9';
 selecionar(inicial);

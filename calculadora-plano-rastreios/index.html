@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plano de rastreios por idade · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Que rastreios e exames de prevenção são recomendados para a sua idade e sexo, segundo os programas do SNS e as normas da DGS.">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="Plano de rastreios por idade">
+  <meta property="og:description" content="Rastreios recomendados para a sua idade e sexo.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Prevenção · Rastreio</span>
+      <h1 class="display">Plano de <em>rastreios</em></h1>
+      <p class="lead">Indique a idade e o sexo e veja que rastreios são recomendados agora, quais virão nos próximos anos e com que periodicidade — segundo os programas de rastreio do SNS e as normas da DGS.</p>
+    </section>
+
+    <div class="calc">
+      <form class="panel reveal" id="pr-form" autocomplete="off">
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="pr-idade"><span class="step-num">1</span> Idade</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="pr-idade" data-step="-1" aria-label="Diminuir idade">−</button>
+                <div class="weight-field"><input id="pr-idade" type="number" inputmode="numeric" min="18" max="100" step="1" value="50"><span class="unit">anos</span></div>
+                <button class="stepper" type="button" data-alvo="pr-idade" data-step="1" aria-label="Aumentar idade">+</button>
+              </div>
+            </div>
+        </div>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">2</span> Sexo</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="pr-sexo" id="pr-sexo-f" value="f" checked><label for="pr-sexo-f"><strong>Feminino</strong></label></div>
+            <div class="chip"><input type="radio" name="pr-sexo" id="pr-sexo-m" value="m"><label for="pr-sexo-m"><strong>Masculino</strong></label></div>
+          </div>
+        </fieldset>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">3</span> Situações que mudam o plano</legend>
+          <div class="checklist">
+            <div class="check-item">
+              <input type="checkbox" id="pr-diabetes">
+              <label for="pr-diabetes"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Diabetes</strong></span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="pr-hipertensao">
+              <label for="pr-hipertensao"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Hipertensão arterial</strong></span></label>
+            </div>
+            <div class="check-item">
+              <input type="checkbox" id="pr-fumador">
+              <label for="pr-fumador"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Fuma ou já fumou</strong></span></label>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result reveal" id="pr-resultado" aria-live="polite">
+        <div id="pr-ok">
+          <div class="result-head">
+            <div class="result-kicker">Plano de rastreios</div>
+            <div class="dose-line"><div class="dose-big"><span id="pr-numero">0</span><span class="u" id="pr-numero-u">recomendados agora</span></div></div>
+            <div class="dose-sub" id="pr-sub"></div>
+          </div>
+          <div class="result-body">
+            <h3 class="agenda-titulo">Recomendados agora</h3>
+            <ul class="agenda" id="pr-agora"></ul>
+            <h3 class="agenda-titulo" id="pr-futuros-titulo">Nos próximos anos</h3>
+            <ul class="agenda" id="pr-futuros"></ul>
+            <h3 class="agenda-titulo" id="pr-terminados-titulo">Já não recomendados pela idade</h3>
+            <ul class="agenda" id="pr-terminados"></ul>
+            <div class="result-actions" id="result-actions-pr">
+              <button class="action-btn" type="button" id="btn-email-pr">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-pr">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="pr-vazio" hidden><div class="big-emoji" aria-hidden="true">🩺</div><p class="motivo" id="pr-motivo">Indique a idade e o sexo.</p></div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🎗️</div>
+        <h3>Rastreios oncológicos do SNS</h3>
+        <ul>
+          <li><strong>Colo do útero:</strong> teste de HPV de 5 em 5 anos, dos 25 aos 60 anos.</li>
+          <li><strong>Mama:</strong> mamografia de 2 em 2 anos, dos 45 aos 74 anos (alargamento em curso a partir dos 50–69).</li>
+          <li><strong>Cólon e reto:</strong> pesquisa de sangue oculto nas fezes de 2 em 2 anos, dos 50 aos 74 anos.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">📬</div>
+        <h3>Como aceder</h3>
+        <ul>
+          <li>Os rastreios organizados são feitos por convite (carta ou SMS) ou pedidos pelo médico de família.</li>
+          <li>Se tiver sintomas, não espere pelo rastreio — fale com o seu médico.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🧬</div>
+        <h3>Risco aumentado</h3>
+        <ul>
+          <li>Histórico familiar de cancro, doenças genéticas ou exames anteriores alterados podem justificar vigilância mais cedo ou mais frequente, fora dos programas de rastreio.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      Esta lista resume recomendações gerais para pessoas sem sintomas. Não substitui a consulta com o médico de família, que pode adaptar o plano ao seu risco individual.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/plano-rastreios.js" type="module"></script>
+</body>
+</html>

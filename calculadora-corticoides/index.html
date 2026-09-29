@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Equivalência de corticosteroides · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Conversão de doses entre corticosteroides sistémicos (prednisolona, metilprednisolona, dexametasona, hidrocortisona, deflazacorte e outros).">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="Equivalência de corticosteroides">
+  <meta property="og:description" content="Doses equivalentes entre corticosteroides sistémicos.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Fármacos · Corticosteroides</span>
+      <h1 class="display">Equivalência de <em>corticosteroides</em></h1>
+      <p class="lead">Converta a dose diária de um corticosteroide sistémico nas doses equivalentes dos restantes, com a duração de ação e a potência mineralocorticoide de cada um.</p>
+    </section>
+
+    <div class="calc">
+      <form class="panel reveal" id="ct-form" autocomplete="off">
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">1</span> Corticosteroide que está a tomar</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="ct-origem" id="ct-origem-hidrocortisona" value="hidrocortisona"><label for="ct-origem-hidrocortisona"><strong>Hidrocortisona</strong></label></div>
+            <div class="chip"><input type="radio" name="ct-origem" id="ct-origem-prednisolona" value="prednisolona" checked><label for="ct-origem-prednisolona"><strong>Prednisolona</strong></label></div>
+            <div class="chip"><input type="radio" name="ct-origem" id="ct-origem-prednisona" value="prednisona"><label for="ct-origem-prednisona"><strong>Prednisona</strong></label></div>
+            <div class="chip"><input type="radio" name="ct-origem" id="ct-origem-metilprednisolona" value="metilprednisolona"><label for="ct-origem-metilprednisolona"><strong>Metilprednisolona</strong></label></div>
+            <div class="chip"><input type="radio" name="ct-origem" id="ct-origem-deflazacorte" value="deflazacorte"><label for="ct-origem-deflazacorte"><strong>Deflazacorte</strong></label></div>
+            <div class="chip"><input type="radio" name="ct-origem" id="ct-origem-dexametasona" value="dexametasona"><label for="ct-origem-dexametasona"><strong>Dexametasona</strong></label></div>
+            <div class="chip"><input type="radio" name="ct-origem" id="ct-origem-betametasona" value="betametasona"><label for="ct-origem-betametasona"><strong>Betametasona</strong></label></div>
+            <div class="chip"><input type="radio" name="ct-origem" id="ct-origem-triancinolona" value="triancinolona"><label for="ct-origem-triancinolona"><strong>Triancinolona</strong></label></div>
+            <div class="chip"><input type="radio" name="ct-origem" id="ct-origem-cortisona" value="cortisona"><label for="ct-origem-cortisona"><strong>Cortisona</strong></label></div>
+          </div>
+        </fieldset>
+        <div class="step">
+          <label class="step-label" for="ct-dose"><span class="step-num">2</span> Dose diária</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="ct-dose" data-step="-1" aria-label="Diminuir dose diária">−</button>
+            <div class="weight-field"><input id="ct-dose" type="number" inputmode="decimal" min="0.1" max="2000" step="0.1" value="20"><span class="unit">mg/dia</span></div>
+            <button class="stepper" type="button" data-alvo="ct-dose" data-step="1" aria-label="Aumentar dose diária">+</button>
+          </div>
+        </div>
+      </form>
+      <section class="panel result score-result reveal" id="ct-resultado" aria-live="polite">
+        <div id="ct-ok">
+          <div class="result-head">
+            <div class="result-kicker">Equivalente em prednisolona</div>
+            <div class="dose-line"><div class="dose-big"><span id="ct-pred">0</span><span class="u">mg/dia</span></div></div>
+            <div class="dose-sub" id="ct-sub"></div>
+          </div>
+          <div class="result-body">
+            <h3 class="agenda-titulo">Doses equivalentes</h3>
+            <div class="stats equiv" id="ct-lista"></div>
+            <div class="notices"><div class="notice" id="ct-nota"></div></div>
+            <div class="result-actions" id="result-actions-ct">
+              <button class="action-btn" type="button" id="btn-email-ct">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-ct">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="ct-vazio" hidden><div class="big-emoji" aria-hidden="true">💊</div><p class="motivo" id="ct-motivo"></p></div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">⚖️</div>
+        <h3>Equivalências (potência anti-inflamatória)</h3>
+        <ul>
+          <li>5 mg de prednisolona = 20 mg de hidrocortisona = 4 mg de metilprednisolona = 6 mg de deflazacorte = 0,75 mg de dexametasona ou betametasona.</li>
+          <li>As equivalências são aproximadas e dizem respeito à via oral ou endovenosa — não se aplicam a corticosteroides inalados, tópicos ou intra-articulares.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">📉</div>
+        <h3>Suspensão</h3>
+        <ul>
+          <li>Reduzir de forma gradual se o tratamento durou mais de 3 semanas, se a dose foi ≥ 40 mg/dia de prednisolona durante mais de 1 semana, ou se houve ciclos repetidos.</li>
+          <li>Em doentes com insuficiência suprarrenal, a hidrocortisona é o fármaco de substituição por ter também ação mineralocorticoide.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      As equivalências são aproximadas e não substituem a prescrição e o acompanhamento médico. Não altere nem suspenda a medicação sem falar com o seu médico.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/corticoides.js" type="module"></script>
+</body>
+</html>

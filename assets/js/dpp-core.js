@@ -125,3 +125,36 @@ export function calcularPorEcografia(dataEcoIso, semanasEco, diasEco, hoje = new
   const dumEquivalente = adicionarDias(dataEco, -idadeEcoDias);
   return resultadoComum(dumEquivalente, hojeData);
 }
+
+/**
+ * Marcos da vigilância da gravidez de baixo risco, com as datas de cada janela
+ * calculadas a partir da DPP. Janelas em dias de idade gestacional.
+ * Referência: DGS, Programa Nacional para a Vigilância da Gravidez de Baixo Risco (2015).
+ */
+export const MARCOS_GRAVIDEZ = [
+  { de: 0, ate: 12 * 7 + 6, titulo: '1.ª consulta de vigilância pré-natal', detalhe: 'Idealmente até às 12 semanas, com análises do 1.º trimestre.' },
+  { de: 11 * 7, ate: 13 * 7 + 6, titulo: 'Ecografia do 1.º trimestre e rastreio combinado', detalhe: 'Datação da gravidez, translucência da nuca e análises do rastreio de aneuploidias.' },
+  { de: 20 * 7, ate: 22 * 7 + 6, titulo: 'Ecografia morfológica (2.º trimestre)', detalhe: 'Avaliação detalhada da anatomia fetal.' },
+  { de: 20 * 7, ate: 36 * 7 + 6, titulo: 'Vacina contra a tosse convulsa (Tdpa)', detalhe: 'Idealmente até às 32 semanas, para proteger o bebé nos primeiros meses.' },
+  { de: 24 * 7, ate: 28 * 7 + 6, titulo: 'Prova de tolerância à glicose oral (PTGO 75 g)', detalhe: 'Rastreio da diabetes gestacional, se a glicemia do 1.º trimestre foi normal.' },
+  { de: 28 * 7, ate: 28 * 7 + 6, titulo: 'Imunoglobulina anti-D (só se Rh negativo)', detalhe: 'Profilaxia nas grávidas Rh negativo não sensibilizadas.' },
+  { de: 30 * 7, ate: 32 * 7 + 6, titulo: 'Ecografia do 3.º trimestre', detalhe: 'Crescimento fetal, placenta e líquido amniótico.' },
+  { de: 35 * 7, ate: 37 * 7 + 6, titulo: 'Pesquisa de Streptococcus do grupo B', detalhe: 'Zaragatoa vaginal e retal.' },
+  { de: 37 * 7, ate: 37 * 7, titulo: 'Gravidez de termo', detalhe: 'A partir das 37 semanas.' },
+  { de: DIAS_GESTACAO, ate: DIAS_GESTACAO, titulo: 'Data provável de parto', detalhe: '40 semanas.' },
+  { de: 41 * 7, ate: 41 * 7, titulo: 'Avaliação às 41 semanas', detalhe: 'Vigilância do bem-estar fetal e discussão da indução do trabalho de parto.' },
+];
+
+/** Calcula as datas de cada marco a partir da DPP e indica se já passou, está a decorrer ou é futuro. */
+export function marcosGravidez(dpp, hoje = new Date()) {
+  const inicio = adicionarDias(dpp, -DIAS_GESTACAO);
+  return MARCOS_GRAVIDEZ.map((m) => {
+    const de = adicionarDias(inicio, m.de);
+    const ate = adicionarDias(inicio, m.ate);
+    let estado;
+    if (diferencaDias(hoje, ate) < 0) estado = 'passada';
+    else if (diferencaDias(hoje, de) <= 0) estado = 'agora';
+    else estado = 'futura';
+    return { ...m, dataInicio: de, dataFim: ate, estado };
+  });
+}

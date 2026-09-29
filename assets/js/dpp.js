@@ -1,7 +1,8 @@
-import { calcularPorDUM, calcularPorEcografia, paraData, paraISO } from './dpp-core.js';
+import { calcularPorDUM, calcularPorEcografia, paraData, paraISO, marcosGravidez } from './dpp-core.js';
 
 const $ = (sel) => document.querySelector(sel);
 const fmtData = new Intl.DateTimeFormat('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' });
+const fmtCurta = new Intl.DateTimeFormat('pt-PT', { day: 'numeric', month: 'long' });
 
 const form = $('#calc-form');
 const dumInput = $('#dum');
@@ -167,6 +168,7 @@ function atualizar() {
     );
   }
   $('#notices').innerHTML = avisos.join('');
+  mostrarMarcos(r.dpp);
 
   const q = new URLSearchParams({ metodo });
   if (metodo === 'eco') {
@@ -178,6 +180,35 @@ function atualizar() {
     q.set('ciclo', cicloInput.value);
   }
   history.replaceState(null, '', `?${q}`);
+}
+
+/* ---------- Calendário da vigilância ---------- */
+
+const ETIQUETA_MARCO = { passada: 'Já passou', agora: 'Agora', futura: null };
+
+function periodo(m) {
+  const mesmoDia = m.dataInicio.getTime() === m.dataFim.getTime();
+  return mesmoDia ? fmtCurta.format(m.dataInicio) : `${fmtCurta.format(m.dataInicio)} – ${fmtCurta.format(m.dataFim)}`;
+}
+
+function mostrarMarcos(dpp) {
+  const lista = $('#marcos');
+  lista.replaceChildren(...marcosGravidez(dpp, hoje).map((m) => {
+    const li = document.createElement('li');
+    li.className = 'agenda-item';
+    li.dataset.estado = m.estado;
+    li.innerHTML = '<div class="agenda-quando"></div><div class="agenda-corpo"><strong></strong><span></span></div>';
+    li.querySelector('.agenda-quando').textContent = periodo(m);
+    li.querySelector('strong').textContent = m.titulo;
+    li.querySelector('span').textContent = m.detalhe;
+    if (ETIQUETA_MARCO[m.estado]) {
+      const e = document.createElement('span');
+      e.className = 'agenda-etiqueta';
+      e.textContent = ETIQUETA_MARCO[m.estado];
+      li.appendChild(e);
+    }
+    return li;
+  }));
 }
 
 /* ---------- Ações: email e impressão ---------- */
@@ -195,6 +226,7 @@ function resumoTexto(r) {
       : `Faltam: ${r.diasRestantes} dias`,
   ];
   if (r.atrasada) linhas.push('A DPP já passou. Confirme a evolução da gravidez com o seu obstetra.');
+  linhas.push('', 'Calendário da vigilância:', ...marcosGravidez(r.dpp, hoje).map((m) => `${periodo(m)}: ${m.titulo}`));
   linhas.push('', 'Informação de apoio — não substitui aconselhamento médico.', location.href);
   return linhas.join('\n');
 }

@@ -4,11 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calculadora de IMC e ASC · Dra. Maria Cortês Ferreira</title>
-  <meta name="description" content="Calcule o Índice de Massa Corporal (IMC) e a área de superfície corporal (ASC) a partir do peso e da altura, com a categoria de IMC da OMS.">
+  <meta name="description" content="IMC, área de superfície corporal e perímetro abdominal. Calcule o Índice de Massa Corporal (IMC) e a área de superfície corporal (ASC) a partir do peso e da altura, com a categoria de IMC da OMS.">
   <meta name="theme-color" content="#0f8f83">
   <meta property="og:title" content="Calculadora de IMC e Área de Superfície Corporal">
   <meta property="og:description" content="IMC, categoria (OMS) e área de superfície corporal, a partir do peso e da altura.">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -81,6 +83,21 @@
           <input class="slider" id="altura-slider" type="range" min="100" max="250" step="1" value="170" aria-label="Altura em centímetros">
           <div class="slider-scale" aria-hidden="true"><span>100 cm</span><span>150</span><span>200</span><span>250 cm</span></div>
         </div>
+
+        <div class="step">
+          <label class="step-label" for="cintura"><span class="step-num">3</span> Perímetro abdominal (opcional)</label>
+          <p class="step-hint">A meio entre a última costela e a crista ilíaca, no fim de uma expiração normal.</p>
+          <div class="weight">
+            <div class="weight-field">
+              <input id="cintura" name="cintura" type="number" inputmode="decimal" min="40" max="250" step="1" placeholder="—" aria-describedby="cintura-unid">
+              <span class="unit" id="cintura-unid">cm</span>
+            </div>
+          </div>
+          <label class="choice" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:2px solid var(--line);margin-top:12px">
+            <input type="checkbox" id="cintura-sexo" style="position:static;opacity:1;width:auto">
+            Sexo feminino
+          </label>
+        </div>
       </form>
 
       <section class="panel result imc-result reveal" id="resultado" aria-live="polite" aria-labelledby="res-kicker">
@@ -102,6 +119,11 @@
             <div class="stats">
               <div class="stat"><div class="k">ASC (Mosteller)</div><div class="v" id="st-mosteller">—</div></div>
               <div class="stat"><div class="k">ASC (Du Bois)</div><div class="v" id="st-dubois">—</div></div>
+            </div>
+
+            <div class="stats" id="cintura-stats" hidden>
+              <div class="stat" id="st-cintura-box"><div class="k">Perímetro abdominal</div><div class="v" id="st-cintura">—</div></div>
+              <div class="stat" id="st-razao-box"><div class="k">Cintura/altura</div><div class="v" id="st-razao">—</div></div>
             </div>
 
             <div class="notices" id="notices"></div>
@@ -153,6 +175,14 @@
           <li>Não distingue massa gorda de massa muscular — pode sobrestimar o risco em pessoas muito musculadas.</li>
           <li>Não se aplica da mesma forma a crianças, grávidas ou pessoas idosas.</li>
           <li>Em caso de dúvida, fale com o seu médico ou nutricionista.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">📐</div>
+        <h3>Perímetro abdominal</h3>
+        <ul>
+          <li>Risco aumentado a partir de 94 cm no homem e 80 cm na mulher; muito aumentado a partir de 102 cm e 88 cm (OMS, população europeia).</li>
+          <li>Razão cintura/altura ≥ 0,5 indica excesso de gordura abdominal — «a cintura deve medir menos de metade da altura».</li>
         </ul>
       </article>
     </section>

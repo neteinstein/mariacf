@@ -62,3 +62,28 @@ export function calcularAUDIT(respostas = [], sexoFeminino = false) {
 
   return { ok: true, pontos, max: 40, nivel, gravidade, auditC, auditCPositivo, cutoffC };
 }
+
+/**
+ * ASRS v1.1 (parte A, rastreio): 6 respostas de 0 (nunca) a 4 (muito frequentemente).
+ * Nos itens 1–3 conta a partir de «às vezes» (2); nos itens 4–6 a partir de
+ * «frequentemente» (3). 4 ou mais itens assinalados → sintomas compatíveis
+ * com PHDA no adulto, justificando avaliação mais detalhada.
+ * Referência: Kessler RC et al., Psychol Med 2005 (OMS).
+ */
+export function calcularASRS(respostas = []) {
+  const vals = respostas.slice(0, 6).map(Number);
+  if (vals.length < 6 || vals.some((v) => !Number.isFinite(v))) return { ok: false, motivo: 'Responda a todas as perguntas.' };
+
+  const assinalados = vals.filter((v, i) => v >= (i < 3 ? 2 : 3)).length;
+  const positivo = assinalados >= 4;
+  return {
+    ok: true,
+    assinalados,
+    max: 6,
+    positivo,
+    nivel: positivo ? 'alto' : 'baixo',
+    interpretacao: positivo
+      ? 'Rastreio positivo — sintomas compatíveis com PHDA no adulto; justifica avaliação clínica detalhada'
+      : 'Rastreio negativo — sintomas pouco sugestivos de PHDA no adulto',
+  };
+}

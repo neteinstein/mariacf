@@ -111,3 +111,32 @@ test('Charlson: tumor metastático + SIDA → 12 pontos de comorbilidade', () =>
 test('Charlson: idade em falta é inválida', () => {
   assert.equal(calcularCharlson({}, '').ok, false);
 });
+
+import { calcularLawton, classificarCFS, classificarTUG, calcularMNASF } from '../assets/js/geriatria-core.js';
+
+test('Lawton-Brody: 8 → independente; 5 → dependência moderada', () => {
+  const tudo = { telefone: 1, compras: 1, refeicoes: 1, lida: 1, roupa: 1, transportes: 1, medicacao: 1, dinheiro: 1 };
+  assert.equal(calcularLawton(tudo).grau, 'Independente');
+  assert.equal(calcularLawton({ ...tudo, compras: 0, refeicoes: 0, lida: 0 }).grau, 'Dependência moderada');
+  assert.equal(calcularLawton({ telefone: 1 }).ok, false);
+});
+
+test('CFS: 5 é frágil; nível inválido', () => {
+  assert.equal(classificarCFS(5).fragil, true);
+  assert.equal(classificarCFS(3).fragil, false);
+  assert.equal(classificarCFS(10).ok, false);
+});
+
+test('TUG: 10 s normal, 14 s risco de queda, 25 s mobilidade limitada', () => {
+  assert.equal(classificarTUG(10).nivel, 'baixo');
+  assert.equal(classificarTUG(14).nivel, 'moderado');
+  assert.equal(classificarTUG(25).nivel, 'alto');
+  assert.equal(classificarTUG('').ok, false);
+});
+
+test('MNA-SF: 14 normal, 10 risco, 4 desnutrição', () => {
+  const base = { ingestao: 2, perdaPeso: 3, mobilidade: 2, stress: 2, neuropsicologico: 2, imcOuPerna: 3 };
+  assert.equal(calcularMNASF(base).estado, 'Estado nutricional normal');
+  assert.equal(calcularMNASF({ ...base, perdaPeso: 1, imcOuPerna: 1 }).estado, 'Risco de desnutrição');
+  assert.equal(calcularMNASF({ ...base, ingestao: 0, perdaPeso: 0, stress: 0, imcOuPerna: 0 }).pontos, 4);
+});

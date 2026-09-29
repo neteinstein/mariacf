@@ -44,3 +44,28 @@ test('Cockcroft-Gault: valores em falta são inválidos', () => {
   assert.equal(calcularCockcroftGault(1.0, '', 80, false).ok, false);
   assert.equal(calcularCockcroftGault(1.0, 60, '', false).ok, false);
 });
+
+import { estadiarKDIGO } from '../assets/js/funcao-renal-core.js';
+
+test('KDIGO: TFG 50 e ACR 100 mg/g → G3a A2, risco elevado', () => {
+  const r = estadiarKDIGO(50, 100);
+  assert.equal(r.g, 'G3a');
+  assert.equal(r.a, 'A2');
+  assert.equal(r.nivel, 'alto');
+  assert.equal(r.monitorizacao, '2');
+  assert.equal(r.referenciar, false);
+});
+
+test('KDIGO: ACR em mg/mmol (40 mg/mmol ≈ 354 mg/g) → A3 e referenciar', () => {
+  const r = estadiarKDIGO(95, 40, 'mg/mmol');
+  assert.equal(r.g, 'G1');
+  assert.equal(r.a, 'A3');
+  assert.equal(r.referenciar, true);
+});
+
+test('KDIGO: limites G e validação', () => {
+  assert.equal(estadiarKDIGO(90, 10).g, 'G1');
+  assert.equal(estadiarKDIGO(89, 10).g, 'G2');
+  assert.equal(estadiarKDIGO(14, 10).g, 'G5');
+  assert.equal(estadiarKDIGO('', 10).ok, false);
+});

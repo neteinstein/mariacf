@@ -1,4 +1,4 @@
-import { PESO_MIN, PESO_MAX, ALTURA_MIN, ALTURA_MAX, calcularIMC } from './imc-asc-core.js';
+import { PESO_MIN, PESO_MAX, ALTURA_MIN, ALTURA_MAX, calcularIMC, avaliarCintura } from './imc-asc-core.js';
 
 const $ = (sel) => document.querySelector(sel);
 const nf1 = new Intl.NumberFormat('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
@@ -154,11 +154,30 @@ function atualizar() {
   $('#st-dubois').innerHTML = `${nf2.format(r.ascDuBois)} <small>m²</small>`;
 
   posicionarMarcador(r.imc);
+  atualizarCintura(r);
 
   // Guarda no URL para partilhar
   const q = new URLSearchParams({ peso: String(r.peso), altura: String(r.altura) });
   history.replaceState(null, '', `?${q}`);
 }
+
+/* ---------- Perímetro abdominal (opcional) ---------- */
+
+const cinturaInput = $('#cintura');
+const cinturaSexo = $('#cintura-sexo');
+
+function atualizarCintura(r) {
+  const c = cinturaInput.value.trim() === '' ? null : avaliarCintura(cinturaInput.value.replace(',', '.'), r.altura, cinturaSexo.checked);
+  r.cintura = c && c.ok ? c : null;
+  $('#cintura-stats').hidden = !r.cintura;
+  if (!r.cintura) return;
+  $('#st-cintura-box').dataset.nivel = c.riscoCintura.nivel;
+  $('#st-cintura').innerHTML = `${c.perimetro} <small>cm · ${c.riscoCintura.nome.toLowerCase()}</small>`;
+  $('#st-razao-box').dataset.nivel = c.riscoRazao.nivel;
+  $('#st-razao').innerHTML = `${nf2.format(c.razao)} <small>${c.riscoRazao.nome.toLowerCase()}</small>`;
+}
+cinturaInput.addEventListener('input', atualizar);
+cinturaSexo.addEventListener('change', atualizar);
 
 /* ---------- Ações: email e impressão ---------- */
 
@@ -169,6 +188,12 @@ function resumoTexto(r) {
     `IMC: ${nf1.format(r.imc)} kg/m² — ${r.categoria.nome}`,
     `Área de superfície corporal (Mosteller): ${nf2.format(r.ascMosteller)} m²`,
     `Área de superfície corporal (Du Bois): ${nf2.format(r.ascDuBois)} m²`,
+    ...(r.cintura
+      ? [
+          `Perímetro abdominal: ${r.cintura.perimetro} cm — ${r.cintura.riscoCintura.nome} (limiares ${r.cintura.limiar1}/${r.cintura.limiar2} cm)`,
+          `Razão cintura/altura: ${nf2.format(r.cintura.razao)} — ${r.cintura.riscoRazao.nome}`,
+        ]
+      : []),
     '',
     'Informação de apoio — não substitui aconselhamento médico.',
     location.href,

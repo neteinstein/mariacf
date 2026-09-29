@@ -9,6 +9,8 @@
   <meta property="og:title" content="PHQ-9, GAD-7 e AUDIT">
   <meta property="og:description" content="Rastreio de depressão, ansiedade e consumo de risco de álcool.">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,13 +51,14 @@
     <section class="page-hero reveal">
       <span class="eyebrow"><span class="dot"></span> Saúde mental · Rastreio</span>
       <h1 class="display">PHQ-9, GAD-7 e <em>AUDIT</em></h1>
-      <p class="lead">Questionários validados de rastreio de depressão, ansiedade e consumo de risco de álcool, com pontuação e classificação automáticas.</p>
+      <p class="lead">Questionários validados de rastreio de depressão, ansiedade, consumo de risco de álcool e PHDA no adulto, com pontuação e classificação automáticas.</p>
     </section>
 
     <div class="tabbar" role="tablist" aria-label="Escolher questionário">
       <button class="tabbtn" type="button" data-tab="phq9" role="tab" aria-selected="true">PHQ-9 · Depressão</button>
       <button class="tabbtn" type="button" data-tab="gad7" role="tab" aria-selected="false">GAD-7 · Ansiedade</button>
       <button class="tabbtn" type="button" data-tab="audit" role="tab" aria-selected="false">AUDIT · Álcool</button>
+      <button class="tabbtn" type="button" data-tab="asrs" role="tab" aria-selected="false">ASRS · PHDA no adulto</button>
     </div>
 
     <div class="calc" data-painel="phq9">
@@ -170,6 +173,36 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="asrs" hidden>
+      <form class="panel reveal" id="asrs-form" autocomplete="off">
+        <p class="step-hint" style="margin-left:0">Nos últimos 6 meses, com que frequência…</p>
+        <div id="asrs-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="asrs-resultado" aria-live="polite">
+        <div id="asrs-ok">
+          <div class="result-head">
+            <div class="result-kicker">ASRS v1.1 · parte A</div>
+            <div class="dose-line"><div class="dose-big"><span id="asrs-pontos">0</span><span class="u">/ 6 itens assinalados</span></div></div>
+            <div class="dose-sub" id="asrs-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="notices"><div class="notice" id="asrs-conduta"></div></div>
+            <div class="result-actions" id="result-actions-asrs">
+              <button class="action-btn" type="button" id="btn-email-asrs">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-asrs">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="asrs-vazio"><div class="big-emoji" aria-hidden="true">🎯</div><p class="motivo" id="asrs-motivo">Responda a todas as perguntas para ver o resultado.</p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🧠</div>
@@ -192,6 +225,14 @@
         <ul>
           <li>AUDIT total: 0–7 baixo risco · 8–15 consumo de risco · 16–19 consumo nocivo · ≥ 20 possível dependência.</li>
           <li>AUDIT-C (3 primeiras perguntas) é usado como rastreio rápido em cuidados de saúde primários.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🎯</div>
+        <h3>ASRS v1.1</h3>
+        <ul>
+          <li>Rastreio de perturbação de hiperatividade e défice de atenção (PHDA) no adulto, da Organização Mundial da Saúde. As 6 perguntas da parte A são as mais preditivas.</li>
+          <li>4 ou mais respostas na zona assinalada sugerem PHDA e justificam uma avaliação clínica — não são um diagnóstico.</li>
         </ul>
       </article>
     </section>

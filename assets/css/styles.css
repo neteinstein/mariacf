@@ -2394,3 +2394,138 @@ a.pub:hover {
 .contacto-num:hover {
   text-decoration: underline;
 }
+
+/* Agenda: vacinas, rastreios e marcos da gravidez */
+
+.agenda {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  display: grid;
+  gap: 8px;
+}
+
+.agenda-titulo {
+  margin: 22px 0 0;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.agenda-item {
+  display: grid;
+  grid-template-columns: minmax(92px, auto) 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--line);
+  background: var(--surface-strong);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.agenda-quando {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.agenda-corpo {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.agenda-corpo span {
+  color: var(--ink-mute);
+  font-size: 0.84rem;
+}
+
+.agenda-link {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--teal);
+}
+
+.agenda-etiqueta {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--violet-soft);
+  white-space: nowrap;
+}
+
+.agenda-item[data-estado='agora'] { border-left-color: var(--teal); background: linear-gradient(160deg, var(--teal-soft), var(--surface-strong) 70%); }
+.agenda-item[data-estado='agora'] .agenda-etiqueta { background: var(--teal); color: #fff; }
+.agenda-item[data-estado='proxima'] { border-left-color: var(--sun); }
+.agenda-item[data-estado='proxima'] .agenda-etiqueta { background: var(--sun-soft); }
+.agenda-item[data-estado='passada'] { opacity: 0.62; }
+.agenda-item[data-estado='terminado'] { opacity: 0.62; }
+
+@media (max-width: 640px) {
+  .agenda-item {
+    grid-template-columns: 1fr auto;
+  }
+
+  .agenda-corpo {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+/* Mapa de risco KDIGO (G × A) */
+
+.kdigo {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 14px;
+}
+
+.kdigo th {
+  font-weight: 700;
+  color: var(--ink-mute);
+  padding: 4px;
+}
+
+.kdigo td {
+  padding: 8px 4px;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 2px solid transparent;
+}
+
+.kdigo td[data-nivel='baixo'] { background: var(--teal-soft); }
+.kdigo td[data-nivel='moderado'] { background: var(--sun-soft); }
+.kdigo td[data-nivel='alto'] { background: var(--coral-soft); }
+.kdigo td[data-nivel='muito-alto'] { background: var(--danger-soft); }
+.kdigo td.atual { border-color: var(--ink); box-shadow: var(--shadow-sm); }
+
+/* Tabela de equivalências (corticosteroides) */
+
+.stats.equiv {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}
+
+.stat.origem {
+  border-color: var(--teal);
+  background: linear-gradient(160deg, var(--teal-soft), var(--surface-strong) 75%);
+}
+
+.stat .k + .d {
+  font-size: 0.72rem;
+  color: var(--ink-mute);
+  margin-top: 4px;
+}
+
+@media print {
+  .agenda-item[data-estado='passada'],
+  .agenda-item[data-estado='terminado'] { opacity: 1; }
+}

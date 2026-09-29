@@ -61,3 +61,13 @@ test('AUDIT: 8 → consumo de risco', () => {
   assert.equal(calcularAUDIT(respostas).pontos, 8);
   assert.equal(calcularAUDIT(respostas).nivel, 'moderado');
 });
+
+import { calcularASRS } from '../assets/js/saude-mental-core.js';
+
+test('ASRS: limiares diferentes para itens 1–3 (≥ 2) e 4–6 (≥ 3)', () => {
+  assert.equal(calcularASRS([2, 2, 2, 2, 2, 2]).assinalados, 3);
+  const r = calcularASRS([2, 2, 2, 3, 0, 0]);
+  assert.equal(r.assinalados, 4);
+  assert.equal(r.positivo, true);
+  assert.equal(calcularASRS([1, 2]).ok, false);
+});

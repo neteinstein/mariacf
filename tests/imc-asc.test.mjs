@@ -36,3 +36,17 @@ test('valores inválidos', () => {
   assert.equal(calcularIMC(70, '').ok, false);
   assert.equal(calcularIMC(-5, 175).ok, false);
 });
+
+import { avaliarCintura } from '../assets/js/imc-asc-core.js';
+
+test('cintura: homem 100 cm e 175 cm → risco aumentado; razão 0,57', () => {
+  const r = avaliarCintura(100, 175, false);
+  assert.equal(r.riscoCintura.nivel, 'moderado');
+  assert.equal(r.razao, 0.57);
+  assert.equal(r.riscoRazao.nivel, 'moderado');
+});
+
+test('cintura: mulher 90 cm → risco muito aumentado; validação', () => {
+  assert.equal(avaliarCintura(90, 160, true).riscoCintura.nivel, 'alto');
+  assert.equal(avaliarCintura('', 160, true).ok, false);
+});

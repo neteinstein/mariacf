@@ -67,3 +67,75 @@ export function calcularCockcroftGault(creatininaMgDl, idade, pesoKg, sexoFemini
   const valor = arred(crcl, 0);
   return { ok: true, crcl: valor, ...classificarDRC(valor) };
 }
+
+/* ---------- Estadiamento KDIGO (G e A) ---------- */
+
+const CATEGORIAS_G = [
+  { min: 90, id: 'G1', nome: 'Normal ou elevada' },
+  { min: 60, id: 'G2', nome: 'Ligeiramente diminuída' },
+  { min: 45, id: 'G3a', nome: 'Ligeira a moderadamente diminuída' },
+  { min: 30, id: 'G3b', nome: 'Moderada a gravemente diminuída' },
+  { min: 15, id: 'G4', nome: 'Gravemente diminuída' },
+  { min: 0, id: 'G5', nome: 'Falência renal' },
+];
+
+const CATEGORIAS_A = [
+  { max: 30, id: 'A1', nome: 'Normal a ligeiramente aumentada (< 30 mg/g)' },
+  { max: 300, id: 'A2', nome: 'Moderadamente aumentada (30–300 mg/g)' },
+  { max: Infinity, id: 'A3', nome: 'Gravemente aumentada (> 300 mg/g)' },
+];
+
+// Mapa de risco KDIGO 2012/2024: linhas G1…G5, colunas A1…A3.
+export const RISCO_KDIGO = {
+  G1: ['baixo', 'moderado', 'alto'],
+  G2: ['baixo', 'moderado', 'alto'],
+  G3a: ['moderado', 'alto', 'muito-alto'],
+  G3b: ['alto', 'muito-alto', 'muito-alto'],
+  G4: ['muito-alto', 'muito-alto', 'muito-alto'],
+  G5: ['muito-alto', 'muito-alto', 'muito-alto'],
+};
+
+// Número de avaliações por ano recomendado (KDIGO 2012).
+const MONITORIZACAO = {
+  G1: ['1 (se DRC)', '1', '2'],
+  G2: ['1 (se DRC)', '1', '2'],
+  G3a: ['1', '2', '3'],
+  G3b: ['2', '3', '3'],
+  G4: ['3', '3', '4 ou mais'],
+  G5: ['4 ou mais', '4 ou mais', '4 ou mais'],
+};
+
+const RISCO_NOME = { baixo: 'Risco baixo', moderado: 'Risco moderadamente aumentado', alto: 'Risco elevado', 'muito-alto': 'Risco muito elevado' };
+
+/**
+ * Categoria G (TFG em mL/min/1,73 m²) e A (albuminúria, razão albumina/creatinina
+ * urinária), com o risco do mapa KDIGO e a frequência de monitorização.
+ * unidadeACR: 'mg/g' ou 'mg/mmol' (1 mg/mmol ≈ 8,84 mg/g).
+ */
+export function estadiarKDIGO(tfg, acr, unidadeACR = 'mg/g') {
+  const t = Number(tfg);
+  const a = Number(acr);
+  if (tfg === '' || !Number.isFinite(t) || t < 0 || t > 200) return { ok: false, motivo: 'Indique a TFG (0–200 mL/min/1,73 m²).' };
+  if (acr === '' || !Number.isFinite(a) || a < 0) return { ok: false, motivo: 'Indique a albuminúria (razão albumina/creatinina).' };
+
+  const acrMgG = unidadeACR === 'mg/mmol' ? a * 8.84 : a;
+  const g = CATEGORIAS_G.find((c) => t >= c.min);
+  const iA = CATEGORIAS_A.findIndex((c) => acrMgG < c.max);
+  const cat = CATEGORIAS_A[iA];
+  const nivel = RISCO_KDIGO[g.id][iA];
+
+  const referenciar = g.id === 'G4' || g.id === 'G5' || cat.id === 'A3';
+
+  return {
+    ok: true,
+    g: g.id,
+    gNome: g.nome,
+    a: cat.id,
+    aNome: cat.nome,
+    nivel,
+    risco: RISCO_NOME[nivel],
+    monitorizacao: MONITORIZACAO[g.id][iA],
+    referenciar,
+    acrMgG: Math.round(acrMgG),
+  };
+}

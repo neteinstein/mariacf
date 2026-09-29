@@ -129,3 +129,54 @@ export function calcularHOMAIR(glicemiaJejum, insulinaJejum) {
 
   return { ok: true, homa: arred(homa, 2), nivel };
 }
+
+/* ---------- Conversão de unidades ---------- */
+
+// Fatores de conversão: valor SI = valor convencional × fator.
+// HbA1c usa a equação IFCC–NGSP (mmol/mol = (% − 2,15) × 10,929), que não é um fator simples.
+export const ANALITOS = {
+  glicose: { nome: 'Glicose', convencional: 'mg/dL', si: 'mmol/L', fator: 1 / 18.016, casas: [0, 1] },
+  colesterol: { nome: 'Colesterol (total, LDL, HDL)', convencional: 'mg/dL', si: 'mmol/L', fator: 1 / 38.67, casas: [0, 2] },
+  trigliceridos: { nome: 'Triglicéridos', convencional: 'mg/dL', si: 'mmol/L', fator: 1 / 88.57, casas: [0, 2] },
+  creatinina: { nome: 'Creatinina', convencional: 'mg/dL', si: 'µmol/L', fator: 88.42, casas: [2, 0] },
+  ureia: { nome: 'Ureia', convencional: 'mg/dL', si: 'mmol/L', fator: 1 / 6.006, casas: [0, 1] },
+  acidoUrico: { nome: 'Ácido úrico', convencional: 'mg/dL', si: 'µmol/L', fator: 59.48, casas: [1, 0] },
+  bilirrubina: { nome: 'Bilirrubina', convencional: 'mg/dL', si: 'µmol/L', fator: 17.1, casas: [1, 0] },
+  calcio: { nome: 'Cálcio', convencional: 'mg/dL', si: 'mmol/L', fator: 1 / 4.008, casas: [1, 2] },
+  hemoglobina: { nome: 'Hemoglobina', convencional: 'g/dL', si: 'g/L', fator: 10, casas: [1, 0] },
+  albumina: { nome: 'Albumina', convencional: 'g/dL', si: 'g/L', fator: 10, casas: [1, 0] },
+  ferro: { nome: 'Ferro', convencional: 'µg/dL', si: 'µmol/L', fator: 0.1791, casas: [0, 1] },
+  vitaminaD: { nome: '25-OH vitamina D', convencional: 'ng/mL', si: 'nmol/L', fator: 2.496, casas: [0, 0] },
+  hba1c: { nome: 'HbA1c', convencional: '% (NGSP)', si: 'mmol/mol (IFCC)', casas: [1, 0] },
+};
+
+/**
+ * Converte um valor entre a unidade convencional e a SI.
+ * direcao: 'paraSI' (convencional → SI) ou 'paraConvencional'.
+ */
+export function converterUnidade(analito, valor, direcao = 'paraSI') {
+  const a = ANALITOS[analito];
+  if (!a) return { ok: false, motivo: 'Escolha a análise.' };
+  const v = Number(valor);
+  if (valor === '' || !Number.isFinite(v) || v <= 0) return { ok: false, motivo: 'Indique o valor a converter.' };
+
+  const paraSI = direcao !== 'paraConvencional';
+  let convertido;
+  if (analito === 'hba1c') {
+    convertido = paraSI ? (v - 2.15) * 10.929 : v / 10.929 + 2.15;
+    if (convertido <= 0) return { ok: false, motivo: 'Valor de HbA1c fora do intervalo plausível.' };
+  } else {
+    convertido = paraSI ? v * a.fator : v / a.fator;
+  }
+
+  const casas = paraSI ? a.casas[1] : a.casas[0];
+  return {
+    ok: true,
+    nome: a.nome,
+    valor: v,
+    unidadeOrigem: paraSI ? a.convencional : a.si,
+    convertido: arred(convertido, casas),
+    casas,
+    unidadeDestino: paraSI ? a.si : a.convencional,
+  };
+}

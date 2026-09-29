@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FIB-4, Child-Pugh e MELD · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Avaliação hepática: FIB-4, NAFLD fibrosis score e APRI para fibrose, Child-Pugh e MELD-Na para gravidade da cirrose.">
+  <meta name="theme-color" content="#0f8f83">
+  <meta property="og:title" content="FIB-4, Child-Pugh e MELD">
+  <meta property="og:description" content="Fibrose hepática e gravidade da cirrose.">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <div class="blob"></div><div class="blob"></div><div class="blob"></div><div class="blob"></div>
+    <div class="grain"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Dra. Maria Cortês Ferreira</span>
+          <span class="brand-sub">Medicina Geral e Familiar</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="back-link" href="../">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
+          Ferramentas
+        </a>
+        <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
+          <svg class="sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="page-hero reveal">
+      <span class="eyebrow"><span class="dot"></span> Hepatologia · Fibrose e cirrose</span>
+      <h1 class="display">FIB-4, Child-Pugh e <em>MELD</em></h1>
+      <p class="lead">Scores não invasivos de fibrose hepática (FIB-4, NAFLD fibrosis score e APRI) e de gravidade da cirrose (Child-Pugh e MELD-Na), a partir de análises de rotina.</p>
+    </section>
+
+    <div class="tabbar" role="tablist" aria-label="Escolher calculadora">
+      <button class="tabbtn" type="button" data-tab="fib4" role="tab" aria-selected="true">FIB-4</button>
+      <button class="tabbtn" type="button" data-tab="nfs" role="tab" aria-selected="false">NAFLD fibrosis score</button>
+      <button class="tabbtn" type="button" data-tab="apri" role="tab" aria-selected="false">APRI</button>
+      <button class="tabbtn" type="button" data-tab="child" role="tab" aria-selected="false">Child-Pugh</button>
+      <button class="tabbtn" type="button" data-tab="meld" role="tab" aria-selected="false">MELD / MELD-Na</button>
+    </div>
+
+    <div class="calc" data-painel="fib4">
+      <form class="panel reveal" id="fib4-form" autocomplete="off">
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="fib4-idade"><span class="step-num">1</span> Idade</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="fib4-idade" data-step="-1" aria-label="Diminuir idade">−</button>
+                <div class="weight-field"><input id="fib4-idade" type="number" inputmode="numeric" min="18" max="100" step="1" value="55"><span class="unit">anos</span></div>
+                <button class="stepper" type="button" data-alvo="fib4-idade" data-step="1" aria-label="Aumentar idade">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="fib4-plaq"><span class="step-num">2</span> Plaquetas</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="fib4-plaq" data-step="-5" aria-label="Diminuir plaquetas">−</button>
+                <div class="weight-field"><input id="fib4-plaq" type="number" inputmode="numeric" min="10" max="900" step="1" value="220"><span class="unit">×10⁹/L</span></div>
+                <button class="stepper" type="button" data-alvo="fib4-plaq" data-step="5" aria-label="Aumentar plaquetas">+</button>
+              </div>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="fib4-ast"><span class="step-num">3</span> AST (TGO)</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="fib4-ast" data-step="-1" aria-label="Diminuir AST">−</button>
+                <div class="weight-field"><input id="fib4-ast" type="number" inputmode="numeric" min="1" max="2000" step="1" value="30"><span class="unit">U/L</span></div>
+                <button class="stepper" type="button" data-alvo="fib4-ast" data-step="1" aria-label="Aumentar AST">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="fib4-alt"><span class="step-num">4</span> ALT (TGP)</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="fib4-alt" data-step="-1" aria-label="Diminuir ALT">−</button>
+                <div class="weight-field"><input id="fib4-alt" type="number" inputmode="numeric" min="1" max="2000" step="1" value="35"><span class="unit">U/L</span></div>
+                <button class="stepper" type="button" data-alvo="fib4-alt" data-step="1" aria-label="Aumentar ALT">+</button>
+              </div>
+            </div>
+        </div>
+      </form>
+      <section class="panel result score-result reveal" id="fib4-resultado" aria-live="polite">
+        <div id="fib4-ok">
+          <div class="result-head">
+            <div class="result-kicker">FIB-4</div>
+            <div class="dose-line"><div class="dose-big"><span id="fib4-valor">0</span></div></div>
+            <div class="dose-sub" id="fib4-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="notices" id="fib4-notas"></div>
+            <div class="result-actions" id="result-actions-fib4">
+              <button class="action-btn" type="button" id="btn-email-fib4">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-fib4">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="fib4-vazio" hidden><div class="big-emoji" aria-hidden="true">🫀</div><p class="motivo" id="fib4-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="nfs" hidden>
+      <form class="panel reveal" id="nfs-form" autocomplete="off">
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="nfs-idade"><span class="step-num">1</span> Idade</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="nfs-idade" data-step="-1" aria-label="Diminuir idade">−</button>
+                <div class="weight-field"><input id="nfs-idade" type="number" inputmode="numeric" min="18" max="100" step="1" value="55"><span class="unit">anos</span></div>
+                <button class="stepper" type="button" data-alvo="nfs-idade" data-step="1" aria-label="Aumentar idade">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="nfs-imc"><span class="step-num">2</span> IMC</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="nfs-imc" data-step="-0.5" aria-label="Diminuir IMC">−</button>
+                <div class="weight-field"><input id="nfs-imc" type="number" inputmode="decimal" min="12" max="70" step="0.1" value="29"><span class="unit">kg/m²</span></div>
+                <button class="stepper" type="button" data-alvo="nfs-imc" data-step="0.5" aria-label="Aumentar IMC">+</button>
+              </div>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="nfs-ast"><span class="step-num">3</span> AST (TGO)</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="nfs-ast" data-step="-1" aria-label="Diminuir AST">−</button>
+                <div class="weight-field"><input id="nfs-ast" type="number" inputmode="numeric" min="1" max="2000" step="1" value="30"><span class="unit">U/L</span></div>
+                <button class="stepper" type="button" data-alvo="nfs-ast" data-step="1" aria-label="Aumentar AST">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="nfs-alt"><span class="step-num">4</span> ALT (TGP)</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="nfs-alt" data-step="-1" aria-label="Diminuir ALT">−</button>
+                <div class="weight-field"><input id="nfs-alt" type="number" inputmode="numeric" min="1" max="2000" step="1" value="35"><span class="unit">U/L</span></div>
+                <button class="stepper" type="button" data-alvo="nfs-alt" data-step="1" aria-label="Aumentar ALT">+</button>
+              </div>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="nfs-plaq"><span class="step-num">5</span> Plaquetas</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="nfs-plaq" data-step="-5" aria-label="Diminuir plaquetas">−</button>
+                <div class="weight-field"><input id="nfs-plaq" type="number" inputmode="numeric" min="10" max="900" step="1" value="220"><span class="unit">×10⁹/L</span></div>
+                <button class="stepper" type="button" data-alvo="nfs-plaq" data-step="5" aria-label="Aumentar plaquetas">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="nfs-alb"><span class="step-num">6</span> Albumina</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="nfs-alb" data-step="-0.1" aria-label="Diminuir albumina">−</button>
+                <div class="weight-field"><input id="nfs-alb" type="number" inputmode="decimal" min="1" max="6" step="0.1" value="4.2"><span class="unit">g/dL</span></div>
+                <button class="stepper" type="button" data-alvo="nfs-alb" data-step="0.1" aria-label="Aumentar albumina">+</button>
+              </div>
+            </div>
+        </div>
+        <label class="choice" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:2px solid var(--line)">
+          <input type="checkbox" id="nfs-diabetes" style="position:static;opacity:1;width:auto">
+          Diabetes ou glicemia em jejum alterada
+        </label>
+      </form>
+      <section class="panel result score-result reveal" id="nfs-resultado" aria-live="polite">
+        <div id="nfs-ok">
+          <div class="result-head">
+            <div class="result-kicker">NAFLD fibrosis score</div>
+            <div class="dose-line"><div class="dose-big"><span id="nfs-valor">0</span></div></div>
+            <div class="dose-sub" id="nfs-sub"></div>
+          </div>
+          <div class="result-body">
+
+            <div class="result-actions" id="result-actions-nfs">
+              <button class="action-btn" type="button" id="btn-email-nfs">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-nfs">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="nfs-vazio" hidden><div class="big-emoji" aria-hidden="true">🫀</div><p class="motivo" id="nfs-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="apri" hidden>
+      <form class="panel reveal" id="apri-form" autocomplete="off">
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="apri-ast"><span class="step-num">1</span> AST (TGO)</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="apri-ast" data-step="-1" aria-label="Diminuir AST">−</button>
+                <div class="weight-field"><input id="apri-ast" type="number" inputmode="numeric" min="1" max="2000" step="1" value="40"><span class="unit">U/L</span></div>
+                <button class="stepper" type="button" data-alvo="apri-ast" data-step="1" aria-label="Aumentar AST">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="apri-lsn"><span class="step-num">2</span> Limite superior do normal da AST</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="apri-lsn" data-step="-1" aria-label="Diminuir limite superior do normal">−</button>
+                <div class="weight-field"><input id="apri-lsn" type="number" inputmode="numeric" min="10" max="100" step="1" value="40"><span class="unit">U/L</span></div>
+                <button class="stepper" type="button" data-alvo="apri-lsn" data-step="1" aria-label="Aumentar limite superior do normal">+</button>
+              </div>
+            </div>
+        </div>
+        <div class="step">
+          <label class="step-label" for="apri-plaq"><span class="step-num">3</span> Plaquetas</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="apri-plaq" data-step="-5" aria-label="Diminuir plaquetas">−</button>
+            <div class="weight-field"><input id="apri-plaq" type="number" inputmode="numeric" min="10" max="900" step="1" value="200"><span class="unit">×10⁹/L</span></div>
+            <button class="stepper" type="button" data-alvo="apri-plaq" data-step="5" aria-label="Aumentar plaquetas">+</button>
+          </div>
+        </div>
+      </form>
+      <section class="panel result score-result reveal" id="apri-resultado" aria-live="polite">
+        <div id="apri-ok">
+          <div class="result-head">
+            <div class="result-kicker">APRI</div>
+            <div class="dose-line"><div class="dose-big"><span id="apri-valor">0</span></div></div>
+            <div class="dose-sub" id="apri-sub"></div>
+          </div>
+          <div class="result-body">
+
+            <div class="result-actions" id="result-actions-apri">
+              <button class="action-btn" type="button" id="btn-email-apri">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-apri">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="apri-vazio" hidden><div class="big-emoji" aria-hidden="true">🫀</div><p class="motivo" id="apri-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="child" hidden>
+      <form class="panel reveal" id="child-form" autocomplete="off">
+        <div id="child-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="child-resultado" aria-live="polite">
+        <div id="child-ok">
+          <div class="result-head">
+            <div class="result-kicker">Child-Pugh</div>
+            <div class="dose-line"><div class="dose-big"><span id="child-classe">—</span><span class="u" id="child-pontos"></span></div></div>
+            <div class="dose-sub" id="child-sub"></div>
+          </div>
+          <div class="result-body">
+
+            <div class="result-actions" id="result-actions-child">
+              <button class="action-btn" type="button" id="btn-email-child">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-child">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="child-vazio"><div class="big-emoji" aria-hidden="true">🫀</div><p class="motivo" id="child-motivo">Preencha todos os itens para ver a classe.</p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="meld" hidden>
+      <form class="panel reveal" id="meld-form" autocomplete="off">
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="meld-bili"><span class="step-num">1</span> Bilirrubina total</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="meld-bili" data-step="-0.1" aria-label="Diminuir bilirrubina">−</button>
+                <div class="weight-field"><input id="meld-bili" type="number" inputmode="decimal" min="0.1" max="50" step="0.1" value="1.2"><span class="unit">mg/dL</span></div>
+                <button class="stepper" type="button" data-alvo="meld-bili" data-step="0.1" aria-label="Aumentar bilirrubina">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="meld-inr"><span class="step-num">2</span> INR</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="meld-inr" data-step="-0.1" aria-label="Diminuir INR">−</button>
+                <div class="weight-field"><input id="meld-inr" type="number" inputmode="decimal" min="0.5" max="10" step="0.1" value="1.1"><span class="unit"></span></div>
+                <button class="stepper" type="button" data-alvo="meld-inr" data-step="0.1" aria-label="Aumentar INR">+</button>
+              </div>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="meld-creat"><span class="step-num">3</span> Creatinina</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="meld-creat" data-step="-0.1" aria-label="Diminuir creatinina">−</button>
+                <div class="weight-field"><input id="meld-creat" type="number" inputmode="decimal" min="0.1" max="15" step="0.1" value="0.9"><span class="unit">mg/dL</span></div>
+                <button class="stepper" type="button" data-alvo="meld-creat" data-step="0.1" aria-label="Aumentar creatinina">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="meld-na"><span class="step-num">4</span> Sódio</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="meld-na" data-step="-1" aria-label="Diminuir sódio">−</button>
+                <div class="weight-field"><input id="meld-na" type="number" inputmode="numeric" min="100" max="170" step="1" value="138"><span class="unit">mmol/L</span></div>
+                <button class="stepper" type="button" data-alvo="meld-na" data-step="1" aria-label="Aumentar sódio">+</button>
+              </div>
+            </div>
+        </div>
+        <label class="choice" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:2px solid var(--line)">
+          <input type="checkbox" id="meld-dialise" style="position:static;opacity:1;width:auto">
+          Diálise ≥ 2 vezes na última semana (ou hemofiltração contínua ≥ 24 h)
+        </label>
+      </form>
+      <section class="panel result score-result reveal" id="meld-resultado" aria-live="polite">
+        <div id="meld-ok">
+          <div class="result-head">
+            <div class="result-kicker">MELD-Na</div>
+            <div class="dose-line"><div class="dose-big"><span id="meld-valor">0</span></div></div>
+            <div class="dose-sub" id="meld-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="stats">
+              <div class="stat"><div class="k">MELD</div><div class="v" id="meld-simples">—</div></div>
+              <div class="stat"><div class="k">Mortalidade a 90 dias</div><div class="v" id="meld-mort">—</div></div>
+            </div>
+            <div class="result-actions" id="result-actions-meld">
+              <button class="action-btn" type="button" id="btn-email-meld">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-meld">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="meld-vazio" hidden><div class="big-emoji" aria-hidden="true">🫀</div><p class="motivo" id="meld-motivo"></p></div>
+      </section>
+    </div>
+
+    <section class="info-grid">
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🔎</div>
+        <h3>Fígado gordo (MASLD)</h3>
+        <ul>
+          <li>O FIB-4 é o primeiro passo recomendado (EASL 2024) para avaliar fibrose em pessoas com fígado gordo, diabetes tipo 2 ou obesidade.</li>
+          <li>Resultado indeterminado ou alto: segundo teste (elastografia hepática transitória ou ELF) e/ou referenciação.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">📐</div>
+        <h3>Limiares</h3>
+        <ul>
+          <li><strong>FIB-4:</strong> &lt; 1,30 baixo risco (&lt; 2,0 a partir dos 65 anos) · &gt; 2,67 alto risco.</li>
+          <li><strong>NFS:</strong> &lt; −1,455 baixo risco · &gt; 0,676 alto risco.</li>
+          <li><strong>APRI:</strong> &lt; 0,5 exclui fibrose significativa · ≥ 2 sugere cirrose.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🏥</div>
+        <h3>Cirrose</h3>
+        <ul>
+          <li><strong>Child-Pugh</strong> classifica a reserva funcional (A, B ou C).</li>
+          <li><strong>MELD-Na</strong> estima a mortalidade a 90 dias e é usado na priorização para transplante; referenciar a partir de MELD ≥ 15.</li>
+        </ul>
+      </article>
+    </section>
+
+    <p class="disclaimer reveal">
+      Estes scores são um apoio à decisão e não substituem a avaliação clínica, a elastografia ou a biópsia hepática. Não são válidos na hepatite aguda.
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© <span id="ano">2026</span> Dra. Maria Cortês Ferreira</span>
+      <span>Informação de apoio. Não substitui aconselhamento médico.</span>
+    </div>
+  </footer>
+
+  <script src="../assets/js/site.js" type="module"></script>
+  <script src="../assets/js/hepatica.js" type="module"></script>
+</body>
+</html>

@@ -11,43 +11,61 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 
 ## Ferramentas
 
-| Ferramenta | Caminho | Estado |
+Cada calculadora vive em `calculadora-*/index.html`, com a lógica de cálculo em
+`assets/js/<nome>-core.js` (sem DOM, testada em `tests/`) e a interface em `assets/js/<nome>.js`.
+Os separadores de cada página podem ser abertos diretamente com `?calc=<id>`.
+
+| Ferramenta | Caminho | Inclui |
 | --- | --- | --- |
-| Calculadora de doses (paracetamol e ibuprofeno em xarope) | `/calculadora-doses/` | ✅ |
-| Calculadora de IMC e área de superfície corporal | `/calculadora-imc-asc/` | ✅ |
-| Calculadora da data provável de parto | `/calculadora-dpp/` | ✅ |
+| Calculadora de doses | `/calculadora-doses/` | Paracetamol e ibuprofeno em xarope, por peso |
+| Crescimento infantil (OMS) | `/calculadora-crescimento/` | Peso, comprimento, PC e peso-comprimento (0–24 m); IMC e altura (2–19 anos); idade corrigida; altura-alvo |
+| Fluidos, desidratação e M-CHAT-R/F | `/calculadora-pediatria/` | Holliday-Segar, Clinical Dehydration Scale, interpretação do M-CHAT-R/F |
+| Calendário de vacinas (PNV) | `/calculadora-vacinas/` | Esquema recomendado do PNV a partir da data de nascimento |
+| Bishop, Apgar e Glasgow pediátrico | `/calculadora-parto-neonatal/` | |
+| Data provável de parto | `/calculadora-dpp/` | DUM ou ecografia, com calendário da vigilância da gravidez |
+| Aumento de peso na gravidez | `/calculadora-gravidez-peso/` | Recomendações IOM 2009 por IMC pré-gravidez |
+| SCORE2 e SCORE2-Diabetes | `/calculadora-risco-cardiovascular/` | |
+| CHA₂DS₂-VASc e HAS-BLED | `/calculadora-anticoagulacao/` | |
+| ITB e peso ideal/ajustado | `/calculadora-vascular/` | |
+| IMC e ASC | `/calculadora-imc-asc/` | IMC, ASC (Mosteller, Du Bois) e perímetro abdominal |
+| FINDRISC, MUST e risco de fratura | `/calculadora-rastreio/` | |
+| CKD-EPI, Cockcroft-Gault e KDIGO | `/calculadora-funcao-renal/` | eTFG, CrCl e estadiamento G/A |
+| IPSS | `/calculadora-urologia/` | |
+| Fórmulas laboratoriais | `/calculadora-laboratorial/` | LDL, Na e Ca corrigidos, eAG, anion gap, osmolaridade, água livre, HOMA-IR, conversão de unidades |
+| FIB-4, Child-Pugh e MELD | `/calculadora-hepatica/` | FIB-4, NAFLD fibrosis score, APRI, Child-Pugh, MELD-Na |
+| Blatchford, Rockall e BISAP | `/calculadora-digestivo/` | |
+| Equivalência de corticosteroides | `/calculadora-corticoides/` | Doses equivalentes de 9 corticosteroides sistémicos |
+| PHQ-9, GAD-7, AUDIT e ASRS | `/calculadora-saude-mental/` | |
+| APGAR familiar, EPDS, Zarit, Fagerström e Morisky | `/calculadora-familia/` | |
+| Unidades maço-ano e gramas de álcool | `/calculadora-habitos/` | |
+| CAT, ACT e Centor/McIsaac | `/calculadora-respiratoria/` | |
+| Epworth e STOP-BANG | `/calculadora-sono/` | |
+| Urgência | `/calculadora-urgencia/` | CURB-65, Wells, QTc, Glasgow, HEART, NEWS2, PERC, Ottawa, Alvarado… |
+| Regra dos 9 | `/calculadora-queimados/` | |
+| Avaliação geriátrica | `/calculadora-geriatria/` | Barthel, Lawton-Brody, CFS, TUG, Morse, Braden, MNA-SF, GDS-15, Charlson, MMSE/MoCA |
+| Plano de rastreios por idade | `/calculadora-plano-rastreios/` | Rastreios do SNS e normas da DGS por idade, sexo e condições |
 
-### Calculadora de doses
+Os dados de crescimento dos 2 aos 19 anos (`assets/js/crescimento-dados-2-19.js`) são as tabelas
+LMS oficiais da OMS (padrões 2006 até aos 60 meses, referência 2007 dos 61 aos 228 meses).
 
-- Paracetamol 40 mg/mL: 15 mg/kg por toma, de 6/6 h, máx. 4 tomas/dia (máx. 1 g por toma).
-- Ibuprofeno 20 ou 40 mg/mL: 10 mg/kg por toma, de 8/8 h, máx. 3 tomas/dia (máx. 400 mg por toma; ≥ 5 kg).
-- Permite concentração personalizada, mostra a seringa com o volume, o horário das próximas tomas
-  e guarda os valores no URL para partilhar (ex.: `?peso=12&med=ibuprofeno&c=20`).
+### Novas calculadoras: como acrescentar
 
-A lógica de cálculo está em `assets/js/doses-core.js`, com testes em `tests/`.
+1. Criar `calculadora-<nome>/index.html`, `assets/js/<nome>-core.js` e `assets/js/<nome>.js`
+   (as páginas novas usam `assets/js/calc-ui.js` para separadores, botões +/−, resultado e email/impressão).
+2. Acrescentar os testes em `tests/<nome>.test.mjs`.
+3. Acrescentar o cartão na página inicial e os ficheiros novos à lista `PRECACHE` de `sw.js`
+   — o teste `tests/site.test.mjs` falha se faltar algum.
 
-### Calculadora de IMC e área de superfície corporal
+### Funcionamento sem rede
 
-- IMC = peso (kg) / altura (m)², com a categoria segundo a Organização Mundial de Saúde.
-- Área de superfície corporal pelas fórmulas de Mosteller e de Du Bois & Du Bois.
-- Válida para adultos (peso 20–300 kg, altura 100–250 cm).
-
-A lógica de cálculo está em `assets/js/imc-asc-core.js`, com testes em `tests/`.
-
-### Calculadora da data provável de parto
-
-- Método da última menstruação: regra de Naegele (DUM + 280 dias), ajustada à duração real do ciclo.
-- Método da ecografia: reconstrói a data equivalente de início da gravidez a partir da idade
-  gestacional medida no exame (5–42 semanas).
-- Mostra a idade gestacional atual, o trimestre e os dias em falta para a DPP.
-
-A lógica de cálculo está em `assets/js/dpp-core.js`, com testes em `tests/`.
+O site é instalável (`manifest.webmanifest`) e funciona sem ligação graças ao service worker
+`sw.js` («rede primeiro»: com ligação serve sempre a versão mais recente e atualiza a cache).
 
 ## Desenvolvimento
 
 ```bash
 python3 -m http.server 8000   # abrir http://localhost:8000
-npm test                      # testes da lógica de doses (Node 18+)
+npm test                      # testes da lógica e da integridade do site (Node 18+)
 ```
 
 ## Publicação (GitHub Pages)

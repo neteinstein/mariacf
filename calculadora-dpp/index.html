@@ -9,6 +9,8 @@
   <meta property="og:title" content="Calculadora da Data Provável de Parto">
   <meta property="og:description" content="Data provável de parto, idade gestacional e trimestre, a partir da DUM ou de uma ecografia.">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,7 +51,7 @@
     <section class="page-hero reveal">
       <span class="eyebrow"><span class="dot"></span> Obstetrícia · Gravidez</span>
       <h1 class="display">Data provável de <em>parto</em></h1>
-      <p class="lead">Calcule a data provável de parto (DPP) e a idade gestacional atual, a partir da data da última menstruação ou de uma ecografia.</p>
+      <p class="lead">Calcule a data provável de parto (DPP) e a idade gestacional atual, a partir da data da última menstruação ou de uma ecografia — com o calendário das ecografias, análises e vacinas da vigilância da gravidez.</p>
     </section>
 
     <div class="calc">
@@ -126,6 +128,9 @@
               <div class="stat"><div class="k" id="st-restam-k">Faltam</div><div class="v" id="st-restam">—</div></div>
             </div>
             <div class="notices" id="notices"></div>
+
+            <h3 class="agenda-titulo">Calendário da vigilância</h3>
+            <ol class="agenda" id="marcos"></ol>
 
             <div class="result-actions" id="result-actions">
               <button class="action-btn" type="button" id="btn-email">

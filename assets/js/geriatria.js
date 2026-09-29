@@ -1,4 +1,4 @@
-import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, calcularGDS15, calcularCharlson } from './geriatria-core.js';
+import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, calcularGDS15, calcularCharlson, calcularLawton, classificarCFS, classificarTUG, calcularMNASF } from './geriatria-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -13,11 +13,11 @@ function criarPergunta(id, numero, texto, opcoes) {
 
   const chips = document.createElement('div');
   chips.className = 'chips';
-  opcoes.forEach(([texto2, pts]) => {
+  opcoes.forEach(([texto2, pts], i) => {
     const chip = document.createElement('div');
     chip.className = 'chip';
-    const inputId = `${id}-${pts}`;
-    chip.innerHTML = `<input type="radio" name="${id}" id="${inputId}" value="${pts}"><label for="${inputId}"><strong>${texto2}</strong><span>${pts} pontos</span></label>`;
+    const inputId = `${id}-${i}`;
+    chip.innerHTML = `<input type="radio" name="${id}" id="${inputId}" value="${pts}"><label for="${inputId}"><strong>${texto2}</strong><span>${pts} ${pts === 1 ? 'ponto' : 'pontos'}</span></label>`;
     chips.appendChild(chip);
   });
   fieldset.appendChild(chips);
@@ -413,6 +413,136 @@ $('#btn-email-ch').addEventListener('click', () => {
 });
 $('#btn-print-ch').addEventListener('click', () => window.print());
 
+/* ---------- Novas escalas: Lawton-Brody, CFS, TUG e MNA-SF ---------- */
+
+function ligarEscala({ prefixo, formId, calcular, escrever, assunto, linhas }) {
+  const form = $(`#${formId}`);
+  const resultado = $(`#${prefixo}-resultado`);
+  let atual = null;
+  function atualizar() {
+    const r = calcular(form);
+    const ok = $(`#${prefixo}-ok`);
+    const vazio = $(`#${prefixo}-vazio`);
+    const acoes = $(`#result-actions-${prefixo}`);
+    if (!r.ok) {
+      atual = null;
+      ok.hidden = true;
+      vazio.hidden = false;
+      if (acoes) acoes.hidden = true;
+      return;
+    }
+    atual = r;
+    ok.hidden = false;
+    vazio.hidden = true;
+    if (acoes) acoes.hidden = false;
+    resultado.dataset.nivel = r.nivel;
+    escrever(r);
+  }
+  form.addEventListener('change', atualizar);
+  form.addEventListener('input', atualizar);
+  atualizar();
+  $(`#btn-email-${prefixo}`).addEventListener('click', () => {
+    if (!atual) return;
+    const corpo = [...linhas(atual), '', 'Informação de apoio — não substitui aconselhamento médico.', location.href].join('\n');
+    location.href = `mailto:?subject=${encodeURIComponent(assunto(atual))}&body=${encodeURIComponent(corpo)}`;
+  });
+  $(`#btn-print-${prefixo}`).addEventListener('click', () => window.print());
+}
+
+const LAWTON_ITENS = [
+  ['telefone', 'Usar o telefone', [['Usa por iniciativa própria ou atende e marca números conhecidos', 1], ['Só atende, ou não usa o telefone', 0]]],
+  ['compras', 'Fazer compras', [['Faz todas as compras sozinho(a)', 1], ['Só pequenas compras, precisa de companhia ou é incapaz', 0]]],
+  ['refeicoes', 'Preparar refeições', [['Planeia, prepara e serve refeições adequadas', 1], ['Só aquece, prepara de forma inadequada ou precisa que lhe façam', 0]]],
+  ['lida', 'Lida da casa', [['Mantém a casa sozinho(a) ou com ajuda ocasional para tarefas pesadas', 1], ['Não participa em nenhuma tarefa doméstica', 0]]],
+  ['roupa', 'Tratar da roupa', [['Lava toda a sua roupa ou pequenas peças', 1], ['Toda a roupa tem de ser lavada por outros', 0]]],
+  ['transportes', 'Utilizar transportes', [['Viaja sozinho(a) de transporte público ou conduz, ou usa táxi', 1], ['Só viaja acompanhado(a) ou não viaja', 0]]],
+  ['medicacao', 'Gerir a medicação', [['Toma a medicação à hora e na dose certas, sozinho(a)', 1], ['Precisa que lhe preparem as doses, ou é incapaz', 0]]],
+  ['dinheiro', 'Gerir o dinheiro', [['Gere as finanças sozinho(a), ou só precisa de ajuda com operações grandes', 1], ['É incapaz de lidar com dinheiro', 0]]],
+];
+montar($('#lawton-perguntas'), LAWTON_ITENS, 'lw');
+ligarEscala({
+  prefixo: 'lw',
+  formId: 'lawton-form',
+  calcular: (form) => calcularLawton(ler(form, LAWTON_ITENS, 'lw')),
+  escrever: (r) => {
+    $('#lw-pontos').textContent = r.pontos;
+    $('#lw-sub').textContent = r.grau;
+  },
+  assunto: (r) => `Lawton-Brody — ${r.pontos}/8 (${r.grau})`,
+  linhas: (r) => ['Escala de Lawton-Brody (atividades instrumentais de vida diária)', `Pontuação: ${r.pontos} / 8`, `Classificação: ${r.grau}`],
+});
+
+const CFS_NIVEIS = [
+  ['1 · Muito em forma', 1, 'Robusto, ativo, com energia e motivação; faz exercício regularmente'],
+  ['2 · Em forma', 2, 'Sem doença ativa, mas menos em forma que o nível 1; exercício ocasional'],
+  ['3 · Gere bem as suas doenças', 3, 'Doenças bem controladas; não é regularmente ativo além da marcha habitual'],
+  ['4 · Fragilidade muito ligeira', 4, 'Independente, mas os sintomas limitam as atividades; queixa-se de estar «mais lento» ou cansado'],
+  ['5 · Fragilidade ligeira', 5, 'Precisa de ajuda nas atividades instrumentais (finanças, transportes, lida pesada)'],
+  ['6 · Fragilidade moderada', 6, 'Precisa de ajuda em todas as atividades fora de casa e na lida; ajuda no banho e escadas'],
+  ['7 · Fragilidade grave', 7, 'Totalmente dependente nos cuidados pessoais, mas estável e sem risco de morte a curto prazo'],
+  ['8 · Fragilidade muito grave', 8, 'Totalmente dependente e a aproximar-se do fim de vida; pouco recupera de doenças ligeiras'],
+  ['9 · Doente terminal', 9, 'Esperança de vida inferior a 6 meses, mesmo sem fragilidade evidente'],
+];
+const cfsFieldset = document.createElement('fieldset');
+cfsFieldset.className = 'step';
+cfsFieldset.innerHTML = '<legend class="step-label"><span class="step-num">1</span> Qual descreve melhor a pessoa nas 2 semanas antes da doença atual?</legend><div class="checklist" id="cfs-opcoes"></div>';
+$('#cfs-perguntas').appendChild(cfsFieldset);
+CFS_NIVEIS.forEach(([titulo, valor, detalhe]) => {
+  const item = document.createElement('div');
+  item.className = 'check-item';
+  item.innerHTML = `<input type="radio" name="cfs" id="cfs-${valor}" value="${valor}"><label for="cfs-${valor}"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong></strong><small></small></span></label>`;
+  item.querySelector('strong').textContent = titulo;
+  item.querySelector('small').textContent = detalhe;
+  $('#cfs-opcoes').appendChild(item);
+});
+ligarEscala({
+  prefixo: 'cfs',
+  formId: 'cfs-form',
+  calcular: (form) => classificarCFS(form.querySelector('input[name="cfs"]:checked')?.value),
+  escrever: (r) => {
+    $('#cfs-pontos').textContent = r.pontos;
+    $('#cfs-sub').textContent = r.descricao;
+    $('#cfs-nota').textContent = r.fragil
+      ? 'Fragilidade (CFS ≥ 5): considerar avaliação geriátrica global, revisão da medicação e plano de cuidados.'
+      : 'Sem fragilidade estabelecida (CFS ≤ 4). Promover atividade física e reavaliar periodicamente.';
+  },
+  assunto: (r) => `Clinical Frailty Scale — ${r.pontos} (${r.descricao})`,
+  linhas: (r) => ['Clinical Frailty Scale (Rockwood)', `Nível: ${r.pontos} / 9 — ${r.descricao}`, $('#cfs-nota').textContent],
+});
+
+ligarEscala({
+  prefixo: 'tug',
+  formId: 'tug-form',
+  calcular: () => classificarTUG($('#tug-segundos').value.replace(',', '.')),
+  escrever: (r) => {
+    $('#tug-valor').textContent = r.segundos.toLocaleString('pt-PT');
+    $('#tug-sub').textContent = r.descricao;
+  },
+  assunto: (r) => `Timed Up and Go — ${r.segundos} s`,
+  linhas: (r) => ['Timed Up and Go', `Tempo: ${r.segundos.toLocaleString('pt-PT')} s`, r.descricao],
+});
+
+const MNA_ITENS = [
+  ['ingestao', 'Nos últimos 3 meses, a ingestão alimentar diminuiu (falta de apetite, problemas digestivos, dificuldade em mastigar ou engolir)?', [['Diminuição grave', 0], ['Diminuição moderada', 1], ['Sem diminuição', 2]]],
+  ['perdaPeso', 'Perda de peso nos últimos 3 meses', [['Mais de 3 kg', 0], ['Não sabe', 1], ['Entre 1 e 3 kg', 2], ['Sem perda de peso', 3]]],
+  ['mobilidade', 'Mobilidade', [['Na cama ou cadeira', 0], ['Levanta-se mas não sai de casa', 1], ['Sai de casa', 2]]],
+  ['stress', 'Doença aguda ou stress psicológico nos últimos 3 meses', [['Sim', 0], ['Não', 2]]],
+  ['neuropsicologico', 'Problemas neuropsicológicos', [['Demência ou depressão grave', 0], ['Demência ligeira', 1], ['Sem problemas', 2]]],
+  ['imcOuPerna', 'IMC (ou, se indisponível, perímetro da perna)', [['IMC < 19', 0], ['IMC 19 a < 21', 1], ['IMC 21 a < 23', 2], ['IMC ≥ 23 ou perímetro da perna ≥ 31 cm', 3], ['Perímetro da perna < 31 cm', 0]]],
+];
+montar($('#mna-perguntas'), MNA_ITENS, 'mna');
+ligarEscala({
+  prefixo: 'mna',
+  formId: 'mna-form',
+  calcular: (form) => calcularMNASF(ler(form, MNA_ITENS, 'mna')),
+  escrever: (r) => {
+    $('#mna-pontos').textContent = r.pontos;
+    $('#mna-sub').textContent = r.estado;
+  },
+  assunto: (r) => `MNA-SF — ${r.pontos}/14 (${r.estado})`,
+  linhas: (r) => ['MNA-SF (Mini Nutritional Assessment, versão curta)', `Pontuação: ${r.pontos} / 14`, r.estado],
+});
+
 const params = new URLSearchParams(location.search);
-const validos = ['barthel', 'morse', 'braden', 'cognitivo', 'gds15', 'charlson'];
+const validos = ['barthel', 'morse', 'braden', 'cognitivo', 'gds15', 'charlson', 'lawton', 'cfs', 'tug', 'mna'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'barthel');

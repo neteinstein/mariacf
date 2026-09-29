@@ -4,11 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CKD-EPI e Cockcroft-Gault · Dra. Maria Cortês Ferreira</title>
-  <meta name="description" content="Calcule a taxa de filtração glomerular estimada (CKD-EPI 2021) e a clearance de creatinina (Cockcroft-Gault), para rastreio da função renal e ajuste de fármacos.">
+  <meta name="description" content="Calcule a taxa de filtração glomerular estimada (CKD-EPI 2021) e a clearance de creatinina (Cockcroft-Gault), para rastreio da função renal e ajuste de fármacos, e estadiamento KDIGO (G/A) da doença renal crónica.">
   <meta name="theme-color" content="#0f8f83">
   <meta property="og:title" content="CKD-EPI e Cockcroft-Gault">
   <meta property="og:description" content="Função renal e ajuste de fármacos.">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,12 +51,13 @@
     <section class="page-hero reveal">
       <span class="eyebrow"><span class="dot"></span> Função renal · Ajuste de fármacos</span>
       <h1 class="display">CKD-EPI e <em>Cockcroft-Gault</em></h1>
-      <p class="lead">Estime a taxa de filtração glomerular (CKD-EPI 2021) ou a clearance de creatinina (Cockcroft-Gault), usada com frequência para ajustar a dose de anticoagulantes orais diretos e antibióticos.</p>
+      <p class="lead">Estime a taxa de filtração glomerular (CKD-EPI 2021) ou a clearance de creatinina (Cockcroft-Gault), usada com frequência para ajustar a dose de anticoagulantes orais diretos e antibióticos, e estadie a doença renal crónica pelo mapa de risco KDIGO.</p>
     </section>
 
     <div class="tabbar" role="tablist" aria-label="Escolher fórmula">
       <button class="tabbtn" type="button" data-tab="ckdepi" role="tab" aria-selected="true">CKD-EPI 2021 · eTFG</button>
       <button class="tabbtn" type="button" data-tab="cockcroft" role="tab" aria-selected="false">Cockcroft-Gault · CrCl</button>
+      <button class="tabbtn" type="button" data-tab="kdigo" role="tab" aria-selected="false">Estadio KDIGO (G/A)</button>
     </div>
 
     <div class="calc" data-painel="ckdepi">
@@ -198,6 +201,74 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="kdigo" hidden>
+      <form class="panel reveal" id="kdigo-form" autocomplete="off">
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="kdigo-tfg"><span class="step-num">1</span> TFG estimada</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="kdigo-tfg" data-step="-1" aria-label="Diminuir TFG">−</button>
+                <div class="weight-field"><input id="kdigo-tfg" type="number" inputmode="numeric" min="0" max="200" step="1" value="55"><span class="unit">mL/min</span></div>
+                <button class="stepper" type="button" data-alvo="kdigo-tfg" data-step="1" aria-label="Aumentar TFG">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="kdigo-acr"><span class="step-num">2</span> Albumina/creatinina urinária</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="kdigo-acr" data-step="-1" aria-label="Diminuir albuminúria">−</button>
+                <div class="weight-field"><input id="kdigo-acr" type="number" inputmode="decimal" min="0" max="5000" step="0.1" value="45"><span class="unit"><span id="kdigo-unidade">mg/g</span></span></div>
+                <button class="stepper" type="button" data-alvo="kdigo-acr" data-step="1" aria-label="Aumentar albuminúria">+</button>
+              </div>
+            </div>
+        </div>
+        <fieldset class="step">
+          <legend class="step-label">Unidade da albuminúria</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="kdigo-un" id="kdigo-un-mg/g" value="mg/g" checked><label for="kdigo-un-mg/g"><strong>mg/g</strong></label></div>
+            <div class="chip"><input type="radio" name="kdigo-un" id="kdigo-un-mg/mmol" value="mg/mmol"><label for="kdigo-un-mg/mmol"><strong>mg/mmol</strong></label></div>
+          </div>
+        </fieldset>
+      </form>
+      <section class="panel result score-result reveal" id="kdigo-resultado" aria-live="polite">
+        <div id="kdigo-ok">
+          <div class="result-head">
+            <div class="result-kicker">Estadiamento KDIGO</div>
+            <div class="dose-line"><div class="dose-big"><span id="kdigo-estadio">—</span></div></div>
+            <div class="dose-sub" id="kdigo-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="stats">
+              <div class="stat"><div class="k">Avaliações por ano</div><div class="v" id="kdigo-monit" style="font-size:1.1rem">—</div></div>
+              <div class="stat"><div class="k">Albuminúria</div><div class="v" id="kdigo-acr-mgg" style="font-size:1.1rem">—</div></div>
+            </div>
+            <table class="kdigo" id="kdigo-grelha" aria-label="Mapa de risco KDIGO">
+              <thead><tr><th></th><th scope="col">A1</th><th scope="col">A2</th><th scope="col">A3</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">G1</th><td data-g="G1" data-a="A1"></td><td data-g="G1" data-a="A2"></td><td data-g="G1" data-a="A3"></td></tr>
+                <tr><th scope="row">G2</th><td data-g="G2" data-a="A1"></td><td data-g="G2" data-a="A2"></td><td data-g="G2" data-a="A3"></td></tr>
+                <tr><th scope="row">G3a</th><td data-g="G3a" data-a="A1"></td><td data-g="G3a" data-a="A2"></td><td data-g="G3a" data-a="A3"></td></tr>
+                <tr><th scope="row">G3b</th><td data-g="G3b" data-a="A1"></td><td data-g="G3b" data-a="A2"></td><td data-g="G3b" data-a="A3"></td></tr>
+                <tr><th scope="row">G4</th><td data-g="G4" data-a="A1"></td><td data-g="G4" data-a="A2"></td><td data-g="G4" data-a="A3"></td></tr>
+                <tr><th scope="row">G5</th><td data-g="G5" data-a="A1"></td><td data-g="G5" data-a="A2"></td><td data-g="G5" data-a="A3"></td></tr>
+              </tbody>
+            </table>
+            <div class="notices" id="kdigo-notas"></div>
+            <div class="result-actions" id="result-actions-kdigo">
+              <button class="action-btn" type="button" id="btn-email-kdigo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-kdigo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="kdigo-vazio" hidden><div class="big-emoji" aria-hidden="true">🫘</div><p class="motivo" id="kdigo-motivo"></p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🫘</div>
@@ -212,6 +283,14 @@
         <h3>Cockcroft-Gault</h3>
         <ul>
           <li>Continua a ser a fórmula de referência para ajustar a dose de DOACs e de alguns antibióticos, por ser a usada nos respetivos ensaios clínicos.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🗺️</div>
+        <h3>Estadiamento KDIGO</h3>
+        <ul>
+          <li>Doença renal crónica: TFG &lt; 60 ou albuminúria ≥ 30 mg/g (ou outros marcadores de lesão) durante mais de 3 meses.</li>
+          <li>Referenciar à nefrologia se TFG &lt; 30, albuminúria &gt; 300 mg/g, declínio rápido da TFG ou hipertensão resistente.</li>
         </ul>
       </article>
       <article class="panel info-card reveal">

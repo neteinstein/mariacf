@@ -3,12 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Barthel, Morse, Braden e MMSE/MoCA · Dra. Maria Cortês Ferreira</title>
-  <meta name="description" content="Avaliação geriátrica: autonomia nas atividades de vida diária (Barthel), risco de queda (Morse), risco de úlcera de pressão (Braden) e classificação de pontuação MMSE/MoCA.">
+  <title>Avaliação geriátrica · Dra. Maria Cortês Ferreira</title>
+  <meta name="description" content="Avaliação geriátrica: autonomia nas atividades de vida diária (Barthel), risco de queda (Morse), risco de úlcera de pressão (Braden) classificação de pontuação MMSE/MoCA, atividades instrumentais (Lawton-Brody), fragilidade (CFS), Timed Up and Go e MNA-SF.">
   <meta name="theme-color" content="#0f8f83">
-  <meta property="og:title" content="Barthel, Morse, Braden e MMSE/MoCA">
+  <meta property="og:title" content="Avaliação geriátrica">
   <meta property="og:description" content="Avaliação geriátrica em cuidados de saúde primários.">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -48,8 +50,8 @@
   <main class="wrap">
     <section class="page-hero reveal">
       <span class="eyebrow"><span class="dot"></span> Geriatria</span>
-      <h1 class="display">Barthel, Morse, Braden e <em>MMSE/MoCA</em></h1>
-      <p class="lead">Autonomia nas atividades de vida diária, risco de queda, risco de úlcera de pressão e classificação de uma pontuação MMSE ou MoCA já obtida.</p>
+      <h1 class="display">Avaliação <em>geriátrica</em></h1>
+      <p class="lead">Autonomia nas atividades básicas e instrumentais de vida diária, fragilidade, mobilidade e risco de queda, risco de úlcera de pressão, estado nutricional, depressão, comorbilidade e classificação de uma pontuação MMSE ou MoCA já obtida.</p>
     </section>
 
     <div class="tabbar" role="tablist" aria-label="Escolher escala">
@@ -59,6 +61,10 @@
       <button class="tabbtn" type="button" data-tab="cognitivo" role="tab" aria-selected="false">MMSE / MoCA</button>
       <button class="tabbtn" type="button" data-tab="gds15" role="tab" aria-selected="false">GDS-15</button>
       <button class="tabbtn" type="button" data-tab="charlson" role="tab" aria-selected="false">Charlson</button>
+      <button class="tabbtn" type="button" data-tab="lawton" role="tab" aria-selected="false">Lawton-Brody</button>
+      <button class="tabbtn" type="button" data-tab="cfs" role="tab" aria-selected="false">Fragilidade (CFS)</button>
+      <button class="tabbtn" type="button" data-tab="tug" role="tab" aria-selected="false">Timed Up and Go</button>
+      <button class="tabbtn" type="button" data-tab="mna" role="tab" aria-selected="false">MNA-SF</button>
     </div>
 
     <div class="calc" data-painel="barthel">
@@ -349,6 +355,130 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="lawton" hidden>
+      <form class="panel reveal" id="lawton-form" autocomplete="off">
+        <div id="lawton-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="lw-resultado" aria-live="polite">
+        <div id="lw-ok">
+          <div class="result-head">
+            <div class="result-kicker">Escala de Lawton-Brody (AIVD)</div>
+            <div class="dose-line"><div class="dose-big"><span id="lw-pontos">0</span><span class="u">/ 8</span></div></div>
+            <div class="dose-sub" id="lw-sub"></div>
+          </div>
+          <div class="result-body">
+
+            <div class="result-actions" id="result-actions-lw">
+              <button class="action-btn" type="button" id="btn-email-lw">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-lw">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="lw-vazio"><div class="big-emoji" aria-hidden="true">🛒</div><p class="motivo" id="lw-motivo">Preencha todos os itens para ver a pontuação.</p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="cfs" hidden>
+      <form class="panel reveal" id="cfs-form" autocomplete="off">
+        <div id="cfs-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="cfs-resultado" aria-live="polite">
+        <div id="cfs-ok">
+          <div class="result-head">
+            <div class="result-kicker">Clinical Frailty Scale</div>
+            <div class="dose-line"><div class="dose-big"><span id="cfs-pontos">—</span><span class="u">/ 9</span></div></div>
+            <div class="dose-sub" id="cfs-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="notices"><div class="notice" id="cfs-nota"></div></div>
+            <div class="result-actions" id="result-actions-cfs">
+              <button class="action-btn" type="button" id="btn-email-cfs">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-cfs">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="cfs-vazio"><div class="big-emoji" aria-hidden="true">🧓</div><p class="motivo" id="cfs-motivo">Escolha o nível que melhor descreve a pessoa nas últimas 2 semanas.</p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="tug" hidden>
+      <form class="panel reveal" id="tug-form" autocomplete="off">
+        <div class="step">
+          <label class="step-label" for="tug-segundos"><span class="step-num">1</span> Tempo no Timed Up and Go</label>
+          <p class="step-hint">Levantar-se de uma cadeira com braços, andar 3 metros ao ritmo habitual, dar a volta, regressar e sentar-se.</p>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="tug-segundos" data-step="-1" aria-label="Diminuir tempo">−</button>
+            <div class="weight-field"><input id="tug-segundos" type="number" inputmode="decimal" min="1" max="300" step="0.1" value="10"><span class="unit">segundos</span></div>
+            <button class="stepper" type="button" data-alvo="tug-segundos" data-step="1" aria-label="Aumentar tempo">+</button>
+          </div>
+        </div>
+      </form>
+      <section class="panel result score-result reveal" id="tug-resultado" aria-live="polite">
+        <div id="tug-ok">
+          <div class="result-head">
+            <div class="result-kicker">Timed Up and Go</div>
+            <div class="dose-line"><div class="dose-big"><span id="tug-valor">0</span><span class="u">s</span></div></div>
+            <div class="dose-sub" id="tug-sub"></div>
+          </div>
+          <div class="result-body">
+
+            <div class="result-actions" id="result-actions-tug">
+              <button class="action-btn" type="button" id="btn-email-tug">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-tug">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="tug-vazio" hidden><div class="big-emoji" aria-hidden="true">🚶</div><p class="motivo" id="tug-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="mna" hidden>
+      <form class="panel reveal" id="mna-form" autocomplete="off">
+        <div id="mna-perguntas"></div>
+      </form>
+      <section class="panel result score-result reveal" id="mna-resultado" aria-live="polite">
+        <div id="mna-ok">
+          <div class="result-head">
+            <div class="result-kicker">MNA-SF (triagem nutricional)</div>
+            <div class="dose-line"><div class="dose-big"><span id="mna-pontos">0</span><span class="u">/ 14</span></div></div>
+            <div class="dose-sub" id="mna-sub"></div>
+          </div>
+          <div class="result-body">
+
+            <div class="result-actions" id="result-actions-mna">
+              <button class="action-btn" type="button" id="btn-email-mna">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-mna">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="mna-vazio"><div class="big-emoji" aria-hidden="true">🍽️</div><p class="motivo" id="mna-motivo">Preencha todos os itens para ver a pontuação.</p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🧓</div>
@@ -385,6 +515,36 @@
         <ul>
           <li>Estima o prognóstico a longo prazo a partir das comorbilidades e da idade — quanto maior, pior o prognóstico.</li>
           <li>A estimativa de sobrevivência a 10 anos é aproximada (fórmula original de 1987).</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🛒</div>
+        <h3>Lawton-Brody</h3>
+        <ul>
+          <li>Avalia 8 atividades instrumentais (telefone, compras, refeições, lida da casa, roupa, transportes, medicação e dinheiro). 8 = independente; quanto menor, maior a dependência.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🧓</div>
+        <h3>Clinical Frailty Scale</h3>
+        <ul>
+          <li>Classifica o estado da pessoa nas 2 semanas anteriores a uma doença aguda. A partir do nível 5 considera-se fragilidade.</li>
+          <li>Validada em pessoas com 65 ou mais anos.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🚶</div>
+        <h3>Timed Up and Go</h3>
+        <ul>
+          <li>&lt; 12 s: mobilidade normal · ≥ 12 s: risco de queda aumentado (CDC STEADI) · ≥ 20 s: mobilidade limitada.</li>
+        </ul>
+      </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🍽️</div>
+        <h3>MNA-SF</h3>
+        <ul>
+          <li>12–14: estado nutricional normal · 8–11: risco de desnutrição · 0–7: desnutrição.</li>
+          <li>Se não for possível calcular o IMC, use o perímetro da perna (barriga da perna).</li>
         </ul>
       </article>
     </section>

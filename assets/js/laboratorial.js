@@ -1,4 +1,4 @@
-import { calcularLDLFriedewald, calcularSodioCorrigido, calcularCalcioCorrigido, calcularEAG, calcularAnionGap, calcularOsmolaridade, calcularDeficeAguaLivre, calcularHOMAIR } from './laboratorial-core.js';
+import { calcularLDLFriedewald, calcularSodioCorrigido, calcularCalcioCorrigido, calcularEAG, calcularAnionGap, calcularOsmolaridade, calcularDeficeAguaLivre, calcularHOMAIR, converterUnidade, ANALITOS } from './laboratorial-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -197,6 +197,34 @@ ligar({
   ]),
 });
 
+/* ---------- Conversão de unidades ---------- */
+
+const analito = () => $('input[name="conv-analito"]:checked')?.value;
+const direcao = () => $('input[name="conv-direcao"]:checked')?.value;
+
+function atualizarUnidadesConversao() {
+  const a = ANALITOS[analito()];
+  if (!a) return;
+  $('label[for="conv-direcao-paraSI"] strong').textContent = `${a.convencional} → ${a.si}`;
+  $('label[for="conv-direcao-paraConvencional"] strong').textContent = `${a.si} → ${a.convencional}`;
+  $('#conv-unidade').textContent = direcao() === 'paraConvencional' ? a.si : a.convencional;
+}
+$('#conv-form').addEventListener('change', atualizarUnidadesConversao);
+atualizarUnidadesConversao();
+
+ligar({
+  prefixo: 'conv',
+  calcular: converterUnidade,
+  ler: () => [analito(), $('#conv-valor').value.replace(',', '.'), direcao()],
+  escrever: (r) => {
+    $('#conv-resultado-valor').textContent = r.convertido.toLocaleString('pt-PT', { minimumFractionDigits: r.casas, maximumFractionDigits: r.casas });
+    $('#conv-resultado-unidade').textContent = r.unidadeDestino;
+    $('#conv-sub').textContent = `${r.nome}: ${r.valor.toLocaleString('pt-PT')} ${r.unidadeOrigem}`;
+  },
+  titulo: 'Conversão de unidades',
+  resumo: () => resumoTexto('Conversão de unidades', [$('#conv-sub').textContent, `= ${$('#conv-resultado-valor').textContent} ${$('#conv-resultado-unidade').textContent}`]),
+});
+
 const params = new URLSearchParams(location.search);
-const validos = ['ldl', 'na', 'ca', 'eag', 'ag', 'osm', 'agua', 'homa'];
+const validos = ['ldl', 'na', 'ca', 'eag', 'ag', 'osm', 'agua', 'homa', 'conv'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'ldl');

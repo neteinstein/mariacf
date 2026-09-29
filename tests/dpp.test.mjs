@@ -62,3 +62,17 @@ test('trimestres', () => {
   assert.equal(trimestre(27 * 7 + 6), 2);
   assert.equal(trimestre(28 * 7), 3);
 });
+
+import { marcosGravidez } from '../assets/js/dpp-core.js';
+
+test('marcos da gravidez: ecografia morfológica entre as 20 e as 22+6 semanas', () => {
+  // DUM 2026-01-01 → DPP 2026-10-08
+  const dpp = new Date(2026, 9, 8);
+  const marcos = marcosGravidez(dpp, new Date(2026, 4, 25));
+  const morfo = marcos.find((m) => m.titulo.startsWith('Ecografia morfológica'));
+  assert.equal(morfo.dataInicio.getMonth(), 4);
+  assert.equal(morfo.dataInicio.getDate(), 21);
+  assert.equal(morfo.estado, 'agora');
+  assert.equal(marcos[0].estado, 'passada');
+  assert.equal(marcos[marcos.length - 1].estado, 'futura');
+});

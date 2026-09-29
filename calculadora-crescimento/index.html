@@ -4,11 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Crescimento infantil (OMS) · Dra. Maria Cortês Ferreira</title>
-  <meta name="description" content="Calcule o Z-score e o percentil de peso, comprimento/altura e perímetro cefálico, dos 0 aos 24 meses, segundo os padrões de crescimento da OMS.">
+  <meta name="description" content="Z-score e percentis de crescimento (OMS) dos 0 aos 19 anos, IMC-para-idade, idade corrigida do prematuro e altura-alvo. Calcule o Z-score e o percentil de peso, comprimento/altura e perímetro cefálico, dos 0 aos 24 meses, segundo os padrões de crescimento da OMS.">
   <meta name="theme-color" content="#0f8f83">
   <meta property="og:title" content="Crescimento infantil (OMS)">
   <meta property="og:description" content="Z-score e percentis de peso, comprimento e perímetro cefálico.">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -49,7 +51,7 @@
     <section class="page-hero reveal">
       <span class="eyebrow"><span class="dot"></span> Pediatria · Crescimento</span>
       <h1 class="display">Crescimento infantil <em>(OMS)</em></h1>
-      <p class="lead">Z-score e percentil de peso, comprimento/altura, perímetro cefálico e peso-para-comprimento, dos 0 aos 24 meses, segundo os padrões de crescimento infantil da Organização Mundial da Saúde (2006), usados no Boletim de Saúde Infantil e Juvenil.</p>
+      <p class="lead">Z-score e percentil de peso, comprimento, perímetro cefálico e peso-para-comprimento dos 0 aos 24 meses, e de IMC e altura dos 2 aos 19 anos, segundo as curvas da Organização Mundial da Saúde usadas no Boletim de Saúde Infantil e Juvenil. Inclui a idade corrigida do prematuro e a altura-alvo familiar.</p>
     </section>
 
     <div class="tabbar" role="tablist" aria-label="Escolher indicador">
@@ -57,6 +59,10 @@
       <button class="tabbtn" type="button" data-tab="comp" role="tab" aria-selected="false">Comprimento-idade</button>
       <button class="tabbtn" type="button" data-tab="pc" role="tab" aria-selected="false">Perímetro cefálico</button>
       <button class="tabbtn" type="button" data-tab="wl" role="tab" aria-selected="false">Peso-comprimento</button>
+      <button class="tabbtn" type="button" data-tab="imc" role="tab" aria-selected="false">IMC-idade (2–19 anos)</button>
+      <button class="tabbtn" type="button" data-tab="alt" role="tab" aria-selected="false">Altura-idade (2–19 anos)</button>
+      <button class="tabbtn" type="button" data-tab="ic" role="tab" aria-selected="false">Idade corrigida</button>
+      <button class="tabbtn" type="button" data-tab="aa" role="tab" aria-selected="false">Altura-alvo</button>
     </div>
 
     <div class="calc" data-painel="peso">
@@ -275,6 +281,247 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="imc" hidden>
+      <form class="panel reveal" id="imc-form" autocomplete="off">
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="imc-anos"><span class="step-num">1</span> Idade</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="imc-anos" data-step="-1" aria-label="Diminuir anos">−</button>
+                <div class="weight-field"><input id="imc-anos" type="number" inputmode="numeric" min="2" max="19" step="1" value="8"><span class="unit">anos</span></div>
+                <button class="stepper" type="button" data-alvo="imc-anos" data-step="1" aria-label="Aumentar anos">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="imc-meses">e meses</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="imc-meses" data-step="-1" aria-label="Diminuir meses">−</button>
+                <div class="weight-field"><input id="imc-meses" type="number" inputmode="numeric" min="0" max="11" step="1" value="0"><span class="unit">meses</span></div>
+                <button class="stepper" type="button" data-alvo="imc-meses" data-step="1" aria-label="Aumentar meses">+</button>
+              </div>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="imc-peso"><span class="step-num">2</span> Peso</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="imc-peso" data-step="-0.5" aria-label="Diminuir peso">−</button>
+                <div class="weight-field"><input id="imc-peso" type="number" inputmode="decimal" min="8" max="200" step="0.1" value="26"><span class="unit">kg</span></div>
+                <button class="stepper" type="button" data-alvo="imc-peso" data-step="0.5" aria-label="Aumentar peso">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="imc-altura"><span class="step-num">3</span> Altura</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="imc-altura" data-step="-0.5" aria-label="Diminuir altura">−</button>
+                <div class="weight-field"><input id="imc-altura" type="number" inputmode="decimal" min="70" max="210" step="0.1" value="128"><span class="unit">cm</span></div>
+                <button class="stepper" type="button" data-alvo="imc-altura" data-step="0.5" aria-label="Aumentar altura">+</button>
+              </div>
+            </div>
+        </div>
+        <label class="choice" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:2px solid var(--line)">
+          <input type="checkbox" id="imc-sexo" style="position:static;opacity:1;width:auto">
+          Sexo feminino
+        </label>
+      </form>
+      <section class="panel result score-result reveal" id="imc-resultado" aria-live="polite">
+        <div id="imc-ok">
+          <div class="result-head">
+            <div class="result-kicker">IMC-para-idade (2–19 anos)</div>
+            <div class="dose-line"><div class="dose-big"><span id="imc-z">+0,00</span><span class="u">DP (Z)</span></div></div>
+            <div class="dose-sub" id="imc-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="stats">
+              <div class="stat"><div class="k">IMC</div><div class="v" id="imc-valor" style="font-size:1.1rem">—</div></div>
+              <div class="stat"><div class="k">Mediana OMS</div><div class="v" id="imc-mediana" style="font-size:1.1rem">—</div></div>
+            </div>
+            <div class="notices"><div class="notice" id="imc-descricao"></div></div>
+            <div class="result-actions" id="result-actions-imc">
+              <button class="action-btn" type="button" id="btn-email-imc">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-imc">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="imc-vazio" hidden><div class="big-emoji" aria-hidden="true">📊</div><p class="motivo" id="imc-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="alt" hidden>
+      <form class="panel reveal" id="alt-form" autocomplete="off">
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="alt-anos"><span class="step-num">1</span> Idade</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="alt-anos" data-step="-1" aria-label="Diminuir anos">−</button>
+                <div class="weight-field"><input id="alt-anos" type="number" inputmode="numeric" min="2" max="19" step="1" value="8"><span class="unit">anos</span></div>
+                <button class="stepper" type="button" data-alvo="alt-anos" data-step="1" aria-label="Aumentar anos">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="alt-meses">e meses</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="alt-meses" data-step="-1" aria-label="Diminuir meses">−</button>
+                <div class="weight-field"><input id="alt-meses" type="number" inputmode="numeric" min="0" max="11" step="1" value="0"><span class="unit">meses</span></div>
+                <button class="stepper" type="button" data-alvo="alt-meses" data-step="1" aria-label="Aumentar meses">+</button>
+              </div>
+            </div>
+        </div>
+        <div class="step">
+          <label class="step-label" for="alt-valor"><span class="step-num">2</span> Altura</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="alt-valor" data-step="-0.5" aria-label="Diminuir altura">−</button>
+            <div class="weight-field"><input id="alt-valor" type="number" inputmode="decimal" min="70" max="210" step="0.1" value="128"><span class="unit">cm</span></div>
+            <button class="stepper" type="button" data-alvo="alt-valor" data-step="0.5" aria-label="Aumentar altura">+</button>
+          </div>
+        </div>
+        <label class="choice" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:2px solid var(--line)">
+          <input type="checkbox" id="alt-sexo" style="position:static;opacity:1;width:auto">
+          Sexo feminino
+        </label>
+      </form>
+      <section class="panel result score-result reveal" id="alt-resultado" aria-live="polite">
+        <div id="alt-ok">
+          <div class="result-head">
+            <div class="result-kicker">Altura-para-idade (2–19 anos)</div>
+            <div class="dose-line"><div class="dose-big"><span id="alt-z">+0,00</span><span class="u">DP (Z)</span></div></div>
+            <div class="dose-sub" id="alt-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="stats">
+              <div class="stat"><div class="k">Mediana OMS</div><div class="v" id="alt-mediana" style="font-size:1.1rem">—</div></div>
+            </div>
+            <div class="notices"><div class="notice" id="alt-descricao"></div></div>
+            <div class="result-actions" id="result-actions-alt">
+              <button class="action-btn" type="button" id="btn-email-alt">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-alt">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="alt-vazio" hidden><div class="big-emoji" aria-hidden="true">📏</div><p class="motivo" id="alt-motivo"></p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="ic" hidden>
+      <form class="panel reveal" id="ic-form" autocomplete="off">
+        <div class="step">
+          <label class="step-label" for="ic-nascimento"><span class="step-num">1</span> Data de nascimento</label>
+          <input class="date-field" id="ic-nascimento" type="date">
+        </div>
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="ic-semanas"><span class="step-num">2</span> Idade gestacional ao nascer</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="ic-semanas" data-step="-1" aria-label="Diminuir semanas de gestação">−</button>
+                <div class="weight-field"><input id="ic-semanas" type="number" inputmode="numeric" min="22" max="42" step="1" value="32"><span class="unit">semanas</span></div>
+                <button class="stepper" type="button" data-alvo="ic-semanas" data-step="1" aria-label="Aumentar semanas de gestação">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="ic-dias">e dias</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="ic-dias" data-step="-1" aria-label="Diminuir dias de gestação">−</button>
+                <div class="weight-field"><input id="ic-dias" type="number" inputmode="numeric" min="0" max="6" step="1" value="0"><span class="unit">dias</span></div>
+                <button class="stepper" type="button" data-alvo="ic-dias" data-step="1" aria-label="Aumentar dias de gestação">+</button>
+              </div>
+            </div>
+        </div>
+      </form>
+      <section class="panel result reveal" id="ic-resultado" aria-live="polite">
+        <div id="ic-ok">
+          <div class="result-head">
+            <div class="result-kicker">Idade corrigida</div>
+            <div class="dose-line"><div class="dose-big"><span id="ic-corrigida">—</span></div></div>
+            <div class="dose-sub" id="ic-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="stats">
+              <div class="stat"><div class="k">Idade cronológica</div><div class="v" id="ic-cronologica" style="font-size:1.1rem">—</div></div>
+              <div class="stat"><div class="k">Prematuridade</div><div class="v" id="ic-prematuridade" style="font-size:1.1rem">—</div></div>
+            </div>
+            <div class="notices"><div class="notice" id="ic-nota"></div></div>
+            <div class="result-actions" id="result-actions-ic">
+              <button class="action-btn" type="button" id="btn-email-ic">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-ic">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="ic-vazio"><div class="big-emoji" aria-hidden="true">🍼</div><p class="motivo" id="ic-motivo">Indique a data de nascimento.</p></div>
+      </section>
+    </div>
+
+    <div class="calc" data-painel="aa" hidden>
+      <form class="panel reveal" id="aa-form" autocomplete="off">
+        <div class="field-row">
+            <div class="step">
+              <label class="step-label" for="aa-pai"><span class="step-num">1</span> Altura do pai</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="aa-pai" data-step="-1" aria-label="Diminuir altura do pai">−</button>
+                <div class="weight-field"><input id="aa-pai" type="number" inputmode="decimal" min="120" max="230" step="0.5" value="176"><span class="unit">cm</span></div>
+                <button class="stepper" type="button" data-alvo="aa-pai" data-step="1" aria-label="Aumentar altura do pai">+</button>
+              </div>
+            </div>
+            <div class="step">
+              <label class="step-label" for="aa-mae"><span class="step-num">2</span> Altura da mãe</label>
+              <div class="weight">
+                <button class="stepper" type="button" data-alvo="aa-mae" data-step="-1" aria-label="Diminuir altura da mãe">−</button>
+                <div class="weight-field"><input id="aa-mae" type="number" inputmode="decimal" min="120" max="230" step="0.5" value="163"><span class="unit">cm</span></div>
+                <button class="stepper" type="button" data-alvo="aa-mae" data-step="1" aria-label="Aumentar altura da mãe">+</button>
+              </div>
+            </div>
+        </div>
+        <label class="choice" style="display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:14px;border:2px solid var(--line)">
+          <input type="checkbox" id="aa-sexo" style="position:static;opacity:1;width:auto">
+          A criança é do sexo feminino
+        </label>
+      </form>
+      <section class="panel result reveal" id="aa-resultado" aria-live="polite">
+        <div id="aa-ok">
+          <div class="result-head">
+            <div class="result-kicker">Altura-alvo familiar</div>
+            <div class="dose-line"><div class="dose-big"><span id="aa-alvo">0</span><span class="u">cm</span></div></div>
+            <div class="dose-sub" id="aa-sub"></div>
+          </div>
+          <div class="result-body">
+            <div class="stats">
+              <div class="stat"><div class="k">Intervalo esperado</div><div class="v" id="aa-intervalo" style="font-size:1.1rem">—</div></div>
+              <div class="stat"><div class="k">Percentil aos 19 anos</div><div class="v" id="aa-percentil" style="font-size:1.1rem">—</div></div>
+            </div>
+            <div class="notices"><div class="notice">A altura-alvo estima o potencial genético. Uma criança que cresce num percentil muito afastado do da altura-alvo merece avaliação.</div></div>
+            <div class="result-actions" id="result-actions-aa">
+              <button class="action-btn" type="button" id="btn-email-aa">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-aa">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="aa-vazio" hidden><div class="big-emoji" aria-hidden="true">🧬</div><p class="motivo" id="aa-motivo"></p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">📈</div>
@@ -289,8 +536,8 @@
         <div class="info-ico" aria-hidden="true">📋</div>
         <h3>Fonte dos dados</h3>
         <ul>
-          <li>Padrões de crescimento infantil da OMS (2006), tal como usados no Boletim de Saúde Infantil e Juvenil da DGS.</li>
-          <li>Cobertura dos 0 aos 24 meses, a fase de vigilância mais frequente nas consultas de saúde infantil.</li>
+          <li>0–5 anos: padrões de crescimento infantil da OMS (2006). 5–19 anos: referência de crescimento da OMS (2007). São as curvas do Boletim de Saúde Infantil e Juvenil da DGS.</li>
+          <li>IMC-para-idade: até aos 5 anos, excesso de peso &gt; +2 DP e obesidade &gt; +3 DP; dos 5 aos 19 anos, excesso de peso &gt; +1 DP e obesidade &gt; +2 DP.</li>
         </ul>
       </article>
       <article class="panel info-card reveal">
@@ -300,10 +547,18 @@
           <li>Avalia a proporcionalidade entre peso e comprimento, independentemente da idade — útil para rastrear baixo peso ou excesso de peso.</li>
         </ul>
       </article>
+      <article class="panel info-card reveal">
+        <div class="info-ico" aria-hidden="true">🍼</div>
+        <h3>Prematuros e altura-alvo</h3>
+        <ul>
+          <li>Nos nascidos antes das 37 semanas, avalie o crescimento com a idade corrigida até aos 24 meses.</li>
+          <li>Altura-alvo (Tanner): média das alturas dos pais + 6,5 cm nos rapazes ou − 6,5 cm nas raparigas, com um intervalo de ± 8,5 cm.</li>
+        </ul>
+      </article>
     </section>
 
     <p class="disclaimer reveal">
-      Esta calculadora cobre os 0 aos 24 meses e é um apoio informativo — não substitui o registo e a interpretação clínica feitos pelo médico ou enfermeiro no Boletim de Saúde Infantil e Juvenil.
+      Esta calculadora é um apoio informativo — não substitui o registo e a interpretação clínica feitos pelo médico ou enfermeiro no Boletim de Saúde Infantil e Juvenil.
     </p>
   </main>
 

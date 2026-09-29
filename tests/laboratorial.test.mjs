@@ -106,3 +106,26 @@ test('HOMA-IR: valores elevados → resistência à insulina', () => {
   // 120*25/405 = 7.41
   assert.equal(r.nivel, 'alto');
 });
+
+import { converterUnidade } from '../assets/js/laboratorial-core.js';
+
+test('conversão: glicose 100 mg/dL → 5,6 mmol/L e volta', () => {
+  assert.equal(converterUnidade('glicose', 100).convertido, 5.6);
+  assert.equal(converterUnidade('glicose', 5.6, 'paraConvencional').convertido, 101);
+});
+
+test('conversão: creatinina 1 mg/dL → 88 µmol/L; colesterol 200 mg/dL → 5,17 mmol/L', () => {
+  assert.equal(converterUnidade('creatinina', 1).convertido, 88);
+  assert.equal(converterUnidade('colesterol', 200).convertido, 5.17);
+  assert.equal(converterUnidade('ureia', 60).convertido, 10);
+});
+
+test('conversão: HbA1c 7% → 53 mmol/mol e 53 mmol/mol → 7,0%', () => {
+  assert.equal(converterUnidade('hba1c', 7).convertido, 53);
+  assert.equal(converterUnidade('hba1c', 53, 'paraConvencional').convertido, 7);
+});
+
+test('conversão: validação', () => {
+  assert.equal(converterUnidade('xpto', 1).ok, false);
+  assert.equal(converterUnidade('glicose', '').ok, false);
+});

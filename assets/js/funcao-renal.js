@@ -1,4 +1,4 @@
-import { calcularCKDEPI2021, calcularCockcroftGault } from './funcao-renal-core.js';
+import { calcularCKDEPI2021, calcularCockcroftGault, estadiarKDIGO, RISCO_KDIGO as RISCO_KDIGO_GRELHA } from './funcao-renal-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -162,5 +162,75 @@ $('#btn-print-cg').addEventListener('click', () => {
   window.print();
 });
 
+/* ---------- Estadiamento KDIGO (G/A) ---------- */
+
+const kdigoForm = $('#kdigo-form');
+const kdigoResultado = $('#kdigo-resultado');
+let resultadoKDIGO = null;
+const unidadeACR = () => $('input[name="kdigo-un"]:checked').value;
+
+function atualizarKDIGO() {
+  $('#kdigo-unidade').textContent = unidadeACR();
+  const r = estadiarKDIGO($('#kdigo-tfg').value, $('#kdigo-acr').value.replace(',', '.'), unidadeACR());
+  const ok = $('#kdigo-ok');
+  const vazio = $('#kdigo-vazio');
+  const acoes = $('#result-actions-kdigo');
+  if (!r.ok) {
+    resultadoKDIGO = null;
+    ok.hidden = true;
+    vazio.hidden = false;
+    if (acoes) acoes.hidden = true;
+    $('#kdigo-motivo').textContent = r.motivo;
+    return;
+  }
+  resultadoKDIGO = r;
+  ok.hidden = false;
+  vazio.hidden = true;
+  if (acoes) acoes.hidden = false;
+  kdigoResultado.dataset.nivel = r.nivel;
+  $('#kdigo-estadio').textContent = `${r.g} ${r.a}`;
+  $('#kdigo-sub').textContent = r.risco;
+  $('#kdigo-monit').textContent = r.monitorizacao;
+  $('#kdigo-acr-mgg').innerHTML = `${r.acrMgG} <small>mg/g</small>`;
+  $$('#kdigo-grelha td').forEach((td) => {
+    td.dataset.nivel = RISCO_KDIGO_GRELHA[td.dataset.g][Number(td.dataset.a[1]) - 1];
+    td.classList.toggle('atual', td.dataset.g === r.g && td.dataset.a === r.a);
+    td.textContent = td.classList.contains('atual') ? '●' : '';
+  });
+  const notas = [`${r.g}: ${r.gNome}. ${r.a}: ${r.aNome}.`];
+  if (r.referenciar) notas.push('Critério de referenciação à nefrologia.');
+  $('#kdigo-notas').replaceChildren(...notas.map((t) => {
+    const div = document.createElement('div');
+    div.className = 'notice';
+    div.textContent = t;
+    return div;
+  }));
+}
+kdigoForm.addEventListener('input', atualizarKDIGO);
+kdigoForm.addEventListener('change', atualizarKDIGO);
+atualizarKDIGO();
+
+function resumoTextoKDIGO(r) {
+  return [
+    'Estadiamento KDIGO da doença renal crónica',
+    `TFG: ${$('#kdigo-tfg').value} mL/min/1,73 m² → ${r.g} (${r.gNome})`,
+    `Albuminúria: ${$('#kdigo-acr').value} ${unidadeACR()} → ${r.a} (${r.aNome})`,
+    `Risco: ${r.risco}`,
+    `Avaliações recomendadas por ano: ${r.monitorizacao}`,
+    r.referenciar ? 'Critério de referenciação à nefrologia.' : '',
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+    location.href,
+  ].join('\n');
+}
+
+$('#btn-email-kdigo').addEventListener('click', () => {
+  if (!resultadoKDIGO) return;
+  const assunto = `Estadio KDIGO — ${resultadoKDIGO.g} ${resultadoKDIGO.a} (${resultadoKDIGO.risco.toLowerCase()})`;
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoTextoKDIGO(resultadoKDIGO))}`;
+});
+$('#btn-print-kdigo').addEventListener('click', () => window.print());
+
 const params = new URLSearchParams(location.search);
-selecionar(params.get('calc') === 'cockcroft' ? 'cockcroft' : 'ckdepi');
+const validos = ['ckdepi', 'cockcroft', 'kdigo'];
+selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'ckdepi');

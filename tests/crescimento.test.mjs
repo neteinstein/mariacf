@@ -49,3 +49,81 @@ test('classificação: limites -2/+2 DP', () => {
   const mediano = calcularZScore('peso', false, 0, 3.3464);
   assert.ok(Math.abs(mediano.z) < 0.01);
 });
+
+import { calcularIMCIdade, calcularAlturaIdade, calcularIdadeCorrigida, calcularAlturaAlvo } from '../assets/js/crescimento-core.js';
+
+test('IMC-para-idade: menino 10 anos na mediana OMS 2007 (16,4433) → Z ≈ 0', () => {
+  // altura 140 cm → peso = 16,4433 × 1,96
+  const r = calcularIMCIdade(false, 120, 16.4433 * 1.96, 140);
+  assert.equal(r.ok, true);
+  assert.ok(Math.abs(r.z) < 0.01, `z devia ser ~0, foi ${r.z}`);
+  assert.equal(r.nivel, 'baixo');
+});
+
+test('IMC-para-idade: menino 10 anos com IMC no +2 DP (21,4) → obesidade no limite', () => {
+  const r = calcularIMCIdade(false, 120, 21.4 * 1.96, 140);
+  assert.ok(Math.abs(r.z - 2) < 0.02, `z devia ser ~2, foi ${r.z}`);
+});
+
+test('IMC-para-idade: acima de +3 DP usa o método restrito da OMS', () => {
+  // SD3 = 26,073, SD2 = 21,4 → IMC 30,746 (SD4 tabelado) deve dar Z ≈ 4
+  const r = calcularIMCIdade(false, 120, 30.746 * 1.96, 140);
+  assert.ok(Math.abs(r.z - 4) < 0.02, `z devia ser ~4, foi ${r.z}`);
+  assert.equal(r.nivel, 'muito-alto');
+});
+
+test('IMC-para-idade: menina 3 anos usa padrões OMS 2006 (M = 15,3968), com risco de excesso de peso > +1 DP', () => {
+  const mediana = calcularIMCIdade(true, 36, 15.3968 * 0.9 * 0.9, 90);
+  assert.ok(Math.abs(mediana.z) < 0.01);
+  const acima = calcularIMCIdade(true, 36, 17.2 * 0.81, 90);
+  assert.equal(acima.nivel, 'moderado');
+});
+
+test('IMC-para-idade: fora dos 2–19 anos é inválido', () => {
+  assert.equal(calcularIMCIdade(false, 12, 10, 75).ok, false);
+  assert.equal(calcularIMCIdade(false, 240, 70, 175).ok, false);
+});
+
+test('altura-para-idade: rapariga 19 anos na mediana (163,1548 cm) → Z ≈ 0; -2 DP = 150,073', () => {
+  assert.ok(Math.abs(calcularAlturaIdade(true, 228, 163.1548).z) < 0.01);
+  const baixa = calcularAlturaIdade(true, 228, 150.0);
+  assert.ok(baixa.z < -2);
+  assert.equal(baixa.nivel, 'alto');
+});
+
+test('idade corrigida: prematuro de 32 semanas com 6 meses cronológicos → ~4 meses corrigidos', () => {
+  const r = calcularIdadeCorrigida('2026-01-01', 32, 0, new Date(2026, 6, 1));
+  assert.equal(r.ok, true);
+  assert.equal(r.prematuro, true);
+  assert.equal(r.prematuridadeSemanas, 8);
+  assert.equal(r.cronologica.totalDias, 181);
+  assert.equal(r.corrigida.totalDias, 181 - 56);
+  assert.equal(r.corrigida.meses, 4);
+});
+
+test('idade corrigida: antes das 40 semanas pós-menstruais devolve a idade pós-menstrual', () => {
+  const r = calcularIdadeCorrigida('2026-01-01', 30, 0, new Date(2026, 0, 29));
+  assert.equal(r.corrigida, null);
+  assert.deepEqual(r.idadePosMenstrual, { semanas: 34, dias: 0 });
+});
+
+test('idade corrigida: termo não precisa de correção', () => {
+  const r = calcularIdadeCorrigida('2026-01-01', 39, 0, new Date(2026, 6, 1));
+  assert.equal(r.prematuro, false);
+  assert.equal(r.corrigida.totalDias, 181 - 7);
+});
+
+test('idade corrigida: validação', () => {
+  assert.equal(calcularIdadeCorrigida('', 32).ok, false);
+  assert.equal(calcularIdadeCorrigida('2026-01-01', 20).ok, false);
+  assert.equal(calcularIdadeCorrigida('2027-01-01', 32, 0, new Date(2026, 0, 1)).ok, false);
+});
+
+test('altura-alvo: pai 180, mãe 165 → rapaz 179 cm, rapariga 166 cm, ± 8,5', () => {
+  const rapaz = calcularAlturaAlvo(false, 180, 165);
+  assert.equal(rapaz.alvo, 179);
+  assert.equal(rapaz.minimo, 170.5);
+  assert.equal(rapaz.maximo, 187.5);
+  assert.equal(calcularAlturaAlvo(true, 180, 165).alvo, 166);
+  assert.equal(calcularAlturaAlvo(true, 180, '').ok, false);
+});
