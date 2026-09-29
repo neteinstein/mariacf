@@ -1791,6 +1791,10 @@ fieldset.step legend + .step-hint {
   max-width: 70ch;
 }
 
+.profile-section + .section-intro {
+  margin: 32px 0 0;
+}
+
 .journey {
   list-style: none;
   margin: 0;
