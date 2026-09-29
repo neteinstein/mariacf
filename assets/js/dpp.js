@@ -1,4 +1,4 @@
-import { calcularPorDUM, calcularPorEcografia, paraData, paraISO, marcosGravidez } from './dpp-core.js';
+import { calcularPorDUM, calcularPorEcografia, paraData, paraISO, marcosGravidez, MARCOS_GRAVIDEZ, DIAS_GESTACAO } from './dpp-core.js';
 
 const $ = (sel) => document.querySelector(sel);
 const fmtData = new Intl.DateTimeFormat('pt-PT', { day: '2-digit', month: 'long', year: 'numeric' });
@@ -169,6 +169,7 @@ function atualizar() {
   }
   $('#notices').innerHTML = avisos.join('');
   mostrarMarcos(r.dpp);
+  desenharViagem(r);
 
   const q = new URLSearchParams({ metodo });
   if (metodo === 'eco') {
@@ -180,6 +181,70 @@ function atualizar() {
     q.set('ciclo', cicloInput.value);
   }
   history.replaceState(null, '', `?${q}`);
+}
+
+/* ---------- Viagem da gravidez: 42 semanas, trimestres e marcos ---------- */
+
+const DIAS_VIAGEM = 42 * 7;
+const pos = (dias) => `${(Math.min(Math.max(dias, 0), DIAS_VIAGEM) / DIAS_VIAGEM) * 100}%`;
+
+// Tamanho aproximado do bebé, só como curiosidade (semana a partir da qual se aplica).
+const TAMANHOS = [
+  [5, '🌱', 'uma semente de sésamo'],
+  [7, '🫐', 'um mirtilo'],
+  [9, '🫒', 'uma azeitona'],
+  [10, '🍓', 'um morango'],
+  [12, '🍋', 'uma lima'],
+  [14, '🍋', 'um limão'],
+  [15, '🍎', 'uma maçã'],
+  [16, '🥑', 'um abacate'],
+  [18, '🫑', 'um pimento'],
+  [19, '🥭', 'uma manga'],
+  [20, '🍌', 'uma banana'],
+  [22, '🌽', 'uma maçaroca de milho'],
+  [25, '🍆', 'uma beringela'],
+  [28, '🥥', 'um coco'],
+  [32, '🍍', 'um ananás'],
+  [34, '🍈', 'um melão'],
+  [37, '🍉', 'uma melancia pequena'],
+];
+
+function montarViagem() {
+  const el = $('#viagem');
+  const marcos = MARCOS_GRAVIDEZ.filter((m) => m.de > 0 && m.de < DIAS_GESTACAO)
+    .map((m, i) => `<i class="gv-marco" style="left:${pos(m.de)}" data-i="${i}" title="${m.titulo}"></i>`)
+    .join('');
+  el.innerHTML = `
+    <div class="fx-titulo">A gravidez até ao parto</div>
+    <div class="gv-pista">
+      <div class="gv-tri" style="flex:${14 * 7}"><span>1.º trimestre</span></div>
+      <div class="gv-tri" style="flex:${14 * 7}"><span>2.º trimestre</span></div>
+      <div class="gv-tri" style="flex:${DIAS_VIAGEM - 28 * 7}"><span>3.º trimestre</span></div>
+      <div class="gv-feito"></div>
+      ${marcos}
+      <i class="gv-dpp" style="left:${pos(DIAS_GESTACAO)}"><em>DPP</em></i>
+      <div class="gv-hoje"><b></b><span></span></div>
+    </div>
+    <div class="gv-escala"><span style="left:0">0</span><span style="left:${pos(14 * 7)}">14</span><span style="left:${pos(28 * 7)}">28</span><span style="left:${pos(DIAS_GESTACAO)}">40 semanas</span></div>
+    <p class="gv-tamanho" hidden><span class="gv-emoji" aria-hidden="true"></span><span class="gv-txt"></span></p>`;
+}
+
+function desenharViagem(r) {
+  const el = $('#viagem');
+  if (!el.firstElementChild) montarViagem();
+  el.style.setProperty('--hoje', pos(r.idadeGestacionalDias));
+  const frac = r.idadeGestacionalDias / DIAS_VIAGEM;
+  el.dataset.lado = frac < 0.08 ? 'inicio' : frac > 0.92 ? 'fim' : '';
+  el.querySelector('.gv-hoje span').textContent = `${r.semanas}s ${r.dias}d`;
+  const estados = marcosGravidez(r.dpp, hoje).filter((m) => m.de > 0 && m.de < DIAS_GESTACAO);
+  el.querySelectorAll('.gv-marco').forEach((m, i) => (m.dataset.estado = estados[i]?.estado || ''));
+  const t = [...TAMANHOS].reverse().find(([sem]) => r.semanas >= sem);
+  const tam = el.querySelector('.gv-tamanho');
+  tam.hidden = !t || r.atrasada;
+  if (t) {
+    el.querySelector('.gv-emoji').textContent = t[1];
+    el.querySelector('.gv-txt').innerHTML = `Com ${r.semanas} semanas, o bebé tem mais ou menos o tamanho de <strong>${t[2]}</strong>.`;
+  }
 }
 
 /* ---------- Calendário da vigilância ---------- */

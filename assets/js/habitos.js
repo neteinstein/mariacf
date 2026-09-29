@@ -28,6 +28,9 @@ ligarCalculadora({
     $('#alc-padrao').innerHTML = `${fmt(r.bebidasPadraoSemana, 1)} <small>/semana</small>`;
     $('#alc-dia').innerHTML = `${fmt(r.gramasDia, 1)} <small>g/dia</small>`;
     $('#alc-limite').innerHTML = `${fmt(r.limiteSemana)} <small>g/semana</small>`;
+    // Uma bebida-padrão = 10 g de álcool; o limite semanal marca a mudança de cor.
+    $('#alc-copos').dataset.marca = r.limiteSemana / 10;
+    $('#alc-copos').dataset.valor = r.bebidasPadraoSemana;
   },
   resumo: (r) => ({
     assunto: `Consumo de álcool — ${fmt(r.gramasSemana)} g/semana`,

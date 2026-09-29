@@ -19,6 +19,8 @@ ligarCalculadora({
   escrever: (r) => {
     $('#fib4-valor').textContent = fmt(r.fib4, 2);
     $('#fib4-sub').textContent = r.descricao;
+    // O limiar de baixo risco sobe para 2,0 a partir dos 65 anos.
+    $('#fib4-escala').dataset.faixas = `0~${r.limiarBaixo}:baixo:Baixo|${r.limiarBaixo}~2.67:moderado:Indeterminado|2.67~5:alto:Alto`;
     notas('#fib4-notas', [`Limiar de baixo risco usado: < ${fmt(r.limiarBaixo, 2)}${r.limiarBaixo === 2 ? ' (≥ 65 anos)' : ''}.`, r.aviso]);
   },
   resumo: (r) => ({
@@ -66,6 +68,7 @@ ligarCalculadora({
     $('#child-classe').textContent = `Classe ${r.classe}`;
     $('#child-pontos').textContent = `${r.pontos} pontos`;
     $('#child-sub').textContent = r.descricao;
+    $('#child-escala').dataset.valor = r.pontos;
   },
   resumo: (r) => ({ assunto: `Child-Pugh — classe ${r.classe} (${r.pontos} pontos)`, linhas: ['Child-Pugh', `Pontuação: ${r.pontos} (classe ${r.classe})`, r.descricao] }),
 });
@@ -83,6 +86,7 @@ ligarCalculadora({
     $('#meld-sub').textContent = r.meldNa === null ? 'Sem sódio: mostra o MELD' : 'MELD corrigido para o sódio';
     $('#meld-simples').textContent = r.meld;
     $('#meld-mort').textContent = r.mortalidade90d;
+    $('#meld-pessoas').dataset.valor = Number(r.mortalidade90d.replace(/[^\d]/g, ''));
   },
   resumo: (r) => ({
     assunto: `MELD-Na — ${r.meldNa ?? r.meld}`,

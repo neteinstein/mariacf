@@ -57,7 +57,7 @@
     <div class="calc">
       <form class="panel reveal" id="ipss-form" autocomplete="off">
         <div id="ipss-perguntas"></div>
-        <div id="ipss-qv" style="margin-top:10px"></div>
+        <div id="ipss-qv" data-fx-opcional style="margin-top:10px"></div>
       </form>
 
       <section class="panel result score-result reveal" id="ipss-resultado" aria-live="polite">
@@ -68,6 +68,7 @@
             <div class="dose-sub" id="ip-gravidade"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#ip-pontos" data-min="0" data-max="35" data-titulo="Gravidade dos sintomas urinários" data-faixas="0~7:baixo:Ligeiros|8~19:moderado:Moderados|20~35:alto:Graves"></div>
             <div class="notices"><div class="notice" id="ip-qv"></div></div>
 
             <div class="result-actions" id="result-actions">

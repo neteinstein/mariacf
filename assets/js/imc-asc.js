@@ -86,17 +86,11 @@ document.querySelectorAll('.stepper').forEach((btn) => {
   });
 });
 
-/* ---------- Gauge de IMC ---------- */
+/* ---------- Escala de IMC ---------- */
 
-// Escala visual do mostrador: 15 a 45 kg/m², cobrindo todas as categorias.
-const GAUGE_MIN = 15;
-const GAUGE_MAX = 45;
-
+// A escala por categorias (15 a 45 kg/m²) é desenhada por fx.js; basta dar-lhe o valor final.
 function posicionarMarcador(imc) {
-  const marcador = $('#imc-marker');
-  const c = Math.min(Math.max(imc, GAUGE_MIN), GAUGE_MAX);
-  const p = ((c - GAUGE_MIN) / (GAUGE_MAX - GAUGE_MIN)) * 100;
-  marcador.style.left = `${p}%`;
+  $('#imc-escala').dataset.valor = imc;
 }
 
 /* ---------- Número animado ---------- */

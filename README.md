@@ -53,6 +53,16 @@ LMS oficiais da OMS (padrões 2006 até aos 60 meses, referência 2007 dos 61 ao
 1. Criar `calculadora-<nome>/index.html`, `assets/js/<nome>-core.js` e `assets/js/<nome>.js`
    (as páginas novas usam `assets/js/calc-ui.js` para separadores, botões +/−, resultado e email/impressão).
 2. Acrescentar os testes em `tests/<nome>.test.mjs`.
+   Para o resultado ganhar vida, basta HTML — `assets/js/fx.js` (carregado por `site.js`) trata do resto:
+   - números do `.dose-big` e das `.stat` contam até ao valor; pontuações «x / N» ganham um anel;
+   - questionários com perguntas `.qitem` ganham progresso, marcação das respondidas e gráfico por pergunta
+     (`data-fx-opcional` exclui perguntas; `data-fx-grafico-titulo` muda o título do gráfico);
+   - `<div class="fx-escala" data-src="#id-do-numero" data-min data-max data-faixas="0~7:baixo:Normal|8~9:moderado:…">`
+     desenha uma escala por faixas (`data-continuo` para valores contínuos; `data-valor` em vez de `data-src`
+     quando o valor vem do código);
+   - também há `.fx-pessoas` (100 pessoas, risco em %), `.fx-icones` (um ícone por unidade), `.fx-gauss`
+     (curva normal para Z-scores), `.fx-degraus` (níveis em escada) e `.fx-acronimo` (letras que acendem
+     com os campos `data-campo`).
 3. Acrescentar o cartão na página inicial e os ficheiros novos à lista `PRECACHE` de `sw.js`
    — o teste `tests/site.test.mjs` falha se faltar algum.
 

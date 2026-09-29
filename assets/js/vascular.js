@@ -86,6 +86,34 @@ $('#btn-print-itb').addEventListener('click', () => {
   window.print();
 });
 
+/* ---------- Peso real, ideal e ajustado na mesma régua ---------- */
+
+function desenharPesos(r, real) {
+  const el = $('#pi-regua');
+  const valores = [r.pesoIdeal, r.pesoAjustado, real];
+  const min = Math.floor((Math.min(...valores) - 8) / 10) * 10;
+  const max = Math.ceil((Math.max(...valores) + 8) / 10) * 10;
+  const pos = (v) => `${((v - min) / (max - min)) * 100}%`;
+  if (!el.firstElementChild) {
+    el.innerHTML = `
+      <div class="pi-pista">
+        <span class="pi-pino pi-ideal"><b></b><em>Ideal</em></span>
+        <span class="pi-pino pi-ajustado"><b></b><em>Ajustado</em></span>
+        <span class="pi-pino pi-real"><b></b><em>Real</em></span>
+      </div>
+      <div class="lab-regua-ext"><span class="pi-min"></span><span class="pi-max"></span></div>`;
+  }
+  [['ideal', r.pesoIdeal], ['ajustado', r.pesoAjustado], ['real', real]].forEach(([id, v]) => {
+    const pino = el.querySelector(`.pi-${id}`);
+    pino.style.left = pos(v);
+    pino.querySelector('b').textContent = `${v.toLocaleString('pt-PT', { maximumFractionDigits: 1 })} kg`;
+  });
+  el.querySelector('.pi-min').textContent = `${min} kg`;
+  el.querySelector('.pi-max').textContent = `${max} kg`;
+  // Pesos muito próximos: o rótulo do ajustado vai para baixo para não se sobrepor.
+  el.classList.toggle('pi-junto', Math.abs(r.pesoAjustado - r.pesoIdeal) / (max - min) < 0.14 || Math.abs(real - r.pesoAjustado) / (max - min) < 0.14);
+}
+
 /* ---------- Peso ideal / ajustado ---------- */
 
 const piForm = $('#pi-form');
@@ -115,6 +143,7 @@ function atualizarPesoIdeal() {
     ? 'Peso real > 120% do peso ideal — considere usar o peso ajustado para dosear fármacos hidrofílicos.'
     : 'Peso real próximo do ideal — o peso ajustado raramente é necessário aqui.';
   $('#pi-nota').textContent = piAtual.nota;
+  desenharPesos(r, Number($('#pi-peso').value.replace(',', '.')));
 }
 piForm.addEventListener('input', atualizarPesoIdeal);
 piForm.addEventListener('change', atualizarPesoIdeal);

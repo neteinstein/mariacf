@@ -24,3 +24,17 @@ test('às 25 semanas com IMC normal: esperado 0,5 + 12×0,35 a 2 + 12×0,5', () 
   assert.equal(r.avaliacao.nivel, 'baixo');
   assert.equal(calcularAumentoPeso({ pesoPre: 60, alturaCm: 165, semanas: 25, pesoAtual: 72 }).avaliacao.nivel, 'alto');
 });
+
+test('corredor de aumento de peso: coincide com a avaliação semana a semana e termina no total', async () => {
+  const { calcularAumentoPeso, corredorAumentoPeso } = await import('../assets/js/gravidez-peso-core.js');
+  const base = { pesoPre: 62, alturaCm: 165 };
+  const c = corredorAumentoPeso(calcularAumentoPeso(base));
+  assert.equal(c.length, 41);
+  for (const s of [8, 13, 20, 30, 40]) {
+    const r = calcularAumentoPeso({ ...base, semanas: s, pesoAtual: 70 });
+    assert.equal(c[s].min, r.avaliacao.esperadoMin);
+    assert.equal(c[s].max, r.avaliacao.esperadoMax);
+  }
+  assert.ok(c[40].max <= 16 && c[40].min <= 11.5);
+  assert.equal(corredorAumentoPeso(calcularAumentoPeso({ ...base, gemelar: true })), null);
+});

@@ -75,15 +75,18 @@
             </div>
             <div class="dose-sub" id="cat-impacto"></div>
           </div>
-          <div class="result-actions" id="result-actions-cat">
-            <button class="action-btn" type="button" id="btn-email-cat">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-cat">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#cat-pontos" data-min="0" data-max="40" data-titulo="Impacto da DPOC" data-faixas="0~9:baixo:Baixo|10~20:moderado:Médio|21~30:alto:Alto|31~40:muito-alto:Muito alto"></div>
+            <div class="result-actions" id="result-actions-cat">
+              <button class="action-btn" type="button" id="btn-email-cat">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-cat">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="cat-vazio">
@@ -107,15 +110,18 @@
             </div>
             <div class="dose-sub" id="act-controlo"></div>
           </div>
-          <div class="result-actions" id="result-actions-act">
-            <button class="action-btn" type="button" id="btn-email-act">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-act">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#act-pontos" data-min="5" data-max="25" data-titulo="Controlo da asma" data-faixas="5~19:alto:Não controlada|20~24:baixo:Bem controlada|25~25:baixo:Controlo total"></div>
+            <div class="result-actions" id="result-actions-act">
+              <button class="action-btn" type="button" id="btn-email-act">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-act">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="act-vazio">
@@ -172,6 +178,7 @@
             <div class="dose-sub" id="centor-risco"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#centor-pontos" data-min="-1" data-max="5" data-titulo="Probabilidade de faringite estreptocócica" data-faixas="-1~1:baixo:Baixa|2~3:moderado:Intermédia|4~5:alto:Alta"></div>
             <div class="notices">
               <div class="notice" id="centor-recomendacao"></div>
             </div>

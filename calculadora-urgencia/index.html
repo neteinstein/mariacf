@@ -103,15 +103,21 @@
           <div class="dose-line"><div class="dose-big"><span id="cu-pontos">0</span><span class="u">/ 5</span></div></div>
           <div class="dose-sub" id="cu-recomendacao"></div>
         </div>
-        <div class="result-actions" id="result-actions-curb65">
-          <button class="action-btn" type="button" id="btn-email-curb65">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-curb65">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-acronimo">
+            <span data-campo="cu-confusao">C</span><span data-campo="cu-ureia">U</span><span data-campo="cu-fr">R</span><span data-campo="cu-pa">B</span><span class="sep">–</span><span data-campo="cu-idade">65</span>
+          </div>
+          <div class="fx-escala" data-src="#cu-pontos" data-min="0" data-max="5" data-titulo="Gravidade da pneumonia" data-faixas="0~1:baixo:Baixa|2~2:moderado:Intermédia|3~4:alto:Elevada|5~5:muito-alto:Muito elevada"></div>
+          <div class="result-actions" id="result-actions-curb65">
+            <button class="action-btn" type="button" id="btn-email-curb65">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-curb65">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -170,15 +176,18 @@
           <div class="dose-line"><div class="dose-big"><span id="tvp-pontos">0</span><span class="u">pontos</span></div></div>
           <div class="dose-sub" id="tvp-recomendacao"></div>
         </div>
-        <div class="result-actions" id="result-actions-tvp">
-          <button class="action-btn" type="button" id="btn-email-tvp">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-tvp">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-escala" data-src="#tvp-pontos" data-min="-2" data-max="9" data-titulo="Probabilidade clínica de TVP" data-faixas="-2~1:baixo:Improvável (&lt; 2)|2~9:alto:Provável (≥ 2)"></div>
+          <div class="result-actions" id="result-actions-tvp">
+            <button class="action-btn" type="button" id="btn-email-tvp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-tvp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -225,15 +234,18 @@
           <div class="dose-line"><div class="dose-big"><span id="tep-pontos">0</span><span class="u">pontos</span></div></div>
           <div class="dose-sub" id="tep-recomendacao"></div>
         </div>
-        <div class="result-actions" id="result-actions-tep">
-          <button class="action-btn" type="button" id="btn-email-tep">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-tep">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-escala" data-src="#tep-pontos" data-continuo data-inclusivo data-min="0" data-max="12.5" data-titulo="Probabilidade clínica de TEP" data-faixas="0~4:baixo:Improvável (≤ 4)|4~12.5:alto:Provável (&gt; 4)"></div>
+          <div class="result-actions" id="result-actions-tep">
+            <button class="action-btn" type="button" id="btn-email-tep">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-tep">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -271,6 +283,11 @@
             <div class="dose-sub" id="qtc-limiar"></div>
           </div>
           <div class="result-body">
+            <div class="fx-ilustracao">
+              <div class="fx-titulo">Intervalo QT corrigido</div>
+              <div class="qtc-ecg" id="qtc-ecg"></div>
+            </div>
+            <div class="fx-escala" id="qtc-escala" data-src="#qtc-bazett" data-continuo data-inclusivo data-min="340" data-max="560" data-titulo="Classificação (limiares para o sexo)" data-faixas="340~440:baixo:Normal|440~460:moderado:Limítrofe|460~500:alto:Prolongado|500~560:muito-alto:&gt; 500 ms"></div>
             <div class="stats">
               <div class="stat"><div class="k">QTc (Fridericia)</div><div class="v" id="qtc-fridericia" style="font-size:1.2rem">—</div></div>
             </div>
@@ -329,15 +346,21 @@
           <div class="dose-line"><div class="dose-big"><span id="gcs-pontos">15</span><span class="u">/ 15</span></div></div>
           <div class="dose-sub" id="gcs-gravidade"></div>
         </div>
-        <div class="result-actions" id="result-actions-gcs">
-          <button class="action-btn" type="button" id="btn-email-gcs">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-gcs">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-acronimo" data-mostrar-valor>
+            <span data-campo="gcs-e">E</span><span data-campo="gcs-v">V</span><span data-campo="gcs-m">M</span>
+          </div>
+          <div class="fx-escala" data-src="#gcs-pontos" data-min="3" data-max="15" data-titulo="Gravidade do traumatismo" data-faixas="3~8:muito-alto:Grave|9~12:alto:Moderado|13~15:baixo:Ligeiro"></div>
+          <div class="result-actions" id="result-actions-gcs">
+            <button class="action-btn" type="button" id="btn-email-gcs">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-gcs">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -392,15 +415,22 @@
           <div class="dose-line"><div class="dose-big"><span id="heart-pontos">0</span><span class="u">/ 10</span></div></div>
           <div class="dose-sub" id="heart-risco"></div>
         </div>
-        <div class="result-actions" id="result-actions-heart">
-          <button class="action-btn" type="button" id="btn-email-heart">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-heart">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-acronimo" data-mostrar-valor>
+            <span data-campo="heart-historia">H</span><span data-campo="heart-ecg">E</span><span data-campo="heart-idade">A</span><span data-campo="heart-fatoresRisco">R</span><span data-campo="heart-troponina">T</span>
+          </div>
+          <div class="fx-escala" data-src="#heart-pontos" data-min="0" data-max="10" data-titulo="Risco de evento cardíaco major" data-faixas="0~3:baixo:Baixo|4~6:moderado:Moderado|7~10:alto:Elevado"></div>
+          <div class="fx-pessoas" id="heart-pessoas" data-valor="" data-titulo="Em 100 doentes com este score" data-legenda="Cerca de {n} têm um evento cardíaco major nas 6 semanas seguintes."></div>
+          <div class="result-actions" id="result-actions-heart">
+            <button class="action-btn" type="button" id="btn-email-heart">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-heart">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -476,15 +506,18 @@
             <div class="dose-line"><div class="dose-big"><span id="news-pontos">0</span><span class="u">/ 20</span></div></div>
             <div class="dose-sub" id="news-resposta"></div>
           </div>
-          <div class="result-actions" id="result-actions-news2">
-            <button class="action-btn" type="button" id="btn-email-news2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-news2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#news-pontos" data-min="0" data-max="20" data-titulo="Nível de resposta clínica" data-faixas="0~0:baixo:Rotina|1~4:moderado:Baixo|5~6:alto:Médio (urgente)|7~20:muito-alto:Alto (emergência)"></div>
+            <div class="result-actions" id="result-actions-news2">
+              <button class="action-btn" type="button" id="btn-email-news2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-news2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="news-vazio" hidden><div class="big-emoji" aria-hidden="true">📟</div><p class="motivo" id="news-motivo"></p></div>
@@ -521,15 +554,21 @@
           <div class="dose-line"><div class="dose-big"><span id="crb-pontos">0</span><span class="u">/ 4</span></div></div>
           <div class="dose-sub" id="crb-recomendacao"></div>
         </div>
-        <div class="result-actions" id="result-actions-crb65">
-          <button class="action-btn" type="button" id="btn-email-crb65">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-crb65">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-acronimo">
+            <span data-campo="crb-confusao">C</span><span data-campo="crb-fr">R</span><span data-campo="crb-pa">B</span><span class="sep">–</span><span data-campo="crb-idade">65</span>
+          </div>
+          <div class="fx-escala" data-src="#crb-pontos" data-min="0" data-max="4" data-titulo="Gravidade da pneumonia" data-faixas="0~0:baixo:Baixa|1~2:moderado:Intermédia|3~4:alto:Elevada"></div>
+          <div class="result-actions" id="result-actions-crb65">
+            <button class="action-btn" type="button" id="btn-email-crb65">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-crb65">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -557,15 +596,20 @@
           <div class="dose-sub" id="perc-positivos"></div>
           <div class="dose-sub" id="perc-recomendacao" style="margin-top:8px"></div>
         </div>
-        <div class="result-actions" id="result-actions-perc">
-          <button class="action-btn" type="button" id="btn-email-perc">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-perc">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-acronimo">
+            <span data-campo="perc-hormonasExogenas">H</span><span data-campo="perc-idade50">A</span><span data-campo="perc-tvpTepPrevio">D</span><span class="sep"> </span><span data-campo="perc-hemoptises">C</span><span data-campo="perc-edemaUnilateral">L</span><span data-campo="perc-spo295">O</span><span data-campo="perc-fc100">T</span><span data-campo="perc-cirurgiaOuTrauma">S</span>
+          </div>
+          <div class="result-actions" id="result-actions-perc">
+            <button class="action-btn" type="button" id="btn-email-perc">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-perc">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -626,15 +670,21 @@
           <div class="dose-line"><div class="dose-big"><span id="al-pontos">0</span><span class="u">/ 10</span></div></div>
           <div class="dose-sub" id="al-recomendacao"></div>
         </div>
-        <div class="result-actions" id="result-actions-alvarado">
-          <button class="action-btn" type="button" id="btn-email-alvarado">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-alvarado">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-acronimo" data-mostrar-valor>
+            <span data-campo="al-migracaoDor">M</span><span data-campo="al-anorexia">A</span><span data-campo="al-nauseasVomitos">N</span><span data-campo="al-dorFID" data-pontos="2">T</span><span data-campo="al-reboundPositivo">R</span><span data-campo="al-febre">E</span><span data-campo="al-leucocitose" data-pontos="2">L</span><span data-campo="al-desvioEsquerdo">S</span>
+          </div>
+          <div class="fx-escala" data-src="#al-pontos" data-min="0" data-max="10" data-titulo="Probabilidade de apendicite" data-faixas="0~4:baixo:Baixa|5~6:moderado:Possível|7~8:alto:Provável|9~10:muito-alto:Muito provável"></div>
+          <div class="result-actions" id="result-actions-alvarado">
+            <button class="action-btn" type="button" id="btn-email-alvarado">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-alvarado">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>
@@ -667,15 +717,18 @@
             <div class="dose-line"><div class="dose-big"><span id="ic-valor">0</span></div></div>
             <div class="dose-sub" id="ic-interpretacao"></div>
           </div>
-          <div class="result-actions" id="result-actions-choque">
-            <button class="action-btn" type="button" id="btn-email-choque">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-choque">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#ic-valor" data-continuo data-min="0.3" data-max="1.6" data-max-rotulo="1,6+" data-titulo="Índice de choque (FC ÷ PAS)" data-faixas="0.3~0.7:baixo:Normal|0.7~1:moderado:Limítrofe|1~1.6:alto:Choque provável"></div>
+            <div class="result-actions" id="result-actions-choque">
+              <button class="action-btn" type="button" id="btn-email-choque">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-choque">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="ic-vazio" hidden><div class="big-emoji" aria-hidden="true">💓</div><p class="motivo"></p></div>

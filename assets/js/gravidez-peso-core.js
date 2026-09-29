@@ -22,6 +22,39 @@ const CATEGORIAS = [
 const PRIMEIRO_TRIMESTRE = [0.5, 2];
 
 /**
+ * Intervalo de aumento de peso esperado numa dada semana: até às 13 semanas,
+ * 0–2 kg; depois, 0,5–2 kg mais o ritmo semanal da categoria, sem ultrapassar
+ * o total recomendado.
+ */
+function esperadoNaSemana(s, semanal, total) {
+  let min;
+  let max;
+  if (s <= 13) {
+    min = 0;
+    max = PRIMEIRO_TRIMESTRE[1];
+  } else {
+    min = PRIMEIRO_TRIMESTRE[0] + (s - 13) * semanal[0];
+    max = PRIMEIRO_TRIMESTRE[1] + (s - 13) * semanal[1];
+  }
+  return [Math.min(min, total[0]), Math.min(max, total[1])];
+}
+
+/**
+ * Corredor de aumento de peso esperado semana a semana (0–40), para desenhar
+ * o gráfico. Recebe o resultado de calcularAumentoPeso; na gravidez gemelar
+ * (sem ritmo semanal definido) devolve null.
+ */
+export function corredorAumentoPeso(resultado) {
+  if (!resultado?.ok || resultado.semanalMin == null) return null;
+  const semanal = [resultado.semanalMin, resultado.semanalMax];
+  const total = [resultado.totalMin, resultado.totalMax];
+  return Array.from({ length: 41 }, (_, s) => {
+    const [min, max] = esperadoNaSemana(s, semanal, total);
+    return { semanas: s, min: arred(min), max: arred(max) };
+  });
+}
+
+/**
  * pesoPre (kg), alturaCm, semanas (idade gestacional atual, opcional) e
  * pesoAtual (kg, opcional). Devolve o IMC pré-gravidez, o intervalo total
  * recomendado e, se houver peso atual, se o aumento está dentro do esperado.
@@ -54,17 +87,7 @@ export function calcularAumentoPeso({ pesoPre, alturaCm, semanas, pesoAtual, gem
   if (semanas === '' || pesoAtual === '' || !Number.isFinite(s) || !Number.isFinite(atual) || atual <= 0 || gemelar) return resultado;
   if (s < 1 || s > 42) return resultado;
 
-  let esperadoMin;
-  let esperadoMax;
-  if (s <= 13) {
-    esperadoMin = 0;
-    esperadoMax = PRIMEIRO_TRIMESTRE[1];
-  } else {
-    esperadoMin = PRIMEIRO_TRIMESTRE[0] + (s - 13) * cat.semanal[0];
-    esperadoMax = PRIMEIRO_TRIMESTRE[1] + (s - 13) * cat.semanal[1];
-  }
-  esperadoMax = Math.min(esperadoMax, total[1]);
-  esperadoMin = Math.min(esperadoMin, total[0]);
+  const [esperadoMin, esperadoMax] = esperadoNaSemana(s, cat.semanal, total);
 
   const ganho = atual - p;
   let nivel;

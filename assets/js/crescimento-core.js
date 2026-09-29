@@ -196,6 +196,29 @@ export function calcularAlturaIdade(sexoFeminino, idadeMeses, alturaCm) {
   return { ok: true, ...arredondarResultado(z, m), ...classificarAlturaIdade(z) };
 }
 
+/* ---------- Curvas de referência (para desenhar o gráfico) ---------- */
+
+const TABELAS_CURVAS = {
+  ...TABELAS,
+  imc: { m: IMC_M, f: IMC_F },
+  altura: { m: ALTURA_M, f: ALTURA_F },
+};
+
+/**
+ * Linhas de referência de um indicador: para cada ponto da tabela da OMS,
+ * o valor correspondente a cada Z pedido (por omissão −3, −2, 0, +2 e +3 DP).
+ * Devolve { x: [...], linhas: { z: [...] } } ou null se o indicador não existir.
+ */
+export function curvasReferencia(indicador, sexoFeminino, zs = [-3, -2, 0, 2, 3]) {
+  const tabela = TABELAS_CURVAS[indicador]?.[sexoFeminino ? 'f' : 'm'];
+  if (!tabela) return null;
+  const linhas = {};
+  zs.forEach((z) => {
+    linhas[z] = tabela.map(([, l, m, s]) => Math.round(valorDeZ(z, l, m, s) * 100) / 100);
+  });
+  return { x: tabela.map((r) => r[0]), linhas };
+}
+
 /* ---------- Idade corrigida do prematuro ---------- */
 
 function paraDataLocal(iso) {

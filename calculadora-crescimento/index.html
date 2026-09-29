@@ -98,6 +98,11 @@
             <div class="dose-sub" id="peso-percentil"></div>
           </div>
           <div class="result-body">
+            <div class="fx-ilustracao">
+              <div class="fx-titulo">Curva de crescimento da OMS</div>
+              <div class="cg" id="peso-grafico"></div>
+            </div>
+            <div class="fx-gauss" data-src="#peso-z" data-titulo="Posição na população de referência"></div>
             <div class="stats">
               <div class="stat"><div class="k">Mediana OMS</div><div class="v" id="peso-mediana" style="font-size:1.1rem">—</div></div>
             </div>
@@ -152,6 +157,11 @@
             <div class="dose-sub" id="comp-percentil"></div>
           </div>
           <div class="result-body">
+            <div class="fx-ilustracao">
+              <div class="fx-titulo">Curva de crescimento da OMS</div>
+              <div class="cg" id="comp-grafico"></div>
+            </div>
+            <div class="fx-gauss" data-src="#comp-z" data-titulo="Posição na população de referência"></div>
             <div class="stats">
               <div class="stat"><div class="k">Mediana OMS</div><div class="v" id="comp-mediana" style="font-size:1.1rem">—</div></div>
             </div>
@@ -206,6 +216,11 @@
             <div class="dose-sub" id="pc-percentil"></div>
           </div>
           <div class="result-body">
+            <div class="fx-ilustracao">
+              <div class="fx-titulo">Curva de crescimento da OMS</div>
+              <div class="cg" id="pc-grafico"></div>
+            </div>
+            <div class="fx-gauss" data-src="#pc-z" data-titulo="Posição na população de referência"></div>
             <div class="stats">
               <div class="stat"><div class="k">Mediana OMS</div><div class="v" id="pc-mediana" style="font-size:1.1rem">—</div></div>
             </div>
@@ -260,6 +275,11 @@
             <div class="dose-sub" id="wl-percentil"></div>
           </div>
           <div class="result-body">
+            <div class="fx-ilustracao">
+              <div class="fx-titulo">Curva de crescimento da OMS</div>
+              <div class="cg" id="wl-grafico"></div>
+            </div>
+            <div class="fx-gauss" data-src="#wl-z" data-titulo="Posição na população de referência"></div>
             <div class="stats">
               <div class="stat"><div class="k">Mediana OMS</div><div class="v" id="wl-mediana" style="font-size:1.1rem">—</div></div>
             </div>
@@ -332,6 +352,11 @@
             <div class="dose-sub" id="imc-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-ilustracao">
+              <div class="fx-titulo">Curva de crescimento da OMS</div>
+              <div class="cg" id="imc-grafico"></div>
+            </div>
+            <div class="fx-gauss" data-src="#imc-z" data-titulo="Posição na população de referência"></div>
             <div class="stats">
               <div class="stat"><div class="k">IMC</div><div class="v" id="imc-valor" style="font-size:1.1rem">—</div></div>
               <div class="stat"><div class="k">Mediana OMS</div><div class="v" id="imc-mediana" style="font-size:1.1rem">—</div></div>
@@ -394,6 +419,11 @@
             <div class="dose-sub" id="alt-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-ilustracao">
+              <div class="fx-titulo">Curva de crescimento da OMS</div>
+              <div class="cg" id="alt-grafico"></div>
+            </div>
+            <div class="fx-gauss" data-src="#alt-z" data-titulo="Posição na população de referência"></div>
             <div class="stats">
               <div class="stat"><div class="k">Mediana OMS</div><div class="v" id="alt-mediana" style="font-size:1.1rem">—</div></div>
             </div>
@@ -447,6 +477,16 @@
             <div class="dose-sub" id="ic-sub"></div>
           </div>
           <div class="result-body">
+            <div class="ic-linha" id="ic-linha" aria-hidden="true">
+              <div class="fx-titulo">Linha do tempo</div>
+              <div class="ic-pista">
+                <div class="ic-barra ic-cron"><span>Idade cronológica</span><b id="ic-linha-cron"></b></div>
+                <div class="ic-barra ic-corr"><span>Idade corrigida</span><b id="ic-linha-corr"></b></div>
+                <i class="ic-marca ic-marca-nasc"><em>Nascimento</em></i>
+                <i class="ic-marca ic-marca-termo"><em>40 semanas</em></i>
+                <i class="ic-marca ic-marca-hoje"><em>Hoje</em></i>
+              </div>
+            </div>
             <div class="stats">
               <div class="stat"><div class="k">Idade cronológica</div><div class="v" id="ic-cronologica" style="font-size:1.1rem">—</div></div>
               <div class="stat"><div class="k">Prematuridade</div><div class="v" id="ic-prematuridade" style="font-size:1.1rem">—</div></div>
@@ -501,6 +541,10 @@
             <div class="dose-sub" id="aa-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-ilustracao">
+              <div class="fx-titulo">À escala</div>
+              <div class="aa-figuras" id="aa-figuras"></div>
+            </div>
             <div class="stats">
               <div class="stat"><div class="k">Intervalo esperado</div><div class="v" id="aa-intervalo" style="font-size:1.1rem">—</div></div>
               <div class="stat"><div class="k">Percentil aos 19 anos</div><div class="v" id="aa-percentil" style="font-size:1.1rem">—</div></div>

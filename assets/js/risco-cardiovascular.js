@@ -1,7 +1,22 @@
-import { calcularSCORE2, calcularSCORE2Diabetes, mgDlParaMmolL } from './risco-cardiovascular-core.js';
+import { calcularSCORE2, calcularSCORE2Diabetes, mgDlParaMmolL, limiaresPorIdade } from './risco-cardiovascular-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+
+/* ---------- Escala de risco: os limiares dependem da idade ---------- */
+
+const pct = (n) => `${String(n).replace('.', ',')}%`;
+
+function faixasRisco(el, { baixo, alto }) {
+  el.dataset.max = alto * 3;
+  el.dataset.maxRotulo = `${pct(alto * 3)}+`;
+  el.dataset.faixas = [
+    `0~${baixo}:baixo:< ${pct(baixo)}`,
+    `${baixo}~${alto}:moderado:${pct(baixo)}–${pct(alto)}`,
+    `${alto}~${alto * 2}:alto:${pct(alto)}–${pct(alto * 2)}`,
+    `${alto * 2}~${alto * 3}:muito-alto:≥ ${pct(alto * 2)}`,
+  ].join('|');
+}
 
 /* ---------- Alternância entre calculadoras ---------- */
 
@@ -90,6 +105,7 @@ function atualizarSCORE2() {
   s2Resultado.dataset.nivel = r.nivel;
   $('#s2-risco').textContent = r.risco.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   $('#s2-modelo').textContent = `Modelo: ${r.modelo} (região de risco moderado)`;
+  faixasRisco($('#s2-escala'), limiaresPorIdade(Number(idade)));
 }
 s2Form.addEventListener('input', atualizarSCORE2);
 s2Form.addEventListener('change', atualizarSCORE2);

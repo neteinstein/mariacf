@@ -69,7 +69,8 @@ function calibrar(riscoNaoCalibrado, scale1, scale2) {
   return 1 - Math.exp(-Math.exp(scale1 + scale2 * lnNegLn));
 }
 
-function limiaresPorIdade(idade) {
+/** Limiares de risco (%) do SCORE2/SCORE2-OP por idade (ESC 2021). */
+export function limiaresPorIdade(idade) {
   if (idade < 50) return { baixo: 2.5, alto: 7.5 };
   if (idade < 70) return { baixo: 5, alto: 10 };
   return { baixo: 7.5, alto: 15 };

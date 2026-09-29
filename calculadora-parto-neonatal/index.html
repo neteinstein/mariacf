@@ -71,15 +71,18 @@
             <div class="dose-line"><div class="dose-big"><span id="bi-pontos">0</span><span class="u">/ 13</span></div></div>
             <div class="dose-sub" id="bi-recomendacao"></div>
           </div>
-          <div class="result-actions" id="result-actions-bishop">
-            <button class="action-btn" type="button" id="btn-email-bishop">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-bishop">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#bi-pontos" data-min="0" data-max="13" data-titulo="Favorabilidade do colo" data-faixas="0~5:alto:Desfavorável|6~7:moderado:Intermédio|8~13:baixo:Favorável"></div>
+            <div class="result-actions" id="result-actions-bishop">
+              <button class="action-btn" type="button" id="btn-email-bishop">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-bishop">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="bishop-vazio"><div class="big-emoji" aria-hidden="true">🤰</div><p class="motivo">Preencha todos os itens para ver a pontuação.</p></div>
@@ -98,15 +101,21 @@
             <div class="dose-line"><div class="dose-big"><span id="ap-pontos">0</span><span class="u">/ 10</span></div></div>
             <div class="dose-sub" id="ap-gravidade"></div>
           </div>
-          <div class="result-actions" id="result-actions-apgar">
-            <button class="action-btn" type="button" id="btn-email-apgar">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-apgar">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-acronimo" data-mostrar-valor>
+              <span data-campo="ap-cor">A</span><span data-campo="ap-frequenciaCardiaca">P</span><span data-campo="ap-irritabilidadeReflexa">G</span><span data-campo="ap-tonusMuscular">A</span><span data-campo="ap-esforcoRespiratorio">R</span>
+            </div>
+            <div class="fx-escala" data-src="#ap-pontos" data-min="0" data-max="10" data-titulo="Estado do recém-nascido" data-faixas="0~3:muito-alto:Gravemente deprimido|4~6:alto:Moderadamente deprimido|7~10:baixo:Normal"></div>
+            <div class="result-actions" id="result-actions-apgar">
+              <button class="action-btn" type="button" id="btn-email-apgar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-apgar">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="apgar-vazio"><div class="big-emoji" aria-hidden="true">👶</div><p class="motivo">Preencha todos os itens para ver a pontuação.</p></div>
@@ -152,15 +161,21 @@
           <div class="dose-line"><div class="dose-big"><span id="gcsp-pontos">15</span><span class="u">/ 15</span></div></div>
           <div class="dose-sub" id="gcsp-gravidade"></div>
         </div>
-        <div class="result-actions" id="result-actions-gcsp">
-          <button class="action-btn" type="button" id="btn-email-gcsp">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-gcsp">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-acronimo" data-mostrar-valor>
+            <span data-campo="gcsp-e">E</span><span data-campo="gcsp-v">V</span><span data-campo="gcsp-m">M</span>
+          </div>
+          <div class="fx-escala" data-src="#gcsp-pontos" data-min="3" data-max="15" data-titulo="Gravidade do traumatismo" data-faixas="3~8:muito-alto:Grave|9~12:alto:Moderado|13~15:baixo:Ligeiro"></div>
+          <div class="result-actions" id="result-actions-gcsp">
+            <button class="action-btn" type="button" id="btn-email-gcsp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-gcsp">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>

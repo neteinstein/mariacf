@@ -109,6 +109,7 @@
             <div class="dose-sub" id="fib4-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" id="fib4-escala" data-src="#fib4-valor" data-continuo data-min="0" data-max="5" data-max-rotulo="5+" data-titulo="Risco de fibrose avançada" data-faixas="0~1.3:baixo:Baixo|1.3~2.67:moderado:Indeterminado|2.67~5:alto:Alto"></div>
             <div class="notices" id="fib4-notas"></div>
             <div class="result-actions" id="result-actions-fib4">
               <button class="action-btn" type="button" id="btn-email-fib4">
@@ -195,6 +196,7 @@
             <div class="dose-sub" id="nfs-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#nfs-valor" data-continuo data-min="-4" data-max="3" data-titulo="Risco de fibrose avançada" data-faixas="-4~-1.455:baixo:Baixo|-1.455~0.676:moderado:Indeterminado|0.676~3:alto:Alto"></div>
 
             <div class="result-actions" id="result-actions-nfs">
               <button class="action-btn" type="button" id="btn-email-nfs">
@@ -249,6 +251,7 @@
             <div class="dose-sub" id="apri-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#apri-valor" data-continuo data-min="0" data-max="3" data-max-rotulo="3+" data-titulo="Fibrose e cirrose" data-faixas="0~0.5:baixo:Improvável|0.5~1.5:moderado:Indeterminado|1.5~2:alto:Fibrose provável|2~3:muito-alto:Cirrose provável"></div>
 
             <div class="result-actions" id="result-actions-apri">
               <button class="action-btn" type="button" id="btn-email-apri">
@@ -278,6 +281,7 @@
             <div class="dose-sub" id="child-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" id="child-escala" data-valor="" data-min="5" data-max="15" data-titulo="Pontuação (5 a 15)" data-faixas="5~6:baixo:Classe A|7~9:alto:Classe B|10~15:muito-alto:Classe C"></div>
 
             <div class="result-actions" id="result-actions-child">
               <button class="action-btn" type="button" id="btn-email-child">
@@ -346,6 +350,8 @@
             <div class="dose-sub" id="meld-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#meld-valor" data-min="6" data-max="40" data-titulo="Gravidade" data-faixas="6~9:baixo:&lt; 10|10~19:moderado:10–19|20~29:alto:20–29|30~40:muito-alto:≥ 30"></div>
+            <div class="fx-pessoas" id="meld-pessoas" data-valor="" data-titulo="Mortalidade estimada a 90 dias" data-legenda="Cerca de {n} em cada 100 doentes com este MELD, a 90 dias (estimativa aproximada)."></div>
             <div class="stats">
               <div class="stat"><div class="k">MELD</div><div class="v" id="meld-simples">—</div></div>
               <div class="stat"><div class="k">Mortalidade a 90 dias</div><div class="v" id="meld-mort">—</div></div>

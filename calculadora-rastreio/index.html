@@ -117,7 +117,7 @@
 
         <fieldset class="step">
           <legend class="step-label"><span class="step-num">5</span> História familiar de diabetes</legend>
-          <div class="choices" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="choices choices-3">
             <div class="choice">
               <input type="radio" name="fr-historia" id="fr-hist-nenhuma" value="nenhuma" checked>
               <label for="fr-hist-nenhuma"><span class="pill" aria-hidden="true"></span><span class="name">Não</span></label>
@@ -140,15 +140,19 @@
             <div class="dose-line"><div class="dose-big"><span id="fr-pontos">0</span><span class="u">/ 26</span></div></div>
             <div class="dose-sub" id="fr-risco"></div>
           </div>
-          <div class="result-actions" id="result-actions-findrisc">
-            <button class="action-btn" type="button" id="btn-email-findrisc">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-findrisc">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#fr-pontos" data-min="0" data-max="26" data-titulo="Risco de diabetes tipo 2" data-faixas="0~6:baixo:Baixo|7~11:baixo:Ligeiro|12~14:moderado:Moderado|15~20:alto:Alto|21~26:muito-alto:Muito alto"></div>
+            <div class="fx-pessoas" id="fr-pessoas" data-valor="" data-titulo="Risco estimado a 10 anos" data-legenda="Em cada 100 pessoas com esta pontuação, cerca de {n} desenvolvem diabetes tipo 2 nos próximos 10 anos."></div>
+            <div class="result-actions" id="result-actions-findrisc">
+              <button class="action-btn" type="button" id="btn-email-findrisc">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-findrisc">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="fr-vazio" hidden><div class="big-emoji" aria-hidden="true">🩺</div><p class="motivo" id="fr-motivo"></p></div>
@@ -187,15 +191,18 @@
             <div class="dose-line"><div class="dose-big"><span id="must-pontos">0</span><span class="u">/ 6</span></div></div>
             <div class="dose-sub" id="must-recomendacao"></div>
           </div>
-          <div class="result-actions" id="result-actions-must">
-            <button class="action-btn" type="button" id="btn-email-must">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-must">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#must-pontos" data-min="0" data-max="6" data-titulo="Risco de desnutrição" data-faixas="0~0:baixo:Baixo|1~1:moderado:Médio|2~6:alto:Alto"></div>
+            <div class="result-actions" id="result-actions-must">
+              <button class="action-btn" type="button" id="btn-email-must">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-must">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="must-vazio" hidden><div class="big-emoji" aria-hidden="true">🍽️</div><p class="motivo" id="must-motivo"></p></div>
@@ -252,15 +259,18 @@
           <div class="dose-line"><div class="dose-big"><span id="fx-pontos">0</span><span class="u">fatores</span></div></div>
           <div class="dose-sub" id="fx-recomendacao"></div>
         </div>
-        <div class="result-actions" id="result-actions-fratura">
-          <button class="action-btn" type="button" id="btn-email-fratura">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-fratura">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-degraus" data-src="#fx-pontos" data-min="0" data-max="9" data-titulo="Fatores de risco assinalados"></div>
+          <div class="result-actions" id="result-actions-fratura">
+            <button class="action-btn" type="button" id="btn-email-fratura">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-fratura">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>

@@ -138,7 +138,7 @@ function atualizarTEP() {
 
   const r = calcularWellsTEP(fatores);
   tepResultado.dataset.nivel = r.nivel;
-  $('#tep-pontos').textContent = r.pontos;
+  $('#tep-pontos').textContent = r.pontos.toLocaleString('pt-PT');
   $('#tep-probabilidade').textContent = `TEP ${r.probabilidade}`;
   $('#tep-recomendacao').textContent = r.recomendacao;
 }
@@ -164,6 +164,34 @@ ligarAcoes('tep', resumoTEP, () => `Wells TEP — ${$('#tep-probabilidade').text
 
 /* ---------- QTc ---------- */
 
+// Dois batimentos esquemáticos; a onda T afasta-se do QRS à medida que o QTc aumenta.
+function desenharECG(qtcMs) {
+  const el = document.getElementById('qtc-ecg');
+  if (!el) return;
+  const qt = Math.min(Math.max(qtcMs, 320), 620);
+  const largura = 40 + ((qt - 320) / 300) * 60; // distância QRS → fim da onda T, em unidades do desenho
+  const batimento = (x0) => {
+    const q = x0 + 40;
+    const tFim = q + largura;
+    const tPico = tFim - 14;
+    return `L${x0 + 18} 50 Q${x0 + 24} 42 ${x0 + 30} 50 L${q} 50 L${q + 3} 56 L${q + 8} 12 L${q + 13} 64 L${q + 17} 50 L${tPico - 16} 50 Q${tPico} 26 ${tFim} 50`;
+  };
+  const b1 = 10;
+  const b2 = 170;
+  const q1 = b1 + 40;
+  const tf1 = q1 + largura;
+  el.innerHTML = `
+    <svg viewBox="0 0 330 92" aria-hidden="true">
+      <defs><pattern id="qtc-grelha" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none"/></pattern></defs>
+      <rect class="ecg-papel" width="330" height="80" fill="url(#qtc-grelha)"/>
+      <rect class="ecg-qt" x="${q1}" y="6" width="${tf1 - q1}" height="62" rx="4"/>
+      <path class="ecg-linha" d="M0 50 ${batimento(b1)} L${b2} 50 ${batimento(b2)} L330 50" pathLength="1"/>
+      <path class="ecg-seta" d="M${q1} 74H${tf1}M${q1 + 5} 70L${q1} 74L${q1 + 5} 78M${tf1 - 5} 70L${tf1} 74L${tf1 - 5} 78"/>
+      <text x="${(q1 + tf1) / 2}" y="89" text-anchor="middle">QTc ${qtcMs} ms</text>
+    </svg>`;
+}
+
+
 const qtcForm = $('#qtc-form');
 const qtcResultado = $('#qtc-resultado');
 
@@ -188,6 +216,10 @@ function atualizarQTc() {
   if (acoes) acoes.hidden = false;
   qtcResultado.dataset.nivel = r.nivel;
   $('#qtc-bazett').textContent = r.bazett;
+  desenharECG(r.bazett);
+  // Limiares de QTc dependem do sexo (normal ≤ 440/460 ms; prolongado > 460/480 ms; > 500 ms).
+  const n = r.limiarNormal;
+  $('#qtc-escala').dataset.faixas = `340~${n}:baixo:Normal (≤ ${n})|${n}~${n + 20}:moderado:Limítrofe|${n + 20}~500:alto:Prolongado|500~560:muito-alto:> 500 ms`;
   $('#qtc-fridericia').textContent = r.fridericia;
   $('#qtc-limiar').textContent = `Limiar normal: < ${r.limiarNormal} ms`;
 }
@@ -256,6 +288,7 @@ function atualizarHEART() {
   heartResultado.dataset.nivel = r.nivel;
   $('#heart-pontos').textContent = r.pontos;
   $('#heart-risco').textContent = r.risco;
+  $('#heart-pessoas').dataset.valor = Number(/~(\d+)%/.exec(r.risco)?.[1]);
 }
 heartForm.addEventListener('change', atualizarHEART);
 atualizarHEART();

@@ -105,16 +105,13 @@
           <div class="result-head">
             <div class="result-kicker" id="res-kicker">Índice de Massa Corporal</div>
             <div class="dose-line">
-              <div class="dose-big"><span id="res-imc">0</span><span class="u">kg/m²</span></div>
+              <div class="dose-big" data-fx-sem-contagem><span id="res-imc">0</span><span class="u">kg/m²</span></div>
               <span class="badge" id="res-badge">—</span>
             </div>
             <div class="dose-sub" id="res-sub"></div>
           </div>
           <div class="result-body">
-            <div class="imc-gauge" id="imc-gauge" aria-hidden="true">
-              <div class="imc-gauge-track"></div>
-              <div class="imc-gauge-marker" id="imc-marker"></div>
-            </div>
+            <div class="fx-escala" id="imc-escala" data-valor="" data-continuo data-min="15" data-max="45" data-max-rotulo="45+" data-titulo="Categoria de IMC (OMS)" data-faixas="15~18.5:moderado:Baixo peso|18.5~25:baixo:Normal|25~30:moderado:Excesso de peso|30~35:alto:Obesidade I|35~40:alto:Obesidade II|40~45:muito-alto:Obesidade III"></div>
 
             <div class="stats">
               <div class="stat"><div class="k">ASC (Mosteller)</div><div class="v" id="st-mosteller">—</div></div>

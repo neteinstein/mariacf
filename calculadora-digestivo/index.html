@@ -104,18 +104,21 @@
         <div id="bl-ok">
           <div class="result-head">
             <div class="result-kicker">Score de Blatchford</div>
-            <div class="dose-line"><div class="dose-big"><span id="bl-pontos">0</span></div></div>
+            <div class="dose-line"><div class="dose-big"><span id="bl-pontos">0</span><span class="u">/ 23</span></div></div>
             <div class="dose-sub" id="bl-recomendacao"></div>
           </div>
-          <div class="result-actions" id="result-actions-bl">
-            <button class="action-btn" type="button" id="btn-email-bl">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-bl">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#bl-pontos" data-min="0" data-max="23" data-titulo="Risco de necessitar de intervenção" data-faixas="0~0:baixo:Muito baixo|1~5:moderado:Intermédio|6~23:alto:Elevado"></div>
+            <div class="result-actions" id="result-actions-bl">
+              <button class="action-btn" type="button" id="btn-email-bl">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-bl">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="bl-vazio" hidden><div class="big-emoji" aria-hidden="true">🩸</div><p class="motivo" id="bl-motivo"></p></div>
@@ -134,7 +137,7 @@
         </div>
         <fieldset class="step">
           <legend class="step-label"><span class="step-num">2</span> Estado hemodinâmico</legend>
-          <div class="choices" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="choices choices-3">
             <div class="choice"><input type="radio" name="ro-choque" id="ro-c0" value="nenhum" checked><label for="ro-c0"><span class="pill" aria-hidden="true"></span><span class="name">Sem choque</span></label></div>
             <div class="choice"><input type="radio" name="ro-choque" id="ro-c1" value="taquicardia"><label for="ro-c1"><span class="pill" aria-hidden="true"></span><span class="name">Taquicardia</span><span class="brands">PAS ≥ 100, FC ≥ 100</span></label></div>
             <div class="choice"><input type="radio" name="ro-choque" id="ro-c2" value="hipotensao"><label for="ro-c2"><span class="pill" aria-hidden="true"></span><span class="name">Hipotensão</span><span class="brands">PAS &lt; 100</span></label></div>
@@ -142,7 +145,7 @@
         </fieldset>
         <fieldset class="step">
           <legend class="step-label"><span class="step-num">3</span> Comorbilidades</legend>
-          <div class="choices" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="choices choices-3">
             <div class="choice"><input type="radio" name="ro-comorbilidade" id="ro-m0" value="nenhuma" checked><label for="ro-m0"><span class="pill" aria-hidden="true"></span><span class="name">Nenhuma major</span></label></div>
             <div class="choice"><input type="radio" name="ro-comorbilidade" id="ro-m1" value="major"><label for="ro-m1"><span class="pill" aria-hidden="true"></span><span class="name">ICC/cardiopatia isquémica</span><span class="brands">ou outra comorbilidade major</span></label></div>
             <div class="choice"><input type="radio" name="ro-comorbilidade" id="ro-m2" value="grave"><label for="ro-m2"><span class="pill" aria-hidden="true"></span><span class="name">Insuf. renal/hepática</span><span class="brands">ou neoplasia disseminada</span></label></div>
@@ -155,15 +158,18 @@
             <div class="result-kicker">Rockall pré-endoscópico</div>
             <div class="dose-line"><div class="dose-big"><span id="ro-pontos">0</span><span class="u">/ 7</span></div></div>
           </div>
-          <div class="result-actions" id="result-actions-ro">
-            <button class="action-btn" type="button" id="btn-email-ro">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-ro">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#ro-pontos" data-min="0" data-max="7" data-titulo="Risco pré-endoscópico" data-faixas="0~0:baixo:Baixo|1~2:moderado:Intermédio|3~7:alto:Elevado"></div>
+            <div class="result-actions" id="result-actions-ro">
+              <button class="action-btn" type="button" id="btn-email-ro">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-ro">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="ro-vazio" hidden><div class="big-emoji" aria-hidden="true">🩸</div><p class="motivo"></p></div>
@@ -189,15 +195,21 @@
           <div class="dose-line"><div class="dose-big"><span id="bi-pontos">0</span><span class="u">/ 5</span></div></div>
           <div class="dose-sub" id="bi-recomendacao"></div>
         </div>
-        <div class="result-actions" id="result-actions-bi">
-          <button class="action-btn" type="button" id="btn-email-bi">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-            Enviar por email
-          </button>
-          <button class="action-btn" type="button" id="btn-print-bi">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-            Imprimir
-          </button>
+        <div class="result-body">
+          <div class="fx-acronimo">
+            <span data-campo="bi-ureia">B</span><span data-campo="bi-mental">I</span><span data-campo="bi-sirs">S</span><span data-campo="bi-idade">A</span><span data-campo="bi-derrame">P</span>
+          </div>
+          <div class="fx-escala" data-src="#bi-pontos" data-min="0" data-max="5" data-titulo="Risco de pancreatite grave" data-faixas="0~2:baixo:Baixo|3~5:alto:Aumentado"></div>
+          <div class="result-actions" id="result-actions-bi">
+            <button class="action-btn" type="button" id="btn-email-bi">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+              Enviar por email
+            </button>
+            <button class="action-btn" type="button" id="btn-print-bi">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+              Imprimir
+            </button>
+          </div>
         </div>
       </section>
     </div>

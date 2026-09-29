@@ -1,4 +1,7 @@
 // Comportamento partilhado: tema claro/escuro, animações de entrada e brilho dos cartões.
+// Os efeitos visuais dos resultados das calculadoras vivem em fx.js.
+
+import './fx.js';
 
 const root = document.documentElement;
 const THEME_KEY = 'mcf-theme';

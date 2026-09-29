@@ -252,6 +252,11 @@ function atualizarCognitivo() {
   if (acoes) acoes.hidden = false;
   cogResultado.dataset.nivel = r.nivel;
   $('#cog-classificacao').textContent = r.alterado ? 'Sugestivo de défice cognitivo' : 'Dentro do esperado para a escolaridade';
+  // Último valor ainda considerado alterado: MMSE ≤ corte; MoCA (ajustado) < 26.
+  const ultimoAlterado = instrumento === 'mmse' ? r.corte : 25;
+  const escala = $('#cog-escala');
+  escala.dataset.faixas = `0~${ultimoAlterado}:alto:Sugestivo de défice (≤ ${ultimoAlterado})|${ultimoAlterado + 1}~30:baixo:Dentro do esperado`;
+  escala.dataset.valor = instrumento === 'mmse' ? r.pontos : r.pontosAjustados;
   $('#cog-detalhe').textContent =
     instrumento === 'mmse'
       ? `Pontuação ${r.pontos}/30 · corte de referência ${r.corte} (cortes validados para a população portuguesa, Guerreiro 1994)`
@@ -388,6 +393,7 @@ function atualizarCharlson() {
   charlsonResultado.dataset.nivel = r.nivel;
   $('#ch-pontos').textContent = r.pontos;
   $('#ch-sobrevivencia').textContent = `Sobrevivência estimada a 10 anos: ~${r.sobrevivencia10Anos}% (estimativa aproximada)`;
+  $('#ch-pessoas').dataset.valor = r.sobrevivencia10Anos;
 }
 charlsonForm.addEventListener('input', atualizarCharlson);
 charlsonForm.addEventListener('change', atualizarCharlson);

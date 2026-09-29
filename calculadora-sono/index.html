@@ -72,6 +72,7 @@
             <div class="dose-sub" id="ep-gravidade"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#ep-pontos" data-min="0" data-max="24" data-titulo="Classificação" data-faixas="0~7:baixo:Normal|8~9:moderado:Ligeira|10~15:alto:Moderada|16~24:muito-alto:Elevada"></div>
             <div class="result-actions" id="result-actions-epworth">
               <button class="action-btn" type="button" id="btn-email-epworth">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
@@ -135,6 +136,10 @@
           <div class="dose-sub" id="sb-risco"></div>
         </div>
         <div class="result-body">
+          <div class="fx-acronimo">
+            <span data-campo="sb-ressonar">S</span><span data-campo="sb-cansaco">T</span><span data-campo="sb-apneiaObservada">O</span><span data-campo="sb-pressaoArterial">P</span><span class="sep">–</span><span data-campo="sb-imc35">B</span><span data-campo="sb-idade50">A</span><span data-campo="sb-pescoco40">N</span><span data-campo="sb-sexoMasculino">G</span>
+          </div>
+          <div class="fx-escala" data-src="#sb-pontos" data-min="0" data-max="8" data-titulo="Risco de apneia obstrutiva" data-faixas="0~2:baixo:Baixo|3~4:moderado:Intermédio|5~8:alto:Elevado"></div>
           <div class="result-actions" id="result-actions-stopbang">
             <button class="action-btn" type="button" id="btn-email-stopbang">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>

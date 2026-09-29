@@ -127,3 +127,16 @@ test('altura-alvo: pai 180, mãe 165 → rapaz 179 cm, rapariga 166 cm, ± 8,5',
   assert.equal(calcularAlturaAlvo(true, 180, 165).alvo, 166);
   assert.equal(calcularAlturaAlvo(true, 180, '').ok, false);
 });
+
+test('curvas de referência: a linha Z = 0 é a mediana da tabela e as linhas estão ordenadas', async () => {
+  const { curvasReferencia } = await import('../assets/js/crescimento-core.js');
+  const c = curvasReferencia('peso', false);
+  const i12 = c.x.indexOf(12);
+  assert.ok(Math.abs(c.linhas[0][i12] - 9.6479) < 0.01);
+  c.x.forEach((_, i) => {
+    assert.ok(c.linhas[-3][i] < c.linhas[-2][i] && c.linhas[-2][i] < c.linhas[0][i]);
+    assert.ok(c.linhas[0][i] < c.linhas[2][i] && c.linhas[2][i] < c.linhas[3][i]);
+  });
+  assert.ok(curvasReferencia('imc', true).x.at(-1) === 228);
+  assert.equal(curvasReferencia('desconhecido', true), null);
+});

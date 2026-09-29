@@ -1,4 +1,5 @@
 import { calcularZScore, calcularPesoComprimento, calcularIMCIdade, calcularAlturaIdade, calcularIdadeCorrigida, calcularAlturaAlvo } from './crescimento-core.js';
+import { criarGraficoCrescimento } from './crescimento-grafico.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -30,9 +31,12 @@ $$('.stepper').forEach((btn) => {
   });
 });
 
+const numero = (sel) => Number($(sel).value.replace(',', '.'));
+
 function ligarIndicador({ prefixo, indicador, campoIdade, campoValor, titulo, valorLabel, valorUnidade }) {
   const form = $(`#${prefixo}-form`);
   const resultado = $(`#${prefixo}-resultado`);
+  const grafico = criarGraficoCrescimento($(`#${prefixo}-grafico`), { indicador, eixo: 'meses', unidade: valorUnidade });
   let resultadoAtual = null;
 
   function resumoTexto(r) {
@@ -44,7 +48,7 @@ function ligarIndicador({ prefixo, indicador, campoIdade, campoValor, titulo, va
       `Z-score: ${r.z.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: 'always' })} DP`,
       `Percentil: ${r.percentil.toLocaleString('pt-PT', { maximumFractionDigits: 1 })}`,
       `Classificação: ${r.descricao}`,
-      `Mediana OMS: ${r.mediana}`,
+      `Mediana OMS: ${r.mediana.toLocaleString('pt-PT')}`,
       '',
       'Informação de apoio — não substitui aconselhamento médico.',
       location.href,
@@ -73,7 +77,8 @@ function ligarIndicador({ prefixo, indicador, campoIdade, campoValor, titulo, va
     $(`#${prefixo}-z`).textContent = r.z.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: 'always' });
     $(`#${prefixo}-percentil`).textContent = `Percentil ${r.percentil.toLocaleString('pt-PT', { maximumFractionDigits: 1 })}`;
     $(`#${prefixo}-descricao`).textContent = r.descricao;
-    $(`#${prefixo}-mediana`).textContent = r.mediana;
+    $(`#${prefixo}-mediana`).textContent = r.mediana.toLocaleString('pt-PT');
+    grafico({ sexoFeminino: $(`#${prefixo}-sexo`).checked, x: numero(campoIdade), valor: numero(campoValor) });
   }
   form.addEventListener('input', atualizar);
   form.addEventListener('change', atualizar);
@@ -95,6 +100,7 @@ ligarIndicador({ prefixo: 'pc', indicador: 'perimetroCefalico', campoIdade: '#pc
 
 const wlForm = $('#wl-form');
 const wlResultado = $('#wl-resultado');
+const wlGrafico = criarGraficoCrescimento($('#wl-grafico'), { indicador: 'pesoComprimento', eixo: 'cm', unidade: 'kg' });
 let wlAtual = null;
 
 function resumoWL(r) {
@@ -106,7 +112,7 @@ function resumoWL(r) {
     `Z-score: ${r.z.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: 'always' })} DP`,
     `Percentil: ${r.percentil.toLocaleString('pt-PT', { maximumFractionDigits: 1 })}`,
     `Classificação: ${r.descricao}`,
-    `Mediana OMS: ${r.mediana}`,
+    `Mediana OMS: ${r.mediana.toLocaleString('pt-PT')}`,
     '',
     'Informação de apoio — não substitui aconselhamento médico.',
     location.href,
@@ -135,7 +141,8 @@ function atualizarWL() {
   $('#wl-z').textContent = r.z.toLocaleString('pt-PT', { minimumFractionDigits: 2, maximumFractionDigits: 2, signDisplay: 'always' });
   $('#wl-percentil').textContent = `Percentil ${r.percentil.toLocaleString('pt-PT', { maximumFractionDigits: 1 })}`;
   $('#wl-descricao').textContent = r.descricao;
-  $('#wl-mediana').textContent = r.mediana;
+  $('#wl-mediana').textContent = r.mediana.toLocaleString('pt-PT');
+  wlGrafico({ sexoFeminino: $('#wl-sexo').checked, x: numero('#wl-comprimento'), valor: numero('#wl-peso') });
 }
 wlForm.addEventListener('input', atualizarWL);
 wlForm.addEventListener('change', atualizarWL);
@@ -195,6 +202,9 @@ function ligarSimples({ prefixo, calcular, escrever, assunto, linhas }) {
   $(`#btn-print-${prefixo}`)?.addEventListener('click', () => window.print());
 }
 
+const imcGrafico = criarGraficoCrescimento($('#imc-grafico'), { indicador: 'imc', eixo: 'anos', unidade: 'kg/m²' });
+const altGrafico = criarGraficoCrescimento($('#alt-grafico'), { indicador: 'altura', eixo: 'anos', unidade: 'cm' });
+
 ligarSimples({
   prefixo: 'imc',
   calcular: () => calcularIMCIdade($('#imc-sexo').checked, idadeEmMeses('imc'), $('#imc-peso').value.replace(',', '.'), $('#imc-altura').value.replace(',', '.')),
@@ -204,6 +214,7 @@ ligarSimples({
     $('#imc-valor').innerHTML = `${r.imc.toLocaleString('pt-PT')} <small>kg/m²</small>`;
     $('#imc-mediana').innerHTML = `${r.mediana.toLocaleString('pt-PT')} <small>kg/m²</small>`;
     $('#imc-descricao').textContent = r.descricao;
+    imcGrafico({ sexoFeminino: $('#imc-sexo').checked, x: idadeEmMeses('imc'), valor: r.imc });
   },
   assunto: (r) => `IMC-para-idade — ${r.descricao}`,
   linhas: (r) => [
@@ -223,6 +234,7 @@ ligarSimples({
     $('#alt-sub').textContent = fmtP(r.percentil);
     $('#alt-mediana').innerHTML = `${r.mediana.toLocaleString('pt-PT')} <small>cm</small>`;
     $('#alt-descricao').textContent = r.descricao;
+    altGrafico({ sexoFeminino: $('#alt-sexo').checked, x: idadeEmMeses('alt'), valor: numero('#alt-valor') });
   },
   assunto: (r) => `Altura-para-idade — ${r.descricao}`,
   linhas: (r) => [
@@ -235,6 +247,22 @@ ligarSimples({
 });
 
 /* ---------- Idade corrigida do prematuro ---------- */
+
+// Linha do tempo: idade cronológica (desde o nascimento) e idade corrigida
+// (desde as 40 semanas), à mesma escala.
+function desenharLinhaIdades(r) {
+  const cron = r.cronologica.totalDias;
+  const prem = Math.round(r.prematuridadeSemanas * 7);
+  const total = Math.max(cron, prem, 1);
+  const pct = (d) => `${(Math.min(d, total) / total) * 100}%`;
+  const el = $('#ic-linha');
+  el.style.setProperty('--prem', pct(prem));
+  el.style.setProperty('--hoje', pct(cron));
+  el.classList.toggle('sem-correcao', !r.prematuro);
+  el.classList.toggle('antes-termo', !r.corrigida);
+  $('#ic-linha-cron').textContent = mesesDias(r.cronologica);
+  $('#ic-linha-corr').textContent = r.corrigida ? mesesDias(r.corrigida) : 'ainda antes das 40 semanas';
+}
 
 const mesesDias = (x) => `${x.meses} ${x.meses === 1 ? 'mês' : 'meses'} e ${x.dias} ${x.dias === 1 ? 'dia' : 'dias'}`;
 
@@ -249,6 +277,7 @@ ligarSimples({
     $('#ic-cronologica').textContent = mesesDias(r.cronologica);
     $('#ic-prematuridade').textContent = r.prematuro ? `${r.prematuridadeSemanas.toLocaleString('pt-PT')} semanas` : 'Termo';
     $('#ic-nota').textContent = r.nota;
+    desenharLinhaIdades(r);
   },
   assunto: (r) => `Idade corrigida — ${r.corrigida ? mesesDias(r.corrigida) : 'pré-termo'}`,
   linhas: (r) => [
@@ -262,6 +291,50 @@ ligarSimples({
 
 /* ---------- Altura-alvo familiar ---------- */
 
+// Três figuras à escala: pai, mãe e a altura-alvo da criança (com o intervalo esperado).
+const FIG_BASE = 178;
+const FIG_ESCALA = 150 / 210; // 210 cm ocupam 150 unidades do desenho
+const FIGURA = 'M-11 24Q-11 19 -6 19H6Q11 19 11 24V52Q11 55 8 55V100H1.6V64H-1.6V100H-8V55Q-11 55 -11 52Z';
+
+function montarFiguras() {
+  const el = $('#aa-figuras');
+  const col = (x, id, nome) => `
+    <g class="aa-fig" data-fig="${id}" style="--x:${x}px">
+      <g class="aa-corpo"><circle cx="0" cy="${FIG_BASE - 100 + 9}" r="8.5"/><path d="${FIGURA}" transform="translate(0 ${FIG_BASE - 100})"/></g>
+      <text class="aa-alt" x="0" text-anchor="middle"></text>
+      <text class="aa-nome" x="0" y="${FIG_BASE + 14}" text-anchor="middle">${nome}</text>
+    </g>`;
+  el.innerHTML = `
+    <svg viewBox="0 0 300 196" role="img" aria-label="Altura do pai, da mãe e altura-alvo da criança, à escala">
+      <rect class="aa-faixa" x="206" width="68" rx="6"/>
+      <line class="aa-linha-alvo" x1="206" x2="274"/>
+      <line class="aa-chao" x1="10" x2="290" y1="${FIG_BASE}" y2="${FIG_BASE}"/>
+      ${col(60, 'pai', 'Pai')}${col(150, 'mae', 'Mãe')}${col(240, 'alvo', 'Alvo')}
+    </svg>`;
+}
+
+function desenharFiguras(pai, mae, r) {
+  const el = $('#aa-figuras');
+  if (!el.firstElementChild) montarFiguras();
+  const alturas = { pai, mae, alvo: r.alvo };
+  Object.entries(alturas).forEach(([id, cm]) => {
+    const g = el.querySelector(`[data-fig="${id}"]`);
+    const k = (cm * FIG_ESCALA) / 100;
+    g.querySelector('.aa-corpo').style.transform = `scale(${k})`;
+    const t = g.querySelector('.aa-alt');
+    t.style.transform = `translateY(${FIG_BASE - cm * FIG_ESCALA - 6}px)`;
+    t.textContent = `${cm.toLocaleString('pt-PT')} cm`;
+  });
+  const y = (cm) => FIG_BASE - cm * FIG_ESCALA;
+  const faixa = el.querySelector('.aa-faixa');
+  faixa.setAttribute('y', y(r.maximo));
+  faixa.setAttribute('height', y(r.minimo) - y(r.maximo));
+  const linha = el.querySelector('.aa-linha-alvo');
+  linha.setAttribute('y1', y(r.alvo));
+  linha.setAttribute('y2', y(r.alvo));
+  el.dataset.sexo = $('#aa-sexo').checked ? 'f' : 'm';
+}
+
 ligarSimples({
   prefixo: 'aa',
   calcular: () => calcularAlturaAlvo($('#aa-sexo').checked, $('#aa-pai').value.replace(',', '.'), $('#aa-mae').value.replace(',', '.')),
@@ -270,6 +343,7 @@ ligarSimples({
     $('#aa-sub').textContent = `Criança do sexo ${$('#aa-sexo').checked ? 'feminino' : 'masculino'}`;
     $('#aa-intervalo').innerHTML = `${r.minimo.toLocaleString('pt-PT')}–${r.maximo.toLocaleString('pt-PT')} <small>cm</small>`;
     $('#aa-percentil').textContent = `P${Math.round(r.percentil)} (${fmtZ(r.z)} DP)`;
+    desenharFiguras(numero('#aa-pai'), numero('#aa-mae'), r);
   },
   assunto: (r) => `Altura-alvo — ${r.alvo} cm`,
   linhas: (r) => [

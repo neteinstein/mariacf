@@ -79,6 +79,10 @@
             <div class="dose-sub" id="hs-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-ilustracao">
+              <div class="fx-titulo">Regra de Holliday-Segar (4-2-1)</div>
+              <div class="hs-soro" id="hs-soro"></div>
+            </div>
             <div class="stats">
               <div class="stat"><div class="k">Por hora</div><div class="v" id="hs-hora">—</div></div>
             </div>
@@ -111,6 +115,7 @@
             <div class="dose-sub" id="cds-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#cds-pontos" data-min="0" data-max="8" data-titulo="Grau de desidratação" data-faixas="0~0:baixo:Sem desidratação|1~4:moderado:Ligeira (&lt; 5%)|5~8:muito-alto:Moderada a grave"></div>
             <div class="notices"><div class="notice" id="cds-conduta"></div></div>
             <div class="result-actions" id="result-actions-cds">
               <button class="action-btn" type="button" id="btn-email-cds">
@@ -158,6 +163,7 @@
             <div class="dose-sub" id="mchat-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" id="mchat-escala" data-valor="" data-min="0" data-max="20" data-titulo="Respostas de risco" data-faixas="0~2:baixo:Risco baixo|3~7:moderado:Risco médio|8~20:alto:Risco elevado"></div>
             <div class="notices" id="mchat-notas"></div>
             <div class="result-actions" id="result-actions-mchat">
               <button class="action-btn" type="button" id="btn-email-mchat">

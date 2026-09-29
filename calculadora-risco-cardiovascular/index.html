@@ -139,15 +139,19 @@
             </div>
             <div class="dose-sub" id="s2-modelo"></div>
           </div>
-          <div class="result-actions" id="result-actions-s2">
-            <button class="action-btn" type="button" id="btn-email-s2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-s2">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-pessoas" data-src="#s2-risco" data-titulo="Em 100 pessoas com este perfil" data-legenda="Cerca de {n} terão um enfarte, AVC ou morte cardiovascular nos próximos 10 anos."></div>
+            <div class="fx-escala" id="s2-escala" data-src="#s2-risco" data-continuo data-min="0" data-max="30" data-max-rotulo="30%+" data-titulo="Categoria de risco para a idade (ESC 2021)" data-faixas="0~5:baixo:&lt; 5%|5~10:moderado:5–10%|10~20:alto:10–20%|20~30:muito-alto:≥ 20%"></div>
+            <div class="result-actions" id="result-actions-s2">
+              <button class="action-btn" type="button" id="btn-email-s2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-s2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="score2-vazio" hidden>
@@ -270,15 +274,19 @@
             </div>
             <div class="dose-sub">Modelo: SCORE2-Diabetes (região de risco moderado)</div>
           </div>
-          <div class="result-actions" id="result-actions-dm">
-            <button class="action-btn" type="button" id="btn-email-dm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-dm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-pessoas" data-src="#dm-risco" data-titulo="Em 100 pessoas com este perfil" data-legenda="Cerca de {n} terão um enfarte, AVC ou morte cardiovascular nos próximos 10 anos."></div>
+            <div class="fx-escala" data-src="#dm-risco" data-continuo data-min="0" data-max="30" data-max-rotulo="30%+" data-titulo="Categoria de risco" data-faixas="0~5:baixo:&lt; 5%|5~10:moderado:5–10%|10~20:alto:10–20%|20~30:muito-alto:≥ 20%"></div>
+            <div class="result-actions" id="result-actions-dm">
+              <button class="action-btn" type="button" id="btn-email-dm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-dm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="dm-vazio" hidden>

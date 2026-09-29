@@ -79,6 +79,7 @@
             <div class="dose-sub" id="ba-grau"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#ba-pontos" data-min="0" data-max="100" data-titulo="Grau de dependência" data-faixas="0~20:muito-alto:Total|21~60:alto:Grave|61~90:moderado:Moderada|91~99:baixo:Ligeira|100~100:baixo:Independente"></div>
             <div class="result-actions" id="result-actions-ba">
               <button class="action-btn" type="button" id="btn-email-ba">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
@@ -107,6 +108,7 @@
             <div class="dose-sub" id="mo-risco"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#mo-pontos" data-min="0" data-max="125" data-titulo="Risco de queda" data-faixas="0~24:baixo:Baixo|25~50:moderado:Moderado|51~125:alto:Elevado"></div>
             <div class="result-actions" id="result-actions-mo">
               <button class="action-btn" type="button" id="btn-email-mo">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
@@ -135,6 +137,7 @@
             <div class="dose-sub" id="br-risco"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#br-pontos" data-min="6" data-max="23" data-titulo="Risco de úlcera de pressão" data-faixas="6~9:muito-alto:Muito elevado|10~12:alto:Elevado|13~14:moderado:Moderado|15~18:baixo:Baixo|19~23:baixo:Sem risco"></div>
             <div class="result-actions" id="result-actions-br">
               <button class="action-btn" type="button" id="btn-email-br">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
@@ -195,6 +198,7 @@
             <div class="dose-sub" id="cog-detalhe"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" id="cog-escala" data-valor="" data-min="0" data-max="30" data-titulo="Pontuação e ponto de corte" data-faixas="0~25:alto:Abaixo do corte|26~30:baixo:Dentro do esperado"></div>
             <div class="result-actions" id="result-actions-cog">
               <button class="action-btn" type="button" id="btn-email-cog">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
@@ -223,6 +227,7 @@
             <div class="dose-sub" id="gds-gravidade"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#gds-pontos" data-min="0" data-max="15" data-titulo="Sintomas depressivos" data-faixas="0~4:baixo:Sem sintomas|5~8:moderado:Ligeira|9~11:alto:Moderada|12~15:muito-alto:Grave"></div>
             <div class="result-actions" id="result-actions-gds">
               <button class="action-btn" type="button" id="btn-email-gds">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
@@ -339,6 +344,8 @@
             <div class="dose-sub" id="ch-sobrevivencia"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#ch-pontos" data-min="0" data-max="10" data-max-rotulo="10+" data-titulo="Carga de comorbilidade" data-faixas="0~1:baixo:Baixa|2~3:moderado:Moderada|4~5:alto:Elevada|6~10:muito-alto:Muito elevada"></div>
+            <div class="fx-pessoas" id="ch-pessoas" data-valor="" data-tom="bom" data-titulo="Sobrevivência estimada a 10 anos" data-legenda="Em cada 100 pessoas com este índice, cerca de {n} estarão vivas daqui a 10 anos (estimativa aproximada)."></div>
             <div class="result-actions" id="result-actions-ch">
               <button class="action-btn" type="button" id="btn-email-ch">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
@@ -367,6 +374,7 @@
             <div class="dose-sub" id="lw-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#lw-pontos" data-min="0" data-max="8" data-titulo="Autonomia nas atividades instrumentais" data-faixas="0~1:muito-alto:Total|2~3:muito-alto:Grave|4~5:alto:Moderada|6~7:moderado:Ligeira|8~8:baixo:Independente"></div>
 
             <div class="result-actions" id="result-actions-lw">
               <button class="action-btn" type="button" id="btn-email-lw">
@@ -396,6 +404,7 @@
             <div class="dose-sub" id="cfs-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-degraus" data-src="#cfs-pontos" data-min="1" data-max="9" data-titulo="Nível de fragilidade"></div>
             <div class="notices"><div class="notice" id="cfs-nota"></div></div>
             <div class="result-actions" id="result-actions-cfs">
               <button class="action-btn" type="button" id="btn-email-cfs">
@@ -433,6 +442,7 @@
             <div class="dose-sub" id="tug-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#tug-valor" data-continuo data-min="0" data-max="40" data-max-rotulo="40+ s" data-titulo="Mobilidade e risco de queda" data-faixas="0~12:baixo:Normal|12~20:moderado:Risco aumentado|20~30:alto:Limitada|30~40:muito-alto:Muito limitada"></div>
 
             <div class="result-actions" id="result-actions-tug">
               <button class="action-btn" type="button" id="btn-email-tug">
@@ -462,6 +472,7 @@
             <div class="dose-sub" id="mna-sub"></div>
           </div>
           <div class="result-body">
+            <div class="fx-escala" data-src="#mna-pontos" data-min="0" data-max="14" data-titulo="Estado nutricional" data-faixas="0~7:alto:Desnutrição|8~11:moderado:Risco|12~14:baixo:Normal"></div>
 
             <div class="result-actions" id="result-actions-mna">
               <button class="action-btn" type="button" id="btn-email-mna">

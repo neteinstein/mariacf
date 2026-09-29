@@ -63,6 +63,7 @@ function atualizarFINDRISC() {
   frResultado.dataset.nivel = r.nivel;
   $('#fr-pontos').textContent = r.pontos;
   $('#fr-risco').textContent = `Risco estimado a 10 anos: ${r.risco}`;
+  $('#fr-pessoas').dataset.valor = Number(r.risco.replace(/[^\d]/g, ''));
 }
 frForm.addEventListener('input', atualizarFINDRISC);
 frForm.addEventListener('change', atualizarFINDRISC);

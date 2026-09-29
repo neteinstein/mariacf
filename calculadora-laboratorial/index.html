@@ -101,15 +101,21 @@
             <div class="result-kicker">LDL calculado (Friedewald)</div>
             <div class="dose-line"><div class="dose-big"><span id="ldl-valor">0</span><span class="u">mg/dL</span></div></div>
           </div>
-          <div class="result-actions" id="result-actions-ldl">
-            <button class="action-btn" type="button" id="btn-email-ldl">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-ldl">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-ilustracao" aria-hidden="true">
+              <div class="fx-titulo">Colesterol total = LDL + HDL + TG/5</div>
+              <div class="lab-comp" id="ldl-composicao"></div>
+            </div>
+            <div class="result-actions" id="result-actions-ldl">
+              <button class="action-btn" type="button" id="btn-email-ldl">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-ldl">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="ldl-vazio" hidden><div class="big-emoji" aria-hidden="true">🩸</div><p class="motivo" id="ldl-motivo"></p></div>
@@ -143,15 +149,21 @@
             <div class="result-kicker">Sódio corrigido (Katz)</div>
             <div class="dose-line"><div class="dose-big"><span id="na-valor">0</span><span class="u">mEq/L</span></div></div>
           </div>
-          <div class="result-actions" id="result-actions-na">
-            <button class="action-btn" type="button" id="btn-email-na">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-na">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-ilustracao" aria-hidden="true">
+              <div class="fx-titulo">Medido e corrigido · intervalo de referência habitual</div>
+              <div class="lab-comparacao" id="na-comparacao"></div>
+            </div>
+            <div class="result-actions" id="result-actions-na">
+              <button class="action-btn" type="button" id="btn-email-na">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-na">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="na-vazio" hidden><div class="big-emoji" aria-hidden="true">🧂</div><p class="motivo" id="na-motivo"></p></div>
@@ -185,15 +197,21 @@
             <div class="result-kicker">Cálcio corrigido</div>
             <div class="dose-line"><div class="dose-big"><span id="ca-valor">0</span><span class="u">mg/dL</span></div></div>
           </div>
-          <div class="result-actions" id="result-actions-ca">
-            <button class="action-btn" type="button" id="btn-email-ca">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-ca">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-ilustracao" aria-hidden="true">
+              <div class="fx-titulo">Medido e corrigido · intervalo de referência habitual</div>
+              <div class="lab-comparacao" id="ca-comparacao"></div>
+            </div>
+            <div class="result-actions" id="result-actions-ca">
+              <button class="action-btn" type="button" id="btn-email-ca">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-ca">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="ca-vazio" hidden><div class="big-emoji" aria-hidden="true">🦴</div><p class="motivo" id="ca-motivo"></p></div>
@@ -218,15 +236,21 @@
             <div class="result-kicker">Glicemia média estimada (eAG)</div>
             <div class="dose-line"><div class="dose-big"><span id="eag-valor">0</span><span class="u">mg/dL</span></div></div>
           </div>
-          <div class="result-actions" id="result-actions-eag">
-            <button class="action-btn" type="button" id="btn-email-eag">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-eag">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-ilustracao" aria-hidden="true">
+              <div class="fx-titulo">Correspondência HbA1c ↔ glicemia média</div>
+              <div class="lab-regua-eag" id="eag-regua"></div>
+            </div>
+            <div class="result-actions" id="result-actions-eag">
+              <button class="action-btn" type="button" id="btn-email-eag">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-eag">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="eag-vazio" hidden><div class="big-emoji" aria-hidden="true">🩹</div><p class="motivo" id="eag-motivo"></p></div>
@@ -269,15 +293,18 @@
             <div class="dose-line"><div class="dose-big"><span id="ag-valor">0</span><span class="u">mEq/L</span></div></div>
             <div class="dose-sub">Intervalo de referência habitual: 8–16 mEq/L</div>
           </div>
-          <div class="result-actions" id="result-actions-ag">
-            <button class="action-btn" type="button" id="btn-email-ag">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-ag">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#ag-valor" data-continuo data-min="0" data-max="30" data-max-rotulo="30+" data-titulo="Intervalo de referência habitual: 8–16 mEq/L" data-faixas="0~8:moderado:Baixo|8~16:baixo:Normal|16~30:alto:Aumentado"></div>
+            <div class="result-actions" id="result-actions-ag">
+              <button class="action-btn" type="button" id="btn-email-ag">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-ag">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="ag-vazio" hidden><div class="big-emoji" aria-hidden="true">🧪</div><p class="motivo" id="ag-motivo"></p></div>
@@ -320,15 +347,18 @@
             <div class="dose-line"><div class="dose-big"><span id="osm-valor">0</span><span class="u">mOsm/kg</span></div></div>
             <div class="dose-sub">Intervalo normal habitual: 275–295 mOsm/kg</div>
           </div>
-          <div class="result-actions" id="result-actions-osm">
-            <button class="action-btn" type="button" id="btn-email-osm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-osm">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#osm-valor" data-continuo data-min="250" data-max="330" data-titulo="Intervalo normal habitual: 275–295 mOsm/kg" data-faixas="250~275:moderado:Baixa|275~295:baixo:Normal|295~330:alto:Elevada"></div>
+            <div class="result-actions" id="result-actions-osm">
+              <button class="action-btn" type="button" id="btn-email-osm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-osm">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="osm-vazio" hidden><div class="big-emoji" aria-hidden="true">💧</div><p class="motivo" id="osm-motivo"></p></div>
@@ -367,15 +397,21 @@
             <div class="dose-line"><div class="dose-big"><span id="agua-valor">0</span><span class="u">L</span></div></div>
             <div class="dose-sub" id="agua-tbw"></div>
           </div>
-          <div class="result-actions" id="result-actions-agua">
-            <button class="action-btn" type="button" id="btn-email-agua">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-agua">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-ilustracao" aria-hidden="true">
+              <div class="fx-titulo">Em garrafas de 1 litro</div>
+              <div class="lab-garrafas" id="agua-garrafas"></div>
+            </div>
+            <div class="result-actions" id="result-actions-agua">
+              <button class="action-btn" type="button" id="btn-email-agua">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-agua">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="agua-vazio" hidden><div class="big-emoji" aria-hidden="true">🚰</div><p class="motivo" id="agua-motivo"></p></div>
@@ -410,15 +446,18 @@
             <div class="dose-line"><div class="dose-big"><span id="homa-valor">0</span></div></div>
             <div class="dose-sub">≥ 2,5 sugere insulinorresistência</div>
           </div>
-          <div class="result-actions" id="result-actions-homa">
-            <button class="action-btn" type="button" id="btn-email-homa">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-              Enviar por email
-            </button>
-            <button class="action-btn" type="button" id="btn-print-homa">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-              Imprimir
-            </button>
+          <div class="result-body">
+            <div class="fx-escala" data-src="#homa-valor" data-continuo data-min="0" data-max="6" data-max-rotulo="6+" data-titulo="Sensibilidade à insulina" data-faixas="0~2.5:baixo:Normal|2.5~6:alto:Insulinorresistência provável"></div>
+            <div class="result-actions" id="result-actions-homa">
+              <button class="action-btn" type="button" id="btn-email-homa">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-homa">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
           </div>
         </div>
         <div class="empty" id="homa-vazio" hidden><div class="big-emoji" aria-hidden="true">🍬</div><p class="motivo" id="homa-motivo"></p></div>
