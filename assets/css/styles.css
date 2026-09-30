@@ -686,7 +686,7 @@ a.tool:hover {
 .tool.featured {
   min-height: 260px;
   background:
-    linear-gradient(135deg, color-mix(in srgb, var(--teal) 92%, #000) 0%, var(--teal-2) 50%, color-mix(in srgb, var(--violet) 80%, var(--teal-2)) 100%);
+    linear-gradient(135deg, color-mix(in srgb, #006d4c 92%, #000) 0%, #00a676 50%, color-mix(in srgb, #0b3d36 80%, #00a676) 100%);
   color: #fff;
   border-color: transparent;
 }
@@ -5012,4 +5012,46 @@ a.tool:hover .tool-deco.mini {
   .deco-gota .d-onda {
     opacity: 0;
   }
+}
+
+/* Cartões em destaque (os que têm ilustração animada): o mesmo tratamento do
+   cartão da calculadora de doses — fundo em gradiente, texto e ilustração a branco —
+   mas no tamanho normal e com a cor de cada cartão (verde ou coral). As cores são
+   fixas para o texto branco se ler também no tema escuro. */
+.tool.destaque {
+  background: linear-gradient(135deg, color-mix(in srgb, #006d4c 92%, #000) 0%, #00a676 50%, color-mix(in srgb, #0b3d36 80%, #00a676) 100%);
+  color: #fff;
+  border-color: transparent;
+}
+
+.tool.destaque.tint-coral {
+  background: linear-gradient(135deg, #a8391c 0%, #d4502a 50%, #e27a3c 100%);
+}
+
+.tool.destaque::before {
+  background: radial-gradient(500px circle at var(--mx, 80%) var(--my, 0%), rgba(255, 255, 255, 0.26), transparent 55%);
+}
+
+.tool.destaque .tool-desc,
+.tool.destaque .tag {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.tool.destaque .tag {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.tool.destaque .tool-icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.tool.destaque .tool-deco.mini {
+  color: #fff;
+  opacity: 0.7;
+}
+
+a.tool.destaque:hover .tool-deco.mini {
+  opacity: 1;
 }
