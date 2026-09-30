@@ -4779,3 +4779,237 @@ a.pub:hover {
   min-width: 0;
   overflow-wrap: anywhere;
 }
+
+/* ==========================================================================
+   Página inicial: ilustrações animadas no canto de alguns cartões
+   (no mesmo espírito da seringa da calculadora de doses)
+   ========================================================================== */
+
+.tool-deco.mini {
+  right: 12px;
+  bottom: 10px;
+  width: 124px;
+  z-index: -1;
+  color: var(--tint);
+  opacity: 0.55;
+  transform: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  overflow: visible;
+  transition: opacity 0.4s, transform 0.6s var(--spring);
+}
+
+a.tool:hover .tool-deco.mini {
+  opacity: 1;
+  transform: translateY(-4px) scale(1.06);
+}
+
+.tool-deco.mini .d-fraco {
+  opacity: 0.35;
+  stroke-width: 2;
+}
+
+.tool-deco.mini * {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+/* Crescimento: a curva desenha-se e o ponto sobe por ela */
+.deco-curva .d-linha {
+  stroke-width: 3.5;
+  stroke-dasharray: 1;
+  animation: deco-tracar 5s var(--ease) infinite;
+}
+
+.deco-curva .d-ponto {
+  fill: currentColor;
+  stroke: none;
+  offset-path: path('M12 74C40 69 62 47 112 30');
+  offset-distance: 100%;
+  offset-rotate: 0deg;
+  transform-box: view-box;
+  transform-origin: 0 0;
+  animation: deco-subir 5s var(--ease) infinite;
+}
+
+@supports not (offset-path: path('M0 0')) {
+  .deco-curva .d-ponto { display: none; }
+}
+
+@keyframes deco-tracar {
+  0% { stroke-dashoffset: 1; opacity: 1; }
+  45%, 85% { stroke-dashoffset: 0; opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes deco-subir {
+  0% { offset-distance: 0%; opacity: 1; }
+  45%, 85% { offset-distance: 100%; opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+
+/* Risco cardiovascular: o coração bate e o traçado atravessa-o */
+.deco-coracao .d-coracao {
+  animation: deco-bater 1.6s ease-in-out infinite;
+}
+
+.deco-coracao .d-linha {
+  stroke-width: 2.5;
+  stroke-dasharray: 1;
+  animation: deco-tracar 3.2s linear infinite;
+}
+
+@keyframes deco-bater {
+  0%, 45%, 100% { transform: scale(1); }
+  12% { transform: scale(1.12); }
+  25% { transform: scale(0.98); }
+  34% { transform: scale(1.07); }
+}
+
+/* Urgência: um monitor com o pulso a correr */
+.deco-ecg .d-linha {
+  stroke-width: 3.5;
+  stroke-dasharray: 0.28 0.72;
+  animation: deco-varrer 2.2s linear infinite;
+}
+
+@keyframes deco-varrer {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* Sono: a lua embala-se e os «z» sobem */
+.deco-lua .d-lua {
+  fill: color-mix(in srgb, currentColor 18%, transparent);
+  animation: deco-embalar 6s ease-in-out infinite;
+  transform-origin: 30% 70%;
+}
+
+.deco-lua .d-z {
+  fill: currentColor;
+  stroke: none;
+  font: italic 600 16px var(--font-display);
+  opacity: 0;
+  animation: deco-z 3.6s ease-out infinite;
+}
+
+.deco-lua .d-z:nth-of-type(2) { animation-delay: 0.6s; font-size: 13px; }
+.deco-lua .d-z:nth-of-type(3) { animation-delay: 1.2s; font-size: 10px; }
+
+@keyframes deco-embalar {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+
+@keyframes deco-z {
+  0% { opacity: 0; transform: translate(0, 6px); }
+  25% { opacity: 1; }
+  70% { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(6px, -10px); }
+}
+
+/* Respiratório: os pulmões enchem e esvaziam */
+.deco-pulmoes .d-respirar {
+  animation: deco-respirar 4.5s ease-in-out infinite;
+}
+
+.deco-pulmoes .d-respirar path + path {
+  fill: color-mix(in srgb, currentColor 14%, transparent);
+}
+
+@keyframes deco-respirar {
+  0%, 100% { transform: scale(0.93); }
+  50% { transform: scale(1.05); }
+}
+
+/* Laboratório: bolhas a subir no tubo de ensaio */
+.deco-tubo .d-liquido {
+  fill: color-mix(in srgb, currentColor 30%, transparent);
+  stroke: none;
+}
+
+.deco-tubo .d-bolha {
+  fill: currentColor;
+  stroke: none;
+  opacity: 0;
+  animation: deco-bolha 2.8s ease-in infinite;
+}
+
+.deco-tubo .d-bolha:nth-of-type(2) { animation-delay: 0.9s; }
+.deco-tubo .d-bolha:nth-of-type(3) { animation-delay: 1.8s; }
+
+@keyframes deco-bolha {
+  0% { opacity: 0; transform: translateY(0) scale(0.6); }
+  20% { opacity: 0.9; }
+  100% { opacity: 0; transform: translateY(-46px) scale(1.2); }
+}
+
+/* IMC: a balança procura o equilíbrio */
+.deco-balanca .d-braco {
+  transform-box: view-box;
+  transform-origin: 60px 24px;
+  animation: deco-pesar 4s ease-in-out infinite;
+}
+
+.deco-balanca .d-cheio {
+  fill: currentColor;
+  stroke: none;
+}
+
+@keyframes deco-pesar {
+  0%, 100% { transform: rotate(-7deg); }
+  50% { transform: rotate(7deg); }
+}
+
+/* Fluidos: uma gota cai e faz ondas */
+.deco-gota .d-gota {
+  fill: color-mix(in srgb, currentColor 22%, transparent);
+  animation: deco-cair 2.6s cubic-bezier(0.55, 0, 1, 0.45) infinite;
+}
+
+.deco-gota .d-onda {
+  stroke-width: 2;
+  opacity: 0;
+  animation: deco-onda 2.6s ease-out infinite;
+}
+
+.deco-gota .d-onda2 { animation-delay: 0.25s; }
+
+@keyframes deco-cair {
+  0% { transform: translateY(-8px) scale(0.7); opacity: 0; }
+  15% { opacity: 1; transform: translateY(0) scale(1); }
+  60% { transform: translateY(30px) scale(1, 1.1); opacity: 1; }
+  66%, 100% { transform: translateY(34px) scale(1.3, 0.4); opacity: 0; }
+}
+
+@keyframes deco-onda {
+  0%, 60% { opacity: 0; transform: scale(0.2); }
+  66% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.1); }
+}
+
+@media (max-width: 640px) {
+  .tool-deco.mini {
+    width: 96px;
+    opacity: 0.4;
+  }
+}
+
+/* Sem animações: cada ilustração fica parada no seu estado natural. */
+@media (prefers-reduced-motion: reduce) {
+  .tool-deco.mini * {
+    animation: none !important;
+  }
+
+  .deco-lua .d-z,
+  .deco-tubo .d-bolha {
+    opacity: 0.8;
+  }
+
+  .deco-gota .d-onda {
+    opacity: 0;
+  }
+}
