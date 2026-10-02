@@ -21,9 +21,17 @@ function ficheirosEm(dir) {
 
 const precache = [...ler('sw.js').matchAll(/^\s+'([^']+)',$/gm)].map((m) => m[1]);
 
-test('cada calculadora tem um cartão na página inicial', () => {
-  const inicio = ler('index.html');
-  for (const c of calculadoras) assert.ok(inicio.includes(`href="${c}/"`), `${c} não aparece na página inicial`);
+test('cada calculadora tem um cartão na página de ferramentas', () => {
+  const ferramentas = ler('ferramentas/index.html');
+  for (const c of calculadoras) {
+    assert.ok(ferramentas.includes(`href="../${c}/"`), `${c} não aparece na página de ferramentas`);
+  }
+});
+
+test('as páginas das calculadoras voltam para a página de ferramentas', () => {
+  for (const c of calculadoras) {
+    assert.ok(ler(`${c}/index.html`).includes('href="../ferramentas/"'), `${c} não liga às ferramentas`);
+  }
 });
 
 test('o service worker guarda todas as páginas e ficheiros do site', () => {

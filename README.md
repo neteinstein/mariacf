@@ -5,9 +5,24 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 
 ## Páginas
 
-- `/` — página inicial com as ferramentas
+- `/` — página inicial: doenças explicadas para cinco grupos etários
+- `/ferramentas/` — as calculadoras e questionários clínicos
 - `/sns/` — contactos úteis do SNS (112, SNS 24 e outras linhas de ajuda)
 - `/sobre/` — percurso da Dra. Maria, trabalhos científicos publicados e artigos no Ponto SJ
+
+## Doenças
+
+A página inicial mostra um cartão por doença; ao abrir um, a explicação aparece em separadores por idade
+(Crianças 3–5, Crianças 5–12, Adolescentes 13–17, Adultos 18–65, Séniores 65+). O estado fica no URL
+(`/?d=diabetes&idade=65+`), por isso cada separador pode ser partilhado.
+
+- `assets/js/doencas-dados.js` — o conteúdo (sem DOM, testado em `tests/doencas.test.mjs`).
+  Os 3–5 anos só têm imagens com legendas curtas; os mais velhos juntam texto, mitos e quando procurar ajuda.
+- `assets/js/doencas-ilustracoes.js` — ilustrações SVG animadas só com CSS (classes `an-*` em `styles.css`).
+- `assets/js/doencas.js` — a grelha, os separadores e a navegação.
+
+Para acrescentar uma doença, basta um novo objeto em `DOENCAS` com os cinco grupos; os testes verificam
+que as ilustrações referidas existem e que cada grupo tem o tipo de conteúdo esperado.
 
 ## Ferramentas
 
@@ -63,7 +78,7 @@ LMS oficiais da OMS (padrões 2006 até aos 60 meses, referência 2007 dos 61 ao
    - também há `.fx-pessoas` (100 pessoas, risco em %), `.fx-icones` (um ícone por unidade), `.fx-gauss`
      (curva normal para Z-scores), `.fx-degraus` (níveis em escada) e `.fx-acronimo` (letras que acendem
      com os campos `data-campo`).
-3. Acrescentar o cartão na página inicial e os ficheiros novos à lista `PRECACHE` de `sw.js`
+3. Acrescentar o cartão em `ferramentas/index.html` e os ficheiros novos à lista `PRECACHE` de `sw.js`
    — o teste `tests/site.test.mjs` falha se faltar algum.
 
 ### Funcionamento sem rede
