@@ -12,17 +12,22 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 
 ## Doenças
 
-A página inicial mostra um cartão por doença; ao abrir um, a explicação aparece em separadores por idade
-(Crianças 3–5, Crianças 5–12, Adolescentes 13–17, Adultos 18–65, Séniores 65+). O estado fica no URL
-(`/?d=diabetes&idade=65+`), por isso cada separador pode ser partilhado.
+A página inicial mostra um cartão animado por doença (19, das mais frequentes em Portugal), com pesquisa e
+filtro por área (`/?q=colesterol`, `/?cat=Oncologia`). Ao abrir um cartão, a explicação aparece em separadores
+por idade (Crianças 3–5, Crianças 5–12, Adolescentes 13–17, Adultos 18–65, Séniores 65+), com os botões
+«Enviar por email» e «Imprimir» das ferramentas. O estado fica no URL (`/?d=diabetes&idade=65+`), por isso
+cada separador pode ser partilhado; a impressão sai sempre com as cores do tema claro.
 
 - `assets/js/doencas-dados.js` — o conteúdo (sem DOM, testado em `tests/doencas.test.mjs`).
   Os 3–5 anos só têm imagens com legendas curtas; os mais velhos juntam texto, mitos e quando procurar ajuda.
-- `assets/js/doencas-ilustracoes.js` — ilustrações SVG animadas só com CSS (classes `an-*` em `styles.css`).
-- `assets/js/doencas.js` — a grelha, os separadores e a navegação.
+  `resumoDoenca()` prepara o texto do email de cada separador.
+- `assets/js/doencas-ilustracoes.js` — ilustrações SVG animadas só com CSS (classes `an-*` em `styles.css`)
+  e as miniaturas animadas dos cartões (classes `deco-*`).
+- `assets/js/doencas.js` — a grelha, a pesquisa, os separadores, o email/impressão e a navegação.
 
-Para acrescentar uma doença, basta um novo objeto em `DOENCAS` com os cinco grupos; os testes verificam
-que as ilustrações referidas existem e que cada grupo tem o tipo de conteúdo esperado.
+Para acrescentar uma doença, basta um novo objeto em `DOENCAS` com os cinco grupos, uma área de `CATEGORIAS`
+e uma miniatura; os testes verificam que as ilustrações referidas existem, que cada grupo tem o tipo de
+conteúdo esperado e que o email de cada separador cabe num link `mailto:`.
 
 ## Ferramentas
 

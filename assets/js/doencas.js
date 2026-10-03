@@ -1,80 +1,44 @@
-// Página inicial «Doenças»: grelha de cartões e, ao escolher uma doença, a
-// explicação em separadores por idade. O estado vive no URL
-// (?d=<doença>&idade=<grupo>), para se poder partilhar e usar o botão «voltar».
+// Página inicial «Doenças»: grelha de cartões (com pesquisa e filtro por área)
+// e, ao escolher uma doença, a explicação em separadores por idade, com os
+// botões de email e impressão das ferramentas. O estado vive no URL —
+// ?q=…&cat=… na grelha, ?d=<doença>&idade=<grupo> numa doença — para se poder
+// partilhar e usar o botão «voltar».
 
-import { DOENCAS, GRUPOS, encontrarDoenca, grupoValido } from './doencas-dados.js';
-import { ilustracao } from './doencas-ilustracoes.js';
+import { CATEGORIAS, DOENCAS, GRUPOS, encontrarDoenca, grupoValido, resumoDoenca } from './doencas-dados.js';
+import { ilustracao, miniatura } from './doencas-ilustracoes.js';
 
 const raiz = document.documentElement;
 const grelha = document.getElementById('doencas-grid');
 const vista = document.getElementById('doenca');
 const contagem = document.getElementById('doencas-contagem');
+const busca = document.getElementById('busca-doencas');
+const filtros = document.getElementById('filtros-doencas');
+const vazio = document.getElementById('doencas-vazio');
 const GRUPO_KEY = 'mcf-doencas-idade';
 
 const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
+const normalizar = (s) =>
+  s
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '');
+
 const seta =
   '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
 
-// Ilustrações pequenas e animadas no canto de cada cartão (o mesmo traço das
-// ilustrações dos cartões das ferramentas).
-const DECOS = {
-  gota: `<svg class="tool-deco mini deco-gota" viewBox="0 0 120 90" aria-hidden="true">
-      <path class="d-gota" d="M60 6C60 6 46 26 46 36A14 14 0 0 0 74 36C74 26 60 6 60 6Z"/>
-      <ellipse class="d-onda" cx="60" cy="80" rx="26" ry="6"/>
-      <ellipse class="d-onda d-onda2" cx="60" cy="80" rx="26" ry="6"/>
-    </svg>`,
-  laco: `<svg class="tool-deco mini deco-laco" viewBox="0 0 120 90" aria-hidden="true">
-      <g class="d-laco">
-        <path d="M54 44L38 84M66 44L82 84"/>
-        <path class="d-cheio-suave" d="M60 50C48 38 44 26 47 18C50 10 56 7 60 7C64 7 70 10 73 18C76 26 72 38 60 50Z"/>
-      </g>
-    </svg>`,
-  manometro: `<svg class="tool-deco mini deco-manometro" viewBox="0 0 120 90" aria-hidden="true">
-      <path d="M18 72A42 42 0 0 1 102 72"/>
-      <path class="d-fraco" d="M30 72A30 30 0 0 1 90 72"/>
-      <path class="d-ponteiro" d="M60 72L60 40"/>
-      <circle class="d-cheio" cx="60" cy="72" r="5"/>
-    </svg>`,
-  joelho: `<svg class="tool-deco mini deco-joelho" viewBox="0 0 120 90" aria-hidden="true">
-      <path class="d-osso" d="M30 28H56"/>
-      <circle class="d-cheio" cx="66" cy="28" r="8"/>
-      <g class="d-perna"><path class="d-osso" d="M66 40V78"/><path d="M66 82H82"/></g>
-    </svg>`,
-  nuvem: `<svg class="tool-deco mini deco-nuvem" viewBox="0 0 120 90" aria-hidden="true">
-      <g class="d-raios"><path d="M92 6V12M92 44V50M70 28H76M108 28H114M77 13L81 17M103 39L107 43M77 43L81 39M103 17L107 13"/></g>
-      <circle cx="92" cy="28" r="10"/>
-      <path class="d-cheio-suave" d="M14 62H70A13 13 0 0 0 66 37A18 18 0 0 0 32 34A13 13 0 0 0 14 62Z"/>
-      <path class="d-chuva" d="M26 70v8"/><path class="d-chuva d-chuva2" d="M42 70v8"/><path class="d-chuva d-chuva3" d="M58 70v8"/>
-    </svg>`,
-  arteria: `<svg class="tool-deco mini deco-arteria" viewBox="0 0 120 90" aria-hidden="true">
-      <path d="M20 26H116M20 66H116"/>
-      <path class="d-cheio-suave" d="M44 26Q60 40 76 26ZM50 66Q64 56 80 66Z"/>
-      <circle class="d-glob d-cheio" cx="22" cy="46" r="5"/>
-      <circle class="d-glob d-glob2 d-cheio" cx="22" cy="46" r="4"/>
-      <circle class="d-glob d-glob3 d-cheio" cx="22" cy="46" r="5"/>
-    </svg>`,
-  braco: `<svg class="tool-deco mini deco-braco" viewBox="0 0 120 90" aria-hidden="true">
-      <path class="d-membro" d="M10 70H62L84 30"/>
-      <circle class="d-cheio" cx="88" cy="22" r="8"/>
-      <path class="d-biceps d-cheio-suave" d="M24 66Q40 40 58 66"/>
-    </svg>`,
-  pulmoes: `<svg class="tool-deco mini deco-pulmoes" viewBox="0 0 120 90" aria-hidden="true">
-      <g class="d-respirar">
-        <path d="M60 6V34M60 34L50 44M60 34L70 44"/>
-        <path d="M52 28C38 22 22 36 20 58C18 74 30 82 44 78C52 76 54 68 54 60V40Z"/>
-        <path d="M68 28C82 22 98 36 100 58C102 74 90 82 76 78C68 76 66 68 66 60V40Z"/>
-      </g>
-      <g class="d-germe"><circle cx="106" cy="16" r="5"/><path d="M106 7v3M106 22v3M97 16h3M112 16h3"/></g>
-    </svg>`,
-};
+const iconeEmail =
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>';
+
+const iconeImprimir =
+  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>';
 
 function cartao(d, i) {
   const tint = i % 2 ? ' tint-coral' : '';
   return `
     <a class="tool reveal destaque${tint}" href="?d=${d.id}" data-doenca="${d.id}">
-      ${DECOS[d.deco] || ''}
+      ${miniatura(d.deco)}
       <div class="tool-top"><span class="tool-icon" aria-hidden="true">${d.emoji}</span></div>
       <div class="tool-title">${esc(d.nome)}${d.alias ? `<small class="tool-alias">${esc(d.alias)}</small>` : ''}</div>
       <p class="tool-desc">${esc(d.resumo)}</p>
@@ -140,6 +104,11 @@ function conteudoGrupo(g, grupoId) {
       .map((l) => `<a class="about-link" href="${l.href}">${esc(l.texto)} ${seta}</a>`)
       .join('')}</div>`;
   }
+  // Como nas ferramentas: enviar por email ou imprimir o que está no ecrã.
+  html += `<div class="result-actions doenca-acoes">
+      <button class="action-btn" type="button" data-acao="email">${iconeEmail} Enviar por email</button>
+      <button class="action-btn" type="button" data-acao="imprimir">${iconeImprimir} Imprimir</button>
+    </div>`;
   return html;
 }
 
@@ -160,16 +129,20 @@ function guardarGrupo(g) {
   }
 }
 
-function urlPara(doenca, grupo) {
-  const p = new URLSearchParams();
-  if (doenca) p.set('d', doenca);
-  if (doenca && grupo) p.set('idade', grupo);
-  const q = p.toString();
-  return q ? `?${q}` : location.pathname;
+function urlDoenca(doenca, grupo) {
+  const p = new URLSearchParams({ d: doenca });
+  if (grupo) p.set('idade', grupo);
+  return `?${p}`;
 }
 
+// ---------- Uma doença ----------
+
+let atual = null; // { d, grupoId } da doença aberta
+
 function mostrarGrupo(d, grupoId, { focar = false } = {}) {
+  atual = { d, grupoId };
   const painel = vista.querySelector('.doenca-painel');
+  const grupo = GRUPOS.find((g) => g.id === grupoId);
   vista.querySelectorAll('[role="tab"]').forEach((t) => {
     const ativo = t.dataset.grupo === grupoId;
     t.setAttribute('aria-selected', String(ativo));
@@ -180,6 +153,8 @@ function mostrarGrupo(d, grupoId, { focar = false } = {}) {
     const barra = t.parentElement;
     barra.scrollLeft = t.offsetLeft - (barra.clientWidth - t.offsetWidth) / 2;
   });
+  // Na impressão os separadores desaparecem: esta linha diz para que idade é a folha.
+  vista.querySelector('.doenca-grupo-impressao').textContent = `${grupo.emoji} Explicação para ${grupo.nome.toLowerCase()} (${grupo.idade})`;
   painel.className = `doenca-painel grupo-${grupoId.replace('+', 'mais')}`;
   painel.setAttribute('aria-labelledby', `tab-${grupoId}`);
   painel.innerHTML = conteudoGrupo(d.grupos[grupoId], grupoId);
@@ -211,6 +186,7 @@ function mostrarDoenca(d, grupoId) {
         </button>`
       ).join('')}
     </div>
+    <p class="doenca-grupo-impressao"></p>
     <div class="doenca-painel" id="doenca-painel" role="tabpanel" tabindex="0"></div>
     <p class="disclaimer">Informação geral de apoio. Não substitui uma consulta — em caso de dúvida, fale com o seu médico ou ligue SNS 24 (808 24 24 24). Em emergência, ligue 112.</p>`;
 
@@ -239,9 +215,71 @@ function mostrarDoenca(d, grupoId) {
 
 function escolherGrupo(d, grupoId, focar = false) {
   guardarGrupo(grupoId);
-  history.replaceState({ d: d.id, idade: grupoId }, '', urlPara(d.id, grupoId));
+  history.replaceState({ d: d.id, idade: grupoId }, '', urlDoenca(d.id, grupoId));
   mostrarGrupo(d, grupoId, { focar });
 }
+
+function enviarEmail() {
+  if (!atual) return;
+  const { assunto, linhas } = resumoDoenca(atual.d, atual.grupoId);
+  const corpo = [
+    ...linhas,
+    'Explicação completa, com imagens:',
+    location.href,
+    '',
+    'Informação de apoio — não substitui aconselhamento médico.',
+  ].join('\n');
+  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+}
+
+// ---------- Grelha: pesquisa e filtro por área ----------
+
+let categoriaAtiva = 'todas';
+let ultimaGrelha = ''; // pesquisa da grelha, para voltar a ela ao sair de uma doença
+const textoPesquisa = new Map(
+  DOENCAS.map((d) => [
+    d.id,
+    normalizar([d.nome, d.alias, d.resumo, d.categoria, ...(d.tambem || []), d.palavras].filter(Boolean).join(' ')),
+  ])
+);
+
+function urlGrelha() {
+  const p = new URLSearchParams();
+  const q = busca?.value.trim();
+  if (q) p.set('q', q);
+  if (categoriaAtiva !== 'todas') p.set('cat', categoriaAtiva);
+  const s = p.toString();
+  return s ? `?${s}` : location.pathname;
+}
+
+function aplicarFiltros({ atualizarUrl = true } = {}) {
+  const termo = busca ? normalizar(busca.value.trim()) : '';
+  let visiveis = 0;
+  grelha.querySelectorAll('.tool').forEach((carta) => {
+    const d = encontrarDoenca(carta.dataset.doenca);
+    const naArea = categoriaAtiva === 'todas' || d.categoria === categoriaAtiva || (d.tambem || []).includes(categoriaAtiva);
+    const visivel = naArea && (!termo || textoPesquisa.get(d.id).includes(termo));
+    carta.hidden = !visivel;
+    if (visivel) visiveis += 1;
+  });
+  if (vazio) vazio.hidden = visiveis > 0;
+  if (contagem) {
+    contagem.textContent = visiveis === DOENCAS.length ? `(${DOENCAS.length})` : `(${visiveis} de ${DOENCAS.length})`;
+  }
+  if (atualizarUrl) history.replaceState(null, '', urlGrelha());
+}
+
+function escolherCategoria(cat) {
+  categoriaAtiva = cat;
+  filtros?.querySelectorAll('.tabbtn').forEach((b) => {
+    const ativo = b.dataset.categoria === cat;
+    b.setAttribute('aria-selected', String(ativo));
+    // Em ecrãs estreitos as áreas deslizam na horizontal: centrar a escolhida.
+    if (ativo) filtros.scrollLeft = b.offsetLeft - (filtros.clientWidth - b.offsetWidth) / 2;
+  });
+}
+
+// ---------- Navegação ----------
 
 let ultimaPosicao = 0;
 
@@ -256,30 +294,58 @@ function render({ rolar = false } = {}) {
     mostrarDoenca(d, grupoId);
     if (rolar) window.scrollTo({ top: 0, behavior: 'instant' });
   } else {
+    atual = null;
     raiz.classList.remove('com-doenca');
     vista.hidden = true;
     vista.innerHTML = '';
     document.title = 'Doenças explicadas para todas as idades · Dra. Maria Cortês Ferreira';
+    if (busca) busca.value = p.get('q') || '';
+    escolherCategoria(CATEGORIAS.includes(p.get('cat')) ? p.get('cat') : 'todas');
+    aplicarFiltros({ atualizarUrl: false });
     if (rolar) window.scrollTo({ top: ultimaPosicao, behavior: 'instant' });
   }
 }
 
 function navegar(id) {
-  if (id) ultimaPosicao = window.scrollY;
-  history.pushState({ d: id }, '', urlPara(id, null));
+  if (id) {
+    ultimaPosicao = window.scrollY;
+    ultimaGrelha = location.search;
+  }
+  history.pushState({ d: id }, '', id ? urlDoenca(id) : ultimaGrelha || location.pathname);
   render({ rolar: true });
   if (id) vista.querySelector('h1')?.focus({ preventScroll: true });
 }
 
 if (grelha && vista) {
   grelha.innerHTML = DOENCAS.map(cartao).join('');
-  if (contagem) contagem.textContent = DOENCAS.length;
+
+  if (filtros) {
+    filtros.innerHTML = ['todas', ...CATEGORIAS]
+      .map(
+        (c) =>
+          `<button class="tabbtn" type="button" data-categoria="${esc(c)}" aria-selected="${c === 'todas'}">${c === 'todas' ? 'Todas' : esc(c)}</button>`
+      )
+      .join('');
+    filtros.addEventListener('click', (e) => {
+      const b = e.target.closest('.tabbtn');
+      if (!b) return;
+      escolherCategoria(b.dataset.categoria);
+      aplicarFiltros();
+    });
+  }
+  busca?.addEventListener('input', () => aplicarFiltros());
 
   grelha.addEventListener('click', (e) => {
     const a = e.target.closest('a[data-doenca]');
     if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
     e.preventDefault();
     navegar(a.dataset.doenca);
+  });
+
+  vista.addEventListener('click', (e) => {
+    const acao = e.target.closest('[data-acao]')?.dataset.acao;
+    if (acao === 'email') enviarEmail();
+    else if (acao === 'imprimir') window.print();
   });
 
   window.addEventListener('popstate', () => render({ rolar: true }));

@@ -113,6 +113,64 @@ function vaso(conteudo, placas = '') {
 const globulo = (atraso, y = 78) =>
   `<g class="an-deslizar ${atraso}"><ellipse class="c-vermelho" cx="100" cy="${y}" rx="11" ry="7"/><ellipse class="c-vermelho-e sem" cx="100" cy="${y}" rx="5" ry="2.5"/></g>`;
 
+// Contornos partilhados por várias ilustrações (e pelas miniaturas dos cartões).
+const TRAQUEIA = 'M100 18V56M100 56L90 66M100 56L110 66';
+const PULMAO_E = 'M88 48C66 38 42 60 40 94C38 120 56 132 76 126C86 123 90 112 90 102V62Z';
+const PULMAO_D = 'M112 48C134 38 158 60 160 94C162 120 144 132 124 126C114 123 110 112 110 102V62Z';
+const CEREBRO =
+  'M58 92C44 90 40 74 48 66C42 54 52 40 66 42C70 30 88 26 98 34C108 24 128 28 132 40C146 38 158 50 154 62C164 70 160 88 148 92C148 104 134 112 122 106C114 116 96 116 90 108C80 114 64 108 64 98C60 98 58 96 58 92Z';
+const CEREBRO_SULCOS = 'M66 58Q74 52 82 58M104 42Q110 50 120 48M136 58Q140 66 148 66M60 80Q66 74 72 80M128 98Q134 92 142 96M96 104Q100 98 108 102';
+const ESTOMAGO = 'M84 44C62 46 50 70 56 94C62 118 94 130 122 120C146 112 156 90 148 74C142 62 128 60 120 68C114 74 106 70 104 60C102 50 96 44 84 44Z';
+const ESOFAGO = 'M80 8Q80 28 86 46';
+const DUODENO = 'M146 80Q164 78 168 90Q170 102 162 110';
+const FIGADO = 'M30 64C30 44 54 34 86 36C120 38 158 34 172 48C182 58 172 70 156 78C136 88 118 100 96 110C76 118 52 112 40 98C32 88 30 76 30 64Z';
+
+// Muda a escala de um contorno feito só de pares «x y» absolutos (M, L, C, Q).
+const escalar = (d, s, dx, dy) => d.replace(/(-?\d+(?:\.\d+)?) (-?\d+(?:\.\d+)?)/g, (_, x, y) => `${n(x * s + dx)} ${n(y * s + dy)}`);
+
+// Tubo com contorno (esófago, intestino, endoscópio…): traço grosso escuro e, por cima, a cor.
+function tubo(d, cor, fora = 13, dentro = 8) {
+  return `<path style="stroke-width:${fora}" d="${d}"/><path class="${cor}" style="stroke-width:${dentro}" d="${d}"/>`;
+}
+
+function pecaPuzzle(x, y, s) {
+  const k = n(s * 0.15);
+  return `M${x} ${y}h${n(s * 0.35)}a${k} ${k} 0 0 1 ${n(s * 0.3)} 0h${n(s * 0.35)}v${n(s * 0.35)}a${k} ${k} 0 0 1 0 ${n(s * 0.3)}v${n(s * 0.35)}h${-s}Z`;
+}
+
+function contornoEngrenagem(cx, cy, r) {
+  const dentes = 8;
+  const meia = Math.PI / dentes / 2.4;
+  const pts = [];
+  for (let i = 0; i < dentes * 2; i++) {
+    const a = (i * Math.PI) / dentes;
+    const rr = i % 2 ? r * 0.74 : r;
+    pts.push(`${n(cx + Math.cos(a - meia) * rr)} ${n(cy + Math.sin(a - meia) * rr)}`, `${n(cx + Math.cos(a + meia) * rr)} ${n(cy + Math.sin(a + meia) * rr)}`);
+  }
+  return `M${pts.join('L')}Z`;
+}
+
+const engrenagem = (cx, cy, r) =>
+  `<path class="c-sol" d="${contornoEngrenagem(cx, cy, r)}"/><circle class="c-figado" cx="${cx}" cy="${cy}" r="${n(r * 0.32)}"/>`;
+
+// Helicobacter pylori: bactéria em espiral, com flagelos.
+const helicobacter = (x, y, rot) =>
+  `<g transform="translate(${x} ${y}) rotate(${rot})"><path class="t-verde" style="stroke-width:6" d="M-12 0q4 -6 8 0t8 0t8 0"/><path class="fino" d="M12 0l7 -4M12 0l8 1M12 0l6 5"/></g>`;
+
+// Bacilo de Koch: um pauzinho.
+const bacilo = (x, y, rot, atraso = '') =>
+  `<g class="an-flutuar ${atraso}"><g transform="translate(${x} ${y}) rotate(${rot})"><rect class="c-vermelho" x="-9" y="-3.5" width="18" height="7" rx="3.5"/></g></g>`;
+
+const nota = (x, y, atraso) =>
+  `<g class="an-subir ${atraso}"><ellipse class="c-cor sem" cx="${x}" cy="${y}" rx="5.5" ry="4.2"/><path class="t-cor grosso" d="M${x + 5} ${y}V${y - 22}q6 4 8 10"/></g>`;
+
+function desenharPes() {
+  const pe = `
+    <path class="c-pele" d="M70 136C56 136 54 112 56 92C58 68 62 50 76 50C90 50 92 70 90 92C88 112 86 136 70 136Z"/>
+    <circle class="c-pele" cx="64" cy="44" r="5"/><circle class="c-pele" cx="73" cy="38" r="4.5"/><circle class="c-pele" cx="81" cy="38" r="4"/><circle class="c-pele" cx="88" cy="42" r="3.5"/>`;
+  return `${pe}<g transform="translate(200 0) scale(-1 1)">${pe}</g>`;
+}
+
 export const ILUSTRACOES = {
   coracao: () => `
     <path class="an-fluir fraco" stroke-dasharray="4 10" d="M8 76H44M156 76H192"/>
@@ -609,13 +667,8 @@ export const ILUSTRACOES = {
     <text class="il-num an-piscar-lento" x="137" y="66">98</text>
     <circle class="c-cor" cx="126" cy="98" r="7"/><circle class="c-cor" cx="148" cy="98" r="7"/>`,
 
-  pes: () => {
-    const pe = (dx) => `
-      <path class="c-pele" d="M${70 + dx} 136C${56 + dx} 136 ${54 + dx} 112 ${56 + dx} 92C${58 + dx} 68 ${62 + dx} 50 ${76 + dx} 50C${90 + dx} 50 ${92 + dx} 70 ${90 + dx} 92C${88 + dx} 112 ${86 + dx} 136 ${70 + dx} 136Z"/>
-      <circle class="c-pele" cx="${64 + dx}" cy="44" r="5"/><circle class="c-pele" cx="${73 + dx}" cy="38" r="4.5"/><circle class="c-pele" cx="${81 + dx}" cy="38" r="4"/><circle class="c-pele" cx="${88 + dx}" cy="42" r="3.5"/>`;
-    return `${pe(0)}<g transform="translate(200 0) scale(-1 1)">${pe(0)}</g>
-      <g class="an-lupa"><circle class="c-vidro grosso" cx="100" cy="86" r="22"/><path class="muito-grosso" d="M116 102L134 120"/></g>`;
-  },
+  pes: () => `${desenharPes()}
+    <g class="an-lupa"><circle class="c-vidro grosso" cx="100" cy="86" r="22"/><path class="muito-grosso" d="M116 102L134 120"/></g>`,
 
   cigarro: () => `
     <path class="an-subir fino fraco" d="M150 64q-6 -8 0 -16t0 -16"/>
@@ -643,10 +696,674 @@ export const ILUSTRACOES = {
     <circle class="c-tinta sem" cx="100" cy="96" r="3"/>
     <path class="c-suave" d="M62 108h30v14h-30zM108 108h30v14h-30z"/>
     <g class="an-flutuar"><path class="t-verde muito-grosso" d="M100 18V48M88 36L100 48L112 36"/></g>`,
+
+  // ---------- AVC ----------
+  cerebro: () => `
+    <path class="an-pulsar-onda t-cor" d="M30 92Q18 76 30 60"/>
+    <path class="an-pulsar-onda d2 t-cor" d="M170 92Q182 76 170 60"/>
+    <g class="an-pulsar-lento">
+      <path class="c-coral-s" d="${CEREBRO}"/>
+      <path class="fino fraco" d="${CEREBRO_SULCOS}"/>
+      ${cara(100, 76, 20)}
+    </g>
+    ${estrela(30, 30, 7, 'c-sol', 'an-piscar')}${estrela(172, 28, 6, 'c-sol', 'an-piscar d2')}${estrela(170, 128, 5, 'c-sol', 'an-piscar d1')}`,
+
+  'cerebro-avc': () => `
+    <path class="c-coral-s" d="${CEREBRO}"/>
+    <path class="fino fraco" d="${CEREBRO_SULCOS}"/>
+    <g class="an-piscar-lento"><ellipse class="c-zona" cx="134" cy="64" rx="24" ry="20"/></g>
+    <path class="t-vermelho grosso" d="M100 150V112M100 112Q86 100 70 96M100 112V88M100 112Q112 102 120 88Q128 76 140 70"/>
+    <g class="an-pulsar"><circle class="c-vermelho-e" cx="120" cy="88" r="7"/></g>
+    <g class="an-pulsar d2"><circle class="c-sol" cx="170" cy="28" r="14"/><text class="il-num" x="170" y="36">!</text></g>`,
+
+  'cara-torta': () => `
+    <circle class="c-pele" cx="100" cy="74" r="46"/>
+    <path class="c-cabelo-b" d="M54 74A46 46 0 0 1 146 74Q122 42 94 48Q68 52 54 74Z"/>
+    <circle class="c-tinta sem" cx="84" cy="72" r="3.5"/><circle class="c-tinta sem" cx="116" cy="72" r="3.5"/>
+    <g class="fino"><circle cx="84" cy="72" r="11"/><circle cx="116" cy="72" r="11"/><path d="M95 72h10"/></g>
+    <g class="an-troca"><path class="grosso" d="M80 96q20 16 40 0"/></g>
+    <g class="an-troca inv"><path class="grosso" d="M80 96q12 8 24 6q10 -2 16 12"/><path class="grosso" d="M107 67q9 5 18 0"/></g>
+    <g class="an-troca inv"><path class="t-coral grosso" d="M160 124L128 112M128 112l5.7 6.9M128 112l8.9 -1.5"/></g>`,
+
+  'braco-cai': () => {
+    const p = pessoa(100, 34, { bracos: 'nenhum', humor: 'neutro', cabelo: 'c-cabelo-b', oculos: true, cor: 'c-coral-s', alt: 40 });
+    const braco = (o, dx, dy) => `<path d="M${n(o[0])} ${n(o[1])}l${dx} ${dy}"/>${p.mao(o[0] + dx, o[1] + dy)}`;
+    const [ox, oy] = p.ombroD;
+    return `${p.svg}${braco(p.ombroE, -28, -4)}
+      <path class="fino fraco" stroke-dasharray="3 5" d="M${n(ox + 28)} ${n(oy - 4)}Q${n(ox + 34)} ${n(oy + 16)} ${n(ox + 18)} ${n(oy + 22)}"/>
+      <g class="an-descair rv" style="transform-origin:${n(ox)}px ${n(oy)}px">${braco(p.ombroD, 28, -4)}</g>
+      <g class="an-pulsar d2"><circle class="c-sol" cx="170" cy="30" r="14"/><text class="il-num" x="170" y="38">!</text></g>`;
+  },
+
+  fala: () => `
+    ${cabeca(54, 88, 30, { humor: 'neutro', cabelo: 'c-cabelo-b', oculos: true })}
+    <path class="c-branco" d="M100 18H180Q190 18 190 28V74Q190 84 180 84H118L92 98L104 84H100Q90 84 90 74V28Q90 18 100 18Z"/>
+    <g class="an-tremer"><path class="t-coral grosso" d="M104 40q5 -8 10 0t10 0t10 0"/></g>
+    <g class="an-tremer d1"><path class="t-cor grosso" d="M144 40h12M162 40h14"/></g>
+    <g class="an-tremer d2"><path class="t-sol grosso" d="M104 60h18M130 60q5 -8 10 0t10 0"/></g>
+    <text class="il-num an-piscar" x="174" y="70">?</text>`,
+
+  'ligar-112': () => `
+    <rect class="c-branco" x="72" y="14" width="56" height="112" rx="11"/>
+    <rect class="c-coral-s" x="78" y="26" width="44" height="80" rx="5"/>
+    <path class="fino" d="M94 116h12"/>
+    <g class="an-bater"><path class="t-coral" style="stroke-width:7" d="M91 40q-4 10 4 18q8 8 18 4"/></g>
+    <text class="il-num txt-coral" x="100" y="98">112</text>
+    <path class="an-pulsar-onda" d="M60 48Q50 66 60 84"/><path class="an-pulsar-onda d1" d="M46 38Q30 66 46 94"/>
+    <path class="an-pulsar-onda" d="M140 48Q150 66 140 84"/><path class="an-pulsar-onda d1" d="M154 38Q170 66 154 94"/>`,
+
+  relogio: () => `
+    <path class="an-fluir fraco" stroke-dasharray="12 10" d="M10 58H44M4 78H40M12 98H46"/>
+    <path class="grosso" d="M98 18h24M110 18v8"/>
+    <circle class="c-branco" cx="110" cy="76" r="48"/>
+    <path class="fino" d="M110 34v8M110 110v8M68 76h8M144 76h8"/>
+    <g class="an-horas rv" style="transform-origin:110px 76px"><path class="muito-grosso" d="M110 76V56"/></g>
+    <g class="an-girar rv" style="transform-origin:110px 76px"><path class="t-coral grosso" d="M110 76H142"/></g>
+    <circle class="c-tinta sem" cx="110" cy="76" r="4"/>`,
+
+  // ---------- Estômago e intestino ----------
+  estomago: () => `
+    ${tubo(ESOFAGO, 't-coral-s')}${tubo(DUODENO, 't-coral-s')}
+    <g class="an-mexer">
+      <path class="c-coral-s" d="${ESTOMAGO}"/>
+      <g class="an-girar-lento rv" style="transform-origin:96px 96px">
+        <circle class="c-sol" cx="96" cy="74" r="4"/><circle class="c-verde" cx="115" cy="107" r="3.5"/><circle class="c-laranja" cx="74" cy="100" r="3.5"/>
+      </g>
+      ${cara(96, 96, 14)}
+    </g>`,
+
+  'estomago-bacteria': () => `
+    ${tubo(ESOFAGO, 't-coral-s')}${tubo(DUODENO, 't-coral-s')}
+    <path class="c-coral-s" d="${ESTOMAGO}"/>
+    ${cara(96, 100, 14, 'triste')}
+    <g class="an-flutuar"><g class="an-balancar">${helicobacter(80, 70, -20)}</g></g>
+    <g class="an-flutuar d2"><g class="an-balancar d1">${helicobacter(128, 90, 30)}</g></g>
+    <g class="an-flutuar d1"><g class="an-balancar d2">${helicobacter(110, 114, 6)}</g></g>`,
+
+  enchidos: () => {
+    const chourico = (x, cls, atraso) => `
+      <g class="an-balancar ${atraso} rv" style="transform-origin:${x}px 22px">
+        <path class="fino" d="M${x} 22V34"/>
+        <rect class="${cls}" x="${x - 8}" y="34" width="16" height="58" rx="8"/>
+        <path class="fino" d="M${x - 8} 42h16M${x - 8} 84h16"/>
+        <circle class="c-branco sem" cx="${x - 2}" cy="54" r="1.8"/><circle class="c-branco sem" cx="${x + 3}" cy="66" r="1.6"/><circle class="c-branco sem" cx="${x - 3}" cy="76" r="1.8"/>
+      </g>`;
+    return `<path class="c-madeira-t muito-grosso" d="M24 22H176"/>
+      ${chourico(60, 'c-vermelho-e', '')}${chourico(96, 'c-coral', 'd2')}${chourico(132, 'c-vermelho-e', 'd1')}
+      <path class="an-subir fino fraco" d="M62 140q-6 -8 0 -16t0 -16"/>
+      <path class="an-subir d2 fino fraco" d="M98 140q-6 -8 0 -16t0 -16"/>
+      <path class="an-subir d1 fino fraco" d="M134 140q-6 -8 0 -16t0 -16"/>
+      ${menos(168, 112)}`;
+  },
+
+  endoscopia: () => `
+    <path class="fraco" d="${ESTOMAGO}"/>
+    ${tubo('M6 16C40 14 60 30 72 46C82 58 86 70 88 82', 't-cinza')}
+    <g class="an-piscar-lento"><path class="c-sol-s sem" d="M90 86L122 102L106 118Z"/></g>
+    <circle class="c-sol an-piscar" cx="88" cy="84" r="5"/>
+    <rect class="c-branco" x="138" y="12" width="52" height="40" rx="6"/>
+    <circle class="c-coral-s" cx="164" cy="32" r="12"/>
+    <g class="an-pulsar"><circle class="c-coral" cx="168" cy="35" r="4"/></g>
+    <path class="fino" d="M164 52v8M152 60h24"/>`,
+
+  sopa: () => `
+    <path class="an-subir fino fraco" d="M76 62q-6 -8 0 -16t0 -16"/>
+    <path class="an-subir d2 fino fraco" d="M100 58q-6 -8 0 -16t0 -16"/>
+    <path class="an-subir d1 fino fraco" d="M124 62q-6 -8 0 -16t0 -16"/>
+    <ellipse class="c-suave" cx="100" cy="132" rx="74" ry="9"/>
+    <path class="c-branco" d="M38 80H162C162 112 136 130 100 130C64 130 38 112 38 80Z"/>
+    <ellipse class="c-verde" cx="100" cy="80" rx="62" ry="10"/>
+    <path class="fino t-verde-e" d="M70 78l7 -2M92 83l8 1M112 77l7 -2M136 82l6 2"/>
+    <g class="an-flutuar"><circle class="c-coral" cx="82" cy="79" r="4"/></g>
+    <g class="an-flutuar d2"><circle class="c-coral" cx="120" cy="81" r="4"/></g>
+    <g class="an-balancar rv" style="transform-origin:150px 76px"><path class="grosso" d="M150 76L172 42"/><ellipse class="c-branco" cx="175" cy="36" rx="7" ry="10" transform="rotate(32 175 36)"/></g>`,
+
+  intestino: () => {
+    const colon = 'M64 122V50Q64 36 78 36H124Q138 36 138 50V108Q138 124 122 126L108 128';
+    const delgado = 'M84 58H116Q124 58 124 67Q124 76 116 76H86Q78 76 78 85Q78 94 86 94H116Q124 94 124 103Q124 112 116 112H90';
+    return `${tubo(delgado, 't-rosa-s', 9, 5)}${tubo(colon, 't-coral-s', 18, 13)}
+      <path class="an-fluir t-castanho" style="stroke-width:5" stroke-dasharray="4 10" d="${colon}"/>
+      ${estrela(30, 40, 6, 'c-sol', 'an-piscar')}${estrela(170, 120, 5, 'c-sol', 'an-piscar d2')}`;
+  },
+
+  fibra: () => `
+    <path class="c-pao" d="M22 122C18 96 34 80 60 80C86 80 102 96 98 122Z"/>
+    <path class="fino" d="M42 92l8 10M58 88l8 10M74 90l8 10"/>
+    <g class="c-castanho"><ellipse cx="58" cy="134" rx="7" ry="5"/><ellipse cx="74" cy="136" rx="7" ry="5"/><ellipse cx="90" cy="133" rx="7" ry="5"/></g>
+    <g class="an-balancar rv" style="transform-origin:134px 130px">
+      <path class="c-verde-s" d="M128 130L131 100H137L140 130Z"/>
+      <circle class="c-verde" cx="120" cy="94" r="13"/><circle class="c-verde" cx="148" cy="94" r="12"/><circle class="c-verde" cx="134" cy="80" r="14"/><circle class="c-verde" cx="134" cy="100" r="11"/>
+    </g>
+    <g class="an-saltar"><circle class="c-coral" cx="170" cy="40" r="13"/><path class="c-verde" d="M170 27Q176 19 182 23Q176 29 170 27Z"/></g>
+    ${estrela(40, 40, 6, 'c-sol', 'an-piscar')}`,
+
+  polipo: () => `
+    <path class="c-coral-s" d="M0 112Q25 100 50 112T100 112T150 112T200 112V150H0Z"/>
+    <path class="fino fraco" d="M20 130q10 -6 20 0M70 136q10 -6 20 0M130 132q10 -6 20 0"/>
+    <g class="an-crescer rv" style="transform-origin:90px 114px">
+      <path class="c-coral" d="M85 115V94H95V115Z"/>
+      <ellipse class="c-coral" cx="90" cy="88" rx="17" ry="13"/>
+    </g>
+    ${tubo('M204 14C178 14 160 26 150 44', 't-cinza')}
+    <g class="an-piscar-lento"><path class="c-sol-s sem" d="M148 48L106 78L124 90Z"/></g>
+    <circle class="c-sol an-piscar" cx="150" cy="46" r="5"/>
+    ${estrela(40, 40, 6, 'c-sol', 'an-piscar d2')}`,
+
+  'teste-fezes': () => `
+    <g class="an-flutuar">
+      <rect class="c-branco" x="54" y="44" width="30" height="86" rx="9"/>
+      <path class="fino" d="M69 50V112"/>
+      <rect class="c-suave" x="58" y="80" width="22" height="26" rx="3"/>
+      <path class="fino" d="M62 88h14M62 96h10"/>
+      <rect class="c-cor" x="50" y="26" width="38" height="22" rx="5"/>
+    </g>
+    <g class="an-flutuar d2">
+      <rect class="c-branco" x="108" y="66" width="68" height="46" rx="5"/>
+      <path class="fino" d="M108 68L142 92L176 68"/>
+    </g>
+    <g class="an-pulsar d1"><circle class="c-verde" cx="170" cy="40" r="14"/><path class="t-branco grosso" d="M163 40l5 5 9 -10"/></g>`,
+
+  // ---------- Paramiloidose ----------
+  'pes-formigueiro': () => `${desenharPes()}
+    <g class="grosso">
+      <path class="t-sol an-piscar" d="M40 34l7 -6v8l7 -6"/>
+      <path class="t-coral an-piscar d2" d="M146 28l7 -6v8l7 -6"/>
+      <path class="t-sol an-piscar d1" d="M34 96l-8 4 7 3 -8 4"/>
+      <path class="t-coral an-piscar d3" d="M166 100l8 4 -7 3 8 4"/>
+      <path class="t-sol an-piscar d4" d="M100 70l-5 8h7l-5 8"/>
+    </g>`,
+
+  adn: () => {
+    const onda = (y) => Math.sin(((y - 8) / 134) * Math.PI * 2.5);
+    const A = [];
+    const B = [];
+    for (let y = 8; y <= 142; y += 2) {
+      A.push(`${n(100 + 32 * onda(y))} ${y}`);
+      B.push(`${n(100 - 32 * onda(y))} ${y}`);
+    }
+    const cores = ['t-coral', 't-sol', 't-verde', 't-azul'];
+    let degraus = '';
+    let i = 0;
+    for (let y = 16; y <= 136; y += 12, i++) {
+      const f = onda(y);
+      if (Math.abs(f) < 0.15) continue;
+      const cor = y === 76 ? 't-vermelho' : cores[i % 4];
+      degraus += `<path class="${cor} grosso an-piscar-lento d${(i % 5) + 1}" d="M${n(100 + 30 * f)} ${y}H${n(100 - 30 * f)}"/>`;
+    }
+    return `${degraus}<path class="t-cor grosso" d="M${A.join('L')}"/><path class="t-cinza grosso" d="M${B.join('L')}"/>
+      <g class="an-pulsar"><circle class="grosso" cx="100" cy="76" r="24"/><path class="muito-grosso" d="M117 93L132 108"/></g>`;
+  },
+
+  proteina: () => {
+    const fita = (x, y, cls, atraso) =>
+      `<g class="an-juntar ${atraso}" style="--dx:${n(100 - x)}px;--dy:${n(80 - y)}px"><path class="${cls}" style="stroke-width:5" d="M${x - 16} ${y}q4 -7 8 0t8 0t8 0t8 0"/></g>`;
+    return `<path class="fino fraco" d="M10 136C60 128 140 144 190 134"/>
+      ${fita(34, 30, 't-cor', '')}${fita(166, 34, 't-coral', 'd2')}${fita(40, 120, 't-sol', 'd1')}${fita(160, 116, 't-azul', 'd3')}
+      <g class="an-crescer"><path class="c-sol-s" d="M84 64C92 54 112 56 116 66C128 68 128 90 116 92C112 104 90 104 86 94C72 92 72 70 84 64Z"/>
+        <path class="fino" d="M86 74q6 -6 12 0t12 0M88 86q6 -6 12 0t10 0"/></g>`;
+  },
+
+  barco: () => `
+    <circle class="c-sol" cx="164" cy="28" r="14"/>
+    <g class="an-balancar rv" style="transform-origin:100px 106px">
+      <path class="grosso" d="M100 100V26"/>
+      <path class="c-branco" d="M103 32L142 88H103Z"/>
+      <path class="c-coral" d="M100 26L82 31L100 36Z"/>
+      <path class="c-coral" d="M42 94H158L144 118H56Z"/>
+      <path class="t-branco grosso" d="M52 104H148"/>
+    </g>
+    <rect class="c-azul-s sem" x="0" y="112" width="200" height="38"/>
+    <g class="an-ondular"><path class="t-azul grosso" d="M-40 112q15 -10 30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0"/></g>
+    <g class="an-ondular inv"><path class="t-azul fino" d="M-40 132q15 -8 30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0"/></g>`,
+
+  familia: () => {
+    const no = (x, y, o = {}) => cabeca(x, y, 11, o);
+    const anel = (x, y, d) => `<circle class="an-pulsar-onda ${d} t-coral grosso" cx="${x}" cy="${y}" r="17"/>`;
+    return `<path class="fino" d="M61 30H69M131 30H139M65 30V67M135 30V67M76 78H124M100 78V100M70 100H130M70 100V113M100 100V113M130 100V113"/>
+      ${anel(50, 30, '')}${anel(65, 78, 'd1')}${anel(100, 124, 'd2')}
+      ${no(50, 30, { cabelo: 'c-cabelo-b', oculos: true })}${no(80, 30, { cabelo: 'c-cabelo-b', pele: 'c-pele2' })}
+      ${no(120, 30, { cabelo: 'c-cabelo-b' })}${no(150, 30, { cabelo: 'c-cabelo-b', oculos: true, pele: 'c-pele2' })}
+      ${no(65, 78)}${no(135, 78, { cabelo: 'c-coral', pele: 'c-pele2' })}
+      ${no(70, 124, { pele: 'c-pele2' })}${no(100, 124, { cabelo: 'c-sol' })}${no(130, 124)}`;
+  },
+
+  // ---------- DPOC e cancro do pulmão ----------
+  'pulmoes-cinza': () => `
+    <g class="an-respirar-lento">
+      <path class="grosso" d="${TRAQUEIA}"/>
+      <path class="c-cinza" d="${PULMAO_E}"/><path class="c-cinza" d="${PULMAO_D}"/>
+      <g class="c-cinza-e sem"><circle cx="62" cy="88" r="4"/><circle cx="74" cy="108" r="3"/><circle cx="56" cy="104" r="2.5"/><circle cx="136" cy="84" r="4"/><circle cx="146" cy="104" r="3"/><circle cx="128" cy="112" r="2.5"/></g>
+    </g>
+    <path class="an-subir fino fraco" d="M24 146q-6 -8 0 -16t0 -16"/>
+    <path class="an-subir d2 fino fraco" d="M176 146q-6 -8 0 -16t0 -16"/>
+    <path class="an-subir d1 fino fraco" d="M100 150q-6 -8 0 -16t0 -16"/>`,
+
+  inalador: () => `
+    <g class="an-apertar"><rect class="c-cor" x="66" y="12" width="26" height="76" rx="6"/></g>
+    <path class="c-branco" d="M60 48H98V108H138V134H60Z"/>
+    <path class="fino fraco" d="M66 60H92"/>
+    <g class="c-azul-s">
+      <circle class="an-espalhar" cx="148" cy="120" r="7"/>
+      <circle class="an-espalhar d1" cx="152" cy="112" r="5"/>
+      <circle class="an-espalhar d2" cx="150" cy="128" r="6"/>
+    </g>
+    ${estrela(170, 50, 6, 'c-sol', 'an-piscar')}${estrela(36, 36, 5, 'c-sol', 'an-piscar d2')}`,
+
+  escadas: () => {
+    const p = pessoa(100, 27, { r: 10, alt: 22, cor: 'c-coral', cabelo: 'c-cabelo-b', humor: 'neutro' });
+    return `<path class="c-suave" d="M10 140V130H50V110H80V90H120V70H150V50H190V140Z"/>
+      <g class="an-passo">${p.svg}</g>
+      <g class="c-azul-s">
+        <circle class="an-espalhar" cx="114" cy="40" r="4"/>
+        <circle class="an-espalhar d2" cx="114" cy="44" r="3"/>
+      </g>
+      <path class="c-azul sem an-cair" d="M88 24c0 0 -3 5 -3 7a3 3 0 0 0 6 0c0 -2 -3 -7 -3 -7Z"/>`;
+  },
+
+  oxigenio: () => `
+    <path d="M56 28Q58 8 96 10Q136 12 142 58"/>
+    <rect class="c-azul-s" x="36" y="40" width="40" height="98" rx="18"/>
+    <rect class="c-cinza" x="48" y="26" width="16" height="16" rx="3"/>
+    <text class="il-num" x="56" y="98">O<tspan font-size="14" dy="5">2</tspan></text>
+    <circle class="c-branco an-subir" cx="48" cy="126" r="3"/>
+    <circle class="c-branco an-subir d2" cx="62" cy="122" r="2.5"/>
+    ${cabeca(148, 84, 26, { cabelo: 'c-cabelo-b' })}
+    <path class="t-azul" d="M122 86Q148 94 174 86"/>`,
+
+  janela: () => `
+    <rect class="c-azul-s" x="52" y="24" width="96" height="102"/>
+    <circle class="c-sol" cx="124" cy="50" r="12"/>
+    <path class="c-nuvem" d="M64 98H98A10 10 0 0 0 94 80A14 14 0 0 0 70 82A9 9 0 0 0 64 98Z"/>
+    <path class="an-fluir t-azul" stroke-dasharray="12 10" d="M60 64Q100 52 140 70M60 104Q100 92 140 110"/>
+    <g class="an-abrir rv" style="transform-origin:52px 75px"><rect class="c-vidro" x="52" y="24" width="48" height="102"/><path class="fino" d="M76 24V126M52 75H100"/></g>
+    <g class="an-abrir rv" style="transform-origin:148px 75px"><rect class="c-vidro" x="100" y="24" width="48" height="102"/><path class="fino" d="M124 24V126M100 75H148"/></g>
+    <rect class="grosso" x="52" y="24" width="96" height="102" rx="2"/>
+    <path class="c-branco" d="M42 126H158V136H42Z"/>`,
+
+  'pulmao-mancha': () => `
+    <g class="an-respirar">
+      <path class="grosso" d="${TRAQUEIA}"/>
+      <path class="c-coral-s" d="${PULMAO_E}"/><path class="c-coral-s" d="${PULMAO_D}"/>
+      <circle class="an-pulsar-onda t-coral grosso" cx="134" cy="90" r="18"/>
+      <g class="an-pulsar"><circle class="c-vermelho-e" cx="134" cy="90" r="8"/></g>
+    </g>`,
+
+  'casa-radao': () => {
+    const pintas = [[14, 128], [34, 140], [58, 126], [82, 142], [118, 130], [146, 142], [172, 126], [190, 140]]
+      .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3"/>`)
+      .join('');
+    return `<rect class="c-cinza sem" x="0" y="116" width="200" height="34"/>
+      <g class="c-cinza-e sem">${pintas}</g>
+      <path class="c-branco" d="M52 116V68L100 34L148 68V116Z"/>
+      <path class="c-coral" d="M40 72L100 26L160 72H146L100 40L54 72Z"/>
+      <rect class="c-cor" x="86" y="84" width="24" height="32" rx="3"/>
+      <rect class="c-azul-s" x="118" y="76" width="22" height="20"/>
+      <g class="c-sol">
+        <circle class="an-subir" cx="64" cy="110" r="3.5"/><circle class="an-subir d1" cx="76" cy="104" r="3"/>
+        <circle class="an-subir d2" cx="128" cy="110" r="3"/><circle class="an-subir d3" cx="30" cy="118" r="3.5"/>
+        <circle class="an-subir d4" cx="176" cy="118" r="3"/>
+      </g>
+      <path class="an-fluir t-azul" stroke-dasharray="12 10" d="M140 86H186"/>
+      <path class="t-azul" d="M180 80L188 86L180 92"/>`;
+  },
+
+  tac: () => `
+    <circle class="c-branco" cx="120" cy="68" r="48"/>
+    <circle class="c-suave" cx="120" cy="68" r="24"/>
+    <g class="an-girar rv" style="transform-origin:120px 68px"><circle class="t-cor fino" cx="120" cy="68" r="36" stroke-dasharray="10 12"/></g>
+    <path class="c-cinza" d="M106 114H134V138H106Z"/>
+    <g class="an-deslizar-x">
+      <rect class="c-cor" x="8" y="74" width="144" height="10" rx="4"/>
+      ${cabeca(36, 64, 10, { humor: 'dormir' })}
+      <path class="c-azul-s" d="M48 74V66Q48 58 56 58H128Q134 58 134 66V74Z"/>
+    </g>`,
+
+  'raio-x': () => `
+    <rect class="c-escuro" x="34" y="8" width="132" height="134" rx="10"/>
+    <g class="claro fino">
+      <path class="fraco" d="M100 22V132"/>
+      <path class="fraco" d="M98 40Q70 36 56 50M98 54Q68 50 54 66M98 68Q68 64 54 82M98 82Q70 80 58 96M102 40Q130 36 144 50M102 54Q132 50 146 66M102 68Q132 64 146 82M102 82Q130 80 142 96"/>
+      <path d="${PULMAO_E}"/><path d="${PULMAO_D}"/>
+    </g>
+    <g class="an-pulsar"><circle class="c-sol" cx="132" cy="86" r="6"/></g>
+    <g class="an-varrer-y"><rect class="c-azul sem" x="36" y="16" width="128" height="3"/></g>`,
+
+  // ---------- Fígado ----------
+  figado: () => `
+    <ellipse class="c-verde" cx="98" cy="114" rx="8" ry="11"/>
+    <path class="c-verde sem an-gotejar" d="M98 128c0 0 -3 5 -3 7a3 3 0 0 0 6 0c0 -2 -3 -7 -3 -7Z"/>
+    <g class="an-respirar">
+      <path class="c-figado" d="${FIGADO}"/>
+      ${cara(74, 74, 22)}
+    </g>
+    <g class="an-girar rv" style="transform-origin:136px 58px">${engrenagem(136, 58, 14)}</g>
+    <g class="an-girar-inv rv" style="transform-origin:155px 66px">${engrenagem(155, 66, 9)}</g>
+    ${estrela(28, 30, 6, 'c-sol', 'an-piscar')}${estrela(176, 110, 5, 'c-sol', 'an-piscar d2')}`,
+
+  'figado-doente': () => {
+    const mini = (tx, cls) => `<g class="ns" transform="translate(${tx} 38) scale(.5)"><path class="${cls}" d="${FIGADO}"/></g>`;
+    const nodulos = [[150, 62], [164, 64], [176, 64], [156, 76], [146, 86], [138, 92]]
+      .map(([x, y]) => `<circle cx="${x}" cy="${y}" r="3.2"/>`)
+      .join('');
+    return `${mini(-3, 'c-figado')}${cara(27, 76, 10)}
+      <path class="an-fluir fraco" stroke-dasharray="12 10" d="M88 76H104"/><path d="M100 70L108 76L100 82"/>
+      <g class="an-encolher">${mini(97, 'c-figado-d')}<g class="c-figado-e an-piscar-lento">${nodulos}</g>${cara(127, 76, 10, 'triste')}</g>
+      <text class="il-txt" x="48" y="118">saudável</text><text class="il-txt" x="148" y="118">cirrose</text>`;
+  },
+
+  alcool: () => `
+    <g class="an-balancar rv" style="transform-origin:70px 128px">
+      <path class="c-vermelho-e" d="M48 58H92Q90 84 70 90Q50 84 48 58Z"/>
+      <path d="M46 30H94Q96 80 70 90Q44 80 46 30Z"/>
+      <path d="M70 90V124M54 126H86"/>
+    </g>
+    <path class="grosso" d="M148 72H158Q166 72 166 82V102Q166 112 158 112H148"/>
+    <rect class="c-sol" x="104" y="56" width="44" height="72" rx="6"/>
+    <path class="c-branco" d="M100 62Q102 46 116 50Q122 40 134 48Q148 42 152 58V64H100Z"/>
+    <circle class="c-branco sem an-subir" cx="118" cy="116" r="2.5"/>
+    <circle class="c-branco sem an-subir d2" cx="132" cy="110" r="2"/>
+    <g class="an-pulsar"><circle class="c-coral" cx="168" cy="28" r="18"/><text class="il-txt txt-branco" x="168" y="32">18+</text></g>`,
+
+  // ---------- Obesidade infantil ----------
+  refrigerante: () => {
+    const cubo = (x, y) => `<rect class="c-branco" x="${x}" y="${y}" width="14" height="14" rx="2"/>`;
+    return `<rect class="c-coral" x="44" y="34" width="50" height="96" rx="10"/>
+      <ellipse class="c-cinza" cx="69" cy="36" rx="23" ry="6"/>
+      <path class="c-branco fino" d="M44 74Q69 64 94 74V90Q69 80 44 90Z"/>
+      <path class="fino" d="M64 33h10"/>
+      ${cubo(112, 116)}${cubo(128, 116)}${cubo(144, 116)}${cubo(160, 116)}${cubo(120, 100)}${cubo(136, 100)}
+      <g class="an-cair-cubo">${cubo(152, 74)}</g>
+      ${menos(170, 36)}`;
+  },
+
+  ecra: () => `
+    <rect class="c-escuro" x="24" y="30" width="118" height="82" rx="8"/>
+    <rect class="c-azul-s sem" x="32" y="38" width="102" height="66" rx="3"/>
+    <path class="c-verde sem" d="M32 88Q58 78 82 88T134 86V104H32Z"/>
+    <g class="an-saltar"><circle class="c-coral" cx="70" cy="76" r="6"/></g>
+    <path class="grosso" d="M83 112V122M60 124H106"/>
+    <circle class="c-branco" cx="164" cy="42" r="22"/>
+    <path class="fino" d="M164 24v4M164 56v4M146 42h4M178 42h4"/>
+    <g class="an-girar rv" style="transform-origin:164px 42px"><path class="t-coral grosso" d="M164 42V27"/></g>
+    <circle class="c-tinta sem" cx="164" cy="42" r="3"/>`,
+
+  bicicleta: () => {
+    const roda = (cx) =>
+      `<circle class="grosso" cx="${cx}" cy="110" r="24"/><g class="an-girar-rapido rv" style="transform-origin:${cx}px 110px"><path class="fino" d="M${cx} 86V134M${cx - 24} 110H${cx + 24}M${cx - 17} 93L${cx + 17} 127M${cx + 17} 93L${cx - 17} 127"/></g>`;
+    return `<path class="an-fluir fraco" stroke-dasharray="12 10" d="M2 64H28M0 86H22"/>
+      <path class="fraco" d="M24 136H190"/>
+      ${roda(56)}${roda(150)}
+      <path class="t-cor grosso" d="M56 110L82 76H128L150 110M82 76L100 110L128 76M56 110H100"/>
+      <path class="grosso" d="M82 76V70M74 70H90M128 76L124 60M118 60H132"/>
+      <g class="an-girar-rapido rv" style="transform-origin:100px 110px"><path class="grosso" d="M92 104L108 116"/></g>
+      <path d="M86 70L106 88L100 110"/>
+      <path class="c-coral" d="M80 70L96 44Q104 40 110 46L96 72Z"/>
+      <path d="M104 50L124 60"/><circle class="c-pele2" cx="124" cy="60" r="4"/>
+      ${cabeca(106, 32, 12, { pele: 'c-pele2', cabelo: null })}
+      <path class="c-cor" d="M93 30A13 13 0 0 1 119 30Z"/>`;
+  },
+
+  // ---------- Osteoporose ----------
+  ossos: () => {
+    const furos = (cx, lista, cls) =>
+      lista.map(([dx, dy, r]) => `<circle class="${cls}" cx="${cx + dx}" cy="${66 + dy}" r="${r}"/>`).join('');
+    const corte = (cx, buracos, humor) =>
+      `<circle class="c-branco" style="stroke-width:6" cx="${cx}" cy="66" r="40"/>${buracos}${cara(cx, 84, 12, humor)}`;
+    const sao = furos(52, [[-20, -18, 2.4], [-8, -26, 2.4], [6, -22, 2.4], [18, -14, 2.4], [-26, -4, 2.4], [-12, -10, 2.4], [2, -10, 2.4], [16, -2, 2.4], [26, 6, 2.4], [-28, 10, 2.4], [-6, -36, 2], [22, -26, 2]], 'c-sol-s fino');
+    const poroso = [[-16, -16, 9], [10, -24, 7], [22, -4, 8], [-26, 4, 6], [0, -4, 6]]
+      .map((f, i) => `<g class="an-crescer${i ? ` d${i}` : ''}">${furos(148, [f], 'c-suave fino')}</g>`)
+      .join('');
+    return `${corte(52, sao, 'feliz')}${corte(148, poroso, 'triste')}
+      <text class="il-txt" x="52" y="124">saudável</text><text class="il-txt" x="148" y="124">osteoporose</text>`;
+  },
+
+  leite: () => `
+    <path class="c-branco" d="M36 38L51 26L66 38Z"/>
+    <path class="c-branco" d="M26 56L36 38H66L76 56V132H26Z"/>
+    <path class="c-azul" d="M26 60H76V76H26Z"/>
+    <path class="fino" d="M36 38L46 56M66 38L56 56"/>
+    <path class="c-branco an-cair" d="M110 44c0 0 -5 7 -5 10a5 5 0 0 0 10 0c0 -3 -5 -10 -5 -10Z"/>
+    <path class="c-branco sem" d="M93.6 86L96 132H124L126.4 86Z"/>
+    <path class="fino" d="M93.6 86H126.4"/>
+    <path d="M92 66L96 132H124L128 66"/>
+    <path class="c-sol" d="M138 132V106L192 98V126Z"/>
+    <g class="c-sol-s"><circle cx="152" cy="116" r="3.5"/><circle cx="170" cy="112" r="4"/><circle cx="182" cy="120" r="2.5"/></g>
+    <g class="an-balancar"><path class="c-azul-s" d="M144 72C154 60 178 60 186 72C178 84 154 84 144 72Z"/><path class="c-azul-s" d="M144 72L132 64V80Z"/><circle class="c-tinta sem" cx="178" cy="70" r="1.8"/><path class="fino" d="M168 64Q164 72 168 80"/></g>`,
+
+  'sol-vitamina': () => {
+    const p = pessoa(64, 64, { r: 13, alt: 30, bracos: 'cima', cor: 'c-cor', pele: 'c-pele2' });
+    return `<g class="an-girar rv" style="transform-origin:138px 46px"><path class="t-sol grosso" d="M138 6V16M138 76V86M98 46H108M168 46H178M110 18L117 25M159 67L166 74M110 74L117 67M159 25L166 18"/></g>
+      <circle class="c-sol" cx="138" cy="46" r="22"/>${cara(138, 46, 18)}
+      <path class="fraco" d="M20 141H120"/>
+      ${p.svg}
+      <g class="an-pulsar"><circle class="c-laranja" cx="168" cy="112" r="16"/><text class="il-num txt-branco" x="168" y="120">D</text></g>`;
+  },
+
+  'luz-noite': () => `
+    <rect class="c-noite sem" x="0" y="0" width="200" height="150" rx="14"/>
+    <g class="claro">
+      <circle class="c-sol" cx="40" cy="34" r="13"/><circle class="c-noite sem" cx="47" cy="29" r="12"/>
+      <rect class="c-porta" x="138" y="36" width="44" height="104" rx="3"/>
+      <circle class="c-sol sem" cx="146" cy="90" r="3"/>
+      <path class="c-branco" d="M8 104H72V122H8Z"/><path class="c-branco" d="M8 96H30V104H8Z"/>
+      <path d="M8 122V136M72 122V136"/>
+      <path class="an-fluir t-sol fraco" stroke-dasharray="4 10" d="M72 134Q106 142 138 132"/>
+      <rect class="c-branco" x="102" y="112" width="12" height="16" rx="3"/>
+    </g>
+    <circle class="c-sol sem an-pulsar" cx="108" cy="114" r="6"/>
+    <circle class="an-pulsar-onda t-sol" cx="108" cy="114" r="16"/>
+    <circle class="an-pulsar-onda d2 t-sol" cx="108" cy="114" r="26"/>
+    ${estrela(80, 24, 4, 'c-sol', 'an-piscar')}${estrela(110, 44, 3, 'c-sol', 'an-piscar d2')}${estrela(20, 70, 3, 'c-sol', 'an-piscar d1')}`,
+
+  quedas: () => {
+    const p = pessoa(100, 50, { r: 13, alt: 34, bracos: 'cima', humor: 'doente', cor: 'c-cor', cabelo: 'c-cabelo-b' });
+    return `<path class="c-coral" d="M30 134H84Q92 118 102 134H176V142H30Z"/>
+      <g class="an-balancar rv" style="transform-origin:100px 130px"><g transform="rotate(-16 100 130)">${p.svg}</g></g>
+      <g class="an-pulsar d2"><path class="c-sol" d="M164 18L188 58H140Z"/><text class="il-num" x="164" y="54">!</text></g>`;
+  },
+
+  densitometria: () => `
+    <path class="grosso" d="M40 110V136M160 110V136"/>
+    <rect class="c-cinza" x="20" y="96" width="160" height="14" rx="4"/>
+    ${cabeca(42, 84, 10, { humor: 'dormir' })}
+    <path class="c-azul-s" d="M54 96V86Q54 78 62 78H152Q160 78 160 86V96Z"/>
+    <g class="an-lupa-x">
+      <path class="an-fluir t-cor" stroke-dasharray="4 10" d="M100 46V76M110 46V76M120 46V76"/>
+      <rect class="c-branco" x="88" y="22" width="44" height="20" rx="5"/>
+      <path class="grosso" d="M110 22V8"/>
+    </g>`,
+
+  // ---------- Demência ----------
+  'puzzle-cerebro': () => `
+    <path class="c-coral-s" d="${CEREBRO}"/>
+    <path class="fino" d="M100 34V58a6 6 0 0 1 0 12V110M50 76H72a6 6 0 0 0 12 0H156"/>
+    <path class="c-suave fino" stroke-dasharray="3 4" d="${pecaPuzzle(112, 42, 28)}"/>
+    ${cara(76, 94, 12)}
+    <g class="an-encaixar"><path class="c-coral" d="${pecaPuzzle(112, 42, 28)}"/></g>
+    ${estrela(170, 24, 6, 'c-sol', 'an-piscar')}`,
+
+  calendario: () => {
+    let dias = '';
+    for (let l = 0; l < 4; l++) {
+      for (let c = 0; c < 6; c++) dias += `<rect class="c-suave sem" x="${44 + c * 17}" y="${56 + l * 17}" width="11" height="11" rx="2"/>`;
+    }
+    return `<rect class="c-branco" x="34" y="26" width="112" height="106" rx="8"/>
+      <path class="c-coral" d="M34 34Q34 26 42 26H138Q146 26 146 34V46H34Z"/>
+      <path class="grosso" d="M60 18V34M120 18V34"/>
+      ${dias}
+      <g class="an-pulsar"><circle class="t-coral grosso" cx="100.5" cy="78.5" r="10"/></g>
+      <g class="an-balancar rv" style="transform-origin:171px 70px"><rect class="c-sol" x="152" y="70" width="38" height="38" rx="3"/><path class="fino" d="M158 82h26M158 90h20M158 98h24"/></g>`;
+  },
+
+  musica: () => `
+    <path class="grosso" d="M48 60L82 28"/>
+    <rect class="c-laranja" x="28" y="60" width="112" height="70" rx="12"/>
+    <g class="an-pulsar"><circle class="c-castanho" cx="64" cy="95" r="20"/><circle class="c-tinta sem" cx="64" cy="95" r="5"/></g>
+    <rect class="c-branco" x="96" y="74" width="34" height="14" rx="3"/>
+    <path class="t-coral fino" d="M104 74v14"/>
+    <circle class="c-branco" cx="104" cy="108" r="6"/><circle class="c-branco" cx="122" cy="108" r="6"/>
+    ${nota(152, 56, '')}${nota(172, 36, 'd2')}${nota(146, 28, 'd1')}`,
+
+  cuidar: () => {
+    const a = pessoa(68, 34, { cor: 'c-cor', bracos: 'nenhum', pele: 'c-pele2' });
+    const b = pessoa(128, 38, { cor: 'c-coral-s', bracos: 'nenhum', cabelo: 'c-cabelo-b', oculos: true, r: 14, alt: 36 });
+    const mx = 99;
+    const my = n(a.t + 26);
+    const [bx, by] = b.ombroD;
+    return `<path class="fraco" d="M24 124H176"/>
+      ${a.svg}${b.svg}
+      <path d="M${n(a.ombroE[0])} ${n(a.ombroE[1])}l-7 24"/>${a.mao(a.ombroE[0] - 7, a.ombroE[1] + 24)}
+      <path d="M${n(a.ombroD[0])} ${n(a.ombroD[1])}L${mx} ${my}M${n(b.ombroE[0])} ${n(b.ombroE[1])}L${mx} ${my}"/>
+      <circle class="c-pele2" cx="${mx}" cy="${my}" r="4.5"/>
+      <path class="c-madeira-t muito-grosso" d="M${n(bx + 14)} ${n(by + 22)}V122M${n(bx + 14)} ${n(by + 22)}Q${n(bx + 14)} ${n(by + 12)} ${n(bx + 5)} ${n(by + 14)}"/>
+      <path d="M${n(bx)} ${n(by)}L${n(bx + 13)} ${n(by + 20)}"/>${b.mao(bx + 14, by + 21)}
+      <g class="an-bater">${coracaoPeq(99, 20, 10)}</g>`;
+  },
+
+  // ---------- Tuberculose ----------
+  'pulmoes-bacilos': () => `
+    <g class="an-respirar">
+      <path class="grosso" d="${TRAQUEIA}"/>
+      <path class="c-coral-s" d="${PULMAO_E}"/><path class="c-coral-s" d="${PULMAO_D}"/>
+      ${bacilo(64, 86, 30)}${bacilo(72, 108, -20, 'd2')}${bacilo(134, 90, -40, 'd1')}${bacilo(142, 110, 15, 'd3')}
+    </g>
+    ${bacilo(28, 40, 20, 'd2')}${bacilo(172, 34, -30, 'd1')}${bacilo(176, 128, 40, 'd4')}`,
+
+  pastilheiro: () => {
+    const dias = ['S', 'T', 'Q', 'Q', 'S', 'S', 'D'];
+    let caixas = '';
+    dias.forEach((dia, i) => {
+      const x = 16 + i * 24;
+      const tampa = `<rect class="${i % 2 ? 'c-suave' : 'c-cor'}" x="${x}" y="58" width="24" height="16" rx="3"/><text class="il-txt" x="${x + 12}" y="70">${dia}</text>`;
+      caixas += `<rect class="c-branco" x="${x}" y="74" width="24" height="40" rx="3"/>`;
+      if (i === 3) {
+        caixas += `<circle class="c-coral sem" cx="${x + 8}" cy="96" r="4"/><circle class="c-sol sem" cx="${x + 16}" cy="102" r="4"/>`;
+        caixas += `<g class="an-tampa rv" style="transform-origin:${x}px 74px">${tampa}</g>`;
+      } else {
+        caixas += tampa;
+      }
+      if (i < 3) caixas += `<path class="t-verde grosso an-piscar-lento d${i + 1}" d="M${x + 6} 44l4 4 8 -9"/>`;
+    });
+    return `${caixas}<text class="il-txt" x="100" y="136">6 meses, todos os dias</text>`;
+  },
 };
 
 export function ilustracao(nome) {
   const desenhar = ILUSTRACOES[nome];
   if (!desenhar) throw new Error(`Ilustração desconhecida: ${nome}`);
   return `<svg class="il" viewBox="0 0 200 150" aria-hidden="true" focusable="false">${desenhar()}</svg>`;
+}
+
+// ---------- Miniaturas animadas no canto dos cartões de doenças ----------
+// O mesmo traço das ilustrações dos cartões das ferramentas (.tool-deco.mini,
+// em 120×90, a cor atual): as animações vivem em styles.css (classes «deco-*»).
+
+function adnMini() {
+  const onda = (y) => Math.sin(((y - 6) / 78) * Math.PI * 2);
+  const A = [];
+  const B = [];
+  for (let y = 6; y <= 84; y += 3) {
+    A.push(`${n(60 + 18 * onda(y))} ${y}`);
+    B.push(`${n(60 - 18 * onda(y))} ${y}`);
+  }
+  let degraus = '';
+  let i = 0;
+  for (let y = 12; y <= 80; y += 8, i++) {
+    const f = onda(y);
+    if (Math.abs(f) > 0.2) degraus += `<path class="d-degrau d-p${(i % 5) + 1}" d="M${n(60 + 16 * f)} ${y}H${n(60 - 16 * f)}"/>`;
+  }
+  return `${degraus}<path d="M${A.join('L')}"/><path d="M${B.join('L')}"/>`;
+}
+
+const MINI = {
+  gota: `
+      <path class="d-gota" d="M60 6C60 6 46 26 46 36A14 14 0 0 0 74 36C74 26 60 6 60 6Z"/>
+      <ellipse class="d-onda" cx="60" cy="80" rx="26" ry="6"/>
+      <ellipse class="d-onda d-onda2" cx="60" cy="80" rx="26" ry="6"/>`,
+  laco: `
+      <g class="d-laco">
+        <path d="M54 44L38 84M66 44L82 84"/>
+        <path class="d-cheio-suave" d="M60 50C48 38 44 26 47 18C50 10 56 7 60 7C64 7 70 10 73 18C76 26 72 38 60 50Z"/>
+      </g>`,
+  manometro: `
+      <path d="M18 72A42 42 0 0 1 102 72"/>
+      <path class="d-fraco" d="M30 72A30 30 0 0 1 90 72"/>
+      <path class="d-ponteiro" d="M60 72L60 40"/>
+      <circle class="d-cheio" cx="60" cy="72" r="5"/>`,
+  joelho: `
+      <path class="d-osso" d="M30 28H56"/>
+      <circle class="d-cheio" cx="66" cy="28" r="8"/>
+      <g class="d-perna"><path class="d-osso" d="M66 40V78"/><path d="M66 82H82"/></g>`,
+  nuvem: `
+      <g class="d-raios"><path d="M92 6V12M92 44V50M70 28H76M108 28H114M77 13L81 17M103 39L107 43M77 43L81 39M103 17L107 13"/></g>
+      <circle cx="92" cy="28" r="10"/>
+      <path class="d-cheio-suave" d="M14 62H70A13 13 0 0 0 66 37A18 18 0 0 0 32 34A13 13 0 0 0 14 62Z"/>
+      <path class="d-chuva" d="M26 70v8"/><path class="d-chuva d-chuva2" d="M42 70v8"/><path class="d-chuva d-chuva3" d="M58 70v8"/>`,
+  arteria: `
+      <path d="M20 26H116M20 66H116"/>
+      <path class="d-cheio-suave" d="M44 26Q60 40 76 26ZM50 66Q64 56 80 66Z"/>
+      <circle class="d-glob d-cheio" cx="22" cy="46" r="5"/>
+      <circle class="d-glob d-glob2 d-cheio" cx="22" cy="46" r="4"/>
+      <circle class="d-glob d-glob3 d-cheio" cx="22" cy="46" r="5"/>`,
+  braco: `
+      <path class="d-membro" d="M10 70H62L84 30"/>
+      <circle class="d-cheio" cx="88" cy="22" r="8"/>
+      <path class="d-biceps d-cheio-suave" d="M24 66Q40 40 58 66"/>`,
+  pulmoes: `
+      <g class="d-respirar">
+        <path d="M60 6V34M60 34L50 44M60 34L70 44"/>
+        <path d="M52 28C38 22 22 36 20 58C18 74 30 82 44 78C52 76 54 68 54 60V40Z"/>
+        <path d="M68 28C82 22 98 36 100 58C102 74 90 82 76 78C68 76 66 68 66 60V40Z"/>
+      </g>
+      <g class="d-germe"><circle cx="106" cy="16" r="5"/><path d="M106 7v3M106 22v3M97 16h3M112 16h3"/></g>`,
+  cerebro: `
+      <path class="d-cheio-suave" d="${escalar(CEREBRO, 0.58, 1.4, 4.8)}"/>
+      <path d="M60 88V72M60 72Q66 64 72 56"/>
+      <circle class="d-alerta d-cheio" cx="72" cy="56" r="5"/>
+      <circle class="d-alerta-onda" cx="72" cy="56" r="9"/>`,
+  estomago: `
+      <path d="M46 4Q46 14 50 22"/>
+      <g class="d-mexer"><path class="d-cheio-suave" d="${escalar(ESTOMAGO, 0.62, -2, -6)}"/></g>
+      <path d="M90 42Q100 42 102 50Q103 58 98 62"/>`,
+  intestino: `
+      <path class="d-fraco" d="M46 28H72Q78 28 78 34Q78 40 72 40H50Q44 40 44 46Q44 52 50 52H72"/>
+      <path class="d-fraco" d="M36 78V22Q36 12 46 12H74Q84 12 84 22V68Q84 78 74 79L64 80"/>
+      <path class="d-linha" d="M36 78V22Q36 12 46 12H74Q84 12 84 22V68Q84 78 74 79L64 80" pathLength="1"/>`,
+  adn: adnMini(),
+  inalador: `
+      <rect class="d-lata" x="40" y="6" width="16" height="44" rx="4"/>
+      <path class="d-cheio-suave" d="M36 30H60V66H84V82H36Z"/>
+      <circle class="d-sopro" cx="94" cy="74" r="6"/><circle class="d-sopro d-sopro2" cx="104" cy="68" r="5"/><circle class="d-sopro d-sopro3" cx="102" cy="82" r="4"/>`,
+  mancha: `
+      <path d="M60 6V34M60 34L50 44M60 34L70 44"/>
+      <path d="M52 28C38 22 22 36 20 58C18 74 30 82 44 78C52 76 54 68 54 60V40Z"/>
+      <path d="M68 28C82 22 98 36 100 58C102 74 90 82 76 78C68 76 66 68 66 60V40Z"/>
+      <circle class="d-alerta d-cheio" cx="84" cy="56" r="5"/>
+      <circle class="d-alerta-onda" cx="84" cy="56" r="10"/>`,
+  figado: `
+      <path class="d-cheio-suave" d="${escalar(FIGADO, 0.62, -10, 2)}"/>
+      <path class="d-engrenagem" d="${contornoEngrenagem(76, 42, 10)}"/>`,
+  bicicleta: `
+      <circle cx="30" cy="62" r="18"/><circle cx="92" cy="62" r="18"/>
+      <path class="d-raios" d="M30 46V78M14 62H46"/><path class="d-raios" d="M92 46V78M76 62H108"/>
+      <path d="M30 62L46 38H78L92 62M46 38L58 62L78 38M30 62H58M46 38V32M40 32H52M78 38L76 28M70 28H82"/>`,
+  osso: `
+      <path class="d-cheio-suave" d="M32 38H88A11 11 0 1 1 100 45A11 11 0 1 1 88 52H32A11 11 0 1 1 20 45A11 11 0 1 1 32 38Z"/>
+      <circle class="d-furo" cx="48" cy="45" r="3"/><circle class="d-furo d-furo2" cx="62" cy="44" r="2.5"/><circle class="d-furo d-furo3" cx="76" cy="46" r="3"/>`,
+  puzzle: `
+      <path d="${pecaPuzzle(30, 30, 26)}"/>
+      <path d="${pecaPuzzle(56, 30, 26)}"/>
+      <path d="${pecaPuzzle(30, 56, 26)}"/>
+      <path class="d-peca d-cheio-suave" d="${pecaPuzzle(56, 56, 26)}"/>`,
+  bacilo: `
+      <rect class="d-bac d-cheio-suave" x="30" y="24" width="26" height="10" rx="5"/>
+      <rect class="d-bac d-bac2 d-cheio-suave" x="66" y="44" width="26" height="10" rx="5"/>
+      <rect class="d-bac d-bac3 d-cheio-suave" x="38" y="62" width="22" height="9" rx="4.5"/>`,
+};
+
+export const MINIATURAS = Object.keys(MINI);
+
+export function miniatura(nome) {
+  if (!MINI[nome]) throw new Error(`Miniatura desconhecida: ${nome}`);
+  return `<svg class="tool-deco mini deco-${nome}" viewBox="0 0 120 90" aria-hidden="true">${MINI[nome]}</svg>`;
 }

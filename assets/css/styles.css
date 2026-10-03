@@ -5844,6 +5844,30 @@ a.tool.destaque:hover .tool-deco.mini {
 .il .t-branco { stroke: #fff; }
 .il .t-cabelo { stroke: #4a3020; }
 .il .c-madeira-t { stroke: #9a6b43; }
+.il .c-cinza { fill: #c9ced2; }
+.il .c-cinza-e { fill: #8d969c; }
+.il .c-figado { fill: #c8735a; }
+.il .c-figado-d { fill: #b08a63; }
+.il .c-figado-e { fill: #7d5f45; }
+.il .c-escuro { fill: #24343a; }
+.il .c-noite { fill: #2d3b55; }
+.il .c-porta { fill: #4a5d78; }
+.il .c-pao { fill: #e0a96d; }
+.il .c-castanho { fill: #8a5a3c; }
+.il .c-verde-s { fill: #a8d8a0; }
+.il .c-zona { fill: #ef6f4c; fill-opacity: 0.45; stroke: none; }
+.il .t-vermelho { stroke: #e04b4b; }
+.il .t-cinza { stroke: #8d969c; }
+.il .t-coral-s { stroke: #f7c3b2; }
+.il .t-rosa-s { stroke: #f6c7cf; }
+.il .t-castanho { stroke: #8a5a3c; }
+.il .t-verde-e { stroke: #3e8e50; }
+.il .txt-coral { fill: #d84a2b; }
+.il .txt-branco { fill: #fff; }
+/* Traço claro para os desenhos de fundo escuro (noite, raio-X). */
+.il .claro { stroke: #e3e8ee; }
+/* Desenhos reduzidos com transform: o traço mantém a espessura. */
+.il .ns * { vector-effect: non-scaling-stroke; }
 
 .il text {
   stroke: none;
@@ -5892,6 +5916,24 @@ a.tool.destaque:hover .tool-deco.mini {
 .il .an-levantar { animation: il-levantar 1.8s ease-in-out infinite alternate; }
 .il .an-z { animation: deco-z 3.6s ease-out infinite; }
 .il .an-pulsar-onda { animation: il-onda 1.8s ease-out infinite; }
+.il .an-pulsar-lento { animation: il-pulsar-lento 4s ease-in-out infinite; }
+.il .an-respirar-lento { animation: deco-respirar 7s ease-in-out infinite; }
+.il .an-troca { animation: il-troca 2.6s ease-in-out infinite alternate; }
+.il .an-descair { animation: il-descair 3.2s ease-in-out infinite alternate; }
+.il .an-tremer { animation: il-tremer 0.35s ease-in-out infinite alternate; }
+.il .an-horas { animation: spin 40s linear infinite; }
+.il .an-mexer { animation: il-mexer 2.2s ease-in-out infinite alternate; }
+.il .an-girar-inv { animation: spin 6s linear infinite reverse; }
+.il .an-girar-rapido { animation: spin 1.2s linear infinite; }
+.il .an-juntar { animation: il-juntar 3.6s ease-in infinite; }
+.il .an-abrir { animation: il-abrir 3.4s ease-in-out infinite alternate; }
+.il .an-deslizar-x { animation: il-deslizar-x 3.2s ease-in-out infinite alternate; }
+.il .an-varrer-y { animation: il-varrer-y 3s linear infinite alternate; }
+.il .an-encolher { animation: il-encolher 3s ease-in-out infinite alternate; }
+.il .an-cair-cubo { animation: il-cair-cubo 2.4s ease-in infinite; }
+.il .an-lupa-x { animation: il-lupa-x 4s ease-in-out infinite alternate; }
+.il .an-encaixar { animation: il-encaixar 3.4s ease-in-out infinite alternate; }
+.il .an-tampa { animation: il-tampa 2.8s ease-in-out infinite alternate; }
 .il .inv { animation-direction: alternate-reverse; }
 .il .an-ondular.inv { animation-direction: reverse; }
 
@@ -5982,17 +6024,319 @@ a.tool.destaque:hover .tool-deco.mini {
   40% { opacity: 1; }
   100% { opacity: 0; transform: scale(1.12); }
 }
+@keyframes il-pulsar-lento { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+@keyframes il-troca { 0%, 40% { opacity: 1; } 60%, 100% { opacity: 0; } }
+@keyframes il-descair { 0%, 25% { transform: rotate(0deg); } 75%, 100% { transform: rotate(55deg); } }
+@keyframes il-tremer { from { transform: translateX(-1px) rotate(-3deg); } to { transform: translateX(1px) rotate(3deg); } }
+@keyframes il-mexer { from { transform: scale(1.03, 0.97); } to { transform: scale(0.97, 1.03); } }
+@keyframes il-juntar {
+  0% { transform: translate(0, 0); opacity: 0; }
+  15%, 75% { opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(0.5); opacity: 0; }
+}
+@keyframes il-abrir { 0%, 20% { transform: scaleX(1); } 80%, 100% { transform: scaleX(0.22); } }
+@keyframes il-deslizar-x { from { transform: translateX(-24px); } to { transform: translateX(10px); } }
+@keyframes il-varrer-y { from { transform: translateY(0); } to { transform: translateY(118px); } }
+@keyframes il-encolher { from { transform: scale(1); } to { transform: scale(0.94); } }
+@keyframes il-cair-cubo {
+  0% { transform: translateY(-18px); opacity: 0; }
+  20% { opacity: 1; }
+  55%, 90% { transform: translateY(26px); opacity: 1; }
+  100% { transform: translateY(26px); opacity: 0; }
+}
+@keyframes il-lupa-x { from { transform: translateX(-52px); } to { transform: translateX(34px); } }
+@keyframes il-encaixar {
+  0%, 20% { transform: translate(0, 0) rotate(0deg); }
+  80%, 100% { transform: translate(18px, -14px) rotate(14deg); }
+}
+@keyframes il-tampa { 0%, 25% { transform: rotate(0deg); } 75%, 100% { transform: rotate(-70deg); } }
 
-/* Sem animações: cada ilustração fica parada no seu estado natural. */
-@media (prefers-reduced-motion: reduce) {
+/* Sem animações (e na impressão): cada ilustração fica parada no seu estado natural. */
+@media print, (prefers-reduced-motion: reduce) {
   .il *,
   .doenca-curiosidade-ico {
     animation: none !important;
   }
+  .il .an-troca:not(.inv) { opacity: 0; }
   .il .an-deslizar.d1 { transform: translateX(-70px); }
   .il .an-deslizar.d2 { transform: translateX(-35px); }
   .il .an-deslizar.d3 { transform: translateX(35px); }
   .il .an-deslizar.d4 { transform: translateX(70px); }
   .il .an-espalhar.d1 { transform: translateX(12px); }
   .il .an-espalhar.d2 { transform: translateX(24px); }
+}
+
+/* ---------- Doenças: email e impressão (como nas ferramentas) ---------- */
+
+.doenca-acoes {
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+}
+
+.doenca-painel > .doenca-acoes {
+  margin-top: 30px;
+  padding-top: 22px;
+}
+
+/* Só na impressão: para que idade é a folha (os separadores não se imprimem). */
+.doenca-grupo-impressao {
+  display: none;
+}
+
+@media print {
+  /* No papel, sempre as cores do tema claro (mesmo com o tema escuro ativo no ecrã). */
+  :root:not([data-imprimir-escuro]) {
+    --bg: #fff;
+    --bg-2: #fff;
+    --ink: #1c2b27;
+    --ink-soft: #3d4d48;
+    --ink-mute: #66766f;
+    --line: rgba(11, 61, 54, 0.18);
+    --surface: #fff;
+    --surface-strong: #fff;
+    --surface-border: #d5ded9;
+    --teal: #006d4c;
+    --teal-soft: #d7f0e6;
+    --coral: #c94a26;
+    --coral-soft: #fbe1d7;
+    --violet: #0b3d36;
+    --violet-soft: #dbe9e5;
+    --sun: #b9811a;
+    --sun-soft: #fbedd0;
+    --danger: #c2413a;
+    --danger-soft: #fde4e1;
+    color-scheme: light;
+  }
+
+  body {
+    background: #fff;
+    color: var(--ink);
+  }
+
+  .com-doenca .site-footer,
+  .doenca-voltar,
+  .idade-tabs,
+  .doenca-escolha,
+  .doenca-acoes {
+    display: none !important;
+  }
+
+  .doenca .disclaimer {
+    display: block !important;
+    margin-top: 16px;
+    background: none;
+  }
+
+  .doenca-grupo-impressao {
+    display: block;
+    margin: 0 0 14px;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  main {
+    padding: 0;
+  }
+
+  .doenca-cab {
+    grid-template-columns: minmax(0, 1fr) 170px;
+    gap: 20px;
+    margin-bottom: 16px;
+  }
+
+  .doenca-cab .display {
+    font-size: 2.2rem;
+  }
+
+  .doenca-cab-arte,
+  .figura-arte,
+  .doenca-alerta,
+  .doenca-curiosidade,
+  .mito-tag,
+  .doenca-seccao-ico {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    filter: none !important;
+  }
+
+  .doenca-cab-arte {
+    box-shadow: none;
+    padding: 8px;
+  }
+
+  .doenca-painel {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .doenca-painel > *,
+  .figura,
+  .doenca-seccao,
+  .doenca-cab-arte {
+    animation: none !important;
+  }
+
+  .figuras,
+  .grupo-3-5 .figuras,
+  .grupo-13-17 .figuras,
+  .grupo-18-65 .figuras,
+  .grupo-65mais .figuras {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .doenca-seccoes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .figura,
+  .doenca-seccao,
+  .mito,
+  .doenca-alerta,
+  .doenca-curiosidade {
+    break-inside: avoid;
+    box-shadow: none;
+  }
+}
+
+/* ---------- Miniaturas animadas dos cartões das doenças novas ---------- */
+
+/* AVC e cancro do pulmão: um ponto de alerta pulsa */
+.tool-deco.mini .d-alerta {
+  animation: deco-alerta 1.4s ease-in-out infinite;
+}
+
+.tool-deco.mini .d-alerta-onda {
+  stroke-width: 2;
+  animation: deco-alerta-onda 1.4s ease-out infinite;
+}
+
+@keyframes deco-alerta {
+  0%, 100% { transform: scale(0.8); }
+  50% { transform: scale(1.15); }
+}
+
+@keyframes deco-alerta-onda {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+/* Cancro do estômago: o estômago mistura a comida */
+.deco-estomago .d-mexer {
+  animation: deco-mexer 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes deco-mexer {
+  from { transform: scale(1.04, 0.96); }
+  to { transform: scale(0.96, 1.04); }
+}
+
+/* Cancro colorretal: a viagem pelo intestino */
+.deco-intestino .d-linha {
+  stroke-width: 4;
+  stroke-dasharray: 0.22 0.78;
+  animation: deco-varrer 2.8s linear infinite;
+}
+
+/* Paramiloidose: os degraus do ADN acendem-se um a um */
+.deco-adn .d-degrau {
+  animation: deco-piscar 2s ease-in-out infinite;
+}
+
+.deco-adn .d-p2 { animation-delay: -0.4s; }
+.deco-adn .d-p3 { animation-delay: -0.8s; }
+.deco-adn .d-p4 { animation-delay: -1.2s; }
+.deco-adn .d-p5 { animation-delay: -1.6s; }
+
+@keyframes deco-piscar {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+
+/* DPOC: carrega-se no inalador e sai uma nuvem */
+.deco-inalador .d-lata {
+  animation: deco-premir 2.4s ease-in-out infinite;
+}
+
+.deco-inalador .d-sopro {
+  animation: deco-sopro 2.4s ease-out infinite;
+}
+
+.deco-inalador .d-sopro2 { animation-delay: 0.15s; }
+.deco-inalador .d-sopro3 { animation-delay: 0.3s; }
+
+@keyframes deco-premir {
+  0%, 40%, 100% { transform: translateY(0); }
+  50%, 60% { transform: translateY(6px); }
+}
+
+@keyframes deco-sopro {
+  0%, 50% { transform: scale(0.2); opacity: 0; }
+  60% { opacity: 1; }
+  100% { transform: translateX(6px) scale(1.4); opacity: 0; }
+}
+
+/* Fígado: a fábrica trabalha */
+.deco-figado .d-engrenagem {
+  animation: spin 6s linear infinite;
+}
+
+/* Obesidade infantil: as rodas da bicicleta giram */
+.deco-bicicleta .d-raios {
+  animation: spin 1.4s linear infinite;
+}
+
+/* Osteoporose: os buracos do osso aumentam */
+.deco-osso .d-furo {
+  animation: deco-furo 3s ease-in-out infinite;
+}
+
+.deco-osso .d-furo2 { animation-delay: -1s; }
+.deco-osso .d-furo3 { animation-delay: -2s; }
+
+@keyframes deco-furo {
+  0%, 100% { transform: scale(0.4); }
+  50% { transform: scale(1.2); }
+}
+
+/* Demência: uma peça do puzzle sai do lugar e volta */
+.deco-puzzle .d-peca {
+  animation: deco-encaixar 3.4s ease-in-out infinite alternate;
+}
+
+@keyframes deco-encaixar {
+  0%, 20% { transform: translate(0, 0) rotate(0deg); }
+  80%, 100% { transform: translate(12px, 8px) rotate(12deg); }
+}
+
+/* Tuberculose: os bacilos andam à deriva */
+.deco-bacilo .d-bac {
+  animation: deco-germe 3.4s ease-in-out infinite;
+}
+
+.deco-bacilo .d-bac2 { animation-delay: -1.1s; }
+.deco-bacilo .d-bac3 { animation-delay: -2.2s; }
+
+/* Doenças: em ecrãs estreitos, as áreas deslizam numa só linha (como as idades). */
+#filtros-doencas,
+.idade-tabs {
+  position: relative;
+}
+
+@media (max-width: 640px) {
+  #filtros-doencas {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 2px 2px 8px;
+    margin-inline: -2px;
+    scrollbar-width: thin;
+  }
+
+  #filtros-doencas .tabbtn {
+    flex: none;
+  }
 }

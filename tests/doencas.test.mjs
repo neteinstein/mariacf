@@ -2,17 +2,31 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { DOENCAS, GRUPOS, encontrarDoenca, grupoValido } from '../assets/js/doencas-dados.js';
-import { ILUSTRACOES, ilustracao } from '../assets/js/doencas-ilustracoes.js';
+import { CATEGORIAS, DOENCAS, GRUPOS, encontrarDoenca, grupoValido, resumoDoenca } from '../assets/js/doencas-dados.js';
+import { ILUSTRACOES, MINIATURAS, ilustracao, miniatura } from '../assets/js/doencas-ilustracoes.js';
 
 const raiz = new URL('..', import.meta.url).pathname;
 const palavras = (s) => s.trim().split(/\s+/).length;
 
-test('há as oito doenças pedidas, cada uma com um id único', () => {
-  assert.deepEqual(
-    DOENCAS.map((d) => d.id),
-    ['diabetes', 'cancro-mama', 'hipertensao', 'artroses', 'depressao', 'dislipidemia', 'amiotrofia', 'pneumonia']
-  );
+test('há as dezanove doenças, cada uma com um id único', () => {
+  assert.deepEqual(DOENCAS.map((d) => d.id), [
+    'diabetes', 'cancro-mama', 'hipertensao', 'artroses', 'depressao', 'dislipidemia', 'amiotrofia', 'pneumonia',
+    'avc', 'cancro-estomago', 'cancro-colorretal', 'paramiloidose', 'dpoc', 'cancro-pulmao', 'figado-alcool',
+    'obesidade-infantil', 'osteoporose', 'demencia', 'tuberculose',
+  ]);
+});
+
+test('cada doença tem um cartão com miniatura animada e áreas conhecidas', () => {
+  for (const d of DOENCAS) {
+    assert.ok(MINIATURAS.includes(d.deco), `${d.id}: miniatura ${d.deco} não existe`);
+    assert.match(miniatura(d.deco), /^<svg class="tool-deco mini deco-[a-z]+" viewBox="0 0 120 90"/);
+    assert.ok(CATEGORIAS.includes(d.categoria), `${d.id}: área ${d.categoria} desconhecida`);
+    for (const c of d.tambem || []) assert.ok(CATEGORIAS.includes(c), `${d.id}: área ${c} desconhecida`);
+  }
+  for (const c of CATEGORIAS) {
+    assert.ok(DOENCAS.some((d) => d.categoria === c || d.tambem?.includes(c)), `a área ${c} não tem doenças`);
+  }
+  for (const nome of MINIATURAS) assert.ok(!miniatura(nome).includes('NaN'), nome);
 });
 
 test('os cinco grupos etários estão pela ordem certa', () => {
@@ -96,6 +110,24 @@ test('as ligações para calculadoras apontam para páginas que existem', () => 
         const pasta = l.href.split('?')[0];
         assert.ok(existsSync(join(raiz, pasta, 'index.html')), `${d.id}: ${l.href} não existe`);
       }
+    }
+  }
+});
+
+test('o email de cada separador tem assunto, resumo e cabe num link mailto', () => {
+  for (const d of DOENCAS) {
+    for (const g of GRUPOS) {
+      const { assunto, linhas } = resumoDoenca(d, g.id);
+      assert.ok(assunto.startsWith(`${d.nome}: explicação para`), assunto);
+      assert.ok(assunto.includes(g.idade), assunto);
+      assert.equal(linhas[0], `${d.nome} — ${g.nome} (${g.idade})`);
+      const grupo = d.grupos[g.id];
+      if (grupo.intro) assert.ok(linhas.includes(grupo.intro), `${d.id}/${g.id}: falta a introdução`);
+      else assert.ok(linhas.includes(`• ${grupo.imagens[0][1]}`), `${d.id}/${g.id}: faltam as legendas`);
+      if (grupo.alerta) assert.ok(linhas.includes(grupo.alerta.titulo), `${d.id}/${g.id}: falta o alerta`);
+      // Alguns programas de email não abrem links mailto muito compridos.
+      const url = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(linhas.join('\n'))}`;
+      assert.ok(url.length < 2000, `${d.id}/${g.id}: email com ${url.length} caracteres`);
     }
   }
 });
