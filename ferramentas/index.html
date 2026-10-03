@@ -85,189 +85,58 @@
         </div>
         <div class="tabbar" id="filtros-categoria" role="group" aria-label="Filtrar por categoria">
           <button class="tabbtn" type="button" data-categoria="todas" aria-selected="true">Todas</button>
-          <button class="tabbtn" type="button" data-categoria="pediatria" aria-selected="false">Pediatria</button>
-          <button class="tabbtn" type="button" data-categoria="obstetricia" aria-selected="false">Obstetrícia</button>
           <button class="tabbtn" type="button" data-categoria="cardiovascular" aria-selected="false">Cardiovascular</button>
-          <button class="tabbtn" type="button" data-categoria="nutricao" aria-selected="false">Nutrição e metabolismo</button>
-          <button class="tabbtn" type="button" data-categoria="renal" aria-selected="false">Rim e urologia</button>
-          <button class="tabbtn" type="button" data-categoria="laboratorial" aria-selected="false">Laboratorial</button>
-          <button class="tabbtn" type="button" data-categoria="digestivo" aria-selected="false">Fígado e digestivo</button>
           <button class="tabbtn" type="button" data-categoria="farmacos" aria-selected="false">Fármacos</button>
-          <button class="tabbtn" type="button" data-categoria="saude-mental" aria-selected="false">Saúde mental</button>
-          <button class="tabbtn" type="button" data-categoria="respiratorio" aria-selected="false">Respiratório e sono</button>
-          <button class="tabbtn" type="button" data-categoria="urgencia" aria-selected="false">Urgência</button>
+          <button class="tabbtn" type="button" data-categoria="digestivo" aria-selected="false">Fígado e digestivo</button>
+          <button class="tabbtn" type="button" data-categoria="renal" aria-selected="false">Rim e urologia</button>
           <button class="tabbtn" type="button" data-categoria="geriatria" aria-selected="false">Geriatria</button>
+          <button class="tabbtn" type="button" data-categoria="laboratorial" aria-selected="false">Laboratorial</button>
+          <button class="tabbtn" type="button" data-categoria="nutricao" aria-selected="false">Nutrição e metabolismo</button>
+          <button class="tabbtn" type="button" data-categoria="obstetricia" aria-selected="false">Obstetrícia</button>
+          <button class="tabbtn" type="button" data-categoria="pediatria" aria-selected="false">Pediatria</button>
           <button class="tabbtn" type="button" data-categoria="rastreio" aria-selected="false">Prevenção e rastreio</button>
+          <button class="tabbtn" type="button" data-categoria="respiratorio" aria-selected="false">Respiratório e sono</button>
+          <button class="tabbtn" type="button" data-categoria="saude-mental" aria-selected="false">Saúde mental</button>
+          <button class="tabbtn" type="button" data-categoria="urgencia" aria-selected="false">Urgência</button>
         </div>
       </div>
 
       <p class="tools-vazio reveal" id="tools-vazio" hidden>Sem resultados. Experimente outra palavra ou escolha «Todas».</p>
 
       <div class="tools" id="tools-grid">
-        <div class="tools-section multi" data-categoria="pediatria">
-          <h3 class="tools-section-title">Pediatria</h3>
-          <a class="tool featured reveal" href="../calculadora-doses/">
-            <svg class="tool-deco" viewBox="0 0 300 80" aria-hidden="true">
-              <rect x="60" y="18" width="170" height="44" rx="10" fill="rgba(255,255,255,.22)" stroke="rgba(255,255,255,.8)" stroke-width="3"/>
-              <rect x="63" y="21" width="110" height="38" rx="8" fill="rgba(255,255,255,.55)"/>
-              <g stroke="rgba(255,255,255,.9)" stroke-width="2"><path d="M90 18v12M115 18v8M140 18v12M165 18v8M190 18v12M215 18v8"/></g>
-              <rect x="230" y="32" width="50" height="16" rx="4" fill="rgba(255,255,255,.8)"/>
-              <rect x="280" y="22" width="10" height="36" rx="4" fill="rgba(255,255,255,.9)"/>
-              <path d="M60 36H30l-8 4 8 4h30z" fill="rgba(255,255,255,.8)"/>
-            </svg>
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">💊</span>
-            </div>
-            <div class="tool-title">Calculadora de doses</div>
-            <p class="tool-desc">Paracetamol e ibuprofeno em xarope para crianças: quantos mL dar, de quantas em quantas horas e o máximo diário — a partir do peso.</p>
-            <div class="tags">
-              <span class="tag">Pediatria</span>
-              <span class="tag">Pacientes</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral destaque" href="../calculadora-crescimento/">
-            <svg class="tool-deco mini deco-curva" viewBox="0 0 120 90" aria-hidden="true">
-              <path class="d-fraco" d="M10 6V80H114"/>
-              <path class="d-fraco" d="M12 66C40 60 62 36 112 16M12 80C40 76 64 58 112 44"/>
-              <path class="d-linha" d="M12 74C40 69 62 47 112 30" pathLength="1"/>
-              <circle class="d-ponto" r="5"/>
-            </svg>
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">👶</span>
-            </div>
-            <div class="tool-title">Crescimento infantil (OMS)</div>
-            <p class="tool-desc">Z-score e percentis de peso, altura, IMC e perímetro cefálico dos 0 aos 19 anos (OMS), idade corrigida do prematuro e altura-alvo.</p>
-            <div class="tags">
-              <span class="tag">Pediatria</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet" href="../calculadora-parto-neonatal/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">👶</span>
-            </div>
-            <div class="tool-title">Bishop, Apgar e Glasgow pediátrico</div>
-            <p class="tool-desc">Favorabilidade do colo para indução, avaliação do recém-nascido e consciência em crianças.</p>
-            <div class="tags">
-              <span class="tag">Obstetrícia</span>
-              <span class="tag">Pediatria</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet destaque" href="../calculadora-pediatria/">
-            <svg class="tool-deco mini deco-gota" viewBox="0 0 120 90" aria-hidden="true">
-              <path class="d-gota" d="M60 6C60 6 46 26 46 36A14 14 0 0 0 74 36C74 26 60 6 60 6Z"/>
-              <ellipse class="d-onda" cx="60" cy="80" rx="26" ry="6"/>
-              <ellipse class="d-onda d-onda2" cx="60" cy="80" rx="26" ry="6"/>
-            </svg>
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">💧</span>
-            </div>
-            <div class="tool-title">Fluidos, desidratação e M-CHAT-R/F</div>
-            <p class="tool-desc">Fluidos de manutenção (Holliday-Segar), escala clínica de desidratação e interpretação do rastreio do autismo.</p>
-            <div class="tags">
-              <span class="tag">Pediatria</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet" href="../calculadora-vacinas/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">💉</span>
-            </div>
-            <div class="tool-title">Calendário de vacinas (PNV)</div>
-            <p class="tool-desc">A partir da data de nascimento: que vacinas do Programa Nacional de Vacinação correspondem a cada idade, e quando.</p>
-            <div class="tags">
-              <span class="tag">Vacinação</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-        </div>
-
-        <div class="tools-section multi" data-categoria="obstetricia">
-          <h3 class="tools-section-title">Obstetrícia</h3>
-          <a class="tool reveal tint-coral" href="../calculadora-dpp/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🤰</span>
-            </div>
-            <div class="tool-title">Data provável de parto</div>
-            <p class="tool-desc">Calcule a DPP e a idade gestacional a partir da última menstruação ou de uma ecografia, com o calendário de ecografias, análises e vacinas.</p>
-            <div class="tags">
-              <span class="tag">Obstetrícia</span>
-              <span class="tag">Gravidez</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet" href="../calculadora-parto-neonatal/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">👶</span>
-            </div>
-            <div class="tool-title">Bishop, Apgar e Glasgow pediátrico</div>
-            <p class="tool-desc">Favorabilidade do colo para indução, avaliação do recém-nascido e consciência em crianças.</p>
-            <div class="tags">
-              <span class="tag">Obstetrícia</span>
-              <span class="tag">Pediatria</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet" href="../calculadora-familia/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">👨‍👩‍👧</span>
-            </div>
-            <div class="tool-title">APGAR familiar, EPDS, Zarit e Fagerström</div>
-            <p class="tool-desc">Função familiar, depressão pós-parto, sobrecarga do cuidador e dependência da nicotina.</p>
-            <div class="tags">
-              <span class="tag">Família</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-gravidez-peso/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">⚖️</span>
-            </div>
-            <div class="tool-title">Aumento de peso na gravidez</div>
-            <p class="tool-desc">Quanto peso ganhar na gravidez segundo o IMC antes de engravidar, e se o aumento até agora está dentro do esperado.</p>
-            <div class="tags">
-              <span class="tag">Gravidez</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-        </div>
-
         <div class="tools-section multi" data-categoria="cardiovascular">
           <h3 class="tools-section-title">Cardiovascular e anticoagulação</h3>
-          <a class="tool reveal tint-violet destaque" href="../calculadora-risco-cardiovascular/">
+          <a class="tool reveal destaque" href="../calculadora-anticoagulacao/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🫀</span>
+            </div>
+            <div class="tool-title">CHA₂DS₂-VASc e HAS-BLED</div>
+            <p class="tool-desc">Risco tromboembólico e hemorrágico na fibrilhação auricular, para apoiar a decisão de hipocoagulação.</p>
+            <div class="tags">
+              <span class="tag">Cardiologia</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-vascular/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🦵</span>
+            </div>
+            <div class="tool-title">ITB e peso ideal/ajustado</div>
+            <p class="tool-desc">Índice tornozelo-braço e peso ideal/ajustado (Devine) para ajuste de dose de fármacos.</p>
+            <div class="tags">
+              <span class="tag">Vascular</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque" href="../calculadora-risco-cardiovascular/">
             <svg class="tool-deco mini deco-coracao" viewBox="0 0 120 90" aria-hidden="true">
               <path class="d-coracao" d="M60 82C22 58 12 38 22 23C32 9 52 12 60 27C68 12 88 9 98 23C108 38 98 58 60 82Z"/>
               <path class="d-linha" d="M28 46H46L52 36L59 58L65 42H92" pathLength="1"/>
@@ -285,15 +154,19 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </span>
           </a>
+        </div>
 
-          <a class="tool reveal tint-violet" href="../calculadora-anticoagulacao/">
+        <div class="tools-section multi" data-categoria="farmacos">
+          <h3 class="tools-section-title">Fármacos e ajuste de dose</h3>
+          <a class="tool reveal destaque" href="../calculadora-doses/">
             <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🫀</span>
+              <span class="tool-icon" aria-hidden="true">💊</span>
             </div>
-            <div class="tool-title">CHA₂DS₂-VASc e HAS-BLED</div>
-            <p class="tool-desc">Risco tromboembólico e hemorrágico na fibrilhação auricular, para apoiar a decisão de hipocoagulação.</p>
+            <div class="tool-title">Calculadora de doses</div>
+            <p class="tool-desc">Paracetamol e ibuprofeno em xarope para crianças: quantos mL dar, de quantas em quantas horas e o máximo diário — a partir do peso.</p>
             <div class="tags">
-              <span class="tag">Cardiologia</span>
+              <span class="tag">Pediatria</span>
+              <span class="tag">Pacientes</span>
               <span class="tag">Profissionais</span>
             </div>
             <span class="go">Abrir calculadora
@@ -301,7 +174,37 @@
             </span>
           </a>
 
-          <a class="tool reveal tint-coral" href="../calculadora-vascular/">
+          <a class="tool reveal destaque tint-coral" href="../calculadora-funcao-renal/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🫘</span>
+            </div>
+            <div class="tool-title">CKD-EPI, Cockcroft-Gault e KDIGO</div>
+            <p class="tool-desc">Taxa de filtração glomerular, clearance de creatinina para ajuste de fármacos e estadiamento KDIGO (G/A) da doença renal crónica.</p>
+            <div class="tags">
+              <span class="tag">Nefrologia</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque" href="../calculadora-corticoides/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">⚗️</span>
+            </div>
+            <div class="tool-title">Equivalência de corticosteroides</div>
+            <p class="tool-desc">Converta a dose de prednisolona, metilprednisolona, dexametasona, hidrocortisona, deflazacorte e outros.</p>
+            <div class="tags">
+              <span class="tag">Fármacos</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-vascular/">
             <div class="tool-top">
               <span class="tool-icon" aria-hidden="true">🦵</span>
             </div>
@@ -317,9 +220,176 @@
           </a>
         </div>
 
+        <div class="tools-section multi" data-categoria="digestivo">
+          <h3 class="tools-section-title">Fígado e digestivo</h3>
+          <a class="tool reveal destaque" href="../calculadora-digestivo/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🩸</span>
+            </div>
+            <div class="tool-title">Blatchford, Rockall e BISAP</div>
+            <p class="tool-desc">Risco de hemorragia digestiva alta e gravidade de pancreatite aguda.</p>
+            <div class="tags">
+              <span class="tag">Gastrenterologia</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-hepatica/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🔬</span>
+            </div>
+            <div class="tool-title">FIB-4, Child-Pugh e MELD</div>
+            <p class="tool-desc">Fibrose hepática (FIB-4, NAFLD fibrosis score, APRI) e gravidade da cirrose (Child-Pugh, MELD-Na).</p>
+            <div class="tags">
+              <span class="tag">Hepatologia</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="tools-section multi" data-categoria="renal">
+          <h3 class="tools-section-title">Função renal e urologia</h3>
+          <a class="tool reveal destaque" href="../calculadora-funcao-renal/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🫘</span>
+            </div>
+            <div class="tool-title">CKD-EPI, Cockcroft-Gault e KDIGO</div>
+            <p class="tool-desc">Taxa de filtração glomerular, clearance de creatinina para ajuste de fármacos e estadiamento KDIGO (G/A) da doença renal crónica.</p>
+            <div class="tags">
+              <span class="tag">Nefrologia</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-urologia/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🚻</span>
+            </div>
+            <div class="tool-title">IPSS</div>
+            <p class="tool-desc">Sintomas do trato urinário inferior, muito usado no acompanhamento da hiperplasia benigna da próstata.</p>
+            <div class="tags">
+              <span class="tag">Urologia</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="tools-section multi" data-categoria="geriatria">
+          <h3 class="tools-section-title">Geriatria</h3>
+          <a class="tool reveal destaque" href="../calculadora-familia/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">👨‍👩‍👧</span>
+            </div>
+            <div class="tool-title">APGAR familiar, EPDS, Zarit e Fagerström</div>
+            <p class="tool-desc">Função familiar, depressão pós-parto, sobrecarga do cuidador e dependência da nicotina.</p>
+            <div class="tags">
+              <span class="tag">Família</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-geriatria/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🧓</span>
+            </div>
+            <div class="tool-title">Avaliação geriátrica</div>
+            <p class="tool-desc">Barthel, Lawton-Brody, fragilidade (CFS), Timed Up and Go, Morse, Braden, MNA-SF, GDS-15, Charlson e MMSE/MoCA.</p>
+            <div class="tags">
+              <span class="tag">Geriatria</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="tools-section multi" data-categoria="laboratorial">
+          <h3 class="tools-section-title">Laboratorial</h3>
+          <a class="tool reveal destaque" href="../calculadora-funcao-renal/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🫘</span>
+            </div>
+            <div class="tool-title">CKD-EPI, Cockcroft-Gault e KDIGO</div>
+            <p class="tool-desc">Taxa de filtração glomerular, clearance de creatinina para ajuste de fármacos e estadiamento KDIGO (G/A) da doença renal crónica.</p>
+            <div class="tags">
+              <span class="tag">Nefrologia</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-hepatica/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🔬</span>
+            </div>
+            <div class="tool-title">FIB-4, Child-Pugh e MELD</div>
+            <p class="tool-desc">Fibrose hepática (FIB-4, NAFLD fibrosis score, APRI) e gravidade da cirrose (Child-Pugh, MELD-Na).</p>
+            <div class="tags">
+              <span class="tag">Hepatologia</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque" href="../calculadora-laboratorial/">
+            <svg class="tool-deco mini deco-tubo" viewBox="0 0 120 90" aria-hidden="true">
+              <path class="d-liquido" d="M49 50H71V74A11 11 0 0 1 49 74Z"/>
+              <path d="M44 6H76M49 6V74A11 11 0 0 0 71 74V6"/>
+              <circle class="d-bolha" cx="56" cy="62" r="3"/><circle class="d-bolha" cx="64" cy="68" r="2.4"/><circle class="d-bolha" cx="60" cy="58" r="2"/>
+            </svg>
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🧪</span>
+            </div>
+            <div class="tool-title">Fórmulas laboratoriais e conversões</div>
+            <p class="tool-desc">LDL de Friedewald, sódio e cálcio corrigidos, eAG, anion gap, osmolaridade, HOMA-IR e conversão entre mg/dL e mmol/L.</p>
+            <div class="tags">
+              <span class="tag">Laboratorial</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+
         <div class="tools-section multi" data-categoria="nutricao">
           <h3 class="tools-section-title">Nutrição e metabolismo</h3>
-          <a class="tool reveal tint-violet destaque" href="../calculadora-imc-asc/">
+          <a class="tool reveal destaque" href="../calculadora-gravidez-peso/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">⚖️</span>
+            </div>
+            <div class="tool-title">Aumento de peso na gravidez</div>
+            <p class="tool-desc">Quanto peso ganhar na gravidez segundo o IMC antes de engravidar, e se o aumento até agora está dentro do esperado.</p>
+            <div class="tags">
+              <span class="tag">Gravidez</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-imc-asc/">
             <svg class="tool-deco mini deco-balanca" viewBox="0 0 120 90" aria-hidden="true">
               <path d="M60 18V82M40 82H80"/>
               <g class="d-braco">
@@ -343,22 +413,7 @@
             </span>
           </a>
 
-          <a class="tool reveal tint-coral" href="../calculadora-vascular/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🦵</span>
-            </div>
-            <div class="tool-title">ITB e peso ideal/ajustado</div>
-            <p class="tool-desc">Índice tornozelo-braço e peso ideal/ajustado (Devine) para ajuste de dose de fármacos.</p>
-            <div class="tags">
-              <span class="tag">Vascular</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-rastreio/">
+          <a class="tool reveal destaque" href="../calculadora-rastreio/">
             <div class="tool-top">
               <span class="tool-icon" aria-hidden="true">🩺</span>
             </div>
@@ -373,100 +428,14 @@
             </span>
           </a>
 
-          <a class="tool reveal tint-coral" href="../calculadora-gravidez-peso/">
+          <a class="tool reveal destaque tint-coral" href="../calculadora-vascular/">
             <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">⚖️</span>
+              <span class="tool-icon" aria-hidden="true">🦵</span>
             </div>
-            <div class="tool-title">Aumento de peso na gravidez</div>
-            <p class="tool-desc">Quanto peso ganhar na gravidez segundo o IMC antes de engravidar, e se o aumento até agora está dentro do esperado.</p>
+            <div class="tool-title">ITB e peso ideal/ajustado</div>
+            <p class="tool-desc">Índice tornozelo-braço e peso ideal/ajustado (Devine) para ajuste de dose de fármacos.</p>
             <div class="tags">
-              <span class="tag">Gravidez</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-        </div>
-
-        <div class="tools-section multi" data-categoria="renal">
-          <h3 class="tools-section-title">Função renal e urologia</h3>
-          <a class="tool reveal tint-coral" href="../calculadora-funcao-renal/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🫘</span>
-            </div>
-            <div class="tool-title">CKD-EPI, Cockcroft-Gault e KDIGO</div>
-            <p class="tool-desc">Taxa de filtração glomerular, clearance de creatinina para ajuste de fármacos e estadiamento KDIGO (G/A) da doença renal crónica.</p>
-            <div class="tags">
-              <span class="tag">Nefrologia</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet" href="../calculadora-urologia/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🚻</span>
-            </div>
-            <div class="tool-title">IPSS</div>
-            <p class="tool-desc">Sintomas do trato urinário inferior, muito usado no acompanhamento da hiperplasia benigna da próstata.</p>
-            <div class="tags">
-              <span class="tag">Urologia</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-        </div>
-
-        <div class="tools-section multi" data-categoria="laboratorial">
-          <h3 class="tools-section-title">Laboratorial</h3>
-          <a class="tool reveal tint-violet destaque" href="../calculadora-laboratorial/">
-            <svg class="tool-deco mini deco-tubo" viewBox="0 0 120 90" aria-hidden="true">
-              <path class="d-liquido" d="M49 50H71V74A11 11 0 0 1 49 74Z"/>
-              <path d="M44 6H76M49 6V74A11 11 0 0 0 71 74V6"/>
-              <circle class="d-bolha" cx="56" cy="62" r="3"/><circle class="d-bolha" cx="64" cy="68" r="2.4"/><circle class="d-bolha" cx="60" cy="58" r="2"/>
-            </svg>
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🧪</span>
-            </div>
-            <div class="tool-title">Fórmulas laboratoriais e conversões</div>
-            <p class="tool-desc">LDL de Friedewald, sódio e cálcio corrigidos, eAG, anion gap, osmolaridade, HOMA-IR e conversão entre mg/dL e mmol/L.</p>
-            <div class="tags">
-              <span class="tag">Laboratorial</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-funcao-renal/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🫘</span>
-            </div>
-            <div class="tool-title">CKD-EPI, Cockcroft-Gault e KDIGO</div>
-            <p class="tool-desc">Taxa de filtração glomerular, clearance de creatinina para ajuste de fármacos e estadiamento KDIGO (G/A) da doença renal crónica.</p>
-            <div class="tags">
-              <span class="tag">Nefrologia</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet" href="../calculadora-hepatica/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🔬</span>
-            </div>
-            <div class="tool-title">FIB-4, Child-Pugh e MELD</div>
-            <p class="tool-desc">Fibrose hepática (FIB-4, NAFLD fibrosis score, APRI) e gravidade da cirrose (Child-Pugh, MELD-Na).</p>
-            <div class="tags">
-              <span class="tag">Hepatologia</span>
+              <span class="tag">Vascular</span>
               <span class="tag">Profissionais</span>
             </div>
             <span class="go">Abrir calculadora
@@ -475,24 +444,9 @@
           </a>
         </div>
 
-        <div class="tools-section multi" data-categoria="saude-mental">
-          <h3 class="tools-section-title">Saúde mental e psicossocial</h3>
-          <a class="tool reveal tint-coral" href="../calculadora-saude-mental/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🧠</span>
-            </div>
-            <div class="tool-title">PHQ-9, GAD-7, AUDIT e ASRS</div>
-            <p class="tool-desc">Rastreio de depressão, ansiedade, consumo de risco de álcool e PHDA no adulto, com pontuação automática.</p>
-            <div class="tags">
-              <span class="tag">Saúde mental</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet" href="../calculadora-familia/">
+        <div class="tools-section multi" data-categoria="obstetricia">
+          <h3 class="tools-section-title">Obstetrícia</h3>
+          <a class="tool reveal destaque" href="../calculadora-familia/">
             <div class="tool-top">
               <span class="tool-icon" aria-hidden="true">👨‍👩‍👧</span>
             </div>
@@ -507,7 +461,232 @@
             </span>
           </a>
 
-          <a class="tool reveal tint-coral" href="../calculadora-habitos/">
+          <a class="tool reveal destaque tint-coral" href="../calculadora-gravidez-peso/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">⚖️</span>
+            </div>
+            <div class="tool-title">Aumento de peso na gravidez</div>
+            <p class="tool-desc">Quanto peso ganhar na gravidez segundo o IMC antes de engravidar, e se o aumento até agora está dentro do esperado.</p>
+            <div class="tags">
+              <span class="tag">Gravidez</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque" href="../calculadora-parto-neonatal/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">👶</span>
+            </div>
+            <div class="tool-title">Bishop, Apgar e Glasgow pediátrico</div>
+            <p class="tool-desc">Favorabilidade do colo para indução, avaliação do recém-nascido e consciência em crianças.</p>
+            <div class="tags">
+              <span class="tag">Obstetrícia</span>
+              <span class="tag">Pediatria</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-dpp/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🤰</span>
+            </div>
+            <div class="tool-title">Data provável de parto</div>
+            <p class="tool-desc">Calcule a DPP e a idade gestacional a partir da última menstruação ou de uma ecografia, com o calendário de ecografias, análises e vacinas.</p>
+            <div class="tags">
+              <span class="tag">Obstetrícia</span>
+              <span class="tag">Gravidez</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="tools-section multi" data-categoria="pediatria">
+          <h3 class="tools-section-title">Pediatria</h3>
+          <a class="tool reveal destaque" href="../calculadora-parto-neonatal/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">👶</span>
+            </div>
+            <div class="tool-title">Bishop, Apgar e Glasgow pediátrico</div>
+            <p class="tool-desc">Favorabilidade do colo para indução, avaliação do recém-nascido e consciência em crianças.</p>
+            <div class="tags">
+              <span class="tag">Obstetrícia</span>
+              <span class="tag">Pediatria</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool featured reveal destaque tint-coral" href="../calculadora-doses/">
+            <svg class="tool-deco" viewBox="0 0 300 80" aria-hidden="true">
+              <rect x="60" y="18" width="170" height="44" rx="10" fill="rgba(255,255,255,.22)" stroke="rgba(255,255,255,.8)" stroke-width="3"/>
+              <rect x="63" y="21" width="110" height="38" rx="8" fill="rgba(255,255,255,.55)"/>
+              <g stroke="rgba(255,255,255,.9)" stroke-width="2"><path d="M90 18v12M115 18v8M140 18v12M165 18v8M190 18v12M215 18v8"/></g>
+              <rect x="230" y="32" width="50" height="16" rx="4" fill="rgba(255,255,255,.8)"/>
+              <rect x="280" y="22" width="10" height="36" rx="4" fill="rgba(255,255,255,.9)"/>
+              <path d="M60 36H30l-8 4 8 4h30z" fill="rgba(255,255,255,.8)"/>
+            </svg>
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">💊</span>
+            </div>
+            <div class="tool-title">Calculadora de doses</div>
+            <p class="tool-desc">Paracetamol e ibuprofeno em xarope para crianças: quantos mL dar, de quantas em quantas horas e o máximo diário — a partir do peso.</p>
+            <div class="tags">
+              <span class="tag">Pediatria</span>
+              <span class="tag">Pacientes</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque" href="../calculadora-vacinas/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">💉</span>
+            </div>
+            <div class="tool-title">Calendário de vacinas (PNV)</div>
+            <p class="tool-desc">A partir da data de nascimento: que vacinas do Programa Nacional de Vacinação correspondem a cada idade, e quando.</p>
+            <div class="tags">
+              <span class="tag">Vacinação</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-crescimento/">
+            <svg class="tool-deco mini deco-curva" viewBox="0 0 120 90" aria-hidden="true">
+              <path class="d-fraco" d="M10 6V80H114"/>
+              <path class="d-fraco" d="M12 66C40 60 62 36 112 16M12 80C40 76 64 58 112 44"/>
+              <path class="d-linha" d="M12 74C40 69 62 47 112 30" pathLength="1"/>
+              <circle class="d-ponto" r="5"/>
+            </svg>
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">👶</span>
+            </div>
+            <div class="tool-title">Crescimento infantil (OMS)</div>
+            <p class="tool-desc">Z-score e percentis de peso, altura, IMC e perímetro cefálico dos 0 aos 19 anos (OMS), idade corrigida do prematuro e altura-alvo.</p>
+            <div class="tags">
+              <span class="tag">Pediatria</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque" href="../calculadora-pediatria/">
+            <svg class="tool-deco mini deco-gota" viewBox="0 0 120 90" aria-hidden="true">
+              <path class="d-gota" d="M60 6C60 6 46 26 46 36A14 14 0 0 0 74 36C74 26 60 6 60 6Z"/>
+              <ellipse class="d-onda" cx="60" cy="80" rx="26" ry="6"/>
+              <ellipse class="d-onda d-onda2" cx="60" cy="80" rx="26" ry="6"/>
+            </svg>
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">💧</span>
+            </div>
+            <div class="tool-title">Fluidos, desidratação e M-CHAT-R/F</div>
+            <p class="tool-desc">Fluidos de manutenção (Holliday-Segar), escala clínica de desidratação e interpretação do rastreio do autismo.</p>
+            <div class="tags">
+              <span class="tag">Pediatria</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="tools-section multi" data-categoria="rastreio">
+          <h3 class="tools-section-title">Prevenção e rastreio</h3>
+          <a class="tool reveal destaque" href="../calculadora-vacinas/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">💉</span>
+            </div>
+            <div class="tool-title">Calendário de vacinas (PNV)</div>
+            <p class="tool-desc">A partir da data de nascimento: que vacinas do Programa Nacional de Vacinação correspondem a cada idade, e quando.</p>
+            <div class="tags">
+              <span class="tag">Vacinação</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-rastreio/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🩺</span>
+            </div>
+            <div class="tool-title">FINDRISC, MUST e risco de fratura</div>
+            <p class="tool-desc">Risco de diabetes tipo 2, risco de desnutrição e fatores de risco de fratura osteoporótica.</p>
+            <div class="tags">
+              <span class="tag">Prevenção</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque" href="../calculadora-saude-mental/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🧠</span>
+            </div>
+            <div class="tool-title">PHQ-9, GAD-7, AUDIT e ASRS</div>
+            <p class="tool-desc">Rastreio de depressão, ansiedade, consumo de risco de álcool e PHDA no adulto, com pontuação automática.</p>
+            <div class="tags">
+              <span class="tag">Saúde mental</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-plano-rastreios/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🎗️</span>
+            </div>
+            <div class="tool-title">Plano de rastreios por idade</div>
+            <p class="tool-desc">Que rastreios são recomendados para a sua idade e sexo — cancro, risco cardiovascular, diabetes e outros — e com que periodicidade.</p>
+            <div class="tags">
+              <span class="tag">Prevenção</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque" href="../calculadora-risco-cardiovascular/">
+            <svg class="tool-deco mini deco-coracao" viewBox="0 0 120 90" aria-hidden="true">
+              <path class="d-coracao" d="M60 82C22 58 12 38 22 23C32 9 52 12 60 27C68 12 88 9 98 23C108 38 98 58 60 82Z"/>
+              <path class="d-linha" d="M28 46H46L52 36L59 58L65 42H92" pathLength="1"/>
+            </svg>
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">❤️</span>
+            </div>
+            <div class="tool-title">SCORE2 e SCORE2-Diabetes</div>
+            <p class="tool-desc">Risco cardiovascular a 10 anos (ESC/DGS), para adultos e para diabéticos tipo 2, na região de risco moderado.</p>
+            <div class="tags">
+              <span class="tag">Cardiologia</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-habitos/">
             <div class="tool-top">
               <span class="tool-icon" aria-hidden="true">🚭</span>
             </div>
@@ -525,7 +704,7 @@
 
         <div class="tools-section multi" data-categoria="respiratorio">
           <h3 class="tools-section-title">Respiratório e sono</h3>
-          <a class="tool reveal tint-violet destaque" href="../calculadora-respiratoria/">
+          <a class="tool reveal destaque" href="../calculadora-respiratoria/">
             <svg class="tool-deco mini deco-pulmoes" viewBox="0 0 120 90" aria-hidden="true">
               <g class="d-respirar">
                 <path d="M60 6V34M60 34L50 44M60 34L70 44"/>
@@ -547,7 +726,7 @@
             </span>
           </a>
 
-          <a class="tool reveal tint-violet destaque" href="../calculadora-sono/">
+          <a class="tool reveal destaque tint-coral" href="../calculadora-sono/">
             <svg class="tool-deco mini deco-lua" viewBox="0 0 120 90" aria-hidden="true">
               <path class="d-lua" d="M66 18A30 30 0 1 0 94 62A24 24 0 1 1 66 18Z"/>
               <text class="d-z" x="82" y="34">z</text><text class="d-z" x="94" y="22">z</text><text class="d-z" x="106" y="12">z</text>
@@ -566,7 +745,55 @@
             </span>
           </a>
 
-          <a class="tool reveal tint-coral" href="../calculadora-habitos/">
+          <a class="tool reveal destaque" href="../calculadora-habitos/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🚭</span>
+            </div>
+            <div class="tool-title">Unidades maço-ano e gramas de álcool</div>
+            <p class="tool-desc">Carga tabágica em UMA e consumo de álcool em gramas e bebidas-padrão por semana, comparado com os limites de baixo risco.</p>
+            <div class="tags">
+              <span class="tag">Prevenção</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="tools-section multi" data-categoria="saude-mental">
+          <h3 class="tools-section-title">Saúde mental e psicossocial</h3>
+          <a class="tool reveal destaque" href="../calculadora-familia/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">👨‍👩‍👧</span>
+            </div>
+            <div class="tool-title">APGAR familiar, EPDS, Zarit e Fagerström</div>
+            <p class="tool-desc">Função familiar, depressão pós-parto, sobrecarga do cuidador e dependência da nicotina.</p>
+            <div class="tags">
+              <span class="tag">Família</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-saude-mental/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🧠</span>
+            </div>
+            <div class="tool-title">PHQ-9, GAD-7, AUDIT e ASRS</div>
+            <p class="tool-desc">Rastreio de depressão, ansiedade, consumo de risco de álcool e PHDA no adulto, com pontuação automática.</p>
+            <div class="tags">
+              <span class="tag">Saúde mental</span>
+              <span class="tag">Pacientes</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque" href="../calculadora-habitos/">
             <div class="tool-top">
               <span class="tool-icon" aria-hidden="true">🚭</span>
             </div>
@@ -584,7 +811,22 @@
 
         <div class="tools-section multi" data-categoria="urgencia">
           <h3 class="tools-section-title">Urgência</h3>
-          <a class="tool reveal tint-coral destaque" href="../calculadora-urgencia/">
+          <a class="tool reveal destaque" href="../calculadora-digestivo/">
+            <div class="tool-top">
+              <span class="tool-icon" aria-hidden="true">🩸</span>
+            </div>
+            <div class="tool-title">Blatchford, Rockall e BISAP</div>
+            <p class="tool-desc">Risco de hemorragia digestiva alta e gravidade de pancreatite aguda.</p>
+            <div class="tags">
+              <span class="tag">Gastrenterologia</span>
+              <span class="tag">Profissionais</span>
+            </div>
+            <span class="go">Abrir calculadora
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a class="tool reveal destaque tint-coral" href="../calculadora-urgencia/">
             <svg class="tool-deco mini deco-ecg" viewBox="0 0 120 90" aria-hidden="true">
               <path class="d-fraco" d="M4 54H30L36 46L42 60L48 16L55 78L61 54H74L80 47L86 54H116"/>
               <path class="d-linha" d="M4 54H30L36 46L42 60L48 16L55 78L61 54H74L80 47L86 54H116" pathLength="1"/>
@@ -603,22 +845,7 @@
             </span>
           </a>
 
-          <a class="tool reveal tint-coral" href="../calculadora-digestivo/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🩸</span>
-            </div>
-            <div class="tool-title">Blatchford, Rockall e BISAP</div>
-            <p class="tool-desc">Risco de hemorragia digestiva alta e gravidade de pancreatite aguda.</p>
-            <div class="tags">
-              <span class="tag">Gastrenterologia</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-queimados/">
+          <a class="tool reveal destaque" href="../calculadora-queimados/">
             <div class="tool-top">
               <span class="tool-icon" aria-hidden="true">🔥</span>
             </div>
@@ -627,233 +854,6 @@
             <div class="tags">
               <span class="tag">Queimados</span>
               <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-        </div>
-
-        <div class="tools-section multi" data-categoria="digestivo">
-          <h3 class="tools-section-title">Fígado e digestivo</h3>
-          <a class="tool reveal tint-violet" href="../calculadora-hepatica/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🔬</span>
-            </div>
-            <div class="tool-title">FIB-4, Child-Pugh e MELD</div>
-            <p class="tool-desc">Fibrose hepática (FIB-4, NAFLD fibrosis score, APRI) e gravidade da cirrose (Child-Pugh, MELD-Na).</p>
-            <div class="tags">
-              <span class="tag">Hepatologia</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-digestivo/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🩸</span>
-            </div>
-            <div class="tool-title">Blatchford, Rockall e BISAP</div>
-            <p class="tool-desc">Risco de hemorragia digestiva alta e gravidade de pancreatite aguda.</p>
-            <div class="tags">
-              <span class="tag">Gastrenterologia</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-        </div>
-
-        <div class="tools-section multi" data-categoria="farmacos">
-          <h3 class="tools-section-title">Fármacos e ajuste de dose</h3>
-          <a class="tool reveal tint-violet" href="../calculadora-corticoides/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">⚗️</span>
-            </div>
-            <div class="tool-title">Equivalência de corticosteroides</div>
-            <p class="tool-desc">Converta a dose de prednisolona, metilprednisolona, dexametasona, hidrocortisona, deflazacorte e outros.</p>
-            <div class="tags">
-              <span class="tag">Fármacos</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-doses/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">💊</span>
-            </div>
-            <div class="tool-title">Calculadora de doses</div>
-            <p class="tool-desc">Paracetamol e ibuprofeno em xarope para crianças: quantos mL dar, de quantas em quantas horas e o máximo diário — a partir do peso.</p>
-            <div class="tags">
-              <span class="tag">Pediatria</span>
-              <span class="tag">Pacientes</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-funcao-renal/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🫘</span>
-            </div>
-            <div class="tool-title">CKD-EPI, Cockcroft-Gault e KDIGO</div>
-            <p class="tool-desc">Taxa de filtração glomerular, clearance de creatinina para ajuste de fármacos e estadiamento KDIGO (G/A) da doença renal crónica.</p>
-            <div class="tags">
-              <span class="tag">Nefrologia</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-vascular/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🦵</span>
-            </div>
-            <div class="tool-title">ITB e peso ideal/ajustado</div>
-            <p class="tool-desc">Índice tornozelo-braço e peso ideal/ajustado (Devine) para ajuste de dose de fármacos.</p>
-            <div class="tags">
-              <span class="tag">Vascular</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-        </div>
-
-        <div class="tools-section multi" data-categoria="geriatria">
-          <h3 class="tools-section-title">Geriatria</h3>
-          <a class="tool reveal tint-coral" href="../calculadora-geriatria/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🧓</span>
-            </div>
-            <div class="tool-title">Avaliação geriátrica</div>
-            <p class="tool-desc">Barthel, Lawton-Brody, fragilidade (CFS), Timed Up and Go, Morse, Braden, MNA-SF, GDS-15, Charlson e MMSE/MoCA.</p>
-            <div class="tags">
-              <span class="tag">Geriatria</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet" href="../calculadora-familia/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">👨‍👩‍👧</span>
-            </div>
-            <div class="tool-title">APGAR familiar, EPDS, Zarit e Fagerström</div>
-            <p class="tool-desc">Função familiar, depressão pós-parto, sobrecarga do cuidador e dependência da nicotina.</p>
-            <div class="tags">
-              <span class="tag">Família</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-        </div>
-
-        <div class="tools-section multi" data-categoria="rastreio">
-          <h3 class="tools-section-title">Prevenção e rastreio</h3>
-          <a class="tool reveal tint-coral" href="../calculadora-plano-rastreios/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🎗️</span>
-            </div>
-            <div class="tool-title">Plano de rastreios por idade</div>
-            <p class="tool-desc">Que rastreios são recomendados para a sua idade e sexo — cancro, risco cardiovascular, diabetes e outros — e com que periodicidade.</p>
-            <div class="tags">
-              <span class="tag">Prevenção</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-rastreio/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🩺</span>
-            </div>
-            <div class="tool-title">FINDRISC, MUST e risco de fratura</div>
-            <p class="tool-desc">Risco de diabetes tipo 2, risco de desnutrição e fatores de risco de fratura osteoporótica.</p>
-            <div class="tags">
-              <span class="tag">Prevenção</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet destaque" href="../calculadora-risco-cardiovascular/">
-            <svg class="tool-deco mini deco-coracao" viewBox="0 0 120 90" aria-hidden="true">
-              <path class="d-coracao" d="M60 82C22 58 12 38 22 23C32 9 52 12 60 27C68 12 88 9 98 23C108 38 98 58 60 82Z"/>
-              <path class="d-linha" d="M28 46H46L52 36L59 58L65 42H92" pathLength="1"/>
-            </svg>
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">❤️</span>
-            </div>
-            <div class="tool-title">SCORE2 e SCORE2-Diabetes</div>
-            <p class="tool-desc">Risco cardiovascular a 10 anos (ESC/DGS), para adultos e para diabéticos tipo 2, na região de risco moderado.</p>
-            <div class="tags">
-              <span class="tag">Cardiologia</span>
-              <span class="tag">Profissionais</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-saude-mental/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🧠</span>
-            </div>
-            <div class="tool-title">PHQ-9, GAD-7, AUDIT e ASRS</div>
-            <p class="tool-desc">Rastreio de depressão, ansiedade, consumo de risco de álcool e PHDA no adulto, com pontuação automática.</p>
-            <div class="tags">
-              <span class="tag">Saúde mental</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-violet" href="../calculadora-vacinas/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">💉</span>
-            </div>
-            <div class="tool-title">Calendário de vacinas (PNV)</div>
-            <p class="tool-desc">A partir da data de nascimento: que vacinas do Programa Nacional de Vacinação correspondem a cada idade, e quando.</p>
-            <div class="tags">
-              <span class="tag">Vacinação</span>
-              <span class="tag">Pacientes</span>
-            </div>
-            <span class="go">Abrir calculadora
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-            </span>
-          </a>
-
-          <a class="tool reveal tint-coral" href="../calculadora-habitos/">
-            <div class="tool-top">
-              <span class="tool-icon" aria-hidden="true">🚭</span>
-            </div>
-            <div class="tool-title">Unidades maço-ano e gramas de álcool</div>
-            <p class="tool-desc">Carga tabágica em UMA e consumo de álcool em gramas e bebidas-padrão por semana, comparado com os limites de baixo risco.</p>
-            <div class="tags">
-              <span class="tag">Prevenção</span>
-              <span class="tag">Pacientes</span>
             </div>
             <span class="go">Abrir calculadora
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
