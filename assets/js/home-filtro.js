@@ -7,11 +7,11 @@ const vazio = document.getElementById('tools-vazio');
 const contagem = document.getElementById('tools-contagem');
 
 if (grid && busca && filtros) {
-  // A mesma ferramenta pode aparecer em várias categorias; a contagem usa o href.
+  // Cada ferramenta aparece numa só categoria.
   const cartas = Array.from(grid.querySelectorAll('.tool'));
   const seccoes = Array.from(grid.querySelectorAll('.tools-section'));
   const botoes = Array.from(filtros.querySelectorAll('.tabbtn'));
-  const totalFerramentas = new Set(cartas.map((c) => c.getAttribute('href'))).size;
+  const totalFerramentas = cartas.length;
 
   const normalizar = (s) =>
     s
@@ -27,7 +27,7 @@ if (grid && busca && filtros) {
   function aplicar() {
     const termo = normalizar(busca.value.trim());
     let algumVisivel = false;
-    const visiveis = new Set();
+    let visiveis = 0;
 
     seccoes.forEach((seccao) => {
       const cartasDaSeccao = Array.from(seccao.querySelectorAll('.tool'));
@@ -41,7 +41,7 @@ if (grid && busca && filtros) {
         if (visivel) {
           visiveisNaSeccao += 1;
           algumVisivel = true;
-          visiveis.add(carta.getAttribute('href'));
+          visiveis += 1;
         }
       });
 
@@ -52,7 +52,7 @@ if (grid && busca && filtros) {
     vazio.hidden = algumVisivel;
     if (contagem) {
       contagem.textContent =
-        visiveis.size === totalFerramentas ? `(${totalFerramentas})` : `(${visiveis.size} de ${totalFerramentas})`;
+        visiveis === totalFerramentas ? `(${totalFerramentas})` : `(${visiveis} de ${totalFerramentas})`;
     }
 
     const params = new URLSearchParams(location.search);
