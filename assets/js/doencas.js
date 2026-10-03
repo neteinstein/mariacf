@@ -191,7 +191,7 @@ function mostrarDoenca(d, grupoId) {
     <p class="disclaimer">Informação geral de apoio. Não substitui uma consulta — em caso de dúvida, fale com o seu médico ou ligue SNS 24 (808 24 24 24). Em emergência, ligue 112.</p>`;
 
   mostrarGrupo(d, grupoId);
-  document.title = `${d.nome} · Doenças · Dra. Maria Cortês Ferreira`;
+  document.title = `${d.nome} · Doenças · Saúde em Família`;
 
   const tabs = Array.from(vista.querySelectorAll('[role="tab"]'));
   tabs.forEach((t, idx) => {
@@ -298,7 +298,7 @@ function render({ rolar = false } = {}) {
     raiz.classList.remove('com-doenca');
     vista.hidden = true;
     vista.innerHTML = '';
-    document.title = 'Doenças explicadas para todas as idades · Dra. Maria Cortês Ferreira';
+    document.title = 'Doenças explicadas para todas as idades · Saúde em Família';
     if (busca) busca.value = p.get('q') || '';
     escolherCategoria(CATEGORIAS.includes(p.get('cat')) ? p.get('cat') : 'todas');
     aplicarFiltros({ atualizarUrl: false });
