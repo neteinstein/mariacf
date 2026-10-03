@@ -8,7 +8,7 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 - `/` — página inicial: doenças explicadas para cinco grupos etários
 - `/ferramentas/` — as calculadoras e questionários clínicos
 - `/sns/` — contactos úteis do SNS (112, SNS 24 e outras linhas de ajuda)
-- `/sobre/` — percurso da Dra. Maria e artigos no Ponto SJ
+- `/sobre/` — percurso da Dra. Maria, distinções, comunicações, formação e artigos no Ponto SJ
 - `/usf/` — USF Nova Saúde (São Martinho do Campo): contactos, mapa, serviços, a Dra. Maria, história, notícias e como marcar consulta
 
 ## Doenças
