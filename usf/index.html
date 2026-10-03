@@ -38,8 +38,8 @@
         <nav class="site-nav" aria-label="Secções do site">
           <a href="../">Doenças</a>
           <a href="../ferramentas/">Ferramentas</a>
-          <a href="../sns/">SNS</a>
           <a href="../usf/" aria-current="page">USF</a>
+          <a href="../sns/">SNS</a>
           <a href="../sobre/">Sobre</a>
         </nav>
         <button class="icon-btn theme-toggle" type="button" aria-label="Alternar tema claro/escuro">
@@ -59,13 +59,52 @@
         <ul class="about-facts">
           <li><span aria-hidden="true">📍</span> Av. 25 de Abril, São Martinho do Campo</li>
           <li><span aria-hidden="true">🏥</span> ULS do Médio Ave</li>
-          <li><span aria-hidden="true">👨‍👩‍👧</span> Medicina Geral e Familiar</li>
+          <li><span aria-hidden="true">🗓️</span> Aberta desde junho de 2015</li>
         </ul>
         <div class="profile-cta">
           <a class="btn-primary" href="tel:252860070">Ligar 252 860 070</a>
-          <a class="back-link" href="mailto:usf.novasaude@ulsmave.min-saude.pt">Enviar email</a>
+          <a class="back-link" href="#localizacao-titulo">Como chegar</a>
         </div>
       </div>
+      <figure class="profile-card usf-ilustracao reveal" aria-hidden="true">
+        <svg viewBox="0 0 320 220" role="presentation">
+          <defs>
+            <linearGradient id="usf-ceu" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="var(--teal-soft)"/>
+              <stop offset="1" stop-color="var(--surface-strong)"/>
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="320" height="220" rx="22" fill="url(#usf-ceu)"/>
+          <circle class="usf-sol" cx="262" cy="46" r="18" fill="var(--sun)" opacity="0.85"/>
+          <g class="usf-nuvem" fill="var(--surface-strong)" opacity="0.9">
+            <ellipse cx="70" cy="44" rx="26" ry="10"/><ellipse cx="88" cy="38" rx="16" ry="10"/>
+          </g>
+          <rect x="0" y="182" width="320" height="38" fill="var(--teal)" opacity="0.18"/>
+          <path d="M150 220 L176 182 L196 182 L182 220 Z" fill="var(--ink-mute)" opacity="0.25"/>
+          <rect x="44" y="92" width="232" height="92" rx="6" fill="var(--surface-strong)" stroke="var(--line)" stroke-width="2"/>
+          <rect x="36" y="82" width="248" height="14" rx="4" fill="var(--teal)"/>
+          <rect x="196" y="64" width="64" height="22" rx="4" fill="var(--surface-strong)" stroke="var(--line)" stroke-width="2"/>
+          <text x="228" y="80" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" font-weight="700" fill="var(--teal)">USF</text>
+          <g fill="var(--teal-soft)" stroke="var(--teal)" stroke-width="1.5">
+            <rect x="60" y="110" width="30" height="24" rx="3"/><rect x="100" y="110" width="30" height="24" rx="3"/>
+            <rect x="190" y="110" width="30" height="24" rx="3"/><rect x="230" y="110" width="30" height="24" rx="3"/>
+            <rect x="60" y="146" width="30" height="24" rx="3"/><rect x="230" y="146" width="30" height="24" rx="3"/>
+          </g>
+          <rect x="142" y="132" width="36" height="52" rx="3" fill="var(--teal)" opacity="0.85"/>
+          <g class="usf-cruz">
+            <rect x="148" y="102" width="24" height="24" rx="6" fill="var(--coral)"/>
+            <path d="M160 107v14M153 114h14" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+          </g>
+          <g fill="var(--teal)" opacity="0.7">
+            <circle cx="22" cy="166" r="14"/><rect x="20" y="170" width="4" height="14"/>
+            <circle cx="298" cy="162" r="16"/><rect x="296" y="168" width="4" height="16"/>
+          </g>
+        </svg>
+        <dl class="profile-stats">
+          <div><dt>2015</dt><dd>inauguração do edifício</dd></div>
+          <div><dt>7.ª</dt><dd>USF do concelho de Santo Tirso</dd></div>
+        </dl>
+      </figure>
     </section>
 
     <section class="profile-section" aria-labelledby="contactos-titulo">
@@ -81,14 +120,34 @@
         </article>
         <article class="pub contacto tint-violet reveal">
           <div class="pub-meta"><span class="pub-type"><span aria-hidden="true">✉️</span> Email</span></div>
-          <a class="about-link" href="mailto:usf.novasaude@ulsmave.min-saude.pt">usf.novasaude@ulsmave.min-saude.pt</a>
+          <a class="about-link usf-email" href="mailto:usf.novasaude@ulsmave.min-saude.pt">usf.novasaude@ulsmave.min-saude.pt</a>
           <p class="pub-venue">Pedidos não urgentes</p>
           <p class="pub-desc">Indique sempre o nome completo e o número de utente do SNS. Não use o email para situações urgentes.</p>
         </article>
         <article class="pub contacto tint-sun reveal">
+          <div class="pub-meta"><span class="pub-type"><span aria-hidden="true">🕗</span> Horário</span></div>
+          <p class="contacto-num">8h – 20h</p>
+          <p class="pub-venue">Dias úteis</p>
+          <p class="pub-desc">Horário anunciado na abertura, em 2015. Encerra aos fins de semana e feriados; nessa altura ligue para o SNS 24.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="profile-section" aria-labelledby="localizacao-titulo">
+      <div class="section-head reveal">
+        <h2 id="localizacao-titulo">Localização</h2>
+      </div>
+      <div class="usf-local reveal">
+        <div class="usf-mapa">
+          <iframe title="Mapa da USF Nova Saúde, em São Martinho do Campo" src="https://maps.google.com/maps?q=USF%20Nova%20Sa%C3%BAde%2C%20Avenida%2025%20de%20Abril%2C%204795-442%20S%C3%A3o%20Martinho%20do%20Campo&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <article class="pub contacto tint-sun">
           <div class="pub-meta"><span class="pub-type"><span aria-hidden="true">📍</span> Morada</span></div>
           <p class="pub-venue">Avenida 25 de Abril, s/n<br>4795-442 São Martinho do Campo<br>Santo Tirso</p>
-          <p class="pub-desc">Nas antigas instalações do centro de saúde de São Martinho do Campo. <a class="about-link" href="https://www.google.com/maps/search/?api=1&amp;query=USF+Nova+Sa%C3%BAde+S%C3%A3o+Martinho+do+Campo" target="_blank" rel="noopener">Ver no mapa</a>.</p>
+          <p class="pub-desc">No centro de São Martinho do Campo (freguesia de Vila Nova do Campo).</p>
+          <div class="profile-cta">
+            <a class="btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=USF+Nova+Sa%C3%BAde+S%C3%A3o+Martinho+do+Campo" target="_blank" rel="noopener">Obter direções</a>
+          </div>
         </article>
       </div>
     </section>
@@ -101,7 +160,7 @@
         <li class="reveal">
           <span class="journey-ico" aria-hidden="true">🩺</span>
           <h3>Consultas de medicina geral e familiar</h3>
-          <p>Consultas programadas com o seu médico de família e consulta de doença aguda no próprio dia, para problemas que não podem esperar.</p>
+          <p>Consultas programadas com o seu médico de família e consulta aberta no próprio dia, para problemas que não podem esperar.</p>
         </li>
         <li class="reveal">
           <span class="journey-ico" aria-hidden="true">👶</span>
@@ -119,6 +178,67 @@
           <p>Vacinas do Programa Nacional de Vacinação, tratamentos de enfermagem e visitas ao domicílio a utentes que não se podem deslocar.</p>
         </li>
       </ol>
+    </section>
+
+    <section class="profile-section" aria-labelledby="historia-titulo">
+      <div class="section-head reveal">
+        <h2 id="historia-titulo">História</h2>
+      </div>
+      <ol class="linha-tempo">
+        <li class="reveal">
+          <span class="linha-data">24 fev 2007</span>
+          <h3>Protocolo para a nova unidade</h3>
+          <p>A Câmara Municipal de Santo Tirso e o Ministério da Saúde assinam um protocolo para melhorar os cuidados de saúde no concelho, que inclui uma nova unidade de saúde em São Martinho do Campo.</p>
+        </li>
+        <li class="reveal">
+          <span class="linha-data">jan 2015</span>
+          <h3>Obras concluídas</h3>
+          <p>Termina a construção do novo edifício, feita ao abrigo de um protocolo entre a Câmara e a ARS Norte, num investimento de cerca de 1,1 milhões de euros.</p>
+        </li>
+        <li class="reveal">
+          <span class="linha-data">jun 2015</span>
+          <h3>Abertura da USF</h3>
+          <p>A unidade abre portas e substitui a antiga UCSP de São Martinho do Campo. Começa com sete médicos, sete enfermeiros e cinco administrativos, e fica a ser a sétima USF do concelho.</p>
+        </li>
+        <li class="reveal">
+          <span class="linha-data">jan 2024</span>
+          <h3>Integração na ULS do Médio Ave</h3>
+          <p>Com a reorganização do SNS, os centros de saúde de Santo Tirso e Trofa passam a fazer parte da Unidade Local de Saúde do Médio Ave, com os hospitais da região.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="profile-section" aria-labelledby="noticias-titulo">
+      <div class="section-head reveal">
+        <h2 id="noticias-titulo">Notícias</h2>
+      </div>
+      <div class="noticias">
+        <article class="pub tint-teal reveal">
+          <div class="pub-meta"><span class="pub-type"><span aria-hidden="true">🏗️</span> 2026</span></div>
+          <h3 class="pub-title">Antigo centro de saúde vai dar lugar à Unidade de Saúde Pública</h3>
+          <p class="pub-desc">O edifício do antigo centro de saúde de São Martinho do Campo está a ser requalificado, num investimento de 1,3 milhões de euros (PRR e Câmara), para receber a Unidade de Saúde Pública da ULS do Médio Ave. Conclusão prevista para janeiro de 2027.</p>
+          <a class="about-link" href="https://www.cm-stirso.pt/conhecer/comunicacao/noticias/noticia/avanca-requalificacao-do-antigo-centro-de-saude-de-sao-martinho-do-campo" target="_blank" rel="noopener">Ler na Câmara de Santo Tirso</a>
+        </article>
+        <article class="pub tint-sun reveal">
+          <div class="pub-meta"><span class="pub-type"><span aria-hidden="true">🏆</span> Distinção</span></div>
+          <h3 class="pub-title">Entre as melhores unidades do país</h3>
+          <p class="pub-desc">Segundo dados do Ministério da Saúde, a unidade de São Martinho do Campo foi a melhor do país no seu escalão, com um índice de desempenho global de 95,7, e a 17.ª entre cerca de mil unidades a nível nacional.</p>
+          <a class="about-link" href="https://www.santo-tirso.tv/artigo/1/5128/centro-de-saude-de-s-martinho-e-o-melhor-do-pais-do-seu-escalao/" target="_blank" rel="noopener">Ler no Santo Tirso TV</a>
+        </article>
+        <article class="pub tint-violet reveal">
+          <div class="pub-meta"><span class="pub-type"><span aria-hidden="true">🎉</span> Junho de 2015</span></div>
+          <h3 class="pub-title">Unidade de Saúde de São Martinho já abriu</h3>
+          <p class="pub-desc">O presidente da Câmara, Joaquim Couto, assinalou a abertura com uma visita à nova unidade, que abriu às 14h com consulta aberta entre as 8h e as 20h.</p>
+          <a class="about-link" href="https://www.cm-stirso.pt/noticia/unidade-de-saude-de-s-martinho-ja-abriu" target="_blank" rel="noopener">Ler na Câmara de Santo Tirso</a>
+        </article>
+        <article class="pub tint-coral reveal">
+          <div class="pub-meta"><span class="pub-type"><span aria-hidden="true">🧱</span> Janeiro de 2015</span></div>
+          <h3 class="pub-title">Unidade de Saúde de São Martinho do Campo concluída</h3>
+          <p class="pub-desc">Terminadas as obras, o edifício ficou pronto a receber o equipamento necessário para começar a funcionar.</p>
+          <a class="about-link" href="https://www.cm-stirso.pt/noticia/unidade-de-saude-de-s-martinho-do-campo-concluida" target="_blank" rel="noopener">Ler na Câmara de Santo Tirso</a>
+        </article>
+      </div>
+      <p class="section-intro reveal">Mais novidades e fotografias na <a class="about-link" href="https://www.facebook.com/USFNovaSaude/" target="_blank" rel="noopener">página da USF Nova Saúde no Facebook</a>.</p>
     </section>
 
     <section class="profile-section" aria-labelledby="como-titulo">
