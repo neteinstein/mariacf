@@ -30,6 +30,7 @@ export const CATEGORIAS = [
   'Digestivo',
   'Ossos e articulações',
   'Saúde mental',
+  'Rins e urologia',
 ];
 
 export const DOENCAS = [
@@ -1760,6 +1761,902 @@ export const DOENCAS = [
           { ico: '🏠', titulo: 'Proteger a família', texto: 'Nas primeiras semanas de tratamento, areje bem a casa e tape a boca ao tossir. Os familiares e as pessoas próximas devem ser avaliados no centro de saúde ou no Centro de Diagnóstico Pneumológico.' },
         ],
         alerta: { titulo: 'Procure ajuda urgente se…', lista: ['Tossir sangue', 'Tiver falta de ar intensa', 'Ficar com a pele ou os olhos amarelos durante o tratamento'] },
+      },
+    },
+  },
+
+  {
+    id: 'asma',
+    nome: 'Asma',
+    emoji: '🌬️',
+    categoria: 'Respiratório',
+    palavras: 'pieira chiadeira bronquite falta de ar inalador bombinha alergia pólen ácaros',
+    resumo: 'Os brônquios ficam inflamados e apertam-se em crises, com tosse, pieira e falta de ar. Com o inalador certo, faz-se uma vida normal.',
+    heroi: 'bronquio-asma',
+    deco: 'bronquio',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['pulmoes', 'Os pulmões enchem-se de ar'],
+          ['bronquio-asma', 'Na asma, os tubinhos do ar ficam apertados'],
+          ['alergenos', 'Pó, pólen e pelo de animais podem fazer tossir'],
+          ['inalador', 'A bombinha abre os tubinhos do ar'],
+          ['correr', 'Com a asma tratada, podes correr e brincar'],
+          ['abraco', 'Avisa um adulto se custar a respirar'],
+        ],
+      },
+      '5-12': {
+        intro: 'A asma é quando os tubinhos que levam o ar aos pulmões — os brônquios — ficam irritados e se apertam. Não se pega, e com o tratamento certo dá para fazer tudo o que os amigos fazem.',
+        imagens: [
+          ['bronquio-asma', 'Numa crise, os brônquios apertam-se'],
+          ['alergenos', 'Pólen, ácaros do pó e pelo de animais'],
+          ['inalador', 'O inalador leva o remédio diretamente aos pulmões'],
+          ['nadar', 'Nadar e fazer desporto faz bem'],
+        ],
+        seccoes: [
+          { ico: '🌬️', titulo: 'O que é?', texto: 'O ar entra pelo nariz e pela boca e desce por tubinhos até aos pulmões. Na asma, esses tubinhos estão sensíveis: quando encontram uma coisa que os irrita, incham, fazem muco e apertam. O ar passa com dificuldade e ouve-se um assobio a respirar, a pieira.' },
+          { ico: '🤧', titulo: 'O que pode causar uma crise?', lista: ['Constipações e gripe', 'Pó da casa, pólen e pelo de animais', 'Fumo do tabaco', 'Ar muito frio ou poluído', 'Às vezes, correr muito sem o inalador'] },
+          { ico: '💨', titulo: 'Como se trata?', texto: 'Com inaladores (as «bombinhas»). Há o de todos os dias, que acalma os brônquios, e o de alívio, para as crises. As crianças mais pequenas usam uma câmara expansora, um tubo que ajuda o remédio a chegar aos pulmões.' },
+          { ico: '🙋', titulo: 'Numa crise', lista: ['Pára, senta-te e tenta respirar devagar', 'Usa o inalador de alívio como o médico explicou', 'Avisa logo um adulto — na escola também'] },
+        ],
+        curiosidade: 'Há muitos atletas olímpicos com asma — alguns até ganharam medalhas na natação, no ciclismo e no atletismo!',
+      },
+      '13-17': {
+        intro: 'A asma é uma das doenças crónicas mais frequentes na tua idade. Bem controlada, não deve impedir-te de fazer desporto, sair ou dormir bem — se impede, é sinal de que o tratamento precisa de ser revisto.',
+        imagens: [
+          ['bronquio-asma', 'Inflamação e aperto dos brônquios'],
+          ['inalador', 'O inalador certo, com a técnica certa'],
+          ['cigarro', 'Tabaco e vape pioram a asma'],
+        ],
+        seccoes: [
+          { ico: '🫁', titulo: 'O que se passa nos brônquios', texto: 'Na asma, os brônquios estão inflamados mesmo quando te sentes bem. Perante um gatilho — infeções, alergias, fumo, exercício, stress — apertam-se e enchem-se de muco: aparecem tosse (sobretudo à noite), pieira, aperto no peito e falta de ar.' },
+          { ico: '💨', titulo: 'Os inaladores', lista: ['O inalador com corticoide trata a inflamação: é o que previne as crises', 'Usar só o inalador de alívio, sem corticoide, não chega e aumenta o risco de crises graves', 'A técnica conta: pede ao médico ou ao farmacêutico para ver como o usas', 'Bochecha com água depois do inalador com corticoide'] },
+          { ico: '✅', titulo: 'Asma controlada é…', lista: ['Quase sem sintomas durante o dia', 'Sem acordar à noite com tosse ou falta de ar', 'Fazer desporto sem limitações', 'Precisar do alívio, no máximo, duas vezes por semana'] },
+        ],
+        mitos: [
+          ['Quem tem asma não deve fazer desporto.', 'Deve! Com a asma controlada, o exercício melhora a respiração. Às vezes basta o inalador antes do treino.'],
+          ['Os inaladores com corticoide viciam ou fazem engordar.', 'Não viciam, e a dose é tão pequena que, na maioria das pessoas, não tem os efeitos dos corticoides em comprimidos.'],
+          ['O vape não faz mal a quem tem asma.', 'O vapor irrita os brônquios e pode provocar crises, tal como o tabaco.'],
+        ],
+        alerta: { titulo: 'Vai à urgência se…', lista: ['O inalador de alívio não fizer efeito ou precisares dele a toda a hora', 'Não conseguires falar frases inteiras por falta de ar', 'Os lábios ou as unhas ficarem azulados'] },
+        ligacoes: [{ href: 'calculadora-respiratoria/?calc=act', texto: 'Teste de controlo da asma (ACT)' }],
+      },
+      '18-65': {
+        intro: 'A asma afeta cerca de 1 em cada 15 adultos em Portugal e pode começar em qualquer idade. É uma inflamação crónica dos brônquios: o objetivo do tratamento é viver sem sintomas e sem crises, não apenas aliviá-las.',
+        imagens: [
+          ['bronquio-asma', 'Inflamação, muco e aperto dos brônquios'],
+          ['inalador', 'Inalador com corticoide: a base do tratamento'],
+          ['alergenos', 'Conhecer e reduzir os gatilhos'],
+        ],
+        seccoes: [
+          { ico: '🩺', titulo: 'Sintomas', lista: ['Pieira (chiadeira)', 'Falta de ar e aperto no peito', 'Tosse, sobretudo à noite ou de madrugada', 'Sintomas que vão e vêm, pioram com constipações, alergénios, frio ou esforço'] },
+          { ico: '🔬', titulo: 'Diagnóstico', texto: 'Faz-se com a história clínica e a espirometria (prova de função respiratória), que mostra a obstrução e a melhoria depois de um broncodilatador. Testes de alergia ajudam a identificar gatilhos. Asma que começa no trabalho pode ser profissional.' },
+          { ico: '💨', titulo: 'Tratamento', lista: ['Todos os adultos com asma devem ter um inalador com corticoide — usar só o broncodilatador de alívio é perigoso', 'Em muitos casos, o mesmo inalador (corticoide com formoterol) serve para todos os dias e para as crises', 'Rever a técnica inalatória em cada consulta', 'Plano de ação escrito: o que fazer quando piora', 'Vacina da gripe todos os anos'] },
+          { ico: '🚭', titulo: 'Ajuda muito', lista: ['Deixar de fumar e evitar o fumo dos outros', 'Reduzir os ácaros: arejar, aspirar, lavar a roupa de cama a 60 °C', 'Tratar a rinite alérgica', 'Manter um peso saudável e fazer exercício'] },
+        ],
+        alerta: { titulo: 'Procure ajuda urgente se…', lista: ['O inalador de alívio não resolver ou o efeito durar pouco', 'Não conseguir falar frases completas', 'Lábios azulados, sonolência ou confusão'] },
+        ligacoes: [{ href: 'calculadora-respiratoria/?calc=act', texto: 'Teste de controlo da asma (ACT)' }],
+      },
+      '65+': {
+        intro: 'A asma também existe depois dos 65 anos — às vezes começa nesta idade — e é fácil confundi-la com a DPOC ou com problemas do coração. Com o tratamento certo, respira-se melhor e evitam-se idas à urgência.',
+        imagens: [
+          ['inalador', 'O inalador certo para as suas mãos'],
+          ['medico', 'Mostrar ao médico como usa o inalador'],
+          ['vacina', 'Vacinas da gripe e da pneumonia'],
+          ['janela', 'Arejar a casa e evitar o fumo'],
+        ],
+        seccoes: [
+          { ico: '💨', titulo: 'O inalador', lista: ['Há vários tipos: se tiver pouca força nas mãos ou dificuldade em coordenar, peça outro', 'A câmara expansora ajuda muito com os inaladores pressurizados', 'Bocheche com água depois do inalador com corticoide', 'Leve os inaladores às consultas'] },
+          { ico: '🛡️', titulo: 'Prevenir crises', lista: ['Vacina da gripe todos os anos, da COVID-19 e da pneumonia como indicado', 'Evitar o fumo e a poeira', 'Cuidado com alguns medicamentos (como certos comprimidos para a tensão ou colírios para o glaucoma): diga sempre que tem asma'] },
+          { ico: '🫀', titulo: 'Será asma, DPOC ou coração?', texto: 'Falta de ar e pieira nos mais velhos podem ter várias causas, às vezes juntas. A espirometria e a avaliação do coração ajudam a perceber o que é, para tratar bem.' },
+        ],
+        alerta: { titulo: 'Procure ajuda urgente se…', lista: ['O inalador de alívio não fizer efeito', 'Tiver falta de ar em repouso ou não conseguir falar', 'Ficar com os lábios azulados ou muito sonolento'] },
+      },
+    },
+  },
+
+  {
+    id: 'enfarte',
+    nome: 'Enfarte do miocárdio',
+    alias: 'Ataque cardíaco e angina de peito',
+    emoji: '💔',
+    categoria: 'Coração e vasos',
+    palavras: 'ataque cardíaco angina dor no peito coronária cateterismo stent 112 via verde',
+    resumo: 'Uma artéria do coração entope e parte do músculo fica sem sangue. É uma emergência: ligar logo 112.',
+    heroi: 'coracao-enfarte',
+    deco: 'enfarte',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['coracao', 'O coração é um músculo que bate sem parar'],
+          ['coracao-enfarte', 'Às vezes um caninho do coração entope'],
+          ['dor-peito', 'Dói muito no peito'],
+          ['ligar-112', 'Liga-se 112 para pedir ajuda'],
+          ['prato', 'Comer legumes e fruta ajuda o coração'],
+          ['correr', 'Correr e brincar dá força ao coração'],
+        ],
+      },
+      '5-12': {
+        intro: 'O coração é um músculo que bombeia sangue para o corpo todo. Ele próprio também precisa de sangue, que lhe chega por uns tubinhos chamados artérias coronárias. Quando um deles entope, acontece um enfarte.',
+        imagens: [
+          ['coracao-enfarte', 'Uma artéria entupida deixa parte do coração sem sangue'],
+          ['dor-peito', 'Dor forte no peito'],
+          ['ligar-112', 'Ligar 112 logo, sem esperar'],
+          ['correr', 'Mexer o corpo protege o coração'],
+        ],
+        seccoes: [
+          { ico: '❤️', titulo: 'O que é?', texto: 'Com os anos, pode juntar-se gordura nas paredes das artérias, como calcário num cano. Se uma artéria do coração entope de vez, essa parte do músculo fica sem oxigénio e começa a estragar-se. Por isso é preciso ir depressa para o hospital.' },
+          { ico: '🚑', titulo: 'Se um adulto se queixar de dor no peito', lista: ['Não o deixes sozinho', 'Chama outro adulto', 'Liga 112 e diz a morada', 'Responde com calma às perguntas'] },
+          { ico: '💪', titulo: 'Como se protege o coração?', lista: ['Brincar e fazer desporto', 'Comer fruta, legumes e pouco sal', 'Nunca começar a fumar', 'Dormir bem'] },
+        ],
+        curiosidade: 'O teu coração bate cerca de 100 mil vezes por dia, e numa vida inteira mais de 2,5 mil milhões de vezes!',
+      },
+      '13-17': {
+        intro: 'As doenças do coração e dos vasos são a principal causa de morte em Portugal. O enfarte costuma surgir em adultos, mas os hábitos que o preparam — tabaco, sedentarismo, má alimentação — começam muitas vezes na adolescência.',
+        imagens: [
+          ['coracao-enfarte', 'Uma placa de gordura rompe e forma um coágulo'],
+          ['ligar-112', 'Dor no peito: 112, sem esperar'],
+          ['cigarro', 'O tabaco é o maior inimigo das artérias'],
+        ],
+        seccoes: [
+          { ico: '🫀', titulo: 'Como acontece', texto: 'Ao longo dos anos formam-se placas de gordura (aterosclerose) nas artérias do coração. Se uma placa se rompe, forma-se um coágulo que tapa a artéria. Quanto mais tempo passa até a desentupir, mais músculo se perde.' },
+          { ico: '🚨', titulo: 'Reconhecer', lista: ['Dor ou aperto no peito que dura mais de alguns minutos', 'Dor que passa para o braço, o pescoço, o maxilar ou as costas', 'Suores frios, náuseas, falta de ar', 'Liga 112 — não vás de carro nem esperes que passe'] },
+          { ico: '🛡️', titulo: 'Proteger o coração já', lista: ['Não fumar nem vaporizar', 'Mexer-te pelo menos 1 hora por dia', 'Menos fast food, sal e refrigerantes', 'Bebidas energéticas e drogas como a cocaína podem provocar problemas cardíacos mesmo em jovens'] },
+        ],
+        mitos: [
+          ['Enfartes só acontecem a velhos.', 'São mais frequentes depois dos 50, mas podem acontecer a adultos jovens, sobretudo fumadores ou com colesterol muito alto de família.'],
+          ['Se a dor passar sozinha, não era nada.', 'Uma dor no peito que vai e vem pode ser angina, um aviso de que o coração recebe pouco sangue. Deve ser vista pelo médico.'],
+          ['O enfarte é sempre uma dor fortíssima, como nos filmes.', 'Muitas vezes é um aperto, um peso ou um desconforto, com suores e enjoo.'],
+        ],
+        alerta: { titulo: 'Liga 112 se alguém tiver…', lista: ['Dor ou aperto no peito com mais de alguns minutos', 'Dor no peito com suores, falta de ar ou desmaio', 'Perda de consciência — e começa o suporte básico de vida se souberes'] },
+      },
+      '18-65': {
+        intro: 'O enfarte agudo do miocárdio é uma das principais causas de morte em Portugal, mas a sobrevivência melhorou muito: ligar cedo para o 112 ativa a Via Verde Coronária e leva o doente diretamente ao hospital que pode desentupir a artéria.',
+        imagens: [
+          ['coracao-enfarte', 'Artéria coronária entupida por um coágulo'],
+          ['dor-peito', 'Dor no peito: cada minuto conta'],
+          ['tensiometro', 'Tensão, colesterol e açúcar controlados'],
+        ],
+        seccoes: [
+          { ico: '🚨', titulo: 'Sinais de enfarte', lista: ['Dor, aperto ou peso no peito durante mais de 10 minutos, em repouso ou com esforço', 'Irradiação para o braço esquerdo, o pescoço, o maxilar, as costas ou o estômago', 'Suores frios, náuseas, falta de ar, tonturas', 'Nas mulheres, nas pessoas com diabetes e nos mais velhos pode haver só cansaço, falta de ar ou mal-estar'] },
+          { ico: '📞', titulo: 'O que fazer', lista: ['Ligar 112 de imediato — não conduzir até ao hospital', 'Parar o que está a fazer e ficar sentado', 'Seguir as indicações do 112', 'Se a pessoa perder a consciência e não respirar normalmente, iniciar compressões torácicas'] },
+          { ico: '⚖️', titulo: 'Fatores de risco', lista: ['Tabaco', 'Hipertensão arterial, colesterol elevado e diabetes', 'Obesidade e sedentarismo', 'Familiares diretos com enfarte em idade jovem', 'Stress crónico e pouco sono'] },
+          { ico: '💊', titulo: 'Depois do enfarte', texto: 'O tratamento continua para a vida: medicamentos que evitam coágulos e protegem o coração, estatinas para baixar o colesterol, reabilitação cardíaca com exercício orientado e, sobretudo, mudança de hábitos. Deixar de fumar reduz muito o risco de um novo enfarte.' },
+        ],
+        alerta: { titulo: 'Ligue 112 se…', lista: ['Dor ou aperto no peito com mais de 10 minutos', 'Dor no peito com suores, náuseas ou falta de ar', 'Desmaio ou palpitações com mal-estar'] },
+        ligacoes: [
+          { href: 'calculadora-risco-cardiovascular/', texto: 'Calcular o risco cardiovascular (SCORE2)' },
+          { href: 'calculadora-laboratorial/?calc=ldl', texto: 'Calcular o colesterol LDL' },
+        ],
+      },
+      '65+': {
+        intro: 'Depois dos 65 anos, o enfarte é mais frequente e nem sempre dá a dor típica: pode surgir como falta de ar, cansaço súbito, confusão ou desmaio. Na dúvida, ligue 112.',
+        imagens: [
+          ['dor-peito', 'Dor, aperto ou mal-estar no peito'],
+          ['ligar-112', 'Ligar 112 e não ir pelo próprio pé'],
+          ['pastilheiro', 'Tomar a medicação todos os dias'],
+          ['bengala', 'Caminhar um pouco todos os dias'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Sinais a não ignorar', lista: ['Dor ou aperto no peito, mesmo que ligeiro', 'Falta de ar de repente', 'Cansaço intenso sem explicação', 'Suores frios, enjoo, tonturas ou desmaio', 'Dor de peito com esforço que alivia em repouso (angina): fale com o médico'] },
+          { ico: '💊', titulo: 'Se já teve um enfarte', lista: ['Não pare os medicamentos por sua conta, sobretudo os que evitam coágulos', 'Leve a lista de medicamentos a todas as consultas', 'Faça a reabilitação cardíaca se lhe for proposta', 'Se lhe receitaram nitroglicerina para debaixo da língua, saiba quando a usar'] },
+          { ico: '🌿', titulo: 'Proteger o coração', lista: ['Caminhar, com o ritmo que conseguir', 'Pouco sal, mais legumes, fruta e peixe', 'Controlar a tensão, o colesterol e o açúcar', 'Vacina da gripe todos os anos'] },
+        ],
+        alerta: { titulo: 'Ligue 112 se…', lista: ['Tiver dor ou aperto no peito que não passa', 'A dor de angina não aliviar com repouso e nitroglicerina', 'Tiver falta de ar súbita ou desmaiar'] },
+      },
+    },
+  },
+
+  {
+    id: 'fibrilhacao-auricular',
+    nome: 'Fibrilhação auricular',
+    alias: 'Arritmia do coração',
+    emoji: '💓',
+    categoria: 'Coração e vasos',
+    tambem: ['Cérebro e nervos'],
+    palavras: 'arritmia palpitações coração acelerado pulso irregular anticoagulante AVC',
+    resumo: 'O coração bate de forma irregular e, muitas vezes, rápida. É a arritmia mais frequente e aumenta muito o risco de AVC.',
+    heroi: 'ecg-irregular',
+    deco: 'ritmo',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['coracao', 'O coração bate tum-tum, tum-tum'],
+          ['ecg-irregular', 'Às vezes bate aos saltinhos'],
+          ['pulso', 'Pode sentir-se o coração no pulso'],
+          ['medico', 'O médico ouve o coração'],
+          ['comprimido', 'Os avós tomam remédios para o coração'],
+          ['abraco', 'Os avós ficam bem com o tratamento'],
+        ],
+      },
+      '5-12': {
+        intro: 'O coração tem um «maestro» que lhe diz quando bater, sempre ao mesmo ritmo. Na fibrilhação auricular, a parte de cima do coração fica baralhada, e o coração bate de forma desarrumada. É mais comum nos avós.',
+        imagens: [
+          ['ecg-irregular', 'Um coração que bate sem ritmo certo'],
+          ['pulso', 'Contar os batimentos no pulso'],
+          ['comprimido', 'Remédios que evitam coágulos'],
+          ['medico', 'Consultas para ver o coração'],
+        ],
+        seccoes: [
+          { ico: '🎵', titulo: 'O que é?', texto: 'Normalmente, um sinal elétrico parte sempre do mesmo sítio e o coração bate certinho, como um tambor numa marcha. Na fibrilhação auricular, a parte de cima do coração recebe muitos sinais ao mesmo tempo e treme em vez de bater. O ritmo fica irregular.' },
+          { ico: '🩸', titulo: 'Porque é importante?', texto: 'Quando o coração treme, o sangue pode ficar parado em cantinhos e formar pequenos coágulos. Se um coágulo for até ao cérebro, causa um AVC. Por isso, muitos avós com esta doença tomam remédios que deixam o sangue mais fluido.' },
+          { ico: '🖐️', titulo: 'Experimenta!', lista: ['Põe dois dedos no pulso, do lado do polegar', 'Conta os batimentos durante 1 minuto', 'Nas crianças, o coração bate entre 70 e 110 vezes por minuto em repouso', 'Depois de correr, bate mais depressa'] },
+        ],
+        curiosidade: 'O coração tem a sua própria eletricidade: é por isso que um eletrocardiograma consegue desenhar cada batimento numa folha!',
+      },
+      '13-17': {
+        intro: 'A fibrilhação auricular é a arritmia mais comum. É rara na tua idade, mas é muito frequente nos avós. Conhecê-la ajuda a reconhecer os sinais e a perceber porque é tão importante tomar a medicação.',
+        imagens: [
+          ['ecg-irregular', 'No eletrocardiograma, o ritmo é irregular'],
+          ['pulso', 'Pulso irregular, às vezes muito rápido'],
+          ['cerebro-avc', 'Sem tratamento, aumenta o risco de AVC'],
+        ],
+        seccoes: [
+          { ico: '⚡', titulo: 'O que acontece', texto: 'As aurículas, as cavidades de cima do coração, recebem impulsos elétricos desorganizados e tremem (fibrilham). Os ventrículos batem de forma irregular e, muitas vezes, rápida. O sangue que fica parado nas aurículas pode formar coágulos.' },
+          { ico: '🫀', titulo: 'Sintomas', lista: ['Palpitações: coração acelerado ou «aos saltos»', 'Cansaço e falta de ar', 'Tonturas', 'Muitas pessoas não sentem nada — é descoberta numa consulta'] },
+          { ico: '⚠️', titulo: 'Em jovens', texto: 'Palpitações em adolescentes são quase sempre benignas, mas álcool em excesso («coração de fim de semana»), bebidas energéticas, cafeína e drogas estimulantes podem provocar arritmias, incluindo fibrilhação auricular.' },
+        ],
+        mitos: [
+          ['Se não sinto nada, não é grave.', 'Mesmo sem sintomas, o risco de AVC existe. É a prevenção do AVC que mais protege.'],
+          ['Os anticoagulantes «afinam» o sangue e são perigosos.', 'Têm risco de hemorragia, mas, na maioria das pessoas com fibrilhação auricular, evitam muitos mais AVC do que as hemorragias que causam.'],
+          ['Arritmia é sinal de que o coração está a parar.', 'Na fibrilhação auricular, o coração continua a bombear — de forma menos eficiente, mas continua.'],
+        ],
+        alerta: { titulo: 'Fala com um adulto ou liga 112 se…', lista: ['Tiveres palpitações com desmaio, dor no peito ou muita falta de ar', 'Alguém com fibrilhação auricular ficar com a boca ao lado, sem força num braço ou com dificuldade em falar (AVC)'] },
+      },
+      '18-65': {
+        intro: 'A fibrilhação auricular é a arritmia mais frequente e torna-se mais comum com a idade. Multiplica por cinco o risco de AVC, mas a anticoagulação reduz esse risco em cerca de dois terços. Muitas vezes não dá sintomas: medir o pulso pode descobri-la.',
+        imagens: [
+          ['ecg-irregular', 'O eletrocardiograma confirma o diagnóstico'],
+          ['pulso', 'Pulso irregular: conte durante 1 minuto'],
+          ['comprimido', 'Anticoagulação para prevenir o AVC'],
+        ],
+        seccoes: [
+          { ico: '🩺', titulo: 'Sintomas e diagnóstico', texto: 'Palpitações, cansaço, falta de ar, tonturas ou menor capacidade para o esforço — ou nenhum sintoma. O diagnóstico faz-se com um eletrocardiograma; às vezes é preciso um registo de 24 horas ou mais (Holter). Relógios inteligentes podem dar o alerta, mas o diagnóstico exige confirmação.' },
+          { ico: '⚖️', titulo: 'Causas e fatores de risco', lista: ['Idade', 'Hipertensão arterial e insuficiência cardíaca', 'Obesidade, diabetes e apneia do sono', 'Álcool em excesso', 'Doença da tiroide e doenças das válvulas'] },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Prevenir o AVC: anticoagulante, conforme o risco (escala CHA₂DS₂-VASc)', 'Controlar a frequência cardíaca ou recuperar o ritmo normal (medicamentos, cardioversão ou ablação)', 'Tratar os fatores de risco: tensão, peso, apneia do sono, álcool', 'Exercício regular, adaptado'] },
+        ],
+        alerta: { titulo: 'Ligue 112 se…', lista: ['Tiver sinais de AVC: boca ao lado, falta de força num braço, dificuldade em falar', 'Palpitações com dor no peito, desmaio ou falta de ar intensa', 'Hemorragia que não para, se toma anticoagulante'] },
+        ligacoes: [
+          { href: 'calculadora-anticoagulacao/?calc=chadsvasc', texto: 'Risco de AVC na fibrilhação auricular (CHA₂DS₂-VASc)' },
+          { href: 'calculadora-anticoagulacao/?calc=hasbled', texto: 'Risco de hemorragia (HAS-BLED)' },
+        ],
+      },
+      '65+': {
+        intro: 'Cerca de 1 em cada 10 pessoas com mais de 65 anos tem fibrilhação auricular, e muitas não sabem. Medir o pulso de vez em quando e tomar o anticoagulante todos os dias são as melhores formas de evitar um AVC.',
+        imagens: [
+          ['pulso', 'Medir o pulso: regular ou irregular?'],
+          ['pastilheiro', 'O anticoagulante não se pode esquecer'],
+          ['cerebro-avc', 'O tratamento evita o AVC'],
+          ['medico', 'Consultas e análises de controlo'],
+        ],
+        seccoes: [
+          { ico: '🖐️', titulo: 'Medir o pulso', lista: ['Sentado e em repouso, dois dedos no pulso, do lado do polegar', 'Contar durante 1 minuto inteiro', 'Se os batimentos forem irregulares, desarrumados, fale com o médico', 'Muitos aparelhos de medir a tensão também avisam de pulso irregular'] },
+          { ico: '💊', titulo: 'Se toma anticoagulante', lista: ['Tome-o todos os dias, sempre à mesma hora', 'Não pare por sua conta, nem antes de exames ou de tratamentos dentários: pergunte primeiro', 'Avise sempre que toma anticoagulante (dentista, farmácia, hospital)', 'Cuidado com anti-inflamatórios e alguns produtos naturais, que aumentam o risco de hemorragia'] },
+          { ico: '🩸', titulo: 'Sinais de hemorragia', lista: ['Fezes pretas ou com sangue', 'Urina vermelha ou escura', 'Nódoas negras grandes sem razão', 'Sangrar do nariz ou das gengivas durante muito tempo'] },
+        ],
+        alerta: { titulo: 'Ligue 112 se…', lista: ['Tiver sinais de AVC: boca ao lado, falta de força, dificuldade em falar', 'Bater com a cabeça enquanto toma anticoagulante', 'Tiver uma hemorragia que não para'] },
+        ligacoes: [{ href: 'calculadora-anticoagulacao/', texto: 'CHA₂DS₂-VASc e HAS-BLED' }],
+      },
+    },
+  },
+
+  {
+    id: 'insuficiencia-cardiaca',
+    nome: 'Insuficiência cardíaca',
+    emoji: '🫀',
+    categoria: 'Coração e vasos',
+    palavras: 'coração fraco cansaço falta de ar pernas inchadas edema água nos pulmões',
+    resumo: 'O coração não consegue bombear o sangue de que o corpo precisa. Dá cansaço, falta de ar e pernas inchadas, e trata-se cada vez melhor.',
+    heroi: 'coracao-cansado',
+    deco: 'bateria',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['coracao', 'O coração é uma bomba que leva o sangue'],
+          ['coracao-cansado', 'Às vezes o coração fica cansado'],
+          ['pernas-inchadas', 'As pernas podem ficar inchadas'],
+          ['balanca', 'Os avós pesam-se todos os dias'],
+          ['sal', 'Pouco sal na comida'],
+          ['abraco', 'Passear devagarinho com os avós'],
+        ],
+      },
+      '5-12': {
+        intro: 'O coração é uma bomba que empurra o sangue para o corpo todo. Na insuficiência cardíaca, essa bomba fica fraca ou rígida e não consegue bombear tudo o que é preciso. O coração não parou: só trabalha com mais dificuldade.',
+        imagens: [
+          ['coracao-cansado', 'Um coração que bombeia com menos força'],
+          ['pernas-inchadas', 'A água acumula-se nas pernas'],
+          ['balanca', 'Pesar todos os dias mostra se há água a mais'],
+          ['sal', 'O sal faz o corpo guardar água'],
+        ],
+        seccoes: [
+          { ico: '🫀', titulo: 'O que é?', texto: 'Quando o coração não bombeia bem, o sangue anda mais devagar e o corpo guarda água. Essa água vai para as pernas, que incham, e às vezes para os pulmões, o que dá falta de ar. A pessoa cansa-se depressa.' },
+          { ico: '❓', titulo: 'Porque acontece?', texto: 'Muitas vezes depois de um enfarte, ou por tensão alta durante muitos anos, que obriga o coração a fazer mais força. Também pode acontecer por problemas nas válvulas do coração, que são como portinhas.' },
+          { ico: '💛', titulo: 'Como posso ajudar o avô ou a avó?', lista: ['Lembrar os remédios e a pesagem da manhã', 'Passear devagar, ao ritmo deles', 'Pôr pouco sal na comida', 'Avisar um adulto se ficarem com muita falta de ar'] },
+        ],
+        curiosidade: 'Num só dia, o coração bombeia cerca de 7 mil litros de sangue — dava para encher 40 banheiras!',
+      },
+      '13-17': {
+        intro: 'A insuficiência cardíaca é muito frequente nos mais velhos e é uma das principais causas de internamento depois dos 65 anos. Não quer dizer que o coração vá parar: quer dizer que não bombeia tão bem como devia.',
+        imagens: [
+          ['coracao-cansado', 'O coração bombeia menos do que o corpo precisa'],
+          ['pernas-inchadas', 'Inchaço nos tornozelos e nas pernas'],
+          ['balanca', 'Subir de peso depressa pode ser água'],
+        ],
+        seccoes: [
+          { ico: '🫀', titulo: 'O que é', texto: 'É uma síndrome: o coração, enfraquecido ou rígido, não consegue encher-se ou esvaziar-se bem. As causas mais comuns são o enfarte, a hipertensão arterial de longa data, as doenças das válvulas e as arritmias.' },
+          { ico: '🩺', titulo: 'Sintomas', lista: ['Falta de ar com o esforço, e depois em repouso', 'Precisar de várias almofadas para dormir', 'Pernas e tornozelos inchados', 'Cansaço e menor capacidade para o exercício', 'Aumento de peso rápido, por retenção de líquidos'] },
+          { ico: '💊', titulo: 'Tratamento', texto: 'Hoje existem vários medicamentos que fazem viver mais e melhor, além dos diuréticos que tiram a água a mais. Juntam-se exercício adaptado, pouco sal, a pesagem diária e, nalguns casos, dispositivos como pacemakers.' },
+        ],
+        mitos: [
+          ['Insuficiência cardíaca é o coração a parar.', 'O coração continua a bater; só não bombeia tão bem como devia.'],
+          ['Quem tem o coração fraco deve ficar quieto.', 'O exercício adaptado e orientado melhora os sintomas e a qualidade de vida.'],
+          ['Beber muita água faz sempre bem.', 'Na insuficiência cardíaca, às vezes é preciso limitar os líquidos — conforme indicação médica.'],
+        ],
+        alerta: { titulo: 'Liga 112 se um familiar…', lista: ['Tiver falta de ar intensa, sobretudo deitado', 'Tiver dor no peito ou desmaiar', 'Ficar confuso ou com os lábios azulados'] },
+      },
+      '18-65': {
+        intro: 'Um estudo recente estimou que cerca de 1 em cada 6 pessoas com mais de 50 anos em Portugal tem insuficiência cardíaca — e a maioria não sabe. Reconhecer os sintomas cedo permite começar tratamentos que mudam o prognóstico.',
+        imagens: [
+          ['coracao-cansado', 'Fraqueza ou rigidez do músculo cardíaco'],
+          ['pernas-inchadas', 'Edema: a água acumula-se nas pernas'],
+          ['tensiometro', 'Controlar a tensão protege o coração'],
+        ],
+        seccoes: [
+          { ico: '🩺', titulo: 'Sintomas', lista: ['Falta de ar com esforços que antes fazia bem', 'Falta de ar deitado ou acordar à noite sem ar', 'Inchaço dos tornozelos e das pernas', 'Cansaço, perda de apetite, aumento de peso rápido'] },
+          { ico: '🔬', titulo: 'Diagnóstico', texto: 'Uma análise ao sangue (BNP ou NT-proBNP) ajuda a excluir ou a suspeitar da doença; o ecocardiograma confirma e mostra a força do coração (fração de ejeção). Procura-se também a causa: doença coronária, hipertensão, válvulas, arritmias, álcool.' },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Vários medicamentos, em conjunto, que reduzem internamentos e mortalidade — não deixe de os tomar se se sentir melhor', 'Diuréticos para tirar a água a mais', 'Tratar a causa e a fibrilhação auricular, se existir', 'Nalguns casos, pacemaker ou desfibrilhador'] },
+          { ico: '🥗', titulo: 'No dia a dia', lista: ['Pouco sal (menos de 5 g por dia) e nada de comida muito salgada', 'Pesar-se todas as manhãs', 'Exercício regular, adaptado — idealmente reabilitação cardíaca', 'Não fumar e evitar o álcool', 'Vacinas da gripe e da pneumonia'] },
+        ],
+        alerta: { titulo: 'Contacte o médico se…', lista: ['Aumentar mais de 2 kg em 3 dias', 'A falta de ar ou o inchaço piorarem', 'Precisar de mais almofadas para dormir', 'Falta de ar intensa, dor no peito ou desmaio: ligue 112'] },
+      },
+      '65+': {
+        intro: 'Depois dos 65 anos, a insuficiência cardíaca é muito frequente e é uma das primeiras causas de internamento. O cansaço e a falta de ar não são «da idade»: tratados, permitem fazer muito mais.',
+        imagens: [
+          ['balanca', 'Pesar-se todas as manhãs, à mesma hora'],
+          ['pernas-inchadas', 'Ver se as pernas estão mais inchadas'],
+          ['sal', 'Comida com pouco sal'],
+          ['pastilheiro', 'Os medicamentos todos os dias'],
+        ],
+        seccoes: [
+          { ico: '⚖️', titulo: 'A pesagem diária', lista: ['Todas as manhãs, depois de urinar e antes do pequeno-almoço', 'Com roupa semelhante e na mesma balança', 'Aponte o peso num caderno', 'Mais de 2 kg em 3 dias: fale com o médico ou com o enfermeiro'] },
+          { ico: '🍲', titulo: 'Comer bem com pouco sal', lista: ['Tempere com ervas, alho, limão e especiarias', 'Evite enchidos, bacalhau mal demolhado, queijos curados, sopas e refeições prontas', 'Beba os líquidos que o médico indicar — nem a mais, nem a menos'] },
+          { ico: '💊', titulo: 'Medicamentos', lista: ['Tome-os todos os dias, mesmo quando se sente bem', 'Os diuréticos fazem urinar mais: tome-os de manhã', 'Evite anti-inflamatórios (para as dores das articulações): pioram o coração e os rins', 'Leve a lista de medicamentos a todas as consultas'] },
+        ],
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Aumentar mais de 2 kg em 3 dias', 'Tiver mais falta de ar ou precisar de dormir sentado', 'Falta de ar em repouso, dor no peito ou desmaio: ligue 112'] },
+      },
+    },
+  },
+
+  {
+    id: 'doenca-renal',
+    nome: 'Doença renal crónica',
+    emoji: '🫘',
+    categoria: 'Rins e urologia',
+    tambem: ['Metabolismo'],
+    palavras: 'rins insuficiência renal creatinina albumina diálise hemodiálise transplante TFG',
+    resumo: 'Os rins vão perdendo, devagar, a capacidade de limpar o sangue. É silenciosa no início, mas uma análise ao sangue e à urina deteta-a cedo.',
+    heroi: 'rins',
+    deco: 'rim',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['rins', 'Temos dois rins que limpam o sangue'],
+          ['agua', 'Beber água faz bem aos rins'],
+          ['prato', 'Comida com pouco sal'],
+          ['analise', 'Uma análise mostra se os rins estão bem'],
+          ['medico', 'O médico cuida dos rins'],
+          ['correr', 'Brincar e correr faz bem ao corpo'],
+        ],
+      },
+      '5-12': {
+        intro: 'Temos dois rins, do tamanho de um punho, nas costas, um de cada lado. São o filtro do corpo: limpam o sangue e fazem o xixi. Na doença renal crónica, este filtro vai ficando estragado devagarinho.',
+        imagens: [
+          ['rins', 'Os rins filtram o sangue e fazem a urina'],
+          ['agua', 'Água é a melhor bebida'],
+          ['sal', 'Sal a mais cansa os rins'],
+          ['analise', 'Análises ao sangue e ao xixi'],
+        ],
+        seccoes: [
+          { ico: '🫘', titulo: 'O que fazem os rins?', lista: ['Limpam o sangue do lixo que o corpo produz', 'Tiram a água a mais, que sai no xixi', 'Ajudam a controlar a tensão arterial', 'Ajudam a fazer sangue e ossos fortes'] },
+          { ico: '❓', titulo: 'Porque se estragam?', texto: 'Nos adultos, as causas mais comuns são a diabetes e a tensão alta, que vão estragando os filtros pequeninos dos rins. Nas crianças é raro, e quase sempre por problemas com que se nasce.' },
+          { ico: '🏥', titulo: 'E quando os rins deixam de trabalhar?', texto: 'Uma máquina pode fazer o trabalho dos rins: chama-se diálise. Também se pode receber um rim novo, oferecido por outra pessoa — um transplante. Basta um rim para viver bem!' },
+        ],
+        curiosidade: 'Os rins filtram cerca de 180 litros de líquido por dia, mas só 1 a 2 litros saem em xixi — o resto volta para o sangue!',
+      },
+      '13-17': {
+        intro: 'A doença renal crónica é muito mais frequente do que se pensa, e Portugal é dos países europeus com mais pessoas em diálise. É silenciosa: quase sempre só dá sintomas quando já está avançada.',
+        imagens: [
+          ['rins', 'Cerca de um milhão de pequenos filtros em cada rim'],
+          ['glucometro', 'Diabetes e tensão alta são as causas mais comuns'],
+          ['agua', 'Água em vez de refrigerantes'],
+        ],
+        seccoes: [
+          { ico: '🔬', titulo: 'O que é', texto: 'É a perda progressiva e permanente da função dos rins, durante meses ou anos. Mede-se pela taxa de filtração glomerular (calculada a partir da creatinina no sangue) e pela albumina na urina, um sinal precoce de lesão.' },
+          { ico: '⚠️', titulo: 'Riscos que começam cedo', lista: ['Obesidade e diabetes tipo 2 em jovens', 'Tensão alta não tratada', 'Abuso de anti-inflamatórios (para dores de cabeça ou menstruais) sem indicação', 'Suplementos «para ganhar músculo» e esteroides anabolizantes', 'Desidratação repetida'] },
+          { ico: '🎁', titulo: 'Doação e transplante', texto: 'Em Portugal, todas as pessoas são consideradas dadoras de órgãos após a morte, a não ser que se inscrevam no registo de não dadores (RENNDA). O transplante renal permite a muitas pessoas deixar a diálise.' },
+        ],
+        mitos: [
+          ['Beber muita água cura os rins.', 'Beber o suficiente é importante, mas água a mais não trata a doença renal e pode até fazer mal em fases avançadas.'],
+          ['Se urino bem, os rins estão bem.', 'Muitas pessoas com doença renal urinam normalmente. Só as análises dizem como estão os rins.'],
+          ['Os anti-inflamatórios são inofensivos porque se compram sem receita.', 'Usados com frequência, podem lesar os rins, sobretudo com desidratação.'],
+        ],
+        alerta: { titulo: 'Fala com o médico se…', lista: ['Tiveres urina com espuma persistente ou cor de chá', 'Inchaço nos olhos ou nas pernas', 'Tensão alta numa medição'] },
+      },
+      '18-65': {
+        intro: 'Cerca de 1 em cada 10 adultos tem doença renal crónica, e a maioria não sabe. Portugal está entre os países da Europa com mais pessoas em diálise. Detetada cedo, é possível travá-la.',
+        imagens: [
+          ['rins', 'A função renal perde-se em silêncio'],
+          ['analise', 'Creatinina no sangue e albumina na urina'],
+          ['tensiometro', 'Tensão controlada protege os rins'],
+        ],
+        seccoes: [
+          { ico: '⚖️', titulo: 'Quem deve fazer análises', lista: ['Pessoas com diabetes ou hipertensão (pelo menos uma vez por ano)', 'Doença cardiovascular ou obesidade', 'Familiares com doença renal', 'Pedras nos rins frequentes, ou uso prolongado de anti-inflamatórios ou de lítio'] },
+          { ico: '🔬', titulo: 'Diagnóstico', texto: 'São precisas duas análises simples: a creatinina no sangue, para calcular a taxa de filtração glomerular (TFG), e a relação albumina/creatinina na urina. Fala-se de doença renal crónica quando a TFG está abaixo de 60 ou há albumina na urina durante mais de 3 meses.' },
+          { ico: '💊', titulo: 'Travar a progressão', lista: ['Controlar a tensão arterial e a diabetes', 'Medicamentos que protegem os rins (alguns da tensão e da diabetes)', 'Pouco sal e proteína com moderação', 'Evitar anti-inflamatórios e rever as doses dos medicamentos', 'Não fumar'] },
+          { ico: '🏥', titulo: 'Nas fases avançadas', texto: 'Quando os rins quase deixam de funcionar, as opções são a hemodiálise, a diálise peritoneal (feita em casa) e o transplante renal. A escolha prepara-se com tempo, numa consulta de nefrologia.' },
+        ],
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Inchaço nas pernas ou à volta dos olhos', 'Urina com espuma, escura ou com sangue', 'Cansaço, náuseas, comichão ou perda de apetite persistentes', 'Urinar muito menos do que o habitual'] },
+        ligacoes: [{ href: 'calculadora-funcao-renal/?calc=ckdepi', texto: 'Calcular a taxa de filtração glomerular (CKD-EPI)' }],
+      },
+      '65+': {
+        intro: 'Com a idade, os rins perdem alguma função, e a doença renal crónica é muito frequente depois dos 65 anos. Saber como estão os rins é importante para ajustar os medicamentos e evitar problemas.',
+        imagens: [
+          ['analise', 'Análises ao sangue e à urina, pelo menos uma vez por ano'],
+          ['comprimido', 'Doses de medicamentos ajustadas aos rins'],
+          ['agua', 'Beber o que o médico indicar'],
+          ['tensiometro', 'Tensão e açúcar controlados'],
+        ],
+        seccoes: [
+          { ico: '💊', titulo: 'Cuidado com os medicamentos', lista: ['Evite anti-inflamatórios (ibuprofeno, diclofenac, naproxeno…), também em pomada ou sem receita', 'Para as dores, o paracetamol é geralmente mais seguro — pergunte ao médico', 'Diga sempre que tem doença renal: muitas doses têm de ser ajustadas', 'Antes de exames com contraste, avise'] },
+          { ico: '💧', titulo: 'Desidratação', texto: 'Com vómitos, diarreia ou muito calor, os rins podem piorar de repente. Beba líquidos e fale com o médico: às vezes é preciso suspender por uns dias alguns medicamentos da tensão, da diabetes ou diuréticos.' },
+          { ico: '🍲', titulo: 'Alimentação', lista: ['Pouco sal', 'Proteína com moderação, sem exageros', 'Nas fases avançadas, pode ser preciso controlar o potássio (algumas frutas e legumes) e o fósforo — siga a orientação da equipa de saúde'] },
+        ],
+        alerta: { titulo: 'Procure o médico se…', lista: ['Urinar muito pouco ou nada', 'Inchaço ou falta de ar a piorar', 'Vómitos ou diarreia que não deixam beber'] },
+        ligacoes: [{ href: 'calculadora-funcao-renal/', texto: 'Calcular a função renal (CKD-EPI e Cockcroft-Gault)' }],
+      },
+    },
+  },
+
+  {
+    id: 'cancro-prostata',
+    nome: 'Cancro da próstata',
+    emoji: '🥸',
+    categoria: 'Oncologia',
+    tambem: ['Rins e urologia'],
+    palavras: 'próstata PSA toque retal urinar homens hiperplasia benigna Movember',
+    resumo: 'O cancro mais frequente nos homens em Portugal. Costuma crescer devagar e, descoberto cedo, tem muito boas hipóteses de cura.',
+    heroi: 'prostata',
+    deco: 'bigode',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['bigode', 'Em novembro, muitos homens deixam crescer o bigode'],
+          ['medico', 'Os avôs e os pais vão ao médico'],
+          ['analise', 'Uma análise ao sangue ajuda a cuidar deles'],
+          ['prato', 'Legumes e fruta dão saúde'],
+          ['correr', 'Mexer o corpo faz bem a todos'],
+          ['abraco', 'Cuidar da família com carinho'],
+        ],
+      },
+      '5-12': {
+        intro: 'Só os rapazes e os homens têm próstata: é uma glândula pequena, do tamanho de uma noz, por baixo da bexiga. Às vezes, nos homens mais velhos, aparece lá um cancro. Não se pega!',
+        imagens: [
+          ['prostata', 'A próstata fica logo por baixo da bexiga'],
+          ['bigode', 'O bigode de novembro lembra a saúde dos homens'],
+          ['medico', 'Ir ao médico mesmo sem estar doente'],
+        ],
+        seccoes: [
+          { ico: '🌰', titulo: 'O que é a próstata?', texto: 'É uma glândula que só os homens têm. Fica à volta do tubo por onde sai o xixi, logo por baixo da bexiga. Nos homens mais velhos, a próstata cresce muitas vezes, e isso pode fazer o xixi sair mais devagar.' },
+          { ico: '🔬', titulo: 'O que é o cancro da próstata?', texto: 'É quando algumas células da próstata começam a crescer sem parar. Quase sempre acontece depois dos 50 anos e cresce muito devagar. Quando é descoberto cedo, quase sempre se cura.' },
+          { ico: '🥸', titulo: 'Porquê os bigodes?', texto: 'Em novembro, muitos homens deixam crescer o bigode para lembrar que é importante cuidar da saúde e ir ao médico. Podes desafiar o teu pai ou o teu avô!' },
+        ],
+        curiosidade: 'O movimento dos bigodes de novembro começou em 2003, na Austrália, com apenas 30 amigos — hoje participam milhões de pessoas em todo o mundo!',
+      },
+      '13-17': {
+        intro: 'O cancro da próstata é o mais frequente nos homens em Portugal, mas quase nunca aparece antes dos 50 anos. Falar dele ajuda os homens da tua família a não terem vergonha de ir ao médico.',
+        imagens: [
+          ['prostata', 'A próstata envolve a uretra, por baixo da bexiga'],
+          ['analise', 'O PSA é uma análise ao sangue'],
+          ['bigode', 'Novembro azul: a saúde dos homens'],
+        ],
+        seccoes: [
+          { ico: '🔬', titulo: 'O que é', texto: 'A próstata produz parte do líquido do sémen. O cancro da próstata surge quando as suas células crescem de forma descontrolada. Na maioria dos casos cresce devagar; alguns, menos frequentes, são agressivos.' },
+          { ico: '⚖️', titulo: 'Fatores de risco', lista: ['Idade (sobretudo depois dos 50)', 'Pai ou irmão com cancro da próstata', 'Ascendência africana', 'Algumas alterações genéticas, como as do gene BRCA2'] },
+          { ico: '🙋', titulo: 'Saúde masculina', texto: 'Os homens vão menos ao médico do que as mulheres, muitas vezes por vergonha ou por acharem que não é preciso. Incentivar o pai ou o avô a ir às consultas pode fazer a diferença.' },
+        ],
+        mitos: [
+          ['O cancro da próstata dá sempre sintomas.', 'No início, quase nunca dá. Os problemas a urinar são, na maioria das vezes, por crescimento benigno da próstata.'],
+          ['Quem tem o cancro da próstata fica sempre impotente ou incontinente.', 'Nem sempre. Muitos casos são só vigiados, e os tratamentos atuais tentam preservar estas funções.'],
+          ['É uma doença que só aparece em velhos, não há nada a fazer.', 'Descoberto cedo, a taxa de cura é muito elevada.'],
+        ],
+        alerta: { titulo: 'Fala com o médico se…', lista: ['Tiveres dor ou inchaço num testículo (outro tipo de cancro, mais frequente em jovens)', 'Tiveres sangue na urina', 'Dor ou ardor persistente a urinar'] },
+      },
+      '18-65': {
+        intro: 'É o cancro mais frequente nos homens em Portugal. A maioria cresce devagar, e muitos homens morrem com ele e não por causa dele. A partir dos 50 anos — ou dos 45 com familiares afetados — vale a pena falar com o médico sobre a análise do PSA.',
+        imagens: [
+          ['prostata', 'A próstata fica por baixo da bexiga'],
+          ['analise', 'PSA: uma decisão partilhada com o médico'],
+          ['conversa', 'Falar sem tabus sobre a saúde masculina'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Sintomas', texto: 'Na fase inicial, quase nunca há sintomas. Jato fraco, urinar muitas vezes ou acordar à noite para urinar são, na maior parte dos casos, sinais de hiperplasia benigna da próstata, muito frequente com a idade — mas devem ser avaliados.' },
+          { ico: '🧪', titulo: 'O PSA', lista: ['É uma análise ao sangue; um valor alto não significa cancro (pode subir com infeções ou com o crescimento benigno)', 'Pode detetar o cancro cedo, mas também cancros que nunca fariam mal', 'A decisão de o fazer deve ser informada e partilhada com o médico, a partir dos 50 anos', 'Mais cedo (45 anos) se tiver pai ou irmão com cancro da próstata, ascendência africana ou alteração do gene BRCA2'] },
+          { ico: '🔬', titulo: 'Diagnóstico', texto: 'Se o PSA ou o toque retal levantarem suspeita, faz-se habitualmente uma ressonância magnética da próstata e, se indicado, biópsia. A agressividade do tumor (escala de Gleason) ajuda a decidir o tratamento.' },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Vigilância ativa, nos tumores de baixo risco', 'Cirurgia (prostatectomia) ou radioterapia', 'Terapêutica hormonal e outros tratamentos nas fases avançadas'] },
+        ],
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Dificuldade em urinar, jato fraco ou urinar muitas vezes', 'Sangue na urina ou no sémen', 'Dor óssea persistente, sobretudo nas costas ou nas ancas'] },
+        ligacoes: [
+          { href: 'calculadora-urologia/', texto: 'Avaliar os sintomas urinários (IPSS)' },
+          { href: 'calculadora-plano-rastreios/', texto: 'Plano de rastreios por idade' },
+        ],
+      },
+      '65+': {
+        intro: 'Depois dos 65 anos, quase todos os homens têm a próstata aumentada, e o cancro da próstata é frequente. Na maioria dos casos cresce devagar: o tratamento adapta-se à saúde e às preferências de cada um.',
+        imagens: [
+          ['prostata', 'Próstata aumentada: benigna ou não?'],
+          ['medico', 'Falar com o médico sobre os sintomas'],
+          ['analise', 'O PSA ajuda a vigiar'],
+          ['luz-noite', 'Levantar-se à noite para urinar: cuidado com as quedas'],
+        ],
+        seccoes: [
+          { ico: '🚽', titulo: 'Urinar mal é normal?', texto: 'É muito frequente, sobretudo pelo crescimento benigno da próstata, mas não tem de ser aceite. Há medicamentos e tratamentos que melhoram muito o jato, a urgência e o número de vezes que se levanta à noite.' },
+          { ico: '🔍', titulo: 'Rastreio nesta idade', texto: 'Depois dos 70 anos, o PSA sem sintomas raramente traz benefício e pode levar a exames e tratamentos desnecessários. Converse com o médico sobre o que faz sentido no seu caso.' },
+          { ico: '💊', titulo: 'Se tem cancro da próstata', lista: ['Muitos homens fazem apenas vigilância', 'A terapêutica hormonal pode causar afrontamentos, cansaço e perda de massa óssea e muscular — o exercício ajuda', 'Fale abertamente sobre os efeitos na vida sexual e na continência: há soluções'] },
+        ],
+        alerta: { titulo: 'Procure o médico se…', lista: ['Não conseguir urinar (retenção urinária — é urgente)', 'Sangue na urina', 'Dores nos ossos que não passam ou perda de peso'] },
+        ligacoes: [{ href: 'calculadora-urologia/', texto: 'Avaliar os sintomas urinários (IPSS)' }],
+      },
+    },
+  },
+
+  {
+    id: 'cancro-pele',
+    nome: 'Cancro da pele',
+    alias: 'Melanoma e outros',
+    emoji: '☀️',
+    categoria: 'Oncologia',
+    palavras: 'melanoma sinal pele sol protetor solar escaldão queimadura solar basocelular ABCDE',
+    resumo: 'O cancro mais frequente de todos, ligado sobretudo ao sol. O melanoma é o mais grave, e a proteção solar e a vigilância dos sinais salvam vidas.',
+    heroi: 'sinal-pele',
+    deco: 'sol',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['nuvem-sol', 'O sol é bom, mas queima a pele'],
+          ['protetor', 'Pôr protetor antes de ir para a praia'],
+          ['calor', 'Ficar à sombra quando o sol está forte'],
+          ['agua', 'Beber água quando está calor'],
+          ['sinal-pele', 'Os sinais da pele mostram-se ao médico'],
+          ['abraco', 'Os pais ajudam a pôr o protetor'],
+        ],
+      },
+      '5-12': {
+        intro: 'O sol dá-nos luz, calor e vitamina D, mas tem uns raios invisíveis, os ultravioleta, que queimam a pele. Muitos escaldões ao longo da vida podem causar cancro da pele. A boa notícia: proteger-se é fácil!',
+        imagens: [
+          ['protetor', 'Protetor solar com fator 50'],
+          ['calor', 'Sombra nas horas de mais calor'],
+          ['sinal-pele', 'Olhar para os sinais com atenção'],
+          ['nuvem-sol', 'Mesmo com nuvens, o sol queima'],
+        ],
+        seccoes: [
+          { ico: '☀️', titulo: 'Porque é que o sol queima?', texto: 'Os raios ultravioleta entram na pele e estragam as células. A pele fica vermelha e dói: é um escaldão. A pele lembra-se de todos os escaldões, e alguns podem, muitos anos depois, transformar-se em cancro.' },
+          { ico: '🧴', titulo: 'Como me protejo?', lista: ['Protetor solar 30 minutos antes de sair, e outra vez de 2 em 2 horas e depois de cada banho', 'Chapéu, óculos de sol e t-shirt', 'Brincar à sombra entre o meio-dia e as 4 da tarde', 'Beber água'] },
+          { ico: '🔍', titulo: 'E os sinais?', texto: 'Quase todos temos sinais na pele, e são normais. Se um sinal mudar de tamanho, de forma ou de cor, ou sangrar, mostra-o aos teus pais para irem ao médico.' },
+        ],
+        curiosidade: 'Truque da sombra: se a tua sombra for mais curta do que tu, o sol está forte — é hora de ir para a sombra!',
+      },
+      '13-17': {
+        intro: 'O cancro da pele é o cancro mais frequente, e a maior parte do risco constrói-se antes dos 20 anos, com escaldões e bronzeados intensos. Os solários também aumentam muito o risco de melanoma.',
+        imagens: [
+          ['sinal-pele', 'A regra ABCDE ajuda a vigiar os sinais'],
+          ['protetor', 'Protetor solar, chapéu e sombra'],
+          ['calor', 'Evitar o sol entre as 12 e as 16 horas'],
+        ],
+        seccoes: [
+          { ico: '🔬', titulo: 'Tipos de cancro da pele', lista: ['Carcinoma basocelular: o mais frequente, cresce devagar e quase nunca se espalha', 'Carcinoma espinocelular: nas zonas mais expostas ao sol, como a cara e as orelhas', 'Melanoma: menos frequente, mas o mais grave, porque se pode espalhar — mesmo em jovens'] },
+          { ico: '🔍', titulo: 'A regra ABCDE', lista: ['A — Assimetria: uma metade diferente da outra', 'B — Bordos irregulares ou mal definidos', 'C — Cor: várias cores ou muito escura', 'D — Diâmetro maior do que 6 mm', 'E — Evolução: um sinal que muda'] },
+          { ico: '🧴', titulo: 'Proteger-se a sério', lista: ['Protetor FPS 30 ou mais, em quantidade generosa', 'Reaplicar de 2 em 2 horas e depois de nadar ou transpirar', 'Nada de solários', 'O bronzeado já é um sinal de lesão da pele'] },
+        ],
+        mitos: [
+          ['Um bronzeado protege do sol.', 'Um bronzeado equivale, no máximo, a um fator de proteção muito baixo — e é sinal de que a pele já foi lesada.'],
+          ['Em dias nublados não é preciso protetor.', 'Grande parte dos raios ultravioleta atravessa as nuvens.'],
+          ['Os solários são mais seguros do que o sol.', 'Usar solários antes dos 35 anos aumenta muito o risco de melanoma.'],
+        ],
+        alerta: { titulo: 'Mostra a um médico se…', lista: ['Um sinal mudar de tamanho, forma ou cor', 'Um sinal sangrar, fizer comichão ou ferida', 'Aparecer um sinal novo muito diferente dos outros'] },
+      },
+      '18-65': {
+        intro: 'Portugal tem muitas horas de sol, e o cancro da pele é o cancro mais frequente. O melanoma é o mais grave e atinge com frequência adultos jovens. Detetado cedo, cura-se quase sempre com uma pequena cirurgia.',
+        imagens: [
+          ['sinal-pele', 'Autoexame da pele uma vez por mês'],
+          ['protetor', 'Proteção solar todos os dias de exposição'],
+          ['calor', 'Sombra nas horas de maior radiação'],
+        ],
+        seccoes: [
+          { ico: '⚖️', titulo: 'Fatores de risco', lista: ['Pele clara, cabelo ruivo ou loiro, olhos claros, sardas', 'Escaldões, sobretudo na infância', 'Mais de 50 sinais ou sinais atípicos', 'Familiares com melanoma', 'Trabalho ao ar livre e uso de solários', 'Imunossupressão (por exemplo, depois de um transplante)'] },
+          { ico: '🔍', titulo: 'Autoexame', texto: 'Uma vez por mês, com boa luz e um espelho, observe toda a pele, incluindo o couro cabeludo, as plantas dos pés, entre os dedos e as unhas. Use a regra ABCDE e procure o «patinho feio»: o sinal diferente de todos os outros. Feridas que não cicatrizam também merecem atenção.' },
+          { ico: '🧴', titulo: 'Proteção solar', lista: ['Evitar o sol entre as 12 e as 16 horas', 'Roupa, chapéu de abas largas e óculos de sol', 'Protetor FPS 30 ou mais, reaplicado de 2 em 2 horas', 'Consultar o índice UV na previsão do tempo', 'Bebés com menos de 6 meses não devem estar ao sol direto'] },
+        ],
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Um sinal mudar, sangrar ou fizer comichão', 'Aparecer um sinal novo e diferente, sobretudo depois dos 30 anos', 'Uma ferida na pele não cicatrizar em 4 semanas'] },
+      },
+      '65+': {
+        intro: 'Depois dos 65 anos, o cancro da pele é muito frequente, sobretudo em quem trabalhou ao sol — no campo, no mar ou nas obras. Nos séniores aparecem muitas vezes feridas ou crostas que não saram, na cara, nas orelhas, no couro cabeludo e nas mãos.',
+        imagens: [
+          ['sinal-pele', 'Manchas, sinais ou feridas que mudam'],
+          ['protetor', 'Protetor solar, também nas mãos e nas orelhas'],
+          ['calor', 'Chapéu e sombra'],
+          ['medico', 'Mostrar a pele ao médico'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Esteja atento a', lista: ['Feridas ou crostas que não cicatrizam ou que sangram', 'Pequenos «caroços» brilhantes, rosados ou perolados', 'Manchas ásperas que voltam sempre (queratoses actínicas)', 'Sinais escuros que crescem ou mudam'] },
+          { ico: '🧴', titulo: 'Proteger a pele', lista: ['Chapéu de abas largas e roupa a cobrir os braços', 'Protetor nas zonas destapadas: cara, orelhas, pescoço, mãos e careca', 'Evitar o sol nas horas de mais calor', 'Alguns medicamentos tornam a pele mais sensível ao sol — pergunte ao farmacêutico'] },
+          { ico: '👀', titulo: 'Peça ajuda para ver', texto: 'As costas, o couro cabeludo e a parte de trás das pernas são difíceis de ver sozinho. Peça a um familiar que olhe, ou mostre ao médico nas consultas.' },
+        ],
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Uma ferida não cicatrizar em 4 semanas', 'Um sinal ou mancha crescer, mudar de cor ou sangrar', 'Aparecer um caroço novo na pele'] },
+      },
+    },
+  },
+
+  {
+    id: 'ansiedade',
+    nome: 'Ansiedade',
+    alias: 'Perturbações de ansiedade e ataques de pânico',
+    emoji: '🌀',
+    categoria: 'Saúde mental',
+    palavras: 'nervos stress preocupação pânico medo fobia nervosismo angústia calmantes benzodiazepinas',
+    resumo: 'Preocupação e medo intensos, que não passam e atrapalham o dia a dia. É das doenças mentais mais frequentes em Portugal, e trata-se bem.',
+    heroi: 'respirar-calmo',
+    deco: 'respiro',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['pensamentos', 'Às vezes temos medo e o coração bate depressa'],
+          ['respirar-calmo', 'Encher a barriga de ar, devagarinho'],
+          ['abraco', 'Um abraço ajuda a acalmar'],
+          ['conversa', 'Contar o que sentimos a um adulto'],
+          ['musica', 'Música calminha antes de dormir'],
+          ['sono', 'Dormir bem ajuda a ficar tranquilo'],
+        ],
+      },
+      '5-12': {
+        intro: 'Todos sentimos medo e nervos às vezes — antes de um teste, de um jogo ou de ir ao médico. É normal e até ajuda a estar atento. A ansiedade passa a ser um problema quando os medos são muitos, duram muito e não deixam fazer as coisas de que gostamos.',
+        imagens: [
+          ['pensamentos', 'Pensamentos de «e se…?» que não param'],
+          ['respirar-calmo', 'Respirar devagar acalma o corpo'],
+          ['conversa', 'Falar com quem gosta de nós'],
+          ['correr', 'Brincar e mexer o corpo'],
+        ],
+        seccoes: [
+          { ico: '🦋', titulo: 'O que se sente?', lista: ['Borboletas na barriga ou dor de barriga', 'Coração a bater depressa', 'Mãos a suar ou a tremer', 'Dificuldade em adormecer', 'Vontade de fugir ou de não ir à escola'] },
+          { ico: '🧠', titulo: 'Porque acontece?', texto: 'O cérebro tem um alarme que nos protege do perigo. Na ansiedade, esse alarme fica muito sensível e toca mesmo quando não há perigo nenhum. O corpo prepara-se para fugir, e é por isso que o coração acelera.' },
+          { ico: '🎈', titulo: 'Truques para acalmar', lista: ['Respiração do balão: encher a barriga de ar a contar até 4 e deitar fora a contar até 6', 'Dizer o nome de 5 coisas que vês à tua volta', 'Desenhar ou escrever o que te preocupa', 'Contar a um adulto de confiança'] },
+        ],
+        curiosidade: 'Quando expiras devagar, ativas um nervo chamado nervo vago, que diz ao coração para abrandar — é como um travão natural!',
+      },
+      '13-17': {
+        intro: 'A ansiedade é muito comum na adolescência: escola, exames, redes sociais, amigos, futuro. Um pouco de nervos é normal. Mas se a preocupação não te larga, te tira o sono ou te faz evitar coisas, merece ajuda — e trata-se bem.',
+        imagens: [
+          ['pensamentos', 'Preocupação constante e pensamentos acelerados'],
+          ['respirar-calmo', 'Técnicas de respiração e relaxamento'],
+          ['ecra', 'Menos ecrã, sobretudo à noite'],
+        ],
+        seccoes: [
+          { ico: '🌀', titulo: 'Formas de ansiedade', lista: ['Ansiedade generalizada: preocupação com quase tudo, quase todos os dias', 'Ansiedade social: medo intenso de ser avaliado ou envergonhado', 'Ataques de pânico: crises súbitas de medo, coração acelerado, falta de ar, sensação de desmaio', 'Fobias: medo intenso de uma coisa ou situação concreta'] },
+          { ico: '🧰', titulo: 'O que ajuda', lista: ['Dormir 8 a 10 horas e ter horários regulares', 'Exercício físico', 'Reduzir a cafeína e as bebidas energéticas', 'Fazer pausas nas redes sociais', 'Enfrentar os medos aos poucos, em vez de os evitar'] },
+          { ico: '💬', titulo: 'Pedir ajuda', texto: 'Fala com os teus pais, um professor, o psicólogo da escola ou o médico de família. A psicoterapia (sobretudo a terapia cognitivo-comportamental) funciona muito bem. Pedir ajuda é um sinal de força, não de fraqueza.' },
+        ],
+        mitos: [
+          ['Ansiedade é só nervos, passa sozinha.', 'A perturbação de ansiedade é uma doença real e, sem tratamento, pode durar anos.'],
+          ['Um ataque de pânico pode matar.', 'É muito assustador, mas não é perigoso e passa em minutos. Ainda assim, uma primeira crise deve ser avaliada.'],
+          ['Evitar o que nos assusta resolve.', 'Evitar alivia no momento, mas faz o medo crescer. Enfrentar aos poucos, com apoio, é o que funciona.'],
+        ],
+        alerta: { titulo: 'Pede ajuda já se…', lista: ['Pensares em fazer-te mal ou em morrer (liga 112 ou SNS 24: 808 24 24 24)', 'Deixares de ir à escola ou de sair por causa do medo', 'Usares álcool ou outras substâncias para acalmar'] },
+        ligacoes: [{ href: 'calculadora-saude-mental/?calc=gad7', texto: 'Questionário de ansiedade (GAD-7)' }],
+      },
+      '18-65': {
+        intro: 'Portugal está entre os países europeus com mais perturbações de ansiedade: perto de 1 em cada 6 adultos tem uma, num ano. É muito tratável, mas muitas pessoas esperam anos até pedir ajuda.',
+        imagens: [
+          ['pensamentos', 'Preocupação excessiva, difícil de controlar'],
+          ['respirar-calmo', 'Respiração lenta e relaxamento'],
+          ['conversa', 'A psicoterapia é um tratamento eficaz'],
+        ],
+        seccoes: [
+          { ico: '🩺', titulo: 'Sintomas', lista: ['Preocupação excessiva e difícil de controlar', 'Inquietação, irritabilidade, dificuldade de concentração', 'Tensão muscular, cansaço, insónia', 'Palpitações, falta de ar, tonturas, aperto no peito, problemas digestivos', 'Evitar situações por medo'] },
+          { ico: '💬', titulo: 'Tratamento', lista: ['Psicoterapia, sobretudo terapia cognitivo-comportamental', 'Antidepressivos, que também tratam a ansiedade (fazem efeito em 2 a 6 semanas)', 'Exercício regular, sono regular, menos cafeína e álcool', 'Técnicas de relaxamento e de atenção plena (mindfulness)'] },
+          { ico: '💊', titulo: 'E os calmantes?', texto: 'Portugal é dos países europeus que mais consome benzodiazepinas (calmantes como o alprazolam ou o diazepam). Aliviam depressa, mas causam dependência e sonolência e não tratam a causa. Devem ser usados só por pouco tempo, com indicação médica.' },
+          { ico: '📞', titulo: 'Onde pedir ajuda', texto: 'Comece pelo médico de família. A linha SNS 24 (808 24 24 24) tem aconselhamento psicológico. Uma dor no peito nunca deve ser assumida como ansiedade sem avaliação médica.' },
+        ],
+        alerta: { titulo: 'Procure ajuda urgente se…', lista: ['Tiver pensamentos de suicídio (ligue 112)', 'Tiver dor no peito, falta de ar ou desmaio — pode não ser ansiedade', 'A ansiedade o impedir de trabalhar ou de sair de casa'] },
+        ligacoes: [{ href: 'calculadora-saude-mental/?calc=gad7', texto: 'Questionário de ansiedade (GAD-7)' }],
+      },
+      '65+': {
+        intro: 'A ansiedade também é frequente depois dos 65 anos, muitas vezes junto com doenças físicas, perdas ou solidão. É frequente aparecer como queixas do corpo — insónia, tonturas, dores — e pode ser tratada com segurança.',
+        imagens: [
+          ['pensamentos', 'Preocupações que não deixam descansar'],
+          ['conversa', 'Conviver e falar com alguém'],
+          ['bengala', 'Caminhar acalma'],
+          ['respirar-calmo', 'Respirar devagar antes de dormir'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Sinais', lista: ['Preocupação constante com a saúde, a família ou o dinheiro', 'Insónia, tensão, inquietação', 'Medo de sair de casa ou de cair', 'Queixas físicas sem causa encontrada'] },
+          { ico: '💊', titulo: 'Cuidado com os calmantes', lista: ['As benzodiazepinas aumentam o risco de quedas, fraturas, confusão e problemas de memória', 'Não as pare de repente: a redução deve ser gradual, com o médico', 'Há tratamentos mais seguros para a ansiedade e para a insónia'] },
+          { ico: '🌿', titulo: 'O que ajuda', lista: ['Rotinas diárias e atividade física', 'Convívio: família, amigos, universidade sénior, centro de dia', 'Psicoterapia — funciona em qualquer idade', 'Menos café e chá à tarde'] },
+        ],
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Pensar em morrer ou em fazer mal a si próprio (ligue 112)', 'Dor no peito ou falta de ar: ligue 112 — pode não ser ansiedade', 'Sentir que já não consegue lidar com as preocupações'] },
+        ligacoes: [{ href: 'calculadora-saude-mental/?calc=gad7', texto: 'Questionário de ansiedade (GAD-7)' }],
+      },
+    },
+  },
+
+  {
+    id: 'parkinson',
+    nome: 'Doença de Parkinson',
+    emoji: '🤲',
+    categoria: 'Cérebro e nervos',
+    palavras: 'tremor tremura lentidão rigidez dopamina levodopa marcha quedas',
+    resumo: 'O cérebro produz pouca dopamina, e os movimentos ficam lentos, rígidos e com tremor. Não tem cura, mas o tratamento e o exercício melhoram muito a vida.',
+    heroi: 'mao-tremor',
+    deco: 'mao',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['cerebro', 'O cérebro manda o corpo mexer-se'],
+          ['mao-tremor', 'Às vezes a mão dos avós treme'],
+          ['bengala', 'Os avós andam mais devagar'],
+          ['musica', 'Dançar faz bem aos avós'],
+          ['comprimido', 'Os remédios ajudam a mexer melhor'],
+          ['abraco', 'Ter paciência e dar a mão'],
+        ],
+      },
+      '5-12': {
+        intro: 'A doença de Parkinson é uma doença do cérebro que torna os movimentos mais lentos e, muitas vezes, faz tremer as mãos. Aparece sobretudo nos avós, não se pega e não é culpa de ninguém.',
+        imagens: [
+          ['mao-tremor', 'Tremor nas mãos quando estão paradas'],
+          ['cerebro', 'Falta um mensageiro no cérebro: a dopamina'],
+          ['musica', 'Música, dança e exercício ajudam'],
+          ['comprimido', 'Remédios a horas certas'],
+        ],
+        seccoes: [
+          { ico: '🧠', titulo: 'O que é?', texto: 'Para nos mexermos, o cérebro usa um mensageiro chamado dopamina. Na doença de Parkinson, as células que fazem dopamina vão desaparecendo, e as ordens para o corpo chegam mais devagar. Os movimentos ficam lentos, os músculos rígidos e as mãos podem tremer.' },
+          { ico: '👀', titulo: 'O que se pode notar?', lista: ['Tremor nas mãos quando estão paradas', 'Andar devagar, com passos curtinhos', 'Cara com menos expressão — não quer dizer que esteja triste!', 'Letra pequenina e voz baixa'] },
+          { ico: '💛', titulo: 'Como posso ajudar?', lista: ['Ter paciência quando o avô demora', 'Lembrar os remédios à hora certa', 'Dançar, fazer exercício ou jogar com ele', 'Tirar tapetes e brinquedos do chão, para evitar quedas'] },
+        ],
+        curiosidade: 'O Dia Mundial da Doença de Parkinson é a 11 de abril, dia em que nasceu James Parkinson, o médico inglês que a descreveu em 1817. O seu símbolo é uma tulipa vermelha!',
+      },
+      '13-17': {
+        intro: 'A doença de Parkinson é a segunda doença neurodegenerativa mais frequente, depois da doença de Alzheimer, e afeta cerca de 20 mil pessoas em Portugal. Quase sempre começa depois dos 60 anos, mas há casos mais cedo.',
+        imagens: [
+          ['mao-tremor', 'Tremor de repouso, lentidão e rigidez'],
+          ['cerebro', 'Perda de neurónios que produzem dopamina'],
+          ['bicicleta', 'O exercício é parte do tratamento'],
+        ],
+        seccoes: [
+          { ico: '🧠', titulo: 'O que se passa no cérebro', texto: 'Numa zona chamada substância negra, os neurónios que produzem dopamina vão-se perdendo. A dopamina é essencial para controlar os movimentos. A causa exata não se conhece: há fatores genéticos e ambientais.' },
+          { ico: '🩺', titulo: 'Sintomas', lista: ['Lentidão dos movimentos', 'Tremor de repouso, muitas vezes de um só lado no início', 'Rigidez muscular', 'Alterações da marcha e do equilíbrio', 'Sintomas não motores: perda do olfato, obstipação, sono agitado, tristeza'] },
+          { ico: '💊', titulo: 'Tratamento', texto: 'Os medicamentos substituem ou imitam a dopamina e melhoram muito os sintomas. Juntam-se fisioterapia, terapia da fala e exercício — dança, boxe adaptado, bicicleta, tai chi. Em alguns casos, faz-se cirurgia de estimulação cerebral profunda.' },
+        ],
+        mitos: [
+          ['Parkinson é só tremer.', 'A lentidão é o sintoma principal, e há pessoas que nunca tremem.'],
+          ['Só acontece a pessoas muito velhas.', 'É mais frequente depois dos 60, mas cerca de 1 em cada 10 casos começa antes dos 50.'],
+          ['Quem tem Parkinson deve evitar o esforço.', 'O exercício regular é um dos tratamentos mais eficazes.'],
+        ],
+        alerta: { titulo: 'Avisa um adulto se um familiar…', lista: ['Cair ou ficar «colado» ao chão sem conseguir andar', 'Engasgar-se com frequência ao comer', 'Ficar confuso ou ver coisas que não existem'] },
+      },
+      '18-65': {
+        intro: 'A doença de Parkinson afeta cerca de 20 mil pessoas em Portugal. Embora seja mais frequente depois dos 60, pode começar antes, em idade ativa. O diagnóstico é clínico, e o tratamento precoce permite manter uma vida ativa durante muitos anos.',
+        imagens: [
+          ['mao-tremor', 'Tremor de repouso e lentidão'],
+          ['comprimido', 'Medicamentos a horas certas'],
+          ['bicicleta', 'Exercício regular e intenso'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Sinais precoces', lista: ['Tremor numa mão em repouso', 'Lentidão e menos destreza (abotoar, escrever)', 'Letra cada vez mais pequena', 'Menos balanço de um braço ao andar', 'Anos antes: perda do olfato, obstipação, sonhos «vividos» com movimentos durante o sono, depressão'] },
+          { ico: '🔬', titulo: 'Diagnóstico', texto: 'Faz-se pela observação de um neurologista. Exames como a ressonância ou o DaTSCAN ajudam em casos duvidosos. Alguns medicamentos (para os enjoos, as tonturas ou psiquiátricos) podem causar sintomas parecidos.' },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Levodopa e outros medicamentos dopaminérgicos', 'Horários rigorosos: atrasos causam bloqueios', 'Tomar a levodopa 30 a 60 minutos antes das refeições, porque a proteína reduz a absorção', 'Fisioterapia, terapia da fala e terapia ocupacional', 'Estimulação cerebral profunda em casos selecionados'] },
+        ],
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Quedas frequentes ou bloqueios ao andar', 'Engasgamentos ao comer ou beber', 'Alucinações, confusão ou comportamentos impulsivos (jogo, compras) com a medicação'] },
+      },
+      '65+': {
+        intro: 'Depois dos 65 anos, a doença de Parkinson é mais frequente. O tratamento certo, o exercício e uma casa segura ajudam a manter a autonomia e a prevenir quedas.',
+        imagens: [
+          ['pastilheiro', 'Medicamentos sempre à mesma hora'],
+          ['musica', 'Música e dança: dar ritmo aos passos'],
+          ['luz-noite', 'Luz de presença para evitar quedas'],
+          ['halteres', 'Exercício todos os dias'],
+        ],
+        seccoes: [
+          { ico: '⏰', titulo: 'Medicação', lista: ['Use alarmes para não atrasar as tomas', 'Leve os medicamentos se for para o hospital e avise dos horários', 'Não pare a levodopa de repente', 'Fale com o médico se o efeito durar cada vez menos ou tiver movimentos involuntários'] },
+          { ico: '🚶', titulo: 'Andar com segurança', lista: ['Passos largos e contar ou marcar o ritmo ajuda a desbloquear', 'Calçado fechado e antiderrapante', 'Tirar tapetes, pôr barras de apoio na casa de banho', 'Levantar-se devagar, por causa das tonturas'] },
+          { ico: '🍽️', titulo: 'Outros cuidados', lista: ['Comer devagar, sentado direito, em pequenas porções', 'Fibras e água para a obstipação', 'Falar alto e devagar — a terapia da fala ajuda', 'Tratar a tristeza e a ansiedade, que são frequentes'] },
+        ],
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Cair ou tiver bloqueios frequentes', 'Engasgar-se muitas vezes', 'Ficar confuso, com alucinações ou muito sonolento'] },
+        ligacoes: [{ href: 'calculadora-geriatria/', texto: 'Escalas de avaliação geriátrica (quedas, autonomia)' }],
+      },
+    },
+  },
+
+  {
+    id: 'lombalgia',
+    nome: 'Dor lombar',
+    alias: 'Lombalgia e dor nas costas',
+    emoji: '🦴',
+    categoria: 'Ossos e articulações',
+    palavras: 'lombalgia dor nas costas ciática hérnia discal coluna postura mochila',
+    resumo: 'Dor na parte de baixo das costas, a principal causa de incapacidade no mundo. Quase sempre melhora em poucas semanas, mantendo-se ativo.',
+    heroi: 'coluna',
+    deco: 'coluna',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['coluna', 'A coluna segura o nosso corpo direito'],
+          ['levantar-peso', 'Dobrar os joelhos para levantar coisas'],
+          ['correr', 'Brincar e correr deixa as costas fortes'],
+          ['nadar', 'Nadar faz bem às costas'],
+          ['cama', 'Dormir bem descansa o corpo'],
+          ['abraco', 'Ajudar os avós com os sacos pesados'],
+        ],
+      },
+      '5-12': {
+        intro: 'A coluna é feita de muitos ossinhos empilhados, as vértebras, com almofadas no meio. Segura o corpo e deixa-nos dobrar e rodar. Às vezes, a parte de baixo das costas dói: chama-se dor lombar.',
+        imagens: [
+          ['coluna', 'As vértebras e as almofadas da coluna'],
+          ['levantar-peso', 'Levantar pesos com os joelhos dobrados'],
+          ['nadar', 'Desporto deixa os músculos fortes'],
+        ],
+        seccoes: [
+          { ico: '🦴', titulo: 'Como é a coluna?', texto: 'A coluna tem 33 ossinhos, as vértebras. Entre elas há discos, umas almofadas que amortecem os saltos. À volta, há músculos fortes que seguram tudo. Na zona lombar, a parte de baixo das costas, a coluna aguenta o peso de quase todo o corpo.' },
+          { ico: '🎒', titulo: 'A mochila da escola', lista: ['Não deve pesar mais do que 10 % do teu peso', 'Usa as duas alças, bem ajustadas', 'Leva só o que precisas nesse dia', 'Os livros mais pesados encostados às costas'] },
+          { ico: '💪', titulo: 'Costas fortes', lista: ['Brincar, correr e fazer desporto', 'Mudar de posição quando estás muito tempo sentado', 'Sentar com as costas apoiadas e os pés no chão', 'Menos tempo agarrado ao telemóvel ou ao tablet'] },
+        ],
+        curiosidade: 'Os bebés nascem com cerca de 300 ossos, mas, ao crescer, alguns juntam-se. Os adultos têm 206 — e os da coluna estão entre os mais fortes!',
+      },
+      '13-17': {
+        intro: 'A dor nas costas é cada vez mais comum na adolescência, ligada a muitas horas sentado, a ecrãs, a mochilas pesadas e a pouco exercício — ou a desportos com muito impacto. Quase sempre é benigna e melhora em pouco tempo.',
+        imagens: [
+          ['coluna', 'Dor na zona lombar'],
+          ['ecra', 'Muitas horas de ecrã e má postura'],
+          ['nadar', 'Exercício: o melhor remédio'],
+        ],
+        seccoes: [
+          { ico: '❓', titulo: 'Porque dói', texto: 'Na maioria dos casos, não há lesão grave: são os músculos e os ligamentos que se queixam do excesso de carga, da má postura ou da falta de exercício. Chama-se dor lombar inespecífica.' },
+          { ico: '🧰', titulo: 'O que ajuda', lista: ['Manter-se ativo: o repouso na cama atrasa a recuperação', 'Calor local', 'Fazer pausas e levantar-se a cada 30 a 45 minutos', 'Fortalecer os músculos do abdómen e das costas (natação, pilates)', 'Dormir bem'] },
+          { ico: '⚽', titulo: 'No desporto', texto: 'Ginástica, dança, futebol ou levantamento de pesos podem sobrecarregar a coluna. Uma dor que piora quando dobras as costas para trás e não passa em 2 a 3 semanas deve ser vista por um médico.' },
+        ],
+        mitos: [
+          ['Com dor nas costas, o melhor é ficar deitado.', 'Ficar ativo, dentro do possível, faz recuperar mais depressa.'],
+          ['É preciso fazer um raio-X ou uma ressonância.', 'Na maioria dos casos, os exames não são necessários e não mudam o tratamento.'],
+          ['Mochilas pesadas entortam a coluna para sempre.', 'Não causam escoliose, mas cansam os músculos e provocam dor.'],
+        ],
+        alerta: { titulo: 'Vai ao médico se…', lista: ['A dor te acordar à noite ou vier com febre', 'Sentires fraqueza ou dormência nas pernas', 'A dor começar depois de uma queda ou pancada forte'] },
+      },
+      '18-65': {
+        intro: 'A dor lombar é a principal causa de incapacidade no mundo: cerca de 8 em cada 10 pessoas vão tê-la em algum momento. Na grande maioria dos casos não há uma causa grave e melhora em 4 a 6 semanas.',
+        imagens: [
+          ['coluna', 'Dor lombar: quase sempre mecânica e benigna'],
+          ['levantar-peso', 'Levantar pesos junto ao corpo, com os joelhos dobrados'],
+          ['nadar', 'Exercício regular previne recaídas'],
+        ],
+        seccoes: [
+          { ico: '🩺', titulo: 'Tipos de dor', lista: ['Dor lombar inespecífica: a mais comum, muscular e ligamentar', 'Ciática: dor que desce pela perna até abaixo do joelho, por irritação de um nervo (por exemplo, hérnia discal)', 'Causas específicas, raras: fraturas, infeções, tumores, doenças inflamatórias'] },
+          { ico: '🧰', titulo: 'Tratamento', lista: ['Manter-se ativo e voltar ao trabalho logo que possível', 'Calor local', 'Analgésicos ou anti-inflamatórios por pouco tempo, se necessário', 'Fisioterapia e exercício orientado, sobretudo se a dor durar', 'Os exames de imagem só são necessários perante sinais de alarme ou dor persistente'] },
+          { ico: '🛡️', titulo: 'Prevenir', lista: ['Exercício regular: caminhar, nadar, pilates, reforço muscular', 'Pausas no trabalho sentado; ajustar a cadeira e o ecrã', 'Levantar pesos junto ao corpo, com os joelhos dobrados e sem rodar', 'Manter um peso saudável e não fumar'] },
+        ],
+        alerta: { titulo: 'Procure ajuda urgente se…', lista: ['Dormência na zona genital ou entre as pernas', 'Perder o controlo da urina ou das fezes', 'Perder força nas pernas', 'Dor com febre, depois de uma queda, ou com perda de peso sem explicação'] },
+      },
+      '65+': {
+        intro: 'A dor nas costas é muito frequente depois dos 65 anos, muitas vezes por desgaste da coluna (artrose). Também pode ser uma fratura de uma vértebra por osteoporose, mesmo sem queda. Manter-se ativo é o melhor remédio.',
+        imagens: [
+          ['coluna', 'Artrose e desgaste da coluna'],
+          ['ossos', 'Fraturas das vértebras por osteoporose'],
+          ['bengala', 'Caminhar todos os dias'],
+          ['nadar', 'Hidroginástica e exercício suave'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Causas frequentes', lista: ['Artrose da coluna', 'Estenose do canal lombar: dor nas pernas ao andar, que alivia ao sentar ou ao inclinar-se para a frente', 'Fratura vertebral por osteoporose: dor súbita, às vezes depois de um esforço pequeno', 'Perda de altura ou costas mais curvadas'] },
+          { ico: '💊', titulo: 'Tratar a dor com segurança', lista: ['O paracetamol é geralmente o primeiro passo', 'Os anti-inflamatórios podem fazer mal ao estômago, aos rins e ao coração: só com indicação médica', 'Calor local e exercício orientado', 'Alguns medicamentos para a dor causam sonolência e quedas'] },
+          { ico: '🌿', titulo: 'No dia a dia', lista: ['Caminhar e fazer exercício suave todos os dias', 'Cadeiras firmes, com braços, e cama nem mole nem dura', 'Pedir ajuda para pegar em pesos', 'Tratar a osteoporose, se existir'] },
+        ],
+        alerta: { titulo: 'Procure o médico se…', lista: ['Dor súbita e forte nas costas, mesmo sem queda', 'Perda de força nas pernas ou dificuldade em urinar', 'Dor com febre ou perda de peso sem explicação'] },
+        ligacoes: [{ href: 'calculadora-rastreio/', texto: 'Calcular o risco de fratura' }],
       },
     },
   },

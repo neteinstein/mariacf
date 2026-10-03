@@ -123,6 +123,7 @@ const CEREBRO_SULCOS = 'M66 58Q74 52 82 58M104 42Q110 50 120 48M136 58Q140 66 14
 const ESTOMAGO = 'M84 44C62 46 50 70 56 94C62 118 94 130 122 120C146 112 156 90 148 74C142 62 128 60 120 68C114 74 106 70 104 60C102 50 96 44 84 44Z';
 const ESOFAGO = 'M80 8Q80 28 86 46';
 const DUODENO = 'M146 80Q164 78 168 90Q170 102 162 110';
+const CORACAO = 'M100 128C58 102 40 78 50 54C60 32 88 32 100 52C112 32 140 32 150 54C160 78 142 102 100 128Z';
 const FIGADO = 'M30 64C30 44 54 34 86 36C120 38 158 34 172 48C182 58 172 70 156 78C136 88 118 100 96 110C76 118 52 112 40 98C32 88 30 76 30 64Z';
 
 // Muda a escala de um contorno feito só de pares «x y» absolutos (M, L, C, Q).
@@ -175,7 +176,7 @@ export const ILUSTRACOES = {
   coracao: () => `
     <path class="an-fluir fraco" stroke-dasharray="4 10" d="M8 76H44M156 76H192"/>
     <g class="an-bater">
-      <path class="c-coral" d="M100 128C58 102 40 78 50 54C60 32 88 32 100 52C112 32 140 32 150 54C160 78 142 102 100 128Z"/>
+      <path class="c-coral" d="${CORACAO}"/>
       ${cara(100, 80, 26)}
     </g>
     ${estrela(36, 40, 6, 'c-sol', 'an-piscar')}${estrela(166, 112, 5, 'c-sol', 'an-piscar d2')}`,
@@ -1246,6 +1247,213 @@ export const ILUSTRACOES = {
     });
     return `${caixas}<text class="il-txt" x="100" y="136">6 meses, todos os dias</text>`;
   },
+
+  // ---------- Asma ----------
+  'bronquio-asma': () => `
+    <circle class="c-coral-s" cx="54" cy="70" r="38"/>
+    <circle class="c-branco" cx="54" cy="70" r="28"/>
+    <path class="an-fluir t-azul fino" stroke-dasharray="4 8" d="M36 64H72M36 76H72"/>
+    <circle class="t-coral fino" stroke-dasharray="6 4" cx="146" cy="70" r="44"/>
+    <circle class="c-coral" cx="146" cy="70" r="38"/>
+    <circle class="c-coral-s" cx="146" cy="70" r="28"/>
+    <g class="an-crescer"><circle class="c-branco" cx="146" cy="70" r="14"/></g>
+    <ellipse class="c-sol-s fino" cx="140" cy="62" rx="5" ry="3.5"/>
+    <text class="il-txt" x="54" y="130">normal</text>
+    <text class="il-txt" x="146" y="132">na crise</text>`,
+
+  alergenos: () => `
+    <path class="t-verde-e grosso" d="M44 136V82M44 112Q30 104 26 92Q40 94 44 104"/>
+    <g class="an-balancar rv" style="transform-origin:44px 82px">
+      <circle class="c-sol" cx="44" cy="58" r="9"/><circle class="c-sol" cx="60" cy="68" r="9"/><circle class="c-sol" cx="54" cy="86" r="9"/>
+      <circle class="c-sol" cx="34" cy="86" r="9"/><circle class="c-sol" cx="28" cy="68" r="9"/><circle class="c-coral" cx="44" cy="73" r="8"/>
+    </g>
+    <circle class="c-sol-s an-flutuar" cx="78" cy="48" r="3.5"/><circle class="c-sol-s an-flutuar d2" cx="92" cy="30" r="3"/>
+    <circle class="c-sol-s an-flutuar d1" cx="70" cy="24" r="2.5"/><circle class="c-sol-s an-flutuar d3" cx="98" cy="58" r="2.5"/>
+    <ellipse class="c-cinza" cx="140" cy="116" rx="32" ry="17"/>
+    <g class="an-balancar rv" style="transform-origin:110px 112px"><path class="c-nada grosso" d="M110 112Q94 104 100 84"/></g>
+    <path class="c-cinza" d="M156 82L158 60L170 72ZM184 82L182 60L170 72Z"/>
+    <circle class="c-cinza" cx="170" cy="88" r="17"/>
+    ${cara(170, 90, 15)}
+    <path class="fino fraco" d="M150 92h-10M150 98l-9 3M190 92h10M190 98l9 3"/>
+    <circle class="c-cinza-e sem an-flutuar d2" cx="128" cy="30" r="2.5"/><circle class="c-cinza-e sem an-flutuar d4" cx="146" cy="20" r="2"/><circle class="c-cinza-e sem an-flutuar d1" cx="120" cy="50" r="2"/>`,
+
+  // ---------- Enfarte do miocárdio ----------
+  'coracao-enfarte': () => `
+    <g class="an-bater">
+      <path class="c-coral" d="${CORACAO}"/>
+      <g class="an-piscar-lento"><ellipse class="c-vermelho-e sem" cx="80" cy="104" rx="14" ry="10"/></g>
+      <path class="t-vermelho grosso" d="M100 50Q94 64 84 74Q76 82 74 94M100 50Q110 64 124 70Q136 76 144 70M124 70Q126 86 118 100"/>
+      <g class="an-pulsar"><circle class="c-sol" cx="84" cy="74" r="6"/></g>
+    </g>
+    <g class="an-pulsar d2"><circle class="c-sol" cx="170" cy="30" r="14"/><text class="il-num" x="170" y="38">!</text></g>`,
+
+  'dor-peito': () => {
+    const p = pessoa(96, 26, { humor: 'doente', bracos: 'nenhum', cor: 'c-suave', cabelo: 'c-cabelo-b' });
+    const [ox, oy] = p.ombroD;
+    return `${p.svg}
+      <path d="M${n(p.ombroE[0])} ${n(p.ombroE[1])}l-7 24"/>${p.mao(p.ombroE[0] - 7, p.ombroE[1] + 24)}
+      <g class="an-pulsar">${coracaoPeq(90, p.t + 14, 7)}</g>
+      <path d="M${n(ox)} ${n(oy)}Q${n(ox + 2)} ${n(oy + 14)} ${n(ox - 12)} ${n(oy + 10)}"/>${p.mao(ox - 12, oy + 10)}
+      <g class="an-piscar"><path class="t-coral grosso" d="M62 62l-10 -6M60 74h-12M62 86l-10 6"/></g>
+      <path class="c-azul sem an-cair" d="M122 24c0 0 -4 6 -4 9a4 4 0 0 0 8 0c0 -3 -4 -9 -4 -9Z"/>
+      <g class="an-pulsar d2"><circle class="c-sol" cx="166" cy="40" r="14"/><text class="il-num" x="166" y="48">!</text></g>`;
+  },
+
+  // ---------- Fibrilhação auricular ----------
+  'ecg-irregular': () => {
+    const traco = 'M30 76q4 -3 8 0t8 0l4 -30l5 44l4 -14q4 -3 8 0t8 0t8 0l4 -30l5 44l4 -14q4 -3 8 0l4 -30l5 44l4 -14q4 -3 8 0t8 0t8 0t8 0l4 -30l5 44l4 -14q4 -3 8 0';
+    return `<rect class="c-escuro" x="18" y="26" width="164" height="90" rx="10"/>
+      <path class="t-verde fraco fino" d="M26 56H174M26 96H174"/>
+      <path class="t-verde grosso" d="${traco}"/>
+      <path class="t-branco grosso an-fluir" stroke-dasharray="8 300" d="${traco}"/>
+      <g class="an-bater">${coracaoPeq(172, 26, 11)}</g>
+      <text class="il-txt" x="100" y="138">ritmo irregular</text>`;
+  },
+
+  pulso: () => `
+    <path class="c-pele" d="M0 92H128Q150 92 156 104Q150 116 128 116H0Z"/>
+    <path class="fino fraco" d="M120 98q8 6 0 12"/>
+    <path class="c-pele2" d="M80 8H132Q136 30 126 48H90Q80 30 80 8Z"/>
+    <rect class="c-pele2" x="92" y="40" width="13" height="56" rx="6.5"/>
+    <rect class="c-pele2" x="108" y="44" width="13" height="52" rx="6.5"/>
+    <path class="an-pulsar-onda t-coral" d="M132 70Q142 84 132 98"/><path class="an-pulsar-onda d2 t-coral" d="M144 62Q160 84 144 106"/>
+    <circle class="c-branco" cx="40" cy="44" r="24"/>
+    <path class="fino" d="M40 24v4M40 60v4M20 44h4M56 44h4"/>
+    <g class="an-girar rv" style="transform-origin:40px 44px"><path class="t-coral grosso" d="M40 44V28"/></g>
+    <circle class="c-tinta sem" cx="40" cy="44" r="3"/>
+    <text class="il-txt" x="40" y="84">1 minuto</text>`,
+
+  // ---------- Insuficiência cardíaca ----------
+  'coracao-cansado': () => `
+    <path class="an-fluir fraco" stroke-dasharray="4 10" d="M8 76H44M156 76H192"/>
+    <g class="an-pulsar-lento">
+      <path class="c-coral-s" d="${CORACAO}"/>
+      ${cara(100, 80, 26, 'neutro')}
+    </g>
+    <path class="c-azul sem an-cair" d="M62 26c0 0 -5 7 -5 10a5 5 0 0 0 10 0c0 -3 -5 -10 -5 -10Z"/>
+    <rect class="c-branco" x="144" y="16" width="38" height="22" rx="4"/>
+    <path class="grosso" d="M185 23v8"/>
+    <g class="an-piscar-lento"><rect class="c-coral sem" x="148" y="20" width="9" height="14" rx="2"/></g>`,
+
+  'pernas-inchadas': () => `
+    <path class="c-pele" d="M52 8H76V100Q76 112 86 116H102Q114 118 112 128Q110 136 100 136H50Q44 136 46 126L52 100Z"/>
+    <g class="an-pulsar-lento"><path class="c-pele" d="M126 8H152Q160 60 162 94Q164 108 174 112H182Q194 116 192 128Q190 136 180 136H124Q112 136 116 120Q124 96 120 60Z"/></g>
+    <ellipse class="c-coral-s fino" cx="174" cy="118" rx="5" ry="3"/>
+    <g class="an-apertar"><rect class="c-pele2" x="168" y="74" width="12" height="32" rx="6"/></g>
+    <path class="c-azul-s sem an-cair" d="M136 30c0 0 -4 6 -4 9a4 4 0 0 0 8 0c0 -3 -4 -9 -4 -9Z"/>
+    <path class="c-azul-s sem an-cair d2" d="M146 52c0 0 -4 6 -4 9a4 4 0 0 0 8 0c0 -3 -4 -9 -4 -9Z"/>`,
+
+  // ---------- Doença renal crónica ----------
+  rins: () => {
+    const rim = 'M60 22C40 22 30 40 30 58C30 78 42 94 60 94C72 94 76 86 72 76C68 68 68 52 72 44C76 32 72 22 60 22Z';
+    const gota = (x, y, atraso) => `<path class="c-sol sem an-cair ${atraso}" d="M${x} ${y}c0 0 -3 5 -3 7a3 3 0 0 0 6 0c0 -2 -3 -7 -3 -7Z"/>`;
+    return `<path class="t-vermelho grosso" d="M100 4V100M100 54H72M100 54H128"/>
+      <path class="grosso" d="M70 66Q88 84 92 112M130 66Q112 84 108 112"/>
+      <g class="an-pulsar-lento">
+        <path class="c-figado" d="${rim}"/><g transform="translate(200 0) scale(-1 1)"><path class="c-figado" d="${rim}"/></g>
+        ${cara(52, 60, 13)}${cara(148, 60, 13)}
+      </g>
+      ${gota(80, 76, '')}${gota(120, 80, 'd2')}
+      <path class="c-sol-s" d="M78 114Q78 106 100 106Q122 106 122 114Q122 138 100 140Q78 138 78 114Z"/>
+      <g class="an-nivel rv" style="transform-origin:100px 140px"><path class="c-sol sem" d="M82 124H118Q116 136 100 137Q84 136 82 124Z"/></g>`;
+  },
+
+  // ---------- Cancro da próstata ----------
+  prostata: () => `
+    <path class="c-sol-s" d="M56 58Q56 16 100 16Q144 16 144 58Q144 82 118 88H82Q56 82 56 58Z"/>
+    <g class="an-nivel rv" style="transform-origin:100px 86px"><path class="c-sol sem" d="M62 64H138Q134 82 116 84H84Q66 82 62 64Z"/></g>
+    <g class="an-pulsar-lento"><ellipse class="c-coral" cx="100" cy="100" rx="26" ry="17"/></g>
+    <path style="stroke-width:8" d="M100 86V146"/><path class="t-sol" style="stroke-width:3" d="M100 86V146"/>
+    <path class="fino fraco" d="M126 102H146"/><text class="il-txt" x="172" y="106">próstata</text>
+    <path class="fino fraco" d="M144 44H150"/><text class="il-txt" x="174" y="48">bexiga</text>`,
+
+  bigode: () => `
+    ${cabeca(100, 74, 46, { cabelo: 'c-cabelo' })}
+    <g class="an-balancar rv" style="transform-origin:100px 86px"><path class="c-cabelo" d="M100 82C92 74 80 76 72 84C66 90 56 88 54 82C56 94 70 98 82 92C90 88 96 86 100 88C104 86 110 88 118 92C130 98 144 94 146 82C144 88 134 90 128 84C120 76 108 74 100 82Z"/></g>
+    <g class="an-flutuar"><path class="c-azul" d="M172 40C162 30 160 20 164 14C167 9 170 8 172 8C174 8 177 9 180 14C184 20 182 30 172 40ZM168 34L160 52M176 34L184 52"/></g>
+    ${estrela(28, 30, 6, 'c-sol', 'an-piscar')}${estrela(176, 126, 5, 'c-sol', 'an-piscar d2')}`,
+
+  // ---------- Cancro da pele ----------
+  'sinal-pele': () => `
+    <rect class="c-pele" x="10" y="18" width="180" height="114" rx="18"/>
+    <circle class="c-castanho sem" cx="44" cy="48" r="5"/><circle class="c-castanho sem" cx="160" cy="108" r="4"/><circle class="c-castanho sem" cx="62" cy="92" r="3.5"/>
+    <path class="c-escuro sem" d="M104 64c8 -6 18 -2 20 6c4 10 -4 12 -2 20c2 8 -10 12 -16 6c-6 -6 -14 -2 -14 -12c0 -10 6 -14 12 -20Z"/>
+    <circle class="c-castanho sem" cx="112" cy="76" r="5"/><circle class="c-vermelho-e sem" cx="104" cy="88" r="3"/>
+    <g class="an-lupa"><circle class="c-vidro grosso" cx="110" cy="78" r="26"/><path class="muito-grosso" d="M129 97L150 118"/></g>
+    <text class="il-txt" x="54" y="124">A B C D E</text>`,
+
+  protetor: () => `
+    <g class="an-girar rv" style="transform-origin:44px 40px">
+      <path class="t-sol grosso" d="M44 10V18M44 62V70M14 40H22M66 40H74M23 19L28 24M60 56L65 61M23 61L28 56M60 24L65 19"/>
+    </g>
+    <circle class="c-sol" cx="44" cy="40" r="16"/>
+    ${cara(44, 40, 13)}
+    <rect class="c-branco" x="90" y="46" width="40" height="80" rx="10"/>
+    <rect class="c-coral" x="98" y="30" width="24" height="18" rx="4"/>
+    <text class="il-txt" x="110" y="86">FPS</text><text class="il-num" x="110" y="110">50</text>
+    <g class="an-gotejar"><path class="c-branco" d="M110 14c0 0 -5 7 -5 10a5 5 0 0 0 10 0c0 -3 -5 -10 -5 -10Z"/></g>
+    <path class="c-sol" d="M156 118Q158 96 170 96Q182 96 184 118Z"/>
+    <path class="c-sol-s" d="M138 120Q170 110 200 120Q194 130 170 130Q146 130 138 120Z"/>
+    ${estrela(170, 40, 5, 'c-sol', 'an-piscar d2')}`,
+
+  // ---------- Ansiedade ----------
+  'respirar-calmo': () => {
+    const p = pessoa(100, 32, { humor: 'dormir', cor: 'c-cor' });
+    return `<g class="an-respirar-lento"><circle class="c-suave" cx="100" cy="70" r="58"/></g>
+      ${p.svg}
+      <path class="an-subir fino t-cor" d="M124 46q6 -4 12 0t12 0"/><path class="an-subir d3 fino t-cor" d="M126 58q6 -4 12 0t12 0"/>
+      <text class="il-txt" x="100" y="144">inspirar 4 · expirar 6</text>`;
+  },
+
+  pensamentos: () => `
+    ${cabeca(68, 106, 30, { humor: 'triste' })}
+    <circle class="c-branco" cx="102" cy="78" r="4"/><circle class="c-branco" cx="112" cy="64" r="6"/>
+    <g transform="translate(80 -38)"><path class="c-nuvem" d="M34 100H114A20 20 0 0 0 110 61A28 28 0 0 0 58 56A20 20 0 0 0 34 100Z"/></g>
+    <g class="an-tremer"><path class="t-coral fino" d="M134 30c8 -14 20 4 10 10s-18 -10 -2 -14s20 10 8 14s-14 -8 0 -10s14 6 18 0"/></g>
+    <text class="il-txt" x="156" y="56">e se…?</text>
+    <g class="an-bater">${coracaoPeq(28, 40, 9)}</g>`,
+
+  // ---------- Doença de Parkinson ----------
+  'mao-tremor': () => `
+    <path class="an-piscar fino" d="M46 40q-6 8 0 16M36 34q-10 14 0 28M156 40q6 8 0 16M166 34q10 14 0 28"/>
+    <path class="c-cor" d="M82 116H124V150H82Z"/>
+    <g class="an-tremer">
+      <rect class="c-pele" x="80" y="26" width="11" height="52" rx="5.5"/>
+      <rect class="c-pele" x="93" y="16" width="11" height="60" rx="5.5"/>
+      <rect class="c-pele" x="106" y="20" width="11" height="56" rx="5.5"/>
+      <rect class="c-pele" x="119" y="32" width="10" height="46" rx="5"/>
+      <path class="c-pele" d="M84 100Q64 96 60 80Q58 72 64 72Q70 72 74 82Q78 90 84 88Z"/>
+      <rect class="c-pele" x="78" y="64" width="52" height="56" rx="16"/>
+    </g>`,
+
+  // ---------- Lombalgia ----------
+  coluna: () => {
+    const desvio = [0, 4, 7, 8, 7, 4, 0, -4, -7, -8];
+    let ossos = '';
+    desvio.forEach((dx, i) => {
+      const w = 26 + i * 1.8;
+      const y = 12 + i * 12;
+      if (i) ossos += `<ellipse class="c-azul-s fino" cx="${100 + dx}" cy="${y - 1.5}" rx="${n(w / 2 - 3)}" ry="2"/>`;
+      ossos += `<rect class="c-branco" x="${n(100 + dx - w / 2)}" y="${y}" width="${n(w)}" height="9" rx="3"/>`;
+    });
+    return `${ossos}
+      <path class="c-branco" d="M62 138Q100 126 138 138L128 148H72Z"/>
+      <g class="an-piscar-lento"><ellipse class="c-zona" cx="94" cy="110" rx="30" ry="20"/></g>
+      <g class="an-piscar"><path class="t-coral grosso" d="M52 100l-10 -5M50 112h-12M52 124l-10 5M140 100l10 -5M142 112h12M140 124l10 5"/></g>`;
+  },
+
+  'levantar-peso': () => `
+    <path class="fraco" d="M40 132H160"/>
+    <path d="M93 92L80 110L90 128M107 92L120 110L110 128"/>
+    <path class="c-cor" d="M86 94V66Q86 56 100 56Q114 56 114 66V94Z"/>
+    ${cabeca(100, 40, 14)}
+    <g class="an-flutuar">
+      <rect class="c-pao" x="78" y="76" width="44" height="30" rx="3"/>
+      <path class="fino fraco" d="M78 88H122"/>
+      <path d="M87 64L80 84M113 64L120 84"/>
+      <circle class="c-pele" cx="80" cy="86" r="4"/><circle class="c-pele" cx="120" cy="86" r="4"/>
+    </g>
+    <g class="an-pulsar"><circle class="c-verde" cx="160" cy="36" r="15"/><path class="t-branco grosso" d="M153 36l5 5 9 -10"/></g>`,
 };
 
 export function ilustracao(nome) {
@@ -1274,6 +1482,9 @@ function adnMini() {
   }
   return `${degraus}<path d="M${A.join('L')}"/><path d="M${B.join('L')}"/>`;
 }
+
+// Eletrocardiograma irregular (fibrilhação auricular) da miniatura.
+const RITMO = 'M6 50q3 -2 6 0t6 0l3 -22l4 32l3 -10q3 -2 6 0t6 0t6 0l3 -22l4 32l3 -10q3 -2 6 0l3 -22l4 32l3 -10q3 -2 6 0t6 0l3 -22l4 32l3 -10q3 -2 6 0';
 
 const MINI = {
   gota: `
@@ -1359,6 +1570,48 @@ const MINI = {
       <rect class="d-bac d-cheio-suave" x="30" y="24" width="26" height="10" rx="5"/>
       <rect class="d-bac d-bac2 d-cheio-suave" x="66" y="44" width="26" height="10" rx="5"/>
       <rect class="d-bac d-bac3 d-cheio-suave" x="38" y="62" width="22" height="9" rx="4.5"/>`,
+  bronquio: `
+      <circle cx="60" cy="45" r="36"/>
+      <circle class="d-fraco" cx="60" cy="45" r="28"/>
+      <circle class="d-lumen d-cheio-suave" cx="60" cy="45" r="20"/>`,
+  enfarte: `
+      <path class="d-bat d-cheio-suave" d="${escalar(CORACAO, 0.62, -2, -10)}"/>
+      <circle class="d-alerta d-cheio" cx="46" cy="40" r="5"/>
+      <circle class="d-alerta-onda" cx="46" cy="40" r="10"/>`,
+  ritmo: `
+      <path class="d-fraco" d="${RITMO}"/>
+      <path class="d-linha" d="${RITMO}" pathLength="1"/>`,
+  bateria: `
+      <rect x="18" y="26" width="78" height="40" rx="7"/>
+      <path d="M102 38V54"/>
+      <rect class="d-nivel d-cheio" x="26" y="34" width="62" height="24" rx="3"/>`,
+  rim: `
+      <path class="d-cheio-suave" d="M52 8C32 8 22 26 22 44C22 64 34 80 52 80C64 80 68 72 64 62C60 54 60 38 64 30C68 18 64 8 52 8Z"/>
+      <path d="M64 46Q80 50 84 62"/>
+      <path class="d-gota-r d-cheio" d="M90 40C90 40 84 48 84 52A6 6 0 0 0 96 52C96 48 90 40 90 40Z"/>`,
+  bigode: `
+      <path class="d-bigode d-cheio" d="${escalar('M100 82C92 74 80 76 72 84C66 90 56 88 54 82C56 94 70 98 82 92C90 88 96 86 100 88C104 86 110 88 118 92C130 98 144 94 146 82C144 88 134 90 128 84C120 76 108 74 100 82Z', 1.1, -50, -50)}"/>`,
+  sol: `
+      <g class="d-raios"><path d="M60 6V16M60 74V84M21 45H31M89 45H99M32 17L39 24M81 66L88 73M32 73L39 66M81 24L88 17"/></g>
+      <circle class="d-cheio-suave" cx="60" cy="45" r="18"/>`,
+  respiro: `
+      <circle class="d-fraco" cx="60" cy="45" r="38"/>
+      <circle class="d-bola d-cheio-suave" cx="60" cy="45" r="30"/>
+      <circle class="d-cheio" cx="60" cy="45" r="4"/>`,
+  mao: `
+      <g class="d-tremer">
+        <path d="M44 82V50M44 50V16M56 50V8M68 50V12M80 54V24M44 50Q32 42 28 52L44 70M44 82H80V54"/>
+      </g>
+      <path class="d-fraco" d="M18 20q-6 8 0 16M102 20q6 8 0 16"/>`,
+  coluna: `
+      <rect x="44" y="4" width="26" height="9" rx="3"/>
+      <rect x="47" y="17" width="28" height="9" rx="3"/>
+      <rect x="49" y="30" width="30" height="9" rx="3"/>
+      <rect x="47" y="43" width="32" height="10" rx="3"/>
+      <rect x="42" y="57" width="34" height="10" rx="3"/>
+      <rect x="37" y="71" width="36" height="11" rx="3"/>
+      <circle class="d-alerta d-cheio" cx="88" cy="70" r="5"/>
+      <circle class="d-alerta-onda" cx="88" cy="70" r="10"/>`,
 };
 
 export const MINIATURAS = Object.keys(MINI);
