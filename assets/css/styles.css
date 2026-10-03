@@ -1799,6 +1799,10 @@ fieldset.step legend + .step-hint {
   margin: 32px 0 0;
 }
 
+.section-intro.section-nota {
+  margin: 24px 0 0;
+}
+
 .journey {
   list-style: none;
   margin: 0;
