@@ -12,7 +12,7 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 
 ## Doenças
 
-A página inicial mostra um cartão animado por doença (19, das mais frequentes em Portugal), com pesquisa e
+A página inicial mostra um cartão animado por doença (29, das mais frequentes em Portugal), com pesquisa e
 filtro por área (`/?q=colesterol`, `/?cat=Oncologia`). Ao abrir um cartão, a explicação aparece em separadores
 por idade (Crianças 3–5, Crianças 5–12, Adolescentes 13–17, Adultos 18–65, Séniores 65+), com os botões
 «Enviar por email» e «Imprimir» das ferramentas. O estado fica no URL (`/?d=diabetes&idade=65+`), por isso
