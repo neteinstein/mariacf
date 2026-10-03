@@ -317,7 +317,8 @@ function navegar(id) {
 }
 
 if (grelha && vista) {
-  grelha.innerHTML = DOENCAS.map(cartao).join('');
+  const porNome = [...DOENCAS].sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
+  grelha.innerHTML = porNome.map(cartao).join('');
 
   if (filtros) {
     filtros.innerHTML = ['todas', ...CATEGORIAS]
