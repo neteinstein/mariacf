@@ -2383,6 +2383,136 @@ a.pub:hover {
   text-decoration: underline;
 }
 
+/* ---------- USF Nova Saúde ---------- */
+
+.usf-ilustracao {
+  margin: 0;
+  padding: 20px;
+}
+
+.usf-ilustracao svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+}
+
+.usf-sol { animation: usf-brilho 4s ease-in-out infinite; transform-origin: 262px 46px; }
+.usf-nuvem { animation: usf-nuvem 12s ease-in-out infinite alternate; }
+.usf-cruz { animation: usf-pulso 2.4s ease-in-out infinite; transform-origin: 160px 114px; }
+
+@keyframes usf-brilho { 50% { transform: scale(1.12); } }
+@keyframes usf-nuvem { to { transform: translateX(40px); } }
+@keyframes usf-pulso { 50% { transform: scale(1.1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .usf-sol, .usf-nuvem, .usf-cruz { animation: none; }
+}
+
+.usf-email {
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+
+.usf-local {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.usf-mapa {
+  min-height: 320px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow);
+  background: var(--surface);
+}
+
+.usf-mapa iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  border: 0;
+}
+
+.linha-tempo {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 28px;
+  display: grid;
+  gap: 18px;
+  position: relative;
+}
+
+.linha-tempo::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: linear-gradient(var(--teal), var(--violet));
+  opacity: 0.5;
+}
+
+.linha-tempo li {
+  position: relative;
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow);
+}
+
+.linha-tempo li::before {
+  content: '';
+  position: absolute;
+  left: -27px;
+  top: 26px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 4px var(--teal-soft);
+}
+
+.linha-data {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--teal);
+}
+
+.linha-tempo h3 {
+  margin: 4px 0 0;
+  font-size: 1.15rem;
+}
+
+.linha-tempo p {
+  margin: 6px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.93rem;
+}
+
+.noticias {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));
+  gap: 20px;
+}
+
+@media (max-width: 760px) {
+  .usf-local {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media print {
+  .usf-mapa { display: none; }
+}
+
 /* Agenda: vacinas, rastreios e marcos da gravidez */
 
 .agenda {
