@@ -9,6 +9,7 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 - `/ferramentas/` — as calculadoras e questionários clínicos
 - `/sns/` — contactos úteis do SNS (112, SNS 24 e outras linhas de ajuda)
 - `/sobre/` — percurso da Dra. Maria e artigos no Ponto SJ
+- `/usf/` — USF Nova Saúde (São Martinho do Campo): contactos, serviços e como marcar consulta
 
 ## Doenças
 
@@ -102,7 +103,7 @@ npm test                      # testes da lógica e da integridade do site (Node
 
 O site é publicado pelo workflow `.github/workflows/pages.yml` a cada push para `main`
 (também pode ser corrido à mão em *Actions → Deploy GitHub Pages → Run workflow*).
-O workflow corre os testes e publica todo o repositório (página inicial, `sobre/`, todas as pastas
+O workflow corre os testes e publica todo o repositório (página inicial, `sns/`, `sobre/`, `usf/`, todas as pastas
 `calculadora-*/` e `assets/`), exceto `tests/`, `.github/`, `package.json` e este README.
 Nos pull requests corre só os testes e a preparação do site, sem publicar.
 
