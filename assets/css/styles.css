@@ -1958,6 +1958,63 @@ a.pub:hover {
   overflow-wrap: anywhere;
 }
 
+/* Lista compacta de certificados (página «Sobre») */
+.certs {
+  list-style: none;
+  margin: 0;
+  padding: 8px 28px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.certs li {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 4px 20px;
+  padding: 16px 0;
+}
+
+.certs li + li {
+  border-top: 1px solid var(--line);
+}
+
+.certs time {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--teal);
+  padding-top: 2px;
+}
+
+.certs div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.certs strong {
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.certs span {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 640px) {
+  .certs {
+    padding: 4px 20px;
+  }
+  .certs li {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ---------- IMC / ASC ---------- */
 
 .badge {

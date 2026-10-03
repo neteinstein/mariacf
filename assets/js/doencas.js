@@ -42,7 +42,7 @@ function cartao(d, i) {
       <div class="tool-top"><span class="tool-icon" aria-hidden="true">${d.emoji}</span></div>
       <div class="tool-title">${esc(d.nome)}${d.alias ? `<small class="tool-alias">${esc(d.alias)}</small>` : ''}</div>
       <p class="tool-desc">${esc(d.resumo)}</p>
-      <div class="tags"><span class="tag">${esc(d.categoria)}</span><span class="tag">5 idades</span></div>
+      <div class="tags"><span class="tag">${esc(d.categoria)}</span></div>
       <span class="go">Conhecer a doença ${seta}</span>
     </a>`;
 }
