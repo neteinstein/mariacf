@@ -1,4 +1,4 @@
-import { calcularCAT, calcularACT, calcularCentor } from './respiratorio-core.js';
+import { calcularCAT, calcularACT } from './respiratorio-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
@@ -192,80 +192,6 @@ $('#btn-print-act').addEventListener('click', () => {
   window.print();
 });
 
-/* ---------- Centor / McIsaac ---------- */
-
-const centorForm = $('#centor-form');
-const centorResultado = $('#centor-resultado');
-const centorIdade = $('#centor-idade');
-
-$$('.stepper').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const alvo = document.getElementById(btn.dataset.alvo);
-    const min = Number(alvo.min) || 0;
-    const max = Number(alvo.max) || Infinity;
-    const novo = (Number(alvo.value) || min) + Number(btn.dataset.step);
-    alvo.value = Math.min(Math.max(novo, min), max);
-    alvo.dispatchEvent(new Event('input', { bubbles: true }));
-  });
-});
-
-let centorAtual = null;
-
-function atualizarCentor() {
-  const criterios = {
-    febre: $('#ce-febre').checked,
-    semTosse: $('#ce-tosse').checked,
-    exsudadoAmigdalino: $('#ce-exsudado').checked,
-    adenopatiaDolorosa: $('#ce-adenopatia').checked,
-  };
-  const r = calcularCentor(criterios, centorIdade.value);
-  const ok = $('#centor-ok');
-  const vazio = $('#centor-vazio');
-  const acoes = $('#result-actions-centor');
-  if (!r.ok) {
-    centorAtual = null;
-    ok.hidden = true;
-    vazio.hidden = false;
-    if (acoes) acoes.hidden = true;
-    $('#centor-motivo').textContent = r.motivo;
-    return;
-  }
-  centorAtual = r;
-  ok.hidden = false;
-  vazio.hidden = true;
-  if (acoes) acoes.hidden = false;
-  centorResultado.dataset.nivel = r.nivel;
-  $('#centor-pontos').textContent = r.pontos;
-  $('#centor-risco').textContent = `Risco estimado de estreptococo: ${r.risco}`;
-  $('#centor-recomendacao').textContent = r.recomendacao;
-}
-centorForm.addEventListener('change', atualizarCentor);
-centorIdade.addEventListener('input', atualizarCentor);
-atualizarCentor();
-
-function resumoCentor(r) {
-  const linhas = [
-    'Centor/McIsaac — probabilidade de faringite estreptocócica',
-    `Pontuação: ${r.pontos}`,
-    `Risco estimado de estreptococo: ${r.risco}`,
-    r.recomendacao,
-    '',
-    'Informação de apoio — não substitui aconselhamento médico.',
-    location.href,
-  ];
-  return linhas.join('\n');
-}
-
-$('#btn-email-centor').addEventListener('click', () => {
-  if (!centorAtual) return;
-  const assunto = `Centor/McIsaac — ${centorAtual.pontos} pontos`;
-  location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoCentor(centorAtual))}`;
-});
-
-$('#btn-print-centor').addEventListener('click', () => {
-  window.print();
-});
-
 const params = new URLSearchParams(location.search);
-const inicial = ['cat', 'act', 'centor'].includes(params.get('calc')) ? params.get('calc') : 'cat';
+const inicial = ['cat', 'act'].includes(params.get('calc')) ? params.get('calc') : 'cat';
 selecionar(inicial);

@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>CAT, ACT e Centor/McIsaac · Saúde em Família</title>
-  <meta name="description" content="Avalie o impacto da DPOC (CAT), o controlo da asma (ACT) e a probabilidade de faringite estreptocócica (Centor/McIsaac).">
+  <title>CAT e ACT · Saúde em Família</title>
+  <meta name="description" content="Avalie o impacto da DPOC (CAT) e o controlo da asma (ACT).">
   <meta name="theme-color" content="#125a98">
-  <meta property="og:title" content="CAT, ACT e Centor/McIsaac">
-  <meta property="og:description" content="DPOC, controlo da asma e faringite estreptocócica.">
+  <meta property="og:title" content="CAT e ACT">
+  <meta property="og:description" content="DPOC e controlo da asma.">
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../manifest.webmanifest">
   <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
@@ -50,14 +50,13 @@
   <main class="wrap">
     <section class="page-hero reveal">
       <span class="eyebrow"><span class="dot"></span> Doenças respiratórias</span>
-      <h1 class="display">CAT, ACT e <em>Centor</em></h1>
-      <p class="lead">Impacto sintomático da DPOC (CAT), nível de controlo da asma (ACT) e probabilidade de faringite estreptocócica (Centor/McIsaac).</p>
+      <h1 class="display">CAT e <em>ACT</em></h1>
+      <p class="lead">Impacto sintomático da DPOC (CAT) e nível de controlo da asma (ACT).</p>
     </section>
 
     <div class="tabbar" role="tablist" aria-label="Escolher calculadora">
       <button class="tabbtn" type="button" data-tab="cat" role="tab" aria-selected="true">CAT · DPOC</button>
       <button class="tabbtn" type="button" data-tab="act" role="tab" aria-selected="false">ACT · Asma</button>
-      <button class="tabbtn" type="button" data-tab="centor" role="tab" aria-selected="false">Centor/McIsaac · Faringite</button>
     </div>
 
     <div class="calc" data-painel="cat">
@@ -131,76 +130,6 @@
       </section>
     </div>
 
-    <div class="calc" data-painel="centor" hidden>
-      <form class="panel reveal" id="centor-form" autocomplete="off">
-        <div class="step">
-          <label class="step-label" for="centor-idade"><span class="step-num">1</span> Idade</label>
-          <div class="weight">
-            <button class="stepper" type="button" data-alvo="centor-idade" data-step="-1" aria-label="Diminuir idade">−</button>
-            <div class="weight-field">
-              <input id="centor-idade" name="idade" type="number" inputmode="numeric" min="3" max="110" step="1" value="30">
-              <span class="unit">anos</span>
-            </div>
-            <button class="stepper" type="button" data-alvo="centor-idade" data-step="1" aria-label="Aumentar idade">+</button>
-          </div>
-        </div>
-
-        <fieldset class="step">
-          <legend class="step-label"><span class="step-num">2</span> Critérios clínicos</legend>
-          <div class="checklist">
-            <div class="check-item">
-              <input type="checkbox" id="ce-febre">
-              <label for="ce-febre"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Febre</strong><small>Temperatura &gt; 38 °C, por história ou medição</small></span><span class="pts">1</span></label>
-            </div>
-            <div class="check-item">
-              <input type="checkbox" id="ce-tosse">
-              <label for="ce-tosse"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Ausência de tosse</strong></span><span class="pts">1</span></label>
-            </div>
-            <div class="check-item">
-              <input type="checkbox" id="ce-exsudado">
-              <label for="ce-exsudado"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Exsudado ou hipertrofia amigdalina</strong></span><span class="pts">1</span></label>
-            </div>
-            <div class="check-item">
-              <input type="checkbox" id="ce-adenopatia">
-              <label for="ce-adenopatia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Adenopatia cervical anterior dolorosa</strong></span><span class="pts">1</span></label>
-            </div>
-          </div>
-        </fieldset>
-      </form>
-
-      <section class="panel result score-result reveal" id="centor-resultado" aria-live="polite">
-        <div id="centor-ok">
-          <div class="result-head">
-            <div class="result-kicker">Pontuação Centor/McIsaac</div>
-            <div class="dose-line">
-              <div class="dose-big"><span id="centor-pontos">0</span></div>
-            </div>
-            <div class="dose-sub" id="centor-risco"></div>
-          </div>
-          <div class="result-body">
-            <div class="fx-escala" data-src="#centor-pontos" data-min="-1" data-max="5" data-titulo="Probabilidade de faringite estreptocócica" data-faixas="-1~1:baixo:Baixa|2~3:moderado:Intermédia|4~5:alto:Alta"></div>
-            <div class="notices">
-              <div class="notice" id="centor-recomendacao"></div>
-            </div>
-            <div class="result-actions" id="result-actions-centor">
-              <button class="action-btn" type="button" id="btn-email-centor">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
-                Enviar por email
-              </button>
-              <button class="action-btn" type="button" id="btn-print-centor">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
-                Imprimir
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="empty" id="centor-vazio" hidden>
-          <div class="big-emoji" aria-hidden="true">🤒</div>
-          <p class="motivo" id="centor-motivo"></p>
-        </div>
-      </section>
-    </div>
-
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🫁</div>
@@ -214,14 +143,6 @@
         <h3>ACT (Asthma Control Test)</h3>
         <ul>
           <li>25: controlo total · 20–24: bem controlada · ≤ 19: não controlada.</li>
-        </ul>
-      </article>
-      <article class="panel info-card reveal">
-        <div class="info-ico" aria-hidden="true">🤒</div>
-        <h3>Centor / McIsaac</h3>
-        <ul>
-          <li>Estima a probabilidade de faringite estreptocócica do grupo A e ajuda a decidir sobre teste rápido/cultura e antibiótico.</li>
-          <li>Não se aplica a crianças com menos de 3 anos.</li>
         </ul>
       </article>
     </section>
