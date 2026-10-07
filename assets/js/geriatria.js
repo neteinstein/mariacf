@@ -224,6 +224,48 @@ $$('.stepper').forEach((btn) => {
   });
 });
 
+const COG_DOMINIOS = {
+  mmse: [
+    ['orientacao-tempo', 'Orientação temporal', 5],
+    ['orientacao-espaco', 'Orientação espacial', 5],
+    ['retencao', 'Retenção', 3],
+    ['atencao', 'Atenção e cálculo', 5],
+    ['evocacao', 'Evocação', 3],
+    ['linguagem', 'Linguagem', 8],
+    ['construcao', 'Capacidade construtiva', 1],
+  ],
+  moca: [
+    ['visuoespacial', 'Visuoespacial / executiva', 5],
+    ['nomeacao', 'Nomeação', 3],
+    ['atencao', 'Atenção', 6],
+    ['linguagem', 'Linguagem', 3],
+    ['abstracao', 'Abstração', 2],
+    ['evocacao', 'Evocação diferida', 5],
+    ['orientacao', 'Orientação', 6],
+  ],
+};
+
+function montarDominios() {
+  const instrumento = $('input[name="cog-instrumento"]:checked')?.value ?? 'mmse';
+  const container = $('#cog-dominios');
+  container.innerHTML = '';
+  COG_DOMINIOS[instrumento].forEach(([campo, nome, max], i) => {
+    const opcoes = Array.from({ length: max + 1 }, (_, v) => [String(v), v]);
+    const pergunta = criarPergunta(`cog-${instrumento}-${campo}`, i + 3, `${nome} <span class="step-hint" style="margin:2px 0 0">— máx. ${max}</span>`, opcoes);
+    container.appendChild(pergunta);
+  });
+}
+
+function somaDominios(instrumento) {
+  let total = 0;
+  for (const [campo] of COG_DOMINIOS[instrumento]) {
+    const marcado = $(`input[name="cog-${instrumento}-${campo}"]:checked`);
+    if (!marcado) return null;
+    total += Number(marcado.value);
+  }
+  return total;
+}
+
 const cogForm = $('#cog-form');
 const cogResultado = $('#cog-resultado');
 
@@ -231,9 +273,11 @@ let resultadoCognitivo = null;
 
 function atualizarCognitivo() {
   const instrumento = $('input[name="cog-instrumento"]:checked')?.value ?? 'mmse';
-  const pontos = $('#cog-pontos').value;
   const anos = $('#cog-escolaridade').value;
-  const r = instrumento === 'mmse' ? classificarMMSE(pontos, anos) : classificarMoCA(pontos, anos);
+  const pontos = somaDominios(instrumento);
+  const r = pontos === null
+    ? { ok: false, motivo: 'Indique os pontos de todos os domínios para ver a classificação.' }
+    : instrumento === 'mmse' ? classificarMMSE(pontos, anos) : classificarMoCA(pontos, anos);
 
   const ok = $('#cog-ok');
   const vazio = $('#cog-vazio');
@@ -263,7 +307,11 @@ function atualizarCognitivo() {
       : `Pontuação ${r.pontos}/30 (ajustada: ${r.pontosAjustados}) · corte de referência 26`;
 }
 cogForm.addEventListener('input', atualizarCognitivo);
-cogForm.addEventListener('change', atualizarCognitivo);
+cogForm.addEventListener('change', (e) => {
+  if (e.target.name === 'cog-instrumento') montarDominios();
+  atualizarCognitivo();
+});
+montarDominios();
 atualizarCognitivo();
 
 function resumoTextoCognitivo(r) {
@@ -277,7 +325,7 @@ function resumoTextoCognitivo(r) {
     `Anos de escolaridade: ${r.anosEscolaridade}`,
     `Classificação: ${classificacao}`,
     detalhe,
-    'Esta ferramenta não reproduz os itens do MMSE ou do MoCA — apenas classifica uma pontuação já obtida com o teste oficial.',
+    'Esta ferramenta não reproduz os itens do MMSE ou do MoCA — apenas soma os domínios e classifica a pontuação obtida com o teste oficial.',
     '',
     'Informação de apoio — não substitui aconselhamento médico.',
     location.href,
