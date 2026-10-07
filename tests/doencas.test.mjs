@@ -8,12 +8,13 @@ import { ILUSTRACOES, MINIATURAS, ilustracao, miniatura } from '../assets/js/doe
 const raiz = new URL('..', import.meta.url).pathname;
 const palavras = (s) => s.trim().split(/\s+/).length;
 
-test('há as vinte e nove doenças, cada uma com um id único', () => {
+test('há as trinta e cinco doenças, cada uma com um id único', () => {
   assert.deepEqual(DOENCAS.map((d) => d.id), [
     'diabetes', 'cancro-mama', 'hipertensao', 'artroses', 'depressao', 'dislipidemia', 'amiotrofia', 'pneumonia',
     'avc', 'cancro-estomago', 'cancro-colorretal', 'paramiloidose', 'dpoc', 'cancro-pulmao', 'figado-alcool',
     'obesidade-infantil', 'osteoporose', 'demencia', 'tuberculose', 'asma', 'enfarte', 'fibrilhacao-auricular',
     'insuficiencia-cardiaca', 'doenca-renal', 'cancro-prostata', 'cancro-pele', 'ansiedade', 'parkinson', 'lombalgia',
+    'gripe', 'constipacao', 'covid-19', 'gastroenterite', 'varicela', 'sarampo',
   ]);
 });
 
@@ -135,7 +136,8 @@ test('o email de cada separador tem assunto, resumo e cabe num link mailto', () 
 
 test('encontrar doença e validar grupo', () => {
   assert.equal(encontrarDoenca('pneumonia').nome, 'Pneumonia');
-  assert.equal(encontrarDoenca('gripe'), null);
+  assert.equal(encontrarDoenca('gripe').categoria, 'Infeções');
+  assert.equal(encontrarDoenca('raiva'), null);
   assert.equal(encontrarDoenca(null), null);
   assert.ok(grupoValido('65+'));
   assert.ok(!grupoValido('99'));

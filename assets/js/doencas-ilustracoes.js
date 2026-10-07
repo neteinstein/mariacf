@@ -1454,6 +1454,55 @@ export const ILUSTRACOES = {
       <circle class="c-pele" cx="80" cy="86" r="4"/><circle class="c-pele" cx="120" cy="86" r="4"/>
     </g>
     <g class="an-pulsar"><circle class="c-verde" cx="160" cy="36" r="15"/><path class="t-branco grosso" d="M153 36l5 5 9 -10"/></g>`,
+
+  // ---------- Infeções (gripe, constipação, COVID-19, varicela, sarampo) ----------
+  virus: () => {
+    let picos = '';
+    for (let i = 0; i < 12; i++) {
+      const a = (i * Math.PI) / 6;
+      const ponta = (r) => `${n(100 + Math.cos(a) * r)} ${n(72 + Math.sin(a) * r)}`;
+      const [px, py] = ponta(54).split(' ');
+      picos += `<path class="grosso" d="M${ponta(38)}L${ponta(50)}"/><circle class="c-coral" cx="${px}" cy="${py}" r="5"/>`;
+    }
+    return `<g class="an-girar rv" style="transform-origin:100px 72px">${picos}</g>
+      <circle class="c-coral-s" cx="100" cy="72" r="40"/>
+      <circle class="c-coral sem" cx="74" cy="56" r="4"/><circle class="c-coral sem" cx="128" cy="92" r="5"/><circle class="c-coral sem" cx="122" cy="50" r="3"/>
+      ${cara(100, 76, 26, 'neutro')}
+      <g class="an-flutuar"><circle class="c-azul-s" cx="26" cy="30" r="6"/></g>
+      <g class="an-flutuar d2"><circle class="c-azul-s" cx="178" cy="122" r="5"/></g>
+      <g class="an-flutuar d1"><circle class="c-azul-s" cx="172" cy="24" r="4"/></g>`;
+  },
+
+  lenco: () => {
+    const p = pessoa(84, 26, { humor: 'doente', bracos: 'nenhum', cor: 'c-azul-s' });
+    const [ox, oy] = p.ombroD;
+    return `${p.svg}
+      <path d="M${n(p.ombroE[0])} ${n(p.ombroE[1])}l-7 24"/>${p.mao(p.ombroE[0] - 7, p.ombroE[1] + 24)}
+      <circle class="c-vermelho sem" cx="84" cy="${n(p.cy + 2)}" r="3.5"/>
+      <path d="M${n(ox)} ${n(oy)}Q${n(ox + 16)} ${n(oy - 2)} 104 ${n(p.cy + 12)}"/>${p.mao(104, p.cy + 12)}
+      <g class="an-tremer"><path class="c-branco" d="M86 ${n(p.cy - 4)}L108 ${n(p.cy - 8)}L112 ${n(p.cy + 12)}L90 ${n(p.cy + 16)}Z"/></g>
+      <g class="an-piscar"><text class="il-txt" x="154" y="34">atchim!</text></g>
+      <path class="an-piscar d2 fino fraco" d="M124 50l8 -4M126 60h10M124 70l8 4"/>`;
+  },
+
+  borbulhas: () => {
+    const pinta = (x, y, r, atraso) =>
+      `<g class="an-pulsar ${atraso}"><circle class="c-vermelho" cx="${x}" cy="${y}" r="${r}"/><circle class="c-coral-s sem" cx="${n(x - r * 0.3)}" cy="${n(y - r * 0.3)}" r="${n(r * 0.35)}"/></g>`;
+    return `${cabeca(82, 78, 46, { humor: 'neutro' })}
+      ${pinta(54, 92, 4.5, '')}${pinta(110, 94, 4.5, 'd2')}${pinta(64, 110, 4, 'd1')}${pinta(100, 112, 4, 'd3')}${pinta(82, 118, 3, 'd2')}
+      <rect class="c-pele" x="148" y="54" width="24" height="96" rx="12"/>
+      ${pinta(158, 76, 4, 'd1')}${pinta(164, 100, 4.5, '')}${pinta(156, 124, 3.5, 'd3')}
+      <g class="an-piscar"><path class="t-coral grosso" d="M182 84l10 -6M184 98h12M182 112l10 6"/></g>`;
+  },
+
+  mascara: () => `
+    ${cabeca(100, 74, 46, { humor: 'feliz' })}
+    <path class="grosso" d="M58 82Q50 70 56 62M142 82Q150 70 144 62"/>
+    <path class="c-azul-s" d="M62 78Q100 68 138 78V100Q100 124 62 100Z"/>
+    <path class="fino fraco" d="M68 86Q100 78 132 86M70 96Q100 108 130 96"/>
+    <g class="an-flutuar">${germe(24, 40, 7)}</g>
+    <g class="an-flutuar d2">${germe(178, 112, 6, 'c-verde')}</g>
+    ${estrela(170, 30, 6, 'c-sol', 'an-piscar')}`,
 };
 
 export function ilustracao(nome) {
@@ -1481,6 +1530,18 @@ function adnMini() {
     if (Math.abs(f) > 0.2) degraus += `<path class="d-degrau d-p${(i % 5) + 1}" d="M${n(60 + 16 * f)} ${y}H${n(60 - 16 * f)}"/>`;
   }
   return `${degraus}<path d="M${A.join('L')}"/><path d="M${B.join('L')}"/>`;
+}
+
+// Vírus com espículas (gripe, COVID-19, constipação).
+function virusMini() {
+  let picos = '';
+  for (let i = 0; i < 8; i++) {
+    const a = (i * Math.PI) / 4;
+    const x = (r) => n(60 + Math.cos(a) * r);
+    const y = (r) => n(45 + Math.sin(a) * r);
+    picos += `<path d="M${x(20)} ${y(20)}L${x(30)} ${y(30)}"/><circle class="d-cheio" cx="${x(32)}" cy="${y(32)}" r="3"/>`;
+  }
+  return `<g class="d-virus"><circle class="d-cheio-suave" cx="60" cy="45" r="20"/>${picos}</g>`;
 }
 
 // Eletrocardiograma irregular (fibrilhação auricular) da miniatura.
@@ -1612,6 +1673,15 @@ const MINI = {
       <rect x="37" y="71" width="36" height="11" rx="3"/>
       <circle class="d-alerta d-cheio" cx="88" cy="70" r="5"/>
       <circle class="d-alerta-onda" cx="88" cy="70" r="10"/>`,
+  virus: virusMini(),
+  pintas: `
+      <circle cx="60" cy="45" r="36"/>
+      <circle class="d-pinta d-cheio" cx="44" cy="30" r="4"/>
+      <circle class="d-pinta d-p2 d-cheio" cx="76" cy="28" r="3.5"/>
+      <circle class="d-pinta d-p3 d-cheio" cx="40" cy="58" r="3.5"/>
+      <circle class="d-pinta d-p2 d-cheio" cx="80" cy="60" r="4"/>
+      <circle class="d-pinta d-cheio" cx="60" cy="70" r="3"/>
+      <circle class="d-pinta d-p3 d-cheio" cx="62" cy="44" r="3"/>`,
 };
 
 export const MINIATURAS = Object.keys(MINI);
