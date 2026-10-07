@@ -3,60 +3,76 @@
    ========================================================================== */
 
 :root {
-  --bg: #f4f8f6;
-  --bg-2: #e7f1ec;
-  --ink: #1c2b27;
-  --ink-soft: #4a5b56;
-  --ink-mute: #606d67;
-  --line: rgba(11, 61, 54, 0.12);
+  --bg: #f4fbf7;
+  --bg-2: #e4f5eb;
+  --ink: #11271c;
+  --ink-soft: #3f5649;
+  --ink-mute: #55695d;
+  --line: rgba(1, 62, 38, 0.12);
   --surface: rgba(255, 255, 255, 0.72);
   --surface-strong: rgba(255, 255, 255, 0.92);
   --surface-border: rgba(255, 255, 255, 0.9);
 
-  --teal: #006d4c;
-  --teal-2: #00a676;
-  --teal-soft: #d7f0e6;
+  --teal: #04764c;
+  --teal-2: #0cafa8;
+  --teal-soft: #d1f3df;
   --coral: #e2572f;
   --coral-soft: #fbe1d7;
-  --violet: #0b3d36;
-  --violet-soft: #dbe9e5;
+  --violet: #31478e;
+  --violet-soft: #e1e9fe;
   --sun: #ecab2e;
   --sun-soft: #fbedd0;
   --danger: #c2413a;
   --danger-soft: #fde4e1;
 
-  --blob-1: #a9e4cf;
-  --blob-2: #c9dfd6;
-  --blob-3: #7fbfa8;
-  --blob-4: #ffd9a3;
+  --blob-1: #85e9b6;
+  --blob-2: #c3d4fe;
+  --blob-3: #58e3dc;
+  --blob-4: #ffcfb9;
 
   /* Acentos decorativos (títulos, orbe, avatar, cartões): mudam com a paleta.
      As cores dos níveis de risco (--sun, --coral, --danger) não. */
-  --accent: #b53c19;
-  --accent-soft: var(--coral-soft);
-  --accent-2: var(--sun);
-  --accent-2-soft: var(--sun-soft);
+  --accent: #3453d3;
+  --accent-soft: #e1e9fe;
+  --accent-2: #fe8f5b;
+  --accent-2-soft: #ffe7dd;
 
   /* Desenhos das doenças */
-  --il-traco: #24413a;
-  --il-cor: #12a578;
-  --il-suave: #d3f1e4;
-  --il-acento: #ee7046;
-  --il-acento-suave: #fde2d6;
-  --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23006d4c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  --il-traco: #193b2a;
+  --il-cor: #08ad72;
+  --il-suave: #cef4de;
+  --il-acento: #587cf1;
+  --il-acento-suave: #e1e9fe;
+  --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2304764c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
 
-  /* Gradiente dos cartões em destaque: igual nos temas claro e escuro (texto a branco). */
-  --brand-a: #006d4c;
-  --brand-b: #00825d;
-  --brand-c: #0b3d36;
-  /* Gradiente dos cartões alternados (tint-coral): também fixo nos dois temas. */
-  --brand-alt-a: #a8391c;
-  --brand-alt-b: #c34a27;
-  --brand-alt-c: #b6551b;
+  /* Cores de marca (logótipo, botão principal, avatar): iguais nos temas claro e escuro (texto a branco). */
+  --brand-a: #04764c;
+  --brand-b: #09856e;
+  --brand-c: #087c77;
+  /* Cor de marca alternada (cartões tint-coral no escuro, avatar). */
+  --brand-alt-a: #314ede;
+  --brand-alt-b: #6751ea;
+  --brand-alt-c: #7f3dd7;
+  /* Cartões em destaque: no claro, gradientes pastel com texto escuro; no escuro, as cores
+     de marca com texto a branco (ver os blocos escuros abaixo). */
+  --cartao-a: #bef5d6;
+  --cartao-b: #d6faef;
+  --cartao-c: #99f1ea;
+  --cartao-alt-a: #dce6fe;
+  --cartao-alt-b: #eeeffe;
+  --cartao-alt-c: #e2d7ff;
+  --cartao-texto: var(--ink);
+  --cartao-texto-suave: var(--ink-soft);
+  --cartao-vidro: rgba(255, 255, 255, 0.7);
+  --cartao-etiqueta: rgba(255, 255, 255, 0.6);
+  --cartao-etiqueta-borda: rgba(255, 255, 255, 0.95);
+  --cartao-luz: rgba(255, 255, 255, 0.7);
+  --cartao-borda: rgba(255, 255, 255, 0.85);
+  --cartao-brilho: 40%;
 
   --shadow-sm: 0 1px 2px rgba(23, 36, 46, 0.06), 0 2px 8px rgba(23, 36, 46, 0.05);
   --shadow: 0 10px 30px -10px rgba(23, 36, 46, 0.18), 0 2px 6px rgba(23, 36, 46, 0.05);
-  --shadow-lg: 0 30px 60px -20px rgba(15, 80, 74, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+  --shadow-lg: 0 30px 60px -20px rgba(5, 102, 65, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
 
   --radius: 22px;
   --radius-sm: 14px;
@@ -70,67 +86,103 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #0a1512;
-    --bg-2: #0e1c18;
-    --ink: #eaf4f0;
-    --ink-soft: #b3c8c1;
-    --ink-mute: #7f9791;
-    --line: rgba(234, 244, 240, 0.1);
-    --surface: rgba(20, 39, 34, 0.55);
-    --surface-strong: rgba(22, 43, 38, 0.85);
+    --bg: #03120a;
+    --bg-2: #051a0f;
+    --ink: #ebf4ef;
+    --ink-soft: #bbd1c4;
+    --ink-mute: #8fa498;
+    --line: rgba(235, 244, 239, 0.1);
+    --surface: rgba(13, 43, 28, 0.55);
+    --surface-strong: rgba(14, 48, 32, 0.85);
     --surface-border: rgba(255, 255, 255, 0.08);
-    --teal: #2fcf9a;
-    --teal-2: #00a676;
-    --teal-soft: rgba(47, 207, 154, 0.14);
+    --teal: #52db9c;
+    --teal-2: #0cafa8;
+    --teal-soft: rgba(82, 219, 156, 0.14);
     --coral: #ff8f6b;
     --coral-soft: rgba(255, 143, 107, 0.14);
-    --violet: #6fb3a4;
-    --violet-soft: rgba(111, 179, 164, 0.15);
+    --violet: #a5bcf9;
+    --violet-soft: rgba(165, 188, 249, 0.15);
     --sun: #ffc861;
-    --accent: var(--coral);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232fcf9a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --accent: #a2bcff;
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2352db9c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
     --sun-soft: rgba(255, 200, 97, 0.14);
     --danger: #ff8a80;
     --danger-soft: rgba(255, 138, 128, 0.14);
-    --blob-1: #0f5c4a;
-    --blob-2: #1f4b3d;
-    --blob-3: #0b3d36;
-    --blob-4: #5c4413;
+    --blob-1: #025c3b;
+    --blob-2: #203596;
+    --blob-3: #035350;
+    --blob-4: #542d8c;
     --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    --accent-soft: rgba(162, 188, 255, 0.14);
+    --accent-2: #ffb798;
+    --accent-2-soft: rgba(255, 183, 152, 0.14);
+    --cartao-a: #04764c;
+    --cartao-b: #09856e;
+    --cartao-c: #087c77;
+    --cartao-alt-a: #314ede;
+    --cartao-alt-b: #6751ea;
+    --cartao-alt-c: #7f3dd7;
+    --cartao-texto: #fff;
+    --cartao-texto-suave: #fff;
+    --cartao-vidro: rgba(255, 255, 255, 0.2);
+    --cartao-etiqueta: rgba(0, 0, 0, 0.15);
+    --cartao-etiqueta-borda: rgba(255, 255, 255, 0.25);
+    --cartao-luz: rgba(255, 255, 255, 0.26);
+    --cartao-borda: transparent;
+    --cartao-brilho: 70%;
+    --cartao-acao: #fff;
     color-scheme: dark;
   }
 }
 
 :root[data-theme='dark'] {
-  --bg: #0a1512;
-  --bg-2: #0e1c18;
-  --ink: #eaf4f0;
-  --ink-soft: #b3c8c1;
-  --ink-mute: #7f9791;
-  --line: rgba(234, 244, 240, 0.1);
-  --surface: rgba(20, 39, 34, 0.55);
-  --surface-strong: rgba(22, 43, 38, 0.85);
+  --bg: #03120a;
+  --bg-2: #051a0f;
+  --ink: #ebf4ef;
+  --ink-soft: #bbd1c4;
+  --ink-mute: #8fa498;
+  --line: rgba(235, 244, 239, 0.1);
+  --surface: rgba(13, 43, 28, 0.55);
+  --surface-strong: rgba(14, 48, 32, 0.85);
   --surface-border: rgba(255, 255, 255, 0.08);
-  --teal: #2fcf9a;
-  --teal-2: #00a676;
-  --teal-soft: rgba(47, 207, 154, 0.14);
+  --teal: #52db9c;
+  --teal-2: #0cafa8;
+  --teal-soft: rgba(82, 219, 156, 0.14);
   --coral: #ff8f6b;
   --coral-soft: rgba(255, 143, 107, 0.14);
-  --violet: #6fb3a4;
-  --violet-soft: rgba(111, 179, 164, 0.15);
+  --violet: #a5bcf9;
+  --violet-soft: rgba(165, 188, 249, 0.15);
   --sun: #ffc861;
-  --accent: var(--coral);
-  --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232fcf9a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  --accent: #a2bcff;
+  --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2352db9c' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --sun-soft: rgba(255, 200, 97, 0.14);
   --danger: #ff8a80;
   --danger-soft: rgba(255, 138, 128, 0.14);
-  --blob-1: #0f5c4a;
-  --blob-2: #1f4b3d;
-  --blob-3: #0b3d36;
-  --blob-4: #5c4413;
+  --blob-1: #025c3b;
+  --blob-2: #203596;
+  --blob-3: #035350;
+  --blob-4: #542d8c;
   --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  --accent-soft: rgba(162, 188, 255, 0.14);
+  --accent-2: #ffb798;
+  --accent-2-soft: rgba(255, 183, 152, 0.14);
+  --cartao-a: #04764c;
+  --cartao-b: #09856e;
+  --cartao-c: #087c77;
+  --cartao-alt-a: #314ede;
+  --cartao-alt-b: #6751ea;
+  --cartao-alt-c: #7f3dd7;
+  --cartao-texto: #fff;
+  --cartao-texto-suave: #fff;
+  --cartao-vidro: rgba(255, 255, 255, 0.2);
+  --cartao-etiqueta: rgba(0, 0, 0, 0.15);
+  --cartao-etiqueta-borda: rgba(255, 255, 255, 0.25);
+  --cartao-luz: rgba(255, 255, 255, 0.26);
+  --cartao-borda: transparent;
+  --cartao-brilho: 70%;
+  --cartao-acao: #fff;
   color-scheme: dark;
 }
 
@@ -141,346 +193,418 @@
 @media screen {
   /* Azul clínico */
   :root[data-palette='azul'] {
-    --bg: #f4f7fb;
-    --bg-2: #e6eef8;
-    --ink: #17222f;
-    --ink-soft: #475569;
-    --ink-mute: #5e6a7d;
-    --line: rgba(10, 46, 92, 0.12);
-    --teal: #0b5cad;
-    --teal-2: #2b8be0;
-    --teal-soft: #dceafa;
-    --violet: #0a2e5c;
-    --violet-soft: #dde6f2;
-    --blob-1: #b7d4f5;
-    --blob-2: #cfdcec;
-    --blob-3: #8db8e8;
-    --brand-a: #0b5cad;
-    --brand-b: #1c74c1;
-    --brand-c: #0a2e5c;
-    --brand-alt-a: #3a3d9e;
-    --brand-alt-b: #5b5fd6;
-    --brand-alt-c: #5e62e0;
-    --accent: #5155d3;
-    --accent-soft: #e3e4fa;
-    --accent-2: #2ea3cf;
-    --accent-2-soft: #d8eff8;
-    --blob-4: #c9cdf7;
-    --il-traco: #1d3350;
-    --il-cor: #2b8be0;
-    --il-suave: #dceafa;
-    --il-acento: #6d63d9;
-    --il-acento-suave: #e4e1fa;
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230b5cad' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --shadow-lg: 0 30px 60px -20px rgba(11, 60, 120, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+    --bg: #f6f9ff;
+    --bg-2: #e9f1fe;
+    --ink: #182233;
+    --ink-soft: #455063;
+    --ink-mute: #5a6475;
+    --line: rgba(27, 49, 91, 0.12);
+    --teal: #2c5dbd;
+    --teal-2: #05a3e9;
+    --teal-soft: #deeaff;
+    --violet: #065765;
+    --violet-soft: #d0f0f8;
+    --blob-1: #b9d2ff;
+    --blob-2: #80e6fc;
+    --blob-3: #92d4ff;
+    --brand-a: #1957d2;
+    --brand-b: #0574c7;
+    --brand-c: #0574a6;
+    --brand-alt-a: #086f81;
+    --brand-alt-b: #098188;
+    --brand-alt-c: #087c77;
+    --cartao-a: #dae7fe;
+    --cartao-b: #e5f2ff;
+    --cartao-c: #bde4ff;
+    --cartao-alt-a: #b9f1ff;
+    --cartao-alt-b: #d2f9fc;
+    --cartao-alt-c: #99f1ea;
+    --accent: #086f81;
+    --accent-soft: #c8f2fc;
+    --accent-2: #ff8c76;
+    --accent-2-soft: #fee7e2;
+    --blob-4: #ffcec3;
+    --il-traco: #25334c;
+    --il-cor: #5e8fed;
+    --il-suave: #dfeafe;
+    --il-acento: #0796ae;
+    --il-acento-suave: #c4f3fe;
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c5dbd' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --shadow-lg: 0 30px 60px -20px rgba(34, 79, 167, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
   }
   :root[data-palette='azul'][data-theme='dark'] {
-    --bg: #0a111c;
-    --bg-2: #0d1726;
-    --ink: #e9f0f8;
-    --ink-soft: #b3c2d4;
-    --ink-mute: #8090a5;
-    --line: rgba(233, 240, 248, 0.1);
-    --surface: rgba(18, 32, 52, 0.55);
-    --surface-strong: rgba(20, 36, 58, 0.85);
-    --teal: #6cb2ff;
-    --teal-2: #2b8be0;
-    --teal-soft: rgba(108, 178, 255, 0.14);
-    --violet: #8fb0d8;
-    --violet-soft: rgba(143, 176, 216, 0.15);
-    --blob-1: #123d6b;
-    --blob-2: #1d3553;
-    --blob-3: #0a2e5c;
-    --accent: #a3a6ff;
-    --accent-soft: rgba(163, 166, 255, 0.14);
-    --accent-2: #7fd0ef;
-    --accent-2-soft: rgba(127, 208, 239, 0.14);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236cb2ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --blob-4: #2c2f6b;
+    --bg: #070e1b;
+    --bg-2: #0c1525;
+    --ink: #edf2fa;
+    --ink-soft: #c0cbdf;
+    --ink-mute: #949fb2;
+    --line: rgba(237, 242, 250, 0.1);
+    --surface: rgba(24, 36, 58, 0.55);
+    --surface-strong: rgba(27, 41, 66, 0.85);
+    --teal: #9bbeff;
+    --teal-2: #05a3e9;
+    --teal-soft: rgba(155, 190, 255, 0.14);
+    --violet: #74cde1;
+    --violet-soft: rgba(116, 205, 225, 0.15);
+    --blob-1: #1e4798;
+    --blob-2: #024b58;
+    --blob-3: #014d71;
+    --accent: #07d4f4;
+    --accent-soft: rgba(7, 212, 244, 0.14);
+    --accent-2: #ffb6a7;
+    --accent-2-soft: rgba(255, 182, 167, 0.14);
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239bbeff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --blob-4: #035350;
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    --cartao-a: #1957d2;
+    --cartao-b: #0574c7;
+    --cartao-c: #0574a6;
+    --cartao-alt-a: #086f81;
+    --cartao-alt-b: #098188;
+    --cartao-alt-c: #087c77;
   }
   /* Turquesa */
   :root[data-palette='turquesa'] {
-    --bg: #f3f9fa;
-    --bg-2: #e2f2f4;
-    --ink: #152a2d;
-    --ink-soft: #455d61;
-    --ink-mute: #5b6f72;
-    --line: rgba(8, 65, 74, 0.12);
-    --teal: #00707a;
-    --teal-2: #14a8b5;
-    --teal-soft: #d4f1f3;
-    --violet: #08414a;
-    --violet-soft: #dbebee;
-    --blob-1: #a6e3e8;
-    --blob-2: #c8e1e4;
-    --blob-3: #78c6cf;
-    --brand-a: #00707a;
-    --brand-b: #0f7d87;
-    --brand-c: #08414a;
-    --brand-alt-a: #1c5a8a;
-    --brand-alt-b: #2a77ac;
-    --brand-alt-c: #2f77a7;
-    --accent: #266d9d;
-    --accent-soft: #dcebf6;
-    --accent-2: #3fae84;
-    --accent-2-soft: #d9f2e7;
-    --blob-4: #bfe0ee;
-    --il-traco: #163f45;
-    --il-cor: #14a8b5;
-    --il-suave: #d4f1f3;
-    --il-acento: #3a8fcb;
-    --il-acento-suave: #dceaf6;
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300707a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --shadow-lg: 0 30px 60px -20px rgba(0, 90, 100, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+    --bg: #f2fbfb;
+    --bg-2: #e0f5f5;
+    --ink: #092727;
+    --ink-soft: #395656;
+    --ink-mute: #4f6968;
+    --line: rgba(1, 59, 59, 0.12);
+    --teal: #067272;
+    --teal-2: #01aaca;
+    --teal-soft: #c8f4f3;
+    --violet: #812a3b;
+    --violet-soft: #ffe1e4;
+    --blob-1: #5de9e9;
+    --blob-2: #ffc2c8;
+    --blob-3: #5eddfe;
+    --brand-a: #067272;
+    --brand-b: #01818d;
+    --brand-c: #067890;
+    --brand-alt-a: #b80444;
+    --brand-alt-b: #cd0668;
+    --brand-alt-c: #bf0479;
+    --cartao-a: #aff6f5;
+    --cartao-b: #d2f8fe;
+    --cartao-c: #a7eafe;
+    --cartao-alt-a: #ffdcdf;
+    --cartao-alt-b: #feeaef;
+    --cartao-alt-c: #fecfe2;
+    --accent: #b80444;
+    --accent-soft: #ffe1e4;
+    --accent-2: #e8a127;
+    --accent-2-soft: #fee9ce;
+    --blob-4: #ffd396;
+    --il-traco: #093b3b;
+    --il-cor: #05a7a7;
+    --il-suave: #c4f5f4;
+    --il-acento: #dc4b69;
+    --il-acento-suave: #fee1e4;
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23067272' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --shadow-lg: 0 30px 60px -20px rgba(3, 98, 98, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
   }
   :root[data-palette='turquesa'][data-theme='dark'] {
-    --bg: #081517;
-    --bg-2: #0b1d20;
-    --ink: #e8f5f6;
-    --ink-soft: #b0c9cc;
-    --ink-mute: #7d979a;
-    --line: rgba(232, 245, 246, 0.1);
-    --surface: rgba(16, 40, 44, 0.55);
-    --surface-strong: rgba(18, 45, 50, 0.85);
-    --teal: #4fd6e0;
-    --teal-2: #14a8b5;
-    --teal-soft: rgba(79, 214, 224, 0.14);
-    --violet: #6fb5bd;
-    --violet-soft: rgba(111, 181, 189, 0.15);
-    --blob-1: #0e5560;
-    --blob-2: #1c4549;
-    --blob-3: #08414a;
-    --accent: #7cbcea;
-    --accent-soft: rgba(124, 188, 234, 0.14);
-    --accent-2: #7ddcb4;
-    --accent-2-soft: rgba(125, 220, 180, 0.14);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234fd6e0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --blob-4: #123e5c;
+    --bg: #001212;
+    --bg-2: #001919;
+    --ink: #e9f4f4;
+    --ink-soft: #b5d1d0;
+    --ink-mute: #8aa5a4;
+    --line: rgba(233, 244, 244, 0.1);
+    --surface: rgba(2, 42, 42, 0.55);
+    --surface-strong: rgba(0, 48, 48, 0.85);
+    --teal: #06d8d9;
+    --teal-2: #01aaca;
+    --teal-soft: rgba(6, 216, 217, 0.14);
+    --violet: #f2a6ae;
+    --violet-soft: rgba(242, 166, 174, 0.15);
+    --blob-1: #055959;
+    --blob-2: #7f002c;
+    --blob-3: #055061;
+    --accent: #ff9eaa;
+    --accent-soft: rgba(255, 158, 170, 0.14);
+    --accent-2: #fcbe62;
+    --accent-2-soft: rgba(252, 190, 98, 0.14);
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2306d8d9' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --blob-4: #7e1350;
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    --cartao-a: #067272;
+    --cartao-b: #01818d;
+    --cartao-c: #067890;
+    --cartao-alt-a: #b80444;
+    --cartao-alt-b: #cd0668;
+    --cartao-alt-c: #bf0479;
   }
   /* Lavanda */
   :root[data-palette='lavanda'] {
-    --bg: #f7f5fc;
-    --bg-2: #eeeaf8;
-    --ink: #221d33;
-    --ink-soft: #544d66;
-    --ink-mute: #6d667a;
-    --line: rgba(46, 33, 96, 0.12);
-    --teal: #5b45b0;
-    --teal-2: #8a74e0;
-    --teal-soft: #e7e2fa;
-    --violet: #2e2160;
-    --violet-soft: #e4e0f0;
-    --blob-1: #d2c6f5;
-    --blob-2: #e0daf0;
-    --blob-3: #b2a1ea;
-    --brand-a: #5b45b0;
-    --brand-b: #775ddb;
-    --brand-c: #2e2160;
-    --brand-alt-a: #7d2f73;
-    --brand-alt-b: #ac4da0;
-    --brand-alt-c: #b545a4;
-    --accent: #99458e;
-    --accent-soft: #f5def1;
-    --accent-2: #6f8ae6;
-    --accent-2-soft: #e1e7fb;
-    --blob-4: #f0cdea;
-    --il-traco: #2e2752;
-    --il-cor: #8a74e0;
-    --il-suave: #e7e2fa;
-    --il-acento: #c4609f;
-    --il-acento-suave: #f6dfee;
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b45b0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --shadow-lg: 0 30px 60px -20px rgba(70, 50, 150, 0.32), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+    --bg: #faf8fe;
+    --bg-2: #f2edfd;
+    --ink: #241e30;
+    --ink-soft: #524c61;
+    --ink-mute: #656073;
+    --line: rgba(56, 40, 86, 0.12);
+    --teal: #7048b1;
+    --teal-2: #7c8cfe;
+    --teal-soft: #ece5ff;
+    --violet: #035181;
+    --violet-soft: #d8ecff;
+    --blob-1: #d7c7fe;
+    --blob-2: #afdaff;
+    --blob-3: #bbc7fe;
+    --brand-a: #743bc3;
+    --brand-b: #6e54de;
+    --brand-c: #5057dc;
+    --brand-alt-a: #0568a4;
+    --brand-alt-b: #017ba9;
+    --brand-alt-c: #007894;
+    --cartao-a: #e9e1fe;
+    --cartao-b: #eeeeff;
+    --cartao-c: #d4dcfe;
+    --cartao-alt-a: #d2eaff;
+    --cartao-alt-b: #e1f3fe;
+    --cartao-alt-c: #ade9fe;
+    --accent: #0568a4;
+    --accent-soft: #d8ecff;
+    --accent-2: #f786be;
+    --accent-2-soft: #fee5f0;
+    --blob-4: #ffc9e1;
+    --il-traco: #362d49;
+    --il-cor: #9e7be1;
+    --il-suave: #ece5fe;
+    --il-acento: #008cdd;
+    --il-acento-suave: #d9ecfe;
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237048b1' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --shadow-lg: 0 30px 60px -20px rgba(97, 60, 156, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
   }
   :root[data-palette='lavanda'][data-theme='dark'] {
-    --bg: #110e1c;
-    --bg-2: #171326;
-    --ink: #efecf8;
-    --ink-soft: #c0b9d4;
-    --ink-mute: #8d86a3;
-    --line: rgba(239, 236, 248, 0.1);
-    --surface: rgba(34, 28, 56, 0.55);
-    --surface-strong: rgba(38, 32, 62, 0.85);
-    --teal: #b3a4ff;
-    --teal-2: #8a74e0;
-    --teal-soft: rgba(179, 164, 255, 0.14);
-    --violet: #a99bd6;
-    --violet-soft: rgba(169, 155, 214, 0.15);
-    --blob-1: #3a2c78;
-    --blob-2: #2c2550;
-    --blob-3: #2e2160;
-    --accent: #e690d8;
-    --accent-soft: rgba(230, 144, 216, 0.14);
-    --accent-2: #a6b7ff;
-    --accent-2-soft: rgba(166, 183, 255, 0.14);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b3a4ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --blob-4: #55245a;
+    --bg: #100b1a;
+    --bg-2: #171123;
+    --ink: #f2f0f9;
+    --ink-soft: #ccc7dc;
+    --ink-mute: #a09baf;
+    --line: rgba(242, 240, 249, 0.1);
+    --surface: rgba(39, 31, 55, 0.55);
+    --surface-strong: rgba(44, 35, 62, 0.85);
+    --teal: #c7adff;
+    --teal-2: #7c8cfe;
+    --teal-soft: rgba(199, 173, 255, 0.14);
+    --violet: #8cc4f4;
+    --violet-soft: rgba(140, 196, 244, 0.15);
+    --blob-1: #58368e;
+    --blob-2: #034670;
+    --blob-3: #373e87;
+    --accent: #80c5ff;
+    --accent-soft: rgba(128, 197, 255, 0.14);
+    --accent-2: #ffafd4;
+    --accent-2-soft: rgba(255, 175, 212, 0.14);
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c7adff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --blob-4: #005064;
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    --cartao-a: #743bc3;
+    --cartao-b: #6e54de;
+    --cartao-c: #5057dc;
+    --cartao-alt-a: #0568a4;
+    --cartao-alt-b: #017ba9;
+    --cartao-alt-c: #007894;
   }
   /* Orquídea */
   :root[data-palette='orquidea'] {
-    --bg: #fbf5f8;
-    --bg-2: #f6e8ef;
-    --ink: #2c1a24;
+    --bg: #fef7fb;
+    --bg-2: #fcebf3;
+    --ink: #2e1b25;
     --ink-soft: #5e4854;
-    --ink-mute: #76636e;
-    --line: rgba(92, 28, 64, 0.12);
-    --teal: #9c3d7a;
-    --teal-2: #cc5fa3;
-    --teal-soft: #f7e0ee;
-    --violet: #5c1c40;
-    --violet-soft: #f0e0e9;
-    --blob-1: #f2c5dd;
-    --blob-2: #ecd8e2;
-    --blob-3: #e0a2c6;
-    --brand-a: #9c3d7a;
-    --brand-b: #c03d8f;
-    --brand-c: #5c1c40;
-    --brand-alt-a: #5c2f8f;
-    --brand-alt-b: #8a4fc4;
-    --brand-alt-c: #8e55cd;
-    --accent: #8244c0;
-    --accent-soft: #ecdff8;
-    --accent-2: #e0799a;
-    --accent-2-soft: #fbe2ea;
-    --blob-4: #e2cdf5;
-    --il-traco: #4a1f38;
-    --il-cor: #cc5fa3;
-    --il-suave: #f7e0ee;
-    --il-acento: #9a62d0;
-    --il-acento-suave: #ede0f8;
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239c3d7a' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --shadow-lg: 0 30px 60px -20px rgba(120, 40, 90, 0.32), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+    --ink-mute: #705d67;
+    --line: rgba(78, 32, 60, 0.12);
+    --teal: #9e3378;
+    --teal-2: #ee6476;
+    --teal-soft: #ffdff0;
+    --violet: #63367c;
+    --violet-soft: #f1e3fb;
+    --blob-1: #feb8df;
+    --blob-2: #e8c4ff;
+    --blob-3: #ffb3b8;
+    --brand-a: #aa167d;
+    --brand-b: #c5256d;
+    --brand-c: #c41945;
+    --brand-alt-a: #8c25bb;
+    --brand-alt-b: #8644dd;
+    --brand-alt-c: #6749e2;
+    --cartao-a: #fedbed;
+    --cartao-b: #ffeaef;
+    --cartao-c: #fed1d3;
+    --cartao-alt-a: #f1defe;
+    --cartao-alt-b: #f2edff;
+    --cartao-alt-c: #dadafe;
+    --accent: #8831b3;
+    --accent-soft: #f3e2ff;
+    --accent-2: #f59740;
+    --accent-2-soft: #fee8d7;
+    --blob-4: #fed1ad;
+    --il-traco: #452839;
+    --il-cor: #d168a7;
+    --il-suave: #fedff0;
+    --il-acento: #aa5fd3;
+    --il-acento-suave: #f3e2fe;
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239e3378' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --shadow-lg: 0 30px 60px -20px rgba(139, 40, 104, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
   }
   :root[data-palette='orquidea'][data-theme='dark'] {
-    --bg: #170c12;
-    --bg-2: #1f1018;
-    --ink: #f8ecf2;
-    --ink-soft: #d4b9c7;
-    --ink-mute: #a38695;
-    --line: rgba(248, 236, 242, 0.1);
-    --surface: rgba(52, 24, 40, 0.55);
-    --surface-strong: rgba(58, 28, 46, 0.85);
-    --teal: #f08cc6;
-    --teal-2: #cc5fa3;
-    --teal-soft: rgba(240, 140, 198, 0.14);
-    --violet: #d29bbb;
-    --violet-soft: rgba(210, 155, 187, 0.15);
-    --blob-1: #6b2152;
-    --blob-2: #4a2238;
-    --blob-3: #5c1c40;
-    --accent: #c9a0f4;
-    --accent-soft: rgba(201, 160, 244, 0.14);
-    --accent-2: #f4a6bf;
-    --accent-2-soft: rgba(244, 166, 191, 0.14);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f08cc6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --blob-4: #4b2468;
+    --bg: #170911;
+    --bg-2: #200e18;
+    --ink: #f8eff4;
+    --ink-soft: #dac3cf;
+    --ink-mute: #ad97a3;
+    --line: rgba(248, 239, 244, 0.1);
+    --surface: rgba(51, 27, 41, 0.55);
+    --surface-strong: rgba(58, 30, 46, 0.85);
+    --teal: #ff96d3;
+    --teal-2: #ee6476;
+    --teal-soft: rgba(255, 150, 211, 0.14);
+    --violet: #d1ade8;
+    --violet-soft: rgba(209, 173, 232, 0.15);
+    --blob-1: #7e235e;
+    --blob-2: #5e1b7e;
+    --blob-3: #7b2432;
+    --accent: #dca2ff;
+    --accent-soft: rgba(220, 162, 255, 0.14);
+    --accent-2: #ffba81;
+    --accent-2-soft: rgba(255, 186, 129, 0.14);
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff96d3' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --blob-4: #443493;
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    --cartao-a: #aa167d;
+    --cartao-b: #c5256d;
+    --cartao-c: #c41945;
+    --cartao-alt-a: #8c25bb;
+    --cartao-alt-b: #8644dd;
+    --cartao-alt-c: #6749e2;
   }
 }
 
 @media screen and (prefers-color-scheme: dark) {
   :root[data-palette='azul']:not([data-theme='light']) {
-    --bg: #0a111c;
-    --bg-2: #0d1726;
-    --ink: #e9f0f8;
-    --ink-soft: #b3c2d4;
-    --ink-mute: #8090a5;
-    --line: rgba(233, 240, 248, 0.1);
-    --surface: rgba(18, 32, 52, 0.55);
-    --surface-strong: rgba(20, 36, 58, 0.85);
-    --teal: #6cb2ff;
-    --teal-2: #2b8be0;
-    --teal-soft: rgba(108, 178, 255, 0.14);
-    --violet: #8fb0d8;
-    --violet-soft: rgba(143, 176, 216, 0.15);
-    --blob-1: #123d6b;
-    --blob-2: #1d3553;
-    --blob-3: #0a2e5c;
-    --accent: #a3a6ff;
-    --accent-soft: rgba(163, 166, 255, 0.14);
-    --accent-2: #7fd0ef;
-    --accent-2-soft: rgba(127, 208, 239, 0.14);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236cb2ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --blob-4: #2c2f6b;
+    --bg: #070e1b;
+    --bg-2: #0c1525;
+    --ink: #edf2fa;
+    --ink-soft: #c0cbdf;
+    --ink-mute: #949fb2;
+    --line: rgba(237, 242, 250, 0.1);
+    --surface: rgba(24, 36, 58, 0.55);
+    --surface-strong: rgba(27, 41, 66, 0.85);
+    --teal: #9bbeff;
+    --teal-2: #05a3e9;
+    --teal-soft: rgba(155, 190, 255, 0.14);
+    --violet: #74cde1;
+    --violet-soft: rgba(116, 205, 225, 0.15);
+    --blob-1: #1e4798;
+    --blob-2: #024b58;
+    --blob-3: #014d71;
+    --accent: #07d4f4;
+    --accent-soft: rgba(7, 212, 244, 0.14);
+    --accent-2: #ffb6a7;
+    --accent-2-soft: rgba(255, 182, 167, 0.14);
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239bbeff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --blob-4: #035350;
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    --cartao-a: #1957d2;
+    --cartao-b: #0574c7;
+    --cartao-c: #0574a6;
+    --cartao-alt-a: #086f81;
+    --cartao-alt-b: #098188;
+    --cartao-alt-c: #087c77;
   }
   :root[data-palette='turquesa']:not([data-theme='light']) {
-    --bg: #081517;
-    --bg-2: #0b1d20;
-    --ink: #e8f5f6;
-    --ink-soft: #b0c9cc;
-    --ink-mute: #7d979a;
-    --line: rgba(232, 245, 246, 0.1);
-    --surface: rgba(16, 40, 44, 0.55);
-    --surface-strong: rgba(18, 45, 50, 0.85);
-    --teal: #4fd6e0;
-    --teal-2: #14a8b5;
-    --teal-soft: rgba(79, 214, 224, 0.14);
-    --violet: #6fb5bd;
-    --violet-soft: rgba(111, 181, 189, 0.15);
-    --blob-1: #0e5560;
-    --blob-2: #1c4549;
-    --blob-3: #08414a;
-    --accent: #7cbcea;
-    --accent-soft: rgba(124, 188, 234, 0.14);
-    --accent-2: #7ddcb4;
-    --accent-2-soft: rgba(125, 220, 180, 0.14);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234fd6e0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --blob-4: #123e5c;
+    --bg: #001212;
+    --bg-2: #001919;
+    --ink: #e9f4f4;
+    --ink-soft: #b5d1d0;
+    --ink-mute: #8aa5a4;
+    --line: rgba(233, 244, 244, 0.1);
+    --surface: rgba(2, 42, 42, 0.55);
+    --surface-strong: rgba(0, 48, 48, 0.85);
+    --teal: #06d8d9;
+    --teal-2: #01aaca;
+    --teal-soft: rgba(6, 216, 217, 0.14);
+    --violet: #f2a6ae;
+    --violet-soft: rgba(242, 166, 174, 0.15);
+    --blob-1: #055959;
+    --blob-2: #7f002c;
+    --blob-3: #055061;
+    --accent: #ff9eaa;
+    --accent-soft: rgba(255, 158, 170, 0.14);
+    --accent-2: #fcbe62;
+    --accent-2-soft: rgba(252, 190, 98, 0.14);
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2306d8d9' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --blob-4: #7e1350;
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    --cartao-a: #067272;
+    --cartao-b: #01818d;
+    --cartao-c: #067890;
+    --cartao-alt-a: #b80444;
+    --cartao-alt-b: #cd0668;
+    --cartao-alt-c: #bf0479;
   }
   :root[data-palette='lavanda']:not([data-theme='light']) {
-    --bg: #110e1c;
-    --bg-2: #171326;
-    --ink: #efecf8;
-    --ink-soft: #c0b9d4;
-    --ink-mute: #8d86a3;
-    --line: rgba(239, 236, 248, 0.1);
-    --surface: rgba(34, 28, 56, 0.55);
-    --surface-strong: rgba(38, 32, 62, 0.85);
-    --teal: #b3a4ff;
-    --teal-2: #8a74e0;
-    --teal-soft: rgba(179, 164, 255, 0.14);
-    --violet: #a99bd6;
-    --violet-soft: rgba(169, 155, 214, 0.15);
-    --blob-1: #3a2c78;
-    --blob-2: #2c2550;
-    --blob-3: #2e2160;
-    --accent: #e690d8;
-    --accent-soft: rgba(230, 144, 216, 0.14);
-    --accent-2: #a6b7ff;
-    --accent-2-soft: rgba(166, 183, 255, 0.14);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b3a4ff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --blob-4: #55245a;
+    --bg: #100b1a;
+    --bg-2: #171123;
+    --ink: #f2f0f9;
+    --ink-soft: #ccc7dc;
+    --ink-mute: #a09baf;
+    --line: rgba(242, 240, 249, 0.1);
+    --surface: rgba(39, 31, 55, 0.55);
+    --surface-strong: rgba(44, 35, 62, 0.85);
+    --teal: #c7adff;
+    --teal-2: #7c8cfe;
+    --teal-soft: rgba(199, 173, 255, 0.14);
+    --violet: #8cc4f4;
+    --violet-soft: rgba(140, 196, 244, 0.15);
+    --blob-1: #58368e;
+    --blob-2: #034670;
+    --blob-3: #373e87;
+    --accent: #80c5ff;
+    --accent-soft: rgba(128, 197, 255, 0.14);
+    --accent-2: #ffafd4;
+    --accent-2-soft: rgba(255, 175, 212, 0.14);
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c7adff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --blob-4: #005064;
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    --cartao-a: #743bc3;
+    --cartao-b: #6e54de;
+    --cartao-c: #5057dc;
+    --cartao-alt-a: #0568a4;
+    --cartao-alt-b: #017ba9;
+    --cartao-alt-c: #007894;
   }
   :root[data-palette='orquidea']:not([data-theme='light']) {
-    --bg: #170c12;
-    --bg-2: #1f1018;
-    --ink: #f8ecf2;
-    --ink-soft: #d4b9c7;
-    --ink-mute: #a38695;
-    --line: rgba(248, 236, 242, 0.1);
-    --surface: rgba(52, 24, 40, 0.55);
-    --surface-strong: rgba(58, 28, 46, 0.85);
-    --teal: #f08cc6;
-    --teal-2: #cc5fa3;
-    --teal-soft: rgba(240, 140, 198, 0.14);
-    --violet: #d29bbb;
-    --violet-soft: rgba(210, 155, 187, 0.15);
-    --blob-1: #6b2152;
-    --blob-2: #4a2238;
-    --blob-3: #5c1c40;
-    --accent: #c9a0f4;
-    --accent-soft: rgba(201, 160, 244, 0.14);
-    --accent-2: #f4a6bf;
-    --accent-2-soft: rgba(244, 166, 191, 0.14);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f08cc6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --blob-4: #4b2468;
+    --bg: #170911;
+    --bg-2: #200e18;
+    --ink: #f8eff4;
+    --ink-soft: #dac3cf;
+    --ink-mute: #ad97a3;
+    --line: rgba(248, 239, 244, 0.1);
+    --surface: rgba(51, 27, 41, 0.55);
+    --surface-strong: rgba(58, 30, 46, 0.85);
+    --teal: #ff96d3;
+    --teal-2: #ee6476;
+    --teal-soft: rgba(255, 150, 211, 0.14);
+    --violet: #d1ade8;
+    --violet-soft: rgba(209, 173, 232, 0.15);
+    --blob-1: #7e235e;
+    --blob-2: #5e1b7e;
+    --blob-3: #7b2432;
+    --accent: #dca2ff;
+    --accent-soft: rgba(220, 162, 255, 0.14);
+    --accent-2: #ffba81;
+    --accent-2-soft: rgba(255, 186, 129, 0.14);
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff96d3' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --blob-4: #443493;
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+    --cartao-a: #aa167d;
+    --cartao-b: #c5256d;
+    --cartao-c: #c41945;
+    --cartao-alt-a: #8c25bb;
+    --cartao-alt-b: #8644dd;
+    --cartao-alt-c: #6749e2;
   }
 }
 
@@ -508,6 +632,10 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--teal-2) 32%, transparent);
 }
 
 a {
@@ -627,6 +755,7 @@ select {
   display: grid;
   place-items: center;
   background: linear-gradient(135deg, var(--brand-b), var(--brand-a) 55%, var(--brand-c));
+  background: linear-gradient(135deg in oklch, var(--brand-b), var(--brand-a) 55%, var(--brand-c));
   box-shadow: 0 8px 20px -8px var(--teal);
   color: #fff;
 }
@@ -736,14 +865,17 @@ main {
 }
 
 .paleta {
-  --p1: #006d4c;
-  --p2: #00a676;
+  --p1: #04764c;
+  --p2: #0cafa8;
+  --p3: #6751ea;
   width: 26px;
   height: 26px;
   padding: 0;
   border-radius: 50%;
   border: 2px solid var(--surface-border);
-  background: linear-gradient(135deg, var(--p1) 0 50%, var(--p2) 50% 100%);
+  /* As três cores da paleta: principal, vizinha e a dos cartões alternados. */
+  background: conic-gradient(from 210deg, var(--p1), var(--p2), var(--p3), var(--p1));
+  background: conic-gradient(from 210deg in oklch, var(--p1), var(--p2), var(--p3), var(--p1));
   box-shadow: 0 0 0 1px var(--line), var(--shadow-sm);
   cursor: pointer;
   transition: transform 0.3s var(--spring), box-shadow 0.3s var(--ease);
@@ -813,7 +945,10 @@ h3 {
 .display em {
   font-style: italic;
   font-weight: 500;
-  background: linear-gradient(100deg, var(--teal) 10%, var(--violet) 55%, var(--accent) 95%);
+  /* Gradientes misturados em OKLCH: o meio fica vivo em vez de cinzento ou castanho.
+     A primeira linha é para os navegadores que ainda não conhecem «in oklch». */
+  background: linear-gradient(100deg, var(--teal) 10%, var(--accent) 90%);
+  background: linear-gradient(100deg in oklch, var(--teal) 10%, var(--accent) 90%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -856,10 +991,15 @@ h3 {
   border-radius: 50%;
   background:
     radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.9), transparent 40%),
-    conic-gradient(from 200deg, var(--teal-2), var(--violet), var(--accent), var(--accent-2), var(--teal-2));
+    conic-gradient(from 200deg, var(--teal-2), var(--accent), var(--accent-2), var(--accent), var(--teal-2));
+  /* Ida e volta pelas cores da paleta: com três matizes seguidas o anel dava a volta ao círculo
+     cromático e ficava um arco-íris igual em todas as paletas. */
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.9), transparent 40%),
+    conic-gradient(from 200deg in oklch, var(--teal-2), var(--accent), var(--accent-2), var(--accent), var(--teal-2));
   filter: saturate(1.1);
   animation: spin 30s linear infinite;
-  box-shadow: var(--shadow-lg);
+  box-shadow: var(--shadow-lg), 0 0 90px -20px color-mix(in srgb, var(--teal-2) 55%, transparent);
 }
 
 .orb::after {
@@ -923,7 +1063,8 @@ h3 {
   font-size: clamp(3rem, 8vw, 5rem);
   font-style: italic;
   line-height: 1;
-  background: linear-gradient(135deg, var(--teal), var(--violet));
+  background: linear-gradient(135deg, var(--teal), var(--accent));
+  background: linear-gradient(135deg in oklch, var(--teal), var(--accent));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1103,30 +1244,6 @@ a.tool:hover {
 
 .tool.featured {
   min-height: 260px;
-  background:
-    linear-gradient(135deg, color-mix(in srgb, var(--brand-a) 92%, #000) 0%, var(--brand-b) 50%, color-mix(in srgb, var(--brand-c) 80%, var(--brand-b)) 100%);
-  color: #fff;
-  border-color: transparent;
-}
-
-.tool.featured::before {
-  background: radial-gradient(500px circle at var(--mx, 80%) var(--my, 0%), rgba(255, 255, 255, 0.28), transparent 55%);
-}
-
-.tool.featured .tool-desc,
-.tool.featured .tag {
-  color: #fff;
-}
-
-.tool.featured .tag {
-  /* Fundo escurecido: com branco por cima o texto da etiqueta perdia contraste. */
-  background: rgba(0, 0, 0, 0.15);
-  border-color: rgba(255, 255, 255, 0.25);
-}
-
-.tool.featured .tool-icon {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
 }
 
 .tool.featured .tool-title {
@@ -1245,6 +1362,7 @@ a.tool:hover .go svg {
   font-style: italic;
   color: #fff;
   background: linear-gradient(135deg, var(--brand-alt-b), var(--brand-c));
+  background: linear-gradient(135deg in oklch, var(--brand-alt-b), var(--brand-c));
   box-shadow: 0 16px 30px -12px var(--accent);
   transform: rotate(-6deg);
 }
@@ -2139,6 +2257,7 @@ fieldset.step legend + .step-hint {
   padding: 10px 20px;
   border-radius: 999px;
   background: linear-gradient(135deg, var(--brand-b), var(--brand-a) 55%, var(--brand-c));
+  background: linear-gradient(135deg in oklch, var(--brand-b), var(--brand-a) 55%, var(--brand-c));
   color: #fff;
   font-size: 0.9rem;
   font-weight: 700;
@@ -5722,42 +5841,64 @@ a.tool:hover .tool-deco.mini {
   }
 }
 
-/* Cartões em destaque (os que têm ilustração animada): o mesmo tratamento do
-   cartão da calculadora de doses — fundo em gradiente, texto e ilustração a branco —
-   mas no tamanho normal e com a cor de cada cartão (a principal ou a alternada da paleta).
-   As cores são fixas para o texto branco se ler também no tema escuro. */
+/* Cartões em destaque (os que têm ilustração animada): fundo em gradiente com a cor de cada
+   cartão (a principal ou a alternada da paleta). Cada gradiente passa de uma matiz para a
+   vizinha (em OKLCH, para o meio não ficar baço), com um fio de luz no topo e, ao passar o rato,
+   um brilho da cor do próprio cartão. No tema claro são pastel com texto escuro; no escuro,
+   vivos com texto a branco (tokens --cartao-* em cada paleta). */
 .tool.destaque {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--brand-a) 92%, #000) 0%, var(--brand-b) 50%, color-mix(in srgb, var(--brand-c) 80%, var(--brand-b)) 100%);
-  color: #fff;
-  border-color: transparent;
+  --brilho: var(--brand-b);
+  background: linear-gradient(135deg, var(--cartao-a) 0%, var(--cartao-b) 50%, var(--cartao-c) 100%);
+  background: linear-gradient(135deg in oklch, var(--cartao-a) 0%, var(--cartao-b) 50%, var(--cartao-c) 100%);
+  color: var(--cartao-texto);
+  border-color: var(--cartao-borda);
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 .tool.destaque.tint-coral {
-  background: linear-gradient(135deg, var(--brand-alt-a) 0%, var(--brand-alt-b) 50%, var(--brand-alt-c) 100%);
+  --brilho: var(--brand-alt-b);
+  background: linear-gradient(135deg, var(--cartao-alt-a) 0%, var(--cartao-alt-b) 50%, var(--cartao-alt-c) 100%);
+  background: linear-gradient(135deg in oklch, var(--cartao-alt-a) 0%, var(--cartao-alt-b) 50%, var(--cartao-alt-c) 100%);
+}
+
+a.tool.destaque:hover {
+  box-shadow:
+    0 28px 56px -20px color-mix(in srgb, var(--brilho) var(--cartao-brilho), transparent),
+    0 8px 20px -8px color-mix(in srgb, var(--brilho) 30%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.28);
 }
 
 .tool.destaque::before {
-  background: radial-gradient(500px circle at var(--mx, 80%) var(--my, 0%), rgba(255, 255, 255, 0.26), transparent 55%);
+  background: radial-gradient(500px circle at var(--mx, 80%) var(--my, 0%), var(--cartao-luz), transparent 55%);
 }
 
 .tool.destaque .tool-desc,
 .tool.destaque .tag {
-  color: #fff;
+  color: var(--cartao-texto-suave);
 }
 
 .tool.destaque .tag {
-  /* Fundo escurecido: com branco por cima o texto da etiqueta perdia contraste. */
-  background: rgba(0, 0, 0, 0.15);
-  border-color: rgba(255, 255, 255, 0.25);
+  /* No escuro, fundo escurecido: com branco por cima o texto da etiqueta perdia contraste. */
+  background: var(--cartao-etiqueta);
+  border-color: var(--cartao-etiqueta-borda);
 }
 
 .tool.destaque .tool-icon {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
+  background: var(--cartao-vidro);
+  color: var(--cartao-texto);
+}
+
+/* «Conhecer a doença» e a ilustração: na cor do cartão (escurecida para se ler) no claro,
+   a branco no escuro. */
+.tool.destaque .go {
+  color: var(--cartao-acao, color-mix(in srgb, var(--tint) 70%, var(--ink)));
+}
+
+.tool.destaque .tool-deco {
+  color: var(--cartao-acao, var(--tint));
 }
 
 .tool.destaque .tool-deco.mini {
-  color: #fff;
   opacity: 0.7;
 }
 

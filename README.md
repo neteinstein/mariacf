@@ -92,6 +92,15 @@ LMS oficiais da OMS (padrões 2006 até aos 60 meses, referência 2007 dos 61 ao
 O site é instalável (`manifest.webmanifest`) e funciona sem ligação graças ao service worker
 `sw.js` («rede primeiro»: com ligação serve sempre a versão mais recente e atualiza a cache).
 
+### Cores e paletas
+
+As cores vivem em tokens CSS no início de `assets/css/styles.css`: a paleta Menta (a original, `verde`) em `:root`
+e nos blocos escuros, as outras (Oceano, Turquesa, Lavanda, Orquídea) em `:root[data-palette=…]`, escolhidas nos
+círculos do rodapé (`assets/js/site.js`). Os gradientes são misturados em OKLCH, para o meio não ficar baço, com uma
+linha antes para os navegadores que ainda não o suportam. Os cartões em destaque usam os tokens `--cartao-*`: pastel com
+texto escuro no tema claro, vivos com texto a branco no escuro. O texto cumpre WCAG AA (≥ 4,5:1) em todas as paletas,
+nos dois temas; as cores dos níveis de risco (`--sun`, `--coral`, `--danger`) são as mesmas em todas.
+
 ## Desenvolvimento
 
 ```bash
