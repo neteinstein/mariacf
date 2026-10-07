@@ -170,25 +170,17 @@
           </div>
         </fieldset>
 
-        <div class="field-row">
-          <div class="step">
-            <label class="step-label" for="cog-pontos"><span class="step-num">2</span> Pontuação obtida</label>
-            <div class="weight">
-              <button class="stepper" type="button" data-alvo="cog-pontos" data-step="-1" aria-label="Diminuir pontuação">−</button>
-              <div class="weight-field"><input id="cog-pontos" type="number" inputmode="numeric" min="0" max="30" step="1" value="24"><span class="unit">/ 30</span></div>
-              <button class="stepper" type="button" data-alvo="cog-pontos" data-step="1" aria-label="Aumentar pontuação">+</button>
-            </div>
-          </div>
-          <div class="step">
-            <label class="step-label" for="cog-escolaridade"><span class="step-num">3</span> Anos de escolaridade</label>
-            <div class="weight">
-              <button class="stepper" type="button" data-alvo="cog-escolaridade" data-step="-1" aria-label="Diminuir anos de escolaridade">−</button>
-              <div class="weight-field"><input id="cog-escolaridade" type="number" inputmode="numeric" min="0" max="25" step="1" value="9"><span class="unit">anos</span></div>
-              <button class="stepper" type="button" data-alvo="cog-escolaridade" data-step="1" aria-label="Aumentar anos de escolaridade">+</button>
-            </div>
+        <div class="step">
+          <label class="step-label" for="cog-escolaridade"><span class="step-num">2</span> Anos de escolaridade</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="cog-escolaridade" data-step="-1" aria-label="Diminuir anos de escolaridade">−</button>
+            <div class="weight-field"><input id="cog-escolaridade" type="number" inputmode="numeric" min="0" max="25" step="1" value="9"><span class="unit">anos</span></div>
+            <button class="stepper" type="button" data-alvo="cog-escolaridade" data-step="1" aria-label="Aumentar anos de escolaridade">+</button>
           </div>
         </div>
-        <p class="step-hint" style="margin-left:0">Esta ferramenta não reproduz os itens do MMSE ou do MoCA (instrumentos protegidos) — apenas classifica uma pontuação total já obtida com o teste oficial.</p>
+
+        <p class="step-hint" style="margin-left:0">Indique os pontos obtidos em cada domínio, aplicando o teste oficial. A ferramenta não reproduz as perguntas (instrumentos protegidos) — soma os domínios e classifica o total.</p>
+        <div id="cog-dominios"></div>
       </form>
       <section class="panel result score-result reveal" id="cog-resultado" aria-live="polite">
         <div id="cog-ok">
