@@ -59,7 +59,7 @@ Os separadores de cada página podem ser abertos diretamente com `?calc=<id>`.
 | PHQ-9, GAD-7, AUDIT e ASRS | `/calculadora-saude-mental/` | |
 | APGAR familiar, EPDS, Zarit, Fagerström e Morisky | `/calculadora-familia/` | |
 | Unidades maço-ano e gramas de álcool | `/calculadora-habitos/` | |
-| CAT, ACT e Centor/McIsaac | `/calculadora-respiratoria/` | |
+| CAT e ACT | `/calculadora-respiratoria/` | |
 | Epworth e STOP-BANG | `/calculadora-sono/` | |
 | Urgência | `/calculadora-urgencia/` | CURB-65, Wells, QTc, Glasgow, HEART, NEWS2, PERC, Ottawa, Alvarado… |
 | Regra dos 9 | `/calculadora-queimados/` | |

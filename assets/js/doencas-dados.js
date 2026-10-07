@@ -3357,7 +3357,7 @@ export const DOENCAS = [
           ['cama', 'Na mononucleose, o cansaço pode durar semanas'],
         ],
         seccoes: [
-          { ico: '⚖️', titulo: 'Vírus ou bactéria?', texto: 'Tosse, nariz entupido e rouquidão apontam para vírus. Febre alta, gânglios dolorosos no pescoço e placas nas amígdalas, sem tosse, fazem pensar no estreptococo. O médico pode usar uma pontuação (Centor/McIsaac) e um teste rápido para decidir.' },
+          { ico: '⚖️', titulo: 'Vírus ou bactéria?', texto: 'Tosse, nariz entupido e rouquidão apontam para vírus. Febre alta, gânglios dolorosos no pescoço e placas nas amígdalas, sem tosse, fazem pensar no estreptococo. O médico pode usar um teste rápido para decidir.' },
           { ico: '💋', titulo: 'Mononucleose', texto: 'Causada pelo vírus Epstein-Barr, transmite-se pela saliva. Dá febre, amígdalas muito inchadas, gânglios no pescoço e um cansaço que pode durar semanas. Não há antibiótico que a trate, e deve evitar-se desporto de contacto durante 3 a 4 semanas, porque o baço pode estar aumentado.' },
           { ico: '💊', titulo: 'Tratamento', lista: ['Paracetamol ou ibuprofeno para a dor e a febre', 'Pastilhas e bebidas mornas ou frias', 'Antibiótico só quando é estreptococo, durante 10 dias', 'Com antibiótico, deixa de se ser contagioso ao fim de 24 horas'] },
         ],
@@ -3381,7 +3381,6 @@ export const DOENCAS = [
           { ico: '⚠️', titulo: 'Complicações', texto: 'São raras: abcesso junto à amígdala (dor forte de um lado, dificuldade em abrir a boca, voz abafada), otite ou sinusite. Muito raramente, o estreptococo não tratado pode afetar o coração ou os rins.' },
         ],
         alerta: { titulo: 'Procure ajuda urgente se…', lista: ['Dificuldade em respirar ou em engolir a saliva', 'Incapacidade de abrir a boca ou voz abafada', 'Dor forte de um só lado com inchaço', 'Febre alta que não melhora em 3 dias'] },
-        ligacoes: [{ href: 'calculadora-respiratoria/?calc=centor', texto: 'Pontuação de Centor/McIsaac' }],
       },
       '65+': {
         intro: 'Depois dos 65 anos, as amigdalites por estreptococo são pouco frequentes e a dor de garganta é quase sempre viral. Uma dor de garganta que não passa, ou com rouquidão persistente, merece ser observada.',
@@ -3471,7 +3470,6 @@ export const DOENCAS = [
           { ico: '⚠️', titulo: 'Infeção invasiva', texto: 'Muito raramente, o estreptococo do grupo A causa infeções graves (pneumonia, infeção da pele profunda, sépsis). São sinais de alarme a febre persistente, a dor desproporcionada num membro, a dificuldade respiratória e a prostração.' },
         ],
         alerta: { titulo: 'Procure ajuda urgente se…', lista: ['Dificuldade respiratória', 'Febre que persiste 48 horas depois do antibiótico', 'Dor intensa, inchaço ou vermelhidão a alastrar na pele', 'Prostração, confusão ou sinais de desidratação'] },
-        ligacoes: [{ href: 'calculadora-respiratoria/?calc=centor', texto: 'Pontuação de Centor/McIsaac' }],
       },
       '65+': {
         intro: 'A escarlatina é rara depois dos 65 anos, mas os avós podem contactar com netos doentes. Conhecer os sinais ajuda a levar a criança ao médico a tempo — e a proteger-se.',
