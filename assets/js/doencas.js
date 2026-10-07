@@ -4,7 +4,7 @@
 // ?q=…&cat=… na grelha, ?d=<doença>&idade=<grupo> numa doença — para se poder
 // partilhar e usar o botão «voltar».
 
-import { CATEGORIAS, DOENCAS, GRUPOS, encontrarDoenca, grupoValido, resumoDoenca } from './doencas-dados.js';
+import { CATEGORIAS, DOENCAS, EVICCAO_NOTA, GRUPOS, encontrarDoenca, grupoValido, resumoDoenca } from './doencas-dados.js';
 import { ilustracao, miniatura } from './doencas-ilustracoes.js';
 
 const raiz = document.documentElement;
@@ -72,7 +72,7 @@ function seccoes(lista) {
     .join('')}</div>`;
 }
 
-function conteudoGrupo(g, grupoId) {
+function conteudoGrupo(g, grupoId, d) {
   let html = '';
   if (g.intro) html += `<p class="doenca-intro">${esc(g.intro)}</p>`;
   if (g.imagens) html += figuras(g.imagens);
@@ -98,6 +98,9 @@ function conteudoGrupo(g, grupoId) {
     html += `<aside class="doenca-alerta"><h3><span aria-hidden="true">🚨</span> ${esc(g.alerta.titulo)}</h3><ul>${g.alerta.lista
       .map((l) => `<li>${esc(l)}</li>`)
       .join('')}</ul></aside>`;
+  }
+  if (d.eviccao) {
+    html += `<aside class="doenca-eviccao"><h3><span aria-hidden="true">🏫</span> Evicção escolar obrigatória</h3><p>${esc(d.eviccao)}</p><p class="doenca-eviccao-nota">${esc(EVICCAO_NOTA)}</p></aside>`;
   }
   if (g.ligacoes) {
     html += `<div class="doenca-ligacoes">${g.ligacoes
@@ -157,7 +160,7 @@ function mostrarGrupo(d, grupoId, { focar = false } = {}) {
   vista.querySelector('.doenca-grupo-impressao').textContent = `${grupo.emoji} Explicação para ${grupo.nome.toLowerCase()} (${grupo.idade})`;
   painel.className = `doenca-painel grupo-${grupoId.replace('+', 'mais')}`;
   painel.setAttribute('aria-labelledby', `tab-${grupoId}`);
-  painel.innerHTML = conteudoGrupo(d.grupos[grupoId], grupoId);
+  painel.innerHTML = conteudoGrupo(d.grupos[grupoId], grupoId, d);
 }
 
 function mostrarDoenca(d, grupoId) {
@@ -239,7 +242,7 @@ let ultimaGrelha = ''; // pesquisa da grelha, para voltar a ela ao sair de uma d
 const textoPesquisa = new Map(
   DOENCAS.map((d) => [
     d.id,
-    normalizar([d.nome, d.alias, d.resumo, d.categoria, ...(d.tambem || []), d.palavras].filter(Boolean).join(' ')),
+    normalizar([d.nome, d.alias, d.resumo, d.categoria, ...(d.tambem || []), d.palavras, d.eviccao && 'evicção escolar'].filter(Boolean).join(' ')),
   ])
 );
 

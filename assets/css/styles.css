@@ -6298,6 +6298,31 @@ a.tool.destaque:hover .tool-deco.mini {
   margin-top: 4px;
 }
 
+.doenca-eviccao {
+  padding: 20px 22px;
+  border-radius: 18px;
+  background: var(--teal-soft);
+  border: 1px solid color-mix(in srgb, var(--teal) 30%, transparent);
+}
+
+.doenca-eviccao h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  color: var(--teal);
+}
+
+.doenca-eviccao p {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.doenca-eviccao .doenca-eviccao-nota {
+  margin-top: 8px;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
 .doenca-ligacoes {
   display: flex;
   flex-wrap: wrap;
@@ -6912,6 +6937,7 @@ a.tool.destaque:hover .tool-deco.mini {
   .doenca-cab-arte,
   .figura-arte,
   .doenca-alerta,
+  .doenca-eviccao,
   .doenca-curiosidade,
   .mito-tag,
   .doenca-seccao-ico {
@@ -6958,6 +6984,7 @@ a.tool.destaque:hover .tool-deco.mini {
   .doenca-seccao,
   .mito,
   .doenca-alerta,
+  .doenca-eviccao,
   .doenca-curiosidade {
     break-inside: avoid;
     box-shadow: none;

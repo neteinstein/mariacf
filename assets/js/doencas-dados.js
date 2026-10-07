@@ -10,6 +10,14 @@
 //   alerta      — { titulo, lista } — quando procurar ajuda
 //   ligacoes    — calculadoras do site relacionadas ({ href, texto })
 // As crianças dos 3 aos 5 anos só têm imagens com uma legenda curta.
+//
+// Cada doença pode ainda ter:
+//   eviccao     — regra de afastamento da escola, se for doença de evicção
+//                 escolar obrigatória (Decreto Regulamentar n.º 3/95);
+//                 aparece em todos os grupos etários, com a EVICCAO_NOTA.
+
+export const EVICCAO_NOTA =
+  'Doença de evicção escolar obrigatória (Decreto Regulamentar n.º 3/95): aplica-se a crianças, alunos, professores e funcionários de creches, jardins de infância e escolas. Quem determina a evicção, e as medidas para os contactos, é o médico ou a autoridade de saúde. As faltas são justificadas e, para regressar, pode ser pedida uma declaração médica.';
 
 export const GRUPOS = [
   { id: '3-5', nome: 'Crianças', idade: '3–5 anos', emoji: '🧸' },
@@ -1689,6 +1697,7 @@ export const DOENCAS = [
     resumo: 'Infeção causada por uma bactéria que se transmite pelo ar e atinge sobretudo os pulmões. Cura-se com o tratamento completo, e Portugal tem mais casos do que a média europeia.',
     heroi: 'pulmoes-bacilos',
     deco: 'bacilo',
+    eviccao: 'Só a tuberculose pulmonar: afastamento até o médico declarar que deixou de ser contagiosa, o que costuma acontecer ao fim de algumas semanas de tratamento.',
     grupos: {
       '3-5': {
         imagens: [
@@ -3040,6 +3049,7 @@ export const DOENCAS = [
     resumo: 'Infeção muito contagiosa que causa febre e borbulhas com comichão em todo o corpo. Nas crianças costuma ser ligeira; nos adultos pode ser mais grave.',
     heroi: 'borbulhas',
     deco: 'pintas',
+    eviccao: 'Afastamento durante, pelo menos, 5 dias depois de aparecerem as primeiras borbulhas e, idealmente, até todas estarem em crosta.',
     grupos: {
       '3-5': {
         imagens: [
@@ -3130,6 +3140,7 @@ export const DOENCAS = [
     resumo: 'Uma das doenças mais contagiosas que existem: febre alta, tosse, olhos vermelhos e manchas na pele. As duas doses da vacina protegem quase sempre.',
     heroi: 'borbulhas',
     deco: 'pintas',
+    eviccao: 'Afastamento durante o período que a autoridade de saúde determinar, contado a partir do aparecimento das manchas. Só se aplica a casos confirmados.',
     grupos: {
       '3-5': {
         imagens: [
@@ -3310,6 +3321,7 @@ export const DOENCAS = [
     resumo: 'Inflamação da garganta e das amígdalas, quase sempre causada por vírus. Só as amigdalites por bactéria (estreptococo) precisam de antibiótico.',
     heroi: 'garganta',
     deco: 'cocos',
+    eviccao: 'Só a amigdalite por estreptococo do grupo A: afastamento até à cura clínica ou, com declaração médica, até 24 horas depois de começar o antibiótico. As amigdalites por vírus não obrigam a ficar em casa.',
     grupos: {
       '3-5': {
         imagens: [
@@ -3399,6 +3411,7 @@ export const DOENCAS = [
     resumo: 'Infeção pelo estreptococo que causa dor de garganta, febre e uma erupção vermelha e áspera na pele. Trata-se com antibiótico.',
     heroi: 'lingua',
     deco: 'cocos',
+    eviccao: 'Afastamento até à cura clínica ou, com declaração médica, até 24 horas depois de começar o antibiótico.',
     grupos: {
       '3-5': {
         imagens: [
@@ -3489,6 +3502,7 @@ export const DOENCAS = [
     resumo: 'Infeções do fígado causadas por vírus (A, B, C e outros). A hepatite A e a B evitam-se com vacinas; a hepatite C tem cura.',
     heroi: 'figado',
     deco: 'figado',
+    eviccao: 'Hepatite A: afastamento durante, pelo menos, 7 dias desde o início da doença ou até desaparecer a icterícia (pele amarela). A hepatite B aguda também consta da lista: o regresso é decidido pelo médico. A hepatite C não obriga a evicção.',
     grupos: {
       '3-5': {
         imagens: [
@@ -3512,7 +3526,7 @@ export const DOENCAS = [
           { ico: '🔤', titulo: 'Hepatites com letras', texto: 'Há vários vírus, com nomes de letras: A, B, C, D e E. A hepatite A apanha-se pela comida ou água sujas. A B e a C passam pelo sangue, por isso nunca se deve tocar no sangue de outra pessoa sem luvas.' },
           { ico: '🟡', titulo: 'Como se sente?', lista: ['Às vezes, nada', 'Cansaço e falta de apetite', 'Dor de barriga e enjoos', 'Pele e olhos amarelos', 'Xixi escuro'] },
           { ico: '🛡️', titulo: 'Como se previne?', lista: ['Lavar as mãos antes de comer e depois da casa de banho', 'Lavar bem a fruta e os legumes', 'Ter as vacinas em dia — a da hepatite B dá-se logo ao nascer', 'Não partilhar escovas de dentes nem lâminas'] },
-          { ico: '🤝', titulo: 'Amigos com hepatite', texto: 'A hepatite B e a C não passam por abraços, beijinhos, brincar ou partilhar a comida. Uma criança com hepatite pode ir à escola e brincar com todos.' },
+          { ico: '🤝', titulo: 'Amigos com hepatite', texto: 'A hepatite B e a C não passam por abraços, beijinhos, brincar ou partilhar a comida. Uma criança com hepatite B ou C crónica pode ir à escola e brincar com todos.' },
         ],
         curiosidade: 'O fígado é o único órgão capaz de voltar a crescer: mesmo que se tire um bocado, ele regenera-se!',
       },
@@ -3755,7 +3769,7 @@ export const grupoValido = (id) => GRUPOS.some((g) => g.id === id);
 /**
  * Resumo em texto de um separador, para o email (como nas ferramentas):
  * a introdução — ou, para os mais pequenos, as legendas das imagens —, a
- * curiosidade e quando procurar ajuda. A explicação completa fica na ligação.
+ * curiosidade, quando procurar ajuda e, se for o caso, a evicção escolar. A explicação completa fica na ligação.
  */
 export function resumoDoenca(d, grupoId) {
   const g = d.grupos[grupoId];
@@ -3765,5 +3779,6 @@ export function resumoDoenca(d, grupoId) {
   else linhas.push(...g.imagens.map(([, legenda]) => `• ${legenda}`), '');
   if (g.curiosidade) linhas.push(`Sabias que… ${g.curiosidade}`, '');
   if (g.alerta) linhas.push(g.alerta.titulo, ...g.alerta.lista.map((l) => `• ${l}`), '');
+  if (d.eviccao) linhas.push('Evicção escolar obrigatória', d.eviccao, '');
   return { assunto: `${d.nome}: explicação para ${grupo.nome.toLowerCase()} (${grupo.idade})`, linhas };
 }
