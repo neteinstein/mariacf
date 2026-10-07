@@ -3097,7 +3097,7 @@ export const DOENCAS = [
         alerta: { titulo: 'Vai ao médico se…', lista: ['A febre for alta ou durar mais de 4 dias', 'Uma borbulha ficar muito vermelha, quente, inchada ou com pus', 'Tiveres tosse ou falta de ar', 'Tiveres dor de cabeça forte, confusão ou dificuldade em andar'] },
       },
       '18-65': {
-        intro: 'Nos adultos, a varicela é menos frequente mas mais grave do que nas crianças, com maior risco de pneumonia. Na gravidez, pode afetar o bebé. Quem nunca teve a doença deve ponderar a vacina.',
+        intro: 'Nos adultos, a varicela é menos frequente mas mais grave do que nas crianças, com maior risco de pneumonia. Na gravidez, pode afetar o bebé. Quem nunca teve a doença pode ponderar tomar a vacina.',
         imagens: [
           ['borbulhas', 'Vesículas com comichão, em vários estágios'],
           ['vacina', 'Vacina para adultos sem varicela prévia'],
