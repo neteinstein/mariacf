@@ -4,7 +4,7 @@
 // e atualiza a cache; sem ligação, usa a última versão guardada.
 // A lista PRECACHE é verificada pelos testes (tests/site.test.mjs).
 
-const CACHE = 'mcf-v19';
+const CACHE = 'mcf-v20';
 
 const PRECACHE = [
   './',
@@ -47,6 +47,7 @@ const PRECACHE = [
   'assets/img/icon-512.png',
   'assets/img/icon-maskable-512.png',
   'assets/img/maria.jpg',
+  'assets/img/og-image.png',
   'assets/js/anticoagulacao-core.js',
   'assets/js/anticoagulacao.js',
   'assets/js/calc-ui.js',
