@@ -18,6 +18,8 @@
   --teal-soft: #d1f3df;
   --coral: #e2572f;
   --coral-soft: #fbe1d7;
+  /* Coral dos cabeçalhos de resultado com texto branco (o --coral só dá 3,7:1 com branco). */
+  --coral-forte: #c24b28;
   --violet: #31478e;
   --violet-soft: #e1e9fe;
   --sun: #ecab2e;
@@ -100,6 +102,7 @@
     --teal-soft: rgba(82, 219, 156, 0.14);
     --coral: #ff8f6b;
     --coral-soft: rgba(255, 143, 107, 0.14);
+    --coral-forte: var(--coral);
     --violet: #a5bcf9;
     --violet-soft: rgba(165, 188, 249, 0.15);
     --sun: #ffc861;
@@ -151,6 +154,7 @@
   --teal-soft: rgba(82, 219, 156, 0.14);
   --coral: #ff8f6b;
   --coral-soft: rgba(255, 143, 107, 0.14);
+  --coral-forte: var(--coral);
   --violet: #a5bcf9;
   --violet-soft: rgba(165, 188, 249, 0.15);
   --sun: #ffc861;
@@ -1921,7 +1925,7 @@ fieldset.step legend + .step-hint {
 }
 
 .result[data-med='ibuprofeno'] .result-head {
-  --c: var(--coral);
+  --c: var(--coral-forte);
 }
 
 /* Em amarelo o texto branco não se lê: texto escuro. */
@@ -1946,7 +1950,6 @@ fieldset.step legend + .step-hint {
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  opacity: 0.85;
 }
 
 .dose-line {
@@ -1981,7 +1984,6 @@ fieldset.step legend + .step-hint {
 .dose-sub {
   margin-top: 8px;
   font-size: 0.95rem;
-  opacity: 0.9;
 }
 
 .result-body {
@@ -2034,6 +2036,13 @@ fieldset.step legend + .step-hint {
   border-radius: 16px;
   background: var(--surface-strong);
   border: 1px solid var(--line);
+  /* Cor própria: dentro do cabeçalho colorido do resultado o texto herdava o branco do cabeçalho. */
+  color: var(--ink);
+}
+
+/* No cabeçalho colorido, fundo opaco: com transparência a cor do cabeçalho tirava contraste ao texto. */
+.result-head .stat {
+  background: var(--bg);
 }
 
 .stat .k {
@@ -2569,8 +2578,10 @@ a.pub:hover {
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.85rem;
-  background: rgba(255, 255, 255, 0.22);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  /* Só contorno, na cor do texto: qualquer véu (branco ou escuro) tirava contraste ao texto
+     num dos temas, porque o cabeçalho tem texto branco no claro e escuro no escuro. */
+  background: none;
+  border: 1.5px solid color-mix(in srgb, currentColor 55%, transparent);
 }
 
 .imc-result[data-categoria='baixo-peso'] .result-head,
@@ -2580,7 +2591,7 @@ a.pub:hover {
 
 .imc-result[data-categoria='obesidade-1'] .result-head,
 .imc-result[data-categoria='obesidade-2'] .result-head {
-  --c: var(--coral);
+  --c: var(--coral-forte);
 }
 
 .imc-result[data-categoria='obesidade-3'] .result-head {
@@ -2890,7 +2901,7 @@ a.pub:hover {
 
 .score-result[data-nivel='baixo'] .result-head { --c: var(--teal); }
 .score-result[data-nivel='moderado'] .result-head { --c: var(--sun); }
-.score-result[data-nivel='alto'] .result-head { --c: var(--coral); }
+.score-result[data-nivel='alto'] .result-head { --c: var(--coral-forte); }
 .score-result[data-nivel='muito-alto'] .result-head { --c: var(--danger); }
 
 /* Variante compacta: aplica a cor de risco diretamente a um .stat, sem .result-head */
@@ -5108,7 +5119,9 @@ a.pub:hover {
   transition: opacity 0.3s;
 }
 
-.hs-comp-legenda li.zero { opacity: 0.4; }
+/* A zero: esbate-se a amostra de cor e o valor passa a cinzento; o texto tem de continuar legível. */
+.hs-comp-legenda li.zero i { opacity: 0.35; }
+.hs-comp-legenda li.zero strong { color: var(--ink-mute); }
 
 .hs-comp-legenda i {
   width: 10px;
@@ -5881,6 +5894,11 @@ a.tool.destaque:hover {
   /* No escuro, fundo escurecido: com branco por cima o texto da etiqueta perdia contraste. */
   background: var(--cartao-etiqueta);
   border-color: var(--cartao-etiqueta-borda);
+}
+
+.tool.destaque .tool-alias {
+  opacity: 1;
+  color: var(--cartao-texto-suave);
 }
 
 .tool.destaque .tool-icon {
