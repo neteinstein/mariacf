@@ -6667,6 +6667,46 @@ a.tool.destaque:hover .tool-deco.mini {
   animation: il-tremer 0.35s ease-in-out infinite alternate;
 }
 
+/* Infeções: o vírus gira e flutua */
+.deco-virus .d-virus {
+  animation: deco-virus 7s ease-in-out infinite;
+}
+
+@keyframes deco-virus {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
+}
+
+/* Varicela e sarampo: as borbulhas vão aparecendo */
+.deco-pintas .d-pinta {
+  animation: deco-pinta 2.6s ease-in-out infinite;
+}
+
+.deco-pintas .d-p2 { animation-delay: -0.9s; }
+
+/* Amigdalite e escarlatina: a cadeia de estreptococos ondula */
+.deco-cocos .d-cadeia {
+  animation: deco-germe 3.4s ease-in-out infinite;
+}
+
+/* Infeções sexualmente transmissíveis: o escudo protege e o visto desenha-se */
+.deco-escudo .d-visto {
+  stroke-dasharray: 1;
+  animation: deco-visto 3s ease-in-out infinite;
+}
+
+@keyframes deco-visto {
+  0%, 15% { stroke-dashoffset: 1; }
+  55%, 100% { stroke-dashoffset: 0; }
+}
+.deco-pintas .d-p3 { animation-delay: -1.7s; }
+
+@keyframes deco-pinta {
+  0%, 100% { transform: scale(0.4); }
+  50% { transform: scale(1.15); }
+}
+
 /* Doenças: em ecrãs estreitos, as áreas deslizam numa só linha (como as idades). */
 #filtros-doencas,
 .idade-tabs {
