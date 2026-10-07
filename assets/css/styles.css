@@ -49,6 +49,10 @@
   --brand-a: #006d4c;
   --brand-b: #00a676;
   --brand-c: #0b3d36;
+  /* Gradiente dos cartões alternados (tint-coral): também fixo nos dois temas. */
+  --brand-alt-a: #a8391c;
+  --brand-alt-b: #d4502a;
+  --brand-alt-c: #e27a3c;
 
   --shadow-sm: 0 1px 2px rgba(23, 36, 46, 0.06), 0 2px 8px rgba(23, 36, 46, 0.05);
   --shadow: 0 10px 30px -10px rgba(23, 36, 46, 0.18), 0 2px 6px rgba(23, 36, 46, 0.05);
@@ -150,6 +154,9 @@
     --brand-a: #0b5cad;
     --brand-b: #2b8be0;
     --brand-c: #0a2e5c;
+    --brand-alt-a: #3a3d9e;
+    --brand-alt-b: #5b5fd6;
+    --brand-alt-c: #7c7fe6;
     --accent: #5b5fd6;
     --accent-soft: #e3e4fa;
     --accent-2: #2ea3cf;
@@ -206,6 +213,9 @@
     --brand-a: #00707a;
     --brand-b: #14a8b5;
     --brand-c: #08414a;
+    --brand-alt-a: #1c5a8a;
+    --brand-alt-b: #2d7fb8;
+    --brand-alt-c: #4a98cc;
     --accent: #2d7fb8;
     --accent-soft: #dcebf6;
     --accent-2: #3fae84;
@@ -262,6 +272,9 @@
     --brand-a: #5b45b0;
     --brand-b: #8a74e0;
     --brand-c: #2e2160;
+    --brand-alt-a: #7d2f73;
+    --brand-alt-b: #b04fa3;
+    --brand-alt-c: #c76bb9;
     --accent: #b04fa3;
     --accent-soft: #f5def1;
     --accent-2: #6f8ae6;
@@ -318,6 +331,9 @@
     --brand-a: #9c3d7a;
     --brand-b: #cc5fa3;
     --brand-c: #5c1c40;
+    --brand-alt-a: #5c2f8f;
+    --brand-alt-b: #8a4fc4;
+    --brand-alt-c: #a273d6;
     --accent: #8a4fc4;
     --accent-soft: #ecdff8;
     --accent-2: #e0799a;
@@ -5687,8 +5703,8 @@ a.tool:hover .tool-deco.mini {
 
 /* Cartões em destaque (os que têm ilustração animada): o mesmo tratamento do
    cartão da calculadora de doses — fundo em gradiente, texto e ilustração a branco —
-   mas no tamanho normal e com a cor de cada cartão (verde ou coral). As cores são
-   fixas para o texto branco se ler também no tema escuro. */
+   mas no tamanho normal e com a cor de cada cartão (a principal ou a alternada da paleta).
+   As cores são fixas para o texto branco se ler também no tema escuro. */
 .tool.destaque {
   background: linear-gradient(135deg, color-mix(in srgb, var(--brand-a) 92%, #000) 0%, var(--brand-b) 50%, color-mix(in srgb, var(--brand-c) 80%, var(--brand-b)) 100%);
   color: #fff;
@@ -5696,7 +5712,7 @@ a.tool:hover .tool-deco.mini {
 }
 
 .tool.destaque.tint-coral {
-  background: linear-gradient(135deg, #a8391c 0%, #d4502a 50%, #e27a3c 100%);
+  background: linear-gradient(135deg, var(--brand-alt-a) 0%, var(--brand-alt-b) 50%, var(--brand-alt-c) 100%);
 }
 
 .tool.destaque::before {
