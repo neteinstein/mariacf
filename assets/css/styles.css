@@ -6684,6 +6684,22 @@ a.tool.destaque:hover .tool-deco.mini {
 }
 
 .deco-pintas .d-p2 { animation-delay: -0.9s; }
+
+/* Amigdalite e escarlatina: a cadeia de estreptococos ondula */
+.deco-cocos .d-cadeia {
+  animation: deco-germe 3.4s ease-in-out infinite;
+}
+
+/* Infeções sexualmente transmissíveis: o escudo protege e o visto desenha-se */
+.deco-escudo .d-visto {
+  stroke-dasharray: 1;
+  animation: deco-visto 3s ease-in-out infinite;
+}
+
+@keyframes deco-visto {
+  0%, 15% { stroke-dashoffset: 1; }
+  55%, 100% { stroke-dashoffset: 0; }
+}
 .deco-pintas .d-p3 { animation-delay: -1.7s; }
 
 @keyframes deco-pinta {

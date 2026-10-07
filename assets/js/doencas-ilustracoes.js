@@ -1503,6 +1503,60 @@ export const ILUSTRACOES = {
     <g class="an-flutuar">${germe(24, 40, 7)}</g>
     <g class="an-flutuar d2">${germe(178, 112, 6, 'c-verde')}</g>
     ${estrela(170, 30, 6, 'c-sol', 'an-piscar')}`,
+
+  // ---------- Amigdalite, escarlatina, mão-pé-boca ----------
+  garganta: () => `
+    <path class="c-coral-s" d="M40 30Q100 6 160 30Q172 80 150 116Q100 146 50 116Q28 80 40 30Z"/>
+    <path class="c-vermelho-e sem" d="M62 44Q100 30 138 44Q146 84 130 108Q100 124 70 108Q54 84 62 44Z"/>
+    <path class="c-coral" d="M92 40Q100 34 108 40V58Q100 68 92 58Z"/>
+    <g class="an-pulsar"><ellipse class="c-vermelho" cx="70" cy="82" rx="13" ry="20"/><circle class="c-branco sem" cx="66" cy="76" r="3"/><circle class="c-branco sem" cx="72" cy="90" r="2.5"/></g>
+    <g class="an-pulsar d2"><ellipse class="c-vermelho" cx="130" cy="82" rx="13" ry="20"/><circle class="c-branco sem" cx="134" cy="76" r="3"/><circle class="c-branco sem" cx="128" cy="90" r="2.5"/></g>
+    <path class="c-rosa" d="M70 116Q100 92 130 116Q118 134 100 134Q82 134 70 116Z"/>
+    <path class="an-piscar fino t-coral" d="M14 60l10 4M12 80h12M14 100l10 -4M186 60l-10 4M188 80h-12M186 100l-10 -4"/>`,
+
+  lingua: () => `
+    ${cabeca(100, 64, 46, { humor: 'feliz' })}
+    <ellipse class="c-escuro sem" cx="100" cy="88" rx="18" ry="10"/>
+    <g class="an-flutuar"><path class="c-vermelho" d="M84 88Q84 132 100 134Q116 132 116 88Z"/>
+      <circle class="c-coral-s sem" cx="94" cy="100" r="2"/><circle class="c-coral-s sem" cx="106" cy="104" r="2"/><circle class="c-coral-s sem" cx="98" cy="114" r="2"/><circle class="c-coral-s sem" cx="108" cy="120" r="1.8"/><circle class="c-coral-s sem" cx="92" cy="122" r="1.8"/>
+    </g>
+    <g class="an-piscar"><path class="c-vermelho" d="M164 36q-10 -12 -2 -18q6 -4 10 2q4 -6 10 -2q8 6 -2 18q-6 6 -8 10q-2 -4 -8 -10Z"/><path class="c-verde sem" d="M166 18l6 6 6 -6Z"/></g>`,
+
+  'mao-pintas': () => {
+    const pinta = (x, y, r, atraso) => `<g class="an-pulsar ${atraso}"><circle class="c-vermelho" cx="${x}" cy="${y}" r="${r}"/></g>`;
+    return `<path class="c-cor" d="M42 120H88V150H42Z"/>
+      <rect class="c-pele" x="40" y="34" width="11" height="52" rx="5.5"/>
+      <rect class="c-pele" x="53" y="24" width="11" height="60" rx="5.5"/>
+      <rect class="c-pele" x="66" y="28" width="11" height="56" rx="5.5"/>
+      <rect class="c-pele" x="79" y="40" width="10" height="46" rx="5"/>
+      <path class="c-pele" d="M44 104Q24 100 20 84Q18 76 24 76Q30 76 34 86Q38 94 44 92Z"/>
+      <rect class="c-pele" x="38" y="70" width="52" height="56" rx="16"/>
+      ${pinta(54, 92, 3.5, '')}${pinta(72, 104, 4, 'd2')}${pinta(60, 112, 3, 'd1')}${pinta(58, 40, 2.5, 'd3')}${pinta(80, 84, 3, 'd1')}
+      <path class="c-pele" d="M144 136C130 136 128 112 130 92C132 68 136 50 150 50C164 50 166 70 164 92C162 112 160 136 144 136Z"/>
+      <circle class="c-pele" cx="138" cy="44" r="5"/><circle class="c-pele" cx="147" cy="38" r="4.5"/><circle class="c-pele" cx="155" cy="38" r="4"/><circle class="c-pele" cx="162" cy="42" r="3.5"/>
+      ${pinta(146, 76, 3.5, 'd2')}${pinta(152, 104, 4, '')}${pinta(140, 120, 3, 'd3')}
+      <g class="an-piscar"><text class="il-txt" x="166" y="20">ai!</text></g>`;
+  },
+
+  // ---------- VIH e outras infeções sexualmente transmissíveis ----------
+  'laco-vermelho': () => `
+    <g class="an-balancar rv" style="transform-origin:100px 20px">
+      <path class="c-vermelho" d="M100 78L70 130L86 134L108 90Z"/>
+      <path class="c-vermelho" d="M100 78L130 130L114 134L92 90Z"/>
+      <path class="c-vermelho" fill-rule="evenodd" d="M100 80C84 64 76 48 78 36C80 22 90 16 100 16C110 16 120 22 122 36C124 48 116 64 100 80ZM100 62C93 52 90 44 91 38C92 31 96 28 100 28C104 28 108 31 109 38C110 44 107 52 100 62Z"/>
+    </g>
+    <g class="an-bater">${coracaoPeq(40, 44, 10)}</g>
+    ${estrela(160, 54, 7, 'c-sol', 'an-piscar d1')}${estrela(150, 120, 5, 'c-sol', 'an-piscar d2')}${estrela(50, 112, 5, 'c-sol', 'an-piscar d3')}`,
+
+  preservativo: () => `
+    <g class="an-flutuar">
+      <rect class="c-cor" x="56" y="30" width="88" height="88" rx="8"/>
+      <path class="fino fraco" d="M62 36h76v76h-76Z" stroke-dasharray="3 4"/>
+      <circle class="c-suave" cx="100" cy="74" r="26"/>
+      <circle class="c-cor" cx="100" cy="74" r="17"/>
+    </g>
+    <g class="an-pulsar"><circle class="c-verde" cx="160" cy="34" r="15"/><path class="t-branco grosso" d="M153 34l5 5 9 -10"/></g>
+    ${estrela(36, 40, 6, 'c-sol', 'an-piscar')}${estrela(40, 120, 5, 'c-sol', 'an-piscar d2')}`,
 };
 
 export function ilustracao(nome) {
@@ -1682,6 +1736,15 @@ const MINI = {
       <circle class="d-pinta d-p2 d-cheio" cx="80" cy="60" r="4"/>
       <circle class="d-pinta d-cheio" cx="60" cy="70" r="3"/>
       <circle class="d-pinta d-p3 d-cheio" cx="62" cy="44" r="3"/>`,
+  cocos: `
+      <g class="d-cadeia">
+        <circle class="d-cheio-suave" cx="34" cy="40" r="7"/><circle class="d-cheio-suave" cx="47" cy="32" r="7"/>
+        <circle class="d-cheio-suave" cx="61" cy="28" r="7"/><circle class="d-cheio-suave" cx="75" cy="30" r="7"/>
+        <circle class="d-cheio-suave" cx="88" cy="36" r="7"/><circle class="d-cheio-suave" cx="100" cy="28" r="7"/>
+      </g>`,
+  escudo: `
+      <path class="d-cheio-suave" d="M60 6L94 18V44C94 64 80 78 60 86C40 78 26 64 26 44V18Z"/>
+      <path class="d-visto" d="M44 46L56 58L78 34" pathLength="1"/>`,
 };
 
 export const MINIATURAS = Object.keys(MINI);

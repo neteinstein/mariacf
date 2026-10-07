@@ -3210,6 +3210,543 @@ export const DOENCAS = [
       },
     },
   },
+
+  {
+    id: 'mao-pe-boca',
+    nome: 'Doença mão-pé-boca',
+    emoji: '🖐️',
+    categoria: 'Infeções',
+    palavras: 'enterovírus coxsackie aftas boca bolhas mãos pés creche contágio infeciosa contagiosa',
+    resumo: 'Infeção viral muito comum nas creches, com febre, aftas na boca e pintas nas mãos e nos pés. Passa sozinha em cerca de uma semana.',
+    heroi: 'mao-pintas',
+    deco: 'pintas',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['mao-pintas', 'Aparecem pintinhas nas mãos e nos pés'],
+          ['garganta', 'A boca fica dorida'],
+          ['termometro', 'Pode dar febre'],
+          ['agua', 'Beber água fresquinha ajuda'],
+          ['lavar-maos', 'Lavar as mãos depois do bacio'],
+          ['brincar', 'Em poucos dias, volta-se a brincar'],
+        ],
+      },
+      '5-12': {
+        intro: 'A doença mão-pé-boca tem um nome que diz tudo: aparecem pintas e bolhinhas nas mãos, nos pés e dentro da boca. É causada por um vírus, é muito comum nas crianças pequenas e passa sozinha.',
+        imagens: [
+          ['mao-pintas', 'Pintas nas palmas das mãos e nas plantas dos pés'],
+          ['garganta', 'Aftas na boca que custam a engolir'],
+          ['agua', 'Beber muitas vezes, mesmo que doa um bocadinho'],
+          ['lavar-maos', 'Lavar bem as mãos com água e sabão'],
+        ],
+        seccoes: [
+          { ico: '🦠', titulo: 'O que é?', texto: 'É uma infeção causada por um grupo de vírus chamados enterovírus. Passa pela saliva, pela tosse, pelo líquido das bolhinhas e pelo cocó, sobretudo quando não se lavam bem as mãos.' },
+          { ico: '🤒', titulo: 'Como se sente?', lista: ['Febre e cansaço no início', 'Dor de garganta e aftas na boca', 'Pintas vermelhas ou bolhinhas nas mãos, nos pés e às vezes no rabiosque', 'Pouca vontade de comer'] },
+          { ico: '🍦', titulo: 'O que ajuda?', lista: ['Beber água e leite frescos', 'Comida mole e fria: iogurtes, sopa morna, gelados', 'Evitar comidas ácidas ou salgadas, que ardem nas aftas', 'Medicamento para a dor e a febre, dado por um adulto'] },
+          { ico: '🧼', titulo: 'Para não passar aos outros', lista: ['Lavar as mãos muitas vezes, sobretudo depois da casa de banho', 'Não partilhar copos, talheres nem escovas de dentes', 'Ficar em casa enquanto houver febre'] },
+        ],
+        curiosidade: 'Umas semanas depois da doença, algumas crianças perdem uma ou outra unha. Parece estranho, mas não dói e a unha volta a crescer!',
+      },
+      '13-17': {
+        intro: 'A doença mão-pé-boca é mais frequente nas crianças pequenas, mas também pode aparecer em adolescentes e adultos — muitas vezes apanhada de um irmão mais novo. Costuma ser ligeira e cura-se sozinha em 7 a 10 dias.',
+        imagens: [
+          ['mao-pintas', 'Pintas e pequenas bolhas nas mãos e nos pés'],
+          ['garganta', 'Aftas dolorosas na boca'],
+          ['lavar-maos', 'As mãos são a principal via de contágio'],
+        ],
+        seccoes: [
+          { ico: '📅', titulo: 'Como evolui', texto: 'Começa com febre, dor de garganta e mal-estar. Um ou dois dias depois surgem aftas na boca e pintas ou bolhinhas nas palmas das mãos e nas plantas dos pés. Melhora ao fim de uma semana.' },
+          { ico: '💊', titulo: 'O que ajuda', lista: ['Paracetamol ou ibuprofeno para a dor e a febre', 'Bebidas frescas e comida mole', 'Bochechos com água fria para aliviar as aftas', 'Não rebentar as bolhas'] },
+          { ico: '🧼', titulo: 'Contágio', texto: 'É mais contagiosa na primeira semana, mas o vírus pode continuar nas fezes durante várias semanas. Lavar bem as mãos é a melhor forma de proteger a família, sobretudo se houver bebés em casa.' },
+        ],
+        mitos: [
+          ['É a mesma doença que a febre aftosa dos animais.', 'Não. São vírus diferentes: a doença mão-pé-boca não passa de nem para os animais.'],
+          ['Precisa de antibiótico.', 'É causada por um vírus. Os antibióticos não ajudam.'],
+          ['Só se apanha uma vez.', 'Há vários vírus que a causam, por isso é possível tê-la mais do que uma vez.'],
+        ],
+        alerta: { titulo: 'Vai ao médico se…', lista: ['Não conseguires beber por causa das dores', 'Urinares muito pouco ou estiveres muito tonto', 'A febre durar mais de 3 dias', 'Tiveres dor de cabeça forte, rigidez no pescoço ou muita sonolência'] },
+      },
+      '18-65': {
+        intro: 'A doença mão-pé-boca é uma infeção por enterovírus muito comum nas creches e jardins de infância, sobretudo no verão e no outono. Nos adultos é geralmente ligeira ou passa despercebida, mas pode ser transmitida aos filhos e vice-versa.',
+        imagens: [
+          ['mao-pintas', 'Exantema nas palmas das mãos e plantas dos pés'],
+          ['garganta', 'Aftas na boca e na garganta'],
+          ['agua', 'Hidratação: o principal cuidado nas crianças'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Sintomas', lista: ['Febre, dor de garganta e mal-estar', 'Aftas na boca, na língua e na garganta', 'Pintas ou vesículas nas mãos, nos pés e nas nádegas', 'Nas crianças: recusa alimentar e irritabilidade', 'Semanas depois, pode haver descamação da pele ou queda de unhas'] },
+          { ico: '🏠', titulo: 'Cuidados em casa', lista: ['Oferecer líquidos frescos com frequência', 'Alimentos moles e frios', 'Paracetamol ou ibuprofeno para a dor e a febre', 'A criança pode voltar à creche quando estiver sem febre e bem-disposta', 'Lavar as mãos depois de mudar fraldas'] },
+          { ico: '🤰', titulo: 'Gravidez', texto: 'A maioria das grávidas que contacta com a doença não tem problemas. Se tiver sintomas perto da data do parto, informe o médico ou a equipa da maternidade, porque o vírus pode passar ao recém-nascido.' },
+        ],
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Sinais de desidratação: fraldas secas, boca seca, choro sem lágrimas, sonolência', 'Febre acima de 39 °C ou durante mais de 3 dias', 'Rigidez do pescoço, convulsões, sonolência ou fraqueza', 'Bebé com menos de 3 meses com febre'] },
+        ligacoes: [{ href: 'calculadora-pediatria/', texto: 'Fluidos e desidratação nas crianças' }],
+      },
+      '65+': {
+        intro: 'É rara nesta idade, mas os avós que cuidam de netos pequenos podem apanhá-la. Costuma ser ligeira; o mais importante é proteger-se lavando bem as mãos e saber quando a criança precisa de ser vista.',
+        imagens: [
+          ['familia', 'Doença frequente nos netos que andam na creche'],
+          ['mao-pintas', 'Pintas nas mãos e nos pés da criança'],
+          ['lavar-maos', 'Lavar as mãos depois de mudar a fralda'],
+          ['agua', 'Dar de beber à criança muitas vezes'],
+          ['telefone', 'Em caso de dúvida, ligar para o SNS 24'],
+        ],
+        seccoes: [
+          { ico: '👶', titulo: 'Quando cuida dos netos', lista: ['Ofereça líquidos frescos aos poucos e muitas vezes', 'Comida mole e fria: iogurtes, sopa morna, papas', 'Observe se a criança urina como habitualmente', 'Não partilhe copos nem talheres com a criança'] },
+          { ico: '🧼', titulo: 'Proteger-se', lista: ['Lavar as mãos com água e sabão depois de mudar fraldas e antes de comer', 'Limpar brinquedos e superfícies', 'Se tiver as defesas baixas, peça a outra pessoa para cuidar da criança durante a doença'] },
+          { ico: '🔍', titulo: 'Se ficar doente', texto: 'Pode ter febre, dor de garganta, aftas e pintas nas mãos e nos pés. Beba bastantes líquidos e, se tiver dificuldade em comer ou beber, fale com o médico.' },
+        ],
+        alerta: { titulo: 'Ligue para o SNS 24 (808 24 24 24) se…', lista: ['A criança não beber ou urinar muito pouco', 'A criança estiver muito sonolenta ou com o pescoço rígido', 'Não conseguir beber por causa das dores na boca'] },
+      },
+    },
+  },
+
+  {
+    id: 'amigdalite',
+    nome: 'Amigdalite',
+    emoji: '😮',
+    categoria: 'Infeções',
+    tambem: ['Respiratório'],
+    palavras: 'garganta dor de garganta faringite angina amígdalas estreptococo mononucleose contágio infeciosa contagiosa',
+    resumo: 'Inflamação da garganta e das amígdalas, quase sempre causada por vírus. Só as amigdalites por bactéria (estreptococo) precisam de antibiótico.',
+    heroi: 'garganta',
+    deco: 'cocos',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['garganta', 'A garganta fica vermelha e dói'],
+          ['termometro', 'Pode dar febre'],
+          ['agua', 'Beber água ajuda a garganta'],
+          ['sopa', 'Comida mole e morna'],
+          ['cama', 'Descansar para ficar bom'],
+          ['medico', 'O médico vê a garganta com uma luz'],
+        ],
+      },
+      '5-12': {
+        intro: 'As amígdalas são duas «bolinhas» no fundo da garganta que ajudam a defender o corpo dos micróbios. Quando ficam inflamadas, a garganta dói e é difícil engolir — é a amigdalite.',
+        imagens: [
+          ['garganta', 'Amígdalas vermelhas e inchadas'],
+          ['termometro', 'Febre e dor ao engolir'],
+          ['medico', 'O médico decide se é preciso antibiótico'],
+          ['agua', 'Beber muitas vezes'],
+        ],
+        seccoes: [
+          { ico: '🦠', titulo: 'O que é?', texto: 'Na maioria das vezes, a amigdalite é causada por vírus, como os das constipações. Às vezes é causada por uma bactéria chamada estreptococo, mais frequente nas crianças em idade escolar.' },
+          { ico: '🤒', titulo: 'Como se sente?', lista: ['Dor de garganta, sobretudo ao engolir', 'Febre', 'Dores de cabeça ou de barriga', 'Mau hálito', 'Caroços no pescoço (gânglios) a doer'] },
+          { ico: '💊', titulo: 'Como se trata?', lista: ['Medicamento para a dor e a febre', 'Beber água, leite ou chá morno', 'Comida mole: sopa, iogurte, papas', 'Se for estreptococo, antibiótico até ao fim, mesmo quando já estiveres bem'] },
+          { ico: '🛡️', titulo: 'Para não passar aos outros', lista: ['Não partilhar copos, garrafas nem talheres', 'Tossir para o cotovelo', 'Lavar as mãos'] },
+        ],
+        curiosidade: 'Para saber se a amigdalite é causada pelo estreptococo, o médico pode fazer um teste rápido com uma zaragatoa na garganta — o resultado sai em poucos minutos!',
+      },
+      '13-17': {
+        intro: 'A dor de garganta é uma das razões mais frequentes para ir ao médico. Quase sempre é viral e passa em 3 a 7 dias. Nos adolescentes, uma amigdalite arrastada e com muito cansaço pode ser mononucleose, a «doença do beijo».',
+        imagens: [
+          ['garganta', 'Amígdalas inchadas, às vezes com placas brancas'],
+          ['medico', 'Um teste rápido distingue a bactéria dos vírus'],
+          ['cama', 'Na mononucleose, o cansaço pode durar semanas'],
+        ],
+        seccoes: [
+          { ico: '⚖️', titulo: 'Vírus ou bactéria?', texto: 'Tosse, nariz entupido e rouquidão apontam para vírus. Febre alta, gânglios dolorosos no pescoço e placas nas amígdalas, sem tosse, fazem pensar no estreptococo. O médico pode usar uma pontuação (Centor/McIsaac) e um teste rápido para decidir.' },
+          { ico: '💋', titulo: 'Mononucleose', texto: 'Causada pelo vírus Epstein-Barr, transmite-se pela saliva. Dá febre, amígdalas muito inchadas, gânglios no pescoço e um cansaço que pode durar semanas. Não há antibiótico que a trate, e deve evitar-se desporto de contacto durante 3 a 4 semanas, porque o baço pode estar aumentado.' },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Paracetamol ou ibuprofeno para a dor e a febre', 'Pastilhas e bebidas mornas ou frias', 'Antibiótico só quando é estreptococo, durante 10 dias', 'Com antibiótico, deixa de se ser contagioso ao fim de 24 horas'] },
+        ],
+        mitos: [
+          ['Placas brancas na garganta querem dizer que é preciso antibiótico.', 'Também aparecem em infeções por vírus, como a mononucleose.'],
+          ['Gelados fazem mal à garganta inflamada.', 'O frio até alivia a dor e ajuda a comer.'],
+          ['Se já me sinto bem, posso parar o antibiótico.', 'O tratamento do estreptococo deve ser cumprido até ao fim, para evitar complicações.'],
+        ],
+        alerta: { titulo: 'Vai à urgência se…', lista: ['Tiveres dificuldade em respirar ou em engolir a saliva', 'Não conseguires abrir bem a boca ou a voz ficar abafada', 'A dor for muito forte só de um lado', 'Ficares muito prostrado ou desidratado'] },
+      },
+      '18-65': {
+        intro: 'A amigdalite (ou faringoamigdalite) é muito frequente. Nos adultos, cerca de 9 em cada 10 são causadas por vírus e curam sozinhas. O antibiótico só é útil nas causadas pelo estreptococo do grupo A.',
+        imagens: [
+          ['garganta', 'Amígdalas inflamadas, com ou sem placas'],
+          ['medico', 'Pontuação clínica e teste rápido orientam a decisão'],
+          ['comprimido', 'Antibiótico só quando há indicação'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Sintomas', lista: ['Dor de garganta e dor ao engolir', 'Febre', 'Gânglios dolorosos no pescoço', 'Amígdalas vermelhas, inchadas ou com placas', 'Tosse e corrimento nasal sugerem causa viral'] },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Paracetamol ou ibuprofeno', 'Líquidos, pastilhas e alimentos moles', 'Na amigdalite estreptocócica: penicilina ou amoxicilina durante 10 dias', 'O antibiótico desnecessário causa efeitos secundários e resistências'] },
+          { ico: '⚠️', titulo: 'Complicações', texto: 'São raras: abcesso junto à amígdala (dor forte de um lado, dificuldade em abrir a boca, voz abafada), otite ou sinusite. Muito raramente, o estreptococo não tratado pode afetar o coração ou os rins.' },
+        ],
+        alerta: { titulo: 'Procure ajuda urgente se…', lista: ['Dificuldade em respirar ou em engolir a saliva', 'Incapacidade de abrir a boca ou voz abafada', 'Dor forte de um só lado com inchaço', 'Febre alta que não melhora em 3 dias'] },
+        ligacoes: [{ href: 'calculadora-respiratoria/?calc=centor', texto: 'Pontuação de Centor/McIsaac' }],
+      },
+      '65+': {
+        intro: 'Depois dos 65 anos, as amigdalites por estreptococo são pouco frequentes e a dor de garganta é quase sempre viral. Uma dor de garganta que não passa, ou com rouquidão persistente, merece ser observada.',
+        imagens: [
+          ['garganta', 'Dor ao engolir, quase sempre por vírus'],
+          ['agua', 'Beber água mesmo quando custa engolir'],
+          ['sopa', 'Sopas e alimentos moles'],
+          ['comprimido', 'Cuidado com o ibuprofeno — pergunte ao médico'],
+          ['medico', 'Rouquidão com mais de 3 semanas: ir ao médico'],
+        ],
+        seccoes: [
+          { ico: '💧', titulo: 'Cuidados em casa', lista: ['Beber líquidos com frequência, para não desidratar', 'Comer alimentos moles e mornos', 'Paracetamol para a dor', 'Os anti-inflamatórios podem fazer mal ao estômago, aos rins e à tensão: só com indicação médica'] },
+          { ico: '🦷', titulo: 'Próteses dentárias', texto: 'Uma prótese que magoa ou mal higienizada pode causar feridas e infeções na boca, como os fungos (sapinhos). Lave a prótese todos os dias e retire-a à noite.' },
+          { ico: '🔍', titulo: 'Quando investigar', lista: ['Dor de garganta ou rouquidão que dura mais de 3 semanas', 'Dificuldade em engolir que vai piorando', 'Caroço no pescoço que não desaparece', 'Sobretudo em fumadores ou ex-fumadores'] },
+        ],
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Dificuldade em respirar ou em engolir a saliva', 'Não conseguir beber', 'Febre alta ou confusão', 'Rouquidão ou dor de garganta com mais de 3 semanas'] },
+      },
+    },
+  },
+
+  {
+    id: 'escarlatina',
+    nome: 'Escarlatina',
+    emoji: '🍓',
+    categoria: 'Infeções',
+    palavras: 'estreptococo garganta manchas língua framboesa exantema amigdalite contágio infeciosa contagiosa',
+    resumo: 'Infeção pelo estreptococo que causa dor de garganta, febre e uma erupção vermelha e áspera na pele. Trata-se com antibiótico.',
+    heroi: 'lingua',
+    deco: 'cocos',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['garganta', 'Dói a garganta'],
+          ['termometro', 'Dá febre'],
+          ['borbulhas', 'A pele fica vermelha e áspera'],
+          ['lingua', 'A língua fica vermelha como um morango'],
+          ['comprimido', 'O remédio do médico cura'],
+          ['lavar-maos', 'Lavar as mãos protege os amigos'],
+        ],
+      },
+      '5-12': {
+        intro: 'A escarlatina é uma infeção causada por uma bactéria, o estreptococo. Começa com dor de garganta e febre e, depois, aparecem pintinhas vermelhas na pele que parecem uma lixa. Com o antibiótico, fica-se bom.',
+        imagens: [
+          ['garganta', 'Começa com dor de garganta e febre'],
+          ['borbulhas', 'Pintinhas vermelhas e ásperas, como lixa'],
+          ['lingua', 'A língua parece uma framboesa'],
+          ['comprimido', 'Antibiótico até ao fim'],
+        ],
+        seccoes: [
+          { ico: '🦠', titulo: 'O que é?', texto: 'É causada pela mesma bactéria de algumas amigdalites. Essa bactéria produz uma substância que faz a pele ficar vermelha. É mais comum entre os 5 e os 15 anos, sobretudo no inverno e na primavera.' },
+          { ico: '🤒', titulo: 'Como se sente?', lista: ['Dor de garganta e febre', 'Dores de cabeça ou de barriga, às vezes vómitos', 'Pele vermelha e áspera, a começar no pescoço e no peito', 'Língua muito vermelha, com pontinhos', 'Cara corada, mas com uma zona branca à volta da boca'] },
+          { ico: '💊', titulo: 'Como se trata?', lista: ['Antibiótico durante 10 dias, sem falhar', 'Medicamento para a febre', 'Beber muitos líquidos', 'Descansar em casa'] },
+          { ico: '🏫', titulo: 'Quando voltar à escola?', texto: 'Depois de, pelo menos, 24 horas de antibiótico e sem febre. Uma ou duas semanas depois, a pele dos dedos das mãos e dos pés pode descascar — é normal.' },
+        ],
+        curiosidade: 'Antigamente, a escarlatina era uma doença muito perigosa. Hoje, graças aos antibióticos, cura-se em poucos dias!',
+      },
+      '13-17': {
+        intro: 'A escarlatina é uma amigdalite pelo estreptococo do grupo A acompanhada de uma erupção na pele. É mais comum em crianças, mas também aparece em adolescentes, e trata-se facilmente com antibiótico.',
+        imagens: [
+          ['borbulhas', 'Erupção áspera que começa no tronco'],
+          ['lingua', 'Língua em framboesa'],
+          ['comprimido', '10 dias de antibiótico'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Sinais típicos', lista: ['Febre e dor de garganta', 'Erupção vermelha, áspera ao toque, mais intensa nas pregas (cotovelos, axilas, virilhas)', 'Língua vermelha com pontinhos salientes', 'Cara corada com palidez à volta da boca'] },
+          { ico: '🌬️', titulo: 'Contágio', texto: 'Transmite-se por gotículas de saliva e pelas mãos. Ao fim de 24 horas de antibiótico, a pessoa deixa de ser contagiosa e pode voltar às aulas se estiver sem febre.' },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Penicilina ou amoxicilina durante 10 dias', 'Paracetamol ou ibuprofeno para a febre e a dor', 'Cumprir o antibiótico até ao fim evita complicações raras no coração e nos rins'] },
+        ],
+        mitos: [
+          ['A escarlatina é uma doença do passado.', 'Continua a existir e tem tido surtos em vários países europeus.'],
+          ['Só se apanha uma vez.', 'É possível ter escarlatina mais do que uma vez.'],
+          ['A pele a descascar depois da doença é sinal de que voltou.', 'É uma fase normal da recuperação.'],
+        ],
+        alerta: { titulo: 'Vai à urgência se…', lista: ['Tiveres dificuldade em respirar', 'A febre continuar 48 horas depois de começar o antibiótico', 'Ficares muito prostrado ou confuso', 'Uma zona da pele ficar inchada, quente e muito dolorosa'] },
+      },
+      '18-65': {
+        intro: 'A escarlatina é uma infeção pelo estreptococo do grupo A, com amigdalite e exantema característico. Afeta sobretudo crianças em idade escolar; nos adultos é rara, mas os pais podem ser contagiados pelos filhos.',
+        imagens: [
+          ['borbulhas', 'Exantema áspero, «em lixa»'],
+          ['garganta', 'Faringoamigdalite com febre'],
+          ['lingua', 'Língua em framboesa'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Diagnóstico', texto: 'É clínico e pode ser confirmado com um teste rápido ou cultura da zaragatoa da garganta. O exantema surge 12 a 48 horas depois da febre, começa no pescoço e no tronco e poupa a zona à volta da boca.' },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Penicilina ou amoxicilina durante 10 dias (alternativas em caso de alergia)', 'Antipiréticos e hidratação', 'Exclusão da escola ou do trabalho até 24 horas depois do início do antibiótico'] },
+          { ico: '⚠️', titulo: 'Infeção invasiva', texto: 'Muito raramente, o estreptococo do grupo A causa infeções graves (pneumonia, infeção da pele profunda, sépsis). São sinais de alarme a febre persistente, a dor desproporcionada num membro, a dificuldade respiratória e a prostração.' },
+        ],
+        alerta: { titulo: 'Procure ajuda urgente se…', lista: ['Dificuldade respiratória', 'Febre que persiste 48 horas depois do antibiótico', 'Dor intensa, inchaço ou vermelhidão a alastrar na pele', 'Prostração, confusão ou sinais de desidratação'] },
+        ligacoes: [{ href: 'calculadora-respiratoria/?calc=centor', texto: 'Pontuação de Centor/McIsaac' }],
+      },
+      '65+': {
+        intro: 'A escarlatina é rara depois dos 65 anos, mas os avós podem contactar com netos doentes. Conhecer os sinais ajuda a levar a criança ao médico a tempo — e a proteger-se.',
+        imagens: [
+          ['familia', 'Doença mais comum nos netos em idade escolar'],
+          ['borbulhas', 'Pele vermelha e áspera, com febre'],
+          ['lingua', 'Língua vermelha como um morango'],
+          ['comprimido', 'Antibiótico durante 10 dias, sem falhar'],
+          ['lavar-maos', 'Lavar as mãos e não partilhar copos'],
+        ],
+        seccoes: [
+          { ico: '👶', titulo: 'Se o neto tiver escarlatina', lista: ['Ajude a cumprir o antibiótico até ao fim', 'Dê-lhe líquidos e comida mole', 'Pode voltar à escola 24 horas depois de começar o antibiótico, se estiver sem febre', 'A descamação da pele, semanas depois, é normal'] },
+          { ico: '🧼', titulo: 'Proteger-se', lista: ['Lavar as mãos com frequência', 'Não partilhar copos, talheres nem toalhas', 'Se tiver dor de garganta e febre, fale com o médico'] },
+          { ico: '⚠️', titulo: 'Sinais de infeção grave', texto: 'Nos mais velhos, o estreptococo pode causar infeções da pele (erisipela, celulite) e, raramente, infeções graves. Uma zona da perna vermelha, quente e inchada, com febre, deve ser vista pelo médico no mesmo dia.' },
+        ],
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Febre com pele vermelha, quente e inchada numa perna ou num braço', 'Falta de ar ou confusão', 'Não conseguir beber'] },
+      },
+    },
+  },
+
+  {
+    id: 'hepatites',
+    nome: 'Hepatites virais',
+    emoji: '🟡',
+    categoria: 'Infeções',
+    tambem: ['Digestivo'],
+    palavras: 'hepatite A B C fígado icterícia amarelo vírus vacina sangue análise contágio infeciosa contagiosa',
+    resumo: 'Infeções do fígado causadas por vírus (A, B, C e outros). A hepatite A e a B evitam-se com vacinas; a hepatite C tem cura.',
+    heroi: 'figado',
+    deco: 'figado',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['figado', 'O fígado é uma fábrica dentro da barriga'],
+          ['lavar-maos', 'Lavar as mãos antes de comer'],
+          ['prato', 'Comer comida bem lavada'],
+          ['vacina', 'As vacinas protegem o fígado'],
+          ['medico', 'O médico ajuda a tratar'],
+          ['abraco', 'Abraçar não passa a hepatite'],
+        ],
+      },
+      '5-12': {
+        intro: 'O fígado é um órgão muito trabalhador: limpa o sangue, guarda energia e ajuda a digerir a comida. Hepatite quer dizer «fígado inflamado». Quando é causada por um vírus, chama-se hepatite viral.',
+        imagens: [
+          ['figado', 'O fígado trabalha como uma fábrica'],
+          ['lavar-maos', 'Mãos limpas evitam a hepatite A'],
+          ['vacina', 'As vacinas protegem contra a hepatite B'],
+          ['analise', 'Uma análise ao sangue mostra se o fígado está bem'],
+        ],
+        seccoes: [
+          { ico: '🔤', titulo: 'Hepatites com letras', texto: 'Há vários vírus, com nomes de letras: A, B, C, D e E. A hepatite A apanha-se pela comida ou água sujas. A B e a C passam pelo sangue, por isso nunca se deve tocar no sangue de outra pessoa sem luvas.' },
+          { ico: '🟡', titulo: 'Como se sente?', lista: ['Às vezes, nada', 'Cansaço e falta de apetite', 'Dor de barriga e enjoos', 'Pele e olhos amarelos', 'Xixi escuro'] },
+          { ico: '🛡️', titulo: 'Como se previne?', lista: ['Lavar as mãos antes de comer e depois da casa de banho', 'Lavar bem a fruta e os legumes', 'Ter as vacinas em dia — a da hepatite B dá-se logo ao nascer', 'Não partilhar escovas de dentes nem lâminas'] },
+          { ico: '🤝', titulo: 'Amigos com hepatite', texto: 'A hepatite B e a C não passam por abraços, beijinhos, brincar ou partilhar a comida. Uma criança com hepatite pode ir à escola e brincar com todos.' },
+        ],
+        curiosidade: 'O fígado é o único órgão capaz de voltar a crescer: mesmo que se tire um bocado, ele regenera-se!',
+      },
+      '13-17': {
+        intro: 'As hepatites virais atacam o fígado e muitas vezes não dão sintomas durante anos. As boas notícias: as hepatites A e B previnem-se com vacinas, e a hepatite C cura-se com comprimidos.',
+        imagens: [
+          ['figado', 'Hepatite = inflamação do fígado'],
+          ['vacina', 'A vacina da hepatite B faz parte do PNV'],
+          ['preservativo', 'O preservativo protege da hepatite B'],
+        ],
+        seccoes: [
+          { ico: '🔤', titulo: 'As principais', lista: ['Hepatite A: comida ou água contaminadas; cura-se sozinha', 'Hepatite B: sangue, relações sexuais e da mãe para o bebé; pode ficar crónica', 'Hepatite C: sobretudo sangue (seringas, tatuagens ou piercings sem material esterilizado); tem cura', 'Hepatite E: carne de porco mal cozinhada e água'] },
+          { ico: '🛡️', titulo: 'Proteger-te', lista: ['Confirma no boletim que tens a vacina da hepatite B (3 doses)', 'Usa preservativo', 'Tatuagens e piercings só em sítios licenciados, com material descartável', 'Nunca partilhes seringas, lâminas, escovas de dentes ou palhinhas para snifar'] },
+          { ico: '🍺', titulo: 'Álcool e fígado', texto: 'O álcool é tóxico para o fígado. Num fígado com hepatite, o álcool acelera os danos e aumenta o risco de cirrose.' },
+        ],
+        mitos: [
+          ['A hepatite passa por beijos e abraços.', 'A B e a C não. Passam pelo sangue e, a B, também por relações sexuais.'],
+          ['A hepatite C não tem cura.', 'Os tratamentos atuais curam mais de 95 % das pessoas em 8 a 12 semanas.'],
+          ['Quem tem hepatite fica sempre amarelo.', 'A maioria das pessoas com hepatite B ou C não tem sintomas durante anos.'],
+        ],
+        alerta: { titulo: 'Fala com o médico se…', lista: ['Ficares com a pele ou os olhos amarelos', 'Tiveres urina escura e fezes claras', 'Tiveres tido contacto com sangue de outra pessoa ou uma relação sexual sem preservativo', 'Não souberes se tens a vacina da hepatite B'] },
+      },
+      '18-65': {
+        intro: 'Em Portugal, dezenas de milhares de pessoas vivem com hepatite B ou C crónica, muitas sem o saber. Sem tratamento, podem evoluir para cirrose e cancro do fígado. Um simples teste ao sangue faz o diagnóstico.',
+        imagens: [
+          ['analise', 'Uma análise ao sangue deteta as hepatites B e C'],
+          ['figado-doente', 'Sem tratamento, pode evoluir para cirrose'],
+          ['vacina', 'Vacinas contra as hepatites A e B'],
+        ],
+        seccoes: [
+          { ico: '🔤', titulo: 'Tipos e transmissão', lista: ['A: via fecal-oral (alimentos, água, marisco cru); não fica crónica', 'B: sangue, relações sexuais e da mãe para o bebé; pode ficar crónica', 'C: sangue — transfusões antes de 1992, drogas injetáveis, material não esterilizado; fica crónica em muitos casos', 'D: só em quem tem hepatite B', 'E: carne de porco e caça mal cozinhadas'] },
+          { ico: '🧪', titulo: 'Fazer o teste', texto: 'Muitas pessoas infetadas não têm sintomas. Peça ao seu médico de família as análises para as hepatites B e C (e para o VIH), sobretudo se alguma vez tiver tido um comportamento de risco, uma transfusão antes de 1992, ou se nasceu num país onde estas infeções são frequentes. Nas grávidas, o rastreio é feito em todas as gestações.' },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Hepatite C: comprimidos durante 8 a 12 semanas, com cura em mais de 95 % dos casos, gratuitos no SNS', 'Hepatite B crónica: antivirais que controlam o vírus e protegem o fígado', 'Vigilância regular com análises e ecografia', 'Evitar o álcool e vacinar-se contra a hepatite A'] },
+          { ico: '💉', titulo: 'Prevenção', lista: ['Vacina da hepatite B: no PNV desde o nascimento; adultos não vacinados com risco devem vacinar-se', 'Vacina da hepatite A antes de viajar para países com saneamento deficiente', 'Preservativo', 'Não partilhar lâminas, escovas de dentes nem material de consumo de drogas'] },
+        ],
+        alerta: { titulo: 'Procure o médico se…', lista: ['Pele ou olhos amarelos', 'Urina escura, fezes claras ou comichão intensa', 'Cansaço persistente e falta de apetite sem explicação', 'Picada acidental com agulha ou exposição a sangue (no mesmo dia)'] },
+        ligacoes: [{ href: 'calculadora-hepatica/', texto: 'Calculadoras de função hepática' }],
+      },
+      '65+': {
+        intro: 'Muitas pessoas que hoje têm mais de 65 anos foram infetadas pela hepatite C ou B há décadas — em transfusões, cirurgias ou tratamentos com material reutilizado — e nunca o souberam. Nunca é tarde para fazer o teste: a hepatite C cura-se em qualquer idade.',
+        imagens: [
+          ['analise', 'Pedir ao médico as análises das hepatites'],
+          ['figado', 'Cuidar do fígado em qualquer idade'],
+          ['comprimido', 'Hepatite C: 8 a 12 semanas de comprimidos'],
+          ['vacina', 'Vacina da hepatite B, se tiver indicação'],
+          ['alcool', 'Menos álcool, menos esforço para o fígado'],
+        ],
+        seccoes: [
+          { ico: '🧪', titulo: 'Deve fazer o teste se…', lista: ['Recebeu sangue antes de 1992', 'Fez cirurgias, tratamentos dentários ou injeções com material reutilizado', 'Esteve no serviço militar ou em zonas de guerra com cuidados de saúde precários', 'Tem análises do fígado alteradas sem explicação'] },
+          { ico: '💊', titulo: 'Tratar em qualquer idade', texto: 'O tratamento da hepatite C é feito com comprimidos bem tolerados, durante 8 a 12 semanas, e é gratuito. Leve a lista dos seus medicamentos: alguns podem interagir com o tratamento.' },
+          { ico: '🌿', titulo: 'Proteger o fígado', lista: ['Evitar o álcool', 'Não tomar mais de 3 g de paracetamol por dia (ou menos, se o médico indicar)', 'Cuidado com chás e suplementos «naturais»: alguns fazem mal ao fígado', 'Fazer as análises e ecografias de vigilância'] },
+        ],
+        alerta: { titulo: 'Procure o médico se…', lista: ['Pele ou olhos amarelos', 'Barriga a inchar ou pernas inchadas', 'Confusão ou sonolência fora do habitual', 'Vómitos com sangue ou fezes negras (urgência)'] },
+      },
+    },
+  },
+
+  {
+    id: 'vih',
+    nome: 'VIH e sida',
+    emoji: '❤️',
+    categoria: 'Infeções',
+    palavras: 'HIV sida aids vírus da imunodeficiência humana PrEP PEP teste preservativo indetetável intransmissível IST sexual contágio infeciosa contagiosa',
+    resumo: 'Vírus que enfraquece as defesas do corpo. Com o tratamento atual, as pessoas com VIH vivem uma vida longa e, com o vírus indetetável, não o transmitem.',
+    heroi: 'laco-vermelho',
+    deco: 'laco',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['laco-vermelho', 'O laço vermelho lembra quem vive com VIH'],
+          ['abraco', 'Abraçar e brincar não passa o VIH'],
+          ['brincar', 'Todos podemos brincar juntos'],
+          ['medico', 'Os médicos têm medicamentos que ajudam'],
+          ['lavar-maos', 'Se vires sangue, chama um adulto'],
+          ['coracao', 'Somos todos amigos'],
+        ],
+      },
+      '5-12': {
+        intro: 'O VIH é um vírus que ataca as células de defesa do corpo — as que nos protegem dos micróbios. Hoje há medicamentos muito bons: as pessoas com VIH podem ir à escola, trabalhar, fazer desporto e ter filhos saudáveis.',
+        imagens: [
+          ['laco-vermelho', 'O laço vermelho é o símbolo da luta contra o VIH'],
+          ['abraco', 'Abraços, beijinhos e brincadeiras não passam o VIH'],
+          ['comprimido', 'Um comprimido por dia controla o vírus'],
+          ['medico', 'Os médicos acompanham as pessoas com VIH'],
+        ],
+        seccoes: [
+          { ico: '🛡️', titulo: 'O que é?', texto: 'VIH quer dizer vírus da imunodeficiência humana. Sem tratamento, o vírus vai enfraquecendo as defesas e o corpo fica sem forças para combater outras infeções — a isso chama-se sida.' },
+          { ico: '✅', titulo: 'O VIH não passa por…', lista: ['Abraços e beijinhos', 'Brincar, dar as mãos ou fazer desporto', 'Partilhar a comida, os copos ou a casa de banho', 'Picadas de mosquitos', 'Tosse ou espirros'] },
+          { ico: '🩸', titulo: 'Como passa?', texto: 'Passa pelo sangue e por algumas formas de contacto entre adultos de que vais aprender mais quando fores mais velho. Por isso, nunca se toca no sangue de outra pessoa: chama-se um adulto para ajudar.' },
+          { ico: '💊', titulo: 'Como se trata?', texto: 'Com medicamentos tomados todos os dias. Eles não deixam o vírus multiplicar-se, e a pessoa fica com as defesas fortes. Quando o tratamento resulta, o vírus nem sequer passa para os outros.' },
+        ],
+        curiosidade: 'O Dia Mundial da Luta contra a Sida é a 1 de dezembro. Nesse dia, muitas pessoas usam um laço vermelho ao peito!',
+      },
+      '13-17': {
+        intro: 'O VIH transmite-se sobretudo por relações sexuais sem preservativo e pela partilha de seringas. Não há cura, mas o tratamento permite uma vida longa e saudável — e quem tem o vírus indetetável não o transmite.',
+        imagens: [
+          ['preservativo', 'O preservativo protege do VIH e de outras IST'],
+          ['analise', 'O teste é rápido, confidencial e gratuito'],
+          ['laco-vermelho', 'Combater o estigma também é prevenção'],
+        ],
+        seccoes: [
+          { ico: '🔄', titulo: 'Como se transmite', lista: ['Relações sexuais vaginais ou anais sem preservativo', 'Partilha de seringas ou de outro material com sangue', 'Da mãe para o bebé, na gravidez, no parto ou na amamentação (evitável com tratamento)', 'Não se transmite por beijos, abraços, saliva, suor, piscinas ou mosquitos'] },
+          { ico: '🛡️', titulo: 'Prevenção', lista: ['Preservativo em todas as relações', 'PrEP: um medicamento preventivo para quem tem maior risco, gratuito no SNS', 'PEP: tratamento de emergência depois de uma situação de risco — tem de começar nas primeiras 72 horas, quanto antes melhor, numa urgência hospitalar', 'Fazer o teste e saber o próprio estado'] },
+          { ico: '🧪', titulo: 'Fazer o teste', texto: 'É confidencial e gratuito no centro de saúde e nos Centros de Aconselhamento e Deteção (CAD), e também há autotestes nas farmácias. Se tiveres dúvidas, podes falar com o teu médico de família, com a enfermeira da escola ou ligar para o SNS 24.' },
+        ],
+        mitos: [
+          ['O VIH passa por beijos ou por partilhar copos.', 'Não. A saliva não transmite o VIH.'],
+          ['O VIH é uma sentença de morte.', 'Com o tratamento atual, a esperança de vida é praticamente igual à das outras pessoas.'],
+          ['Só acontece a certos grupos de pessoas.', 'Qualquer pessoa sexualmente ativa pode ser infetada. O risco depende do que se faz, não de quem se é.'],
+        ],
+        alerta: { titulo: 'Procura ajuda se…', lista: ['Tiveres tido uma relação sem preservativo ou com o preservativo rompido: vai a uma urgência hospitalar nas primeiras 72 horas para a PEP', 'Tiveres sintomas parecidos com uma gripe 2 a 4 semanas depois de uma situação de risco', 'Precisares de falar com alguém: o médico de família e o SNS 24 guardam sigilo'] },
+      },
+      '18-65': {
+        intro: 'Portugal continua a ter das taxas de novos diagnósticos de VIH mais altas da Europa ocidental, e muitos são feitos tarde. Todos os adultos devem fazer o teste pelo menos uma vez; com o diagnóstico precoce e o tratamento, o VIH é uma doença crónica controlável.',
+        imagens: [
+          ['analise', 'Teste gratuito e confidencial'],
+          ['comprimido', 'Tratamento diário e gratuito'],
+          ['preservativo', 'Preservativo, PrEP e PEP'],
+        ],
+        seccoes: [
+          { ico: '🧪', titulo: 'Fazer o teste', lista: ['Pelo menos uma vez na vida, a todos os adultos', 'Anualmente ou mais vezes, se houver comportamentos de risco', 'Em todas as gravidezes', 'Sempre que se diagnostica outra IST, tuberculose ou hepatite', 'Disponível nos centros de saúde, nos CAD, em organizações comunitárias e em autotestes nas farmácias'] },
+          { ico: '🔁', titulo: 'Indetetável = Intransmissível', texto: 'Uma pessoa com VIH em tratamento, com a carga viral indetetável de forma mantida, não transmite o vírus por via sexual. O tratamento é gratuito no SNS e, hoje, muitas vezes resume-se a um comprimido por dia.' },
+          { ico: '🛡️', titulo: 'Prevenção', lista: ['Preservativo (externo ou interno)', 'PrEP (profilaxia pré-exposição): gratuita no SNS para quem tem maior risco, através do médico de família ou de consultas hospitalares', 'PEP (profilaxia pós-exposição): depois de uma exposição de risco, até 72 horas, numa urgência hospitalar', 'Material de injeção esterilizado e nunca partilhado'] },
+          { ico: '🤒', titulo: 'Sintomas', texto: '2 a 4 semanas depois da infeção pode haver febre, dor de garganta, manchas na pele e gânglios — parecido com uma gripe. Depois, o vírus pode ficar anos sem sintomas, enquanto vai enfraquecendo as defesas.' },
+        ],
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Exposição de risco (relação sem preservativo, preservativo rompido, partilha de seringas, picada acidental): urgência hospitalar nas primeiras 72 horas', 'Sintomas tipo gripe com manchas na pele depois de uma situação de risco', 'Infeções repetidas, perda de peso, diarreia ou febre prolongadas sem explicação'] },
+      },
+      '65+': {
+        intro: 'O VIH também diz respeito aos mais velhos: há cada vez mais pessoas a envelhecer com VIH, e cada vez mais diagnósticos depois dos 50 anos — muitas vezes tardios, porque ninguém pensou em fazer o teste.',
+        imagens: [
+          ['analise', 'Nunca é tarde para fazer o teste'],
+          ['conversa', 'Falar de saúde sexual com o médico'],
+          ['preservativo', 'O preservativo protege em qualquer idade'],
+          ['comprimido', 'Tratamento diário, com atenção às interações'],
+          ['laco-vermelho', 'Viver bem com VIH é possível'],
+        ],
+        seccoes: [
+          { ico: '💬', titulo: 'Saúde sexual não tem idade', lista: ['Depois da menopausa, já não há risco de gravidez, mas continua a haver risco de VIH e de outras IST', 'Medicamentos para a disfunção erétil e novas relações aumentaram a vida sexual depois dos 60', 'O preservativo continua a ser a melhor proteção', 'Peça o teste ao seu médico de família — é um pedido normal e confidencial'] },
+          { ico: '🔍', titulo: 'Pensar no VIH', texto: 'Nos mais velhos, o VIH pode ser confundido com o envelhecimento: cansaço, perda de peso, infeções repetidas, zona ou alterações da memória. Um teste simples esclarece.' },
+          { ico: '💊', titulo: 'Envelhecer com VIH', lista: ['Tomar a medicação todos os dias, sem falhas', 'Informar todos os médicos e o farmacêutico: há interações com medicamentos do coração, do colesterol e outros', 'Vigiar o coração, os ossos, os rins e a memória', 'Manter as vacinas em dia (gripe, pneumococo, zona)'] },
+        ],
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Tiver tido uma exposição de risco: urgência hospitalar nas primeiras 72 horas', 'Perda de peso, febre, diarreia ou infeções repetidas sem explicação', 'Falhou várias doses da medicação para o VIH'] },
+      },
+    },
+  },
+
+  {
+    id: 'ist',
+    nome: 'Infeções sexualmente transmissíveis',
+    emoji: '🛡️',
+    categoria: 'Infeções',
+    palavras: 'IST DST clamídia gonorreia sífilis HPV herpes genital tricomonas verrugas preservativo vacina sexual contágio infeciosa contagiosa',
+    resumo: 'Infeções que passam nas relações sexuais, como a clamídia, a gonorreia, a sífilis, o HPV e o herpes. Muitas não dão sintomas, mas quase todas se tratam.',
+    heroi: 'preservativo',
+    deco: 'escudo',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['abraco', 'O nosso corpo é só nosso'],
+          ['conversa', 'Se algo te deixar triste, conta a um adulto'],
+          ['lavar-maos', 'Tomar banho e lavar as mãos'],
+          ['vacina', 'As vacinas protegem o corpo'],
+          ['medico', 'O médico ajuda a cuidar do corpo'],
+          ['coracao', 'Gostar de nós e cuidar de nós'],
+        ],
+      },
+      '5-12': {
+        intro: 'O corpo muda quando crescemos, e é importante aprender a cuidar dele. Há infeções que passam entre pessoas mais velhas em momentos de contacto íntimo. Vais aprender mais sobre elas quando chegares à adolescência — e já há uma vacina que te protege.',
+        imagens: [
+          ['vacina', 'Aos 10 anos, a vacina contra o HPV'],
+          ['conversa', 'Podes fazer perguntas aos teus pais ou ao médico'],
+          ['abraco', 'O teu corpo é teu'],
+          ['medico', 'O médico e a enfermeira guardam segredo'],
+        ],
+        seccoes: [
+          { ico: '💉', titulo: 'A vacina do HPV', texto: 'O HPV é um vírus muito comum que, anos mais tarde, pode causar alguns tipos de cancro. A vacina dá-se aos 10 anos, a raparigas e rapazes, no centro de saúde. Protege melhor quando é dada antes da adolescência.' },
+          { ico: '🙋', titulo: 'Fazer perguntas', lista: ['É normal ter curiosidade sobre o corpo', 'Os pais, os professores e o médico de família podem ajudar', 'Na internet há muita informação errada: confirma com um adulto de confiança'] },
+          { ico: '🛑', titulo: 'O teu corpo é teu', lista: ['Ninguém deve tocar nas tuas partes íntimas, nem pedir-te para tocares nas de outra pessoa', 'Se alguém o fizer, ou se te pedirem segredos que te deixam desconfortável, conta a um adulto de confiança', 'Não é culpa tua', 'Podes também ligar para a Linha SOS Criança: 116 111'] },
+        ],
+        curiosidade: 'Desde que se começou a dar a vacina contra o HPV, os casos de lesões pré-cancerosas do colo do útero diminuíram muito nos países que vacinam!',
+      },
+      '13-17': {
+        intro: 'As infeções sexualmente transmissíveis (IST) são muito frequentes entre jovens. Muitas não dão sintomas, por isso a única forma de saber é fazer o teste. Quase todas se tratam, e o preservativo protege da maioria.',
+        imagens: [
+          ['preservativo', 'Preservativo em todas as relações'],
+          ['vacina', 'Vacinas contra o HPV e a hepatite B'],
+          ['analise', 'Testes confidenciais e gratuitos'],
+        ],
+        seccoes: [
+          { ico: '🦠', titulo: 'As mais comuns', lista: ['Clamídia: a mais frequente; muitas vezes sem sintomas; pode causar infertilidade', 'Gonorreia: ardor a urinar e corrimento', 'Sífilis: uma ferida indolor, que desaparece, mas a infeção continua', 'HPV: verrugas genitais e, anos depois, alguns cancros', 'Herpes genital: pequenas bolhas dolorosas que voltam de vez em quando', 'VIH e hepatite B'] },
+          { ico: '🔍', titulo: 'Sinais de alerta', lista: ['Corrimento diferente do habitual', 'Ardor ou dor ao urinar', 'Feridas, bolhas ou verrugas nos genitais, no ânus ou na boca', 'Dor durante as relações ou na barriga', 'Muitas vezes, nenhum sintoma'] },
+          { ico: '🛡️', titulo: 'Proteger-te', lista: ['Preservativo do início ao fim, em todas as relações (também orais e anais)', 'Vacinas contra o HPV e a hepatite B', 'Fazer testes se tiveres novos parceiros', 'Avisar os parceiros se tiveres uma IST, para também serem tratados', 'Consultas de planeamento familiar e de saúde juvenil: confidenciais e gratuitas'] },
+        ],
+        mitos: [
+          ['Se não tenho sintomas, não tenho uma IST.', 'A maioria das infeções por clamídia e muitas outras não dão sintomas.'],
+          ['A pílula protege das IST.', 'A pílula só evita a gravidez. O preservativo é o único método que protege da maioria das IST.'],
+          ['O sexo oral não tem riscos.', 'Pode transmitir gonorreia, sífilis, herpes e HPV.'],
+        ],
+        alerta: { titulo: 'Fala com um médico se…', lista: ['Tiveres corrimento, ardor, feridas ou verrugas', 'Tiveres tido uma relação sem preservativo (para o VIH, a PEP tem de começar nas primeiras 72 horas)', 'Um parceiro te disser que tem uma IST', 'Precisares de contraceção de emergência'] },
+      },
+      '18-65': {
+        intro: 'As IST são muito frequentes e, em Portugal, os casos de sífilis, gonorreia e clamídia têm aumentado. Muitas são silenciosas, mas quase todas têm tratamento — e testar, tratar e avisar os parceiros interrompe a transmissão.',
+        imagens: [
+          ['preservativo', 'O preservativo protege da maioria das IST'],
+          ['analise', 'Testes de urina, zaragatoas e análises ao sangue'],
+          ['vacina', 'Vacinas contra o HPV e as hepatites'],
+        ],
+        seccoes: [
+          { ico: '🦠', titulo: 'Principais IST', lista: ['Clamídia e gonorreia: tratam-se com antibiótico; sem tratamento podem causar doença inflamatória pélvica e infertilidade', 'Sífilis: ferida indolor, depois manchas na pele (também nas palmas e plantas); trata-se com penicilina', 'HPV: verrugas e lesões que podem evoluir para cancro do colo do útero, do ânus ou da orofaringe', 'Herpes genital: crónico, com crises tratáveis', 'Tricomoníase, VIH e hepatites B e C'] },
+          { ico: '🧪', titulo: 'Quando testar', lista: ['Novo parceiro sexual ou vários parceiros', 'Sintomas ou parceiro com uma IST', 'Gravidez (rastreio de sífilis, VIH e hepatites)', 'Antes de deixar de usar preservativo numa relação nova', 'Pelo menos uma vez por ano, se houver risco'] },
+          { ico: '💊', titulo: 'Tratamento', texto: 'A maioria das IST bacterianas cura-se com antibiótico. É importante tratar também os parceiros, não ter relações até ao fim do tratamento e repetir os testes quando indicado. O diagnóstico de uma IST deve levar a testar as outras, incluindo o VIH.' },
+          { ico: '🌸', titulo: 'Rastreio do cancro do colo do útero', texto: 'O teste do HPV é feito no centro de saúde às mulheres entre os 25 e os 64 anos, de 5 em 5 anos. Mesmo vacinadas, as mulheres devem fazer o rastreio.' },
+        ],
+        alerta: { titulo: 'Procure o médico se…', lista: ['Corrimento, ardor, feridas, bolhas ou verrugas genitais', 'Dor na parte baixa da barriga, sobretudo com febre', 'Manchas na pele das palmas das mãos ou das plantas dos pés', 'Relação de risco: urgência hospitalar nas primeiras 72 horas para avaliar a PEP do VIH'] },
+        ligacoes: [{ href: 'calculadora-plano-rastreios/', texto: 'Plano de rastreios recomendados' }],
+      },
+      '65+': {
+        intro: 'A vida sexual pode continuar ao longo de toda a vida — e as IST também. Os casos em pessoas com mais de 60 anos estão a aumentar, muitas vezes porque se deixou de usar preservativo depois da menopausa.',
+        imagens: [
+          ['preservativo', 'Sem risco de gravidez, mas com risco de IST'],
+          ['conversa', 'Falar abertamente com o médico de família'],
+          ['analise', 'Pedir os testes é normal e confidencial'],
+          ['comprimido', 'Quase todas as IST têm tratamento'],
+          ['abraco', 'Viver a intimidade com saúde'],
+        ],
+        seccoes: [
+          { ico: '💬', titulo: 'Porque é importante', lista: ['Depois da menopausa, a mucosa vaginal fica mais fina e frágil, o que facilita as infeções', 'Novas relações depois da viuvez ou do divórcio', 'Muitas pessoas desta geração nunca tiveram educação sexual', 'Os sintomas podem ser confundidos com outras doenças'] },
+          { ico: '🛡️', titulo: 'Proteger-se', lista: ['Usar preservativo com novos parceiros', 'Lubrificante à base de água reduz as pequenas feridas', 'Fazer testes antes de deixar o preservativo numa nova relação', 'Vacina contra a zona e outras vacinas recomendadas — pergunte ao seu médico'] },
+          { ico: '🔍', titulo: 'Estar atento a', lista: ['Feridas ou bolhas genitais', 'Corrimento ou ardor ao urinar', 'Manchas na pele sem explicação', 'Comichão genital persistente'] },
+        ],
+        alerta: { titulo: 'Procure o médico se…', lista: ['Feridas, bolhas, verrugas ou corrimento', 'Ardor ao urinar que não passa', 'Sangramento vaginal depois da menopausa (sempre deve ser avaliado)', 'Relação de risco: urgência hospitalar nas primeiras 72 horas'] },
+      },
+    },
+  },
 ];
 
 export const encontrarDoenca = (id) => DOENCAS.find((d) => d.id === id) || null;

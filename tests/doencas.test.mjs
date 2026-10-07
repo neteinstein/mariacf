@@ -8,13 +8,14 @@ import { ILUSTRACOES, MINIATURAS, ilustracao, miniatura } from '../assets/js/doe
 const raiz = new URL('..', import.meta.url).pathname;
 const palavras = (s) => s.trim().split(/\s+/).length;
 
-test('há as trinta e cinco doenças, cada uma com um id único', () => {
+test('há as quarenta e uma doenças, cada uma com um id único', () => {
   assert.deepEqual(DOENCAS.map((d) => d.id), [
     'diabetes', 'cancro-mama', 'hipertensao', 'artroses', 'depressao', 'dislipidemia', 'amiotrofia', 'pneumonia',
     'avc', 'cancro-estomago', 'cancro-colorretal', 'paramiloidose', 'dpoc', 'cancro-pulmao', 'figado-alcool',
     'obesidade-infantil', 'osteoporose', 'demencia', 'tuberculose', 'asma', 'enfarte', 'fibrilhacao-auricular',
     'insuficiencia-cardiaca', 'doenca-renal', 'cancro-prostata', 'cancro-pele', 'ansiedade', 'parkinson', 'lombalgia',
-    'gripe', 'constipacao', 'covid-19', 'gastroenterite', 'varicela', 'sarampo',
+    'gripe', 'constipacao', 'covid-19', 'gastroenterite', 'varicela', 'sarampo', 'mao-pe-boca', 'amigdalite',
+    'escarlatina', 'hepatites', 'vih', 'ist',
   ]);
 });
 
