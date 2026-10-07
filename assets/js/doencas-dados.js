@@ -3087,7 +3087,7 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🌬️', titulo: 'Como se transmite', texto: 'Pelo ar e pelo contacto com o líquido das bolhinhas. É contagiosa desde 1 a 2 dias antes de aparecerem as borbulhas até todas terem crosta. Os sintomas surgem 10 a 21 dias depois do contacto.' },
           { ico: '💊', titulo: 'Tratamento', lista: ['Paracetamol para a febre', 'Não tomar aspirina (risco de uma doença grave do fígado e do cérebro)', 'Evitar o ibuprofeno, que aumenta o risco de infeção da pele', 'Anti-histamínicos para a comichão, se o médico indicar', 'Nos adolescentes, o médico pode receitar um antiviral se for visto cedo'] },
-          { ico: '💉', titulo: 'Vacina', texto: 'A vacina contra a varicela não faz parte do Programa Nacional de Vacinação, mas está disponível e é recomendada a adolescentes que nunca tiveram a doença. Fala com o teu médico de família.' },
+          { ico: '💉', titulo: 'Vacina', texto: 'A vacina contra a varicela não faz parte do Programa Nacional de Vacinação, mas está disponível: quem nunca teve a doença pode ponderar tomar a vacina. Fala com o teu médico de família.' },
         ],
         mitos: [
           ['É melhor apanhar varicela em criança para ficar logo despachado.', 'Embora seja geralmente ligeira, pode ter complicações. A vacina protege sem os riscos da doença.'],
@@ -3097,7 +3097,7 @@ export const DOENCAS = [
         alerta: { titulo: 'Vai ao médico se…', lista: ['A febre for alta ou durar mais de 4 dias', 'Uma borbulha ficar muito vermelha, quente, inchada ou com pus', 'Tiveres tosse ou falta de ar', 'Tiveres dor de cabeça forte, confusão ou dificuldade em andar'] },
       },
       '18-65': {
-        intro: 'Nos adultos, a varicela é menos frequente mas mais grave do que nas crianças, com maior risco de pneumonia. Na gravidez, pode afetar o bebé. Quem nunca teve a doença deve ponderar a vacina.',
+        intro: 'Nos adultos, a varicela é menos frequente mas mais grave do que nas crianças, com maior risco de pneumonia. Na gravidez, pode afetar o bebé. Quem nunca teve a doença pode ponderar tomar a vacina.',
         imagens: [
           ['borbulhas', 'Vesículas com comichão, em vários estágios'],
           ['vacina', 'Vacina para adultos sem varicela prévia'],
@@ -3107,7 +3107,7 @@ export const DOENCAS = [
           { ico: '🔴', titulo: 'Sintomas', lista: ['Febre, dores de cabeça e mal-estar', 'Manchas vermelhas que passam a vesículas e depois a crostas', 'Lesões em vários estágios ao mesmo tempo, também no couro cabeludo e na boca', 'Comichão intensa'] },
           { ico: '⚠️', titulo: 'Situações de risco', lista: ['Grávidas sem varicela prévia em contacto com um doente: falar com o médico com urgência', 'Pessoas com imunidade diminuída', 'Recém-nascidos', 'Fumadores (mais risco de pneumonia)'] },
           { ico: '💊', titulo: 'Tratamento', lista: ['Nos adultos, o antiviral é útil se começar nas primeiras 24 a 72 horas', 'Paracetamol para a febre; evitar a aspirina e o ibuprofeno', 'Anti-histamínico para a comichão', 'Unhas curtas e higiene da pele para evitar infeções', 'Ficar em casa até todas as lesões terem crosta'] },
-          { ico: '💉', titulo: 'Prevenção', texto: 'A vacina (duas doses) é recomendada a adolescentes e adultos sem história de varicela, sobretudo profissionais de saúde, educadores e mulheres que planeiam engravidar. Não é dada durante a gravidez.' },
+          { ico: '💉', titulo: 'Prevenção', texto: 'Quem nunca teve varicela pode ponderar tomar a vacina (duas doses), sobretudo profissionais de saúde, educadores e mulheres que planeiam engravidar. Não é dada durante a gravidez.' },
         ],
         alerta: { titulo: 'Procure ajuda se…', lista: ['Tosse, falta de ar ou dor no peito', 'Febre alta que dura mais de 4 dias', 'Lesões com sinais de infeção (pus, vermelhidão a alastrar, dor intensa)', 'Dor de cabeça forte, rigidez do pescoço ou confusão', 'Gravidez e contacto com alguém com varicela'] },
         ligacoes: [{ href: 'calculadora-vacinas/', texto: 'Calendário de vacinas (PNV)' }],
