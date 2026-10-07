@@ -30,6 +30,11 @@
   --blob-3: #7fbfa8;
   --blob-4: #ffd9a3;
 
+  /* Gradiente dos cartões em destaque: igual nos temas claro e escuro (texto a branco). */
+  --brand-a: #006d4c;
+  --brand-b: #00a676;
+  --brand-c: #0b3d36;
+
   --shadow-sm: 0 1px 2px rgba(23, 36, 46, 0.06), 0 2px 8px rgba(23, 36, 46, 0.05);
   --shadow: 0 10px 30px -10px rgba(23, 36, 46, 0.18), 0 2px 6px rgba(23, 36, 46, 0.05);
   --shadow-lg: 0 30px 60px -20px rgba(15, 80, 74, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
@@ -104,6 +109,252 @@
   --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
   color-scheme: dark;
+}
+
+/* ---------- Paletas de cor (escolhidas nos círculos do rodapé) ----------
+   A paleta (data-palette) muda só as cores de marca e de fundo; as cores dos níveis de
+   risco (sol, coral, perigo) ficam iguais em todas. Sem data-palette vale o verde original.
+   Só no ecrã: no papel ficam sempre as cores claras originais. */
+@media screen {
+  /* Azul clínico */
+  :root[data-palette='azul'] {
+    --bg: #f4f7fb;
+    --bg-2: #e6eef8;
+    --ink: #17222f;
+    --ink-soft: #475569;
+    --ink-mute: #748297;
+    --line: rgba(10, 46, 92, 0.12);
+    --teal: #0b5cad;
+    --teal-2: #2b8be0;
+    --teal-soft: #dceafa;
+    --violet: #0a2e5c;
+    --violet-soft: #dde6f2;
+    --blob-1: #b7d4f5;
+    --blob-2: #cfdcec;
+    --blob-3: #8db8e8;
+    --brand-a: #0b5cad;
+    --brand-b: #2b8be0;
+    --brand-c: #0a2e5c;
+    --shadow-lg: 0 30px 60px -20px rgba(11, 60, 120, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+  }
+  :root[data-palette='azul'][data-theme='dark'] {
+    --bg: #0a111c;
+    --bg-2: #0d1726;
+    --ink: #e9f0f8;
+    --ink-soft: #b3c2d4;
+    --ink-mute: #8090a5;
+    --line: rgba(233, 240, 248, 0.1);
+    --surface: rgba(18, 32, 52, 0.55);
+    --surface-strong: rgba(20, 36, 58, 0.85);
+    --teal: #6cb2ff;
+    --teal-2: #2b8be0;
+    --teal-soft: rgba(108, 178, 255, 0.14);
+    --violet: #8fb0d8;
+    --violet-soft: rgba(143, 176, 216, 0.15);
+    --blob-1: #123d6b;
+    --blob-2: #1d3553;
+    --blob-3: #0a2e5c;
+    --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  }
+  /* Turquesa */
+  :root[data-palette='turquesa'] {
+    --bg: #f3f9fa;
+    --bg-2: #e2f2f4;
+    --ink: #152a2d;
+    --ink-soft: #455d61;
+    --ink-mute: #728a8e;
+    --line: rgba(8, 65, 74, 0.12);
+    --teal: #00707a;
+    --teal-2: #14a8b5;
+    --teal-soft: #d4f1f3;
+    --violet: #08414a;
+    --violet-soft: #dbebee;
+    --blob-1: #a6e3e8;
+    --blob-2: #c8e1e4;
+    --blob-3: #78c6cf;
+    --brand-a: #00707a;
+    --brand-b: #14a8b5;
+    --brand-c: #08414a;
+    --shadow-lg: 0 30px 60px -20px rgba(0, 90, 100, 0.35), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+  }
+  :root[data-palette='turquesa'][data-theme='dark'] {
+    --bg: #081517;
+    --bg-2: #0b1d20;
+    --ink: #e8f5f6;
+    --ink-soft: #b0c9cc;
+    --ink-mute: #7d979a;
+    --line: rgba(232, 245, 246, 0.1);
+    --surface: rgba(16, 40, 44, 0.55);
+    --surface-strong: rgba(18, 45, 50, 0.85);
+    --teal: #4fd6e0;
+    --teal-2: #14a8b5;
+    --teal-soft: rgba(79, 214, 224, 0.14);
+    --violet: #6fb5bd;
+    --violet-soft: rgba(111, 181, 189, 0.15);
+    --blob-1: #0e5560;
+    --blob-2: #1c4549;
+    --blob-3: #08414a;
+    --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  }
+  /* Lavanda */
+  :root[data-palette='lavanda'] {
+    --bg: #f7f5fc;
+    --bg-2: #eeeaf8;
+    --ink: #221d33;
+    --ink-soft: #544d66;
+    --ink-mute: #81798f;
+    --line: rgba(46, 33, 96, 0.12);
+    --teal: #5b45b0;
+    --teal-2: #8a74e0;
+    --teal-soft: #e7e2fa;
+    --violet: #2e2160;
+    --violet-soft: #e4e0f0;
+    --blob-1: #d2c6f5;
+    --blob-2: #e0daf0;
+    --blob-3: #b2a1ea;
+    --brand-a: #5b45b0;
+    --brand-b: #8a74e0;
+    --brand-c: #2e2160;
+    --shadow-lg: 0 30px 60px -20px rgba(70, 50, 150, 0.32), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+  }
+  :root[data-palette='lavanda'][data-theme='dark'] {
+    --bg: #110e1c;
+    --bg-2: #171326;
+    --ink: #efecf8;
+    --ink-soft: #c0b9d4;
+    --ink-mute: #8d86a3;
+    --line: rgba(239, 236, 248, 0.1);
+    --surface: rgba(34, 28, 56, 0.55);
+    --surface-strong: rgba(38, 32, 62, 0.85);
+    --teal: #b3a4ff;
+    --teal-2: #8a74e0;
+    --teal-soft: rgba(179, 164, 255, 0.14);
+    --violet: #a99bd6;
+    --violet-soft: rgba(169, 155, 214, 0.15);
+    --blob-1: #3a2c78;
+    --blob-2: #2c2550;
+    --blob-3: #2e2160;
+    --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  }
+  /* Orquídea */
+  :root[data-palette='orquidea'] {
+    --bg: #fbf5f8;
+    --bg-2: #f6e8ef;
+    --ink: #2c1a24;
+    --ink-soft: #5e4854;
+    --ink-mute: #8b7581;
+    --line: rgba(92, 28, 64, 0.12);
+    --teal: #9c3d7a;
+    --teal-2: #cc5fa3;
+    --teal-soft: #f7e0ee;
+    --violet: #5c1c40;
+    --violet-soft: #f0e0e9;
+    --blob-1: #f2c5dd;
+    --blob-2: #ecd8e2;
+    --blob-3: #e0a2c6;
+    --brand-a: #9c3d7a;
+    --brand-b: #cc5fa3;
+    --brand-c: #5c1c40;
+    --shadow-lg: 0 30px 60px -20px rgba(120, 40, 90, 0.32), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+  }
+  :root[data-palette='orquidea'][data-theme='dark'] {
+    --bg: #170c12;
+    --bg-2: #1f1018;
+    --ink: #f8ecf2;
+    --ink-soft: #d4b9c7;
+    --ink-mute: #a38695;
+    --line: rgba(248, 236, 242, 0.1);
+    --surface: rgba(52, 24, 40, 0.55);
+    --surface-strong: rgba(58, 28, 46, 0.85);
+    --teal: #f08cc6;
+    --teal-2: #cc5fa3;
+    --teal-soft: rgba(240, 140, 198, 0.14);
+    --violet: #d29bbb;
+    --violet-soft: rgba(210, 155, 187, 0.15);
+    --blob-1: #6b2152;
+    --blob-2: #4a2238;
+    --blob-3: #5c1c40;
+    --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  }
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root[data-palette='azul']:not([data-theme='light']) {
+    --bg: #0a111c;
+    --bg-2: #0d1726;
+    --ink: #e9f0f8;
+    --ink-soft: #b3c2d4;
+    --ink-mute: #8090a5;
+    --line: rgba(233, 240, 248, 0.1);
+    --surface: rgba(18, 32, 52, 0.55);
+    --surface-strong: rgba(20, 36, 58, 0.85);
+    --teal: #6cb2ff;
+    --teal-2: #2b8be0;
+    --teal-soft: rgba(108, 178, 255, 0.14);
+    --violet: #8fb0d8;
+    --violet-soft: rgba(143, 176, 216, 0.15);
+    --blob-1: #123d6b;
+    --blob-2: #1d3553;
+    --blob-3: #0a2e5c;
+    --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  }
+  :root[data-palette='turquesa']:not([data-theme='light']) {
+    --bg: #081517;
+    --bg-2: #0b1d20;
+    --ink: #e8f5f6;
+    --ink-soft: #b0c9cc;
+    --ink-mute: #7d979a;
+    --line: rgba(232, 245, 246, 0.1);
+    --surface: rgba(16, 40, 44, 0.55);
+    --surface-strong: rgba(18, 45, 50, 0.85);
+    --teal: #4fd6e0;
+    --teal-2: #14a8b5;
+    --teal-soft: rgba(79, 214, 224, 0.14);
+    --violet: #6fb5bd;
+    --violet-soft: rgba(111, 181, 189, 0.15);
+    --blob-1: #0e5560;
+    --blob-2: #1c4549;
+    --blob-3: #08414a;
+    --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  }
+  :root[data-palette='lavanda']:not([data-theme='light']) {
+    --bg: #110e1c;
+    --bg-2: #171326;
+    --ink: #efecf8;
+    --ink-soft: #c0b9d4;
+    --ink-mute: #8d86a3;
+    --line: rgba(239, 236, 248, 0.1);
+    --surface: rgba(34, 28, 56, 0.55);
+    --surface-strong: rgba(38, 32, 62, 0.85);
+    --teal: #b3a4ff;
+    --teal-2: #8a74e0;
+    --teal-soft: rgba(179, 164, 255, 0.14);
+    --violet: #a99bd6;
+    --violet-soft: rgba(169, 155, 214, 0.15);
+    --blob-1: #3a2c78;
+    --blob-2: #2c2550;
+    --blob-3: #2e2160;
+    --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  }
+  :root[data-palette='orquidea']:not([data-theme='light']) {
+    --bg: #170c12;
+    --bg-2: #1f1018;
+    --ink: #f8ecf2;
+    --ink-soft: #d4b9c7;
+    --ink-mute: #a38695;
+    --line: rgba(248, 236, 242, 0.1);
+    --surface: rgba(52, 24, 40, 0.55);
+    --surface-strong: rgba(58, 28, 46, 0.85);
+    --teal: #f08cc6;
+    --teal-2: #cc5fa3;
+    --teal-soft: rgba(240, 140, 198, 0.14);
+    --violet: #d29bbb;
+    --violet-soft: rgba(210, 155, 187, 0.15);
+    --blob-1: #6b2152;
+    --blob-2: #4a2238;
+    --blob-3: #5c1c40;
+    --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
+  }
 }
 
 /* ---------- Base ---------- */
@@ -342,6 +593,46 @@ main {
   flex-wrap: wrap;
   gap: 8px 24px;
   justify-content: space-between;
+  align-items: center;
+}
+
+/* Escolha da paleta de cores: um círculo por paleta (criados em site.js). */
+.paletas {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-basis: 100%;
+}
+
+.paletas-titulo {
+  margin-right: 2px;
+}
+
+.paleta {
+  --p1: #006d4c;
+  --p2: #00a676;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid var(--surface-border);
+  background: linear-gradient(135deg, var(--p1) 0 50%, var(--p2) 50% 100%);
+  box-shadow: 0 0 0 1px var(--line), var(--shadow-sm);
+  cursor: pointer;
+  transition: transform 0.3s var(--spring), box-shadow 0.3s var(--ease);
+}
+
+.paleta:hover {
+  transform: scale(1.15);
+}
+
+.paleta:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 3px;
+}
+
+.paleta[aria-pressed='true'] {
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--teal);
 }
 
 /* ---------- Typography ---------- */
@@ -686,7 +977,7 @@ a.tool:hover {
 .tool.featured {
   min-height: 260px;
   background:
-    linear-gradient(135deg, color-mix(in srgb, #006d4c 92%, #000) 0%, #00a676 50%, color-mix(in srgb, #0b3d36 80%, #00a676) 100%);
+    linear-gradient(135deg, color-mix(in srgb, var(--brand-a) 92%, #000) 0%, var(--brand-b) 50%, color-mix(in srgb, var(--brand-c) 80%, var(--brand-b)) 100%);
   color: #fff;
   border-color: transparent;
 }
@@ -5300,7 +5591,7 @@ a.tool:hover .tool-deco.mini {
    mas no tamanho normal e com a cor de cada cartão (verde ou coral). As cores são
    fixas para o texto branco se ler também no tema escuro. */
 .tool.destaque {
-  background: linear-gradient(135deg, color-mix(in srgb, #006d4c 92%, #000) 0%, #00a676 50%, color-mix(in srgb, #0b3d36 80%, #00a676) 100%);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--brand-a) 92%, #000) 0%, var(--brand-b) 50%, color-mix(in srgb, var(--brand-c) 80%, var(--brand-b)) 100%);
   color: #fff;
   border-color: transparent;
 }
