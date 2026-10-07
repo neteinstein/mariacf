@@ -1525,6 +1525,12 @@ fieldset.step legend + .step-hint {
   font-size: 0.88rem;
 }
 
+/* Aviso do instrumento (calculadora cognitiva): afastado do bloco anterior e da primeira pergunta */
+.step-hint.cog-aviso {
+  margin: 18px 0 28px;
+  line-height: 1.55;
+}
+
 /* Weight input */
 
 .weight {
