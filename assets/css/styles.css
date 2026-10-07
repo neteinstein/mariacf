@@ -3,66 +3,66 @@
    ========================================================================== */
 
 :root {
-  --bg: #fdfaf3;
-  --bg-2: #f7efe0;
-  --ink: #1a251c;
-  --ink-soft: #485349;
-  --ink-mute: #5c675d;
-  --line: rgba(31, 52, 35, 0.12);
+  --bg: #f9fafc;
+  --bg-2: #ecf1f6;
+  --ink: #1a232c;
+  --ink-soft: #47515c;
+  --ink-mute: #5b646f;
+  --line: rgba(30, 47, 65, 0.12);
   --surface: rgba(255, 255, 255, 0.72);
   --surface-strong: rgba(255, 255, 255, 0.92);
   --surface-border: rgba(255, 255, 255, 0.9);
 
-  --teal: #2c6d3e;
-  --teal-2: #37a885;
-  --teal-soft: #dcf2df;
+  --teal: #1a609e;
+  --teal-2: #049fd6;
+  --teal-soft: #deedfe;
   --coral: #e2572f;
   --coral-soft: #fbe1d7;
   /* Coral dos cabeçalhos de resultado com texto branco (o --coral só dá 3,7:1 com branco). */
   --coral-forte: #c24b28;
-  --violet: #17594d;
-  --violet-soft: #daf1eb;
+  --violet: #05556f;
+  --violet-soft: #d7f0fb;
   --sun: #ecab2e;
   --sun-soft: #fbedd0;
   --danger: #c2413a;
   --danger-soft: #fde4e1;
 
-  --blob-1: #c5e9cb;
-  --blob-2: #f3e3c6;
-  --blob-3: #bfe9d8;
-  --blob-4: #f5e6ce;
+  --blob-1: #c6e1ff;
+  --blob-2: #dce6f2;
+  --blob-3: #b8e6fe;
+  --blob-4: #cfeefa;
 
   /* Acentos decorativos (títulos, orbe, avatar, cartões): mudam com a paleta.
      As cores dos níveis de risco (--sun, --coral, --danger) não. */
-  --accent: #0d6d5e;
-  --accent-soft: #d7f2eb;
-  --accent-2: #d2ba92;
-  --accent-2-soft: #f8eddb;
+  --accent: #066786;
+  --accent-soft: #d4f0fe;
+  --accent-2: #94c7db;
+  --accent-2-soft: #dcf3fc;
 
   /* Desenhos das doenças */
-  --il-traco: #243928;
-  --il-cor: #579f68;
-  --il-suave: #d9f3dd;
-  --il-acento: #399986;
-  --il-acento-suave: #d7f2eb;
-  --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c6d3e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  --il-traco: #233447;
+  --il-cor: #4690d9;
+  --il-suave: #deedfe;
+  --il-acento: #2692ba;
+  --il-acento-suave: #d4f0fe;
+  --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a609e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
 
   /* Cores de marca (logótipo, botão principal, avatar): iguais nos temas claro e escuro (texto a branco). */
-  --brand-a: #266739;
-  --brand-b: #21744e;
-  --brand-c: #046e53;
+  --brand-a: #125a98;
+  --brand-b: #026a9f;
+  --brand-c: #00668b;
   /* Cor de marca alternada (cartões tint-coral no escuro, avatar). */
-  --brand-alt-a: #5d4931;
-  --brand-alt-b: #63523a;
-  --brand-alt-c: #57482e;
+  --brand-alt-a: #404e60;
+  --brand-alt-b: #4b5668;
+  --brand-alt-c: #414a5e;
   /* Cartões em destaque: no claro, gradientes pastel com texto escuro; no escuro, tons
      fundos e calmos com texto a branco (ver os blocos escuros abaixo). */
-  --cartao-a: #d7f2db;
-  --cartao-b: #e7f7ed;
-  --cartao-c: #c8f1e0;
-  --cartao-alt-a: #f8ebd5;
-  --cartao-alt-b: #fcf3e7;
-  --cartao-alt-c: #fae6d0;
+  --cartao-a: #dbecfe;
+  --cartao-b: #e8f4fe;
+  --cartao-c: #caecff;
+  --cartao-alt-a: #e7edf6;
+  --cartao-alt-b: #f0f5fa;
+  --cartao-alt-c: #e0ebf3;
   --cartao-texto: var(--ink);
   --cartao-texto-suave: var(--ink-soft);
   --cartao-vidro: rgba(255, 255, 255, 0.7);
@@ -74,7 +74,7 @@
 
   --shadow-sm: 0 1px 2px rgba(23, 36, 46, 0.06), 0 2px 8px rgba(23, 36, 46, 0.05);
   --shadow: 0 10px 30px -10px rgba(23, 36, 46, 0.18), 0 2px 6px rgba(23, 36, 46, 0.05);
-  --shadow-lg: 0 30px 60px -20px rgba(25, 92, 46, 0.28), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+  --shadow-lg: 0 30px 60px -20px rgba(1, 79, 138, 0.28), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
 
   --radius: 22px;
   --radius-sm: 14px;
@@ -88,44 +88,44 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #0b110c;
-    --bg-2: #111812;
-    --ink: #ebf0ec;
-    --ink-soft: #c1cac2;
-    --ink-mute: #98a19a;
-    --line: rgba(235, 240, 236, 0.1);
-    --surface: rgba(29, 39, 31, 0.55);
-    --surface-strong: rgba(33, 44, 35, 0.85);
+    --bg: #0b1015;
+    --bg-2: #10171e;
+    --ink: #ebeff4;
+    --ink-soft: #c0c8d1;
+    --ink-mute: #989fa8;
+    --line: rgba(235, 239, 244, 0.1);
+    --surface: rgba(29, 37, 45, 0.55);
+    --surface-strong: rgba(33, 42, 51, 0.85);
     --surface-border: rgba(255, 255, 255, 0.08);
-    --teal: #94cf9f;
-    --teal-2: #37a885;
-    --teal-soft: rgba(148, 207, 159, 0.14);
+    --teal: #89c3fe;
+    --teal-2: #049fd6;
+    --teal-soft: rgba(137, 195, 254, 0.14);
     --coral: #ff8f6b;
     --coral-soft: rgba(255, 143, 107, 0.14);
     --coral-forte: var(--coral);
-    --violet: #9bc9be;
-    --violet-soft: rgba(155, 201, 190, 0.15);
+    --violet: #95c6dc;
+    --violet-soft: rgba(149, 198, 220, 0.15);
     --sun: #ffc861;
-    --accent: #86cebe;
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394cf9f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --accent: #7dcaeb;
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2389c3fe' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
     --sun-soft: rgba(255, 200, 97, 0.14);
     --danger: #ff8a80;
     --danger-soft: rgba(255, 138, 128, 0.14);
-    --blob-1: #1b4827;
-    --blob-2: #023c33;
-    --blob-3: #0f4232;
-    --blob-4: #08362e;
+    --blob-1: #0e3f6a;
+    --blob-2: #263151;
+    --blob-3: #023d55;
+    --blob-4: #232d47;
     --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
-    --accent-soft: rgba(134, 206, 190, 0.14);
-    --accent-2: #e1cba6;
-    --accent-2-soft: rgba(225, 203, 166, 0.14);
-    --cartao-a: #255a33;
-    --cartao-b: #266345;
-    --cartao-c: #005842;
-    --cartao-alt-a: #5d4931;
-    --cartao-alt-b: #63523a;
-    --cartao-alt-c: #57482e;
+    --accent-soft: rgba(125, 202, 235, 0.14);
+    --accent-2: #a9d6e9;
+    --accent-2-soft: rgba(169, 214, 233, 0.14);
+    --cartao-a: #174f82;
+    --cartao-b: #135b85;
+    --cartao-c: #04516f;
+    --cartao-alt-a: #404e60;
+    --cartao-alt-b: #4b5668;
+    --cartao-alt-c: #414a5e;
     --cartao-texto: #fff;
     --cartao-texto-suave: #fff;
     --cartao-vidro: rgba(255, 255, 255, 0.2);
@@ -140,44 +140,44 @@
 }
 
 :root[data-theme='dark'] {
-  --bg: #0b110c;
-  --bg-2: #111812;
-  --ink: #ebf0ec;
-  --ink-soft: #c1cac2;
-  --ink-mute: #98a19a;
-  --line: rgba(235, 240, 236, 0.1);
-  --surface: rgba(29, 39, 31, 0.55);
-  --surface-strong: rgba(33, 44, 35, 0.85);
+  --bg: #0b1015;
+  --bg-2: #10171e;
+  --ink: #ebeff4;
+  --ink-soft: #c0c8d1;
+  --ink-mute: #989fa8;
+  --line: rgba(235, 239, 244, 0.1);
+  --surface: rgba(29, 37, 45, 0.55);
+  --surface-strong: rgba(33, 42, 51, 0.85);
   --surface-border: rgba(255, 255, 255, 0.08);
-  --teal: #94cf9f;
-  --teal-2: #37a885;
-  --teal-soft: rgba(148, 207, 159, 0.14);
+  --teal: #89c3fe;
+  --teal-2: #049fd6;
+  --teal-soft: rgba(137, 195, 254, 0.14);
   --coral: #ff8f6b;
   --coral-soft: rgba(255, 143, 107, 0.14);
   --coral-forte: var(--coral);
-  --violet: #9bc9be;
-  --violet-soft: rgba(155, 201, 190, 0.15);
+  --violet: #95c6dc;
+  --violet-soft: rgba(149, 198, 220, 0.15);
   --sun: #ffc861;
-  --accent: #86cebe;
-  --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394cf9f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+  --accent: #7dcaeb;
+  --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2389c3fe' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --sun-soft: rgba(255, 200, 97, 0.14);
   --danger: #ff8a80;
   --danger-soft: rgba(255, 138, 128, 0.14);
-  --blob-1: #1b4827;
-  --blob-2: #023c33;
-  --blob-3: #0f4232;
-  --blob-4: #08362e;
+  --blob-1: #0e3f6a;
+  --blob-2: #263151;
+  --blob-3: #023d55;
+  --blob-4: #232d47;
   --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
-  --accent-soft: rgba(134, 206, 190, 0.14);
-  --accent-2: #e1cba6;
-  --accent-2-soft: rgba(225, 203, 166, 0.14);
-  --cartao-a: #255a33;
-  --cartao-b: #266345;
-  --cartao-c: #005842;
-  --cartao-alt-a: #5d4931;
-  --cartao-alt-b: #63523a;
-  --cartao-alt-c: #57482e;
+  --accent-soft: rgba(125, 202, 235, 0.14);
+  --accent-2: #a9d6e9;
+  --accent-2-soft: rgba(169, 214, 233, 0.14);
+  --cartao-a: #174f82;
+  --cartao-b: #135b85;
+  --cartao-c: #04516f;
+  --cartao-alt-a: #404e60;
+  --cartao-alt-b: #4b5668;
+  --cartao-alt-c: #414a5e;
   --cartao-texto: #fff;
   --cartao-texto-suave: #fff;
   --cartao-vidro: rgba(255, 255, 255, 0.2);
@@ -192,81 +192,81 @@
 
 /* ---------- Paletas de cor (escolhidas nos círculos do rodapé) ----------
    A paleta (data-palette) muda só as cores de marca e de fundo; as cores dos níveis de
-   risco (sol, coral, perigo) ficam iguais em todas. Sem data-palette vale o Verde natural
-   (verde com bege e off-white, em :root e nos blocos escuros acima).
+   risco (sol, coral, perigo) ficam iguais em todas. Sem data-palette vale o Azul sereno
+   (azul calmo com branco e cinza claro, em :root e nos blocos escuros acima).
    Só no ecrã: no papel ficam sempre as cores claras originais. */
 @media screen {
-  /* Azul sereno: azul calmo com branco e cinza claro (clínica geral) */
-  :root[data-palette='azul'] {
-    --bg: #f9fafc;
-    --bg-2: #ecf1f6;
-    --ink: #1a232c;
-    --ink-soft: #47515c;
-    --ink-mute: #5b646f;
-    --line: rgba(30, 47, 65, 0.12);
-    --teal: #1a609e;
-    --teal-2: #049fd6;
-    --teal-soft: #deedfe;
-    --violet: #05556f;
-    --violet-soft: #d7f0fb;
-    --blob-1: #c6e1ff;
-    --blob-2: #dce6f2;
-    --blob-3: #b8e6fe;
-    --brand-a: #125a98;
-    --brand-b: #026a9f;
-    --brand-c: #00668b;
-    --brand-alt-a: #404e60;
-    --brand-alt-b: #4b5668;
-    --brand-alt-c: #414a5e;
-    --cartao-a: #dbecfe;
-    --cartao-b: #e8f4fe;
-    --cartao-c: #caecff;
-    --cartao-alt-a: #e7edf6;
-    --cartao-alt-b: #f0f5fa;
-    --cartao-alt-c: #e0ebf3;
-    --accent: #066786;
-    --accent-soft: #d4f0fe;
-    --accent-2: #94c7db;
-    --accent-2-soft: #dcf3fc;
-    --blob-4: #cfeefa;
-    --il-traco: #233447;
-    --il-cor: #4690d9;
-    --il-suave: #deedfe;
-    --il-acento: #2692ba;
-    --il-acento-suave: #d4f0fe;
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a609e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --shadow-lg: 0 30px 60px -20px rgba(1, 79, 138, 0.28), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
+  /* Verde natural: verde com bege e off-white (medicina geral e familiar, bem-estar) */
+  :root[data-palette='verde'] {
+    --bg: #fdfaf3;
+    --bg-2: #f7efe0;
+    --ink: #1a251c;
+    --ink-soft: #485349;
+    --ink-mute: #5c675d;
+    --line: rgba(31, 52, 35, 0.12);
+    --teal: #2c6d3e;
+    --teal-2: #37a885;
+    --teal-soft: #dcf2df;
+    --violet: #17594d;
+    --violet-soft: #daf1eb;
+    --blob-1: #c5e9cb;
+    --blob-2: #f3e3c6;
+    --blob-3: #bfe9d8;
+    --brand-a: #266739;
+    --brand-b: #21744e;
+    --brand-c: #046e53;
+    --brand-alt-a: #5d4931;
+    --brand-alt-b: #63523a;
+    --brand-alt-c: #57482e;
+    --cartao-a: #d7f2db;
+    --cartao-b: #e7f7ed;
+    --cartao-c: #c8f1e0;
+    --cartao-alt-a: #f8ebd5;
+    --cartao-alt-b: #fcf3e7;
+    --cartao-alt-c: #fae6d0;
+    --accent: #0d6d5e;
+    --accent-soft: #d7f2eb;
+    --accent-2: #d2ba92;
+    --accent-2-soft: #f8eddb;
+    --blob-4: #f5e6ce;
+    --il-traco: #243928;
+    --il-cor: #579f68;
+    --il-suave: #d9f3dd;
+    --il-acento: #399986;
+    --il-acento-suave: #d7f2eb;
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232c6d3e' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --shadow-lg: 0 30px 60px -20px rgba(25, 92, 46, 0.28), 0 8px 20px -8px rgba(23, 36, 46, 0.12);
   }
-  :root[data-palette='azul'][data-theme='dark'] {
-    --bg: #0b1015;
-    --bg-2: #10171e;
-    --ink: #ebeff4;
-    --ink-soft: #c0c8d1;
-    --ink-mute: #989fa8;
-    --line: rgba(235, 239, 244, 0.1);
-    --surface: rgba(29, 37, 45, 0.55);
-    --surface-strong: rgba(33, 42, 51, 0.85);
-    --teal: #89c3fe;
-    --teal-2: #049fd6;
-    --teal-soft: rgba(137, 195, 254, 0.14);
-    --violet: #95c6dc;
-    --violet-soft: rgba(149, 198, 220, 0.15);
-    --blob-1: #0e3f6a;
-    --blob-2: #263151;
-    --blob-3: #023d55;
-    --accent: #7dcaeb;
-    --accent-soft: rgba(125, 202, 235, 0.14);
-    --accent-2: #a9d6e9;
-    --accent-2-soft: rgba(169, 214, 233, 0.14);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2389c3fe' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --blob-4: #232d47;
+  :root[data-palette='verde'][data-theme='dark'] {
+    --bg: #0b110c;
+    --bg-2: #111812;
+    --ink: #ebf0ec;
+    --ink-soft: #c1cac2;
+    --ink-mute: #98a19a;
+    --line: rgba(235, 240, 236, 0.1);
+    --surface: rgba(29, 39, 31, 0.55);
+    --surface-strong: rgba(33, 44, 35, 0.85);
+    --teal: #94cf9f;
+    --teal-2: #37a885;
+    --teal-soft: rgba(148, 207, 159, 0.14);
+    --violet: #9bc9be;
+    --violet-soft: rgba(155, 201, 190, 0.15);
+    --blob-1: #1b4827;
+    --blob-2: #023c33;
+    --blob-3: #0f4232;
+    --accent: #86cebe;
+    --accent-soft: rgba(134, 206, 190, 0.14);
+    --accent-2: #e1cba6;
+    --accent-2-soft: rgba(225, 203, 166, 0.14);
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394cf9f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --blob-4: #08362e;
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
-    --cartao-a: #174f82;
-    --cartao-b: #135b85;
-    --cartao-c: #04516f;
-    --cartao-alt-a: #404e60;
-    --cartao-alt-b: #4b5668;
-    --cartao-alt-c: #414a5e;
+    --cartao-a: #255a33;
+    --cartao-b: #266345;
+    --cartao-c: #005842;
+    --cartao-alt-a: #5d4931;
+    --cartao-alt-b: #63523a;
+    --cartao-alt-c: #57482e;
   }
   /* Azul-petróleo: petróleo com verde-água sobre fundo neutro (análises, aplicações de saúde) */
   :root[data-palette='petroleo'] {
@@ -415,36 +415,36 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-  :root[data-palette='azul']:not([data-theme='light']) {
-    --bg: #0b1015;
-    --bg-2: #10171e;
-    --ink: #ebeff4;
-    --ink-soft: #c0c8d1;
-    --ink-mute: #989fa8;
-    --line: rgba(235, 239, 244, 0.1);
-    --surface: rgba(29, 37, 45, 0.55);
-    --surface-strong: rgba(33, 42, 51, 0.85);
-    --teal: #89c3fe;
-    --teal-2: #049fd6;
-    --teal-soft: rgba(137, 195, 254, 0.14);
-    --violet: #95c6dc;
-    --violet-soft: rgba(149, 198, 220, 0.15);
-    --blob-1: #0e3f6a;
-    --blob-2: #263151;
-    --blob-3: #023d55;
-    --accent: #7dcaeb;
-    --accent-soft: rgba(125, 202, 235, 0.14);
-    --accent-2: #a9d6e9;
-    --accent-2-soft: rgba(169, 214, 233, 0.14);
-    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2389c3fe' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
-    --blob-4: #232d47;
+  :root[data-palette='verde']:not([data-theme='light']) {
+    --bg: #0b110c;
+    --bg-2: #111812;
+    --ink: #ebf0ec;
+    --ink-soft: #c1cac2;
+    --ink-mute: #98a19a;
+    --line: rgba(235, 240, 236, 0.1);
+    --surface: rgba(29, 39, 31, 0.55);
+    --surface-strong: rgba(33, 44, 35, 0.85);
+    --teal: #94cf9f;
+    --teal-2: #37a885;
+    --teal-soft: rgba(148, 207, 159, 0.14);
+    --violet: #9bc9be;
+    --violet-soft: rgba(155, 201, 190, 0.15);
+    --blob-1: #1b4827;
+    --blob-2: #023c33;
+    --blob-3: #0f4232;
+    --accent: #86cebe;
+    --accent-soft: rgba(134, 206, 190, 0.14);
+    --accent-2: #e1cba6;
+    --accent-2-soft: rgba(225, 203, 166, 0.14);
+    --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394cf9f' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+    --blob-4: #08362e;
     --shadow-lg: 0 30px 60px -20px rgba(0, 0, 0, 0.7);
-    --cartao-a: #174f82;
-    --cartao-b: #135b85;
-    --cartao-c: #04516f;
-    --cartao-alt-a: #404e60;
-    --cartao-alt-b: #4b5668;
-    --cartao-alt-c: #414a5e;
+    --cartao-a: #255a33;
+    --cartao-b: #266345;
+    --cartao-c: #005842;
+    --cartao-alt-a: #5d4931;
+    --cartao-alt-b: #63523a;
+    --cartao-alt-c: #57482e;
   }
   :root[data-palette='petroleo']:not([data-theme='light']) {
     --bg: #091114;
@@ -767,15 +767,15 @@ main {
 }
 
 .paleta {
-  --p1: #266739;
-  --p2: #37a885;
-  --p3: #e8cd9d;
+  --p1: #125a98;
+  --p2: #049fd6;
+  --p3: #c4d2e5;
   width: 26px;
   height: 26px;
   padding: 0;
   border-radius: 50%;
   border: 2px solid var(--surface-border);
-  /* As três cores da paleta: principal, vizinha e a dos cartões alternados (bege, cinza, verde-água, amarelo). */
+  /* As três cores da paleta: principal, vizinha e a dos cartões alternados (cinza, bege, verde-água, amarelo). */
   background: conic-gradient(from 210deg, var(--p1), var(--p2), var(--p3), var(--p1));
   background: conic-gradient(from 210deg in oklch, var(--p1), var(--p2), var(--p3), var(--p1));
   box-shadow: 0 0 0 1px var(--line), var(--shadow-sm);

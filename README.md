@@ -99,8 +99,8 @@ transmitem confiança, calma e higiene.
 
 | Paleta | Combinação | Pensada para |
 | --- | --- | --- |
-| Verde natural (`verde`, predefinida) | verde com bege e off-white | medicina geral e familiar, bem-estar |
-| Azul sereno (`azul`) | azul com branco e cinza claro | clínica geral |
+| Azul sereno (`azul`, predefinida) | azul com branco e cinza claro | clínica geral |
+| Verde natural (`verde`) | verde com bege e off-white | medicina geral e familiar, bem-estar |
 | Azul-petróleo (`petroleo`) | petróleo com verde-água e fundo neutro | análises, aplicações de saúde |
 | Pastel (`pastel`) | rosa suave e amarelo claro com branco | pediatria, saúde da mulher |
 
