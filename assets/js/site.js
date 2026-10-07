@@ -35,12 +35,12 @@ document.querySelectorAll('.theme-toggle').forEach((btn) => {
 });
 
 // Paletas de cor: um círculo por paleta no rodapé. A escolha fica guardada e vale para todo o site.
-// As cores de cada paleta vivem em styles.css (:root[data-palette=…]); 'verde' (Verde natural) é a predefinida.
+// As cores de cada paleta vivem em styles.css (:root[data-palette=…]); 'azul' (Azul sereno) é a predefinida.
 // Uma paleta guardada que já não existe (turquesa, lavanda, orquidea) volta à predefinida.
 const PALETTE_KEY = 'mcf-palette';
 const PALETAS = [
-  { id: 'verde', nome: 'Verde natural', cores: ['#266739', '#37a885', '#e8cd9d'] },
   { id: 'azul', nome: 'Azul sereno', cores: ['#125a98', '#049fd6', '#c4d2e5'] },
+  { id: 'verde', nome: 'Verde natural', cores: ['#266739', '#37a885', '#e8cd9d'] },
   { id: 'petroleo', nome: 'Azul-petróleo', cores: ['#00627a', '#35a3af', '#7ee9c9'] },
   { id: 'pastel', nome: 'Pastel', cores: ['#8c3653', '#d16b9b', '#eed055'] },
 ];
@@ -55,7 +55,7 @@ function paletaGuardada() {
 
 function aplicarPaleta(id) {
   const paleta = PALETAS.find((p) => p.id === id) ?? PALETAS[0];
-  if (paleta.id === 'verde') delete root.dataset.palette;
+  if (paleta.id === 'azul') delete root.dataset.palette;
   else root.dataset.palette = paleta.id;
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', paleta.cores[0]);
   document.querySelectorAll('.paleta').forEach((b) => {
