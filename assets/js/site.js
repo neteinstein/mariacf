@@ -35,14 +35,14 @@ document.querySelectorAll('.theme-toggle').forEach((btn) => {
 });
 
 // Paletas de cor: um círculo por paleta no rodapé. A escolha fica guardada e vale para todo o site.
-// As cores de cada paleta vivem em styles.css (:root[data-palette=…]); 'verde' é a original.
+// As cores de cada paleta vivem em styles.css (:root[data-palette=…]); 'verde' (Verde natural) é a predefinida.
+// Uma paleta guardada que já não existe (turquesa, lavanda, orquidea) volta à predefinida.
 const PALETTE_KEY = 'mcf-palette';
 const PALETAS = [
-  { id: 'verde', nome: 'Menta', cores: ['#04764c', '#0cafa8', '#6751ea'] },
-  { id: 'azul', nome: 'Oceano', cores: ['#1957d2', '#05a3e9', '#098188'] },
-  { id: 'turquesa', nome: 'Turquesa', cores: ['#067272', '#01aaca', '#cd0668'] },
-  { id: 'lavanda', nome: 'Lavanda', cores: ['#743bc3', '#7c8cfe', '#017ba9'] },
-  { id: 'orquidea', nome: 'Orquídea', cores: ['#aa167d', '#ee6476', '#8644dd'] },
+  { id: 'verde', nome: 'Verde natural', cores: ['#266739', '#37a885', '#e8cd9d'] },
+  { id: 'azul', nome: 'Azul sereno', cores: ['#125a98', '#049fd6', '#c4d2e5'] },
+  { id: 'petroleo', nome: 'Azul-petróleo', cores: ['#00627a', '#35a3af', '#7ee9c9'] },
+  { id: 'pastel', nome: 'Pastel', cores: ['#8c3653', '#d16b9b', '#eed055'] },
 ];
 
 function paletaGuardada() {
