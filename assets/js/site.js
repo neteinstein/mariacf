@@ -1,4 +1,4 @@
-// Comportamento partilhado: tema claro/escuro, animações de entrada e brilho dos cartões.
+// Comportamento partilhado: tema claro/escuro, paletas de cor, animações de entrada e brilho dos cartões.
 // Os efeitos visuais dos resultados das calculadoras vivem em fx.js.
 
 import './fx.js';
@@ -33,6 +33,69 @@ document.querySelectorAll('.theme-toggle').forEach((btn) => {
     }
   });
 });
+
+// Paletas de cor: um círculo por paleta no rodapé. A escolha fica guardada e vale para todo o site.
+// As cores de cada paleta vivem em styles.css (:root[data-palette=…]); 'verde' é a original.
+const PALETTE_KEY = 'mcf-palette';
+const PALETAS = [
+  { id: 'verde', nome: 'Verde-menta', cores: ['#006d4c', '#00a676'] },
+  { id: 'azul', nome: 'Azul clínico', cores: ['#0b5cad', '#2b8be0'] },
+  { id: 'turquesa', nome: 'Turquesa', cores: ['#00707a', '#14a8b5'] },
+  { id: 'lavanda', nome: 'Lavanda', cores: ['#5b45b0', '#8a74e0'] },
+  { id: 'orquidea', nome: 'Orquídea', cores: ['#9c3d7a', '#cc5fa3'] },
+];
+
+function paletaGuardada() {
+  try {
+    return localStorage.getItem(PALETTE_KEY);
+  } catch {
+    return null;
+  }
+}
+
+function aplicarPaleta(id) {
+  const paleta = PALETAS.find((p) => p.id === id) ?? PALETAS[0];
+  if (paleta.id === 'verde') delete root.dataset.palette;
+  else root.dataset.palette = paleta.id;
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', paleta.cores[0]);
+  document.querySelectorAll('.paleta').forEach((b) => {
+    b.setAttribute('aria-pressed', String(b.dataset.paleta === paleta.id));
+  });
+}
+
+const rodape = document.querySelector('.site-footer .wrap');
+if (rodape) {
+  const grupo = document.createElement('div');
+  grupo.className = 'paletas';
+  grupo.setAttribute('role', 'group');
+  grupo.setAttribute('aria-label', 'Cores do site');
+  const titulo = document.createElement('span');
+  titulo.className = 'paletas-titulo';
+  titulo.textContent = 'Cores:';
+  titulo.setAttribute('aria-hidden', 'true');
+  grupo.append(titulo);
+  for (const p of PALETAS) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'paleta';
+    b.dataset.paleta = p.id;
+    b.title = p.nome;
+    b.setAttribute('aria-label', p.nome);
+    b.style.setProperty('--p1', p.cores[0]);
+    b.style.setProperty('--p2', p.cores[1]);
+    b.addEventListener('click', () => {
+      aplicarPaleta(p.id);
+      try {
+        localStorage.setItem(PALETTE_KEY, p.id);
+      } catch {
+        /* armazenamento indisponível: a paleta vale só para esta visita */
+      }
+    });
+    grupo.append(b);
+  }
+  rodape.append(grupo);
+}
+aplicarPaleta(paletaGuardada());
 
 // Mostrar o URL absoluto do site no cabeçalho apenas na impressão (o domínio nunca é fixo no código).
 const brand = document.querySelector('.site-header .brand');
