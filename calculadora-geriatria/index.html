@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Avaliação geriátrica · Saúde em Família</title>
-  <meta name="description" content="Avaliação geriátrica: autonomia nas atividades de vida diária (Barthel), risco de queda (Morse), risco de úlcera de pressão (Braden) classificação de pontuação MMSE/MoCA, atividades instrumentais (Lawton-Brody), fragilidade (CFS), Timed Up and Go e MNA-SF.">
+  <meta name="description" content="Avaliação geriátrica: autonomia nas atividades de vida diária (Barthel), risco de queda (Morse), risco de úlcera de pressão (Braden) classificação de pontuação MMSE/MoCA, rastreio cognitivo (6CIT, SPMSQ), atividades instrumentais (Lawton-Brody), fragilidade (CFS), Timed Up and Go e MNA-SF.">
   <meta name="theme-color" content="#125a98">
   <meta property="og:title" content="Avaliação geriátrica">
   <meta property="og:description" content="Avaliação geriátrica em cuidados de saúde primários.">
@@ -51,14 +51,14 @@
     <section class="page-hero reveal">
       <span class="eyebrow"><span class="dot"></span> Geriatria</span>
       <h1 class="display">Avaliação <em>geriátrica</em></h1>
-      <p class="lead">Autonomia nas atividades básicas e instrumentais de vida diária, fragilidade, mobilidade e risco de queda, risco de úlcera de pressão, estado nutricional, depressão, comorbilidade e classificação de uma pontuação MMSE ou MoCA já obtida.</p>
+      <p class="lead">Autonomia nas atividades básicas e instrumentais de vida diária, fragilidade, mobilidade e risco de queda, risco de úlcera de pressão, estado nutricional, depressão, comorbilidade e classificação de uma pontuação MMSE ou MoCA já obtida, e rastreio cognitivo com o 6CIT e o SPMSQ.</p>
     </section>
 
     <div class="tabbar" role="tablist" aria-label="Escolher escala">
       <button class="tabbtn" type="button" data-tab="barthel" role="tab" aria-selected="true">Índice de Barthel</button>
       <button class="tabbtn" type="button" data-tab="morse" role="tab" aria-selected="false">Escala de Morse</button>
       <button class="tabbtn" type="button" data-tab="braden" role="tab" aria-selected="false">Escala de Braden</button>
-      <button class="tabbtn" type="button" data-tab="cognitivo" role="tab" aria-selected="false">MMSE / MoCA</button>
+      <button class="tabbtn" type="button" data-tab="cognitivo" role="tab" aria-selected="false">MMSE / MoCA / 6CIT / SPMSQ</button>
       <button class="tabbtn" type="button" data-tab="gds15" role="tab" aria-selected="false">GDS-15</button>
       <button class="tabbtn" type="button" data-tab="charlson" role="tab" aria-selected="false">Charlson</button>
       <button class="tabbtn" type="button" data-tab="lawton" role="tab" aria-selected="false">Lawton-Brody</button>
@@ -167,10 +167,18 @@
               <input type="radio" name="cog-instrumento" id="cog-moca" value="moca">
               <label for="cog-moca"><span class="pill" aria-hidden="true"></span><span class="name">MoCA</span><span class="brands">Montreal Cognitive Assessment</span></label>
             </div>
+            <div class="choice">
+              <input type="radio" name="cog-instrumento" id="cog-6cit" value="6cit">
+              <label for="cog-6cit"><span class="pill" aria-hidden="true"></span><span class="name">6CIT</span><span class="brands">Six-item Cognitive Impairment Test</span></label>
+            </div>
+            <div class="choice">
+              <input type="radio" name="cog-instrumento" id="cog-spmsq" value="spmsq">
+              <label for="cog-spmsq"><span class="pill" aria-hidden="true"></span><span class="name">SPMSQ</span><span class="brands">Pfeiffer</span></label>
+            </div>
           </div>
         </fieldset>
 
-        <div class="step">
+        <div class="step" id="cog-escolaridade-passo">
           <label class="step-label" for="cog-escolaridade"><span class="step-num">2</span> Anos de escolaridade</label>
           <div class="weight">
             <button class="stepper" type="button" data-alvo="cog-escolaridade" data-step="-1" aria-label="Diminuir anos de escolaridade">−</button>
@@ -179,7 +187,7 @@
           </div>
         </div>
 
-        <p class="step-hint" style="margin-left:0">Indique os pontos obtidos em cada domínio, aplicando o teste oficial. A ferramenta não reproduz as perguntas (instrumentos protegidos) — soma os domínios e classifica o total.</p>
+        <p class="step-hint" id="cog-aviso" style="margin-left:0"></p>
         <div id="cog-dominios"></div>
       </form>
       <section class="panel result score-result reveal" id="cog-resultado" aria-live="polite">

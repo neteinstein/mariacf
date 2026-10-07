@@ -63,7 +63,7 @@ Os separadores de cada página podem ser abertos diretamente com `?calc=<id>`.
 | Epworth e STOP-BANG | `/calculadora-sono/` | |
 | Urgência | `/calculadora-urgencia/` | CURB-65, Wells, QTc, Glasgow, HEART, NEWS2, PERC, Ottawa, Alvarado… |
 | Regra dos 9 | `/calculadora-queimados/` | |
-| Avaliação geriátrica | `/calculadora-geriatria/` | Barthel, Lawton-Brody, CFS, TUG, Morse, Braden, MNA-SF, GDS-15, Charlson, MMSE/MoCA |
+| Avaliação geriátrica | `/calculadora-geriatria/` | Barthel, Lawton-Brody, CFS, TUG, Morse, Braden, MNA-SF, GDS-15, Charlson, MMSE/MoCA, 6CIT, SPMSQ |
 | Plano de rastreios por idade | `/calculadora-plano-rastreios/` | Rastreios do SNS e normas da DGS por idade, sexo e condições |
 
 Os dados de crescimento dos 2 aos 19 anos (`assets/js/crescimento-dados-2-19.js`) são as tabelas
