@@ -38,11 +38,11 @@ document.querySelectorAll('.theme-toggle').forEach((btn) => {
 // As cores de cada paleta vivem em styles.css (:root[data-palette=…]); 'verde' é a original.
 const PALETTE_KEY = 'mcf-palette';
 const PALETAS = [
-  { id: 'verde', nome: 'Verde-menta', cores: ['#006d4c', '#00a676'] },
-  { id: 'azul', nome: 'Azul clínico', cores: ['#0b5cad', '#2b8be0'] },
-  { id: 'turquesa', nome: 'Turquesa', cores: ['#00707a', '#14a8b5'] },
-  { id: 'lavanda', nome: 'Lavanda', cores: ['#5b45b0', '#8a74e0'] },
-  { id: 'orquidea', nome: 'Orquídea', cores: ['#9c3d7a', '#cc5fa3'] },
+  { id: 'verde', nome: 'Menta', cores: ['#04764c', '#0cafa8', '#6751ea'] },
+  { id: 'azul', nome: 'Oceano', cores: ['#1957d2', '#05a3e9', '#098188'] },
+  { id: 'turquesa', nome: 'Turquesa', cores: ['#067272', '#01aaca', '#cd0668'] },
+  { id: 'lavanda', nome: 'Lavanda', cores: ['#743bc3', '#7c8cfe', '#017ba9'] },
+  { id: 'orquidea', nome: 'Orquídea', cores: ['#aa167d', '#ee6476', '#8644dd'] },
 ];
 
 function paletaGuardada() {
@@ -83,6 +83,7 @@ if (rodape) {
     b.setAttribute('aria-label', p.nome);
     b.style.setProperty('--p1', p.cores[0]);
     b.style.setProperty('--p2', p.cores[1]);
+    b.style.setProperty('--p3', p.cores[2]);
     b.addEventListener('click', () => {
       aplicarPaleta(p.id);
       try {
