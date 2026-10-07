@@ -2,7 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
-import { CATEGORIAS, DOENCAS, GRUPOS, encontrarDoenca, grupoValido, resumoDoenca } from '../assets/js/doencas-dados.js';
+import { CATEGORIAS, DOENCAS, EVICCAO_NOTA, GRUPOS, encontrarDoenca, grupoValido, resumoDoenca } from '../assets/js/doencas-dados.js';
 import { ILUSTRACOES, MINIATURAS, ilustracao, miniatura } from '../assets/js/doencas-ilustracoes.js';
 
 const raiz = new URL('..', import.meta.url).pathname;
@@ -133,6 +133,16 @@ test('o email de cada separador tem assunto, resumo e cabe num link mailto', () 
       assert.ok(url.length < 2000, `${d.id}/${g.id}: email com ${url.length} caracteres`);
     }
   }
+});
+
+test('as doenças de evicção escolar obrigatória dizem a regra e vão no email', () => {
+  const comEviccao = DOENCAS.filter((d) => d.eviccao).map((d) => d.id);
+  assert.deepEqual(comEviccao, ['tuberculose', 'varicela', 'sarampo', 'amigdalite', 'escarlatina', 'hepatites']);
+  assert.match(EVICCAO_NOTA, /Decreto Regulamentar n\.º 3\/95/);
+  for (const d of DOENCAS.filter((x) => x.eviccao)) {
+    for (const g of GRUPOS) assert.ok(resumoDoenca(d, g.id).linhas.includes(d.eviccao), `${d.id}/${g.id}`);
+  }
+  assert.ok(!resumoDoenca(encontrarDoenca('gripe'), '5-12').linhas.includes('Evicção escolar obrigatória'));
 });
 
 test('encontrar doença e validar grupo', () => {
