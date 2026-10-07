@@ -94,11 +94,21 @@ O site é instalável (`manifest.webmanifest`) e funciona sem ligação graças 
 
 ### Cores e paletas
 
-As cores vivem em tokens CSS no início de `assets/css/styles.css`: a paleta Menta (a original, `verde`) em `:root`
-e nos blocos escuros, as outras (Oceano, Turquesa, Lavanda, Orquídea) em `:root[data-palette=…]`, escolhidas nos
-círculos do rodapé (`assets/js/site.js`). Os gradientes são misturados em OKLCH, para o meio não ficar baço, com uma
-linha antes para os navegadores que ainda não o suportam. Os cartões em destaque usam os tokens `--cartao-*`: pastel com
-texto escuro no tema claro, vivos com texto a branco no escuro. O texto cumpre WCAG AA (≥ 4,5:1) em todas as paletas,
+As paletas seguem as combinações recomendadas para sites de saúde: tons suaves de azul e verde sobre neutros, que
+transmitem confiança, calma e higiene.
+
+| Paleta | Combinação | Pensada para |
+| --- | --- | --- |
+| Verde natural (`verde`, predefinida) | verde com bege e off-white | medicina geral e familiar, bem-estar |
+| Azul sereno (`azul`) | azul com branco e cinza claro | clínica geral |
+| Azul-petróleo (`petroleo`) | petróleo com verde-água e fundo neutro | análises, aplicações de saúde |
+| Pastel (`pastel`) | rosa suave e amarelo claro com branco | pediatria, saúde da mulher |
+
+As cores vivem em tokens CSS no início de `assets/css/styles.css`: a predefinida em `:root` e nos blocos escuros, as
+outras em `:root[data-palette=…]`, escolhidas nos círculos do rodapé (`assets/js/site.js`); o `<script>` no `<head>` de
+cada página aplica a paleta guardada antes de a página aparecer. Os gradientes são misturados em OKLCH, com uma linha
+antes para os navegadores que ainda não o suportam. Os cartões em destaque usam os tokens `--cartao-*`: pastel com texto
+escuro no tema claro, tons fundos com texto a branco no escuro. O texto cumpre WCAG AA (≥ 4,5:1) em todas as paletas,
 nos dois temas; as cores dos níveis de risco (`--sun`, `--coral`, `--danger`) são as mesmas em todas.
 
 ## Desenvolvimento
