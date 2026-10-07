@@ -1,9 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
+    <!-- As mesmas cores do logótipo do cabeçalho na paleta predefinida (--brand-b, --brand-a, --brand-c).
+         Com outra paleta, site.js redesenha o ícone com as cores dessa paleta. -->
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2386ce"/>
+      <stop offset="0" stop-color="#026a9f"/>
       <stop offset=".55" stop-color="#125a98"/>
-      <stop offset="1" stop-color="#193356"/>
+      <stop offset="1" stop-color="#00668b"/>
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="18" fill="url(#g)"/>

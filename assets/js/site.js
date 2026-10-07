@@ -53,11 +53,29 @@ function paletaGuardada() {
   }
 }
 
+// Ícone do separador com as cores de marca da paleta ativa: o mesmo gradiente do logótipo do cabeçalho
+// (--brand-b → --brand-a → --brand-c), lido do CSS para nunca divergir. O desenho é o de favicon.svg.
+const iconeSeparador = document.querySelector('link[rel="icon"]');
+
+function pintarIcone() {
+  if (!iconeSeparador) return;
+  const css = getComputedStyle(root);
+  const [a, b, c] = ['--brand-a', '--brand-b', '--brand-c'].map((k) => css.getPropertyValue(k).trim());
+  if (!a || !b || !c) return;
+  const svg =
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">` +
+    `<stop offset="0" stop-color="${b}"/><stop offset=".55" stop-color="${a}"/><stop offset="1" stop-color="${c}"/>` +
+    `</linearGradient></defs><rect width="64" height="64" rx="18" fill="url(#g)"/>` +
+    `<path d="M32 18v28M18 32h28" stroke="#fff" stroke-width="8" stroke-linecap="round"/></svg>`;
+  iconeSeparador.href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+}
+
 function aplicarPaleta(id) {
   const paleta = PALETAS.find((p) => p.id === id) ?? PALETAS[0];
   if (paleta.id === 'azul') delete root.dataset.palette;
   else root.dataset.palette = paleta.id;
   document.querySelector('meta[name="theme-color"]')?.setAttribute('content', paleta.cores[0]);
+  pintarIcone();
   document.querySelectorAll('.paleta').forEach((b) => {
     b.setAttribute('aria-pressed', String(b.dataset.paleta === paleta.id));
   });
