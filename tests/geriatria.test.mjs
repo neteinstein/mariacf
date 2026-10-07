@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, calcularGDS15, calcularCharlson } from '../assets/js/geriatria-core.js';
+import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, classificarSeisCIT, classificarSPMSQ, calcularGDS15, calcularCharlson } from '../assets/js/geriatria-core.js';
 
 const barthelIndependente = {
   alimentacao: 10, banho: 5, higiene: 5, vestir: 10, intestino: 10,
@@ -71,6 +71,22 @@ test('MoCA: 26 pontos, 15 anos de escolaridade → sem ajuste, normal', () => {
   const r = classificarMoCA(26, 15);
   assert.equal(r.pontosAjustados, 26);
   assert.equal(r.alterado, false);
+});
+
+test('6CIT: 7 → dentro do esperado; 8 → ligeiro; 10 → significativo', () => {
+  assert.equal(classificarSeisCIT(7).alterado, false);
+  assert.equal(classificarSeisCIT(8).grau, 'Défice cognitivo ligeiro');
+  assert.equal(classificarSeisCIT(10).nivel, 'alto');
+  assert.equal(classificarSeisCIT(29).ok, false);
+});
+
+test('SPMSQ: 3 erros com 8 anos → ligeiro; com 4 anos admite mais um erro → preservada', () => {
+  assert.equal(classificarSPMSQ(3, 8).grau, 'Défice ligeiro');
+  const r = classificarSPMSQ(3, 4);
+  assert.equal(r.errosAjustados, 2);
+  assert.equal(r.alterado, false);
+  assert.equal(classificarSPMSQ(2, 15).errosAjustados, 3);
+  assert.equal(classificarSPMSQ(9, 8).nivel, 'muito-alto');
 });
 
 test('GDS-15: 0 → sem sintomas', () => {

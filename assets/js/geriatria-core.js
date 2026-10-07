@@ -17,7 +17,8 @@
 // Nota: o MMSE e o MoCA são instrumentos protegidos (o MMSE é comercial
 // desde 2001). Esta calculadora não reproduz os itens dos testes — apenas
 // classifica uma pontuação total já obtida pelo profissional com o
-// instrumento oficial.
+// instrumento oficial. O 6CIT (Brooke & Bullock, 1999) e o SPMSQ (Pfeiffer,
+// 1975) são de acesso livre e incluem-se como alternativas, com as perguntas.
 
 function soma(valores) {
   if (valores.some((v) => !Number.isFinite(v))) return null;
@@ -106,6 +107,46 @@ export function classificarMoCA(pontos, anosEscolaridade) {
   const alterado = ajustado < 26;
 
   return { ok: true, pontos: p, pontosAjustados: ajustado, nivel: alterado ? 'alto' : 'baixo', alterado };
+}
+
+/**
+ * 6CIT (Six-item Cognitive Impairment Test; Brooke & Bullock, Int J Geriatr Psychiatry 1999):
+ * pontuação ponderada já somada, 0–28 (quanto maior, pior). 0–7 normal, 8–9 ligeiro, 10+ significativo.
+ */
+export function classificarSeisCIT(pontos) {
+  const p = Number(pontos);
+  if (!Number.isFinite(p) || p < 0 || p > 28) return { ok: false, motivo: 'Indique a pontuação do 6CIT (0–28).' };
+
+  let nivel;
+  let grau;
+  if (p <= 7) { nivel = 'baixo'; grau = 'Dentro do esperado'; }
+  else if (p <= 9) { nivel = 'moderado'; grau = 'Défice cognitivo ligeiro'; }
+  else { nivel = 'alto'; grau = 'Défice cognitivo significativo'; }
+
+  return { ok: true, pontos: p, nivel, grau, alterado: p >= 8 };
+}
+
+/**
+ * SPMSQ (Short Portable Mental Status Questionnaire; Pfeiffer, JAGS 1975): número de erros, 0–10.
+ * Com escolaridade primária ou inferior admite-se mais um erro; acima do secundário, menos um.
+ */
+export function classificarSPMSQ(erros, anosEscolaridade) {
+  const e = Number(erros);
+  const anos = Number(anosEscolaridade);
+  if (!Number.isFinite(e) || e < 0 || e > 10) return { ok: false, motivo: 'Indique o número de erros do SPMSQ (0–10).' };
+  if (!Number.isFinite(anos) || anos < 0) return { ok: false, motivo: 'Indique os anos de escolaridade.' };
+
+  const ajuste = anos <= 4 ? -1 : anos > 12 ? 1 : 0;
+  const ajustados = Math.min(Math.max(e + ajuste, 0), 10);
+
+  let nivel;
+  let grau;
+  if (ajustados <= 2) { nivel = 'baixo'; grau = 'Função intelectual preservada'; }
+  else if (ajustados <= 4) { nivel = 'moderado'; grau = 'Défice ligeiro'; }
+  else if (ajustados <= 7) { nivel = 'alto'; grau = 'Défice moderado'; }
+  else { nivel = 'muito-alto'; grau = 'Défice grave'; }
+
+  return { ok: true, erros: e, errosAjustados: ajustados, nivel, grau, alterado: ajustados >= 3 };
 }
 
 /** GDS-15 (Escala de Depressão Geriátrica, versão curta): 15 itens, 1 ponto cada quando a resposta é "patológica". */

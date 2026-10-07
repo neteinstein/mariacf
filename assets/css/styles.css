@@ -3141,7 +3141,7 @@ a.pub:hover {
 
 .agenda-item {
   display: grid;
-  grid-template-columns: minmax(92px, auto) 1fr auto;
+  grid-template-columns: minmax(92px, 12rem) minmax(0, 1fr) auto;
   gap: 12px;
   align-items: start;
   padding: 12px 14px;

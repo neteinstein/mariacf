@@ -1,9 +1,9 @@
-import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, calcularGDS15, calcularCharlson, calcularLawton, classificarCFS, classificarTUG, calcularMNASF } from './geriatria-core.js';
+import { calcularBarthel, calcularMorse, calcularBraden, classificarMMSE, classificarMoCA, classificarSeisCIT, classificarSPMSQ, calcularGDS15, calcularCharlson, calcularLawton, classificarCFS, classificarTUG, calcularMNASF } from './geriatria-core.js';
 
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
-function criarPergunta(id, numero, texto, opcoes) {
+function criarPergunta(id, numero, texto, opcoes, unidade = (pts) => `${pts} ${pts === 1 ? 'ponto' : 'pontos'}`) {
   const fieldset = document.createElement('fieldset');
   fieldset.className = 'step qitem';
   const legend = document.createElement('legend');
@@ -17,7 +17,7 @@ function criarPergunta(id, numero, texto, opcoes) {
     const chip = document.createElement('div');
     chip.className = 'chip';
     const inputId = `${id}-${i}`;
-    chip.innerHTML = `<input type="radio" name="${id}" id="${inputId}" value="${pts}"><label for="${inputId}"><strong>${texto2}</strong><span>${pts} ${pts === 1 ? 'ponto' : 'pontos'}</span></label>`;
+    chip.innerHTML = `<input type="radio" name="${id}" id="${inputId}" value="${pts}"><label for="${inputId}"><strong>${texto2}</strong><span>${unidade(pts)}</span></label>`;
     chips.appendChild(chip);
   });
   fieldset.appendChild(chips);
@@ -224,41 +224,128 @@ $$('.stepper').forEach((btn) => {
   });
 });
 
-const COG_DOMINIOS = {
-  mmse: [
-    ['orientacao-tempo', 'Orientação temporal', 5],
-    ['orientacao-espaco', 'Orientação espacial', 5],
-    ['retencao', 'Retenção', 3],
-    ['atencao', 'Atenção e cálculo', 5],
-    ['evocacao', 'Evocação', 3],
-    ['linguagem', 'Linguagem', 8],
-    ['construcao', 'Capacidade construtiva', 1],
-  ],
-  moca: [
-    ['visuoespacial', 'Visuoespacial / executiva', 5],
-    ['nomeacao', 'Nomeação', 3],
-    ['atencao', 'Atenção', 6],
-    ['linguagem', 'Linguagem', 3],
-    ['abstracao', 'Abstração', 2],
-    ['evocacao', 'Evocação diferida', 5],
-    ['orientacao', 'Orientação', 6],
-  ],
+const intervalo = (max) => Array.from({ length: max + 1 }, (_, v) => [String(v), v]);
+const CERTO_ERRADO = (pesoErro) => [['Certo', 0], ['Errado', pesoErro]];
+const erros = (n) => `${n} ${n === 1 ? 'erro' : 'erros'}`;
+
+const AVISO_PROTEGIDO = (teste, titular) =>
+  `Indique os pontos obtidos em cada domínio, aplicando o teste oficial. Para não infringir o copyright, a ferramenta não reproduz as perguntas (${teste}: ${titular}) — apenas soma os domínios e classifica o total.`;
+
+const classificacaoPorCorte = (r) => (r.alterado ? 'Sugestivo de défice cognitivo' : 'Dentro do esperado para a escolaridade');
+
+const COG = {
+  mmse: {
+    nome: 'MMSE',
+    escolaridade: true,
+    aviso: AVISO_PROTEGIDO('MMSE', '© MiniMental LLC, licenciado em exclusivo à PAR — Psychological Assessment Resources — desde 2001; versão portuguesa: Guerreiro et al., 1994'),
+    dominios: [
+      ['orientacao-tempo', 'Orientação temporal', 5],
+      ['orientacao-espaco', 'Orientação espacial', 5],
+      ['retencao', 'Retenção', 3],
+      ['atencao', 'Atenção e cálculo', 5],
+      ['evocacao', 'Evocação', 3],
+      ['linguagem', 'Linguagem', 8],
+      ['construcao', 'Capacidade construtiva', 1],
+    ].map(([campo, nome, max]) => [campo, `${nome} <span class="step-hint" style="margin:2px 0 0">— máx. ${max}</span>`, intervalo(max)]),
+    classificar: (pontos, anos) => classificarMMSE(pontos, anos),
+    apresentar: (r) => ({
+      classificacao: classificacaoPorCorte(r),
+      detalhe: `Pontuação ${r.pontos}/30 · corte de referência ${r.corte} (cortes validados para a população portuguesa, Guerreiro 1994)`,
+      faixas: `0~${r.corte}:alto:Sugestivo de défice (≤ ${r.corte})|${r.corte + 1}~30:baixo:Dentro do esperado`,
+      valor: r.pontos,
+      max: 30,
+    }),
+  },
+  moca: {
+    nome: 'MoCA',
+    escolaridade: true,
+    aviso: AVISO_PROTEGIDO('MoCA', '© Z. Nasreddine; a utilização clínica exige registo e formação certificada junto da MoCA Clinic & Institute / MoCA Test Inc.'),
+    dominios: [
+      ['visuoespacial', 'Visuoespacial / executiva', 5],
+      ['nomeacao', 'Nomeação', 3],
+      ['atencao', 'Atenção', 6],
+      ['linguagem', 'Linguagem', 3],
+      ['abstracao', 'Abstração', 2],
+      ['evocacao', 'Evocação diferida', 5],
+      ['orientacao', 'Orientação', 6],
+    ].map(([campo, nome, max]) => [campo, `${nome} <span class="step-hint" style="margin:2px 0 0">— máx. ${max}</span>`, intervalo(max)]),
+    classificar: (pontos, anos) => classificarMoCA(pontos, anos),
+    apresentar: (r) => ({
+      classificacao: classificacaoPorCorte(r),
+      detalhe: `Pontuação ${r.pontos}/30 (ajustada: ${r.pontosAjustados}) · corte de referência 26`,
+      faixas: '0~25:alto:Sugestivo de défice (≤ 25)|26~30:baixo:Dentro do esperado',
+      valor: r.pontosAjustados,
+      max: 30,
+    }),
+  },
+  '6cit': {
+    nome: '6CIT',
+    escolaridade: false,
+    aviso:
+      'Instrumento de acesso livre (Brooke & Bullock, 1999). Depois de perguntar o mês, peça ao utente que repita e memorize a frase «João Silva, Rua do Souto, 42, Braga»; volta a pedi-la na última pergunta. Tradução livre, não validada oficialmente. Os pontos já estão ponderados: quanto maior a pontuação, pior o desempenho.',
+    dominios: [
+      ['ano', 'Em que ano estamos?', CERTO_ERRADO(4)],
+      ['mes', 'Em que mês estamos?', CERTO_ERRADO(3)],
+      ['hora', 'Sem consultar o relógio, que horas são, aproximadamente? <span class="step-hint" style="margin:2px 0 0">— certo se errar até 1 hora</span>', CERTO_ERRADO(3)],
+      ['contagem', 'Conte de 20 até 1, em sentido inverso.', [['Sem erros', 0], ['1 erro', 2], ['2 ou mais erros', 4]]],
+      ['meses', 'Diga os meses do ano em sentido inverso (de dezembro a janeiro).', [['Sem erros', 0], ['1 erro', 2], ['2 ou mais erros', 4]]],
+      ['frase', 'Repita a frase de memória. <span class="step-hint" style="margin:2px 0 0">— conte um erro por cada elemento errado ou em falta</span>', [0, 1, 2, 3, 4, 5].map((n) => [erros(n), n * 2])],
+    ],
+    classificar: (pontos) => classificarSeisCIT(pontos),
+    apresentar: (r) => ({
+      classificacao: r.grau,
+      detalhe: `Pontuação ${r.pontos}/28 (quanto maior, pior) · 0–7 dentro do esperado · 8–9 ligeiro · ≥ 10 significativo`,
+      faixas: '0~7:baixo:Dentro do esperado (0–7)|8~9:moderado:Ligeiro (8–9)|10~28:alto:Significativo (≥ 10)',
+      valor: r.pontos,
+      max: 28,
+    }),
+  },
+  spmsq: {
+    nome: 'SPMSQ',
+    escolaridade: true,
+    aviso:
+      'Instrumento de domínio público (Pfeiffer, 1975). Registe cada resposta do utente como certa ou errada. Tradução e adaptação livres, não validadas oficialmente. Com escolaridade até 4 anos admite-se mais um erro; acima de 12 anos, menos um.',
+    dominios: [
+      'Qual é a data de hoje (dia, mês e ano)?',
+      'Que dia da semana é hoje?',
+      'Qual é o nome deste local?',
+      'Qual é o seu número de telefone? (se não tiver, qual é a sua morada?)',
+      'Que idade tem?',
+      'Qual é a sua data de nascimento (dia, mês e ano)?',
+      'Quem é o atual Presidente da República?',
+      'Quem foi o Presidente da República anterior?',
+      'Qual era o apelido de solteira da sua mãe?',
+      'Subtraia 3 a 20 e continue a subtrair 3 a cada resultado novo, até ao fim.',
+    ].map((texto, i) => [`q${i + 1}`, texto, CERTO_ERRADO(1)]),
+    unidade: erros,
+    classificar: (erros_, anos) => classificarSPMSQ(erros_, anos),
+    apresentar: (r) => ({
+      classificacao: r.grau,
+      detalhe: `${erros(r.erros)} em 10${r.errosAjustados !== r.erros ? ` (ajustado à escolaridade: ${r.errosAjustados})` : ''} · 0–2 preservada · 3–4 ligeiro · 5–7 moderado · 8–10 grave`,
+      faixas: '0~2:baixo:Preservada (0–2)|3~4:moderado:Ligeiro (3–4)|5~7:alto:Moderado (5–7)|8~10:muito-alto:Grave (8–10)',
+      valor: r.errosAjustados,
+      max: 10,
+    }),
+  },
 };
 
+const instrumentoAtual = () => $('input[name="cog-instrumento"]:checked')?.value ?? 'mmse';
+
 function montarDominios() {
-  const instrumento = $('input[name="cog-instrumento"]:checked')?.value ?? 'mmse';
+  const instrumento = instrumentoAtual();
+  const cfg = COG[instrumento];
   const container = $('#cog-dominios');
   container.innerHTML = '';
-  COG_DOMINIOS[instrumento].forEach(([campo, nome, max], i) => {
-    const opcoes = Array.from({ length: max + 1 }, (_, v) => [String(v), v]);
-    const pergunta = criarPergunta(`cog-${instrumento}-${campo}`, i + 3, `${nome} <span class="step-hint" style="margin:2px 0 0">— máx. ${max}</span>`, opcoes);
-    container.appendChild(pergunta);
+  cfg.dominios.forEach(([campo, texto, opcoes], i) => {
+    container.appendChild(criarPergunta(`cog-${instrumento}-${campo}`, i + 3, texto, opcoes, cfg.unidade));
   });
+  $('#cog-aviso').textContent = cfg.aviso;
+  $('#cog-escolaridade-passo').hidden = !cfg.escolaridade;
 }
 
 function somaDominios(instrumento) {
   let total = 0;
-  for (const [campo] of COG_DOMINIOS[instrumento]) {
+  for (const [campo] of COG[instrumento].dominios) {
     const marcado = $(`input[name="cog-${instrumento}-${campo}"]:checked`);
     if (!marcado) return null;
     total += Number(marcado.value);
@@ -272,12 +359,13 @@ const cogResultado = $('#cog-resultado');
 let resultadoCognitivo = null;
 
 function atualizarCognitivo() {
-  const instrumento = $('input[name="cog-instrumento"]:checked')?.value ?? 'mmse';
+  const instrumento = instrumentoAtual();
+  const cfg = COG[instrumento];
   const anos = $('#cog-escolaridade').value;
   const pontos = somaDominios(instrumento);
   const r = pontos === null
     ? { ok: false, motivo: 'Indique os pontos de todos os domínios para ver a classificação.' }
-    : instrumento === 'mmse' ? classificarMMSE(pontos, anos) : classificarMoCA(pontos, anos);
+    : cfg.classificar(pontos, anos);
 
   const ok = $('#cog-ok');
   const vazio = $('#cog-vazio');
@@ -290,21 +378,18 @@ function atualizarCognitivo() {
     $('#cog-motivo').textContent = r.motivo;
     return;
   }
-  resultadoCognitivo = { ...r, instrumento, anosEscolaridade: anos };
+  const ap = cfg.apresentar(r);
+  resultadoCognitivo = { ...r, ...ap, instrumento, anosEscolaridade: anos };
   ok.hidden = false;
   vazio.hidden = true;
   if (acoes) acoes.hidden = false;
   cogResultado.dataset.nivel = r.nivel;
-  $('#cog-classificacao').textContent = r.alterado ? 'Sugestivo de défice cognitivo' : 'Dentro do esperado para a escolaridade';
-  // Último valor ainda considerado alterado: MMSE ≤ corte; MoCA (ajustado) < 26.
-  const ultimoAlterado = instrumento === 'mmse' ? r.corte : 25;
+  $('#cog-classificacao').textContent = ap.classificacao;
   const escala = $('#cog-escala');
-  escala.dataset.faixas = `0~${ultimoAlterado}:alto:Sugestivo de défice (≤ ${ultimoAlterado})|${ultimoAlterado + 1}~30:baixo:Dentro do esperado`;
-  escala.dataset.valor = instrumento === 'mmse' ? r.pontos : r.pontosAjustados;
-  $('#cog-detalhe').textContent =
-    instrumento === 'mmse'
-      ? `Pontuação ${r.pontos}/30 · corte de referência ${r.corte} (cortes validados para a população portuguesa, Guerreiro 1994)`
-      : `Pontuação ${r.pontos}/30 (ajustada: ${r.pontosAjustados}) · corte de referência 26`;
+  escala.dataset.max = ap.max;
+  escala.dataset.faixas = ap.faixas;
+  escala.dataset.valor = ap.valor;
+  $('#cog-detalhe').textContent = ap.detalhe;
 }
 cogForm.addEventListener('input', atualizarCognitivo);
 cogForm.addEventListener('change', (e) => {
@@ -315,17 +400,15 @@ montarDominios();
 atualizarCognitivo();
 
 function resumoTextoCognitivo(r) {
-  const classificacao = r.alterado ? 'Sugestivo de défice cognitivo' : 'Dentro do esperado para a escolaridade';
-  const detalhe =
-    r.instrumento === 'mmse'
-      ? `Pontuação ${r.pontos}/30 · corte de referência ${r.corte} (cortes validados para a população portuguesa, Guerreiro 1994)`
-      : `Pontuação ${r.pontos}/30 (ajustada: ${r.pontosAjustados}) · corte de referência 26`;
+  const cfg = COG[r.instrumento];
   const linhas = [
-    `Classificação de pontuação ${r.instrumento === 'mmse' ? 'MMSE' : 'MoCA'}`,
-    `Anos de escolaridade: ${r.anosEscolaridade}`,
-    `Classificação: ${classificacao}`,
-    detalhe,
-    'Esta ferramenta não reproduz os itens do MMSE ou do MoCA — apenas soma os domínios e classifica a pontuação obtida com o teste oficial.',
+    `Classificação de pontuação ${cfg.nome}`,
+    ...(cfg.escolaridade ? [`Anos de escolaridade: ${r.anosEscolaridade}`] : []),
+    `Classificação: ${r.classificacao}`,
+    r.detalhe,
+    ...(r.instrumento === 'mmse' || r.instrumento === 'moca'
+      ? ['Esta ferramenta não reproduz os itens do MMSE ou do MoCA — apenas soma os domínios e classifica a pontuação obtida com o teste oficial.']
+      : []),
     '',
     'Informação de apoio — não substitui aconselhamento médico.',
     location.href,
@@ -335,8 +418,8 @@ function resumoTextoCognitivo(r) {
 
 $('#btn-email-cog').addEventListener('click', () => {
   if (!resultadoCognitivo) return;
-  const nome = resultadoCognitivo.instrumento === 'mmse' ? 'MMSE' : 'MoCA';
-  const assunto = `Classificação ${nome} — ${resultadoCognitivo.pontos}/30`;
+  const { nome } = COG[resultadoCognitivo.instrumento];
+  const assunto = `Classificação ${nome} — ${resultadoCognitivo.detalhe.split(' · ')[0]}`;
   location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoTextoCognitivo(resultadoCognitivo))}`;
 });
 $('#btn-print-cog').addEventListener('click', () => window.print());
