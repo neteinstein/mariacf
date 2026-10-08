@@ -41,7 +41,7 @@ test('os cinco grupos etários estão pela ordem certa', () => {
 
 test('cada doença tem conteúdo para todos os grupos etários', () => {
   for (const d of DOENCAS) {
-    assert.ok(d.nome && d.resumo && d.emoji && d.categoria, `${d.id}: faltam dados do cartão`);
+    assert.ok(d.nome && d.resumo && d.icone && d.categoria, `${d.id}: faltam dados do cartão`);
     for (const g of GRUPOS) assert.ok(d.grupos[g.id], `${d.id}: falta o grupo ${g.id}`);
     assert.deepEqual(Object.keys(d.grupos).sort(), GRUPOS.map((g) => g.id).sort(), `${d.id}: grupos a mais`);
   }
