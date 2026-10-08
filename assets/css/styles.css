@@ -7258,3 +7258,83 @@ a.tool.destaque:hover .tool-deco.mini {
     flex: none;
   }
 }
+
+/* Clicável vs. informativo — uma só regra para todo o site.
+   O que se carrega (filtros, botões, ligações em pílula) é uma pílula com contorno que
+   reage ao rato. O que só informa (etiquetas de área, tipo de contacto, factos, a
+   «eyebrow» do topo, as etiquetas flutuantes das idades) não tem contorno nem forma de
+   pílula: cantos pouco redondos, texto pequeno em maiúsculas e nenhuma reação ao rato. */
+.eyebrow,
+.tag,
+.pub-type,
+.about-facts li,
+.float-chip {
+  cursor: default;
+  user-select: none;
+}
+
+.eyebrow {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.tag,
+.tool.destaque .tag,
+.pub-type {
+  border: 0;
+  border-radius: 5px;
+  padding: 3px 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.about-facts {
+  gap: 6px 18px;
+}
+
+.about-facts li {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+}
+
+.about-facts li > span[aria-hidden='true'] {
+  opacity: 0.85;
+}
+
+.float-chip {
+  border: 0;
+  border-radius: 14px;
+  padding: 8px 14px 8px 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.float-chip .ico {
+  border-radius: 10px;
+  color: var(--ink);
+}
+
+/* Os filtros mostram que são botões também antes de escolhidos. */
+.tabbtn:hover:not([aria-selected='true']) {
+  border-color: color-mix(in srgb, var(--teal) 55%, var(--line));
+  color: var(--ink);
+}
+
+.tool .tool-icon svg {
+  display: block;
+}

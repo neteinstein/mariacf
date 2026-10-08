@@ -6,6 +6,7 @@
 
 import { CATEGORIAS, DOENCAS, EVICCAO_NOTA, GRUPOS, encontrarDoenca, grupoValido, resumoDoenca } from './doencas-dados.js';
 import { ilustracao, miniatura } from './doencas-ilustracoes.js';
+import { icone } from './icones.js';
 
 const raiz = document.documentElement;
 const grelha = document.getElementById('doencas-grid');
@@ -39,7 +40,7 @@ function cartao(d, i) {
   return `
     <a class="tool reveal destaque${tint}" href="?d=${d.id}" data-doenca="${d.id}">
       ${miniatura(d.deco)}
-      <div class="tool-top"><span class="tool-icon" aria-hidden="true">${d.emoji}</span></div>
+      <div class="tool-top"><span class="tool-icon" aria-hidden="true">${icone(d.icone)}</span></div>
       <div class="tool-title">${esc(d.nome)}${d.alias ? `<small class="tool-alias">${esc(d.alias)}</small>` : ''}</div>
       <p class="tool-desc">${esc(d.resumo)}</p>
       <div class="tags"><span class="tag">${esc(d.categoria)}</span></div>

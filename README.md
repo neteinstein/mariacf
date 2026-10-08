@@ -25,6 +25,12 @@ cada separador pode ser partilhado; a impressão sai sempre com as cores do tema
 - `assets/js/doencas-ilustracoes.js` — ilustrações SVG animadas só com CSS (classes `an-*` em `styles.css`)
   e as miniaturas animadas dos cartões (classes `deco-*`).
 - `assets/js/doencas.js` — a grelha, a pesquisa, os separadores, o email/impressão e a navegação.
+- `assets/js/icones.js` — os ícones SVG de linha dos cartões de doenças e de ferramentas (e das etiquetas
+  das idades). A página de ferramentas tem os mesmos SVG escritos no HTML, com `data-icone`; o teste
+  `tests/icones.test.mjs` confirma que coincidem com a biblioteca.
+
+No estilo, o que se carrega (filtros, botões) é uma pílula com contorno; o que só informa (etiquetas,
+factos, tipo de contacto) é texto pequeno em maiúsculas, sem contorno.
 
 Para acrescentar uma doença, basta um novo objeto em `DOENCAS` com os cinco grupos, uma área de `CATEGORIAS`
 e uma miniatura; os testes verificam que as ilustrações referidas existem, que cada grupo tem o tipo de
