@@ -81,7 +81,7 @@ function conteudoGrupo(g, grupoId, d) {
   }
   if (g.seccoes) html += seccoes(g.seccoes);
   if (g.curiosidade) {
-    html += `<aside class="doenca-curiosidade"><span class="doenca-curiosidade-ico" aria-hidden="true">💡</span><div><strong>Sabias que…</strong><p>${esc(g.curiosidade)}</p></div></aside>`;
+    html += `<aside class="doenca-curiosidade"><span class="doenca-curiosidade-ico" aria-hidden="true">💡</span><div><strong>Sabia que…</strong><p>${esc(g.curiosidade)}</p></div></aside>`;
   }
   if (g.mitos) {
     html += `<section class="doenca-mitos" aria-label="Mitos e factos"><h3>Mitos e factos</h3>${g.mitos

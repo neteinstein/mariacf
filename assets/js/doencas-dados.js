@@ -5,7 +5,7 @@
 //   intro       — parágrafo de abertura
 //   imagens     — [nome da ilustração (doencas-ilustracoes.js), legenda]
 //   seccoes     — { ico, titulo, texto?, lista? }
-//   curiosidade — «Sabias que…» (crianças)
+//   curiosidade — «Sabia que…» (crianças)
 //   mitos       — [mito, o que é verdade]
 //   alerta      — { titulo, lista } — quando procurar ajuda
 //   ligacoes    — calculadoras do site relacionadas ({ href, texto })
@@ -75,7 +75,7 @@ export const DOENCAS = [
           { ico: '🔑', titulo: 'O que é?', texto: 'A comida que comemos transforma-se em açúcar (glicose), que é a energia das nossas células. Para o açúcar entrar nas células é preciso uma chave: a insulina, feita por um órgão chamado pâncreas. Na diabetes, a chave falta ou não funciona bem, e o açúcar fica a passear no sangue.' },
           { ico: '❓', titulo: 'Porque acontece?', texto: 'Nas crianças, a mais comum é a diabetes tipo 1: o sistema de defesa do corpo engana-se e estraga as células que fazem insulina. Não acontece por comer doces e não se pega.' },
           { ico: '💪', titulo: 'Como se trata?', lista: ['Medir o açúcar várias vezes por dia', 'Dar insulina com caneta ou bomba', 'Comer a horas e contar os hidratos de carbono (pão, massa, arroz, fruta)', 'Fazer desporto e brincar como os amigos'] },
-          { ico: '🧃', titulo: 'Açúcar baixo: o que fazer?', texto: 'Se te sentires a tremer, com suores, muita fome ou tonto, avisa logo um adulto. Um sumo ou um pacote de açúcar ajuda a ficar bem depressa.' },
+          { ico: '🧃', titulo: 'Açúcar baixo: o que fazer?', texto: 'Se se sentir a tremer, com suores, muita fome ou tonto, avise logo um adulto. Um sumo ou um pacote de açúcar ajuda a ficar bem depressa.' },
         ],
         curiosidade: 'Há futebolistas profissionais e atletas olímpicos com diabetes tipo 1 — treinam e competem todos os dias!',
       },
@@ -84,19 +84,19 @@ export const DOENCAS = [
         imagens: [
           ['glucometro', 'Sensores e glucómetros mostram a glicose a cada momento'],
           ['prato', 'Contar hidratos ajuda a acertar a insulina'],
-          ['correr', 'O exercício baixa a glicose — planeia antes'],
+          ['correr', 'O exercício baixa a glicose — planeie antes'],
         ],
         seccoes: [
           { ico: '🧬', titulo: 'Tipo 1 e tipo 2', texto: 'Na tipo 1, o sistema imunitário destrói as células do pâncreas que produzem insulina, por isso é sempre preciso insulina. Na tipo 2, a insulina existe mas funciona mal (resistência à insulina); está ligada à genética, ao excesso de peso e ao sedentarismo e é cada vez mais frequente em jovens.' },
           { ico: '🚩', titulo: 'Sinais de alerta', lista: ['Muita sede e boca seca', 'Urinar muitas vezes, também à noite', 'Cansaço fora do normal', 'Perder peso sem razão', 'Visão turva'] },
-          { ico: '🎒', titulo: 'No dia a dia', lista: ['Leva sempre açúcar de absorção rápida (pacotes de açúcar, sumo)', 'Diz aos amigos e professores o que fazer numa hipoglicemia', 'O álcool pode baixar a glicose várias horas depois: nunca bebas em jejum e mede antes de dormir', 'Stress, doença e crescimento mexem com a glicose — ajusta com a tua equipa de saúde'] },
+          { ico: '🎒', titulo: 'No dia a dia', lista: ['Leve sempre açúcar de absorção rápida (pacotes de açúcar, sumo)', 'Diga aos amigos e professores o que fazer numa hipoglicemia', 'O álcool pode baixar a glicose várias horas depois: nunca beba em jejum e meça antes de dormir', 'Stress, doença e crescimento mexem com a glicose — ajuste com a sua equipa de saúde'] },
         ],
         mitos: [
           ['Quem tem diabetes não pode comer doces.', 'Pode, com planeamento: o que conta é o total de hidratos e o ajuste da insulina.'],
           ['Comer muito açúcar causa diabetes tipo 1.', 'Não. A tipo 1 é autoimune. O excesso de peso aumenta o risco de tipo 2.'],
           ['A diabetes tipo 2 só aparece em adultos.', 'Aparece cada vez mais em adolescentes, sobretudo com excesso de peso e pouca atividade física.'],
         ],
-        alerta: { titulo: 'Vai à urgência se…', lista: ['Vómitos ou dor de barriga com a glicose alta', 'Respiração rápida ou hálito com cheiro a fruta (pode ser cetoacidose)', 'Confusão, sonolência extrema ou desmaio'] },
+        alerta: { titulo: 'Vá à urgência se…', lista: ['Vómitos ou dor de barriga com a glicose alta', 'Respiração rápida ou hálito com cheiro a fruta (pode ser cetoacidose)', 'Confusão, sonolência extrema ou desmaio'] },
       },
       '18-65': {
         intro: 'A diabetes afeta mais de 1 em cada 10 adultos em Portugal, e muitos ainda não sabem que a têm. Detetada cedo e bem controlada, evita complicações nos olhos, nos rins, nos nervos, no coração e no cérebro.',
@@ -152,8 +152,8 @@ export const DOENCAS = [
           ['medico', 'Os médicos sabem tratar'],
           ['cama', 'Quem está a tratar fica cansado e descansa'],
           ['cabelo', 'O cabelo pode cair… e volta a crescer'],
-          ['brincar', 'Não se pega: podes dar beijinhos e brincar'],
-          ['abraco', 'Os teus abraços ajudam muito'],
+          ['brincar', 'Não se pega: pode dar beijinhos e brincar'],
+          ['abraco', 'Os seus abraços ajudam muito'],
         ],
       },
       '5-12': {
@@ -168,29 +168,29 @@ export const DOENCAS = [
           { ico: '🧱', titulo: 'O que é?', texto: 'O corpo é feito de milhões de células, como pequenos tijolos. Normalmente crescem e são substituídas com ordem. No cancro, algumas células crescem sem parar e formam um caroço, a que os médicos chamam tumor.' },
           { ico: '👩', titulo: 'Quem pode ter?', texto: 'Acontece sobretudo em mulheres adultas e mais velhas. Os homens também podem ter, mas é raro. Nas crianças é raríssimo.' },
           { ico: '🏥', titulo: 'Como se trata?', lista: ['Uma operação para tirar o caroço', 'Quimioterapia: medicamentos fortes que podem fazer cair o cabelo e cansar', 'Radioterapia: raios invisíveis que não doem', 'Comprimidos durante algum tempo'] },
-          { ico: '💛', titulo: 'Como posso ajudar?', lista: ['Fazer desenhos e dar abraços', 'Fazer perguntas — não há perguntas parvas', 'Saber que não é culpa de ninguém, nem tua', 'Continuar a ir à escola e a brincar'] },
+          { ico: '💛', titulo: 'Como posso ajudar?', lista: ['Fazer desenhos e dar abraços', 'Fazer perguntas — não há perguntas parvas', 'Saber que não é culpa de ninguém, nem sua', 'Continuar a ir à escola e a brincar'] },
         ],
         curiosidade: 'Hoje, a grande maioria das mulheres a quem o cancro da mama é descoberto cedo fica curada.',
       },
       '13-17': {
-        intro: 'É o cancro mais frequente nas mulheres em Portugal. Na tua idade é muito raro, mas os hábitos que crias agora contam para o futuro — e é possível que alguém próximo de ti passe por isto.',
+        intro: 'É o cancro mais frequente nas mulheres em Portugal. Na sua idade é muito raro, mas os hábitos que cria agora contam para o futuro — e é possível que alguém próximo de si passe por isto.',
         imagens: [
           ['celulas', 'Um tumor maligno é um conjunto de células que cresce sem controlo'],
           ['fita', 'O laço cor-de-rosa é o símbolo da luta contra o cancro da mama'],
-          ['abraco', 'Falar sobre o que sentes ajuda'],
+          ['abraco', 'Falar sobre o que sente ajuda'],
         ],
         seccoes: [
           { ico: '🔬', titulo: 'O que é', texto: 'Um tumor maligno que começa nas células da mama e que, se não for tratado, se pode espalhar a outras partes do corpo. Na adolescência, os caroços na mama são quase sempre benignos (como os fibroadenomas) ou alterações normais do crescimento.' },
           { ico: '🧬', titulo: 'Fatores de risco', lista: ['Idade (a maioria dos casos surge depois dos 50 anos)', 'Familiares próximos com cancro da mama ou do ovário (genes como o BRCA1 e o BRCA2)', 'Álcool e tabaco', 'Sedentarismo e excesso de peso'] },
-          { ico: '🏃', titulo: 'O que protege desde já', lista: ['Mexer-te todos os dias', 'Não fumar e evitar o álcool', 'Comer de forma variada, com fruta e legumes', 'Conhecer o teu corpo e falar com o médico se notares algo diferente'] },
-          { ico: '🫂', titulo: 'Se alguém da família tem', texto: 'É normal sentir medo, raiva, tristeza ou até nada. Falar ajuda — com a família, os amigos, um professor ou o médico de família. Podes perguntar o que quiseres sobre a doença e o tratamento.' },
+          { ico: '🏃', titulo: 'O que protege desde já', lista: ['Mexer-se todos os dias', 'Não fumar e evitar o álcool', 'Comer de forma variada, com fruta e legumes', 'Conhecer o seu corpo e falar com o médico se notar algo diferente'] },
+          { ico: '🫂', titulo: 'Se alguém da família tem', texto: 'É normal sentir medo, raiva, tristeza ou até nada. Falar ajuda — com a família, os amigos, um professor ou o médico de família. Pode perguntar o que quiser sobre a doença e o tratamento.' },
         ],
         mitos: [
           ['Os desodorizantes e os soutiens com aros causam cancro.', 'Não há evidência científica disso.'],
           ['Só acontece a quem tem casos na família.', 'A maioria das mulheres com cancro da mama não tem história familiar.'],
           ['Os homens não têm cancro da mama.', 'É raro, mas acontece — cerca de 1 em cada 100 casos.'],
         ],
-        alerta: { titulo: 'Fala com um adulto ou com o médico se…', lista: ['Notares um caroço que não desaparece depois da menstruação', 'A pele da mama ficar vermelha, quente ou repuxada', 'Sair líquido do mamilo sem o estares a apertar'] },
+        alerta: { titulo: 'Fale com um adulto ou com o médico se…', lista: ['Notar um caroço que não desaparece depois da menstruação', 'A pele da mama ficar vermelha, quente ou repuxada', 'Sair líquido do mamilo sem o apertar'] },
       },
       '18-65': {
         intro: 'O cancro da mama é o cancro mais frequente na mulher em Portugal. Quando é detetado cedo, mais de 9 em cada 10 mulheres estão vivas 5 anos depois. O rastreio e a atenção às mudanças fazem a diferença.',
@@ -257,7 +257,7 @@ export const DOENCAS = [
           ['correr', 'Mexer o corpo mantém o coração forte'],
         ],
         seccoes: [
-          { ico: '🚿', titulo: 'O que é?', texto: 'Imagina uma mangueira: se a água passar com muita força durante muito tempo, a mangueira estraga-se. Com as artérias é igual. A tensão alta obriga o coração a trabalhar mais e pode cansar o coração, o cérebro, os rins e os olhos.' },
+          { ico: '🚿', titulo: 'O que é?', texto: 'Imagine uma mangueira: se a água passar com muita força durante muito tempo, a mangueira estraga-se. Com as artérias é igual. A tensão alta obriga o coração a trabalhar mais e pode cansar o coração, o cérebro, os rins e os olhos.' },
           { ico: '🤫', titulo: 'Uma doença silenciosa', texto: 'Quase sempre não dói nem se sente nada. Por isso os médicos medem a tensão nas consultas — também às crianças, a partir dos 3 anos.' },
           { ico: '🥦', titulo: 'Como manter a tensão boa', lista: ['Comer pouco sal e poucos snacks salgados', 'Comer fruta e legumes', 'Brincar ao ar livre e fazer desporto', 'Dormir bem', 'Beber água em vez de refrigerantes'] },
         ],
@@ -280,7 +280,7 @@ export const DOENCAS = [
           ['Os jovens não têm tensão alta.', 'Têm, sobretudo com excesso de peso, e a tensão alta na adolescência tende a continuar na idade adulta.'],
           ['O sal marinho ou o sal dos Himalaias é mais saudável.', 'Todos têm praticamente o mesmo sódio. O que conta é a quantidade.'],
         ],
-        alerta: { titulo: 'Procura ajuda urgente se…', lista: ['Dor de cabeça muito forte e súbita', 'Visão turva, confusão ou dificuldade em falar', 'Dor no peito ou falta de ar'] },
+        alerta: { titulo: 'Procure ajuda urgente se…', lista: ['Dor de cabeça muito forte e súbita', 'Visão turva, confusão ou dificuldade em falar', 'Dor no peito ou falta de ar'] },
       },
       '18-65': {
         intro: 'Em Portugal, mais de 1 em cada 3 adultos tem hipertensão, e muitos não sabem. É o principal fator de risco para o AVC, que continua a ser uma das primeiras causas de morte no país.',
@@ -333,7 +333,7 @@ export const DOENCAS = [
           ['bengala', 'Alguns avós têm dores nos joelhos ou nas mãos'],
           ['calor', 'O calor ajuda a aliviar a dor'],
           ['nadar', 'Nadar e mexer faz bem às articulações'],
-          ['abraco', 'Podes ajudar o avô ou a avó com carinho'],
+          ['abraco', 'Pode ajudar o avô ou a avó com carinho'],
         ],
       },
       '5-12': {
@@ -353,7 +353,7 @@ export const DOENCAS = [
         curiosidade: 'A cartilagem não tem vasos sanguíneos: alimenta-se do líquido da articulação, que entra e sai quando nos mexemos, como numa esponja. Por isso o movimento é tão importante!',
       },
       '13-17': {
-        intro: 'A artrose é rara na tua idade, mas as articulações que tens hoje são as que vais usar a vida toda. Lesões no desporto mal tratadas e o excesso de peso são os maiores riscos para o futuro.',
+        intro: 'A artrose é rara na sua idade, mas as articulações que tem hoje são as que vai usar a vida toda. Lesões no desporto mal tratadas e o excesso de peso são os maiores riscos para o futuro.',
         imagens: [
           ['cartilagem', 'Cartilagem saudável e cartilagem gasta'],
           ['joelho', 'Joelhos e ancas suportam o peso do corpo'],
@@ -361,15 +361,15 @@ export const DOENCAS = [
         ],
         seccoes: [
           { ico: '🔬', titulo: 'O que é', texto: 'Uma doença de toda a articulação: a cartilagem fica mais fina, o osso por baixo reage e forma pequenos bicos (osteófitos), e a membrana que reveste a articulação pode inflamar. O resultado é dor, rigidez e menos movimento.' },
-          { ico: '⚽', titulo: 'Protege as tuas articulações', lista: ['Aquece antes do desporto e aprende a técnica correta', 'Leva a sério as entorses e as lesões do joelho (como as dos ligamentos e dos meniscos) e faz a reabilitação até ao fim', 'Treina força e equilíbrio', 'Mantém um peso saudável'] },
-          { ico: '🦵', titulo: 'Dor nas articulações nesta idade', texto: 'As dores nos joelhos em adolescentes desportistas são geralmente de sobrecarga ou do crescimento, não de artrose. Se uma articulação inchar sem razão, ficar quente ou estiver rígida de manhã durante muito tempo, fala com o médico — pode ser outra doença, como uma artrite.' },
+          { ico: '⚽', titulo: 'Proteja as suas articulações', lista: ['Aqueça antes do desporto e aprenda a técnica correta', 'Leve a sério as entorses e as lesões do joelho (como as dos ligamentos e dos meniscos) e faça a reabilitação até ao fim', 'Treine força e equilíbrio', 'Mantenha um peso saudável'] },
+          { ico: '🦵', titulo: 'Dor nas articulações nesta idade', texto: 'As dores nos joelhos em adolescentes desportistas são geralmente de sobrecarga ou do crescimento, não de artrose. Se uma articulação inchar sem razão, ficar quente ou estiver rígida de manhã durante muito tempo, fale com o médico — pode ser outra doença, como uma artrite.' },
         ],
         mitos: [
           ['Estalar os dedos dá artrose.', 'Os estudos não mostram essa relação. O estalido é só uma bolha de gás no líquido da articulação.'],
           ['Correr estraga os joelhos.', 'Em quem corre por lazer, a corrida não aumenta o risco de artrose e até fortalece a articulação.'],
           ['A artrose é só desgaste da idade.', 'A idade conta, mas as lesões, o peso, a genética e a falta de força muscular também.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Uma articulação inchar sem teres batido', 'Coxeares ou tiveres uma dor na anca ou no joelho que não passa', 'Tiveres rigidez de manhã que dura mais de meia hora'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Uma articulação inchar sem ter batido', 'Coxear ou ter uma dor na anca ou no joelho que não passa', 'Ter rigidez de manhã que dura mais de meia hora'] },
       },
       '18-65': {
         intro: 'A artrose é a doença das articulações mais comum e uma das principais causas de dor e incapacidade. Começa geralmente depois dos 40–50 anos e afeta sobretudo joelhos, ancas, mãos e coluna.',
@@ -421,7 +421,7 @@ export const DOENCAS = [
           ['conversa', 'Falar sobre o que sentimos ajuda'],
           ['medico', 'Os médicos ajudam a ficar melhor'],
           ['abraco', 'Um abraço faz bem'],
-          ['coracao', 'Não é culpa tua — gostam muito de ti'],
+          ['coracao', 'Não é culpa sua — gostam muito de si'],
           ['sono', 'Dormir bem ajuda a ficar alegre'],
         ],
       },
@@ -436,8 +436,8 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🌧️', titulo: 'O que é?', texto: 'É uma doença que afeta a forma como pensamos e sentimos. Quem tem depressão pode andar triste ou irritado, deixar de gostar das coisas de que gostava, ter dificuldade em dormir ou em concentrar-se na escola.' },
           { ico: '🧠', titulo: 'Porque acontece?', texto: 'Pode acontecer por muitas razões juntas: coisas difíceis (como uma perda ou problemas em casa ou na escola), a forma como o cérebro funciona e até a família de onde vimos. Nunca é culpa de quem a tem.' },
-          { ico: '🗣️', titulo: 'O que fazer?', lista: ['Contar a um adulto de confiança: pais, avós, professor ou médico', 'Fazer coisas de que gostas, mesmo que te apeteça pouco', 'Brincar e mexer o corpo', 'Lembrar que a depressão tem tratamento e passa'] },
-          { ico: '👨‍👩‍👧', titulo: 'Se for alguém da família', texto: 'Quando um adulto da família está com depressão, pode parecer distante ou sem paciência. Não é culpa tua e não deixou de gostar de ti. Os médicos estão a ajudar.' },
+          { ico: '🗣️', titulo: 'O que fazer?', lista: ['Contar a um adulto de confiança: pais, avós, professor ou médico', 'Fazer coisas de que gosta, mesmo que lhe apeteça pouco', 'Brincar e mexer o corpo', 'Lembrar que a depressão tem tratamento e passa'] },
+          { ico: '👨‍👩‍👧', titulo: 'Se for alguém da família', texto: 'Quando um adulto da família está com depressão, pode parecer distante ou sem paciência. Não é culpa sua e não deixou de gostar de si. Os médicos estão a ajudar.' },
         ],
         curiosidade: 'Rir, brincar e fazer exercício fazem o cérebro libertar substâncias que nos ajudam a sentir bem, como as endorfinas.',
       },
@@ -449,16 +449,16 @@ export const DOENCAS = [
           ['telefone', 'Há linhas de apoio gratuitas e confidenciais'],
         ],
         seccoes: [
-          { ico: '🧩', titulo: 'Sinais', lista: ['Tristeza, vazio ou irritabilidade quase todos os dias', 'Perder o interesse pelas coisas de que gostavas', 'Dormir muito mais ou muito menos', 'Alterações do apetite', 'Cansaço, dificuldade de concentração, notas a descer', 'Isolar-te dos amigos', 'Pensamentos de que não vales nada ou de morte'] },
+          { ico: '🧩', titulo: 'Sinais', lista: ['Tristeza, vazio ou irritabilidade quase todos os dias', 'Perder o interesse pelas coisas de que gostava', 'Dormir muito mais ou muito menos', 'Alterações do apetite', 'Cansaço, dificuldade de concentração, notas a descer', 'Isolar-se dos amigos', 'Pensamentos de que não vale nada ou de morte'] },
           { ico: '📱', titulo: 'O que pode ajudar', lista: ['Falar com alguém de confiança ou com o médico de família', 'Rotinas de sono regulares, com o telemóvel longe da cama', 'Exercício físico: tem efeito comprovado no humor', 'Evitar álcool e drogas, que pioram a depressão', 'Psicoterapia e, em alguns casos, medicação'] },
-          { ico: '🫶', titulo: 'Se um amigo não está bem', texto: 'Ouve sem julgar, diz que estás preocupado e incentiva-o a falar com um adulto. Se falar em fazer mal a si próprio, não guardes segredo: conta logo a um adulto.' },
+          { ico: '🫶', titulo: 'Se um amigo não está bem', texto: 'Ouça sem julgar, diga que está preocupado e incentive-o a falar com um adulto. Se falar em fazer mal a si próprio, não guarde segredo: conte logo a um adulto.' },
         ],
         mitos: [
           ['Falar sobre suicídio dá a ideia a alguém.', 'Falar abertamente reduz o risco e ajuda a pessoa a procurar ajuda.'],
           ['Depressão é falta de força de vontade.', 'É uma doença com causas biológicas, psicológicas e sociais.'],
           ['Os antidepressivos mudam a personalidade.', 'Bem indicados e acompanhados, ajudam a pessoa a voltar a sentir-se ela própria.'],
         ],
-        alerta: { titulo: 'Pede ajuda já', lista: ['Se pensares em fazer mal a ti próprio ou em morrer: liga 112', 'SNS 24 (808 24 24 24): opção de aconselhamento psicológico', 'SOS Criança (116 111): linha gratuita para crianças e jovens'] },
+        alerta: { titulo: 'Peça ajuda já', lista: ['Se pensar em fazer mal a si próprio ou em morrer: ligue 112', 'SNS 24 (808 24 24 24): opção de aconselhamento psicológico', 'SOS Criança (116 111): linha gratuita para crianças e jovens'] },
       },
       '18-65': {
         intro: 'A depressão é uma das doenças mais frequentes e uma das principais causas de incapacidade, e Portugal está entre os países europeus com mais casos. Tem tratamento eficaz — e quanto mais cedo começar, melhor.',
@@ -544,15 +544,15 @@ export const DOENCAS = [
         ],
         seccoes: [
           { ico: '🔬', titulo: 'Os números', texto: 'Valores desejáveis em crianças e adolescentes:', lista: ['Colesterol total: abaixo de 170 mg/dL', 'LDL («mau»): abaixo de 110 mg/dL', 'HDL («bom»): acima de 45 mg/dL', 'Triglicerídeos: abaixo de 90 mg/dL'] },
-          { ico: '🧬', titulo: 'Hipercolesterolemia familiar', texto: 'É uma doença genética em que o fígado não consegue retirar o LDL do sangue. O colesterol fica muito alto desde o nascimento e, sem tratamento, pode causar um enfarte antes dos 50 anos. Se um dos teus pais a tem, há 50 % de probabilidade de também a teres — e o tratamento desde a infância funciona muito bem.' },
-          { ico: '🥗', titulo: 'Hábitos que contam', lista: ['Menos fast food, fritos, bolos e bolachas', 'Mais fibra: fruta, legumes, leguminosas, aveia', 'Frutos secos sem sal e azeite como gordura principal', 'Mexer-te pelo menos 60 minutos por dia', 'Não fumar nem vapear: baixa o HDL e estraga as artérias'] },
+          { ico: '🧬', titulo: 'Hipercolesterolemia familiar', texto: 'É uma doença genética em que o fígado não consegue retirar o LDL do sangue. O colesterol fica muito alto desde o nascimento e, sem tratamento, pode causar um enfarte antes dos 50 anos. Se um dos seus pais a tem, há 50 % de probabilidade de também a ter — e o tratamento desde a infância funciona muito bem.' },
+          { ico: '🥗', titulo: 'Hábitos que contam', lista: ['Menos fast food, fritos, bolos e bolachas', 'Mais fibra: fruta, legumes, leguminosas, aveia', 'Frutos secos sem sal e azeite como gordura principal', 'Mexer-se pelo menos 60 minutos por dia', 'Não fumar nem vapear: baixa o HDL e estraga as artérias'] },
         ],
         mitos: [
           ['Quem é magro não tem colesterol alto.', 'Tem: a genética conta muito. A hipercolesterolemia familiar aparece em pessoas de todos os pesos.'],
           ['Os ovos são proibidos.', 'Para a maioria das pessoas, um ovo por dia num padrão alimentar saudável não é problema.'],
           ['O colesterol é sempre mau.', 'O corpo precisa dele. O problema é o excesso de LDL.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Os teus pais ou avós tiveram enfarte ou AVC cedo (antes dos 55 anos nos homens ou dos 65 nas mulheres)', 'Alguém na família tem colesterol muito alto', 'Notares pequenos altos amarelados na pele dos cotovelos, dos joelhos ou nos tendões'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Os seus pais ou avós tiveram enfarte ou AVC cedo (antes dos 55 anos nos homens ou dos 65 nas mulheres)', 'Alguém na família tem colesterol muito alto', 'Notar pequenos altos amarelados na pele dos cotovelos, dos joelhos ou nos tendões'] },
       },
       '18-65': {
         intro: 'Mais de metade dos adultos portugueses tem o colesterol acima do recomendado. Não dá sintomas, mas é um dos principais fatores de risco para o enfarte e o AVC.',
@@ -623,20 +623,20 @@ export const DOENCAS = [
           { ico: '💪', titulo: 'O que é?', texto: 'Temos mais de 600 músculos. Para funcionarem bem, precisam de ser usados e de receber mensagens do cérebro através dos nervos. Se ficam muito tempo parados, ou se os nervos não conseguem levar as mensagens, os músculos encolhem e perdem força.' },
           { ico: '❓', titulo: 'Porque acontece?', lista: ['Ficar muito tempo sem mexer uma parte do corpo (um gesso, uma doença que obriga a estar na cama)', 'Doenças dos nervos, como a atrofia muscular espinhal (AME)', 'Doenças dos próprios músculos, como as distrofias musculares'] },
           { ico: '🏊', titulo: 'O que ajuda?', lista: ['Fisioterapia e exercícios todos os dias', 'Natação e brincadeiras adaptadas', 'Comer bem, com proteína (peixe, carne, ovos, leguminosas, leite)', 'Hoje há medicamentos novos para algumas destas doenças, como a AME'] },
-          { ico: '🤝', titulo: 'Colegas com doenças dos músculos', texto: 'Alguns colegas podem precisar de ajuda para andar, subir escadas ou usar uma cadeira de rodas. Não se pega! Podem brincar, aprender e ser teus amigos como toda a gente — às vezes só é preciso adaptar a brincadeira.' },
+          { ico: '🤝', titulo: 'Colegas com doenças dos músculos', texto: 'Alguns colegas podem precisar de ajuda para andar, subir escadas ou usar uma cadeira de rodas. Não se pega! Podem brincar, aprender e ser seus amigos como toda a gente — às vezes só é preciso adaptar a brincadeira.' },
         ],
         curiosidade: 'Para o seu tamanho, um dos músculos mais fortes do corpo é o masséter — o músculo que usamos para mastigar!',
       },
       '13-17': {
         intro: 'Os músculos adaptam-se ao que lhes pedimos: crescem com o treino e encolhem com a inatividade. A amiotrofia é essa perda de massa muscular, que pode ter causas simples ou doenças que precisam de acompanhamento.',
         imagens: [
-          ['musculo', 'Massa muscular: usa-a ou perde-a'],
+          ['musculo', 'Massa muscular: use-a ou perca-a'],
           ['nervo', 'Nervo e músculo trabalham em equipa'],
           ['halteres', 'O treino de força adequado à idade é seguro'],
         ],
         seccoes: [
           { ico: '🔬', titulo: 'Causas', lista: ['Desuso: imobilização, lesões, longos períodos na cama — nota-se ao fim de poucas semanas', 'Doenças neuromusculares: atrofia muscular espinhal, distrofias musculares (como a de Duchenne)', 'Lesões de nervos', 'Alimentação insuficiente, incluindo nas perturbações do comportamento alimentar'] },
-          { ico: '🏋️', titulo: 'Treino de força na adolescência', texto: 'Bem orientado, o treino de força é seguro e não «trava o crescimento». Melhora a força e os ossos e previne lesões. Começa com o peso do corpo e uma boa técnica, aumenta a carga aos poucos e descansa entre treinos.' },
+          { ico: '🏋️', titulo: 'Treino de força na adolescência', texto: 'Bem orientado, o treino de força é seguro e não «trava o crescimento». Melhora a força e os ossos e previne lesões. Comece com o peso do corpo e uma boa técnica, aumente a carga aos poucos e descanse entre treinos.' },
           { ico: '🍳', titulo: 'Proteína sem exageros', texto: 'Uma alimentação variada chega para a maioria dos jovens que treinam. Os suplementos de proteína raramente são necessários e os anabolizantes são perigosos para o coração, o fígado e as hormonas.' },
         ],
         mitos: [
@@ -644,7 +644,7 @@ export const DOENCAS = [
           ['Quem anda de cadeira de rodas não pode fazer desporto.', 'Existe desporto adaptado de alta competição — e Portugal tem das melhores equipas do mundo de boccia!'],
           ['Músculo parado transforma-se em gordura.', 'São tecidos diferentes: o músculo encolhe e a gordura pode aumentar, mas um não se transforma no outro.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Perderes força sem razão, caíres muitas vezes ou tiveres dificuldade em subir escadas', 'Um músculo diminuir de tamanho só de um lado', 'Tiveres contrações musculares contínuas, com fraqueza'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Perder força sem razão, cair muitas vezes ou ter dificuldade em subir escadas', 'Um músculo diminuir de tamanho só de um lado', 'Ter contrações musculares contínuas, com fraqueza'] },
       },
       '18-65': {
         intro: 'Amiotrofia é a diminuição do volume e da força dos músculos. A causa mais frequente é a falta de uso, mas pode ser o primeiro sinal de uma doença dos nervos ou dos músculos — por isso merece ser avaliada.',
@@ -727,14 +727,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🦠', titulo: 'Causas', texto: 'Nos jovens, são comuns o pneumococo e o Mycoplasma pneumoniae (que causa a «pneumonia atípica», mais arrastada, com tosse seca e cansaço), além de vírus como os da gripe e da COVID-19.' },
           { ico: '🚬', titulo: 'Pulmões mais vulneráveis', lista: ['Tabaco e vape irritam as vias respiratórias e enfraquecem as defesas', 'Asma mal controlada', 'Gripe recente', 'Álcool em excesso'] },
-          { ico: '💊', titulo: 'Tratamento', lista: ['Antibiótico quando a causa provável é uma bactéria: toma-o até ao fim, mesmo que te sintas melhor', 'Descanso e muitos líquidos', 'Paracetamol ou ibuprofeno para a febre e as dores', 'Regressar ao desporto aos poucos, só quando estiveres sem febre e com energia'] },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Antibiótico quando a causa provável é uma bactéria: tome-o até ao fim, mesmo que se sinta melhor', 'Descanso e muitos líquidos', 'Paracetamol ou ibuprofeno para a febre e as dores', 'Regressar ao desporto aos poucos, só quando estiver sem febre e com energia'] },
         ],
         mitos: [
           ['Apanha-se pneumonia por andar de cabelo molhado ou ao frio.', 'A pneumonia é causada por micróbios. O frio não a provoca, embora no inverno circulem mais vírus.'],
           ['Os antibióticos curam qualquer pneumonia.', 'Só atuam nas bactérias. As pneumonias causadas por vírus não melhoram com antibiótico.'],
           ['Vapear é inofensivo para os pulmões.', 'O vapor tem substâncias que irritam e inflamam os pulmões.'],
         ],
-        alerta: { titulo: 'Vai à urgência se…', lista: ['Tiveres falta de ar em repouso ou os lábios arroxeados', 'Sentires uma dor forte no peito ao respirar', 'Ficares confuso ou muito sonolento', 'A febre não baixar ao fim de 48 a 72 horas de antibiótico'] },
+        alerta: { titulo: 'Vá à urgência se…', lista: ['Ter falta de ar em repouso ou os lábios arroxeados', 'Sentir uma dor forte no peito ao respirar', 'Ficar confuso ou muito sonolento', 'A febre não baixar ao fim de 48 a 72 horas de antibiótico'] },
       },
       '18-65': {
         intro: 'A pneumonia é uma das infeções mais frequentes e uma importante causa de internamento em Portugal, sobretudo no inverno. Em adultos saudáveis, a maioria trata-se em casa.',
@@ -788,12 +788,12 @@ export const DOENCAS = [
           ['cerebro-avc', 'Às vezes o sangue não chega ao cérebro'],
           ['cara-torta', 'Se a boca do avô ficar torta…'],
           ['braco-cai', '…ou um braço ficar sem força…'],
-          ['ligar-112', 'Pede ajuda a um adulto e liga 112'],
+          ['ligar-112', 'Peça ajuda a um adulto e ligue 112'],
           ['abraco', 'Depois, os médicos e a família ajudam'],
         ],
       },
       '5-12': {
-        intro: 'O AVC acontece quando uma parte do cérebro fica sem sangue — por um tubinho entupido ou por um tubinho que rebentou. É uma emergência, e tu podes ajudar a reconhecê-la!',
+        intro: 'O AVC acontece quando uma parte do cérebro fica sem sangue — por um tubinho entupido ou por um tubinho que rebentou. É uma emergência, e você pode ajudar a reconhecê-la!',
         imagens: [
           ['cerebro-avc', 'Sem sangue, as células do cérebro sofrem em minutos'],
           ['cara-torta', 'Face: a boca fica ao lado'],
@@ -804,13 +804,13 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🧠', titulo: 'O que é?', texto: 'O cérebro precisa de sangue o tempo todo, porque é o sangue que lhe leva oxigénio. Se um vaso sanguíneo fica entupido por um coágulo, ou se rebenta, uma parte do cérebro fica sem sangue e deixa de funcionar bem. A isso chama-se acidente vascular cerebral (AVC).' },
           { ico: '🚨', titulo: 'Os 3 F: face, força e fala', lista: ['Face: a boca fica ao lado e o sorriso torto', 'Força: um braço ou uma perna fica fraco ou dormente', 'Fala: a pessoa fala de forma estranha ou não consegue falar'] },
-          { ico: '📞', titulo: 'O que fazer?', texto: 'Liga logo 112, ou pede a um adulto para ligar, e diz que a pessoa pode estar a ter um AVC. Diz também a que horas os sinais começaram. Não dês comida nem bebida à pessoa.' },
+          { ico: '📞', titulo: 'O que fazer?', texto: 'Ligue logo 112, ou peça a um adulto para ligar, e diga que a pessoa pode estar a ter um AVC. Diga também a que horas os sinais começaram. Não dê comida nem bebida à pessoa.' },
           { ico: '⏱️', titulo: 'Porque é tão urgente?', texto: 'Há tratamentos que desentopem o vaso, mas só funcionam nas primeiras horas. Quanto mais depressa a pessoa chegar ao hospital, mais cérebro se salva.' },
         ],
         curiosidade: 'O cérebro pesa cerca de 1,4 kg — pouco mais do que um pacote de arroz — mas gasta cerca de um quinto de todo o oxigénio que respiramos!',
       },
       '13-17': {
-        intro: 'O AVC é uma das principais causas de morte e de incapacidade em Portugal. Raramente acontece a jovens, mas saber reconhecê-lo pode salvar a vida de alguém da tua família.',
+        intro: 'O AVC é uma das principais causas de morte e de incapacidade em Portugal. Raramente acontece a jovens, mas saber reconhecê-lo pode salvar a vida de alguém da sua família.',
         imagens: [
           ['cerebro-avc', 'Isquémico (entupimento) ou hemorrágico (rotura)'],
           ['cara-torta', 'Face, força, fala: os 3 F'],
@@ -819,14 +819,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🧠', titulo: 'Dois tipos', texto: 'Cerca de 8 em cada 10 AVC são isquémicos: um coágulo entope uma artéria do cérebro. Os restantes são hemorrágicos: uma artéria rompe e há sangramento dentro ou à volta do cérebro.' },
           { ico: '🚨', titulo: 'Reconhecer: os 3 F', lista: ['Face: boca ao lado, sorriso torto', 'Força: fraqueza ou dormência de um braço ou de uma perna, sobretudo de um lado', 'Fala: palavras arrastadas ou trocadas, ou incapacidade de falar', 'Outros sinais: perda súbita de visão, desequilíbrio, dor de cabeça súbita e muito forte'] },
-          { ico: '🛡️', titulo: 'Prevenir começa cedo', lista: ['Não fumar nem vapear', 'Mexer-te todos os dias', 'Comer pouco sal e poucos ultraprocessados', 'Evitar o álcool e as drogas — a cocaína e as anfetaminas podem causar AVC em jovens', 'Medir a tensão arterial'] },
+          { ico: '🛡️', titulo: 'Prevenir começa cedo', lista: ['Não fumar nem vapear', 'Mexer-se todos os dias', 'Comer pouco sal e poucos ultraprocessados', 'Evitar o álcool e as drogas — a cocaína e as anfetaminas podem causar AVC em jovens', 'Medir a tensão arterial'] },
         ],
         mitos: [
           ['O AVC só acontece a velhos.', 'É muito mais frequente depois dos 65 anos, mas pode acontecer em qualquer idade — até em crianças.'],
           ['Se os sinais passarem sozinhos, não é preciso ir ao hospital.', 'Sinais que desaparecem podem ser um AIT («mini-AVC»), um aviso sério de que um AVC pode estar para vir. Deve ligar-se 112 na mesma.'],
           ['Deve dar-se uma aspirina enquanto se espera.', 'Não: se o AVC for hemorrágico, a aspirina pode piorar. O tratamento só se decide no hospital.'],
         ],
-        alerta: { titulo: 'Liga 112 se alguém…', lista: ['Ficar de repente com a boca ao lado, sem força num braço ou com dificuldade em falar', 'Tiver uma dor de cabeça súbita, a mais forte da vida', 'Perder a visão ou o equilíbrio de repente'] },
+        alerta: { titulo: 'Ligue 112 se alguém…', lista: ['Ficar de repente com a boca ao lado, sem força num braço ou com dificuldade em falar', 'Tiver uma dor de cabeça súbita, a mais forte da vida', 'Perder a visão ou o equilíbrio de repente'] },
       },
       '18-65': {
         intro: 'Em Portugal, o AVC é uma das primeiras causas de morte e a principal causa de incapacidade. Grande parte dos AVC pode ser evitada controlando os fatores de risco — e, quando acontece, cada minuto conta.',
@@ -919,7 +919,7 @@ export const DOENCAS = [
           ['O cancro do estômago pega-se.', 'O cancro não se pega. O que se transmite, sobretudo na infância, é a bactéria Helicobacter pylori.'],
           ['Só os mais velhos têm de se preocupar.', 'O cancro aparece sobretudo depois dos 50 anos, mas a bactéria apanha-se na infância e os hábitos formam-se cedo.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Tiveres dor de estômago frequente que não passa', 'Vomitares sangue ou as fezes ficarem negras', 'Perderes peso sem razão'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Ter dor de estômago frequente que não passa', 'Vomitar sangue ou as fezes ficarem negras', 'Perder peso sem razão'] },
       },
       '18-65': {
         intro: 'Em Portugal, o cancro do estômago é mais frequente do que na maioria dos países europeus, e as taxas mais altas estão no Norte. Muitas vezes não dá sinais no início, por isso alguns sintomas persistentes merecem ser investigados.',
@@ -974,7 +974,7 @@ export const DOENCAS = [
           ['agua', 'Beber água'],
           ['correr', 'Mexer o corpo ajuda a barriga'],
           ['enchidos', 'Salsichas e enchidos, só às vezes'],
-          ['medico', 'Se houver sangue no cocó, diz a um adulto'],
+          ['medico', 'Se houver sangue no cocó, diga a um adulto'],
         ],
       },
       '5-12': {
@@ -994,7 +994,7 @@ export const DOENCAS = [
         curiosidade: 'No intestino vivem triliões de bactérias boas — a microbiota — que ajudam a digerir a fibra e a proteger o corpo!',
       },
       '13-17': {
-        intro: 'O cancro colorretal é um dos cancros mais frequentes em Portugal. Na tua idade é muito raro, mas tem aparecido mais cedo em adultos jovens — e os hábitos que o previnem começam agora.',
+        intro: 'O cancro colorretal é um dos cancros mais frequentes em Portugal. Na sua idade é muito raro, mas tem aparecido mais cedo em adultos jovens — e os hábitos que o previnem começam agora.',
         imagens: [
           ['polipo', 'Quase todos começam num pólipo'],
           ['fibra', 'Fibra, fruta e legumes protegem'],
@@ -1010,7 +1010,7 @@ export const DOENCAS = [
           ['É uma doença só de velhos.', 'É mais frequente depois dos 50 anos, mas tem aumentado em adultos jovens.'],
           ['Falar de cocó é vergonhoso.', 'Mudanças nas fezes são informação importante para o médico. Falar disso salva vidas.'],
         ],
-        alerta: { titulo: 'Fala com um adulto ou com o médico se…', lista: ['Vires sangue nas fezes', 'Tiveres dor de barriga ou diarreia que não passam', 'Perderes peso ou te sentires sempre cansado sem razão'] },
+        alerta: { titulo: 'Fale com um adulto ou com o médico se…', lista: ['Vir sangue nas fezes', 'Ter dor de barriga ou diarreia que não passam', 'Perder peso ou sentir-se sempre cansado sem razão'] },
       },
       '18-65': {
         intro: 'O cancro colorretal é um dos cancros mais frequentes em Portugal e uma das principais causas de morte por cancro. Detetado cedo, cura-se na grande maioria dos casos — e o rastreio permite até evitá-lo, retirando os pólipos antes de se transformarem.',
@@ -1064,7 +1064,7 @@ export const DOENCAS = [
           ['adn', 'Há coisas que passam dos pais para os filhos'],
           ['medico', 'Os médicos têm remédios que ajudam'],
           ['pes', 'Ver os pés todos os dias'],
-          ['abraco', 'Não se pega: podes dar abraços'],
+          ['abraco', 'Não se pega: pode dar abraços'],
         ],
       },
       '5-12': {
@@ -1084,7 +1084,7 @@ export const DOENCAS = [
         curiosidade: 'Os nervos que vão até aos pés são os mais compridos do corpo, com mais de um metro num adulto — por isso são os primeiros a sofrer nesta doença!',
       },
       '13-17': {
-        intro: 'A paramiloidose (polineuropatia amiloidótica familiar, PAF) é uma doença genética rara no mundo, mas frequente no Norte de Portugal. Se há casos na tua família, é natural teres perguntas — e há respostas e apoio.',
+        intro: 'A paramiloidose (polineuropatia amiloidótica familiar, PAF) é uma doença genética rara no mundo, mas frequente no Norte de Portugal. Se há casos na sua família, é natural ter perguntas — e há respostas e apoio.',
         imagens: [
           ['adn', 'Herança dominante: 50 % de probabilidade em cada filho'],
           ['proteina', 'A transtirretina deforma-se e forma depósitos (amiloide)'],
@@ -1100,7 +1100,7 @@ export const DOENCAS = [
           ['É uma doença contagiosa.', 'Não se pega. É genética: passa de pais para filhos.'],
           ['Não há nada a fazer.', 'Hoje há tratamentos eficazes, e é possível ter filhos sem a alteração, com diagnóstico genético pré-implantação.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Tiveres familiares com paramiloidose e quiseres saber mais', 'Sentires formigueiros ou dormência nos pés que não passam', 'Tiveres diarreia e prisão de ventre alternadas, ou tonturas ao levantar, sem razão'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Ter familiares com paramiloidose e querer saber mais', 'Sentir formigueiros ou dormência nos pés que não passam', 'Ter diarreia e prisão de ventre alternadas, ou tonturas ao levantar, sem razão'] },
       },
       '18-65': {
         intro: 'A polineuropatia amiloidótica familiar (PAF), ou paramiloidose, é uma amiloidose hereditária por transtirretina, descrita por Corino de Andrade em 1952. Portugal tem o maior foco mundial, sobretudo na Póvoa de Varzim e em Vila do Conde. O diagnóstico precoce é decisivo, porque os tratamentos atuais travam a doença.',
@@ -1182,14 +1182,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🫁', titulo: 'O que é', texto: 'Uma doença crónica em que os brônquios ficam inflamados e estreitos (bronquite crónica) e os alvéolos se destroem (enfisema). O ar fica preso nos pulmões e aparece falta de ar, primeiro com esforço e depois em repouso. Os danos não voltam atrás, mas deixar de fumar trava a doença.' },
           { ico: '🧪', titulo: 'Tabaco, aquecido e vape', texto: 'O fumo do tabaco tem milhares de substâncias químicas, muitas delas tóxicas para os pulmões. O tabaco aquecido e os cigarros eletrónicos também libertam substâncias irritantes e nicotina, que vicia muito depressa.' },
-          { ico: '💪', titulo: 'Se já fumas', lista: ['Quanto mais cedo deixares, mais os pulmões recuperam', 'O médico de família pode ajudar — há consultas de cessação tabágica no SNS', 'Exercício e o apoio dos amigos ajudam a resistir à vontade'] },
+          { ico: '💪', titulo: 'Se já fuma', lista: ['Quanto mais cedo deixar, mais os pulmões recuperam', 'O médico de família pode ajudar — há consultas de cessação tabágica no SNS', 'Exercício e o apoio dos amigos ajudam a resistir à vontade'] },
         ],
         mitos: [
           ['Fumar só ao fim de semana não faz mal.', 'Não há uma quantidade segura de tabaco, e a nicotina cria dependência mesmo em quem fuma pouco.'],
           ['O vape é só vapor de água.', 'Tem nicotina e outras substâncias que irritam e inflamam os pulmões.'],
           ['A DPOC é só tosse de fumador.', 'A tosse com expetoração é muitas vezes o primeiro sinal de uma doença que vai piorar se não se deixar de fumar.'],
         ],
-        alerta: { titulo: 'Procura ajuda se…', lista: ['Tiveres tosse com expetoração quase todos os dias', 'Ficares com falta de ar em esforços que antes fazias bem', 'Quiseres deixar de fumar e não conseguires sozinho'] },
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Ter tosse com expetoração quase todos os dias', 'Ficar com falta de ar em esforços que antes fazia bem', 'Quiser deixar de fumar e não conseguir sozinho'] },
       },
       '18-65': {
         intro: 'A DPOC afeta mais de 1 em cada 10 portugueses com mais de 40 anos, e a maioria não sabe que a tem. Falta de ar, tosse e expetoração num fumador ou ex-fumador devem levar a fazer uma espirometria.',
@@ -1259,7 +1259,7 @@ export const DOENCAS = [
         ],
         seccoes: [
           { ico: '🫁', titulo: 'O que é?', texto: 'Os pulmões são feitos de milhões de células. Às vezes, depois de muitos anos a respirar substâncias que fazem mal, algumas células estragam-se e crescem sem parar, formando um caroço chamado tumor.' },
-          { ico: '🚬', titulo: 'O tabaco', texto: 'O fumo do tabaco tem dezenas de substâncias que causam cancro. Mesmo quem não fuma, mas respira o fumo dos outros, corre mais risco. Por isso ninguém deve fumar perto de ti.' },
+          { ico: '🚬', titulo: 'O tabaco', texto: 'O fumo do tabaco tem dezenas de substâncias que causam cancro. Mesmo quem não fuma, mas respira o fumo dos outros, corre mais risco. Por isso ninguém deve fumar perto de si.' },
           { ico: '🪨', titulo: 'O radão', texto: 'É um gás natural, sem cor e sem cheiro, que sai do granito — uma rocha muito comum no Norte e no Centro de Portugal. Ao ar livre não faz mal, mas pode acumular-se dentro das casas, sobretudo nas caves e nos rés-do-chão. Arejar a casa ajuda.' },
           { ico: '🛡️', titulo: 'Como proteger os pulmões?', lista: ['Nunca começar a fumar', 'Casa e carro sem fumo', 'Abrir as janelas todos os dias', 'Fazer desporto ao ar livre'] },
         ],
@@ -1275,14 +1275,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🚬', titulo: 'Tabaco e vape', texto: 'O fumo do tabaco tem cerca de 70 substâncias que causam cancro. O tabaco aquecido e os cigarros eletrónicos são mais recentes e os seus efeitos a longo prazo ainda não são bem conhecidos, mas libertam substâncias tóxicas e nicotina, que vicia muito.' },
           { ico: '🪨', titulo: 'Radão', texto: 'É um gás radioativo natural, libertado pelo granito, frequente no Norte e no Centro do país. Acumula-se em espaços fechados e pouco arejados. Junto com o tabaco, o risco multiplica-se.' },
-          { ico: '🛡️', titulo: 'Proteger-te', lista: ['Não começar a fumar nem a vapear', 'Evitar ambientes com fumo', 'Arejar a casa e o quarto todos os dias', 'Se já fumas, pedir ajuda para deixar — quanto mais cedo, melhor'] },
+          { ico: '🛡️', titulo: 'Proteger-se', lista: ['Não começar a fumar nem a vapear', 'Evitar ambientes com fumo', 'Arejar a casa e o quarto todos os dias', 'Se já fuma, pedir ajuda para deixar — quanto mais cedo, melhor'] },
         ],
         mitos: [
           ['Só os fumadores têm cancro do pulmão.', 'Entre 1 e 2 em cada 10 casos surgem em pessoas que nunca fumaram — por radão, poluição, fumo passivo ou outras causas.'],
           ['Os cigarros «light» ou com filtro são seguros.', 'Não há tabaco seguro. Quem fuma «light» costuma inspirar com mais força, e o risco mantém-se.'],
           ['Já não vale a pena deixar de fumar.', 'Vale sempre: o risco começa a descer a partir do momento em que se deixa.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Quiseres deixar de fumar ou de vapear', 'Tiveres tosse que dura mais de 3 semanas', 'Tossires sangue'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Quiser deixar de fumar ou de vapear', 'Ter tosse que dura mais de 3 semanas', 'Tossir sangue'] },
       },
       '18-65': {
         intro: 'O cancro do pulmão é a principal causa de morte por cancro em Portugal. O tabaco é responsável pela grande maioria dos casos; o radão, abundante nas zonas graníticas do Norte e do Centro, é a segunda causa. Deixar de fumar é a medida mais eficaz, em qualquer idade.',
@@ -1365,14 +1365,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🧠', titulo: 'Álcool e adolescência', lista: ['Prejudica a memória, a atenção e o desenvolvimento do cérebro', 'Começar cedo aumenta o risco de dependência no futuro', 'Associa-se a acidentes, violência e relações sexuais sem proteção', 'É proibida a venda a menores de 18 anos'] },
           { ico: '🍺', titulo: 'Intoxicação alcoólica', texto: 'Beber muito em pouco tempo pode causar vómitos, perda de consciência e até coma. Uma pessoa muito embriagada nunca deve ficar sozinha: deita-se de lado (posição lateral de segurança) e liga-se 112 se não acordar, respirar mal ou tiver convulsões.' },
-          { ico: '🫶', titulo: 'O que podes fazer', lista: ['Dizer «não» sem ter de dar explicações', 'Combinar com os amigos cuidarem uns dos outros', 'Nunca entrar num carro com um condutor que bebeu', 'Pedir ajuda se o álcool estiver a causar problemas em casa'] },
+          { ico: '🫶', titulo: 'O que pode fazer', lista: ['Dizer «não» sem ter de dar explicações', 'Combinar com os amigos cuidarem uns dos outros', 'Nunca entrar num carro com um condutor que bebeu', 'Pedir ajuda se o álcool estiver a causar problemas em casa'] },
         ],
         mitos: [
           ['Misturar bebidas é que faz mal.', 'O que conta é a quantidade total de álcool, não a mistura.'],
           ['Um café ou um duche frio passam a bebedeira.', 'Só o tempo elimina o álcool — o fígado demora cerca de uma hora por bebida.'],
           ['A cerveja e o vinho fazem menos mal do que as bebidas brancas.', 'Uma imperial, um copo de vinho e um shot têm quantidades de álcool parecidas.'],
         ],
-        alerta: { titulo: 'Liga 112 se um amigo…', lista: ['Não acordar ou não responder', 'Respirar devagar ou de forma irregular', 'Vomitar inconsciente ou tiver convulsões'] },
+        alerta: { titulo: 'Ligue 112 se um amigo…', lista: ['Não acordar ou não responder', 'Respirar devagar ou de forma irregular', 'Vomitar inconsciente ou tiver convulsões'] },
       },
       '18-65': {
         intro: 'O consumo excessivo de álcool é a principal causa de cirrose em Portugal. A doença evolui em silêncio: primeiro o fígado gordo, depois a hepatite alcoólica e a fibrose e, por fim, a cirrose. Parar de beber permite ao fígado recuperar nas fases iniciais.',
@@ -1433,7 +1433,7 @@ export const DOENCAS = [
         ],
       },
       '5-12': {
-        intro: 'Cada corpo é diferente, e todos merecem respeito! Comer bem, mexer muito e dormir o suficiente ajuda o corpo a crescer forte e saudável. Estes hábitos são para toda a família, não só para ti.',
+        intro: 'Cada corpo é diferente, e todos merecem respeito! Comer bem, mexer muito e dormir o suficiente ajuda o corpo a crescer forte e saudável. Estes hábitos são para toda a família, não só para si.',
         imagens: [
           ['prato', 'O prato ideal: metade legumes, um quarto proteína, um quarto hidratos'],
           ['refrigerante', 'Refrigerantes e sumos de pacote têm muito açúcar'],
@@ -1444,7 +1444,7 @@ export const DOENCAS = [
           { ico: '⚖️', titulo: 'O que é?', texto: 'Acontece quando o corpo guarda mais gordura do que precisa, porque recebe mais energia da comida do que gasta a brincar e a crescer. Pode acontecer a qualquer pessoa e não é culpa de ninguém. Com o tempo, pode causar problemas no coração, nos ossos e no açúcar do sangue.' },
           { ico: '🥗', titulo: 'Comer bem', lista: ['Pequeno-almoço todos os dias', 'Sopa, fruta e legumes nas refeições principais', 'Água em vez de refrigerantes e sumos', 'Doces e bolos só em dias de festa', 'Comer devagar, à mesa e em família'] },
           { ico: '⚽', titulo: 'Mexer e dormir', lista: ['Brincar ao ar livre, andar de bicicleta, saltar à corda, dançar', 'Ir a pé para a escola, quando for possível', 'Dormir 9 a 12 horas por noite', 'Desligar os ecrãs uma hora antes de dormir'] },
-          { ico: '💛', titulo: 'Respeito por todos', texto: 'Ninguém deve ser gozado por causa do corpo. Se alguém goza contigo ou com um colega, conta a um adulto. Dietas só com o médico — a ideia é ter hábitos saudáveis, não passar fome.' },
+          { ico: '💛', titulo: 'Respeito por todos', texto: 'Ninguém deve ser gozado por causa do corpo. Se alguém goza consigo ou com um colega, conte a um adulto. Dietas só com o médico — a ideia é ter hábitos saudáveis, não passar fome.' },
         ],
         curiosidade: 'Uma lata de refrigerante pode ter o equivalente a 6 ou 7 pacotes de açúcar!',
       },
@@ -1457,15 +1457,15 @@ export const DOENCAS = [
         ],
         seccoes: [
           { ico: '📏', titulo: 'Como se avalia', texto: 'Nos jovens, o IMC (o peso a dividir pela altura ao quadrado) compara-se com as curvas de crescimento da OMS para a idade e o sexo. O médico de família avalia também o perímetro da cintura, a tensão arterial e, se for preciso, pede análises.' },
-          { ico: '🍽️', titulo: 'Hábitos que funcionam', lista: ['Não saltar o pequeno-almoço', 'Água como bebida principal', 'Fruta e frutos secos como snack', 'Menos fast food e ultraprocessados', 'Um desporto que te dê prazer, com amigos'] },
-          { ico: '🧠', titulo: 'Corpo e cabeça', texto: 'As dietas muito restritivas, os jejuns prolongados e os conselhos «milagrosos» das redes sociais podem fazer mal e levar a perturbações do comportamento alimentar. Se a comida, o peso ou o corpo te preocupam muito, fala com alguém de confiança ou com o médico.' },
+          { ico: '🍽️', titulo: 'Hábitos que funcionam', lista: ['Não saltar o pequeno-almoço', 'Água como bebida principal', 'Fruta e frutos secos como snack', 'Menos fast food e ultraprocessados', 'Um desporto que lhe dê prazer, com amigos'] },
+          { ico: '🧠', titulo: 'Corpo e cabeça', texto: 'As dietas muito restritivas, os jejuns prolongados e os conselhos «milagrosos» das redes sociais podem fazer mal e levar a perturbações do comportamento alimentar. Se a comida, o peso ou o corpo o preocupam muito, fale com alguém de confiança ou com o médico.' },
         ],
         mitos: [
           ['Para emagrecer é preciso deixar de comer.', 'Saltar refeições aumenta a fome e o petiscar. O que resulta são refeições regulares e equilibradas.'],
           ['Os sumos naturais podem beber-se à vontade.', 'Têm o açúcar da fruta e pouca fibra. Mais vale comer a fruta inteira.'],
           ['Quem tem excesso de peso é preguiçoso.', 'O peso depende da genética, do ambiente, do sono, do stress e de muito mais. Julgar não ajuda ninguém.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Te sentires tão mal com o teu corpo que evitas comer ou vomitas', 'Ressonares muito ou acordares sempre cansado', 'Tiveres manchas escuras e grossas no pescoço ou nas axilas (podem indicar resistência à insulina)'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Sentir-se tão mal com o seu corpo que evita comer ou vomita', 'Ressonar muito ou acordar sempre cansado', 'Ter manchas escuras e grossas no pescoço ou nas axilas (podem indicar resistência à insulina)'] },
       },
       '18-65': {
         intro: 'Este separador é para pais e cuidadores. Em Portugal, cerca de 3 em cada 10 crianças em idade escolar têm excesso de peso. O papel da família é decisivo: as crianças comem o que há em casa e fazem o que veem fazer.',
@@ -1523,7 +1523,7 @@ export const DOENCAS = [
         ],
       },
       '5-12': {
-        intro: 'Os ossos estão vivos e crescem contigo! Até aos 30 anos, o corpo vai guardando osso, como num mealheiro. A osteoporose acontece mais tarde, quando os ossos perdem força e ficam como uma esponja com buracos grandes.',
+        intro: 'Os ossos estão vivos e crescem consigo! Até aos 30 anos, o corpo vai guardando osso, como num mealheiro. A osteoporose acontece mais tarde, quando os ossos perdem força e ficam como uma esponja com buracos grandes.',
         imagens: [
           ['ossos', 'Por dentro, o osso parece uma esponja'],
           ['leite', 'O cálcio constrói os ossos'],
@@ -1534,12 +1534,12 @@ export const DOENCAS = [
           { ico: '🦴', titulo: 'Ossos vivos', texto: 'Um bebé nasce com cerca de 300 ossos, que se vão juntando até ficarem 206 num adulto. Os ossos estão sempre a ser desfeitos e refeitos e, enquanto crescemos, fazemos mais osso do que gastamos.' },
           { ico: '🕳️', titulo: 'O que é a osteoporose?', texto: 'Com a idade, sobretudo nas mulheres depois da menopausa, os ossos perdem mais do que ganham. Ficam porosos e frágeis e podem partir-se com uma queda pequena — por exemplo, o pulso ou a anca dos avós.' },
           { ico: '🥛', titulo: 'Encher o mealheiro de osso', lista: ['Leite, iogurte e queijo, ou outros alimentos com cálcio (sardinhas, brócolos, feijão)', 'Brincar ao ar livre: o sol ajuda a fazer vitamina D', 'Saltar, correr, dançar e jogar à bola', 'Água e leite em vez de refrigerantes'] },
-          { ico: '👵', titulo: 'Ajudar os avós', texto: 'Ajuda-os a ter a casa arrumada, sem coisas no chão onde possam tropeçar, e acompanha-os nos passeios. Uma queda pode partir um osso fraco.' },
+          { ico: '👵', titulo: 'Ajudar os avós', texto: 'Ajude-os a ter a casa arrumada, sem coisas no chão onde possam tropeçar, e acompanhe-os nos passeios. Uma queda pode partir um osso fraco.' },
         ],
         curiosidade: 'O fémur, o osso da coxa, é o maior e o mais forte do corpo — consegue aguentar várias vezes o peso de uma pessoa!',
       },
       '13-17': {
-        intro: 'A adolescência é a melhor altura para construir osso: cerca de metade da massa óssea de um adulto forma-se nestes anos. O que fizeres agora vai proteger-te das fraturas daqui a muitas décadas.',
+        intro: 'A adolescência é a melhor altura para construir osso: cerca de metade da massa óssea de um adulto forma-se nestes anos. O que fizer agora vai protegê-lo das fraturas daqui a muitas décadas.',
         imagens: [
           ['ossos', 'O pico de massa óssea atinge-se por volta dos 25–30 anos'],
           ['brincar', 'Os desportos com saltos constroem mais osso'],
@@ -1548,14 +1548,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🏗️', titulo: 'Construir osso', lista: ['Desportos com saltos e impacto (basquetebol, voleibol, corrida, dança)', '3 porções por dia de lacticínios, ou alternativas ricas em cálcio', 'Tempo ao ar livre, com proteção solar adequada', 'Proteína suficiente na alimentação'] },
           { ico: '⚠️', titulo: 'O que tira osso', lista: ['Tabaco e álcool', 'Dietas muito restritivas e baixo peso', 'Falta de menstruação, por exemplo por exercício excessivo com pouca alimentação', 'Alguns medicamentos, como os corticoides tomados durante muito tempo'] },
-          { ico: '💡', titulo: 'Porque importa já', texto: 'Quanto mais osso tiveres aos 30 anos, mais tempo levarás a chegar à osteoporose. É como um mealheiro: o que poupas agora é o que vais ter para gastar mais tarde.' },
+          { ico: '💡', titulo: 'Porque importa já', texto: 'Quanto mais osso tiver aos 30 anos, mais tempo levará a chegar à osteoporose. É como um mealheiro: o que poupa agora é o que vai ter para gastar mais tarde.' },
         ],
         mitos: [
           ['A osteoporose é só uma doença de mulheres idosas.', 'Também atinge homens, e a sua prevenção começa na infância e na adolescência.'],
           ['Partir um osso numa queda pequena é normal com a idade.', 'Uma fratura com uma queda da própria altura pode ser o primeiro sinal de osteoporose.'],
           ['Basta beber leite para ter ossos fortes.', 'O cálcio é importante, mas o exercício com impacto é igualmente essencial.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Partires um osso com uma queda pequena', 'A menstruação parar durante vários meses', 'Fizeres dietas muito restritivas ou estiveres muito abaixo do peso'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Partir um osso com uma queda pequena', 'A menstruação parar durante vários meses', 'Fazer dietas muito restritivas ou estar muito abaixo do peso'] },
       },
       '18-65': {
         intro: 'A partir dos 50 anos, cerca de 1 em cada 3 mulheres e 1 em cada 5 homens vão ter uma fratura por osteoporose. A doença não dói até um osso partir — por isso é importante conhecer o risco e preveni-la.',
@@ -1608,9 +1608,9 @@ export const DOENCAS = [
         imagens: [
           ['cerebro', 'O cérebro guarda as nossas memórias'],
           ['puzzle-cerebro', 'Às vezes os avós esquecem-se de coisas'],
-          ['conversa', 'Podes contar-lhes histórias muitas vezes'],
+          ['conversa', 'Pode contar-lhes histórias muitas vezes'],
           ['musica', 'Cantar juntos faz bem'],
-          ['abraco', 'Mesmo que se esqueçam, sentem o teu carinho'],
+          ['abraco', 'Mesmo que se esqueçam, sentem o seu carinho'],
           ['cuidar', 'Dar a mão e passear juntos'],
         ],
       },
@@ -1624,14 +1624,14 @@ export const DOENCAS = [
         ],
         seccoes: [
           { ico: '🧠', titulo: 'O que é?', texto: 'O cérebro é feito de milhões de células, os neurónios, que falam umas com as outras. Na demência, algumas destas células vão deixando de funcionar. Primeiro custa lembrar coisas recentes; com o tempo, fica difícil vestir-se, cozinhar ou reconhecer lugares.' },
-          { ico: '❓', titulo: 'Porque é que o avô repete as mesmas perguntas?', texto: 'Porque não se lembra de já ter perguntado. Não está a fazer de propósito nem a brincar contigo. Responder com calma, outra vez, é uma grande ajuda.' },
+          { ico: '❓', titulo: 'Porque é que o avô repete as mesmas perguntas?', texto: 'Porque não se lembra de já ter perguntado. Não está a fazer de propósito nem a brincar consigo. Responder com calma, outra vez, é uma grande ajuda.' },
           { ico: '💛', titulo: 'Como posso ajudar?', lista: ['Falar devagar e dizer uma coisa de cada vez', 'Ver fotografias antigas e ouvir as histórias de antigamente', 'Cantar, desenhar e jogar jogos simples juntos', 'Não corrigir sempre: às vezes é melhor só ouvir'] },
-          { ico: '🤗', titulo: 'E o que eu sinto?', texto: 'É normal ficares triste, confuso ou até zangado. Fala com os teus pais sobre isso. O avô ou a avó continuam a precisar do teu carinho — e o carinho sente-se mesmo quando as palavras se esquecem.' },
+          { ico: '🤗', titulo: 'E o que eu sinto?', texto: 'É normal ficar triste, confuso ou até zangado. Fale com os seus pais sobre isso. O avô ou a avó continuam a precisar do seu carinho — e o carinho sente-se mesmo quando as palavras se esquecem.' },
         ],
         curiosidade: 'O cérebro tem cerca de 86 mil milhões de neurónios, e as ligações entre eles são mais do que as estrelas da nossa galáxia!',
       },
       '13-17': {
-        intro: 'Muitos jovens têm um avô ou uma avó com demência. Perceber a doença ajuda a lidar com ela — e alguns hábitos que começam na tua idade protegem o teu cérebro no futuro.',
+        intro: 'Muitos jovens têm um avô ou uma avó com demência. Perceber a doença ajuda a lidar com ela — e alguns hábitos que começam na sua idade protegem o seu cérebro no futuro.',
         imagens: [
           ['puzzle-cerebro', 'A doença de Alzheimer é a causa mais comum'],
           ['cuidar', 'Cuidar de quem cuida também é importante'],
@@ -1639,15 +1639,15 @@ export const DOENCAS = [
         ],
         seccoes: [
           { ico: '🧠', titulo: 'O que é', texto: 'Demência é um conjunto de sintomas — perda de memória, de orientação, de linguagem e da capacidade de decidir — que tornam a pessoa dependente. A causa mais frequente é a doença de Alzheimer; seguem-se a demência vascular, ligada a AVC e a vasos doentes, e outras.' },
-          { ico: '🛡️', titulo: 'Proteger o cérebro desde já', lista: ['Estudar e aprender coisas novas', 'Proteger a cabeça: capacete na bicicleta e na trotinete', 'Proteger a audição: volume baixo nos auscultadores', 'Não fumar e evitar o álcool', 'Mexer-te e dormir bem'] },
-          { ico: '🫶', titulo: 'Quando é na família', texto: 'Cuidar de alguém com demência é exigente e pode mudar a rotina da casa. É normal sentires frustração ou tristeza. Pequenos gestos — uma visita, uma música, um passeio — fazem diferença para todos.' },
+          { ico: '🛡️', titulo: 'Proteger o cérebro desde já', lista: ['Estudar e aprender coisas novas', 'Proteger a cabeça: capacete na bicicleta e na trotinete', 'Proteger a audição: volume baixo nos auscultadores', 'Não fumar e evitar o álcool', 'Mexer-se e dormir bem'] },
+          { ico: '🫶', titulo: 'Quando é na família', texto: 'Cuidar de alguém com demência é exigente e pode mudar a rotina da casa. É normal sentir frustração ou tristeza. Pequenos gestos — uma visita, uma música, um passeio — fazem diferença para todos.' },
         ],
         mitos: [
           ['Perder a memória faz parte de envelhecer.', 'Esquecimentos leves são normais, mas a demência é uma doença — não uma consequência inevitável da idade.'],
           ['A demência é sempre hereditária.', 'A grande maioria dos casos não é herdada diretamente; só formas raras passam de pais para filhos.'],
           ['Não há nada que se possa fazer.', 'Cerca de 4 em cada 10 casos estão ligados a fatores que se podem prevenir, como a hipertensão, o tabaco, a surdez não tratada e o isolamento.'],
         ],
-        alerta: { titulo: 'Fala com um adulto se…', lista: ['Um familiar se perder em sítios que conhece bem', 'Notares que alguém mais velho deixou de conseguir tratar das contas, da comida ou dos medicamentos', 'Te sentires sobrecarregado a ajudar em casa'] },
+        alerta: { titulo: 'Fale com um adulto se…', lista: ['Um familiar se perder em sítios que conhece bem', 'Notar que alguém mais velho deixou de conseguir tratar das contas, da comida ou dos medicamentos', 'Sentir-se sobrecarregado a ajudar em casa'] },
       },
       '18-65': {
         intro: 'Portugal está entre os países europeus com mais pessoas com demência por habitante, e o número vai aumentar com o envelhecimento. Reconhecer os sinais cedo permite tratar causas reversíveis, planear o futuro e apoiar quem cuida.',
@@ -1742,7 +1742,7 @@ export const DOENCAS = [
           ['Apanha-se ao partilhar copos ou talheres.', 'Transmite-se pelo ar, ao tossir, falar ou espirrar, em contactos próximos e prolongados.'],
           ['Só acontece a pessoas pobres.', 'Pode afetar qualquer pessoa, embora a pobreza, a má alimentação e as casas sobrelotadas aumentem o risco.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Tiveres tosse durante mais de 3 semanas', 'Tiveres febre e suores à noite e perderes peso', 'Tossires sangue', 'Alguém próximo de ti tiver tuberculose'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Ter tosse durante mais de 3 semanas', 'Ter febre e suores à noite e perder peso', 'Tossir sangue', 'Alguém próximo de si tiver tuberculose'] },
       },
       '18-65': {
         intro: 'Portugal tem uma incidência de tuberculose acima da média europeia, com mais casos nas áreas metropolitanas de Lisboa e do Porto. O diagnóstico precoce interrompe a transmissão, e o tratamento completo cura.',
@@ -1793,8 +1793,8 @@ export const DOENCAS = [
           ['bronquio-asma', 'Na asma, os tubinhos do ar ficam apertados'],
           ['alergenos', 'Pó, pólen e pelo de animais podem fazer tossir'],
           ['inalador', 'A bombinha abre os tubinhos do ar'],
-          ['correr', 'Com a asma tratada, podes correr e brincar'],
-          ['abraco', 'Avisa um adulto se custar a respirar'],
+          ['correr', 'Com a asma tratada, pode correr e brincar'],
+          ['abraco', 'Avise um adulto se custar a respirar'],
         ],
       },
       '5-12': {
@@ -1809,20 +1809,20 @@ export const DOENCAS = [
           { ico: '🌬️', titulo: 'O que é?', texto: 'O ar entra pelo nariz e pela boca e desce por tubinhos até aos pulmões. Na asma, esses tubinhos estão sensíveis: quando encontram uma coisa que os irrita, incham, fazem muco e apertam. O ar passa com dificuldade e ouve-se um assobio a respirar, a pieira.' },
           { ico: '🤧', titulo: 'O que pode causar uma crise?', lista: ['Constipações e gripe', 'Pó da casa, pólen e pelo de animais', 'Fumo do tabaco', 'Ar muito frio ou poluído', 'Às vezes, correr muito sem o inalador'] },
           { ico: '💨', titulo: 'Como se trata?', texto: 'Com inaladores (as «bombinhas»). Há o de todos os dias, que acalma os brônquios, e o de alívio, para as crises. As crianças mais pequenas usam uma câmara expansora, um tubo que ajuda o remédio a chegar aos pulmões.' },
-          { ico: '🙋', titulo: 'Numa crise', lista: ['Pára, senta-te e tenta respirar devagar', 'Usa o inalador de alívio como o médico explicou', 'Avisa logo um adulto — na escola também'] },
+          { ico: '🙋', titulo: 'Numa crise', lista: ['Pare, sente-se e tente respirar devagar', 'Use o inalador de alívio como o médico explicou', 'Avise logo um adulto — na escola também'] },
         ],
         curiosidade: 'Há muitos atletas olímpicos com asma — alguns até ganharam medalhas na natação, no ciclismo e no atletismo!',
       },
       '13-17': {
-        intro: 'A asma é uma das doenças crónicas mais frequentes na tua idade. Bem controlada, não deve impedir-te de fazer desporto, sair ou dormir bem — se impede, é sinal de que o tratamento precisa de ser revisto.',
+        intro: 'A asma é uma das doenças crónicas mais frequentes na sua idade. Bem controlada, não deve impedi-lo de fazer desporto, sair ou dormir bem — se impede, é sinal de que o tratamento precisa de ser revisto.',
         imagens: [
           ['bronquio-asma', 'Inflamação e aperto dos brônquios'],
           ['inalador', 'O inalador certo, com a técnica certa'],
           ['cigarro', 'Tabaco e vape pioram a asma'],
         ],
         seccoes: [
-          { ico: '🫁', titulo: 'O que se passa nos brônquios', texto: 'Na asma, os brônquios estão inflamados mesmo quando te sentes bem. Perante um gatilho — infeções, alergias, fumo, exercício, stress — apertam-se e enchem-se de muco: aparecem tosse (sobretudo à noite), pieira, aperto no peito e falta de ar.' },
-          { ico: '💨', titulo: 'Os inaladores', lista: ['O inalador com corticoide trata a inflamação: é o que previne as crises', 'Usar só o inalador de alívio, sem corticoide, não chega e aumenta o risco de crises graves', 'A técnica conta: pede ao médico ou ao farmacêutico para ver como o usas', 'Bochecha com água depois do inalador com corticoide'] },
+          { ico: '🫁', titulo: 'O que se passa nos brônquios', texto: 'Na asma, os brônquios estão inflamados mesmo quando se sente bem. Perante um gatilho — infeções, alergias, fumo, exercício, stress — apertam-se e enchem-se de muco: aparecem tosse (sobretudo à noite), pieira, aperto no peito e falta de ar.' },
+          { ico: '💨', titulo: 'Os inaladores', lista: ['O inalador com corticoide trata a inflamação: é o que previne as crises', 'Usar só o inalador de alívio, sem corticoide, não chega e aumenta o risco de crises graves', 'A técnica conta: peça ao médico ou ao farmacêutico para ver como o usa', 'Bocheche com água depois do inalador com corticoide'] },
           { ico: '✅', titulo: 'Asma controlada é…', lista: ['Quase sem sintomas durante o dia', 'Sem acordar à noite com tosse ou falta de ar', 'Fazer desporto sem limitações', 'Precisar do alívio, no máximo, duas vezes por semana'] },
         ],
         mitos: [
@@ -1830,7 +1830,7 @@ export const DOENCAS = [
           ['Os inaladores com corticoide viciam ou fazem engordar.', 'Não viciam, e a dose é tão pequena que, na maioria das pessoas, não tem os efeitos dos corticoides em comprimidos.'],
           ['O vape não faz mal a quem tem asma.', 'O vapor irrita os brônquios e pode provocar crises, tal como o tabaco.'],
         ],
-        alerta: { titulo: 'Vai à urgência se…', lista: ['O inalador de alívio não fizer efeito ou precisares dele a toda a hora', 'Não conseguires falar frases inteiras por falta de ar', 'Os lábios ou as unhas ficarem azulados'] },
+        alerta: { titulo: 'Vá à urgência se…', lista: ['O inalador de alívio não fizer efeito ou precisar dele a toda a hora', 'Não conseguir falar frases inteiras por falta de ar', 'Os lábios ou as unhas ficarem azulados'] },
         ligacoes: [{ href: 'calculadora-respiratoria/?calc=act', texto: 'Teste de controlo da asma (ACT)' }],
       },
       '18-65': {
@@ -1898,10 +1898,10 @@ export const DOENCAS = [
         ],
         seccoes: [
           { ico: '❤️', titulo: 'O que é?', texto: 'Com os anos, pode juntar-se gordura nas paredes das artérias, como calcário num cano. Se uma artéria do coração entope de vez, essa parte do músculo fica sem oxigénio e começa a estragar-se. Por isso é preciso ir depressa para o hospital.' },
-          { ico: '🚑', titulo: 'Se um adulto se queixar de dor no peito', lista: ['Não o deixes sozinho', 'Chama outro adulto', 'Liga 112 e diz a morada', 'Responde com calma às perguntas'] },
+          { ico: '🚑', titulo: 'Se um adulto se queixar de dor no peito', lista: ['Não o deixe sozinho', 'Chame outro adulto', 'Ligue 112 e diga a morada', 'Responda com calma às perguntas'] },
           { ico: '💪', titulo: 'Como se protege o coração?', lista: ['Brincar e fazer desporto', 'Comer fruta, legumes e pouco sal', 'Nunca começar a fumar', 'Dormir bem'] },
         ],
-        curiosidade: 'O teu coração bate cerca de 100 mil vezes por dia, e numa vida inteira mais de 2,5 mil milhões de vezes!',
+        curiosidade: 'O seu coração bate cerca de 100 mil vezes por dia, e numa vida inteira mais de 2,5 mil milhões de vezes!',
       },
       '13-17': {
         intro: 'As doenças do coração e dos vasos são a principal causa de morte em Portugal. O enfarte costuma surgir em adultos, mas os hábitos que o preparam — tabaco, sedentarismo, má alimentação — começam muitas vezes na adolescência.',
@@ -1912,15 +1912,15 @@ export const DOENCAS = [
         ],
         seccoes: [
           { ico: '🫀', titulo: 'Como acontece', texto: 'Ao longo dos anos formam-se placas de gordura (aterosclerose) nas artérias do coração. Se uma placa se rompe, forma-se um coágulo que tapa a artéria. Quanto mais tempo passa até a desentupir, mais músculo se perde.' },
-          { ico: '🚨', titulo: 'Reconhecer', lista: ['Dor ou aperto no peito que dura mais de alguns minutos', 'Dor que passa para o braço, o pescoço, o maxilar ou as costas', 'Suores frios, náuseas, falta de ar', 'Liga 112 — não vás de carro nem esperes que passe'] },
-          { ico: '🛡️', titulo: 'Proteger o coração já', lista: ['Não fumar nem vaporizar', 'Mexer-te pelo menos 1 hora por dia', 'Menos fast food, sal e refrigerantes', 'Bebidas energéticas e drogas como a cocaína podem provocar problemas cardíacos mesmo em jovens'] },
+          { ico: '🚨', titulo: 'Reconhecer', lista: ['Dor ou aperto no peito que dura mais de alguns minutos', 'Dor que passa para o braço, o pescoço, o maxilar ou as costas', 'Suores frios, náuseas, falta de ar', 'Ligue 112 — não vá de carro nem espere que passe'] },
+          { ico: '🛡️', titulo: 'Proteger o coração já', lista: ['Não fumar nem vaporizar', 'Mexer-se pelo menos 1 hora por dia', 'Menos fast food, sal e refrigerantes', 'Bebidas energéticas e drogas como a cocaína podem provocar problemas cardíacos mesmo em jovens'] },
         ],
         mitos: [
           ['Enfartes só acontecem a velhos.', 'São mais frequentes depois dos 50, mas podem acontecer a adultos jovens, sobretudo fumadores ou com colesterol muito alto de família.'],
           ['Se a dor passar sozinha, não era nada.', 'Uma dor no peito que vai e vem pode ser angina, um aviso de que o coração recebe pouco sangue. Deve ser vista pelo médico.'],
           ['O enfarte é sempre uma dor fortíssima, como nos filmes.', 'Muitas vezes é um aperto, um peso ou um desconforto, com suores e enjoo.'],
         ],
-        alerta: { titulo: 'Liga 112 se alguém tiver…', lista: ['Dor ou aperto no peito com mais de alguns minutos', 'Dor no peito com suores, falta de ar ou desmaio', 'Perda de consciência — e começa o suporte básico de vida se souberes'] },
+        alerta: { titulo: 'Ligue 112 se alguém tiver…', lista: ['Dor ou aperto no peito com mais de alguns minutos', 'Dor no peito com suores, falta de ar ou desmaio', 'Perda de consciência — e comece o suporte básico de vida se souber'] },
       },
       '18-65': {
         intro: 'O enfarte agudo do miocárdio é uma das principais causas de morte em Portugal, mas a sobrevivência melhorou muito: ligar cedo para o 112 ativa a Via Verde Coronária e leva o doente diretamente ao hospital que pode desentupir a artéria.',
@@ -1992,12 +1992,12 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🎵', titulo: 'O que é?', texto: 'Normalmente, um sinal elétrico parte sempre do mesmo sítio e o coração bate certinho, como um tambor numa marcha. Na fibrilhação auricular, a parte de cima do coração recebe muitos sinais ao mesmo tempo e treme em vez de bater. O ritmo fica irregular.' },
           { ico: '🩸', titulo: 'Porque é importante?', texto: 'Quando o coração treme, o sangue pode ficar parado em cantinhos e formar pequenos coágulos. Se um coágulo for até ao cérebro, causa um AVC. Por isso, muitos avós com esta doença tomam remédios que deixam o sangue mais fluido.' },
-          { ico: '🖐️', titulo: 'Experimenta!', lista: ['Põe dois dedos no pulso, do lado do polegar', 'Conta os batimentos durante 1 minuto', 'Nas crianças, o coração bate entre 70 e 110 vezes por minuto em repouso', 'Depois de correr, bate mais depressa'] },
+          { ico: '🖐️', titulo: 'Experimente!', lista: ['Ponha dois dedos no pulso, do lado do polegar', 'Conte os batimentos durante 1 minuto', 'Nas crianças, o coração bate entre 70 e 110 vezes por minuto em repouso', 'Depois de correr, bate mais depressa'] },
         ],
         curiosidade: 'O coração tem a sua própria eletricidade: é por isso que um eletrocardiograma consegue desenhar cada batimento numa folha!',
       },
       '13-17': {
-        intro: 'A fibrilhação auricular é a arritmia mais comum. É rara na tua idade, mas é muito frequente nos avós. Conhecê-la ajuda a reconhecer os sinais e a perceber porque é tão importante tomar a medicação.',
+        intro: 'A fibrilhação auricular é a arritmia mais comum. É rara na sua idade, mas é muito frequente nos avós. Conhecê-la ajuda a reconhecer os sinais e a perceber porque é tão importante tomar a medicação.',
         imagens: [
           ['ecg-irregular', 'No eletrocardiograma, o ritmo é irregular'],
           ['pulso', 'Pulso irregular, às vezes muito rápido'],
@@ -2013,7 +2013,7 @@ export const DOENCAS = [
           ['Os anticoagulantes «afinam» o sangue e são perigosos.', 'Têm risco de hemorragia, mas, na maioria das pessoas com fibrilhação auricular, evitam muitos mais AVC do que as hemorragias que causam.'],
           ['Arritmia é sinal de que o coração está a parar.', 'Na fibrilhação auricular, o coração continua a bombear — de forma menos eficiente, mas continua.'],
         ],
-        alerta: { titulo: 'Fala com um adulto ou liga 112 se…', lista: ['Tiveres palpitações com desmaio, dor no peito ou muita falta de ar', 'Alguém com fibrilhação auricular ficar com a boca ao lado, sem força num braço ou com dificuldade em falar (AVC)'] },
+        alerta: { titulo: 'Fale com um adulto ou ligue 112 se…', lista: ['Tiver palpitações com desmaio, dor no peito ou muita falta de ar', 'Alguém com fibrilhação auricular ficar com a boca ao lado, sem força num braço ou com dificuldade em falar (AVC)'] },
       },
       '18-65': {
         intro: 'A fibrilhação auricular é a arritmia mais frequente e torna-se mais comum com a idade. Multiplica por cinco o risco de AVC, mas a anticoagulação reduz esse risco em cerca de dois terços. Muitas vezes não dá sintomas: medir o pulso pode descobri-la.',
@@ -2104,7 +2104,7 @@ export const DOENCAS = [
           ['Quem tem o coração fraco deve ficar quieto.', 'O exercício adaptado e orientado melhora os sintomas e a qualidade de vida.'],
           ['Beber muita água faz sempre bem.', 'Na insuficiência cardíaca, às vezes é preciso limitar os líquidos — conforme indicação médica.'],
         ],
-        alerta: { titulo: 'Liga 112 se um familiar…', lista: ['Tiver falta de ar intensa, sobretudo deitado', 'Tiver dor no peito ou desmaiar', 'Ficar confuso ou com os lábios azulados'] },
+        alerta: { titulo: 'Ligue 112 se um familiar…', lista: ['Tiver falta de ar intensa, sobretudo deitado', 'Tiver dor no peito ou desmaiar', 'Ficar confuso ou com os lábios azulados'] },
       },
       '18-65': {
         intro: 'Um estudo recente estimou que cerca de 1 em cada 6 pessoas com mais de 50 anos em Portugal tem insuficiência cardíaca — e a maioria não sabe. Reconhecer os sintomas cedo permite começar tratamentos que mudam o prognóstico.',
@@ -2192,7 +2192,7 @@ export const DOENCAS = [
           ['Se urino bem, os rins estão bem.', 'Muitas pessoas com doença renal urinam normalmente. Só as análises dizem como estão os rins.'],
           ['Os anti-inflamatórios são inofensivos porque se compram sem receita.', 'Usados com frequência, podem lesar os rins, sobretudo com desidratação.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Tiveres urina com espuma persistente ou cor de chá', 'Inchaço nos olhos ou nas pernas', 'Tensão alta numa medição'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Tiver urina com espuma persistente ou cor de chá', 'Inchaço nos olhos ou nas pernas', 'Tensão alta numa medição'] },
       },
       '18-65': {
         intro: 'Cerca de 1 em cada 10 adultos tem doença renal crónica, e a maioria não sabe. Portugal está entre os países da Europa com mais pessoas em diálise. Detetada cedo, é possível travá-la.',
@@ -2260,12 +2260,12 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🌰', titulo: 'O que é a próstata?', texto: 'É uma glândula que só os homens têm. Fica à volta do tubo por onde sai o xixi, logo por baixo da bexiga. Nos homens mais velhos, a próstata cresce muitas vezes, e isso pode fazer o xixi sair mais devagar.' },
           { ico: '🔬', titulo: 'O que é o cancro da próstata?', texto: 'É quando algumas células da próstata começam a crescer sem parar. Quase sempre acontece depois dos 50 anos e cresce muito devagar. Quando é descoberto cedo, quase sempre se cura.' },
-          { ico: '🥸', titulo: 'Porquê os bigodes?', texto: 'Em novembro, muitos homens deixam crescer o bigode para lembrar que é importante cuidar da saúde e ir ao médico. Podes desafiar o teu pai ou o teu avô!' },
+          { ico: '🥸', titulo: 'Porquê os bigodes?', texto: 'Em novembro, muitos homens deixam crescer o bigode para lembrar que é importante cuidar da saúde e ir ao médico. Pode desafiar o seu pai ou o seu avô!' },
         ],
         curiosidade: 'O movimento dos bigodes de novembro começou em 2003, na Austrália, com apenas 30 amigos — hoje participam milhões de pessoas em todo o mundo!',
       },
       '13-17': {
-        intro: 'O cancro da próstata é o mais frequente nos homens em Portugal, mas quase nunca aparece antes dos 50 anos. Falar dele ajuda os homens da tua família a não terem vergonha de ir ao médico.',
+        intro: 'O cancro da próstata é o mais frequente nos homens em Portugal, mas quase nunca aparece antes dos 50 anos. Falar dele ajuda os homens da sua família a não terem vergonha de ir ao médico.',
         imagens: [
           ['prostata', 'A próstata envolve a uretra, por baixo da bexiga'],
           ['analise', 'O PSA é uma análise ao sangue'],
@@ -2281,7 +2281,7 @@ export const DOENCAS = [
           ['Quem tem o cancro da próstata fica sempre impotente ou incontinente.', 'Nem sempre. Muitos casos são só vigiados, e os tratamentos atuais tentam preservar estas funções.'],
           ['É uma doença que só aparece em velhos, não há nada a fazer.', 'Descoberto cedo, a taxa de cura é muito elevada.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Tiveres dor ou inchaço num testículo (outro tipo de cancro, mais frequente em jovens)', 'Tiveres sangue na urina', 'Dor ou ardor persistente a urinar'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Tiver dor ou inchaço num testículo (outro tipo de cancro, mais frequente em jovens)', 'Tiver sangue na urina', 'Dor ou ardor persistente a urinar'] },
       },
       '18-65': {
         intro: 'É o cancro mais frequente nos homens em Portugal. A maioria cresce devagar, e muitos homens morrem com ele e não por causa dele. A partir dos 50 anos — ou dos 45 com familiares afetados — vale a pena falar com o médico sobre a análise do PSA.',
@@ -2353,9 +2353,9 @@ export const DOENCAS = [
         seccoes: [
           { ico: '☀️', titulo: 'Porque é que o sol queima?', texto: 'Os raios ultravioleta entram na pele e estragam as células. A pele fica vermelha e dói: é um escaldão. A pele lembra-se de todos os escaldões, e alguns podem, muitos anos depois, transformar-se em cancro.' },
           { ico: '🧴', titulo: 'Como me protejo?', lista: ['Protetor solar 30 minutos antes de sair, e outra vez de 2 em 2 horas e depois de cada banho', 'Chapéu, óculos de sol e t-shirt', 'Brincar à sombra entre o meio-dia e as 4 da tarde', 'Beber água'] },
-          { ico: '🔍', titulo: 'E os sinais?', texto: 'Quase todos temos sinais na pele, e são normais. Se um sinal mudar de tamanho, de forma ou de cor, ou sangrar, mostra-o aos teus pais para irem ao médico.' },
+          { ico: '🔍', titulo: 'E os sinais?', texto: 'Quase todos temos sinais na pele, e são normais. Se um sinal mudar de tamanho, de forma ou de cor, ou sangrar, mostre-o aos seus pais para irem ao médico.' },
         ],
-        curiosidade: 'Truque da sombra: se a tua sombra for mais curta do que tu, o sol está forte — é hora de ir para a sombra!',
+        curiosidade: 'Truque da sombra: se a sua sombra for mais curta do que você, o sol está forte — é hora de ir para a sombra!',
       },
       '13-17': {
         intro: 'O cancro da pele é o cancro mais frequente, e a maior parte do risco constrói-se antes dos 20 anos, com escaldões e bronzeados intensos. Os solários também aumentam muito o risco de melanoma.',
@@ -2374,7 +2374,7 @@ export const DOENCAS = [
           ['Em dias nublados não é preciso protetor.', 'Grande parte dos raios ultravioleta atravessa as nuvens.'],
           ['Os solários são mais seguros do que o sol.', 'Usar solários antes dos 35 anos aumenta muito o risco de melanoma.'],
         ],
-        alerta: { titulo: 'Mostra a um médico se…', lista: ['Um sinal mudar de tamanho, forma ou cor', 'Um sinal sangrar, fizer comichão ou ferida', 'Aparecer um sinal novo muito diferente dos outros'] },
+        alerta: { titulo: 'Mostre a um médico se…', lista: ['Um sinal mudar de tamanho, forma ou cor', 'Um sinal sangrar, fizer comichão ou ferida', 'Aparecer um sinal novo muito diferente dos outros'] },
       },
       '18-65': {
         intro: 'Portugal tem muitas horas de sol, e o cancro da pele é o cancro mais frequente. O melanoma é o mais grave e atinge com frequência adultos jovens. Detetado cedo, cura-se quase sempre com uma pequena cirurgia.',
@@ -2440,12 +2440,12 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🦋', titulo: 'O que se sente?', lista: ['Borboletas na barriga ou dor de barriga', 'Coração a bater depressa', 'Mãos a suar ou a tremer', 'Dificuldade em adormecer', 'Vontade de fugir ou de não ir à escola'] },
           { ico: '🧠', titulo: 'Porque acontece?', texto: 'O cérebro tem um alarme que nos protege do perigo. Na ansiedade, esse alarme fica muito sensível e toca mesmo quando não há perigo nenhum. O corpo prepara-se para fugir, e é por isso que o coração acelera.' },
-          { ico: '🎈', titulo: 'Truques para acalmar', lista: ['Respiração do balão: encher a barriga de ar a contar até 4 e deitar fora a contar até 6', 'Dizer o nome de 5 coisas que vês à tua volta', 'Desenhar ou escrever o que te preocupa', 'Contar a um adulto de confiança'] },
+          { ico: '🎈', titulo: 'Truques para acalmar', lista: ['Respiração do balão: encher a barriga de ar a contar até 4 e deitar fora a contar até 6', 'Dizer o nome de 5 coisas que vê à sua volta', 'Desenhar ou escrever o que o preocupa', 'Contar a um adulto de confiança'] },
         ],
-        curiosidade: 'Quando expiras devagar, ativas um nervo chamado nervo vago, que diz ao coração para abrandar — é como um travão natural!',
+        curiosidade: 'Quando expira devagar, ativa um nervo chamado nervo vago, que diz ao coração para abrandar — é como um travão natural!',
       },
       '13-17': {
-        intro: 'A ansiedade é muito comum na adolescência: escola, exames, redes sociais, amigos, futuro. Um pouco de nervos é normal. Mas se a preocupação não te larga, te tira o sono ou te faz evitar coisas, merece ajuda — e trata-se bem.',
+        intro: 'A ansiedade é muito comum na adolescência: escola, exames, redes sociais, amigos, futuro. Um pouco de nervos é normal. Mas se a preocupação não o larga, lhe tira o sono ou o faz evitar coisas, merece ajuda — e trata-se bem.',
         imagens: [
           ['pensamentos', 'Preocupação constante e pensamentos acelerados'],
           ['respirar-calmo', 'Técnicas de respiração e relaxamento'],
@@ -2454,14 +2454,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🌀', titulo: 'Formas de ansiedade', lista: ['Ansiedade generalizada: preocupação com quase tudo, quase todos os dias', 'Ansiedade social: medo intenso de ser avaliado ou envergonhado', 'Ataques de pânico: crises súbitas de medo, coração acelerado, falta de ar, sensação de desmaio', 'Fobias: medo intenso de uma coisa ou situação concreta'] },
           { ico: '🧰', titulo: 'O que ajuda', lista: ['Dormir 8 a 10 horas e ter horários regulares', 'Exercício físico', 'Reduzir a cafeína e as bebidas energéticas', 'Fazer pausas nas redes sociais', 'Enfrentar os medos aos poucos, em vez de os evitar'] },
-          { ico: '💬', titulo: 'Pedir ajuda', texto: 'Fala com os teus pais, um professor, o psicólogo da escola ou o médico de família. A psicoterapia (sobretudo a terapia cognitivo-comportamental) funciona muito bem. Pedir ajuda é um sinal de força, não de fraqueza.' },
+          { ico: '💬', titulo: 'Pedir ajuda', texto: 'Fale com os seus pais, um professor, o psicólogo da escola ou o médico de família. A psicoterapia (sobretudo a terapia cognitivo-comportamental) funciona muito bem. Pedir ajuda é um sinal de força, não de fraqueza.' },
         ],
         mitos: [
           ['Ansiedade é só nervos, passa sozinha.', 'A perturbação de ansiedade é uma doença real e, sem tratamento, pode durar anos.'],
           ['Um ataque de pânico pode matar.', 'É muito assustador, mas não é perigoso e passa em minutos. Ainda assim, uma primeira crise deve ser avaliada.'],
           ['Evitar o que nos assusta resolve.', 'Evitar alivia no momento, mas faz o medo crescer. Enfrentar aos poucos, com apoio, é o que funciona.'],
         ],
-        alerta: { titulo: 'Pede ajuda já se…', lista: ['Pensares em fazer-te mal ou em morrer (liga 112 ou SNS 24: 808 24 24 24)', 'Deixares de ir à escola ou de sair por causa do medo', 'Usares álcool ou outras substâncias para acalmar'] },
+        alerta: { titulo: 'Peça ajuda já se…', lista: ['Pensar em fazer-se mal ou em morrer (ligue 112 ou SNS 24: 808 24 24 24)', 'Deixar de ir à escola ou de sair por causa do medo', 'Usar álcool ou outras substâncias para acalmar'] },
         ligacoes: [{ href: 'calculadora-saude-mental/?calc=gad7', texto: 'Questionário de ansiedade (GAD-7)' }],
       },
       '18-65': {
@@ -2551,7 +2551,7 @@ export const DOENCAS = [
           ['Só acontece a pessoas muito velhas.', 'É mais frequente depois dos 60, mas cerca de 1 em cada 10 casos começa antes dos 50.'],
           ['Quem tem Parkinson deve evitar o esforço.', 'O exercício regular é um dos tratamentos mais eficazes.'],
         ],
-        alerta: { titulo: 'Avisa um adulto se um familiar…', lista: ['Cair ou ficar «colado» ao chão sem conseguir andar', 'Engasgar-se com frequência ao comer', 'Ficar confuso ou ver coisas que não existem'] },
+        alerta: { titulo: 'Avise um adulto se um familiar…', lista: ['Cair ou ficar «colado» ao chão sem conseguir andar', 'Engasgar-se com frequência ao comer', 'Ficar confuso ou ver coisas que não existem'] },
       },
       '18-65': {
         intro: 'A doença de Parkinson afeta cerca de 20 mil pessoas em Portugal. Embora seja mais frequente depois dos 60, pode começar antes, em idade ativa. O diagnóstico é clínico, e o tratamento precoce permite manter uma vida ativa durante muitos anos.',
@@ -2616,8 +2616,8 @@ export const DOENCAS = [
         ],
         seccoes: [
           { ico: '🦴', titulo: 'Como é a coluna?', texto: 'A coluna tem 33 ossinhos, as vértebras. Entre elas há discos, umas almofadas que amortecem os saltos. À volta, há músculos fortes que seguram tudo. Na zona lombar, a parte de baixo das costas, a coluna aguenta o peso de quase todo o corpo.' },
-          { ico: '🎒', titulo: 'A mochila da escola', lista: ['Não deve pesar mais do que 10 % do teu peso', 'Usa as duas alças, bem ajustadas', 'Leva só o que precisas nesse dia', 'Os livros mais pesados encostados às costas'] },
-          { ico: '💪', titulo: 'Costas fortes', lista: ['Brincar, correr e fazer desporto', 'Mudar de posição quando estás muito tempo sentado', 'Sentar com as costas apoiadas e os pés no chão', 'Menos tempo agarrado ao telemóvel ou ao tablet'] },
+          { ico: '🎒', titulo: 'A mochila da escola', lista: ['Não deve pesar mais do que 10 % do seu peso', 'Use as duas alças, bem ajustadas', 'Leve só o que precisa nesse dia', 'Os livros mais pesados encostados às costas'] },
+          { ico: '💪', titulo: 'Costas fortes', lista: ['Brincar, correr e fazer desporto', 'Mudar de posição quando está muito tempo sentado', 'Sentar com as costas apoiadas e os pés no chão', 'Menos tempo agarrado ao telemóvel ou ao tablet'] },
         ],
         curiosidade: 'Os bebés nascem com cerca de 300 ossos, mas, ao crescer, alguns juntam-se. Os adultos têm 206 — e os da coluna estão entre os mais fortes!',
       },
@@ -2631,14 +2631,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '❓', titulo: 'Porque dói', texto: 'Na maioria dos casos, não há lesão grave: são os músculos e os ligamentos que se queixam do excesso de carga, da má postura ou da falta de exercício. Chama-se dor lombar inespecífica.' },
           { ico: '🧰', titulo: 'O que ajuda', lista: ['Manter-se ativo: o repouso na cama atrasa a recuperação', 'Calor local', 'Fazer pausas e levantar-se a cada 30 a 45 minutos', 'Fortalecer os músculos do abdómen e das costas (natação, pilates)', 'Dormir bem'] },
-          { ico: '⚽', titulo: 'No desporto', texto: 'Ginástica, dança, futebol ou levantamento de pesos podem sobrecarregar a coluna. Uma dor que piora quando dobras as costas para trás e não passa em 2 a 3 semanas deve ser vista por um médico.' },
+          { ico: '⚽', titulo: 'No desporto', texto: 'Ginástica, dança, futebol ou levantamento de pesos podem sobrecarregar a coluna. Uma dor que piora quando dobra as costas para trás e não passa em 2 a 3 semanas deve ser vista por um médico.' },
         ],
         mitos: [
           ['Com dor nas costas, o melhor é ficar deitado.', 'Ficar ativo, dentro do possível, faz recuperar mais depressa.'],
           ['É preciso fazer um raio-X ou uma ressonância.', 'Na maioria dos casos, os exames não são necessários e não mudam o tratamento.'],
           ['Mochilas pesadas entortam a coluna para sempre.', 'Não causam escoliose, mas cansam os músculos e provocam dor.'],
         ],
-        alerta: { titulo: 'Vai ao médico se…', lista: ['A dor te acordar à noite ou vier com febre', 'Sentires fraqueza ou dormência nas pernas', 'A dor começar depois de uma queda ou pancada forte'] },
+        alerta: { titulo: 'Vá ao médico se…', lista: ['A dor o acordar à noite ou vier com febre', 'Sentir fraqueza ou dormência nas pernas', 'A dor começar depois de uma queda ou pancada forte'] },
       },
       '18-65': {
         intro: 'A dor lombar é a principal causa de incapacidade no mundo: cerca de 8 em cada 10 pessoas vão tê-la em algum momento. Na grande maioria dos casos não há uma causa grave e melhora em 4 a 6 semanas.',
@@ -2727,7 +2727,7 @@ export const DOENCAS = [
           ['Um antibiótico ajuda a passar mais depressa.', 'Os antibióticos não atuam nos vírus. Só são precisos se aparecer uma complicação por bactérias.'],
           ['Gripe e constipação são a mesma coisa.', 'São causadas por vírus diferentes. A gripe é mais intensa e pode ter complicações como a pneumonia.'],
         ],
-        alerta: { titulo: 'Liga para o SNS 24 (808 24 24 24) ou vai à urgência se…', lista: ['Tiveres falta de ar ou dor no peito', 'A febre durar mais de 3 dias ou voltar depois de ter melhorado', 'Ficares confuso ou muito sonolento', 'Vomitares tudo o que bebes'] },
+        alerta: { titulo: 'Ligue para o SNS 24 (808 24 24 24) ou vá à urgência se…', lista: ['Tiver falta de ar ou dor no peito', 'A febre durar mais de 3 dias ou voltar depois de ter melhorado', 'Ficar confuso ou muito sonolento', 'Vomitar tudo o que bebe'] },
       },
       '18-65': {
         intro: 'A gripe sazonal afeta todos os invernos centenas de milhares de pessoas em Portugal e enche os serviços de saúde. Na maioria dos adultos saudáveis cura-se em casa, mas pode descompensar doenças crónicas e causar pneumonia.',
@@ -2821,7 +2821,7 @@ export const DOENCAS = [
           ['Ranho verde quer dizer que é preciso antibiótico.', 'A cor do ranho muda naturalmente durante uma constipação e não indica infeção por bactérias.'],
           ['A vitamina C cura a constipação.', 'Não há provas de que trate ou previna as constipações na maioria das pessoas.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Tiveres febre alta ou durante mais de 3 dias', 'Sentires dor forte nos ouvidos ou na cara', 'Tiveres falta de ar ou pieira', 'Os sintomas piorarem depois de começarem a melhorar'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Tiver febre alta ou durante mais de 3 dias', 'Sentir dor forte nos ouvidos ou na cara', 'Tiver falta de ar ou pieira', 'Os sintomas piorarem depois de começarem a melhorar'] },
       },
       '18-65': {
         intro: 'Um adulto apanha, em média, 2 a 3 constipações por ano. São causadas por mais de 200 vírus diferentes, sobretudo rinovírus, e passam sozinhas em 7 a 10 dias.',
@@ -2905,14 +2905,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🤒', titulo: 'Sintomas', lista: ['Febre e arrepios', 'Tosse e dor de garganta', 'Nariz entupido ou a pingar', 'Cansaço e dores musculares', 'Perda do olfato ou do paladar (menos frequente com as variantes atuais)'] },
           { ico: '🧪', titulo: 'Testes', texto: 'Os autotestes vendidos nas farmácias detetam a infeção, sobretudo quando há sintomas. Um teste negativo no primeiro dia não exclui a COVID-19: se os sintomas continuarem, repete-se ao fim de 1 a 2 dias.' },
-          { ico: '🏠', titulo: 'Se estiveres infetado', lista: ['Ficar em casa enquanto tiveres febre ou te sentires mal', 'Usar máscara durante cerca de 10 dias perto de pessoas idosas ou doentes', 'Arejar o quarto e lavar as mãos com frequência', 'Voltar ao desporto aos poucos, quando estiveres bem'] },
+          { ico: '🏠', titulo: 'Se estiver infetado', lista: ['Ficar em casa enquanto tiver febre ou se sentir mal', 'Usar máscara durante cerca de 10 dias perto de pessoas idosas ou doentes', 'Arejar o quarto e lavar as mãos com frequência', 'Voltar ao desporto aos poucos, quando estiver bem'] },
         ],
         mitos: [
           ['A COVID-19 já não existe.', 'O vírus continua a circular e ainda causa internamentos, sobretudo em pessoas idosas e doentes crónicos.'],
           ['Os jovens não transmitem a COVID-19.', 'Transmitem, mesmo com sintomas ligeiros ou sem sintomas.'],
           ['Os antibióticos tratam a COVID-19.', 'A COVID-19 é causada por um vírus: os antibióticos não têm efeito.'],
         ],
-        alerta: { titulo: 'Liga para o SNS 24 (808 24 24 24) ou vai à urgência se…', lista: ['Tiveres falta de ar', 'Sentires dor ou aperto no peito', 'Ficares confuso ou muito sonolento', 'Os lábios ficarem arroxeados'] },
+        alerta: { titulo: 'Ligue para o SNS 24 (808 24 24 24) ou vá à urgência se…', lista: ['Tiver falta de ar', 'Sentir dor ou aperto no peito', 'Ficar confuso ou muito sonolento', 'Os lábios ficarem arroxeados'] },
       },
       '18-65': {
         intro: 'A COVID-19 é causada pelo coronavírus SARS-CoV-2 e transmite-se pelo ar, sobretudo em espaços fechados. A maioria dos adultos tem uma doença ligeira, mas os sintomas podem prolongar-se e há quem fique com «COVID longa».',
@@ -3003,7 +3003,7 @@ export const DOENCAS = [
           ['Coca-Cola ajuda a curar a diarreia.', 'Tem muito açúcar e poucos sais, e pode piorar a diarreia. O soro de reidratação é a melhor opção.'],
           ['Os antibióticos curam a gastroenterite.', 'A maioria é causada por vírus. Os antibióticos raramente são necessários.'],
         ],
-        alerta: { titulo: 'Vai ao médico se…', lista: ['Não conseguires beber nem manter os líquidos', 'Tiveres sangue nas fezes ou no vómito', 'Ficares muito tonto ou urinares muito pouco', 'Tiveres dor de barriga forte e contínua', 'A diarreia durar mais de uma semana'] },
+        alerta: { titulo: 'Vá ao médico se…', lista: ['Não conseguir beber nem manter os líquidos', 'Tiver sangue nas fezes ou no vómito', 'Ficar muito tonto ou urinar muito pouco', 'Tiver dor de barriga forte e contínua', 'A diarreia durar mais de uma semana'] },
       },
       '18-65': {
         intro: 'A gastroenterite aguda é uma das razões mais comuns de ida ao médico. Na maioria dos casos é viral e passa em 1 a 3 dias. O tratamento essencial é repor os líquidos e os sais perdidos.',
@@ -3087,14 +3087,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🌬️', titulo: 'Como se transmite', texto: 'Pelo ar e pelo contacto com o líquido das bolhinhas. É contagiosa desde 1 a 2 dias antes de aparecerem as borbulhas até todas terem crosta. Os sintomas surgem 10 a 21 dias depois do contacto.' },
           { ico: '💊', titulo: 'Tratamento', lista: ['Paracetamol para a febre', 'Não tomar aspirina (risco de uma doença grave do fígado e do cérebro)', 'Evitar o ibuprofeno, que aumenta o risco de infeção da pele', 'Anti-histamínicos para a comichão, se o médico indicar', 'Nos adolescentes, o médico pode receitar um antiviral se for visto cedo'] },
-          { ico: '💉', titulo: 'Vacina', texto: 'A vacina contra a varicela não faz parte do Programa Nacional de Vacinação, mas está disponível: quem nunca teve a doença pode ponderar tomar a vacina. Fala com o teu médico de família.' },
+          { ico: '💉', titulo: 'Vacina', texto: 'A vacina contra a varicela não faz parte do Programa Nacional de Vacinação, mas está disponível: quem nunca teve a doença pode ponderar tomar a vacina. Fale com o seu médico de família.' },
         ],
         mitos: [
           ['É melhor apanhar varicela em criança para ficar logo despachado.', 'Embora seja geralmente ligeira, pode ter complicações. A vacina protege sem os riscos da doença.'],
           ['Coçar as borbulhas não faz mal.', 'Coçar pode infetar a pele e deixar cicatrizes para sempre.'],
           ['Quem já teve varicela pode voltar a tê-la várias vezes.', 'É muito raro. Mas o vírus fica no corpo e pode, mais tarde, causar zona.'],
         ],
-        alerta: { titulo: 'Vai ao médico se…', lista: ['A febre for alta ou durar mais de 4 dias', 'Uma borbulha ficar muito vermelha, quente, inchada ou com pus', 'Tiveres tosse ou falta de ar', 'Tiveres dor de cabeça forte, confusão ou dificuldade em andar'] },
+        alerta: { titulo: 'Vá ao médico se…', lista: ['A febre for alta ou durar mais de 4 dias', 'Uma borbulha ficar muito vermelha, quente, inchada ou com pus', 'Tiver tosse ou falta de ar', 'Tiver dor de cabeça forte, confusão ou dificuldade em andar'] },
       },
       '18-65': {
         intro: 'Nos adultos, a varicela é menos frequente mas mais grave do que nas crianças, com maior risco de pneumonia. Na gravidez, pode afetar o bebé. Quem nunca teve a doença pode ponderar tomar a vacina.',
@@ -3164,7 +3164,7 @@ export const DOENCAS = [
           { ico: '🌬️', titulo: 'O que é?', texto: 'O vírus do sarampo passa pelo ar quando um doente tosse ou espirra, e consegue ficar no ar de uma sala durante duas horas. Quase todas as pessoas não vacinadas que estão perto de um doente apanham a doença.' },
           { ico: '🤒', titulo: 'Como se sente?', lista: ['Febre alta', 'Tosse, nariz a pingar e olhos vermelhos', 'Manchas vermelhas na pele, que começam atrás das orelhas e na cara', 'Muito cansaço'] },
           { ico: '💉', titulo: 'Como se previne?', texto: 'Com a vacina VASPR, que protege contra o sarampo, a papeira e a rubéola. É gratuita e faz parte do Programa Nacional de Vacinação: uma dose aos 12 meses e outra aos 5 anos.' },
-          { ico: '🏠', titulo: 'Se alguém tiver sarampo', lista: ['Fica em casa, longe de bebés e de pessoas não vacinadas', 'Antes de ir ao centro de saúde, liga-se primeiro para o SNS 24', 'Descansar e beber muitos líquidos'] },
+          { ico: '🏠', titulo: 'Se alguém tiver sarampo', lista: ['Ficar em casa, longe de bebés e de pessoas não vacinadas', 'Antes de ir ao centro de saúde, liga-se primeiro para o SNS 24', 'Descansar e beber muitos líquidos'] },
         ],
         curiosidade: 'Uma pessoa com sarampo pode contagiar 12 a 18 outras pessoas não vacinadas — muito mais do que a gripe!',
       },
@@ -3172,20 +3172,20 @@ export const DOENCAS = [
         intro: 'Portugal eliminou o sarampo graças à vacinação, mas continuam a aparecer surtos a partir de casos vindos de outros países. Quem tem as duas doses da vacina está protegido; quem não tem corre risco.',
         imagens: [
           ['borbulhas', 'Exantema que começa na cara e desce pelo corpo'],
-          ['vacina', 'Confirma no boletim que tens as duas doses'],
-          ['telefone', 'Suspeita de sarampo? Liga primeiro para o SNS 24'],
+          ['vacina', 'Confirme no boletim que tem as duas doses'],
+          ['telefone', 'Suspeita de sarampo? Ligue primeiro para o SNS 24'],
         ],
         seccoes: [
           { ico: '📅', titulo: 'Como evolui', texto: 'Os sintomas aparecem 7 a 21 dias depois do contacto: primeiro febre alta, tosse, nariz a pingar e conjuntivite; 3 a 4 dias depois surgem as manchas na pele. É contagioso desde 4 dias antes até 4 dias depois de aparecerem as manchas.' },
           { ico: '⚠️', titulo: 'Complicações', lista: ['Otite e pneumonia', 'Diarreia', 'Encefalite (inflamação do cérebro), rara mas grave', 'O sarampo «apaga» parte da memória do sistema imunitário, deixando a pessoa mais vulnerável a outras infeções durante meses'] },
-          { ico: '💉', titulo: 'A vacina', texto: 'A VASPR (sarampo, papeira e rubéola) dá-se aos 12 meses e aos 5 anos. Se te faltar uma dose, nunca é tarde: pede ao centro de saúde para vacinar. É gratuita.' },
+          { ico: '💉', titulo: 'A vacina', texto: 'A VASPR (sarampo, papeira e rubéola) dá-se aos 12 meses e aos 5 anos. Se lhe faltar uma dose, nunca é tarde: peça ao centro de saúde para vacinar. É gratuita.' },
         ],
         mitos: [
           ['A vacina do sarampo causa autismo.', 'Falso. Esta ideia veio de um estudo fraudulento, e dezenas de estudos com milhões de crianças mostraram que não há qualquer relação.'],
           ['O sarampo é uma doença ligeira de criança.', 'Pode causar pneumonia, encefalite e morte, mesmo em pessoas saudáveis.'],
           ['O sarampo já não existe em Portugal.', 'Continua a haver casos e surtos a partir de casos importados. A vacinação mantém-nos protegidos.'],
         ],
-        alerta: { titulo: 'Liga para o SNS 24 (808 24 24 24) se…', lista: ['Tiveres febre e manchas na pele', 'Tiveres febre, tosse e olhos vermelhos depois de contacto com um caso de sarampo', 'Antes de ires a um centro de saúde ou à urgência, para não contagiares outras pessoas'] },
+        alerta: { titulo: 'Ligue para o SNS 24 (808 24 24 24) se…', lista: ['Tiver febre e manchas na pele', 'Tiver febre, tosse e olhos vermelhos depois de contacto com um caso de sarampo', 'Antes de ir a um centro de saúde ou à urgência, para não contagiar outras pessoas'] },
       },
       '18-65': {
         intro: 'O sarampo é uma das doenças infeciosas mais contagiosas. Portugal tem elevadas taxas de vacinação, mas surgem surtos a partir de casos importados. Os adultos nascidos depois de 1970 sem duas doses da vacina devem vacinar-se.',
@@ -3275,7 +3275,7 @@ export const DOENCAS = [
           ['Precisa de antibiótico.', 'É causada por um vírus. Os antibióticos não ajudam.'],
           ['Só se apanha uma vez.', 'Há vários vírus que a causam, por isso é possível tê-la mais do que uma vez.'],
         ],
-        alerta: { titulo: 'Vai ao médico se…', lista: ['Não conseguires beber por causa das dores', 'Urinares muito pouco ou estiveres muito tonto', 'A febre durar mais de 3 dias', 'Tiveres dor de cabeça forte, rigidez no pescoço ou muita sonolência'] },
+        alerta: { titulo: 'Vá ao médico se…', lista: ['Não conseguir beber por causa das dores', 'Urinar muito pouco ou estar muito tonto', 'A febre durar mais de 3 dias', 'Ter dor de cabeça forte, rigidez no pescoço ou muita sonolência'] },
       },
       '18-65': {
         intro: 'A doença mão-pé-boca é uma infeção por enterovírus muito comum nas creches e jardins de infância, sobretudo no verão e no outono. Nos adultos é geralmente ligeira ou passa despercebida, mas pode ser transmitida aos filhos e vice-versa.',
@@ -3344,7 +3344,7 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🦠', titulo: 'O que é?', texto: 'Na maioria das vezes, a amigdalite é causada por vírus, como os das constipações. Às vezes é causada por uma bactéria chamada estreptococo, mais frequente nas crianças em idade escolar.' },
           { ico: '🤒', titulo: 'Como se sente?', lista: ['Dor de garganta, sobretudo ao engolir', 'Febre', 'Dores de cabeça ou de barriga', 'Mau hálito', 'Caroços no pescoço (gânglios) a doer'] },
-          { ico: '💊', titulo: 'Como se trata?', lista: ['Medicamento para a dor e a febre', 'Beber água, leite ou chá morno', 'Comida mole: sopa, iogurte, papas', 'Se for estreptococo, antibiótico até ao fim, mesmo quando já estiveres bem'] },
+          { ico: '💊', titulo: 'Como se trata?', lista: ['Medicamento para a dor e a febre', 'Beber água, leite ou chá morno', 'Comida mole: sopa, iogurte, papas', 'Se for estreptococo, antibiótico até ao fim, mesmo quando já estiver bem'] },
           { ico: '🛡️', titulo: 'Para não passar aos outros', lista: ['Não partilhar copos, garrafas nem talheres', 'Tossir para o cotovelo', 'Lavar as mãos'] },
         ],
         curiosidade: 'Para saber se a amigdalite é causada pelo estreptococo, o médico pode fazer um teste rápido com uma zaragatoa na garganta — o resultado sai em poucos minutos!',
@@ -3366,7 +3366,7 @@ export const DOENCAS = [
           ['Gelados fazem mal à garganta inflamada.', 'O frio até alivia a dor e ajuda a comer.'],
           ['Se já me sinto bem, posso parar o antibiótico.', 'O tratamento do estreptococo deve ser cumprido até ao fim, para evitar complicações.'],
         ],
-        alerta: { titulo: 'Vai à urgência se…', lista: ['Tiveres dificuldade em respirar ou em engolir a saliva', 'Não conseguires abrir bem a boca ou a voz ficar abafada', 'A dor for muito forte só de um lado', 'Ficares muito prostrado ou desidratado'] },
+        alerta: { titulo: 'Vá à urgência se…', lista: ['Ter dificuldade em respirar ou em engolir a saliva', 'Não conseguir abrir bem a boca ou a voz ficar abafada', 'A dor for muito forte só de um lado', 'Ficar muito prostrado ou desidratado'] },
       },
       '18-65': {
         intro: 'A amigdalite (ou faringoamigdalite) é muito frequente. Nos adultos, cerca de 9 em cada 10 são causadas por vírus e curam sozinhas. O antibiótico só é útil nas causadas pelo estreptococo do grupo A.',
@@ -3455,7 +3455,7 @@ export const DOENCAS = [
           ['Só se apanha uma vez.', 'É possível ter escarlatina mais do que uma vez.'],
           ['A pele a descascar depois da doença é sinal de que voltou.', 'É uma fase normal da recuperação.'],
         ],
-        alerta: { titulo: 'Vai à urgência se…', lista: ['Tiveres dificuldade em respirar', 'A febre continuar 48 horas depois de começar o antibiótico', 'Ficares muito prostrado ou confuso', 'Uma zona da pele ficar inchada, quente e muito dolorosa'] },
+        alerta: { titulo: 'Vá à urgência se…', lista: ['Ter dificuldade em respirar', 'A febre continuar 48 horas depois de começar o antibiótico', 'Ficar muito prostrado ou confuso', 'Uma zona da pele ficar inchada, quente e muito dolorosa'] },
       },
       '18-65': {
         intro: 'A escarlatina é uma infeção pelo estreptococo do grupo A, com amigdalite e exantema característico. Afeta sobretudo crianças em idade escolar; nos adultos é rara, mas os pais podem ser contagiados pelos filhos.',
@@ -3537,7 +3537,7 @@ export const DOENCAS = [
         ],
         seccoes: [
           { ico: '🔤', titulo: 'As principais', lista: ['Hepatite A: comida ou água contaminadas; cura-se sozinha', 'Hepatite B: sangue, relações sexuais e da mãe para o bebé; pode ficar crónica', 'Hepatite C: sobretudo sangue (seringas, tatuagens ou piercings sem material esterilizado); tem cura', 'Hepatite E: carne de porco mal cozinhada e água'] },
-          { ico: '🛡️', titulo: 'Proteger-te', lista: ['Confirma no boletim que tens a vacina da hepatite B (3 doses)', 'Usa preservativo', 'Tatuagens e piercings só em sítios licenciados, com material descartável', 'Nunca partilhes seringas, lâminas, escovas de dentes ou palhinhas para snifar'] },
+          { ico: '🛡️', titulo: 'Proteger-se', lista: ['Confirme no boletim que tem a vacina da hepatite B (3 doses)', 'Use preservativo', 'Tatuagens e piercings só em sítios licenciados, com material descartável', 'Nunca partilhe seringas, lâminas, escovas de dentes ou palhinhas para snifar'] },
           { ico: '🍺', titulo: 'Álcool e fígado', texto: 'O álcool é tóxico para o fígado. Num fígado com hepatite, o álcool acelera os danos e aumenta o risco de cirrose.' },
         ],
         mitos: [
@@ -3545,7 +3545,7 @@ export const DOENCAS = [
           ['A hepatite C não tem cura.', 'Os tratamentos atuais curam mais de 95 % das pessoas em 8 a 12 semanas.'],
           ['Quem tem hepatite fica sempre amarelo.', 'A maioria das pessoas com hepatite B ou C não tem sintomas durante anos.'],
         ],
-        alerta: { titulo: 'Fala com o médico se…', lista: ['Ficares com a pele ou os olhos amarelos', 'Tiveres urina escura e fezes claras', 'Tiveres tido contacto com sangue de outra pessoa ou uma relação sexual sem preservativo', 'Não souberes se tens a vacina da hepatite B'] },
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Ficar com a pele ou os olhos amarelos', 'Ter urina escura e fezes claras', 'Ter tido contacto com sangue de outra pessoa ou uma relação sexual sem preservativo', 'Não souber se tem a vacina da hepatite B'] },
       },
       '18-65': {
         intro: 'Em Portugal, dezenas de milhares de pessoas vivem com hepatite B ou C crónica, muitas sem o saber. Sem tratamento, podem evoluir para cirrose e cancro do fígado. Um simples teste ao sangue faz o diagnóstico.',
@@ -3598,7 +3598,7 @@ export const DOENCAS = [
           ['abraco', 'Abraçar e brincar não passa o VIH'],
           ['brincar', 'Todos podemos brincar juntos'],
           ['medico', 'Os médicos têm medicamentos que ajudam'],
-          ['lavar-maos', 'Se vires sangue, chama um adulto'],
+          ['lavar-maos', 'Se vir sangue, chame um adulto'],
           ['coracao', 'Somos todos amigos'],
         ],
       },
@@ -3613,7 +3613,7 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🛡️', titulo: 'O que é?', texto: 'VIH quer dizer vírus da imunodeficiência humana. Sem tratamento, o vírus vai enfraquecendo as defesas e o corpo fica sem forças para combater outras infeções — a isso chama-se sida.' },
           { ico: '✅', titulo: 'O VIH não passa por…', lista: ['Abraços e beijinhos', 'Brincar, dar as mãos ou fazer desporto', 'Partilhar a comida, os copos ou a casa de banho', 'Picadas de mosquitos', 'Tosse ou espirros'] },
-          { ico: '🩸', titulo: 'Como passa?', texto: 'Passa pelo sangue e por algumas formas de contacto entre adultos de que vais aprender mais quando fores mais velho. Por isso, nunca se toca no sangue de outra pessoa: chama-se um adulto para ajudar.' },
+          { ico: '🩸', titulo: 'Como passa?', texto: 'Passa pelo sangue e por algumas formas de contacto entre adultos de que vai aprender mais quando for mais velho. Por isso, nunca se toca no sangue de outra pessoa: chama-se um adulto para ajudar.' },
           { ico: '💊', titulo: 'Como se trata?', texto: 'Com medicamentos tomados todos os dias. Eles não deixam o vírus multiplicar-se, e a pessoa fica com as defesas fortes. Quando o tratamento resulta, o vírus nem sequer passa para os outros.' },
         ],
         curiosidade: 'O Dia Mundial da Luta contra a Sida é a 1 de dezembro. Nesse dia, muitas pessoas usam um laço vermelho ao peito!',
@@ -3628,14 +3628,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🔄', titulo: 'Como se transmite', lista: ['Relações sexuais vaginais ou anais sem preservativo', 'Partilha de seringas ou de outro material com sangue', 'Da mãe para o bebé, na gravidez, no parto ou na amamentação (evitável com tratamento)', 'Não se transmite por beijos, abraços, saliva, suor, piscinas ou mosquitos'] },
           { ico: '🛡️', titulo: 'Prevenção', lista: ['Preservativo em todas as relações', 'PrEP: um medicamento preventivo para quem tem maior risco, gratuito no SNS', 'PEP: tratamento de emergência depois de uma situação de risco — tem de começar nas primeiras 72 horas, quanto antes melhor, numa urgência hospitalar', 'Fazer o teste e saber o próprio estado'] },
-          { ico: '🧪', titulo: 'Fazer o teste', texto: 'É confidencial e gratuito no centro de saúde e nos Centros de Aconselhamento e Deteção (CAD), e também há autotestes nas farmácias. Se tiveres dúvidas, podes falar com o teu médico de família, com a enfermeira da escola ou ligar para o SNS 24.' },
+          { ico: '🧪', titulo: 'Fazer o teste', texto: 'É confidencial e gratuito no centro de saúde e nos Centros de Aconselhamento e Deteção (CAD), e também há autotestes nas farmácias. Se tiver dúvidas, pode falar com o seu médico de família, com a enfermeira da escola ou ligar para o SNS 24.' },
         ],
         mitos: [
           ['O VIH passa por beijos ou por partilhar copos.', 'Não. A saliva não transmite o VIH.'],
           ['O VIH é uma sentença de morte.', 'Com o tratamento atual, a esperança de vida é praticamente igual à das outras pessoas.'],
           ['Só acontece a certos grupos de pessoas.', 'Qualquer pessoa sexualmente ativa pode ser infetada. O risco depende do que se faz, não de quem se é.'],
         ],
-        alerta: { titulo: 'Procura ajuda se…', lista: ['Tiveres tido uma relação sem preservativo ou com o preservativo rompido: vai a uma urgência hospitalar nas primeiras 72 horas para a PEP', 'Tiveres sintomas parecidos com uma gripe 2 a 4 semanas depois de uma situação de risco', 'Precisares de falar com alguém: o médico de família e o SNS 24 guardam sigilo'] },
+        alerta: { titulo: 'Procure ajuda se…', lista: ['Tiver tido uma relação sem preservativo ou com o preservativo rompido: vá a uma urgência hospitalar nas primeiras 72 horas para a PEP', 'Tiver sintomas parecidos com uma gripe 2 a 4 semanas depois de uma situação de risco', 'Precisar de falar com alguém: o médico de família e o SNS 24 guardam sigilo'] },
       },
       '18-65': {
         intro: 'Portugal continua a ter das taxas de novos diagnósticos de VIH mais altas da Europa ocidental, e muitos são feitos tarde. Todos os adultos devem fazer o teste pelo menos uma vez; com o diagnóstico precoce e o tratamento, o VIH é uma doença crónica controlável.',
@@ -3684,7 +3684,7 @@ export const DOENCAS = [
       '3-5': {
         imagens: [
           ['abraco', 'O nosso corpo é só nosso'],
-          ['conversa', 'Se algo te deixar triste, conta a um adulto'],
+          ['conversa', 'Se algo o deixar triste, conte a um adulto'],
           ['lavar-maos', 'Tomar banho e lavar as mãos'],
           ['vacina', 'As vacinas protegem o corpo'],
           ['medico', 'O médico ajuda a cuidar do corpo'],
@@ -3692,17 +3692,17 @@ export const DOENCAS = [
         ],
       },
       '5-12': {
-        intro: 'O corpo muda quando crescemos, e é importante aprender a cuidar dele. Há infeções que passam entre pessoas mais velhas em momentos de contacto íntimo. Vais aprender mais sobre elas quando chegares à adolescência — e já há uma vacina que te protege.',
+        intro: 'O corpo muda quando crescemos, e é importante aprender a cuidar dele. Há infeções que passam entre pessoas mais velhas em momentos de contacto íntimo. Vai aprender mais sobre elas quando chegar à adolescência — e já há uma vacina que o protege.',
         imagens: [
           ['vacina', 'Aos 10 anos, a vacina contra o HPV'],
-          ['conversa', 'Podes fazer perguntas aos teus pais ou ao médico'],
-          ['abraco', 'O teu corpo é teu'],
+          ['conversa', 'Pode fazer perguntas aos seus pais ou ao médico'],
+          ['abraco', 'O seu corpo é seu'],
           ['medico', 'O médico e a enfermeira guardam segredo'],
         ],
         seccoes: [
           { ico: '💉', titulo: 'A vacina do HPV', texto: 'O HPV é um vírus muito comum que, anos mais tarde, pode causar alguns tipos de cancro. A vacina dá-se aos 10 anos, a raparigas e rapazes, no centro de saúde. Protege melhor quando é dada antes da adolescência.' },
-          { ico: '🙋', titulo: 'Fazer perguntas', lista: ['É normal ter curiosidade sobre o corpo', 'Os pais, os professores e o médico de família podem ajudar', 'Na internet há muita informação errada: confirma com um adulto de confiança'] },
-          { ico: '🛑', titulo: 'O teu corpo é teu', lista: ['Ninguém deve tocar nas tuas partes íntimas, nem pedir-te para tocares nas de outra pessoa', 'Se alguém o fizer, ou se te pedirem segredos que te deixam desconfortável, conta a um adulto de confiança', 'Não é culpa tua', 'Podes também ligar para a Linha SOS Criança: 116 111'] },
+          { ico: '🙋', titulo: 'Fazer perguntas', lista: ['É normal ter curiosidade sobre o corpo', 'Os pais, os professores e o médico de família podem ajudar', 'Na internet há muita informação errada: confirme com um adulto de confiança'] },
+          { ico: '🛑', titulo: 'O seu corpo é seu', lista: ['Ninguém deve tocar nas suas partes íntimas, nem pedir-lhe para tocar nas de outra pessoa', 'Se alguém o fizer, ou se lhe pedirem segredos que o deixam desconfortável, conte a um adulto de confiança', 'Não é culpa sua', 'Pode também ligar para a Linha SOS Criança: 116 111'] },
         ],
         curiosidade: 'Desde que se começou a dar a vacina contra o HPV, os casos de lesões pré-cancerosas do colo do útero diminuíram muito nos países que vacinam!',
       },
@@ -3716,14 +3716,14 @@ export const DOENCAS = [
         seccoes: [
           { ico: '🦠', titulo: 'As mais comuns', lista: ['Clamídia: a mais frequente; muitas vezes sem sintomas; pode causar infertilidade', 'Gonorreia: ardor a urinar e corrimento', 'Sífilis: uma ferida indolor, que desaparece, mas a infeção continua', 'HPV: verrugas genitais e, anos depois, alguns cancros', 'Herpes genital: pequenas bolhas dolorosas que voltam de vez em quando', 'VIH e hepatite B'] },
           { ico: '🔍', titulo: 'Sinais de alerta', lista: ['Corrimento diferente do habitual', 'Ardor ou dor ao urinar', 'Feridas, bolhas ou verrugas nos genitais, no ânus ou na boca', 'Dor durante as relações ou na barriga', 'Muitas vezes, nenhum sintoma'] },
-          { ico: '🛡️', titulo: 'Proteger-te', lista: ['Preservativo do início ao fim, em todas as relações (também orais e anais)', 'Vacinas contra o HPV e a hepatite B', 'Fazer testes se tiveres novos parceiros', 'Avisar os parceiros se tiveres uma IST, para também serem tratados', 'Consultas de planeamento familiar e de saúde juvenil: confidenciais e gratuitas'] },
+          { ico: '🛡️', titulo: 'Proteger-se', lista: ['Preservativo do início ao fim, em todas as relações (também orais e anais)', 'Vacinas contra o HPV e a hepatite B', 'Fazer testes se tiver novos parceiros', 'Avisar os parceiros se tiver uma IST, para também serem tratados', 'Consultas de planeamento familiar e de saúde juvenil: confidenciais e gratuitas'] },
         ],
         mitos: [
           ['Se não tenho sintomas, não tenho uma IST.', 'A maioria das infeções por clamídia e muitas outras não dão sintomas.'],
           ['A pílula protege das IST.', 'A pílula só evita a gravidez. O preservativo é o único método que protege da maioria das IST.'],
           ['O sexo oral não tem riscos.', 'Pode transmitir gonorreia, sífilis, herpes e HPV.'],
         ],
-        alerta: { titulo: 'Fala com um médico se…', lista: ['Tiveres corrimento, ardor, feridas ou verrugas', 'Tiveres tido uma relação sem preservativo (para o VIH, a PEP tem de começar nas primeiras 72 horas)', 'Um parceiro te disser que tem uma IST', 'Precisares de contraceção de emergência'] },
+        alerta: { titulo: 'Fale com um médico se…', lista: ['Tiver corrimento, ardor, feridas ou verrugas', 'Tiver tido uma relação sem preservativo (para o VIH, a PEP tem de começar nas primeiras 72 horas)', 'Um parceiro lhe disser que tem uma IST', 'Precisar de contraceção de emergência'] },
       },
       '18-65': {
         intro: 'As IST são muito frequentes e, em Portugal, os casos de sífilis, gonorreia e clamídia têm aumentado. Muitas são silenciosas, mas quase todas têm tratamento — e testar, tratar e avisar os parceiros interrompe a transmissão.',
@@ -3775,7 +3775,7 @@ export function resumoDoenca(d, grupoId) {
   const linhas = [`${d.nome} — ${grupo.nome} (${grupo.idade})`, ''];
   if (g.intro) linhas.push(g.intro, '');
   else linhas.push(...g.imagens.map(([, legenda]) => `• ${legenda}`), '');
-  if (g.curiosidade) linhas.push(`Sabias que… ${g.curiosidade}`, '');
+  if (g.curiosidade) linhas.push(`Sabia que… ${g.curiosidade}`, '');
   if (g.alerta) linhas.push(g.alerta.titulo, ...g.alerta.lista.map((l) => `• ${l}`), '');
   if (d.eviccao) linhas.push('Evicção escolar obrigatória', d.eviccao, '');
   return { assunto: `${d.nome}: explicação para ${grupo.nome.toLowerCase()} (${grupo.idade})`, linhas };
