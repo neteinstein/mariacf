@@ -59,3 +59,57 @@ test('próximas tomas', () => {
   const t = proximasTomas(new Date('2026-01-01T08:00:00'), 6, 4);
   assert.deepEqual(t.map((d) => d.getHours()), [8, 14, 20, 2]);
 });
+
+test('amoxicilina + clavulânico 7:1: 12 kg a 45 mg/kg/dia → 270 mg = 3,4 mL de 12/12h', () => {
+  const r = calcularDose(12, 'amoxiclav', 80, { mgPorKgDia: 45 });
+  assert.equal(r.ok, true);
+  assert.equal(r.intervaloHoras, 12);
+  assert.equal(r.tomasPorDia, 2);
+  assert.equal(r.mgToma, 270);
+  assert.equal(r.ml, 3.4);
+  assert.equal(r.clavExcessivo, false);
+  assert.equal(r.clavMgKgDia, 6.5);
+});
+
+test('amoxicilina + clavulânico 4:1: intervalo de 8/8h por omissão', () => {
+  const r = calcularDose(12, 'amoxiclav', 50, { mgPorKgDia: 45 });
+  assert.equal(r.intervaloHoras, 8);
+  assert.equal(r.tomasPorDia, 3);
+  assert.equal(r.mgToma, 180);
+  assert.equal(r.ml, 3.6);
+  assert.equal(r.clavMgToma, 45);
+});
+
+test('amoxicilina + clavulânico: dose alta assinala excesso de clavulanato na 7:1 mas não na 14:1', () => {
+  const r7 = calcularDose(12, 'amoxiclav', 80, { mgPorKgDia: 90 });
+  assert.equal(r7.mgToma, 540);
+  assert.equal(r7.ml, 6.8);
+  assert.equal(r7.clavExcessivo, true);
+  const r14 = calcularDose(12, 'amoxiclav', 120, { mgPorKgDia: 90 });
+  assert.equal(r14.ml, 4.5);
+  assert.equal(r14.clavExcessivo, false);
+});
+
+test('amoxicilina + clavulânico: intervalo escolhido e limite diário', () => {
+  const r = calcularDose(12, 'amoxiclav', 80, { mgPorKgDia: 45, intervaloHoras: 8 });
+  assert.equal(r.tomasPorDia, 3);
+  assert.equal(r.mgToma, 180);
+  const max = calcularDose(55, 'amoxiclav', 120, { mgPorKgDia: 90 });
+  assert.equal(max.limitado, true);
+  assert.equal(max.mgMaxDia, 4000);
+  assert.equal(max.pesoAdulto, true);
+});
+
+test('amoxicilina + clavulânico: concentração personalizada sem clavulanato conhecido', () => {
+  const r = calcularDose(10, 'amoxiclav', 70, { mgPorKgDia: 50 });
+  assert.equal(r.ok, true);
+  assert.equal(r.intervaloHoras, 12);
+  assert.equal(r.clavMgToma, null);
+  assert.equal(r.clavExcessivo, false);
+});
+
+test('amoxicilina + clavulânico: dose diária ou intervalo inválidos', () => {
+  assert.equal(calcularDose(10, 'amoxiclav', 80, { mgPorKgDia: 5 }).ok, false);
+  assert.equal(calcularDose(10, 'amoxiclav', 80, { mgPorKgDia: NaN }).ok, false);
+  assert.equal(calcularDose(10, 'amoxiclav', 80, { mgPorKgDia: 45, intervaloHoras: 6 }).ok, false);
+});
