@@ -38,7 +38,7 @@ Os separadores de cada página podem ser abertos diretamente com `?calc=<id>`.
 
 | Ferramenta | Caminho | Inclui |
 | --- | --- | --- |
-| Calculadora de doses | `/calculadora-doses/` | Paracetamol e ibuprofeno em xarope, por peso |
+| Calculadora de doses | `/calculadora-doses/` | Paracetamol, ibuprofeno e amoxicilina + ácido clavulânico (4:1, 7:1, 14:1) em xarope, por peso |
 | Crescimento infantil (OMS) | `/calculadora-crescimento/` | Peso, comprimento, PC e peso-comprimento (0–24 m); IMC e altura (2–19 anos); idade corrigida; altura-alvo |
 | Fluidos, desidratação e M-CHAT-R/F | `/calculadora-pediatria/` | Holliday-Segar, Clinical Dehydration Scale, interpretação do M-CHAT-R/F |
 | Calendário de vacinas (PNV) | `/calculadora-vacinas/` | Esquema recomendado do PNV a partir da data de nascimento |

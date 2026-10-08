@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calculadora de Doses · Saúde em Família</title>
-  <meta name="description" content="Calcule a dose de paracetamol (Ben-u-ron®) e ibuprofeno (Brufen®, Nurofen®, Ib-u-ron®) em xarope para crianças, a partir do peso.">
+  <meta name="description" content="Calcule a dose de paracetamol (Ben-u-ron®), ibuprofeno (Brufen®, Nurofen®, Ib-u-ron®) e amoxicilina + ácido clavulânico (Augmentin®) em xarope para crianças, a partir do peso.">
   <meta name="theme-color" content="#125a98">
   <meta property="og:title" content="Calculadora de Doses Pediátricas">
-  <meta property="og:description" content="Paracetamol e ibuprofeno em xarope: quantos mL dar, a partir do peso da criança.">
+  <meta property="og:description" content="Paracetamol, ibuprofeno e amoxicilina + ácido clavulânico em xarope: quantos mL dar, a partir do peso da criança.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Saúde em Família">
   <meta property="og:locale" content="pt_PT">
@@ -59,7 +59,7 @@
 
   <main class="wrap">
     <section class="page-hero reveal">
-      <span class="eyebrow"><span class="dot"></span> Pediatria · Febre e dor</span>
+      <span class="eyebrow"><span class="dot"></span> Pediatria · Febre, dor e antibiótico</span>
       <h1 class="display">Calculadora de <em>doses</em></h1>
       <p class="lead">Pese a criança, escolha o medicamento e a concentração do frasco. Mostramos quantos mL dar, de quantas em quantas horas, e como fica na seringa.</p>
     </section>
@@ -83,7 +83,7 @@
 
         <fieldset class="step">
           <legend class="step-label"><span class="step-num">2</span> Medicamento</legend>
-          <div class="choices">
+          <div class="choices choices-3">
             <div class="choice para">
               <input type="radio" name="med" id="med-para" value="paracetamol" checked>
               <label for="med-para">
@@ -100,6 +100,14 @@
                 <span class="brands">Brufen®, Ib-u-ron®, Nurofen®, genéricos</span>
               </label>
             </div>
+            <div class="choice amox">
+              <input type="radio" name="med" id="med-amox" value="amoxiclav">
+              <label for="med-amox">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Amoxicilina + ác. clavulânico</span>
+                <span class="brands">Augmentin®, Clavamox®, genéricos</span>
+              </label>
+            </div>
           </div>
         </fieldset>
 
@@ -107,6 +115,14 @@
           <legend class="step-label"><span class="step-num">3</span> Concentração do frasco</legend>
           <p class="step-hint">Está no rótulo, em mg/mL (ou “mg em 5 mL”).</p>
           <div class="chips" id="conc-chips"></div>
+        </fieldset>
+
+        <fieldset class="step" id="passo-dose" hidden>
+          <legend class="step-label"><span class="step-num">4</span> Dose prescrita</legend>
+          <p class="step-hint">Dose diária de amoxicilina indicada pelo médico, dividida pelas tomas do dia.</p>
+          <div class="chips" id="dose-chips"></div>
+          <p class="step-hint">Tomas por dia</p>
+          <div class="chips" id="intervalo-chips"></div>
         </fieldset>
       </form>
 
@@ -125,8 +141,8 @@
 
             <div class="stats">
               <div class="stat"><div class="k">Por toma</div><div class="v" id="st-mg">—</div></div>
-              <div class="stat"><div class="k">Máx. por dia</div><div class="v" id="st-tomas">—</div></div>
-              <div class="stat"><div class="k">Máx. em 24 h</div><div class="v" id="st-max">—</div></div>
+              <div class="stat"><div class="k" id="st-tomas-k">Máx. por dia</div><div class="v" id="st-tomas">—</div></div>
+              <div class="stat"><div class="k" id="st-max-k">Máx. em 24 h</div><div class="v" id="st-max">—</div></div>
             </div>
 
             <div class="schedule">
@@ -165,6 +181,7 @@
           <li>Use sempre a seringa doseadora — colheres de cozinha não são rigorosas.</li>
           <li>Confirme a concentração no rótulo: o mesmo medicamento existe em forças diferentes.</li>
           <li>O ibuprofeno deve ser dado, de preferência, com ou após alimentos.</li>
+          <li>O antibiótico dá-se no início das refeições. Agite o frasco antes de cada toma.</li>
         </ul>
       </article>
       <article class="panel info-card reveal">
@@ -173,7 +190,8 @@
         <ul>
           <li><strong>Paracetamol:</strong> 15 mg/kg por toma, de 6/6 h (máx. 4 tomas em 24 h).</li>
           <li><strong>Ibuprofeno:</strong> 10 mg/kg por toma, de 8/8 h (máx. 3 tomas em 24 h).</li>
-          <li>Não ultrapasse as tomas diárias, mesmo que a febre volte.</li>
+          <li><strong>Amoxicilina + ácido clavulânico:</strong> 45 mg/kg/dia de amoxicilina (dose alta 80–90), de 12/12 h nas formulações 7:1 e 14:1 ou de 8/8 h na 4:1.</li>
+          <li>Não ultrapasse as tomas diárias, mesmo que a febre volte. O antibiótico toma-se durante todos os dias indicados.</li>
         </ul>
       </article>
       <article class="panel info-card reveal">

@@ -15,6 +15,9 @@ const fmtHora = new Intl.DateTimeFormat('pt-PT', { hour: '2-digit', minute: '2-d
 const pesoInput = $('#peso');
 const slider = $('#peso-slider');
 const chips = $('#conc-chips');
+const passoDose = $('#passo-dose');
+const doseChips = $('#dose-chips');
+const intervaloChips = $('#intervalo-chips');
 const resultado = $('#resultado');
 const horaInput = $('#hora');
 
@@ -23,6 +26,10 @@ const estado = {
   med: 'paracetamol',
   conc: 40,
   custom: false,
+  // Só nos antibióticos: dose diária (mg/kg/dia) e intervalo entre tomas (h).
+  dose: 45,
+  doseCustom: false,
+  intervalo: 12,
 };
 
 /* ---------- Estado inicial a partir do URL (para partilhar) ---------- */
@@ -39,6 +46,18 @@ if (params.has('c')) {
 } else {
   estado.conc = MEDICAMENTOS[estado.med].concentracoes[0].mgPorMl;
 }
+{
+  const med = MEDICAMENTOS[estado.med];
+  if (med.antibiotico) {
+    const d = parseFloat(params.get('dose'));
+    if (d > 0) {
+      estado.dose = d;
+      estado.doseCustom = !med.doses.some((x) => x.mgPorKgDia === d);
+    }
+    const h = Number(params.get('h'));
+    estado.intervalo = med.intervalos.includes(h) ? h : intervaloDaFormulacao();
+  }
+}
 
 document.querySelector(`input[name="med"][value="${estado.med}"]`).checked = true;
 if (Number.isFinite(estado.peso)) pesoInput.value = estado.peso;
@@ -47,6 +66,12 @@ const agora = new Date();
 horaInput.value = `${String(agora.getHours()).padStart(2, '0')}:${String(agora.getMinutes()).padStart(2, '0')}`;
 
 /* ---------- Concentrações ---------- */
+
+function intervaloDaFormulacao() {
+  const med = MEDICAMENTOS[estado.med];
+  const f = med.concentracoes.find((x) => x.mgPorMl === estado.conc);
+  return f?.intervaloHoras ?? med.intervalos?.[0];
+}
 
 function desenharChips() {
   const med = MEDICAMENTOS[estado.med];
@@ -63,6 +88,11 @@ function desenharChips() {
     input.addEventListener('change', () => {
       estado.conc = c.mgPorMl;
       estado.custom = false;
+      // Cada formulação tem o seu intervalo habitual (4:1 de 8/8 h; 7:1 e 14:1 de 12/12 h).
+      if (c.intervaloHoras) {
+        estado.intervalo = c.intervaloHoras;
+        desenharDose();
+      }
       atualizar();
     });
     chips.append(div);
@@ -79,7 +109,8 @@ function desenharChips() {
   const campo = document.createElement('label');
   campo.className = 'custom-conc';
   campo.hidden = !estado.custom;
-  campo.innerHTML = `<span>Concentração</span><input type="number" inputmode="decimal" min="1" max="500" step="any" aria-label="Concentração em mg/mL"><span>mg/mL</span>`;
+  const amox = med.antibiotico ? ' de amoxicilina' : '';
+  campo.innerHTML = `<span>Concentração${amox}</span><input type="number" inputmode="decimal" min="1" max="500" step="any" aria-label="Concentração${amox} em mg/mL"><span>mg/mL</span>`;
   const campoInput = campo.querySelector('input');
   if (estado.custom) campoInput.value = estado.conc;
 
@@ -96,6 +127,70 @@ function desenharChips() {
   });
 
   chips.append(outra, campo);
+}
+
+/* ---------- Dose diária e intervalo (antibiótico) ---------- */
+
+function chip(nome, id, rotulo, detalhe, marcado, aoMudar) {
+  const div = document.createElement('div');
+  div.className = 'chip';
+  div.innerHTML = `
+    <input type="radio" name="${nome}" id="${id}">
+    <label for="${id}"><strong>${rotulo}</strong><span>${detalhe}</span></label>`;
+  const input = div.querySelector('input');
+  input.checked = marcado;
+  input.addEventListener('change', aoMudar);
+  return div;
+}
+
+function desenharDose() {
+  const med = MEDICAMENTOS[estado.med];
+  passoDose.hidden = !med.antibiotico;
+  doseChips.innerHTML = '';
+  intervaloChips.innerHTML = '';
+  if (!med.antibiotico) return;
+
+  med.doses.forEach((d, i) => {
+    doseChips.append(
+      chip('dose', `dose-${i}`, d.rotulo, d.detalhe, !estado.doseCustom && d.mgPorKgDia === estado.dose, () => {
+        estado.dose = d.mgPorKgDia;
+        estado.doseCustom = false;
+        campo.hidden = true;
+        atualizar();
+      })
+    );
+  });
+
+  const campo = document.createElement('label');
+  campo.className = 'custom-conc';
+  campo.hidden = !estado.doseCustom;
+  campo.innerHTML = `<span>Dose</span><input type="number" inputmode="decimal" min="${med.mgPorKgDiaMin}" max="${med.mgPorKgDiaMax}" step="any" aria-label="Dose diária em mg/kg/dia"><span>mg/kg/dia</span>`;
+  const campoInput = campo.querySelector('input');
+  if (estado.doseCustom) campoInput.value = estado.dose;
+  campoInput.addEventListener('input', () => {
+    estado.dose = parseFloat(campoInput.value.replace(',', '.'));
+    atualizar();
+  });
+
+  doseChips.append(
+    chip('dose', 'dose-outra', 'Outra', 'mg/kg/dia', estado.doseCustom, () => {
+      estado.doseCustom = true;
+      campo.hidden = false;
+      campoInput.focus();
+      estado.dose = parseFloat(campoInput.value) || NaN;
+      atualizar();
+    }),
+    campo
+  );
+
+  med.intervalos.forEach((h) => {
+    intervaloChips.append(
+      chip('intervalo', `intervalo-${h}`, `${24 / h}× por dia`, `de ${h} em ${h} horas`, estado.intervalo === h, () => {
+        estado.intervalo = h;
+        atualizar();
+      })
+    );
+  });
 }
 
 /* ---------- Peso ---------- */
@@ -166,7 +261,12 @@ document.querySelectorAll('input[name="med"]').forEach((r) => {
       estado.custom = false;
       estado.conc = med.concentracoes[0].mgPorMl;
     }
+    if (med.antibiotico) {
+      estado.custom = !med.concentracoes.some((x) => x.mgPorMl === estado.conc);
+      estado.intervalo = intervaloDaFormulacao();
+    }
     desenharChips();
+    desenharDose();
     atualizar();
   });
 });
@@ -244,7 +344,11 @@ function desenharSeringas(ml, medId) {
     cont.getBoundingClientRect();
   }
   const cores =
-    medId === 'ibuprofeno' ? ['#fbc4ac', '#e2572f'] : ['#9fdfc7', '#00a676'];
+    medId === 'ibuprofeno'
+      ? ['#fbc4ac', '#e2572f']
+      : medId === 'amoxiclav'
+        ? ['#b4dcec', '#05556f']
+        : ['#9fdfc7', '#00a676'];
   [...cont.children].forEach((wrap, i) => {
     const s = lista[i];
     const frac = Math.min(s.volume / s.capacidade, 1);
@@ -313,7 +417,11 @@ let resultadoAtual = null;
 
 function atualizar() {
   resultado.dataset.med = estado.med;
-  const r = calcularDose(estado.peso, estado.med, estado.conc);
+  const r = calcularDose(estado.peso, estado.med, estado.conc, {
+    mgPorKgDia: estado.dose,
+    intervaloHoras: estado.intervalo,
+  });
+  const antibiotico = r.ok && r.medicamento.antibiotico;
 
   const ok = $('#res-ok');
   const vazio = $('#res-empty');
@@ -335,9 +443,13 @@ function atualizar() {
 
   animarNumero($('#res-ml'), r.ml);
   $('#res-every').textContent = `de ${r.intervaloHoras} em ${r.intervaloHoras} horas`;
-  $('#res-sub').textContent = `${r.medicamento.nome} ${nf.format(r.mgPorMl)} mg/mL · criança com ${nf.format(r.peso)} kg`;
+  $('#res-sub').textContent = antibiotico
+    ? `${r.medicamento.nome} ${r.formulacao ? r.formulacao.rotulo : `${nf.format(r.mgPorMl)} mg/mL`} · ${nf.format(r.mgPorKgDia)} mg/kg/dia · criança com ${nf.format(r.peso)} kg`
+    : `${r.medicamento.nome} ${nf.format(r.mgPorMl)} mg/mL · criança com ${nf.format(r.peso)} kg`;
 
   $('#st-mg').innerHTML = `${nf.format(r.mgToma)} <small>mg</small>`;
+  $('#st-tomas-k').textContent = antibiotico ? 'Tomas por dia' : 'Máx. por dia';
+  $('#st-max-k').textContent = antibiotico ? 'Total em 24 h' : 'Máx. em 24 h';
   $('#st-tomas').innerHTML = `${r.tomasPorDia} <small>tomas</small>`;
   $('#st-max').innerHTML = `${nf.format(r.mlMaxDia)} <small>mL</small>`;
 
@@ -348,18 +460,51 @@ function atualizar() {
   if (r.limitado) {
     avisos.push(
       aviso(
-        `Dose limitada ao máximo de <strong>${nf.format(r.medicamento.maxMgPorToma)} mg por toma</strong>.`,
+        antibiotico
+          ? `Dose limitada ao máximo de <strong>${nf.format(r.medicamento.maxMgDia)} mg de amoxicilina por dia</strong>.`
+          : `Dose limitada ao máximo de <strong>${nf.format(r.medicamento.maxMgPorToma)} mg por toma</strong>.`,
         'danger'
       )
     );
   }
-  if (r.pesoAdulto) {
+  if (antibiotico && r.clavExcessivo) {
+    avisos.push(
+      aviso(
+        `Esta dose dá <strong>${nf.format(r.clavMgKgDia)} mg/kg/dia de ácido clavulânico</strong> (acima de ${nf.format(r.maxClavMgKgDia)} mg/kg/dia), o que aumenta a diarreia. Prefira uma formulação com menos clavulanato (${r.formulacao?.proporcao === '4:1' ? '7:1 ou 14:1' : '14:1'}) ou associe amoxicilina simples, por indicação médica.`,
+        'danger'
+      )
+    );
+  } else if (antibiotico && r.clavMgToma !== null) {
+    avisos.push(
+      aviso(
+        `Cada toma tem ${nf.format(r.mgToma)} mg de amoxicilina e ${nf.format(r.clavMgToma)} mg de ácido clavulânico (${nf.format(r.clavMgKgDia)} mg/kg/dia).`
+      )
+    );
+  }
+  if (antibiotico && r.formulacao && r.formulacao.proporcao !== '4:1' && r.peso < 5) {
+    avisos.push(
+      aviso('Nos bebés com menos de 2–3 meses, as formulações 7:1 e 14:1 não estão recomendadas: usa-se habitualmente a 4:1, de 8/8 h.')
+    );
+  }
+  if (r.pesoAdulto && antibiotico) {
+    avisos.push(
+      aviso('A partir de 40 kg usa-se a dose de adulto (habitualmente comprimidos de 875 + 125 mg de 12/12 h). Confirme com o médico.')
+    );
+  } else if (r.pesoAdulto) {
     avisos.push(
       aviso('Acima de 40 kg, os comprimidos costumam ser mais práticos. Confirme a formulação com o médico ou farmacêutico.')
     );
   }
   if (estado.custom) {
     avisos.push(aviso('Está a usar uma concentração personalizada — confirme o valor no rótulo do frasco.'));
+    if (antibiotico) {
+      avisos.push(aviso('Sem a quantidade de ácido clavulânico do frasco não é possível confirmar o limite diário de clavulanato.'));
+    }
+  }
+  if (antibiotico) {
+    avisos.push(
+      aviso('Antibiótico só com receita médica. Dar no início das refeições e cumprir todos os dias indicados, mesmo que a criança melhore. Agitar antes de cada toma; depois de preparado, guardar no frigorífico (em geral dura 7 dias — veja o folheto).')
+    );
   }
   if (estado.med === 'ibuprofeno') {
     avisos.push(
@@ -378,6 +523,10 @@ function atualizar() {
 
   // Guarda no URL para partilhar
   const q = new URLSearchParams({ peso: String(r.peso), med: estado.med, c: String(r.mgPorMl) });
+  if (antibiotico) {
+    q.set('dose', String(r.mgPorKgDia));
+    q.set('h', String(r.intervaloHoras));
+  }
   history.replaceState(null, '', `?${q}`);
 }
 
@@ -385,12 +534,27 @@ function atualizar() {
 
 function resumoTexto(r) {
   const linhas = [
-    `Calculadora de doses · ${r.medicamento.nome} (${nf.format(r.mgPorMl)} mg/mL)`,
+    `Calculadora de doses · ${r.medicamento.nome} (${r.formulacao ? r.formulacao.rotulo : `${nf.format(r.mgPorMl)} mg/mL`})`,
     `Peso da criança: ${nf.format(r.peso)} kg`,
-    `Dar ${nf1.format(r.ml)} mL por toma, de ${r.intervaloHoras} em ${r.intervaloHoras} horas`,
-    `Máximo de ${r.tomasPorDia} tomas em 24 horas (${nf.format(r.mlMaxDia)} mL/dia)`,
   ];
-  if (r.limitado) linhas.push(`Dose limitada ao máximo de ${nf.format(r.medicamento.maxMgPorToma)} mg por toma.`);
+  if (r.medicamento.antibiotico) {
+    linhas.push(
+      `Dose diária: ${nf.format(r.mgPorKgDia)} mg/kg/dia de amoxicilina`,
+      `Dar ${nf1.format(r.ml)} mL por toma (${nf.format(r.mgToma)} mg de amoxicilina), de ${r.intervaloHoras} em ${r.intervaloHoras} horas`,
+      `${r.tomasPorDia} tomas por dia (${nf.format(r.mlMaxDia)} mL/dia)`
+    );
+    if (r.clavMgToma !== null) {
+      linhas.push(`Ácido clavulânico: ${nf.format(r.clavMgToma)} mg por toma (${nf.format(r.clavMgKgDia)} mg/kg/dia)`);
+    }
+    if (r.limitado) linhas.push(`Dose limitada ao máximo de ${nf.format(r.medicamento.maxMgDia)} mg de amoxicilina por dia.`);
+    linhas.push('Cumprir todos os dias de tratamento indicados pelo médico.');
+  } else {
+    linhas.push(
+      `Dar ${nf1.format(r.ml)} mL por toma, de ${r.intervaloHoras} em ${r.intervaloHoras} horas`,
+      `Máximo de ${r.tomasPorDia} tomas em 24 horas (${nf.format(r.mlMaxDia)} mL/dia)`
+    );
+    if (r.limitado) linhas.push(`Dose limitada ao máximo de ${nf.format(r.medicamento.maxMgPorToma)} mg por toma.`);
+  }
   linhas.push('', 'Informação de apoio — não substitui aconselhamento médico.', location.href);
   return linhas.join('\n');
 }
@@ -407,5 +571,6 @@ $('#btn-print').addEventListener('click', () => {
 });
 
 desenharChips();
+desenharDose();
 sincronizarSlider();
 atualizar();

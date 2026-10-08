@@ -1690,6 +1690,11 @@ fieldset.step legend + .step-hint {
   --c-soft: var(--coral-soft);
 }
 
+.choice.amox label {
+  --c: var(--violet);
+  --c-soft: var(--violet-soft);
+}
+
 .choice label:hover {
   transform: translateY(-2px);
 }
@@ -1831,6 +1836,10 @@ fieldset.step legend + .step-hint {
 
 .result[data-med='ibuprofeno'] .result-head {
   --c: var(--coral-forte);
+}
+
+.result[data-med='amoxiclav'] .result-head {
+  --c: var(--violet);
 }
 
 /* Em amarelo o texto branco não se lê: texto escuro. */
@@ -2046,6 +2055,11 @@ fieldset.step legend + .step-hint {
 .result[data-med='ibuprofeno'] .timeline li:first-child .node {
   background: var(--coral);
   border-color: var(--coral);
+}
+
+.result[data-med='amoxiclav'] .timeline li:first-child .node {
+  background: var(--violet);
+  border-color: var(--violet);
 }
 
 .timeline time {
@@ -3279,6 +3293,7 @@ a.pub:hover {
 [data-nivel='muito-alto'] { --nc: var(--danger); --nc-soft: var(--danger-soft); }
 [data-nivel='neutro'] { --nc: var(--violet); --nc-soft: var(--violet-soft); }
 .result[data-med='ibuprofeno'] { --nc: var(--coral); --nc-soft: var(--coral-soft); }
+.result[data-med='amoxiclav'] { --nc: var(--violet); --nc-soft: var(--violet-soft); }
 
 .result-head {
   isolation: isolate;
