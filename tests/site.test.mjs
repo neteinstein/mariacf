@@ -85,3 +85,13 @@ test('a cor da barra do browser de cada paleta é a cor de marca dessa paleta', 
     assert.ok(ler(`${p}/index.html`).includes(`<meta name="theme-color" content="${paletas[0][1]}">`), `${p}: theme-color diferente da predefinida`);
   }
 });
+
+test('a página inicial tem um cartão por secção e números certos', async () => {
+  const { DOENCAS } = await import('../assets/js/doencas-dados.js');
+  const inicio = ler('index.html');
+  for (const s of ['doencas', 'ferramentas', 'usf', 'sns', 'sobre']) {
+    assert.ok(inicio.match(new RegExp(`<a class="tool[^"]*" href="${s}/"`)), `falta o cartão de ${s}`);
+  }
+  assert.ok(inicio.includes(`data-contar="${DOENCAS.length}"`), 'o número de doenças na página inicial está desatualizado');
+  assert.ok(inicio.includes(`data-contar="${calculadoras.length}"`), 'o número de ferramentas na página inicial está desatualizado');
+});

@@ -7338,3 +7338,593 @@ a.tool.destaque:hover .tool-deco.mini {
 .tool .tool-icon svg {
   display: block;
 }
+
+/* ==========================================================================
+   Página inicial: entrada animada, apresentação e cartões das secções
+   ==========================================================================
+   A coreografia: a marca gira e entra, um traçado de ECG atravessa o ecrã, o nome
+   aparece; depois abre-se um «furo» a partir da marca que revela a página, as palavras
+   do título sobem uma a uma e os cartões erguem-se em 3D quando chegam ao ecrã.
+   --entrada é o instante em que a página fica à vista (0 s quando a entrada é saltada).
+   Tudo isto desaparece com «reduzir movimento». */
+
+.inicio {
+  --entrada: 1.9s;
+}
+
+.sem-entrada .inicio {
+  --entrada: 0s;
+}
+
+@property --furo {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+.entrada {
+  --furo: 0px;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 50% 46%, color-mix(in srgb, var(--brand-b) 18%, var(--bg)), var(--bg) 65%);
+  /* O furo abre-se a partir da marca (sem @property, a página aparece num esbatido). */
+  -webkit-mask: radial-gradient(circle at 50% 46%, transparent var(--furo), #000 calc(var(--furo) + 1px));
+  mask: radial-gradient(circle at 50% 46%, transparent var(--furo), #000 calc(var(--furo) + 1px));
+  animation: entrada-abre 0.85s cubic-bezier(0.7, 0, 0.2, 1) 1.35s forwards;
+}
+
+.sem-entrada .entrada {
+  display: none;
+}
+
+@keyframes entrada-abre {
+  0% { --furo: 0px; opacity: 1; }
+  80% { opacity: 1; }
+  100% { --furo: 150vmax; opacity: 0; visibility: hidden; }
+}
+
+.entrada-centro {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  text-align: center;
+  animation: entrada-centro-sai 0.5s cubic-bezier(0.6, 0, 0.8, 0.4) 1.25s forwards;
+}
+
+@keyframes entrada-centro-sai {
+  to { transform: scale(1.3); opacity: 0; filter: blur(8px); }
+}
+
+.entrada-marca {
+  position: relative;
+  z-index: 1;
+  width: 104px;
+  height: 104px;
+  margin-bottom: 18px;
+  border-radius: 32px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-b), var(--brand-a) 55%, var(--brand-c));
+  background: linear-gradient(135deg in oklch, var(--brand-b), var(--brand-a) 55%, var(--brand-c));
+  box-shadow: 0 24px 60px -18px var(--brand-a), 0 0 0 10px color-mix(in srgb, var(--bg) 70%, transparent);
+  animation:
+    entrada-marca 0.8s var(--spring) 0.05s both,
+    batida 0.9s ease-in-out 0.85s;
+}
+
+@keyframes entrada-marca {
+  from { transform: scale(0) rotate(-135deg); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@keyframes batida {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.14); }
+  30% { transform: scale(0.98); }
+  45% { transform: scale(1.08); }
+}
+
+.entrada-ecg {
+  position: absolute;
+  top: 52px;
+  left: 50%;
+  width: min(640px, 92vw);
+  height: 120px;
+  transform: translate(-50%, -50%);
+  overflow: visible;
+}
+
+.entrada-ecg path {
+  fill: none;
+  stroke: var(--teal-2);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  filter: drop-shadow(0 0 6px var(--teal-2));
+  animation: traco 1s cubic-bezier(0.45, 0, 0.2, 1) 0.3s forwards;
+}
+
+@keyframes traco {
+  to { stroke-dashoffset: 0; }
+}
+
+.entrada-nome {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 6vw, 2.8rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  animation: entrada-nome 0.9s var(--ease) 0.5s both;
+}
+
+@keyframes entrada-nome {
+  from { opacity: 0; letter-spacing: 0.35em; filter: blur(10px); }
+}
+
+.entrada-sub {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  animation: ent-sobe 0.8s var(--ease) 0.8s both;
+}
+
+/* ---------- Apresentação ---------- */
+
+.ent {
+  animation: ent-sobe 1s var(--ease) calc(var(--entrada) - 0.35s + var(--i, 0) * 80ms) both;
+}
+
+@keyframes ent-sobe {
+  from { opacity: 0; transform: translateY(28px); filter: blur(8px); }
+}
+
+.inicio-titulo .palavra {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  /* Folga para as descendentes e o itálico não serem cortados. */
+  padding: 0 0.08em 0.12em 0;
+  margin: 0 -0.08em -0.12em 0;
+}
+
+.inicio-titulo .palavra > span {
+  display: inline-block;
+  transform-origin: 0 100%;
+  animation: palavra-sobe 1.1s var(--ease) calc(var(--entrada) - 0.45s + var(--i) * 75ms) both;
+}
+
+@keyframes palavra-sobe {
+  from { transform: translateY(110%) rotate(8deg); }
+}
+
+.inicio-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin-top: 30px;
+}
+
+.inicio-cta .btn-primary {
+  padding: 14px 26px;
+  font-size: 1rem;
+}
+
+.inicio-cta-sec {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: var(--teal);
+  text-decoration: none;
+}
+
+.inicio-cta-sec svg {
+  transition: transform 0.35s var(--spring);
+}
+
+.inicio-cta-sec:hover svg {
+  transform: translateY(4px);
+}
+
+/* A arte do herói cresce a rodar; o centro bate como um coração e lança ondas. */
+.inicio-arte {
+  animation: arte-entra 1.5s var(--ease) calc(var(--entrada) - 0.4s) both;
+}
+
+@keyframes arte-entra {
+  from { opacity: 0; transform: scale(0.55) rotate(-30deg); filter: blur(12px); }
+}
+
+.inicio-coracao {
+  width: 112px;
+  height: 112px;
+  border-radius: 36px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  background: linear-gradient(135deg, var(--brand-b), var(--brand-a) 55%, var(--brand-c));
+  background: linear-gradient(135deg in oklch, var(--brand-b), var(--brand-a) 55%, var(--brand-c));
+  box-shadow: 0 24px 50px -16px var(--brand-a);
+  animation: batida 1.6s ease-in-out calc(var(--entrada) + 0.8s) infinite;
+}
+
+.inicio-ondas {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.inicio-ondas span {
+  grid-area: 1 / 1;
+  width: 112px;
+  height: 112px;
+  border-radius: 36px;
+  border: 2px solid var(--teal-2);
+  opacity: 0;
+  animation: onda 4.8s ease-out calc(var(--entrada) + 0.8s) infinite;
+}
+
+.inicio-ondas span:nth-child(2) { animation-delay: calc(var(--entrada) + 2.4s); }
+.inicio-ondas span:nth-child(3) { animation-delay: calc(var(--entrada) + 4s); }
+
+@keyframes onda {
+  0% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+  100% { transform: scale(2.6) rotate(45deg); opacity: 0; }
+}
+
+.inicio-arte .float-chip.c1 {
+  animation: chip-entra 0.9s var(--spring) calc(var(--entrada) + 0.35s) both, bob 6s ease-in-out calc(var(--entrada) + 1.3s) infinite;
+}
+
+.inicio-arte .float-chip.c2 {
+  animation: chip-entra 0.9s var(--spring) calc(var(--entrada) + 0.5s) both, bob 6s ease-in-out calc(var(--entrada) + 3.3s) infinite;
+}
+
+.inicio-arte .float-chip.c3 {
+  animation: chip-entra 0.9s var(--spring) calc(var(--entrada) + 0.65s) both, bob 6s ease-in-out calc(var(--entrada) + 5.3s) infinite;
+}
+
+@keyframes chip-entra {
+  from { opacity: 0; transform: scale(0.3) translateY(30px); }
+}
+
+/* ---------- Números ---------- */
+
+.inicio-numeros {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 48px 0 0;
+  border-radius: calc(var(--radius) + 4px);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+}
+
+.inicio-numeros > div {
+  padding: 22px 24px;
+}
+
+.inicio-numeros > div + div {
+  border-left: 1px solid var(--line);
+}
+
+.inicio-numeros dt {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-style: italic;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(135deg, var(--teal), var(--accent));
+  background: linear-gradient(135deg in oklch, var(--teal), var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 0.06em;
+}
+
+.inicio-numeros dd {
+  margin: 8px 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+/* ---------- Cartões das secções ---------- */
+
+.inicio-seccoes {
+  padding-top: 40px;
+  scroll-margin-top: 90px;
+}
+
+.inicio-seccoes .section-head h2 em {
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(100deg, var(--teal) 10%, var(--accent) 90%);
+  background: linear-gradient(100deg in oklch, var(--teal) 10%, var(--accent) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  padding-right: 0.06em;
+}
+
+.js .inicio-surge {
+  opacity: 0;
+  transform: translateY(30px);
+  filter: blur(6px);
+}
+
+.inicio-surge {
+  transition: opacity 1s var(--ease), transform 1s var(--ease), filter 1s var(--ease);
+}
+
+.js .inicio-surge.visto {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.inicio-grelha {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.c-doencas {
+  grid-column: span 2;
+  min-height: 330px;
+}
+
+.c-ferramentas {
+  grid-row: span 2;
+}
+
+.c-sobre {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 28px;
+}
+
+.inicio-cartao {
+  transform-origin: 50% 100%;
+}
+
+.js .inicio-cartao {
+  opacity: 0;
+}
+
+.js .inicio-cartao.visto {
+  opacity: 1;
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  animation: cartao-entra 1.2s var(--ease) calc(var(--i) * 110ms) backwards;
+}
+
+a.inicio-cartao.visto:hover {
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateY(-6px);
+}
+
+@keyframes cartao-entra {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) translateY(80px) rotateX(20deg) scale(0.92);
+    filter: blur(8px);
+  }
+}
+
+/* Um reflexo de luz atravessa cada cartão quando acaba de entrar. */
+.inicio-cartao::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 35%, rgba(255, 255, 255, 0.4) 50%, transparent 65%);
+  transform: translateX(-130%);
+}
+
+.inicio-cartao.visto::after {
+  animation: reflexo 1.3s var(--ease) calc(var(--i) * 110ms + 0.55s) both;
+}
+
+@keyframes reflexo {
+  to { transform: translateX(130%); }
+}
+
+.inicio-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  font-weight: 500;
+  opacity: 0.55;
+  font-variant-numeric: tabular-nums;
+}
+
+.inicio-cartao .tool-desc {
+  margin-top: 8px;
+}
+
+.inicio-cartao .go {
+  margin-top: auto;
+}
+
+.inicio-cartao .tags + .go {
+  margin-top: 0;
+}
+
+.c-doencas .tool-title {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  max-width: 16ch;
+}
+
+/* Ícone grande ao fundo do cartão, a flutuar devagar. */
+.inicio-deco {
+  position: absolute;
+  right: -24px;
+  bottom: -28px;
+  z-index: -1;
+  color: var(--cartao-acao, var(--tint));
+  opacity: 0.16;
+  transform: rotate(-12deg);
+  animation: deco-flutua 9s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.inicio-deco svg {
+  display: block;
+}
+
+.c-doencas .inicio-deco {
+  right: 16px;
+  bottom: -36px;
+  opacity: 0.22;
+}
+
+@keyframes deco-flutua {
+  to { transform: rotate(-4deg) translate(-12px, -14px); }
+}
+
+/* O cartão das ferramentas tem um ECG que se desenha em ciclo. */
+.inicio-ecg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  width: 100%;
+  height: 110px;
+  transform: translateY(-50%);
+  z-index: -1;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.inicio-ecg path {
+  fill: none;
+  stroke: var(--cartao-acao, var(--tint));
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.5;
+  stroke-dasharray: 0.35 0.65;
+  stroke-dashoffset: 1;
+  animation: ecg-corre 3.2s linear infinite;
+}
+
+@keyframes ecg-corre {
+  to { stroke-dashoffset: 0; }
+}
+
+.inicio-foto {
+  flex: none;
+  width: 96px;
+  height: 96px;
+}
+
+.inicio-sobre-texto {
+  display: grid;
+  gap: 6px;
+  justify-items: start;
+}
+
+.inicio-sobre-texto .tool-desc {
+  max-width: 70ch;
+}
+
+@media (max-width: 900px) {
+  .inicio-grelha {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .c-ferramentas {
+    grid-row: auto;
+  }
+  .inicio-ecg {
+    display: none;
+  }
+  .inicio-numeros {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .inicio-numeros > div:nth-child(3) {
+    border-left: 0;
+  }
+  .inicio-numeros > div:nth-child(n + 3) {
+    border-top: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 640px) {
+  .inicio-grelha {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .c-doencas {
+    grid-column: auto;
+    min-height: 0;
+  }
+  .c-sobre {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .inicio-numeros > div {
+    padding: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .entrada {
+    display: none;
+  }
+  .ent,
+  .inicio-titulo .palavra > span,
+  .inicio-arte,
+  .inicio-arte .float-chip,
+  .inicio-coracao,
+  .inicio-ondas span,
+  .inicio-deco,
+  .inicio-ecg path,
+  .inicio-cartao.visto,
+  .inicio-cartao.visto::after {
+    animation: none !important;
+  }
+  .js .inicio-cartao,
+  .js .inicio-surge {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+  .inicio-ecg path {
+    stroke-dasharray: none;
+  }
+}
+
+@media print {
+  .entrada,
+  .inicio-arte {
+    display: none;
+  }
+  .ent,
+  .inicio-titulo .palavra > span,
+  .inicio-cartao,
+  .inicio-surge {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}

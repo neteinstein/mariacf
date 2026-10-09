@@ -26,7 +26,7 @@ test('os ícones são SVG de traço, sem cores fixas', () => {
 });
 
 test('os cartões e etiquetas das páginas usam os SVG da biblioteca, sem emoji', () => {
-  for (const pagina of ['index.html', 'ferramentas/index.html']) {
+  for (const pagina of ['index.html', 'doencas/index.html', 'ferramentas/index.html']) {
     const html = ler(pagina);
     const icones = [...html.matchAll(/<span class="(?:tool-icon|ico)"[^>]*>(.*?)<\/span>/gs)];
     assert.ok(icones.length > 0, `${pagina}: sem ícones`);

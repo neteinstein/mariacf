@@ -4,7 +4,7 @@
 // e atualiza a cache; sem ligação, usa a última versão guardada.
 // A lista PRECACHE é verificada pelos testes (tests/site.test.mjs).
 
-const CACHE = 'mcf-v22';
+const CACHE = 'mcf-v23';
 
 const PRECACHE = [
   './',
@@ -35,6 +35,7 @@ const PRECACHE = [
   'calculadora-urologia/',
   'calculadora-vacinas/',
   'calculadora-vascular/',
+  'doencas/',
   'ferramentas/',
   'sns/',
   'sobre/',
@@ -63,6 +64,7 @@ const PRECACHE = [
   'assets/js/doencas-dados.js',
   'assets/js/doencas-ilustracoes.js',
   'assets/js/icones.js',
+  'assets/js/inicio.js',
   'assets/js/doencas.js',
   'assets/js/doses-core.js',
   'assets/js/doses.js',
