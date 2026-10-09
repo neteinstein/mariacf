@@ -3035,6 +3035,7 @@ a.pub:hover {
 
 .equipa {
   display: grid;
+  gap: 20px;
   max-width: 560px;
 }
 
