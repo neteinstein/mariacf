@@ -5,18 +5,29 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 
 ## Páginas
 
-- `/` — página inicial: doenças explicadas para cinco grupos etários
+- `/` — página inicial: apresentação e um cartão por secção, com uma entrada animada
+- `/doencas/` — doenças explicadas para cinco grupos etários
 - `/ferramentas/` — as calculadoras e questionários clínicos
 - `/sns/` — contactos úteis do SNS (112, SNS 24 e outras linhas de ajuda)
 - `/sobre/` — percurso da Dra. Maria e artigos no Ponto SJ
 - `/usf/` — USF Nova Saúde (São Martinho do Campo): contactos, mapa, serviços, a Dra. Maria, história, notícias e como marcar consulta
 
+## Página inicial
+
+`index.html` apresenta o site e tem um cartão por secção (Doenças, Ferramentas, USF, SNS e Sobre).
+A entrada animada (marca, traçado de ECG e um «furo» que revela a página) vive em CSS, na secção
+«Página inicial» de `styles.css`; `assets/js/inicio.js` trata dos números que contam, dos cartões que surgem
+ao chegar ao ecrã e da inclinação 3D. A entrada só aparece na primeira visita de cada sessão, salta-se com um
+clique ou uma tecla e desaparece com «reduzir movimento». As ligações antigas para as doenças na raiz
+(`/?d=…`, `/?q=…`, `/?cat=…`) seguem para `/doencas/`. Os números do herói são gerados a partir de `DOENCAS`
+e das pastas `calculadora-*`; o teste `tests/site.test.mjs` avisa quando ficam desatualizados.
+
 ## Doenças
 
-A página inicial mostra um cartão animado por doença (41, das mais frequentes em Portugal), com pesquisa e
-filtro por área (`/?q=colesterol`, `/?cat=Oncologia`). Ao abrir um cartão, a explicação aparece em separadores
+A página de doenças mostra um cartão animado por doença (41, das mais frequentes em Portugal), com pesquisa e
+filtro por área (`/doencas/?q=colesterol`, `/doencas/?cat=Oncologia`). Ao abrir um cartão, a explicação aparece em separadores
 por idade (Crianças 3–5, Crianças 5–12, Adolescentes 13–17, Adultos 18–65, Séniores 65+), com os botões
-«Enviar por email» e «Imprimir» das ferramentas. O estado fica no URL (`/?d=diabetes&idade=65+`), por isso
+«Enviar por email» e «Imprimir» das ferramentas. O estado fica no URL (`/doencas/?d=diabetes&idade=65+`), por isso
 cada separador pode ser partilhado; a impressão sai sempre com as cores do tema claro.
 
 - `assets/js/doencas-dados.js` — o conteúdo (sem DOM, testado em `tests/doencas.test.mjs`).

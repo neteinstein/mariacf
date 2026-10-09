@@ -105,7 +105,7 @@ function conteudoGrupo(g, grupoId, d) {
   }
   if (g.ligacoes) {
     html += `<div class="doenca-ligacoes">${g.ligacoes
-      .map((l) => `<a class="about-link" href="${l.href}">${esc(l.texto)} ${seta}</a>`)
+      .map((l) => `<a class="about-link" href="../${l.href}">${esc(l.texto)} ${seta}</a>`)
       .join('')}</div>`;
   }
   // Como nas ferramentas: enviar por email ou imprimir o que está no ecrã.
