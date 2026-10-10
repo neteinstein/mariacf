@@ -7335,6 +7335,7 @@ a.tool.destaque:hover .tool-deco.mini {
 }
 
 .about-facts li {
+  align-items: flex-start;
   padding: 0;
   border: 0;
   border-radius: 0;
