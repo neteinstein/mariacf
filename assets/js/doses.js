@@ -214,6 +214,22 @@ function desenharDose() {
   });
 }
 
+/* ---------- Cartões de informação do medicamento escolhido ---------- */
+
+function desenharInfo() {
+  const med = MEDICAMENTOS[estado.med];
+  const soGotas = med.concentracoes.every((c) => c.mgPorGota);
+  $('#como-dar-titulo').textContent = soGotas ? 'Como dar as gotas' : 'Como dar o xarope';
+  const comoDar = [
+    ...(soGotas ? [] : ['Use sempre a seringa doseadora — colheres de cozinha não são rigorosas.']),
+    'Confirme a concentração no rótulo: o mesmo medicamento existe em forças diferentes.',
+    ...med.comoDar,
+  ];
+  $('#como-dar').innerHTML = comoDar.map((t) => `<li>${t}</li>`).join('');
+  $('#limites-med').textContent = `· ${med.nome}`;
+  $('#limites').innerHTML = med.limites.map((t) => `<li>${t}</li>`).join('');
+}
+
 /* ---------- Idade (doses fixas por idade) ---------- */
 
 function desenharIdade() {
@@ -309,6 +325,7 @@ document.querySelectorAll('input[name="med"]').forEach((r) => {
     desenharChips();
     desenharDose();
     desenharIdade();
+    desenharInfo();
     atualizar();
   });
 });
@@ -635,5 +652,6 @@ $('#btn-print').addEventListener('click', () => {
 desenharChips();
 desenharDose();
 desenharIdade();
+desenharInfo();
 sincronizarSlider();
 atualizar();
