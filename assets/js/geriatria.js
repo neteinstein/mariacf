@@ -41,9 +41,14 @@ function ler(form, itens, prefixo) {
 
 const tabs = $$('.tabbtn');
 const paineis = $$('[data-painel]');
+const infoCartoes = $$('[data-info]');
+const infoGrelha = $('#info-escalas');
 function selecionar(id) {
   tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.tab === id)));
   paineis.forEach((p) => (p.hidden = p.dataset.painel !== id));
+  // Mostrar apenas o cartão informativo da escala escolhida
+  infoCartoes.forEach((c) => (c.hidden = c.dataset.info !== id));
+  infoGrelha.hidden = !infoCartoes.some((c) => c.dataset.info === id);
   history.replaceState(null, '', `?calc=${id}`);
 }
 tabs.forEach((t) => t.addEventListener('click', () => selecionar(t.dataset.tab)));
