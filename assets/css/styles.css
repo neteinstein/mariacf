@@ -5845,6 +5845,37 @@ a.tool.destaque:hover .tool-deco.mini {
   opacity: 1;
 }
 
+/* Cartões de doença: sem descrição — o nome em grande e a ilustração maior. */
+.cartao-doenca {
+  min-height: 300px;
+}
+
+.cartao-doenca .tool-title {
+  font-size: clamp(1.75rem, 3.2vw, 2.25rem);
+  line-height: 1.05;
+}
+
+.cartao-doenca .tool-alias {
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+
+.cartao-doenca .tool-deco.mini {
+  width: 190px;
+  right: 14px;
+  bottom: 14px;
+}
+
+@media (max-width: 640px) {
+  .cartao-doenca {
+    min-height: 240px;
+  }
+
+  .cartao-doenca .tool-deco.mini {
+    width: 150px;
+  }
+}
+
 /* ==========================================================================
    Navegação principal (Doenças · Ferramentas · SNS · Sobre)
    ========================================================================== */

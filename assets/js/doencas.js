@@ -38,11 +38,10 @@ const iconeImprimir =
 function cartao(d, i) {
   const tint = i % 2 ? ' tint-coral' : '';
   return `
-    <a class="tool reveal destaque${tint}" href="?d=${d.id}" data-doenca="${d.id}">
+    <a class="tool reveal destaque cartao-doenca${tint}" href="?d=${d.id}" data-doenca="${d.id}">
       ${miniatura(d.deco)}
       <div class="tool-top"><span class="tool-icon" aria-hidden="true">${icone(d.icone)}</span></div>
       <div class="tool-title">${esc(d.nome)}${d.alias ? `<small class="tool-alias">${esc(d.alias)}</small>` : ''}</div>
-      <p class="tool-desc">${esc(d.resumo)}</p>
       <div class="tags"><span class="tag">${esc(d.categoria)}</span></div>
       <span class="go">Conhecer a doença ${seta}</span>
     </a>`;
