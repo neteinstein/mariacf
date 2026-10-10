@@ -7839,15 +7839,6 @@ a.inicio-cartao.visto:hover {
   to { transform: translateX(130%); }
 }
 
-.inicio-num {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.1rem;
-  font-weight: 500;
-  opacity: 0.55;
-  font-variant-numeric: tabular-nums;
-}
-
 .inicio-cartao .tool-desc {
   margin-top: 8px;
 }
