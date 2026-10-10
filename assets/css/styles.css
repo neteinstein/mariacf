@@ -1695,6 +1695,49 @@ fieldset.step legend + .step-hint {
   --c-soft: var(--violet-soft);
 }
 
+.choice.cort label {
+  --c: var(--sun);
+  --c-soft: var(--sun-soft);
+}
+
+/* Lista de medicamentos agrupada por categoria, com cartões compactos. */
+.med-grupo {
+  margin: 18px 0 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.med-grupo:first-of-type {
+  margin-top: 4px;
+}
+
+.choices-compact {
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px;
+}
+
+.choices-compact .choice label {
+  padding: 12px 14px;
+  border-radius: 14px;
+}
+
+.choices-compact .choice .pill {
+  width: 30px;
+  height: 14px;
+  margin-bottom: 4px;
+}
+
+.choices-compact .choice .name {
+  font-size: 0.95rem;
+}
+
+.choices-compact .choice .brands {
+  font-size: 0.75rem;
+}
+
 .choice label:hover {
   transform: translateY(-2px);
 }
@@ -2652,6 +2695,9 @@ a.pub:hover {
   }
   .choices {
     grid-template-columns: 1fr;
+  }
+  .choices-compact {
+    grid-template-columns: 1fr 1fr;
   }
   .stats {
     grid-template-columns: 1fr 1fr;

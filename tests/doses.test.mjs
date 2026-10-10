@@ -154,3 +154,79 @@ test('cefuroxima: otite a 30 mg/kg/dia e máximo de 250 mg por toma', () => {
   assert.equal(max.ml, 5);
   assert.equal(calcularDose(4, 'cefuroxima', 25).ok, false);
 });
+
+test('prednisolona 3 mg/mL: 12 kg a 1 mg/kg/dia → 12 mg = 4 mL 1×/dia; máx. 40 mg/dia', () => {
+  const r = calcularDose(12, 'prednisolona', 3);
+  assert.equal(r.ok, true);
+  assert.equal(r.mgToma, 12);
+  assert.equal(r.ml, 4);
+  assert.equal(r.tomasPorDia, 1);
+  assert.equal(r.gotas, null);
+  const max = calcularDose(25, 'prednisolona', 3, { mgPorKgDia: 2 });
+  assert.equal(max.limitado, true);
+  assert.equal(max.mgToma, 40);
+});
+
+test('deflazacorte em gotas: 1 gota = 1 mg; limitado a 48 mg/dia', () => {
+  const r = calcularDose(12.4, 'deflazacorte', 22.75, { mgPorKgDia: 1.5 });
+  assert.equal(r.mgToma, 18.6);
+  assert.equal(r.gotas, 19);
+  assert.equal(r.gotasMaxDia, 19);
+  const max = calcularDose(40, 'deflazacorte', 22.75, { mgPorKgDia: 1.5 });
+  assert.equal(max.limitado, true);
+  assert.equal(max.gotas, 48);
+  // Concentração personalizada: sem gotas, só mL.
+  assert.equal(calcularDose(12, 'deflazacorte', 20).gotas, null);
+});
+
+test('domperidona: 0,25 mg/kg até 3×/dia; 10 mg a partir de 35 kg', () => {
+  const r = calcularDose(12, 'domperidona', 1);
+  assert.equal(r.mgToma, 3);
+  assert.equal(r.ml, 3);
+  assert.equal(r.tomasPorDia, 3);
+  assert.equal(calcularDose(9, 'domperidona', 1).mgToma, 2.3);
+  assert.equal(calcularDose(34, 'domperidona', 1).mgToma, 8.5);
+  assert.equal(calcularDose(35, 'domperidona', 1).mgToma, 10);
+});
+
+test('metoclopramida: dose por escalão de peso e recusada abaixo de 10 kg', () => {
+  assert.equal(calcularDose(9, 'metoclopramida', 1).ok, false);
+  assert.equal(calcularDose(10, 'metoclopramida', 1).mgToma, 1);
+  assert.equal(calcularDose(14.9, 'metoclopramida', 1).mgToma, 1);
+  assert.equal(calcularDose(15, 'metoclopramida', 1).mgToma, 2);
+  assert.equal(calcularDose(25, 'metoclopramida', 1).mgToma, 2.5);
+  const r = calcularDose(45, 'metoclopramida', 1);
+  assert.equal(r.mgToma, 5);
+  assert.equal(r.ml, 5);
+});
+
+test('hidroxizina 2 mg/mL: 12 kg a 2 mg/kg/dia de 8/8h → 8 mg = 4 mL; máx. 100 mg/dia', () => {
+  const r = calcularDose(12, 'hidroxizina', 2, { mgPorKgDia: 2, intervaloHoras: 8 });
+  assert.equal(r.mgToma, 8);
+  assert.equal(r.ml, 4);
+  assert.equal(calcularDose(9, 'hidroxizina', 2).ok, false);
+  assert.equal(calcularDose(60, 'hidroxizina', 2, { mgPorKgDia: 2 }).mgMaxDia, 100);
+});
+
+test('cetirizina: dose por idade, em mL ou gotas; exige a idade', () => {
+  assert.equal(calcularDose(12, 'cetirizina', 1).ok, false);
+  const r = calcularDose(null, 'cetirizina', 1, { idade: '6-11' });
+  assert.equal(r.ok, true);
+  assert.equal(r.mgToma, 5);
+  assert.equal(r.ml, 5);
+  assert.equal(r.intervaloHoras, 12);
+  const g = calcularDose(null, 'cetirizina', 10, { idade: '2-5' });
+  assert.equal(g.gotas, 5);
+  assert.equal(g.gotasMaxDia, 10);
+  const adolescente = calcularDose(null, 'cetirizina', 1, { idade: '12+' });
+  assert.equal(adolescente.tomasPorDia, 1);
+  assert.equal(adolescente.ml, 10);
+});
+
+test('desloratadina 0,5 mg/mL: 1 a 5 anos → 1,25 mg = 2,5 mL 1×/dia', () => {
+  const r = calcularDose(null, 'desloratadina', 0.5, { idade: '1-5' });
+  assert.equal(r.mgToma, 1.25);
+  assert.equal(r.ml, 2.5);
+  assert.equal(r.tomasPorDia, 1);
+  assert.equal(calcularDose(null, 'desloratadina', 0.5, { idade: '2-5' }).ok, false);
+});
