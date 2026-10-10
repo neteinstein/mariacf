@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calculadora de Doses · Saúde em Família</title>
-  <meta name="description" content="Calcule a dose de paracetamol (Ben-u-ron®), ibuprofeno (Brufen®, Nurofen®, Ib-u-ron®) e amoxicilina + ácido clavulânico (Augmentin®) em xarope para crianças, a partir do peso.">
+  <meta name="description" content="Calcule a dose de xaropes e gotas para crianças: paracetamol, ibuprofeno, antibióticos (Augmentin®, Zithromax®, Zinnat®), corticoides (prednisolona, Zamene®), antieméticos (Motilium®, metoclopramida) e anti-histamínicos (cetirizina, desloratadina, Atarax®).">
   <meta name="theme-color" content="#125a98">
   <meta property="og:title" content="Calculadora de Doses Pediátricas">
-  <meta property="og:description" content="Paracetamol, ibuprofeno e amoxicilina + ácido clavulânico em xarope: quantos mL dar, a partir do peso da criança.">
+  <meta property="og:description" content="Paracetamol, ibuprofeno, antibióticos, corticoides, antieméticos e anti-histamínicos em xarope ou gotas: quanto dar, a partir do peso ou da idade da criança.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Saúde em Família">
   <meta property="og:locale" content="pt_PT">
@@ -59,31 +59,17 @@
 
   <main class="wrap">
     <section class="page-hero reveal">
-      <span class="eyebrow"><span class="dot"></span> Pediatria · Febre, dor e antibiótico</span>
+      <span class="eyebrow"><span class="dot"></span> Pediatria · Xaropes e gotas</span>
       <h1 class="display">Calculadora de <em>doses</em></h1>
-      <p class="lead">Pese a criança, escolha o medicamento e a concentração do frasco. Mostramos quantos mL dar, de quantas em quantas horas, e como fica na seringa.</p>
+      <p class="lead">Escolha o medicamento, indique o peso (ou a idade) da criança e a concentração do frasco. Mostramos quanto dar, de quantas em quantas horas, e como fica na seringa.</p>
     </section>
 
     <div class="calc">
       <form class="panel reveal" id="calc-form" autocomplete="off" novalidate>
-        <div class="step">
-          <label class="step-label" for="peso"><span class="step-num">1</span> Peso da criança</label>
-          <p class="step-hint">Use o peso atual — a dose depende do peso, não da idade.</p>
-          <div class="weight">
-            <button class="stepper" type="button" data-step="-0.1" aria-label="Diminuir peso 0,1 kg">−</button>
-            <div class="weight-field">
-              <input id="peso" name="peso" type="number" inputmode="decimal" min="3" max="60" step="0.1" value="12" aria-describedby="peso-unid">
-              <span class="unit" id="peso-unid">kg</span>
-            </div>
-            <button class="stepper" type="button" data-step="0.1" aria-label="Aumentar peso 0,1 kg">+</button>
-          </div>
-          <input class="slider" id="peso-slider" type="range" min="3" max="60" step="0.1" value="12" aria-label="Peso em quilogramas">
-          <div class="slider-scale" aria-hidden="true"><span>3 kg</span><span>20</span><span>40</span><span>60 kg</span></div>
-        </div>
-
         <fieldset class="step">
-          <legend class="step-label"><span class="step-num">2</span> Medicamento</legend>
-          <div class="choices choices-3">
+          <legend class="step-label"><span class="step-num">1</span> Medicamento</legend>
+          <p class="med-grupo">Febre e dor</p>
+          <div class="choices choices-compact">
             <div class="choice para">
               <input type="radio" name="med" id="med-para" value="paracetamol" checked>
               <label for="med-para">
@@ -100,6 +86,9 @@
                 <span class="brands">Brufen®, Ib-u-ron®, Nurofen®, genéricos</span>
               </label>
             </div>
+          </div>
+          <p class="med-grupo">Antibióticos</p>
+          <div class="choices choices-compact">
             <div class="choice amox">
               <input type="radio" name="med" id="med-amox" value="amoxiclav">
               <label for="med-amox">
@@ -108,7 +97,109 @@
                 <span class="brands">Augmentin®, Clavamox®, genéricos</span>
               </label>
             </div>
+            <div class="choice amox">
+              <input type="radio" name="med" id="med-azi" value="azitromicina">
+              <label for="med-azi">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Azitromicina</span>
+                <span class="brands">Zithromax®, genéricos</span>
+              </label>
+            </div>
+            <div class="choice amox">
+              <input type="radio" name="med" id="med-cefu" value="cefuroxima">
+              <label for="med-cefu">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Cefuroxima</span>
+                <span class="brands">Zinnat®, genéricos</span>
+              </label>
+            </div>
           </div>
+          <p class="med-grupo">Corticoides</p>
+          <div class="choices choices-compact">
+            <div class="choice cort">
+              <input type="radio" name="med" id="med-pred" value="prednisolona">
+              <label for="med-pred">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Prednisolona</span>
+                <span class="brands">Prelone®, genéricos</span>
+              </label>
+            </div>
+            <div class="choice cort">
+              <input type="radio" name="med" id="med-defla" value="deflazacorte">
+              <label for="med-defla">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Deflazacorte</span>
+                <span class="brands">Zamene® (gotas)</span>
+              </label>
+            </div>
+          </div>
+          <p class="med-grupo">Náuseas e vómitos</p>
+          <div class="choices choices-compact">
+            <div class="choice ibu">
+              <input type="radio" name="med" id="med-domp" value="domperidona">
+              <label for="med-domp">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Domperidona</span>
+                <span class="brands">Motilium®, genéricos</span>
+              </label>
+            </div>
+            <div class="choice ibu">
+              <input type="radio" name="med" id="med-meto" value="metoclopramida">
+              <label for="med-meto">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Metoclopramida</span>
+                <span class="brands">Primperan®, genéricos</span>
+              </label>
+            </div>
+          </div>
+          <p class="med-grupo">Alergia e comichão</p>
+          <div class="choices choices-compact">
+            <div class="choice para">
+              <input type="radio" name="med" id="med-ceti" value="cetirizina">
+              <label for="med-ceti">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Cetirizina</span>
+                <span class="brands">Zyrtec®, genéricos</span>
+              </label>
+            </div>
+            <div class="choice para">
+              <input type="radio" name="med" id="med-deslo" value="desloratadina">
+              <label for="med-deslo">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Desloratadina</span>
+                <span class="brands">Aerius®, genéricos</span>
+              </label>
+            </div>
+            <div class="choice para">
+              <input type="radio" name="med" id="med-hidro" value="hidroxizina">
+              <label for="med-hidro">
+                <span class="pill" aria-hidden="true"></span>
+                <span class="name">Hidroxizina</span>
+                <span class="brands">Atarax®, genéricos</span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="step" id="passo-peso">
+          <label class="step-label" for="peso"><span class="step-num">2</span> Peso da criança</label>
+          <p class="step-hint">Use o peso atual — a dose depende do peso, não da idade.</p>
+          <div class="weight">
+            <button class="stepper" type="button" data-step="-0.1" aria-label="Diminuir peso 0,1 kg">−</button>
+            <div class="weight-field">
+              <input id="peso" name="peso" type="number" inputmode="decimal" min="3" max="60" step="0.1" value="12" aria-describedby="peso-unid">
+              <span class="unit" id="peso-unid">kg</span>
+            </div>
+            <button class="stepper" type="button" data-step="0.1" aria-label="Aumentar peso 0,1 kg">+</button>
+          </div>
+          <input class="slider" id="peso-slider" type="range" min="3" max="60" step="0.1" value="12" aria-label="Peso em quilogramas">
+          <div class="slider-scale" aria-hidden="true"><span>3 kg</span><span>20</span><span>40</span><span>60 kg</span></div>
+        </div>
+
+        <fieldset class="step" id="passo-idade" hidden>
+          <legend class="step-label"><span class="step-num">2</span> Idade da criança</legend>
+          <p class="step-hint" id="idade-hint"></p>
+          <div class="chips" id="idade-chips"></div>
         </fieldset>
 
         <fieldset class="step">
@@ -119,9 +210,9 @@
 
         <fieldset class="step" id="passo-dose" hidden>
           <legend class="step-label"><span class="step-num">4</span> Dose prescrita</legend>
-          <p class="step-hint">Dose diária de amoxicilina indicada pelo médico, dividida pelas tomas do dia.</p>
+          <p class="step-hint" id="dose-hint">Dose diária de amoxicilina indicada pelo médico, dividida pelas tomas do dia.</p>
           <div class="chips" id="dose-chips"></div>
-          <p class="step-hint">Tomas por dia</p>
+          <p class="step-hint" id="intervalo-hint">Tomas por dia</p>
           <div class="chips" id="intervalo-chips"></div>
         </fieldset>
       </form>
@@ -131,7 +222,7 @@
           <div class="result-head">
             <div class="result-kicker" id="res-kicker">Dar por toma</div>
             <div class="dose-line">
-              <div class="dose-big" data-fx-sem-contagem><span id="res-ml">0</span><span class="u">mL</span></div>
+              <div class="dose-big" data-fx-sem-contagem><span id="res-ml">0</span><span class="u" id="res-unid">mL</span></div>
               <div class="dose-every" id="res-every">de 6 em 6 horas</div>
             </div>
             <div class="dose-sub" id="res-sub"></div>
@@ -181,7 +272,7 @@
           <li>Use sempre a seringa doseadora — colheres de cozinha não são rigorosas.</li>
           <li>Confirme a concentração no rótulo: o mesmo medicamento existe em forças diferentes.</li>
           <li>O ibuprofeno deve ser dado, de preferência, com ou após alimentos.</li>
-          <li>O antibiótico dá-se no início das refeições. Agite o frasco antes de cada toma.</li>
+          <li>A amoxicilina + ácido clavulânico dá-se no início das refeições e a cefuroxima com alimentos; a azitromicina pode dar-se com ou sem comida. Agite o frasco antes de cada toma.</li>
         </ul>
       </article>
       <article class="panel info-card reveal">
@@ -191,6 +282,11 @@
           <li><strong>Paracetamol:</strong> 15 mg/kg por toma, de 6/6 h (máx. 4 tomas em 24 h).</li>
           <li><strong>Ibuprofeno:</strong> 10 mg/kg por toma, de 8/8 h (máx. 3 tomas em 24 h).</li>
           <li><strong>Amoxicilina + ácido clavulânico:</strong> 45 mg/kg/dia de amoxicilina (dose alta 80–90), de 12/12 h nas formulações 7:1 e 14:1 ou de 8/8 h na 4:1.</li>
+          <li><strong>Azitromicina:</strong> 10 mg/kg 1×/dia durante 3 dias (amigdalite: 20 mg/kg/dia), máx. 500 mg/dia.</li>
+          <li><strong>Cefuroxima:</strong> 10 mg/kg de 12/12 h (otite média: 15 mg/kg), máx. 250 mg por toma.</li>
+          <li><strong>Prednisolona:</strong> 1–2 mg/kg/dia 1×/dia, máx. 40 mg/dia. <strong>Deflazacorte:</strong> 0,25–1,5 mg/kg/dia (1 gota = 1 mg).</li>
+          <li><strong>Domperidona:</strong> 0,25 mg/kg até 3×/dia, no máximo 1 semana. <strong>Metoclopramida:</strong> só a partir de 1 ano, dose por escalão de peso, até 3×/dia, no máximo 5 dias.</li>
+          <li><strong>Cetirizina e desloratadina:</strong> dose fixa conforme a idade. <strong>Hidroxizina:</strong> 1–2 mg/kg/dia divididos, a partir de 1 ano.</li>
           <li>Não ultrapasse as tomas diárias, mesmo que a febre volte. O antibiótico toma-se durante todos os dias indicados.</li>
         </ul>
       </article>
