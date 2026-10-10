@@ -1838,7 +1838,9 @@ fieldset.step legend + .step-hint {
   --c: var(--coral-forte);
 }
 
-.result[data-med='amoxiclav'] .result-head {
+.result[data-med='amoxiclav'] .result-head,
+.result[data-med='azitromicina'] .result-head,
+.result[data-med='cefuroxima'] .result-head {
   --c: var(--violet);
 }
 
@@ -2057,7 +2059,9 @@ fieldset.step legend + .step-hint {
   border-color: var(--coral);
 }
 
-.result[data-med='amoxiclav'] .timeline li:first-child .node {
+.result[data-med='amoxiclav'] .timeline li:first-child .node,
+.result[data-med='azitromicina'] .timeline li:first-child .node,
+.result[data-med='cefuroxima'] .timeline li:first-child .node {
   background: var(--violet);
   border-color: var(--violet);
 }
@@ -3294,7 +3298,9 @@ a.pub:hover {
 [data-nivel='muito-alto'] { --nc: var(--danger); --nc-soft: var(--danger-soft); }
 [data-nivel='neutro'] { --nc: var(--violet); --nc-soft: var(--violet-soft); }
 .result[data-med='ibuprofeno'] { --nc: var(--coral); --nc-soft: var(--coral-soft); }
-.result[data-med='amoxiclav'] { --nc: var(--violet); --nc-soft: var(--violet-soft); }
+.result[data-med='amoxiclav'],
+.result[data-med='azitromicina'],
+.result[data-med='cefuroxima'] { --nc: var(--violet); --nc-soft: var(--violet-soft); }
 
 .result-head {
   isolation: isolate;

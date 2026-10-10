@@ -1,13 +1,17 @@
-// Lógica de cálculo de doses pediátricas (paracetamol, ibuprofeno e
-// amoxicilina + ácido clavulânico, via oral).
+// Lógica de cálculo de doses pediátricas (paracetamol, ibuprofeno,
+// amoxicilina + ácido clavulânico, azitromicina e cefuroxima, via oral).
 // Sem dependências do DOM para poder ser testada em Node.
 //
-// Referências: RCM (INFARMED) de Ben-u-ron®, Brufen®, Nurofen®, Ib-u-ron® e Augmentin®.
+// Referências: RCM (INFARMED) de Ben-u-ron®, Brufen®, Nurofen®, Ib-u-ron®, Augmentin®,
+// Zithromax® e Zinnat®.
 //   Paracetamol: 15 mg/kg/toma, de 6/6h, máx. 60 mg/kg/dia (e 1 g/toma).
 //   Ibuprofeno:  10 mg/kg/toma, de 8/8h, máx. 30 mg/kg/dia (e 400 mg/toma).
 //   Amoxicilina + ácido clavulânico: dose diária de amoxicilina (habitual 45,
 //     alta 80–90 mg/kg/dia) dividida de 12/12h (7:1 e 14:1) ou 8/8h (4:1);
 //     ácido clavulânico até 10 mg/kg/dia (15 mg/kg/dia na 4:1); máx. 4 g/dia de amoxicilina.
+//   Azitromicina: 10 mg/kg/dia, 1×/dia, 3 dias (ou 10 mg/kg no 1.º dia e 5 mg/kg
+//     do 2.º ao 5.º); amigdalite estreptocócica 20 mg/kg/dia, 3 dias; máx. 500 mg/dia.
+//   Cefuroxima (axetil): 10 mg/kg de 12/12h (otite média: 15 mg/kg); máx. 250 mg/toma.
 
 export const MEDICAMENTOS = {
   paracetamol: {
@@ -42,6 +46,10 @@ export const MEDICAMENTOS = {
     nome: 'Amoxicilina + ácido clavulânico',
     marcas: 'Augmentin®, Clavamox®, genéricos',
     antibiotico: true,
+    substancia: 'amoxicilina',
+    doseAdulto: 'habitualmente comprimidos de 875 + 125 mg de 12/12 h',
+    conselho:
+      'Antibiótico só com receita médica. Dar no início das refeições e cumprir todos os dias indicados, mesmo que a criança melhore. Agitar antes de cada toma; depois de preparado, guardar no frigorífico (em geral dura 7 dias — veja o folheto).',
     // A dose é diária (mg de amoxicilina/kg/dia), dividida pelas tomas do dia.
     doses: [
       { mgPorKgDia: 45, rotulo: '45 mg/kg/dia', detalhe: 'Dose habitual' },
@@ -63,6 +71,51 @@ export const MEDICAMENTOS = {
         rotulo: '125 + 31,25 mg/5 mL', detalhe: '4:1 · de 8/8 h' },
       { mgPorMl: 50, clavPorMl: 12.5, proporcao: '4:1', intervaloHoras: 8, maxClavMgKgDia: 15,
         rotulo: '250 + 62,5 mg/5 mL', detalhe: '4:1 · de 8/8 h' },
+    ],
+  },
+  azitromicina: {
+    id: 'azitromicina',
+    nome: 'Azitromicina',
+    marcas: 'Zithromax®, genéricos',
+    antibiotico: true,
+    substancia: 'azitromicina',
+    doses: [
+      { mgPorKgDia: 10, rotulo: '10 mg/kg/dia', detalhe: 'Dose habitual · 3 dias' },
+      { mgPorKgDia: 20, rotulo: '20 mg/kg/dia', detalhe: 'Amigdalite estreptocócica · 3 dias' },
+    ],
+    mgPorKgDiaMin: 5,
+    mgPorKgDiaMax: 20,
+    intervalos: [24],
+    maxMgDia: 500,
+    pesoMinimo: 5,
+    doseAdulto: 'habitualmente 500 mg 1×/dia durante 3 dias',
+    conselho:
+      'Antibiótico só com receita médica. Uma toma por dia, sempre à mesma hora, com ou sem alimentos. O tratamento é curto porque o efeito se prolonga: habitualmente 3 dias (ou 10 mg/kg no 1.º dia e 5 mg/kg do 2.º ao 5.º). Agitar antes de cada toma. Pouca experiência abaixo dos 6 meses.',
+    concentracoes: [
+      { mgPorMl: 40, intervaloHoras: 24, rotulo: '200 mg/5 mL', detalhe: 'Suspensão oral · 1×/dia' },
+    ],
+  },
+  cefuroxima: {
+    id: 'cefuroxima',
+    nome: 'Cefuroxima',
+    marcas: 'Zinnat®, genéricos',
+    antibiotico: true,
+    substancia: 'cefuroxima',
+    doses: [
+      { mgPorKgDia: 20, rotulo: '20 mg/kg/dia', detalhe: 'Dose habitual (10 mg/kg por toma)' },
+      { mgPorKgDia: 30, rotulo: '30 mg/kg/dia', detalhe: 'Otite média (15 mg/kg por toma)' },
+    ],
+    mgPorKgDiaMin: 10,
+    mgPorKgDiaMax: 30,
+    intervalos: [12],
+    maxMgDia: 500,
+    pesoMinimo: 5,
+    doseAdulto: 'habitualmente comprimidos de 250–500 mg de 12/12 h',
+    conselho:
+      'Antibiótico só com receita médica. Dar com alimentos (melhora a absorção) e cumprir todos os dias indicados, mesmo que a criança melhore. Agitar antes de cada toma; depois de preparado, guardar no frigorífico (veja no folheto quantos dias dura). Não está estudada abaixo dos 3 meses.',
+    concentracoes: [
+      { mgPorMl: 25, intervaloHoras: 12, rotulo: '125 mg/5 mL', detalhe: 'Suspensão oral · de 12/12 h' },
+      { mgPorMl: 50, intervaloHoras: 12, rotulo: '250 mg/5 mL', detalhe: 'Suspensão oral · de 12/12 h' },
     ],
   },
 };
@@ -132,7 +185,7 @@ function calcularAntibiotico(med, p, c, opcoes) {
   if (!Number.isFinite(mgPorKgDia) || mgPorKgDia < med.mgPorKgDiaMin || mgPorKgDia > med.mgPorKgDiaMax) {
     return {
       ok: false,
-      motivo: `Indique a dose diária prescrita (${med.mgPorKgDiaMin}–${med.mgPorKgDiaMax} mg/kg/dia de amoxicilina).`,
+      motivo: `Indique a dose diária prescrita (${med.mgPorKgDiaMin}–${med.mgPorKgDiaMax} mg/kg/dia de ${med.substancia}).`,
     };
   }
   const intervaloHoras = Number(opcoes.intervaloHoras ?? formulacao?.intervaloHoras ?? med.intervalos[0]);

@@ -18,6 +18,8 @@ const chips = $('#conc-chips');
 const passoDose = $('#passo-dose');
 const doseChips = $('#dose-chips');
 const intervaloChips = $('#intervalo-chips');
+const intervaloHint = $('#intervalo-hint');
+const doseHint = $('#dose-hint');
 const resultado = $('#resultado');
 const horaInput = $('#hora');
 
@@ -53,6 +55,8 @@ if (params.has('c')) {
     if (d > 0) {
       estado.dose = d;
       estado.doseCustom = !med.doses.some((x) => x.mgPorKgDia === d);
+    } else {
+      estado.dose = med.doses[0].mgPorKgDia;
     }
     const h = Number(params.get('h'));
     estado.intervalo = med.intervalos.includes(h) ? h : intervaloDaFormulacao();
@@ -109,7 +113,7 @@ function desenharChips() {
   const campo = document.createElement('label');
   campo.className = 'custom-conc';
   campo.hidden = !estado.custom;
-  const amox = med.antibiotico ? ' de amoxicilina' : '';
+  const amox = med.antibiotico ? ` de ${med.substancia}` : '';
   campo.innerHTML = `<span>Concentração${amox}</span><input type="number" inputmode="decimal" min="1" max="500" step="any" aria-label="Concentração${amox} em mg/mL"><span>mg/mL</span>`;
   const campoInput = campo.querySelector('input');
   if (estado.custom) campoInput.value = estado.conc;
@@ -149,6 +153,12 @@ function desenharDose() {
   doseChips.innerHTML = '';
   intervaloChips.innerHTML = '';
   if (!med.antibiotico) return;
+
+  doseHint.textContent = `Dose diária de ${med.substancia} indicada pelo médico, dividida pelas tomas do dia.`;
+  // Com um só intervalo possível (ex.: azitromicina 1×/dia) não há nada a escolher.
+  const umIntervalo = med.intervalos.length === 1;
+  intervaloHint.hidden = umIntervalo;
+  intervaloChips.hidden = umIntervalo;
 
   med.doses.forEach((d, i) => {
     doseChips.append(
@@ -264,6 +274,8 @@ document.querySelectorAll('input[name="med"]').forEach((r) => {
     if (med.antibiotico) {
       estado.custom = !med.concentracoes.some((x) => x.mgPorMl === estado.conc);
       estado.intervalo = intervaloDaFormulacao();
+      estado.dose = med.doses[0].mgPorKgDia;
+      estado.doseCustom = false;
     }
     desenharChips();
     desenharDose();
@@ -346,7 +358,7 @@ function desenharSeringas(ml, medId) {
   const cores =
     medId === 'ibuprofeno'
       ? ['#fbc4ac', '#e2572f']
-      : medId === 'amoxiclav'
+      : MEDICAMENTOS[medId]?.antibiotico
         ? ['#b4dcec', '#05556f']
         : ['#9fdfc7', '#00a676'];
   [...cont.children].forEach((wrap, i) => {
@@ -403,6 +415,8 @@ function desenharHorario(r) {
     .join('');
 }
 
+const frequencia = (h) => (h === 24 ? '1 vez por dia' : `de ${h} em ${h} horas`);
+
 /* ---------- Avisos ---------- */
 
 function aviso(texto, tipo = '') {
@@ -442,7 +456,7 @@ function atualizar() {
   if (acoes) acoes.hidden = false;
 
   animarNumero($('#res-ml'), r.ml);
-  $('#res-every').textContent = `de ${r.intervaloHoras} em ${r.intervaloHoras} horas`;
+  $('#res-every').textContent = frequencia(r.intervaloHoras);
   $('#res-sub').textContent = antibiotico
     ? `${r.medicamento.nome} ${r.formulacao ? r.formulacao.rotulo : `${nf.format(r.mgPorMl)} mg/mL`} · ${nf.format(r.mgPorKgDia)} mg/kg/dia · criança com ${nf.format(r.peso)} kg`
     : `${r.medicamento.nome} ${nf.format(r.mgPorMl)} mg/mL · criança com ${nf.format(r.peso)} kg`;
@@ -450,7 +464,7 @@ function atualizar() {
   $('#st-mg').innerHTML = `${nf.format(r.mgToma)} <small>mg</small>`;
   $('#st-tomas-k').textContent = antibiotico ? 'Tomas por dia' : 'Máx. por dia';
   $('#st-max-k').textContent = antibiotico ? 'Total em 24 h' : 'Máx. em 24 h';
-  $('#st-tomas').innerHTML = `${r.tomasPorDia} <small>tomas</small>`;
+  $('#st-tomas').innerHTML = `${r.tomasPorDia} <small>${r.tomasPorDia === 1 ? 'toma' : 'tomas'}</small>`;
   $('#st-max').innerHTML = `${nf.format(r.mlMaxDia)} <small>mL</small>`;
 
   desenharSeringas(r.ml, estado.med);
@@ -461,7 +475,7 @@ function atualizar() {
     avisos.push(
       aviso(
         antibiotico
-          ? `Dose limitada ao máximo de <strong>${nf.format(r.medicamento.maxMgDia)} mg de amoxicilina por dia</strong>.`
+          ? `Dose limitada ao máximo de <strong>${nf.format(r.medicamento.maxMgDia)} mg de ${r.medicamento.substancia} por dia</strong>.`
           : `Dose limitada ao máximo de <strong>${nf.format(r.medicamento.maxMgPorToma)} mg por toma</strong>.`,
         'danger'
       )
@@ -481,14 +495,14 @@ function atualizar() {
       )
     );
   }
-  if (antibiotico && r.formulacao && r.formulacao.proporcao !== '4:1' && r.peso < 5) {
+  if (antibiotico && r.formulacao?.proporcao && r.formulacao.proporcao !== '4:1' && r.peso < 5) {
     avisos.push(
       aviso('Nos bebés com menos de 2–3 meses, as formulações 7:1 e 14:1 não estão recomendadas: usa-se habitualmente a 4:1, de 8/8 h.')
     );
   }
   if (r.pesoAdulto && antibiotico) {
     avisos.push(
-      aviso('A partir de 40 kg usa-se a dose de adulto (habitualmente comprimidos de 875 + 125 mg de 12/12 h). Confirme com o médico.')
+      aviso(`A partir de 40 kg usa-se a dose de adulto (${r.medicamento.doseAdulto}). Confirme com o médico.`)
     );
   } else if (r.pesoAdulto) {
     avisos.push(
@@ -497,15 +511,11 @@ function atualizar() {
   }
   if (estado.custom) {
     avisos.push(aviso('Está a usar uma concentração personalizada — confirme o valor no rótulo do frasco.'));
-    if (antibiotico) {
+    if (estado.med === 'amoxiclav') {
       avisos.push(aviso('Sem a quantidade de ácido clavulânico do frasco não é possível confirmar o limite diário de clavulanato.'));
     }
   }
-  if (antibiotico) {
-    avisos.push(
-      aviso('Antibiótico só com receita médica. Dar no início das refeições e cumprir todos os dias indicados, mesmo que a criança melhore. Agitar antes de cada toma; depois de preparado, guardar no frigorífico (em geral dura 7 dias — veja o folheto).')
-    );
-  }
+  if (antibiotico) avisos.push(aviso(r.medicamento.conselho));
   if (estado.med === 'ibuprofeno') {
     avisos.push(
       aviso('Dar com ou após alimentos. Evite se a criança estiver desidratada (vómitos/diarreia) ou com varicela, salvo indicação médica.')
@@ -539,14 +549,14 @@ function resumoTexto(r) {
   ];
   if (r.medicamento.antibiotico) {
     linhas.push(
-      `Dose diária: ${nf.format(r.mgPorKgDia)} mg/kg/dia de amoxicilina`,
-      `Dar ${nf1.format(r.ml)} mL por toma (${nf.format(r.mgToma)} mg de amoxicilina), de ${r.intervaloHoras} em ${r.intervaloHoras} horas`,
+      `Dose diária: ${nf.format(r.mgPorKgDia)} mg/kg/dia de ${r.medicamento.substancia}`,
+      `Dar ${nf1.format(r.ml)} mL por toma (${nf.format(r.mgToma)} mg de ${r.medicamento.substancia}), ${frequencia(r.intervaloHoras)}`,
       `${r.tomasPorDia} tomas por dia (${nf.format(r.mlMaxDia)} mL/dia)`
     );
     if (r.clavMgToma !== null) {
       linhas.push(`Ácido clavulânico: ${nf.format(r.clavMgToma)} mg por toma (${nf.format(r.clavMgKgDia)} mg/kg/dia)`);
     }
-    if (r.limitado) linhas.push(`Dose limitada ao máximo de ${nf.format(r.medicamento.maxMgDia)} mg de amoxicilina por dia.`);
+    if (r.limitado) linhas.push(`Dose limitada ao máximo de ${nf.format(r.medicamento.maxMgDia)} mg de ${r.medicamento.substancia} por dia.`);
     linhas.push('Cumprir todos os dias de tratamento indicados pelo médico.');
   } else {
     linhas.push(

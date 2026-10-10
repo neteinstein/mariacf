@@ -113,3 +113,44 @@ test('amoxicilina + clavulânico: dose diária ou intervalo inválidos', () => {
   assert.equal(calcularDose(10, 'amoxiclav', 80, { mgPorKgDia: NaN }).ok, false);
   assert.equal(calcularDose(10, 'amoxiclav', 80, { mgPorKgDia: 45, intervaloHoras: 6 }).ok, false);
 });
+
+test('azitromicina 40 mg/mL: 12 kg a 10 mg/kg/dia → 120 mg = 3 mL 1×/dia', () => {
+  const r = calcularDose(12, 'azitromicina', 40);
+  assert.equal(r.ok, true);
+  assert.equal(r.mgPorKgDia, 10);
+  assert.equal(r.intervaloHoras, 24);
+  assert.equal(r.tomasPorDia, 1);
+  assert.equal(r.mgToma, 120);
+  assert.equal(r.ml, 3);
+  assert.equal(r.clavMgToma, null);
+});
+
+test('azitromicina: amigdalite a 20 mg/kg/dia e limite de 500 mg/dia', () => {
+  assert.equal(calcularDose(12, 'azitromicina', 40, { mgPorKgDia: 20 }).mgToma, 240);
+  const max = calcularDose(30, 'azitromicina', 40, { mgPorKgDia: 20 });
+  assert.equal(max.limitado, true);
+  assert.equal(max.mgToma, 500);
+  assert.equal(max.ml, 12.5);
+  assert.equal(calcularDose(12, 'azitromicina', 40, { mgPorKgDia: 10, intervaloHoras: 12 }).ok, false);
+  assert.match(calcularDose(12, 'azitromicina', 40, { mgPorKgDia: 45 }).motivo, /azitromicina/);
+});
+
+test('cefuroxima 25 mg/mL: 12 kg a 20 mg/kg/dia → 120 mg = 4,8 mL de 12/12h', () => {
+  const r = calcularDose(12, 'cefuroxima', 25);
+  assert.equal(r.ok, true);
+  assert.equal(r.intervaloHoras, 12);
+  assert.equal(r.tomasPorDia, 2);
+  assert.equal(r.mgToma, 120);
+  assert.equal(r.ml, 4.8);
+});
+
+test('cefuroxima: otite a 30 mg/kg/dia e máximo de 250 mg por toma', () => {
+  const r = calcularDose(12, 'cefuroxima', 50, { mgPorKgDia: 30 });
+  assert.equal(r.mgToma, 180);
+  assert.equal(r.ml, 3.6);
+  const max = calcularDose(20, 'cefuroxima', 50, { mgPorKgDia: 30 });
+  assert.equal(max.limitado, true);
+  assert.equal(max.mgToma, 250);
+  assert.equal(max.ml, 5);
+  assert.equal(calcularDose(4, 'cefuroxima', 25).ok, false);
+});
