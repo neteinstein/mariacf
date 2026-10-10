@@ -5845,9 +5845,10 @@ a.tool.destaque:hover .tool-deco.mini {
   opacity: 1;
 }
 
-/* Cartões de doença: sem descrição — o nome em grande e a ilustração maior. */
-.cartao-doenca {
-  min-height: 300px;
+/* Cartões de doença: sem descrição — o nome em grande e a ilustração maior, no topo à direita
+   (ao lado do ícone), fora do fluxo absoluto para nunca ficar por cima do texto. */
+.cartao-doenca .tool-top {
+  align-items: flex-start;
 }
 
 .cartao-doenca .tool-title {
@@ -5861,18 +5862,17 @@ a.tool.destaque:hover .tool-deco.mini {
 }
 
 .cartao-doenca .tool-deco.mini {
-  width: 190px;
-  right: 14px;
-  bottom: 14px;
+  position: static;
+  flex: none;
+  width: 170px;
+  height: auto;
+  margin: 4px 0 12px;
+  z-index: auto;
 }
 
 @media (max-width: 640px) {
-  .cartao-doenca {
-    min-height: 240px;
-  }
-
   .cartao-doenca .tool-deco.mini {
-    width: 150px;
+    width: 140px;
   }
 }
 
