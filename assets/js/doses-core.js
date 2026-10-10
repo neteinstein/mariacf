@@ -32,6 +32,15 @@ export const MEDICAMENTOS = {
   paracetamol: {
     id: 'paracetamol',
     nome: 'Paracetamol',
+    // Cartões «Como dar» e «Intervalos e limites» (só para este medicamento).
+    comoDar: [
+      'Pode dar-se com ou sem alimentos.',
+    ],
+    limites: [
+      '<strong>15 mg/kg</strong> por toma, de 6/6 h.',
+      'Máximo de <strong>4 tomas em 24 h</strong> (60 mg/kg/dia) e 1 g por toma.',
+      'Não ultrapasse as tomas diárias, mesmo que a febre volte.',
+    ],
     marcas: 'Ben-u-ron®, Panasorb®, genéricos',
     grupo: 'febre',
     mgPorKg: 15,
@@ -46,6 +55,16 @@ export const MEDICAMENTOS = {
   ibuprofeno: {
     id: 'ibuprofeno',
     nome: 'Ibuprofeno',
+    comoDar: [
+      'Dar de preferência com ou após alimentos.',
+      'Agite o frasco antes de cada toma.',
+    ],
+    limites: [
+      '<strong>10 mg/kg</strong> por toma, de 8/8 h.',
+      'Máximo de <strong>3 tomas em 24 h</strong> (30 mg/kg/dia) e 400 mg por toma.',
+      'Não usar abaixo de 5 kg sem indicação médica.',
+      'Não ultrapasse as tomas diárias, mesmo que a febre volte.',
+    ],
     marcas: 'Brufen®, Ib-u-ron®, Nurofen®, genéricos',
     grupo: 'febre',
     mgPorKg: 10,
@@ -61,6 +80,15 @@ export const MEDICAMENTOS = {
   amoxiclav: {
     id: 'amoxiclav',
     nome: 'Amoxicilina + ácido clavulânico',
+    comoDar: [
+      'Dar no início das refeições.',
+      'Agite o frasco antes de cada toma; depois de preparado, guarde-o no frigorífico.',
+    ],
+    limites: [
+      '<strong>45 mg/kg/dia</strong> de amoxicilina (dose alta 80–90), de 12/12 h nas formulações 7:1 e 14:1 ou de 8/8 h na 4:1.',
+      'Ácido clavulânico até 10 mg/kg/dia (15 mg/kg/dia na 4:1); máximo de 4 g/dia de amoxicilina.',
+      'Cumpra todos os dias de tratamento indicados, mesmo que a criança melhore.',
+    ],
     marcas: 'Augmentin®, Clavamox®, genéricos',
     grupo: 'antibiotico',
     antibiotico: true,
@@ -95,6 +123,15 @@ export const MEDICAMENTOS = {
   azitromicina: {
     id: 'azitromicina',
     nome: 'Azitromicina',
+    comoDar: [
+      'Uma toma por dia, sempre à mesma hora, com ou sem alimentos.',
+      'Agite o frasco antes de cada toma.',
+    ],
+    limites: [
+      '<strong>10 mg/kg 1×/dia</strong> durante 3 dias (ou 10 mg/kg no 1.º dia e 5 mg/kg do 2.º ao 5.º).',
+      'Amigdalite estreptocócica: 20 mg/kg/dia durante 3 dias.',
+      'Máximo de <strong>500 mg por dia</strong>.',
+    ],
     marcas: 'Zithromax®, genéricos',
     grupo: 'antibiotico',
     antibiotico: true,
@@ -119,6 +156,15 @@ export const MEDICAMENTOS = {
   cefuroxima: {
     id: 'cefuroxima',
     nome: 'Cefuroxima',
+    comoDar: [
+      'Dar com alimentos (melhora a absorção).',
+      'Agite o frasco antes de cada toma; depois de preparado, guarde-o no frigorífico.',
+    ],
+    limites: [
+      '<strong>10 mg/kg de 12/12 h</strong>; na otite média, 15 mg/kg de 12/12 h.',
+      'Máximo de <strong>250 mg por toma</strong> (500 mg/dia).',
+      'Cumpra todos os dias de tratamento indicados, mesmo que a criança melhore.',
+    ],
     marcas: 'Zinnat®, genéricos',
     grupo: 'antibiotico',
     antibiotico: true,
@@ -144,6 +190,13 @@ export const MEDICAMENTOS = {
   prednisolona: {
     id: 'prednisolona',
     nome: 'Prednisolona',
+    comoDar: [
+      'Dar de manhã, com alimentos.',
+    ],
+    limites: [
+      '<strong>1–2 mg/kg/dia</strong>, 1×/dia, habitualmente durante 3 a 5 dias.',
+      'Máximo de <strong>40 mg por dia</strong> nas crianças.',
+    ],
     marcas: 'Prelone®, genéricos',
     grupo: 'corticoide',
     porDia: true,
@@ -168,6 +221,14 @@ export const MEDICAMENTOS = {
   deflazacorte: {
     id: 'deflazacorte',
     nome: 'Deflazacorte',
+    comoDar: [
+      'Conte as gotas para uma colher com um pouco de água ou sumo (1 gota = 1 mg).',
+      'Dar de manhã, com alimentos.',
+    ],
+    limites: [
+      '<strong>0,25–1,5 mg/kg/dia</strong>, 1×/dia.',
+      'Nesta calculadora, limitado a 48 mg/dia (equivalente a 40 mg de prednisolona).',
+    ],
     marcas: 'Zamene®, genéricos',
     grupo: 'corticoide',
     porDia: true,
@@ -191,6 +252,15 @@ export const MEDICAMENTOS = {
   domperidona: {
     id: 'domperidona',
     nome: 'Domperidona',
+    comoDar: [
+      'Dar 15–30 minutos antes das refeições.',
+      'Agite o frasco antes de cada toma.',
+    ],
+    limites: [
+      '<strong>0,25 mg/kg</strong> por toma, até 3×/dia (máx. 0,75 mg/kg/dia).',
+      'A partir de 35 kg: 10 mg por toma (máx. 30 mg/dia).',
+      'No máximo <strong>1 semana</strong> de tratamento.',
+    ],
     marcas: 'Motilium®, genéricos',
     grupo: 'nauseas',
     mgPorKg: 0.25,
@@ -209,6 +279,14 @@ export const MEDICAMENTOS = {
   metoclopramida: {
     id: 'metoclopramida',
     nome: 'Metoclopramida',
+    comoDar: [
+      'Dar antes das refeições.',
+    ],
+    limites: [
+      'Só a partir de <strong>1 ano</strong> (10 kg).',
+      'Por toma: 10–14 kg 1 mg; 15–19 kg 2 mg; 20–29 kg 2,5 mg; 30–60 kg 5 mg — até 3×/dia.',
+      'No máximo <strong>5 dias</strong> de tratamento.',
+    ],
     marcas: 'Primperan®, genéricos',
     grupo: 'nauseas',
     // Dose por toma segundo o peso (EMA 2013), até 3 vezes por dia.
@@ -231,6 +309,16 @@ export const MEDICAMENTOS = {
   cetirizina: {
     id: 'cetirizina',
     nome: 'Cetirizina',
+    comoDar: [
+      'Pode dar-se com ou sem alimentos.',
+      'Nas gotas, conte-as para uma colher (20 gotas = 10 mg).',
+    ],
+    limites: [
+      '2 a 5 anos: <strong>2,5 mg de 12/12 h</strong>.',
+      '6 a 11 anos: <strong>5 mg de 12/12 h</strong>.',
+      '12 anos ou mais: <strong>10 mg 1×/dia</strong>.',
+      'Não recomendada abaixo dos 2 anos.',
+    ],
     marcas: 'Zyrtec®, genéricos',
     grupo: 'alergia',
     porIdade: true,
@@ -249,6 +337,15 @@ export const MEDICAMENTOS = {
   desloratadina: {
     id: 'desloratadina',
     nome: 'Desloratadina',
+    comoDar: [
+      'Uma toma por dia, com ou sem alimentos.',
+    ],
+    limites: [
+      '1 a 5 anos: <strong>1,25 mg</strong> (2,5 mL) 1×/dia.',
+      '6 a 11 anos: <strong>2,5 mg</strong> (5 mL) 1×/dia.',
+      '12 anos ou mais: <strong>5 mg</strong> (10 mL) 1×/dia.',
+      'Não recomendada abaixo de 1 ano.',
+    ],
     marcas: 'Aerius®, genéricos',
     grupo: 'alergia',
     porIdade: true,
@@ -266,6 +363,14 @@ export const MEDICAMENTOS = {
   hidroxizina: {
     id: 'hidroxizina',
     nome: 'Hidroxizina',
+    comoDar: [
+      'Pode dar-se com ou sem alimentos.',
+    ],
+    limites: [
+      '<strong>1–2 mg/kg/dia</strong>, divididos em 2 ou 3 tomas.',
+      'Até 40 kg, não ultrapassar 2 mg/kg/dia; acima, máximo de 100 mg/dia.',
+      'Só a partir de 1 ano.',
+    ],
     marcas: 'Atarax®, genéricos',
     grupo: 'alergia',
     porDia: true,

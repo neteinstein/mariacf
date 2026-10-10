@@ -1701,6 +1701,12 @@ fieldset.step legend + .step-hint {
 }
 
 /* Lista de medicamentos agrupada por categoria, com cartões compactos. */
+/* Nome do medicamento no título do cartão de limites. */
+.info-med {
+  font-weight: 500;
+  color: var(--ink-mute);
+}
+
 .med-grupo {
   margin: 18px 0 8px;
   font-size: 0.75rem;
