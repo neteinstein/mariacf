@@ -3,7 +3,7 @@
 // Sem dependências do DOM para poder ser testada em Node.
 //
 // Referências: RCM (INFARMED) de Ben-u-ron®, Brufen®, Nurofen®, Ib-u-ron®, Clamoxyl®, Augmentin®,
-// Zithromax®, Zinnat®, Zamene®, Motilium®, Primperan®, Atarax®, Zyrtec® e Aerius®;
+// Zithromax®, Zinnat®, Lepicortinolo®, Zamene®, Motilium®, Primperan®, Atarax®, Zyrtec® e Aerius®;
 // recomendações da EMA (domperidona 2014 e 2019, metoclopramida 2013, hidroxizina 2015);
 // Normas da DGS 007/2012 (otite média aguda) e 020/2012 (amigdalite aguda).
 //   Paracetamol: 15 mg/kg/toma, de 6/6h, máx. 60 mg/kg/dia (e 1 g/toma).
@@ -21,6 +21,7 @@
 //   Cefuroxima (axetil): 10 mg/kg de 12/12h, máx. 125 mg/toma; otite média (≥ 2 anos)
 //     15 mg/kg de 12/12h, máx. 250 mg/toma.
 //   Prednisolona: 1–2 mg/kg/dia, 1×/dia, máx. 40 mg/dia (crise de asma, laringite).
+//     Em Portugal só há comprimidos (5 mg, inteiros; 20 mg, divisíveis ao meio).
 //   Deflazacorte: 0,25–1,5 mg/kg/dia, 1×/dia; gotas a 22,75 mg/mL (1 gota = 1 mg);
 //     limitado a 48 mg/dia (equivalente a 40 mg de prednisolona).
 //   Domperidona: só a partir dos 12 anos e 35 kg, 10 mg até 3×/dia (máx. 30 mg/dia);
@@ -35,7 +36,8 @@
 //   - porDia: dose diária em mg/kg/dia, dividida pelas tomas do dia (cada dose
 //     pré-definida pode ter o seu próprio máximo diário, `maxMgDia`);
 //   - porIdade: dose fixa por escalão etário (o peso não entra).
-// Formulações com `mgPorGota` dão também a dose em gotas.
+// Formulações com `mgPorGota` dão também a dose em gotas; com `mgPorComprimido`, a dose
+// conta-se em comprimidos (inteiros ou na fração indicada por `partes`).
 
 export const MEDICAMENTOS = {
   paracetamol: {
@@ -238,12 +240,14 @@ export const MEDICAMENTOS = {
     nome: 'Prednisolona',
     comoDar: [
       'Dar de manhã, com alimentos.',
+      'Nas crianças pequenas, o comprimido pode ser esmagado e misturado com um pouco de água ou sumo (o sabor é amargo).',
     ],
     limites: [
       '<strong>1–2 mg/kg/dia</strong>, 1×/dia, habitualmente durante 3 a 5 dias.',
       'Máximo de <strong>40 mg por dia</strong> nas crianças.',
+      'Em Portugal só existe em comprimidos (5 mg e 20 mg); a dose arredonda-se ao comprimido ou meio comprimido.',
     ],
-    marcas: 'Prelone®, genéricos',
+    marcas: 'Lepicortinolo®, Prednisolona Labesfal, genéricos',
     grupo: 'corticoide',
     porDia: true,
     substancia: 'prednisolona',
@@ -259,9 +263,12 @@ export const MEDICAMENTOS = {
     doseAdulto: 'habitualmente 40–50 mg 1×/dia',
     conselho:
       'Corticoide só com receita médica. Dar de manhã, com alimentos. Nos tratamentos curtos (3 a 5 dias) pode parar-se sem reduzir a dose, salvo indicação médica. Nas crianças não se ultrapassam 40 mg por dia.',
+    // Sem solução oral comercializada em Portugal: comprimidos de 5 mg (a ranhura do
+    // de 5 mg não serve para dividir) e de 20 mg (divisível em metades iguais).
+    // Uma solução manipulada pode indicar-se em «Outra» (mg/mL).
     concentracoes: [
-      { mgPorMl: 3, intervaloHoras: 24, rotulo: '15 mg/5 mL', detalhe: 'Solução oral (ex.: Prelone®)' },
-      { mgPorMl: 1, intervaloHoras: 24, rotulo: '5 mg/5 mL', detalhe: 'Solução oral' },
+      { mgPorComprimido: 5, partes: 1, intervaloHoras: 24, rotulo: 'Comprimido de 5 mg', detalhe: 'Lepicortinolo®, Prednisolona Labesfal' },
+      { mgPorComprimido: 20, partes: 2, intervaloHoras: 24, rotulo: 'Comprimido de 20 mg', detalhe: 'Lepicortinolo®, genéricos · divide-se ao meio' },
     ],
   },
   deflazacorte: {
@@ -445,6 +452,14 @@ export const PESO_MAX = 60;
 export const PESO_ADULTO = 40;
 
 const arred1 = (n) => Math.round(n * 10) / 10;
+const virgula = (n) => String(arred1(n)).replace('.', ',');
+
+/** Valor que identifica uma formulação: mg/mL (ou mg por comprimido, nos comprimidos). */
+export const chaveFormulacao = (f) => f.mgPorMl ?? f.mgPorComprimido;
+
+// Com `concPersonalizada` (concentração escrita à mão) nunca se usa uma formulação da lista.
+const acharFormulacao = (med, c, opcoes) =>
+  (opcoes.concPersonalizada ? null : med.concentracoes.find((x) => chaveFormulacao(x) === c)) || null;
 const gotasDe = (mg, formulacao) => (formulacao?.mgPorGota ? Math.round(mg / formulacao.mgPorGota) : null);
 // Com uma concentração muito alta a dose pode arredondar para 0 mL.
 const volumeDemasiadoPequeno = () => ({
@@ -485,7 +500,7 @@ export function calcularDose(peso, medicamentoId, mgPorMl, opcoes = {}) {
 
   if (med.porDia) return calcularPorDia(med, p, c, opcoes);
 
-  const formulacao = med.concentracoes.find((x) => x.mgPorMl === c) || null;
+  const formulacao = acharFormulacao(med, c, opcoes);
   let mgCalculado;
   if (med.escaloesPeso) {
     mgCalculado = med.escaloesPeso.filter((e) => p >= e.min).at(-1).mg;
@@ -527,7 +542,7 @@ function calcularPorIdade(med, mgPorMl, opcoes) {
   if (!Number.isFinite(c) || c <= 0) {
     return { ok: false, motivo: 'Concentração inválida.' };
   }
-  const formulacao = med.concentracoes.find((x) => x.mgPorMl === c) || null;
+  const formulacao = acharFormulacao(med, c, opcoes);
   const tomasPorDia = 24 / escalao.intervaloHoras;
   const ml = arred1(escalao.mgToma / c);
   const gotas = gotasDe(escalao.mgToma, formulacao);
@@ -553,7 +568,7 @@ function calcularPorIdade(med, mgPorMl, opcoes) {
 }
 
 function calcularPorDia(med, p, c, opcoes) {
-  const formulacao = med.concentracoes.find((x) => x.mgPorMl === c) || null;
+  const formulacao = acharFormulacao(med, c, opcoes);
   const mgPorKgDia = Number(opcoes.mgPorKgDia ?? med.doses[0].mgPorKgDia);
   if (!Number.isFinite(mgPorKgDia) || mgPorKgDia < med.mgPorKgDiaMin || mgPorKgDia > med.mgPorKgDiaMax) {
     return {
@@ -574,22 +589,46 @@ function calcularPorDia(med, p, c, opcoes) {
   const limitado = mgDiaCalculado > maxMgDia;
   const mgDia = Math.min(mgDiaCalculado, maxMgDia);
   const mgToma = mgDia / tomasPorDia;
-  const ml = arred1(mgToma / c);
-  let gotas = gotasDe(mgToma, formulacao);
-  // Nos bebés pequenos, arredondar para a gota inteira mais próxima pode passar o
-  // máximo (ex.: 3 kg a 1,5 mg/kg/dia = 4,5 mg → 5 gotas); nesse caso arredonda-se para baixo.
-  if (gotas !== null && gotas * formulacao.mgPorGota * tomasPorDia > Math.min(p * med.mgPorKgDiaMax, maxMgDia) + 1e-9) {
-    gotas = Math.floor(mgToma / formulacao.mgPorGota);
+  // Gotas e comprimidos dão-se em unidades inteiras (ou frações de comprimido): arredonda-se
+  // à unidade mais próxima, mas para baixo se isso passar o máximo diário (ex.: 3 kg a
+  // 1,5 mg/kg/dia de deflazacorte = 4,5 mg → 4 gotas e não 5).
+  const limiteDia = Math.min(p * med.mgPorKgDiaMax, maxMgDia);
+  const emUnidades = (mgUnidade) => {
+    let n = Math.round(mgToma / mgUnidade);
+    if (n * mgUnidade * tomasPorDia > limiteDia + 1e-9) n = Math.floor(mgToma / mgUnidade);
+    return n;
+  };
+  let ml = null;
+  let gotas = null;
+  let comprimidos = null;
+  let mgDado = mgToma;
+  if (formulacao?.mgPorComprimido) {
+    const fracao = formulacao.mgPorComprimido / formulacao.partes;
+    const n = emUnidades(fracao);
+    mgDado = n * fracao;
+    // Se o arredondamento se afastar mais de 25 % da dose prescrita, não se mostra.
+    if (n <= 0 || Math.abs(mgDado - mgToma) > mgToma * 0.25) {
+      return {
+        ok: false,
+        motivo: `A dose é de ${virgula(mgToma)} mg e não se consegue dar com rigor com comprimidos de ${formulacao.mgPorComprimido} mg. Experimente o outro comprimido ou, se o médico indicar, uma solução oral manipulada (opção «Outra», em mg/mL).`,
+      };
+    }
+    comprimidos = n / formulacao.partes;
+  } else {
+    ml = arred1(mgToma / c);
+    if (formulacao?.mgPorGota) {
+      gotas = emUnidades(formulacao.mgPorGota);
+      // Em gotas, mostra-se a dose que as gotas inteiras realmente dão.
+      mgDado = gotas * formulacao.mgPorGota;
+    }
+    if (gotas === null ? ml <= 0 : gotas <= 0) return volumeDemasiadoPequeno();
   }
-  if (gotas === null ? ml <= 0 : gotas <= 0) return volumeDemasiadoPequeno();
-  // Em gotas, mostra-se a dose que as gotas inteiras realmente dão.
-  const mgDado = gotas === null ? mgToma : gotas * formulacao.mgPorGota;
 
   // Ácido clavulânico: só se conhece a quantidade nas formulações da lista.
   const clavPorMl = Number(opcoes.clavPorMl ?? formulacao?.clavPorMl);
   const temClav = Number.isFinite(clavPorMl) && clavPorMl > 0;
-  const clavMgToma = temClav ? ml * clavPorMl : null;
-  const clavMgKgDia = temClav ? (clavMgToma * tomasPorDia) / p : null;
+  const clavMgToma = temClav && ml !== null ? ml * clavPorMl : null;
+  const clavMgKgDia = clavMgToma !== null ? (clavMgToma * tomasPorDia) / p : null;
   const maxClavMgKgDia = formulacao?.maxClavMgKgDia ?? 10;
 
   return {
@@ -600,19 +639,23 @@ function calcularPorDia(med, p, c, opcoes) {
     mgPorMl: c,
     mgPorKgDia,
     mgToma: arred1(mgDado) >= 100 ? Math.round(mgDado) : arred1(mgDado),
+    // Dose calculada antes de arredondar a gotas ou comprimidos.
+    mgCalculado: arred1(mgToma),
     ml,
     gotas,
     gotasMaxDia: gotas === null ? null : gotas * tomasPorDia,
+    comprimidos,
+    comprimidosMaxDia: comprimidos === null ? null : comprimidos * tomasPorDia,
     limitado,
     maxMgDia,
     intervaloHoras,
     tomasPorDia,
     mgMaxDia: arred1(mgDado * tomasPorDia),
-    mlMaxDia: arred1(ml * tomasPorDia),
-    clavMgToma: temClav ? arred1(clavMgToma) : null,
-    clavMgKgDia: temClav ? arred1(clavMgKgDia) : null,
+    mlMaxDia: ml === null ? null : arred1(ml * tomasPorDia),
+    clavMgToma: clavMgToma !== null ? arred1(clavMgToma) : null,
+    clavMgKgDia: clavMgKgDia !== null ? arred1(clavMgKgDia) : null,
     maxClavMgKgDia,
-    clavExcessivo: temClav && clavMgKgDia > maxClavMgKgDia + 0.05,
+    clavExcessivo: clavMgKgDia !== null && clavMgKgDia > maxClavMgKgDia + 0.05,
     pesoAdulto: p >= PESO_ADULTO,
   };
 }

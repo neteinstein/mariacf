@@ -179,16 +179,48 @@ test('cefuroxima: otite a 30 mg/kg/dia e máximo de 250 mg por toma', () => {
   assert.equal(calcularDose(4, 'cefuroxima', 25).ok, false);
 });
 
-test('prednisolona 3 mg/mL: 12 kg a 1 mg/kg/dia → 12 mg = 4 mL 1×/dia; máx. 40 mg/dia', () => {
-  const r = calcularDose(12, 'prednisolona', 3);
+test('prednisolona em comprimidos de 5 mg (Portugal): arredonda ao comprimido inteiro', () => {
+  const r = calcularDose(12, 'prednisolona', 5);
   assert.equal(r.ok, true);
-  assert.equal(r.mgToma, 12);
-  assert.equal(r.ml, 4);
+  assert.equal(r.formulacao.mgPorComprimido, 5);
+  assert.equal(r.mgCalculado, 12);
+  assert.equal(r.comprimidos, 2);
+  assert.equal(r.mgToma, 10);
+  assert.equal(r.ml, null);
   assert.equal(r.tomasPorDia, 1);
-  assert.equal(r.gotas, null);
-  const max = calcularDose(25, 'prednisolona', 3, { mgPorKgDia: 2 });
+  // 2 mg/kg/dia a 12 kg = 24 mg: 25 mg passaria o máximo, por isso 20 mg (4 comprimidos).
+  const alta = calcularDose(12, 'prednisolona', 5, { mgPorKgDia: 2 });
+  assert.equal(alta.comprimidos, 4);
+  assert.equal(alta.mgToma, 20);
+  // Máximo de 40 mg/dia.
+  const max = calcularDose(25, 'prednisolona', 5, { mgPorKgDia: 2 });
   assert.equal(max.limitado, true);
   assert.equal(max.mgToma, 40);
+  assert.equal(max.comprimidos, 8);
+});
+
+test('prednisolona em comprimidos de 20 mg: meios comprimidos; recusa se o arredondamento for grosseiro', () => {
+  const r = calcularDose(15, 'prednisolona', 20, { mgPorKgDia: 2 });
+  assert.equal(r.comprimidos, 1.5);
+  assert.equal(r.mgToma, 30);
+  // 6 kg a 1 mg/kg/dia = 6 mg: o mais próximo seria ½ comprimido (10 mg), longe demais.
+  const bebe = calcularDose(6, 'prednisolona', 20);
+  assert.equal(bebe.ok, false);
+  assert.match(bebe.motivo, /6 mg/);
+  // 3 kg a 1 mg/kg/dia = 3 mg: nem com o comprimido de 5 mg.
+  assert.equal(calcularDose(3, 'prednisolona', 5).ok, false);
+});
+
+test('prednisolona em solução manipulada (concentração escrita à mão), em mL', () => {
+  const r = calcularDose(12, 'prednisolona', 3);
+  assert.equal(r.ok, true);
+  assert.equal(r.comprimidos, null);
+  assert.equal(r.mgToma, 12);
+  assert.equal(r.ml, 4);
+  // Uma solução de 5 mg/mL escrita à mão não se confunde com o comprimido de 5 mg.
+  const s = calcularDose(12, 'prednisolona', 5, { concPersonalizada: true });
+  assert.equal(s.comprimidos, null);
+  assert.equal(s.ml, 2.4);
 });
 
 test('deflazacorte em gotas: 1 gota = 1 mg; limitado a 48 mg/dia', () => {
