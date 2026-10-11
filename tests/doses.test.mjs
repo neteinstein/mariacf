@@ -230,3 +230,25 @@ test('desloratadina 0,5 mg/mL: 1 a 5 anos → 1,25 mg = 2,5 mL 1×/dia', () => {
   assert.equal(r.tomasPorDia, 1);
   assert.equal(calcularDose(null, 'desloratadina', 0.5, { idade: '2-5' }).ok, false);
 });
+
+test('amoxicilina 50 mg/mL: 12 kg a 50 mg/kg/dia → 300 mg = 6 mL de 12/12h', () => {
+  const r = calcularDose(12, 'amoxicilina', 50);
+  assert.equal(r.ok, true);
+  assert.equal(r.mgPorKgDia, 50);
+  assert.equal(r.intervaloHoras, 12);
+  assert.equal(r.mgToma, 300);
+  assert.equal(r.ml, 6);
+  assert.equal(r.clavMgToma, null);
+  assert.equal(r.clavExcessivo, false);
+});
+
+test('amoxicilina 100 mg/mL: dose alta de 8/8h e limite de 4 g/dia', () => {
+  const r = calcularDose(12, 'amoxicilina', 100, { mgPorKgDia: 90, intervaloHoras: 8 });
+  assert.equal(r.tomasPorDia, 3);
+  assert.equal(r.mgToma, 360);
+  assert.equal(r.ml, 3.6);
+  const max = calcularDose(50, 'amoxicilina', 100, { mgPorKgDia: 90 });
+  assert.equal(max.limitado, true);
+  assert.equal(max.mgMaxDia, 4000);
+  assert.equal(calcularDose(12, 'amoxicilina', 50, { mgPorKgDia: 10 }).ok, false);
+});
