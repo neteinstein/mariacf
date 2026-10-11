@@ -84,7 +84,10 @@ export function calcularAnionGap(sodio, cloro, bicarbonato) {
   return { ok: true, gap: arred(gap, 1), nivel };
 }
 
-/** Osmolaridade sérica calculada (mOsm/kg). Glicemia e ureia em mg/dL. Intervalo normal: ~275–295 mOsm/kg. */
+/**
+ * Osmolaridade sérica calculada (mOsm/kg). Glicemia e ureia em mg/dL. Intervalo normal: ~275–295 mOsm/kg.
+ * Ureia (não BUN): ÷ 6 (massa molar 60); o divisor 2,8 da fórmula clássica é para o BUN.
+ */
 export function calcularOsmolaridade(sodio, glicemia, ureia) {
   const na = Number(sodio);
   const gli = Number(glicemia);
@@ -94,7 +97,7 @@ export function calcularOsmolaridade(sodio, glicemia, ureia) {
   if (!Number.isFinite(gli) || gli <= 0) return { ok: false, motivo: 'Indique a glicemia.' };
   if (!Number.isFinite(ur) || ur <= 0) return { ok: false, motivo: 'Indique a ureia.' };
 
-  const osm = 2 * na + gli / 18 + ur / 2.8;
+  const osm = 2 * na + gli / 18 + ur / 6.006;
   const nivel = osm > 295 ? 'alto' : osm < 275 ? 'moderado' : 'baixo';
 
   return { ok: true, osmolaridade: arred(osm, 0), nivel };

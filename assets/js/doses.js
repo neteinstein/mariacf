@@ -3,6 +3,7 @@ import {
   PESO_MIN,
   PESO_MAX,
   calcularDose,
+  chaveFormulacao,
   proximasTomas,
   seringas,
 } from './doses-core.js';
@@ -12,6 +13,12 @@ const nf = new Intl.NumberFormat('pt-PT', { maximumFractionDigits: 1 });
 // Para mg: algumas doses fixas têm duas casas (desloratadina 1,25 mg).
 const nfMg = new Intl.NumberFormat('pt-PT', { maximumFractionDigits: 2 });
 const nf1 = new Intl.NumberFormat('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+// Comprimidos: 1, ½, 2½…
+const fracao = (n) => {
+  const inteiro = Math.floor(n + 1e-9);
+  const resto = { 0: '', 25: '¼', 50: '½', 75: '¾' }[Math.round((n - inteiro) * 100)] ?? '';
+  return `${inteiro || (resto ? '' : '0')}${resto}`;
+};
 const fmtHora = new Intl.DateTimeFormat('pt-PT', { hour: '2-digit', minute: '2-digit' });
 
 const pesoInput = $('#peso');
@@ -51,10 +58,11 @@ if (params.has('c')) {
   const c = parseFloat(params.get('c'));
   if (c > 0) {
     estado.conc = c;
-    estado.custom = !MEDICAMENTOS[estado.med].concentracoes.some((x) => x.mgPorMl === c);
+    estado.custom =
+      params.get('outra') === '1' || !MEDICAMENTOS[estado.med].concentracoes.some((x) => chaveFormulacao(x) === c);
   }
 } else {
-  estado.conc = MEDICAMENTOS[estado.med].concentracoes[0].mgPorMl;
+  estado.conc = chaveFormulacao(MEDICAMENTOS[estado.med].concentracoes[0]);
 }
 {
   const med = MEDICAMENTOS[estado.med];
@@ -84,24 +92,30 @@ horaInput.value = `${String(agora.getHours()).padStart(2, '0')}:${String(agora.g
 
 function intervaloDaFormulacao() {
   const med = MEDICAMENTOS[estado.med];
-  const f = med.concentracoes.find((x) => x.mgPorMl === estado.conc);
+  const f = estado.custom ? null : med.concentracoes.find((x) => chaveFormulacao(x) === estado.conc);
   return f?.intervaloHoras ?? med.intervalos?.[0];
 }
 
 function desenharChips() {
   const med = MEDICAMENTOS[estado.med];
   chips.innerHTML = '';
+  // Prednisolona: em Portugal só há comprimidos; «Outra» fica para uma solução manipulada.
+  const comComprimidos = med.concentracoes.some((c) => c.mgPorComprimido);
+  $('#conc-titulo').textContent = comComprimidos ? 'Comprimido' : 'Concentração do frasco';
+  $('#conc-hint').textContent = comComprimidos
+    ? 'A dosagem está na embalagem. Se usar uma solução manipulada, escolha «Outra» e indique os mg/mL.'
+    : 'Está no rótulo, em mg/mL (ou “mg em 5 mL”).';
   med.concentracoes.forEach((c, i) => {
     const id = `conc-${i}`;
     const div = document.createElement('div');
     div.className = 'chip';
     div.innerHTML = `
-      <input type="radio" name="conc" id="${id}" value="${c.mgPorMl}">
+      <input type="radio" name="conc" id="${id}" value="${chaveFormulacao(c)}">
       <label for="${id}"><strong>${c.rotulo}</strong><span>${c.detalhe}</span></label>`;
     const input = div.querySelector('input');
-    input.checked = !estado.custom && c.mgPorMl === estado.conc;
+    input.checked = !estado.custom && chaveFormulacao(c) === estado.conc;
     input.addEventListener('change', () => {
-      estado.conc = c.mgPorMl;
+      estado.conc = chaveFormulacao(c);
       estado.custom = false;
       // Cada formulação tem o seu intervalo habitual (4:1 de 8/8 h; 7:1 e 14:1 de 12/12 h).
       if (c.intervaloHoras) {
@@ -117,7 +131,7 @@ function desenharChips() {
   outra.className = 'chip';
   outra.innerHTML = `
     <input type="radio" name="conc" id="conc-outra" value="outra">
-    <label for="conc-outra" class="custom-conc-label"><strong>Outra</strong><span>mg/mL</span></label>`;
+    <label for="conc-outra" class="custom-conc-label"><strong>Outra</strong><span>${comComprimidos ? 'Solução manipulada · mg/mL' : 'mg/mL'}</span></label>`;
   const outraRadio = outra.querySelector('input');
   outraRadio.checked = estado.custom;
 
@@ -219,10 +233,17 @@ function desenharDose() {
 function desenharInfo() {
   const med = MEDICAMENTOS[estado.med];
   const soGotas = med.concentracoes.every((c) => c.mgPorGota);
-  $('#como-dar-titulo').textContent = soGotas ? 'Como dar as gotas' : 'Como dar o xarope';
+  const soComprimidos = med.concentracoes.every((c) => c.mgPorComprimido);
+  $('#como-dar-titulo').textContent = soGotas
+    ? 'Como dar as gotas'
+    : soComprimidos
+      ? 'Como dar os comprimidos'
+      : 'Como dar o xarope';
   const comoDar = [
-    ...(soGotas ? [] : ['Use sempre a seringa doseadora — colheres de cozinha não são rigorosas.']),
-    'Confirme a concentração no rótulo: o mesmo medicamento existe em forças diferentes.',
+    ...(soGotas || soComprimidos ? [] : ['Use sempre a seringa doseadora — colheres de cozinha não são rigorosas.']),
+    soComprimidos
+      ? 'Confirme na embalagem a dosagem do comprimido: existe em várias forças.'
+      : 'Confirme a concentração no rótulo: o mesmo medicamento existe em forças diferentes.',
     ...med.comoDar,
   ];
   $('#como-dar').innerHTML = comoDar.map((t) => `<li>${t}</li>`).join('');
@@ -348,7 +369,7 @@ document.querySelectorAll('input[name="med"]').forEach((r) => {
     const med = MEDICAMENTOS[estado.med];
     // Cada medicamento tem as suas concentrações: nunca se herda a do anterior.
     estado.custom = false;
-    estado.conc = med.concentracoes[0].mgPorMl;
+    estado.conc = chaveFormulacao(med.concentracoes[0]);
     if (med.porDia) {
       estado.intervalo = intervaloDaFormulacao();
       estado.dose = med.doses[0].mgPorKgDia;
@@ -517,6 +538,8 @@ function atualizar() {
   resultado.dataset.med = estado.med;
   const r = calcularDose(estado.peso, estado.med, estado.conc, {
     mgPorKgDia: estado.dose,
+    personalizada: estado.doseCustom,
+    concPersonalizada: estado.custom,
     intervaloHoras: estado.intervalo,
     idade: estado.idade,
   });
@@ -543,12 +566,24 @@ function atualizar() {
   vazio.hidden = true;
   if (acoes) acoes.hidden = false;
 
-  // Nas gotas orais a dose conta-se em gotas e não há seringa.
+  // Nas gotas orais e nos comprimidos a dose conta-se em unidades e não há seringa.
   const emGotas = r.gotas !== null;
-  animarNumero($('#res-ml'), emGotas ? r.gotas : r.ml, emGotas ? nf : nf1);
-  $('#res-unid').textContent = emGotas ? (r.gotas === 1 ? 'gota' : 'gotas') : 'mL';
+  const emComprimidos = r.comprimidos != null;
+  if (emComprimidos) {
+    cancelAnimationFrame(anim);
+    mlMostrado = 0;
+    $('#res-ml').textContent = fracao(r.comprimidos);
+    $('#res-unid').textContent = r.comprimidos > 1 ? 'comprimidos' : 'comprimido';
+  } else {
+    animarNumero($('#res-ml'), emGotas ? r.gotas : r.ml, emGotas ? nf : nf1);
+    $('#res-unid').textContent = emGotas ? (r.gotas === 1 ? 'gota' : 'gotas') : 'mL';
+  }
   $('#res-every').textContent = frequencia(r.intervaloHoras);
-  const frasco = r.formulacao ? r.formulacao.rotulo : `${nf.format(r.mgPorMl)} mg/mL`;
+  const frasco = !r.formulacao
+    ? `${nf.format(r.mgPorMl)} mg/mL`
+    : emComprimidos
+      ? r.formulacao.rotulo.toLowerCase()
+      : r.formulacao.rotulo;
   const quem = porIdade ? `criança de ${r.escalao.rotulo}` : `criança com ${nf.format(r.peso)} kg`;
   $('#res-sub').textContent = porDia
     ? `${r.medicamento.nome} ${frasco} · ${nf.format(r.mgPorKgDia)} mg/kg/dia · ${quem}`
@@ -558,12 +593,14 @@ function atualizar() {
   $('#st-tomas-k').textContent = regime ? 'Tomas por dia' : 'Máx. por dia';
   $('#st-max-k').textContent = regime ? 'Total em 24 h' : 'Máx. em 24 h';
   $('#st-tomas').innerHTML = `${r.tomasPorDia} <small>${r.tomasPorDia === 1 ? 'toma' : 'tomas'}</small>`;
-  $('#st-max').innerHTML = emGotas
-    ? `${nf.format(r.gotasMaxDia)} <small>gotas</small>`
-    : `${nf.format(r.mlMaxDia)} <small>mL</small>`;
+  $('#st-max').innerHTML = emComprimidos
+    ? `${fracao(r.comprimidosMaxDia)} <small>comp.</small>`
+    : emGotas
+      ? `${nf.format(r.gotasMaxDia)} <small>gotas</small>`
+      : `${nf.format(r.mlMaxDia)} <small>mL</small>`;
 
-  $('#syringes').hidden = emGotas;
-  if (!emGotas) desenharSeringas(r.ml, estado.med);
+  $('#syringes').hidden = emGotas || emComprimidos;
+  if (!emGotas && !emComprimidos) desenharSeringas(r.ml, estado.med);
   desenharHorario(r);
 
   const avisos = [];
@@ -571,9 +608,16 @@ function atualizar() {
     avisos.push(
       aviso(
         porDia
-          ? `Dose limitada ao máximo de <strong>${nf.format(r.medicamento.maxMgDia)} mg de ${r.medicamento.substancia} por dia</strong>.`
+          ? `Dose limitada ao máximo de <strong>${nf.format(r.maxMgDia)} mg de ${r.medicamento.substancia} por dia</strong>.`
           : `Dose limitada ao máximo de <strong>${nf.format(r.medicamento.maxMgPorToma)} mg por toma</strong>.`,
         'danger'
+      )
+    );
+  }
+  if (emComprimidos && Math.abs(r.mgToma - r.mgCalculado) > 0.05) {
+    avisos.push(
+      aviso(
+        `A dose calculada (${nf.format(r.mgCalculado)} mg) foi arredondada a <strong>${nfMg.format(r.mgToma)} mg</strong> para dar ${r.formulacao.partes > 1 ? 'comprimidos inteiros ou metades' : 'comprimidos inteiros'} — ${nf.format((r.mgToma * r.tomasPorDia) / r.peso)} mg/kg/dia.`
       )
     );
   }
@@ -589,6 +633,11 @@ function atualizar() {
       aviso(
         `Cada toma tem ${nf.format(r.mgToma)} mg de amoxicilina e ${nf.format(r.clavMgToma)} mg de ácido clavulânico (${nf.format(r.clavMgKgDia)} mg/kg/dia).`
       )
+    );
+  }
+  if (porDia && r.formulacao?.proporcao === '7:1' && r.mgPorKgDia > 45 && !r.clavExcessivo) {
+    avisos.push(
+      aviso('Acima de 45 mg/kg/dia prefira a formulação 14:1: com a 7:1 não há dados abaixo dos 2 anos e a dose de ácido clavulânico aproxima-se do limite.')
     );
   }
   if (porDia && r.formulacao?.proporcao && r.formulacao.proporcao !== '4:1' && r.peso < 5) {
@@ -607,6 +656,9 @@ function atualizar() {
   }
   if (estado.custom) {
     avisos.push(aviso('Está a usar uma concentração personalizada — confirme o valor no rótulo do frasco.'));
+    if (r.medicamento.concentracoes.some((c) => c.mgPorComprimido)) {
+      avisos.push(aviso('Não há solução oral comercializada em Portugal: use só uma solução manipulada pela farmácia, com a concentração indicada no rótulo.'));
+    }
     if (estado.med === 'amoxiclav') {
       avisos.push(aviso('Sem a quantidade de ácido clavulânico do frasco não é possível confirmar o limite diário de clavulanato.'));
     }
@@ -631,6 +683,7 @@ function atualizar() {
   const q = porIdade
     ? new URLSearchParams({ med: estado.med, c: String(r.mgPorMl), idade: r.escalao.id })
     : new URLSearchParams({ peso: String(r.peso), med: estado.med, c: String(r.mgPorMl) });
+  if (estado.custom) q.set('outra', '1');
   if (porDia) {
     q.set('dose', String(r.mgPorKgDia));
     q.set('h', String(r.intervaloHoras));
@@ -645,8 +698,15 @@ function resumoTexto(r) {
     `Calculadora de doses · ${r.medicamento.nome} (${r.formulacao ? r.formulacao.rotulo : `${nf.format(r.mgPorMl)} mg/mL`})`,
     r.escalao ? `Idade da criança: ${r.escalao.rotulo}` : `Peso da criança: ${nf.format(r.peso)} kg`,
   ];
-  const porToma = r.gotas !== null ? `${nf.format(r.gotas)} gotas` : `${nf1.format(r.ml)} mL`;
-  const porDiaTxt = r.gotas !== null ? `${nf.format(r.gotasMaxDia)} gotas/dia` : `${nf.format(r.mlMaxDia)} mL/dia`;
+  const comp = (n) => `${fracao(n)} ${n > 1 ? 'comprimidos' : 'comprimido'}`;
+  const porToma =
+    r.comprimidos != null ? comp(r.comprimidos) : r.gotas !== null ? `${nf.format(r.gotas)} gotas` : `${nf1.format(r.ml)} mL`;
+  const porDiaTxt =
+    r.comprimidos != null
+      ? `${comp(r.comprimidosMaxDia)}/dia`
+      : r.gotas !== null
+        ? `${nf.format(r.gotasMaxDia)} gotas/dia`
+        : `${nf.format(r.mlMaxDia)} mL/dia`;
   if (r.medicamento.porDia) {
     linhas.push(
       `Dose diária: ${nf.format(r.mgPorKgDia)} mg/kg/dia de ${r.medicamento.substancia}`,
@@ -656,7 +716,7 @@ function resumoTexto(r) {
     if (r.clavMgToma !== null) {
       linhas.push(`Ácido clavulânico: ${nf.format(r.clavMgToma)} mg por toma (${nf.format(r.clavMgKgDia)} mg/kg/dia)`);
     }
-    if (r.limitado) linhas.push(`Dose limitada ao máximo de ${nf.format(r.medicamento.maxMgDia)} mg de ${r.medicamento.substancia} por dia.`);
+    if (r.limitado) linhas.push(`Dose limitada ao máximo de ${nf.format(r.maxMgDia)} mg de ${r.medicamento.substancia} por dia.`);
     linhas.push('Cumprir todos os dias de tratamento indicados pelo médico.');
   } else if (r.escalao) {
     linhas.push(

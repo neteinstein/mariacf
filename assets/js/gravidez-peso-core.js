@@ -66,7 +66,8 @@ export function calcularAumentoPeso({ pesoPre, alturaCm, semanas, pesoAtual, gem
   if (!Number.isFinite(a) || a < 120 || a > 220) return { ok: false, motivo: 'Indique a altura (120–220 cm).' };
 
   const imc = p / (a / 100) ** 2;
-  const cat = CATEGORIAS.find((c) => imc < c.max);
+  // Classifica o valor mostrado (1 casa decimal), para não haver «25,0» com peso normal.
+  const cat = CATEGORIAS.find((c) => arred(imc) < c.max);
   const total = gemelar ? cat.gemelar : cat.total;
   if (!total) return { ok: false, motivo: 'Não há recomendação do IOM para gravidez gemelar com baixo peso — discutir com o obstetra.' };
 

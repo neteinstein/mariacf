@@ -3140,7 +3140,7 @@ export const DOENCAS = [
     resumo: 'Uma das doenças mais contagiosas que existem: febre alta, tosse, olhos vermelhos e manchas na pele. As duas doses da vacina protegem quase sempre.',
     heroi: 'borbulhas',
     deco: 'pintas',
-    eviccao: 'Afastamento durante o período que a autoridade de saúde determinar, contado a partir do aparecimento das manchas. Só se aplica a casos confirmados.',
+    eviccao: 'Afastamento durante, pelo menos, 4 dias depois de aparecerem as manchas na pele (exantema).',
     grupos: {
       '3-5': {
         imagens: [

@@ -65,3 +65,14 @@ test('HAS-BLED: máximo 9 pontos', () => {
   });
   assert.equal(r.pontos, 9);
 });
+
+test('CHA2DS2-VASc: na mulher, 2 pontos é risco intermédio e 3 é elevado (ESC)', () => {
+  const dois = calcularCHA2DS2VASc({ sexoFeminino: true, hipertensao: true });
+  assert.equal(dois.pontos, 2);
+  assert.equal(dois.nivel, 'moderado');
+  const tres = calcularCHA2DS2VASc({ sexoFeminino: true, hipertensao: true, diabetes: true });
+  assert.equal(tres.nivel, 'alto');
+  // No homem, 1 ponto é intermédio e 2 é elevado.
+  assert.equal(calcularCHA2DS2VASc({ hipertensao: true }).nivel, 'moderado');
+  assert.equal(calcularCHA2DS2VASc({ hipertensao: true, diabetes: true }).nivel, 'alto');
+});

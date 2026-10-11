@@ -6,7 +6,8 @@
 // Referências: Smilkstein G, J Fam Pract 1978 (APGAR familiar); Cox JL,
 // Holden JM & Sagovsky R, Br J Psychiatry 1987, e Areias ME et al.
 // (validação portuguesa), 1996 (EPDS); Zarit SH, Reever KE & Bach-Peterson
-// J, Gerontologist 1980, e Sequeira C (validação portuguesa), 2010 (Zarit);
+// J, Gerontologist 1980, e Sequeira C (validação portuguesa, itens de 1 a 5),
+// Referência 2010 (Zarit);
 // Heatherton TF et al., Br J Addict 1991 (Fagerström/FTND); Morisky DE,
 // Green LW & Levine DM, Med Care 1986 (escala original de 4 itens de
 // adesão à terapêutica).
@@ -50,18 +51,25 @@ export function calcularEPDS(respostas = []) {
   return { ok: true, pontos, max: 30, nivel, gravidade, itemRisco };
 }
 
-/** Escala de Zarit (22 itens), cada um 0–4. */
+/**
+ * Escala de Sobrecarga do Cuidador (Zarit, versão portuguesa de Sequeira): 22 itens,
+ * cada um de 1 (nunca) a 5 (quase sempre), total 22–110. Os pontos de corte
+ * (< 46, 46–56, > 56) só valem nesta pontuação de 1 a 5.
+ */
 export function calcularZarit(respostas = []) {
   const pontos = soma(respostas, 22);
   if (pontos === null) return { ok: false, motivo: 'Responda a todas as perguntas.' };
+  if (respostas.slice(0, 22).some((v) => Number(v) < 1 || Number(v) > 5)) {
+    return { ok: false, motivo: 'Cada resposta vale de 1 a 5 pontos.' };
+  }
 
   let nivel;
   let sobrecarga;
-  if (pontos <= 46) { nivel = 'baixo'; sobrecarga = 'Sem sobrecarga'; }
-  else if (pontos <= 55) { nivel = 'moderado'; sobrecarga = 'Sobrecarga moderada'; }
+  if (pontos < 46) { nivel = 'baixo'; sobrecarga = 'Sem sobrecarga'; }
+  else if (pontos <= 56) { nivel = 'moderado'; sobrecarga = 'Sobrecarga ligeira'; }
   else { nivel = 'alto'; sobrecarga = 'Sobrecarga intensa'; }
 
-  return { ok: true, pontos, max: 88, nivel, sobrecarga };
+  return { ok: true, pontos, min: 22, max: 110, nivel, sobrecarga };
 }
 
 /** Teste de Fagerström (FTND): 6 itens com pontuações específicas. */

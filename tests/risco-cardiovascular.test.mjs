@@ -67,3 +67,22 @@ test('SCORE2-Diabetes: idade de diagnóstico não pode exceder a idade atual', (
   });
   assert.equal(r.ok, false);
 });
+
+test('SCORE2: três categorias da ESC 2021 por idade (baixo a moderado, alto, muito alto)', () => {
+  // 55 anos: < 5% baixo a moderado; 5–10% alto; ≥ 10% muito alto.
+  const base = { idade: 55, sexoFeminino: false, sbp: 140, colTotalMmol: 5.5, hdlMmol: 1.3 };
+  const r1 = calcularSCORE2({ ...base, fumador: false });
+  const r2 = calcularSCORE2({ ...base, fumador: true, sbp: 170 });
+  for (const r of [r1, r2]) {
+    const esperado = r.risco < 5 ? 'baixo' : r.risco < 10 ? 'alto' : 'muito-alto';
+    assert.equal(r.nivel, esperado, `risco ${r.risco}%`);
+  }
+});
+
+test('SCORE2: com diabetes dos 40 aos 69 anos encaminha para o SCORE2-Diabetes', () => {
+  const r = calcularSCORE2({ idade: 55, sexoFeminino: false, fumador: false, sbp: 140, colTotalMmol: 5.5, hdlMmol: 1.3, diabetes: true });
+  assert.equal(r.ok, false);
+  assert.match(r.motivo, /SCORE2-Diabetes/);
+  // A partir dos 70, o SCORE2-OP inclui a diabetes.
+  assert.equal(calcularSCORE2({ idade: 75, sexoFeminino: false, fumador: false, sbp: 140, colTotalMmol: 5.5, hdlMmol: 1.3, diabetes: true }).ok, true);
+});

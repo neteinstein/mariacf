@@ -69,3 +69,13 @@ test('KDIGO: limites G e validação', () => {
   assert.equal(estadiarKDIGO(14, 10).g, 'G5');
   assert.equal(estadiarKDIGO('', 10).ok, false);
 });
+
+test('KDIGO: limites de albuminúria na própria unidade (3 mg/mmol é A2; 300 mg/g é A2)', () => {
+  assert.equal(estadiarKDIGO(70, 3, 'mg/mmol').a, 'A2');
+  assert.equal(estadiarKDIGO(70, 2.9, 'mg/mmol').a, 'A1');
+  assert.equal(estadiarKDIGO(70, 30, 'mg/mmol').a, 'A2');
+  assert.equal(estadiarKDIGO(70, 31, 'mg/mmol').a, 'A3');
+  assert.equal(estadiarKDIGO(70, 300, 'mg/g').a, 'A2');
+  assert.equal(estadiarKDIGO(70, 301, 'mg/g').a, 'A3');
+  assert.equal(estadiarKDIGO(70, 29, 'mg/g').a, 'A1');
+});

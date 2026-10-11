@@ -43,3 +43,16 @@ test('BISAP: 3 critérios → alto', () => {
   assert.equal(r.pontos, 3);
   assert.equal(r.nivel, 'alto');
 });
+
+test('Blatchford: ureia em mg/dL (análises em Portugal) converte para mmol/L', () => {
+  // 6,5 mmol/L = 39 mg/dL: 40 mg/dL dá 2 pontos; 38 mg/dL dá 0.
+  assert.equal(calcularBlatchford({ ureiaMgDl: 40, hemoglobina: 14, pas: 120 }).pontos, 2);
+  assert.equal(calcularBlatchford({ ureiaMgDl: 38, hemoglobina: 14, pas: 120 }).pontos, 0);
+  assert.equal(calcularBlatchford({ ureiaMgDl: 160, hemoglobina: 14, pas: 120 }).pontos, 6);
+});
+
+test('Blatchford: 0–1 pontos é risco baixo (ESGE 2021)', () => {
+  const r = calcularBlatchford({ ureia: 5, hemoglobina: 14, pas: 120, melena: true });
+  assert.equal(r.pontos, 1);
+  assert.equal(r.nivel, 'baixo');
+});

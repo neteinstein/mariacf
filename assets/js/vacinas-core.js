@@ -4,7 +4,9 @@
 // Sem dependências do DOM para poder ser testado em Node.
 //
 // Referência: DGS, Norma n.º 018/2020 — Programa Nacional de Vacinação 2020
-// (esquema recomendado), incluindo a MenB e a vacina HPV para ambos os sexos.
+// (esquema recomendado), incluindo a MenB e a vacina HPV para ambos os sexos,
+// com as alterações do PNV 2025: Pn20 em vez de Pn13 aos 2, 4 e 12 meses
+// (Norma n.º 013/2024) e MenACWY em vez de MenC aos 12 meses (Norma n.º 005/2025).
 // Não inclui vacinas para grupos de risco (BCG, rotavírus, etc.), nem as
 // campanhas sazonais (gripe, COVID-19, VSR), que dependem da norma de cada ano.
 
@@ -16,10 +18,10 @@ import { paraData, paraISO, diferencaDias } from './dpp-core.js';
  */
 export const ESQUEMA_PNV = [
   { meses: 0, idade: 'Nascimento', vacinas: ['VHB 1'] },
-  { meses: 2, idade: '2 meses', vacinas: ['DTPaHibVIPVHB 1 (hexavalente)', 'Pn13 1', 'MenB 1'] },
-  { meses: 4, idade: '4 meses', vacinas: ['DTPaHibVIP 2 (pentavalente)', 'Pn13 2', 'MenB 2'] },
+  { meses: 2, idade: '2 meses', vacinas: ['DTPaHibVIPVHB 1 (hexavalente)', 'Pn20 1', 'MenB 1'] },
+  { meses: 4, idade: '4 meses', vacinas: ['DTPaHibVIP 2 (pentavalente)', 'Pn20 2', 'MenB 2'] },
   { meses: 6, idade: '6 meses', vacinas: ['DTPaHibVIPVHB 3 (hexavalente)'] },
-  { meses: 12, idade: '12 meses', vacinas: ['MenC', 'VASPR 1', 'Pn13 3', 'MenB 3'] },
+  { meses: 12, idade: '12 meses', vacinas: ['MenACWY', 'VASPR 1', 'Pn20 3', 'MenB 3'] },
   { meses: 18, idade: '18 meses', vacinas: ['DTPaHibVIP 4 (pentavalente)'] },
   { meses: 60, idade: '5 anos', vacinas: ['DTPaVIP 5 (tetravalente)', 'VASPR 2'] },
   { meses: 120, idade: '10 anos', vacinas: ['HPV 1', 'Td'] },
@@ -34,9 +36,9 @@ export const SIGLAS = {
   DTPa: 'Difteria, tétano e tosse convulsa (pertussis acelular)',
   Hib: 'Haemophilus influenzae tipo b',
   VIP: 'Poliomielite (inativada)',
-  Pn13: 'Pneumococos (13 serotipos)',
+  Pn20: 'Pneumococos (20 serotipos)',
   MenB: 'Meningococo B',
-  MenC: 'Meningococo C',
+  MenACWY: 'Meningococos A, C, W e Y',
   VASPR: 'Sarampo, parotidite epidémica e rubéola',
   HPV: 'Vírus do papiloma humano',
   Td: 'Tétano e difteria (dose de adulto)',

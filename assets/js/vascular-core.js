@@ -34,12 +34,13 @@ export function calcularITB({ braçoDireito, braçoEsquerdo, tornozeloDireito, t
   const itbDireito = td / braçoMaior;
   const itbEsquerdo = te / braçoMaior;
 
+  // Classifica-se o valor mostrado (2 casas): 0,906 aparece como 0,91 e é limítrofe.
   return {
     ok: true,
     itbDireito: arred(itbDireito, 2),
     itbEsquerdo: arred(itbEsquerdo, 2),
-    direito: classificarITB(itbDireito),
-    esquerdo: classificarITB(itbEsquerdo),
+    direito: classificarITB(arred(itbDireito, 2)),
+    esquerdo: classificarITB(arred(itbEsquerdo, 2)),
   };
 }
 

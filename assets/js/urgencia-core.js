@@ -206,7 +206,8 @@ export function calcularNEWS2({ freqRespiratoria, spo2, oxigenioSuplementar, pre
   let nivel;
   let resposta;
   if (pontos >= 7) { nivel = 'muito-alto'; resposta = 'Risco alto — resposta clínica de emergência.'; }
-  else if (pontos >= 5 || algumParametroCritico) { nivel = 'alto'; resposta = 'Risco médio — resposta clínica urgente.'; }
+  else if (pontos >= 5) { nivel = 'alto'; resposta = 'Risco médio — resposta clínica urgente.'; }
+  else if (algumParametroCritico) { nivel = 'alto'; resposta = 'Risco baixo a médio (3 pontos num só parâmetro) — avaliação clínica urgente.'; }
   else if (pontos >= 1) { nivel = 'moderado'; resposta = 'Risco baixo — reavaliação de rotina, mais frequente se agravar.'; }
   else { nivel = 'baixo'; resposta = 'Risco baixo — vigilância de rotina.'; }
 

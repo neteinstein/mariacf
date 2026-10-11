@@ -3,22 +3,29 @@
 // Sem dependências do DOM para poder ser testada em Node.
 //
 // Referências: RCM (INFARMED) de Ben-u-ron®, Brufen®, Nurofen®, Ib-u-ron®, Clamoxyl®, Augmentin®,
-// Zithromax®, Zinnat®, Zamene®, Motilium®, Primperan®, Atarax®, Zyrtec® e Aerius®;
-// recomendações da EMA (domperidona 2014, metoclopramida 2013, hidroxizina 2015).
+// Zithromax®, Zinnat®, Lepicortinolo®, Zamene®, Motilium®, Primperan®, Atarax®, Zyrtec® e Aerius®;
+// recomendações da EMA (domperidona 2014 e 2019, metoclopramida 2013, hidroxizina 2015);
+// Normas da DGS 007/2012 (otite média aguda) e 020/2012 (amigdalite aguda).
 //   Paracetamol: 15 mg/kg/toma, de 6/6h, máx. 60 mg/kg/dia (e 1 g/toma).
 //   Ibuprofeno:  10 mg/kg/toma, de 8/8h, máx. 30 mg/kg/dia (e 400 mg/toma).
-//   Amoxicilina: 40–90 mg/kg/dia divididos de 12/12h ou 8/8h (amigdalite 50,
-//     otite e pneumonia 80–90 mg/kg/dia); máx. 4 g/dia.
+//   Amoxicilina: 40–90 mg/kg/dia divididos de 8/8h ou 12/12h; amigdalite
+//     estreptocócica 50 mg/kg/dia de 12/12h, máx. 1 g/dia; otite e pneumonia
+//     80–90 mg/kg/dia de 12/12h; máx. 3 g/dia.
 //   Amoxicilina + ácido clavulânico: dose diária de amoxicilina (habitual 45,
 //     alta 80–90 mg/kg/dia) dividida de 12/12h (7:1 e 14:1) ou 8/8h (4:1);
-//     ácido clavulânico até 10 mg/kg/dia (15 mg/kg/dia na 4:1); máx. 4 g/dia de amoxicilina.
+//     ácido clavulânico até 10 mg/kg/dia (15 mg/kg/dia na 4:1), por isso a 7:1 vai
+//     só até 70 mg/kg/dia; máx. 3 g/dia de amoxicilina.
 //   Azitromicina: 10 mg/kg/dia, 1×/dia, 3 dias (ou 10 mg/kg no 1.º dia e 5 mg/kg
-//     do 2.º ao 5.º); amigdalite estreptocócica 20 mg/kg/dia, 3 dias; máx. 500 mg/dia.
-//   Cefuroxima (axetil): 10 mg/kg de 12/12h (otite média: 15 mg/kg); máx. 250 mg/toma.
+//     do 2.º ao 5.º); amigdalite estreptocócica (≥ 2 anos) 12 mg/kg/dia, 5 dias, ou
+//     20 mg/kg/dia, 3 dias; máx. 500 mg/dia.
+//   Cefuroxima (axetil): 10 mg/kg de 12/12h, máx. 125 mg/toma; otite média (≥ 2 anos)
+//     15 mg/kg de 12/12h, máx. 250 mg/toma.
 //   Prednisolona: 1–2 mg/kg/dia, 1×/dia, máx. 40 mg/dia (crise de asma, laringite).
+//     Em Portugal só há comprimidos (5 mg, inteiros; 20 mg, divisíveis ao meio).
 //   Deflazacorte: 0,25–1,5 mg/kg/dia, 1×/dia; gotas a 22,75 mg/mL (1 gota = 1 mg);
 //     limitado a 48 mg/dia (equivalente a 40 mg de prednisolona).
-//   Domperidona: 0,25 mg/kg até 3×/dia (máx. 0,75 mg/kg/dia); 10 mg/toma a partir de 35 kg.
+//   Domperidona: só a partir dos 12 anos e 35 kg, 10 mg até 3×/dia (máx. 30 mg/dia);
+//     abaixo disso a eficácia não está demonstrada (EMA/CMDh 2019).
 //   Metoclopramida: a partir de 1 ano, até 3×/dia, dose por escalão de peso
 //     (10–14 kg 1 mg; 15–19 kg 2 mg; 20–29 kg 2,5 mg; 30–60 kg 5 mg).
 //   Hidroxizina: a partir de 1 ano, 1–2 mg/kg/dia divididos (máx. 2 mg/kg/dia até 40 kg).
@@ -26,9 +33,11 @@
 //
 // Tipos de cálculo:
 //   - por toma (mgPorKg ou escaloesPeso), com intervalo fixo;
-//   - porDia: dose diária em mg/kg/dia, dividida pelas tomas do dia;
+//   - porDia: dose diária em mg/kg/dia, dividida pelas tomas do dia (cada dose
+//     pré-definida pode ter o seu próprio máximo diário, `maxMgDia`);
 //   - porIdade: dose fixa por escalão etário (o peso não entra).
-// Formulações com `mgPorGota` dão também a dose em gotas.
+// Formulações com `mgPorGota` dão também a dose em gotas; com `mgPorComprimido`, a dose
+// conta-se em comprimidos (inteiros ou na fração indicada por `partes`).
 
 export const MEDICAMENTOS = {
   paracetamol: {
@@ -87,9 +96,9 @@ export const MEDICAMENTOS = {
       'Agite o frasco antes de cada toma; depois de preparado, guarde-o no frigorífico.',
     ],
     limites: [
-      '<strong>40–90 mg/kg/dia</strong>, divididos de 12/12 h ou de 8/8 h.',
-      'Amigdalite estreptocócica: 50 mg/kg/dia; otite média e pneumonia: 80–90 mg/kg/dia.',
-      'Máximo de <strong>4 g por dia</strong>.',
+      '<strong>40–90 mg/kg/dia</strong>, divididos de 8/8 h ou de 12/12 h.',
+      'Amigdalite estreptocócica: 50 mg/kg/dia de 12/12 h durante 10 dias, até <strong>1 g por dia</strong>.',
+      'Otite média e pneumonia: 80–90 mg/kg/dia de 12/12 h, até <strong>3 g por dia</strong>.',
       'Cumpra todos os dias de tratamento indicados, mesmo que a criança melhore.',
     ],
     marcas: 'Clamoxyl®, genéricos',
@@ -101,13 +110,13 @@ export const MEDICAMENTOS = {
     conselho:
       'Antibiótico só com receita médica. Pode dar-se com ou sem alimentos; cumprir todos os dias indicados, mesmo que a criança melhore. Agitar antes de cada toma; depois de preparado, guardar no frigorífico (veja no folheto quantos dias dura).',
     doses: [
-      { mgPorKgDia: 50, rotulo: '50 mg/kg/dia', detalhe: 'Dose habitual (ex.: amigdalite)' },
+      { mgPorKgDia: 50, rotulo: '50 mg/kg/dia', detalhe: 'Amigdalite · máx. 1 g/dia', maxMgDia: 1000 },
       { mgPorKgDia: 90, rotulo: '90 mg/kg/dia', detalhe: 'Dose alta (ex.: otite, pneumonia)' },
     ],
     mgPorKgDiaMin: 20,
     mgPorKgDiaMax: 100,
     intervalos: [12, 8],
-    maxMgDia: 4000,
+    maxMgDia: 3000,
     pesoMinimo: 3,
     concentracoes: [
       { mgPorMl: 50, rotulo: '250 mg/5 mL', detalhe: 'Suspensão oral' },
@@ -122,8 +131,9 @@ export const MEDICAMENTOS = {
       'Agite o frasco antes de cada toma; depois de preparado, guarde-o no frigorífico.',
     ],
     limites: [
-      '<strong>45 mg/kg/dia</strong> de amoxicilina (dose alta 80–90), de 12/12 h nas formulações 7:1 e 14:1 ou de 8/8 h na 4:1.',
-      'Ácido clavulânico até 10 mg/kg/dia (15 mg/kg/dia na 4:1); máximo de 4 g/dia de amoxicilina.',
+      '<strong>45 mg/kg/dia</strong> de amoxicilina, de 12/12 h nas formulações 7:1 e 14:1 ou de 8/8 h na 4:1.',
+      'Dose alta (80–90 mg/kg/dia, ex.: otite): só com a 14:1 — a 7:1 vai até 70 mg/kg/dia.',
+      'Ácido clavulânico até 10 mg/kg/dia (15 mg/kg/dia na 4:1); máximo de <strong>3 g/dia</strong> de amoxicilina.',
       'Cumpra todos os dias de tratamento indicados, mesmo que a criança melhore.',
     ],
     marcas: 'Augmentin®, Clavamox®, genéricos',
@@ -137,12 +147,12 @@ export const MEDICAMENTOS = {
     // A dose é diária (mg de amoxicilina/kg/dia), dividida pelas tomas do dia.
     doses: [
       { mgPorKgDia: 45, rotulo: '45 mg/kg/dia', detalhe: 'Dose habitual' },
-      { mgPorKgDia: 90, rotulo: '90 mg/kg/dia', detalhe: 'Dose alta (ex.: otite, pneumonia)' },
+      { mgPorKgDia: 90, rotulo: '90 mg/kg/dia', detalhe: 'Dose alta (otite) · formulação 14:1' },
     ],
     mgPorKgDiaMin: 20,
     mgPorKgDiaMax: 100,
     intervalos: [12, 8],
-    maxMgDia: 4000,
+    maxMgDia: 3000,
     pesoMinimo: 3,
     // mgPorMl e clavPorMl: amoxicilina e ácido clavulânico por mL de suspensão.
     // A primeira é a predefinida.
@@ -166,7 +176,7 @@ export const MEDICAMENTOS = {
     ],
     limites: [
       '<strong>10 mg/kg 1×/dia</strong> durante 3 dias (ou 10 mg/kg no 1.º dia e 5 mg/kg do 2.º ao 5.º).',
-      'Amigdalite estreptocócica: 20 mg/kg/dia durante 3 dias.',
+      'Amigdalite estreptocócica (a partir dos 2 anos): 12 mg/kg/dia durante 5 dias ou 20 mg/kg/dia durante 3 dias.',
       'Máximo de <strong>500 mg por dia</strong>.',
     ],
     marcas: 'Zithromax®, genéricos',
@@ -176,6 +186,7 @@ export const MEDICAMENTOS = {
     substancia: 'azitromicina',
     doses: [
       { mgPorKgDia: 10, rotulo: '10 mg/kg/dia', detalhe: 'Dose habitual · 3 dias' },
+      { mgPorKgDia: 12, rotulo: '12 mg/kg/dia', detalhe: 'Amigdalite estreptocócica · 5 dias' },
       { mgPorKgDia: 20, rotulo: '20 mg/kg/dia', detalhe: 'Amigdalite estreptocócica · 3 dias' },
     ],
     mgPorKgDiaMin: 5,
@@ -185,7 +196,7 @@ export const MEDICAMENTOS = {
     pesoMinimo: 5,
     doseAdulto: 'habitualmente 500 mg 1×/dia durante 3 dias',
     conselho:
-      'Antibiótico só com receita médica. Uma toma por dia, sempre à mesma hora, com ou sem alimentos. O tratamento é curto porque o efeito se prolonga: habitualmente 3 dias (ou 10 mg/kg no 1.º dia e 5 mg/kg do 2.º ao 5.º). Agitar antes de cada toma. Pouca experiência abaixo dos 6 meses.',
+      'Antibiótico só com receita médica. Uma toma por dia, sempre à mesma hora, com ou sem alimentos. O tratamento é curto porque o efeito se prolonga: habitualmente 3 dias (ou 10 mg/kg no 1.º dia e 5 mg/kg do 2.º ao 5.º); na amigdalite, 5 dias com 12 mg/kg/dia ou 3 dias com 20 mg/kg/dia. Agitar antes de cada toma. Não está estudada abaixo dos 6 meses.',
     concentracoes: [
       { mgPorMl: 40, intervaloHoras: 24, rotulo: '200 mg/5 mL', detalhe: 'Suspensão oral · 1×/dia' },
     ],
@@ -198,8 +209,8 @@ export const MEDICAMENTOS = {
       'Agite o frasco antes de cada toma; depois de preparado, guarde-o no frigorífico.',
     ],
     limites: [
-      '<strong>10 mg/kg de 12/12 h</strong>; na otite média, 15 mg/kg de 12/12 h.',
-      'Máximo de <strong>250 mg por toma</strong> (500 mg/dia).',
+      '<strong>10 mg/kg de 12/12 h</strong>, até <strong>125 mg por toma</strong> (250 mg/dia).',
+      'Otite média (a partir dos 2 anos) e infeções mais graves: 15 mg/kg de 12/12 h, até <strong>250 mg por toma</strong> (500 mg/dia).',
       'Cumpra todos os dias de tratamento indicados, mesmo que a criança melhore.',
     ],
     marcas: 'Zinnat®, genéricos',
@@ -208,8 +219,8 @@ export const MEDICAMENTOS = {
     porDia: true,
     substancia: 'cefuroxima',
     doses: [
-      { mgPorKgDia: 20, rotulo: '20 mg/kg/dia', detalhe: 'Dose habitual (10 mg/kg por toma)' },
-      { mgPorKgDia: 30, rotulo: '30 mg/kg/dia', detalhe: 'Otite média (15 mg/kg por toma)' },
+      { mgPorKgDia: 20, rotulo: '20 mg/kg/dia', detalhe: 'Dose habitual · máx. 125 mg por toma', maxMgDia: 250 },
+      { mgPorKgDia: 30, rotulo: '30 mg/kg/dia', detalhe: 'Otite média (≥ 2 anos) · máx. 250 mg por toma' },
     ],
     mgPorKgDiaMin: 10,
     mgPorKgDiaMax: 30,
@@ -229,12 +240,14 @@ export const MEDICAMENTOS = {
     nome: 'Prednisolona',
     comoDar: [
       'Dar de manhã, com alimentos.',
+      'Nas crianças pequenas, o comprimido pode ser esmagado e misturado com um pouco de água ou sumo (o sabor é amargo).',
     ],
     limites: [
       '<strong>1–2 mg/kg/dia</strong>, 1×/dia, habitualmente durante 3 a 5 dias.',
       'Máximo de <strong>40 mg por dia</strong> nas crianças.',
+      'Em Portugal só existe em comprimidos (5 mg e 20 mg); a dose arredonda-se ao comprimido ou meio comprimido.',
     ],
-    marcas: 'Prelone®, genéricos',
+    marcas: 'Lepicortinolo®, Prednisolona Labesfal, genéricos',
     grupo: 'corticoide',
     porDia: true,
     substancia: 'prednisolona',
@@ -250,9 +263,12 @@ export const MEDICAMENTOS = {
     doseAdulto: 'habitualmente 40–50 mg 1×/dia',
     conselho:
       'Corticoide só com receita médica. Dar de manhã, com alimentos. Nos tratamentos curtos (3 a 5 dias) pode parar-se sem reduzir a dose, salvo indicação médica. Nas crianças não se ultrapassam 40 mg por dia.',
+    // Sem solução oral comercializada em Portugal: comprimidos de 5 mg (a ranhura do
+    // de 5 mg não serve para dividir) e de 20 mg (divisível em metades iguais).
+    // Uma solução manipulada pode indicar-se em «Outra» (mg/mL).
     concentracoes: [
-      { mgPorMl: 3, intervaloHoras: 24, rotulo: '15 mg/5 mL', detalhe: 'Solução oral (ex.: Prelone®)' },
-      { mgPorMl: 1, intervaloHoras: 24, rotulo: '5 mg/5 mL', detalhe: 'Solução oral' },
+      { mgPorComprimido: 5, partes: 1, intervaloHoras: 24, rotulo: 'Comprimido de 5 mg', detalhe: 'Lepicortinolo®, Prednisolona Labesfal' },
+      { mgPorComprimido: 20, partes: 2, intervaloHoras: 24, rotulo: 'Comprimido de 20 mg', detalhe: 'Lepicortinolo®, genéricos · divide-se ao meio' },
     ],
   },
   deflazacorte: {
@@ -294,21 +310,22 @@ export const MEDICAMENTOS = {
       'Agite o frasco antes de cada toma.',
     ],
     limites: [
-      '<strong>0,25 mg/kg</strong> por toma, até 3×/dia (máx. 0,75 mg/kg/dia).',
-      'A partir de 35 kg: 10 mg por toma (máx. 30 mg/dia).',
+      'Só a partir dos <strong>12 anos e 35 kg</strong>: 10 mg por toma, até 3×/dia (máx. 30 mg/dia).',
+      'Abaixo dos 12 anos ou dos 35 kg não se usa: a eficácia não foi demonstrada (EMA, 2019).',
       'No máximo <strong>1 semana</strong> de tratamento.',
     ],
     marcas: 'Motilium®, genéricos',
     grupo: 'nauseas',
-    mgPorKg: 0.25,
+    // Desde 2019 (EMA/CMDh) só para adolescentes a partir dos 12 anos e 35 kg, em dose fixa.
+    escaloesPeso: [{ min: 35, mg: 10 }],
     intervaloHoras: 8,
     tomasPorDia: 3,
     maxMgPorToma: 10,
-    // A partir de 35 kg usa-se a dose de adulto (10 mg por toma).
-    doseFixaAPartirDe: 35,
-    pesoMinimo: 3,
+    pesoMinimo: 35,
+    motivoPesoMinimo:
+      'A domperidona só está indicada a partir dos 12 anos e 35 kg: nas crianças mais novas a eficácia não foi demonstrada (EMA, 2019). Fale com o médico.',
     conselho:
-      'Só com receita médica. Dar 15–30 minutos antes das refeições. Usar a dose mais baixa durante o menor tempo possível (no máximo 1 semana). Evitar com outros medicamentos que prolonguem o intervalo QT.',
+      'Só com receita médica e só a partir dos 12 anos (e 35 kg). Dar 15–30 minutos antes das refeições. Usar a dose mais baixa durante o menor tempo possível (no máximo 1 semana). Evitar com outros medicamentos que prolonguem o intervalo QT.',
     concentracoes: [
       { mgPorMl: 1, rotulo: '1 mg/mL', detalhe: 'Suspensão oral (5 mg em 5 mL)' },
     ],
@@ -435,12 +452,26 @@ export const PESO_MAX = 60;
 export const PESO_ADULTO = 40;
 
 const arred1 = (n) => Math.round(n * 10) / 10;
+const virgula = (n) => String(arred1(n)).replace('.', ',');
+
+/** Valor que identifica uma formulação: mg/mL (ou mg por comprimido, nos comprimidos). */
+export const chaveFormulacao = (f) => f.mgPorMl ?? f.mgPorComprimido;
+
+// Com `concPersonalizada` (concentração escrita à mão) nunca se usa uma formulação da lista.
+const acharFormulacao = (med, c, opcoes) =>
+  (opcoes.concPersonalizada ? null : med.concentracoes.find((x) => chaveFormulacao(x) === c)) || null;
 const gotasDe = (mg, formulacao) => (formulacao?.mgPorGota ? Math.round(mg / formulacao.mgPorGota) : null);
+// Com uma concentração muito alta a dose pode arredondar para 0 mL.
+const volumeDemasiadoPequeno = () => ({
+  ok: false,
+  motivo: 'A dose dá menos de 0,1 mL: confirme a concentração do frasco.',
+});
 
 /**
  * Calcula a dose para um peso (kg), medicamento e concentração (mg/mL).
- * Nos antibióticos, `opcoes` indica a dose diária (mgPorKgDia) e o intervalo
- * (intervaloHoras); por omissão, a dose habitual e o intervalo da formulação.
+ * Nas doses diárias, `opcoes` indica a dose (mgPorKgDia), o intervalo (intervaloHoras)
+ * e se a dose foi escrita à mão (personalizada); por omissão, a primeira dose
+ * pré-definida e o intervalo da formulação.
  * Devolve { ok: false, motivo } se não for possível calcular com segurança.
  */
 export function calcularDose(peso, medicamentoId, mgPorMl, opcoes = {}) {
@@ -458,7 +489,7 @@ export function calcularDose(peso, medicamentoId, mgPorMl, opcoes = {}) {
   if (p < med.pesoMinimo) {
     return {
       ok: false,
-      motivo: `${med.nome} não está indicado abaixo de ${med.pesoMinimo} kg sem indicação médica.`,
+      motivo: med.motivoPesoMinimo ?? `${med.nome}: não usar abaixo de ${med.pesoMinimo} kg sem indicação médica.`,
     };
   }
 
@@ -469,12 +500,10 @@ export function calcularDose(peso, medicamentoId, mgPorMl, opcoes = {}) {
 
   if (med.porDia) return calcularPorDia(med, p, c, opcoes);
 
-  const formulacao = med.concentracoes.find((x) => x.mgPorMl === c) || null;
+  const formulacao = acharFormulacao(med, c, opcoes);
   let mgCalculado;
   if (med.escaloesPeso) {
     mgCalculado = med.escaloesPeso.filter((e) => p >= e.min).at(-1).mg;
-  } else if (med.doseFixaAPartirDe && p >= med.doseFixaAPartirDe) {
-    mgCalculado = med.maxMgPorToma;
   } else {
     mgCalculado = p * med.mgPorKg;
   }
@@ -482,6 +511,7 @@ export function calcularDose(peso, medicamentoId, mgPorMl, opcoes = {}) {
   const mgToma = Math.min(mgCalculado, med.maxMgPorToma);
   const ml = arred1(mgToma / c);
   const gotas = gotasDe(mgToma, formulacao);
+  if (gotas === null ? ml <= 0 : gotas <= 0) return volumeDemasiadoPequeno();
 
   return {
     ok: true,
@@ -512,10 +542,11 @@ function calcularPorIdade(med, mgPorMl, opcoes) {
   if (!Number.isFinite(c) || c <= 0) {
     return { ok: false, motivo: 'Concentração inválida.' };
   }
-  const formulacao = med.concentracoes.find((x) => x.mgPorMl === c) || null;
+  const formulacao = acharFormulacao(med, c, opcoes);
   const tomasPorDia = 24 / escalao.intervaloHoras;
   const ml = arred1(escalao.mgToma / c);
   const gotas = gotasDe(escalao.mgToma, formulacao);
+  if (gotas === null ? ml <= 0 : gotas <= 0) return volumeDemasiadoPequeno();
   return {
     ok: true,
     medicamento: med,
@@ -537,7 +568,7 @@ function calcularPorIdade(med, mgPorMl, opcoes) {
 }
 
 function calcularPorDia(med, p, c, opcoes) {
-  const formulacao = med.concentracoes.find((x) => x.mgPorMl === c) || null;
+  const formulacao = acharFormulacao(med, c, opcoes);
   const mgPorKgDia = Number(opcoes.mgPorKgDia ?? med.doses[0].mgPorKgDia);
   if (!Number.isFinite(mgPorKgDia) || mgPorKgDia < med.mgPorKgDiaMin || mgPorKgDia > med.mgPorKgDiaMax) {
     return {
@@ -551,18 +582,53 @@ function calcularPorDia(med, p, c, opcoes) {
   }
   const tomasPorDia = 24 / intervaloHoras;
 
+  // Uma dose pré-definida pode ter um máximo diário próprio (ex.: amoxicilina na amigdalite, 1 g/dia).
+  const predefinida = opcoes.personalizada ? null : med.doses.find((d) => d.mgPorKgDia === mgPorKgDia);
+  const maxMgDia = predefinida?.maxMgDia ?? med.maxMgDia;
   const mgDiaCalculado = p * mgPorKgDia;
-  const limitado = mgDiaCalculado > med.maxMgDia;
-  const mgDia = Math.min(mgDiaCalculado, med.maxMgDia);
+  const limitado = mgDiaCalculado > maxMgDia;
+  const mgDia = Math.min(mgDiaCalculado, maxMgDia);
   const mgToma = mgDia / tomasPorDia;
-  const ml = arred1(mgToma / c);
-  const gotas = gotasDe(mgToma, formulacao);
+  // Gotas e comprimidos dão-se em unidades inteiras (ou frações de comprimido): arredonda-se
+  // à unidade mais próxima, mas para baixo se isso passar o máximo diário (ex.: 3 kg a
+  // 1,5 mg/kg/dia de deflazacorte = 4,5 mg → 4 gotas e não 5).
+  const limiteDia = Math.min(p * med.mgPorKgDiaMax, maxMgDia);
+  const emUnidades = (mgUnidade) => {
+    let n = Math.round(mgToma / mgUnidade);
+    if (n * mgUnidade * tomasPorDia > limiteDia + 1e-9) n = Math.floor(mgToma / mgUnidade);
+    return n;
+  };
+  let ml = null;
+  let gotas = null;
+  let comprimidos = null;
+  let mgDado = mgToma;
+  if (formulacao?.mgPorComprimido) {
+    const fracao = formulacao.mgPorComprimido / formulacao.partes;
+    const n = emUnidades(fracao);
+    mgDado = n * fracao;
+    // Se o arredondamento se afastar mais de 25 % da dose prescrita, não se mostra.
+    if (n <= 0 || Math.abs(mgDado - mgToma) > mgToma * 0.25) {
+      return {
+        ok: false,
+        motivo: `A dose é de ${virgula(mgToma)} mg e não se consegue dar com rigor com comprimidos de ${formulacao.mgPorComprimido} mg. Experimente o outro comprimido ou, se o médico indicar, uma solução oral manipulada (opção «Outra», em mg/mL).`,
+      };
+    }
+    comprimidos = n / formulacao.partes;
+  } else {
+    ml = arred1(mgToma / c);
+    if (formulacao?.mgPorGota) {
+      gotas = emUnidades(formulacao.mgPorGota);
+      // Em gotas, mostra-se a dose que as gotas inteiras realmente dão.
+      mgDado = gotas * formulacao.mgPorGota;
+    }
+    if (gotas === null ? ml <= 0 : gotas <= 0) return volumeDemasiadoPequeno();
+  }
 
   // Ácido clavulânico: só se conhece a quantidade nas formulações da lista.
   const clavPorMl = Number(opcoes.clavPorMl ?? formulacao?.clavPorMl);
   const temClav = Number.isFinite(clavPorMl) && clavPorMl > 0;
-  const clavMgToma = temClav ? ml * clavPorMl : null;
-  const clavMgKgDia = temClav ? (clavMgToma * tomasPorDia) / p : null;
+  const clavMgToma = temClav && ml !== null ? ml * clavPorMl : null;
+  const clavMgKgDia = clavMgToma !== null ? (clavMgToma * tomasPorDia) / p : null;
   const maxClavMgKgDia = formulacao?.maxClavMgKgDia ?? 10;
 
   return {
@@ -572,19 +638,24 @@ function calcularPorDia(med, p, c, opcoes) {
     peso: p,
     mgPorMl: c,
     mgPorKgDia,
-    mgToma: arred1(mgToma) >= 100 ? Math.round(mgToma) : arred1(mgToma),
+    mgToma: arred1(mgDado) >= 100 ? Math.round(mgDado) : arred1(mgDado),
+    // Dose calculada antes de arredondar a gotas ou comprimidos.
+    mgCalculado: arred1(mgToma),
     ml,
     gotas,
     gotasMaxDia: gotas === null ? null : gotas * tomasPorDia,
+    comprimidos,
+    comprimidosMaxDia: comprimidos === null ? null : comprimidos * tomasPorDia,
     limitado,
+    maxMgDia,
     intervaloHoras,
     tomasPorDia,
-    mgMaxDia: arred1(mgToma * tomasPorDia),
-    mlMaxDia: arred1(ml * tomasPorDia),
-    clavMgToma: temClav ? arred1(clavMgToma) : null,
-    clavMgKgDia: temClav ? arred1(clavMgKgDia) : null,
+    mgMaxDia: arred1(mgDado * tomasPorDia),
+    mlMaxDia: ml === null ? null : arred1(ml * tomasPorDia),
+    clavMgToma: clavMgToma !== null ? arred1(clavMgToma) : null,
+    clavMgKgDia: clavMgKgDia !== null ? arred1(clavMgKgDia) : null,
     maxClavMgKgDia,
-    clavExcessivo: temClav && clavMgKgDia > maxClavMgKgDia + 0.05,
+    clavExcessivo: clavMgKgDia !== null && clavMgKgDia > maxClavMgKgDia + 0.05,
     pesoAdulto: p >= PESO_ADULTO,
   };
 }

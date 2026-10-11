@@ -76,10 +76,12 @@ export function limiaresPorIdade(idade) {
   return { baixo: 7.5, alto: 15 };
 }
 
+// ESC 2021: três categorias por idade — baixo a moderado, alto e muito alto.
+export const CATEGORIAS_SCORE2 = { baixo: 'Risco baixo a moderado', alto: 'Risco alto', 'muito-alto': 'Risco muito alto' };
+
 function categorizar(riscoPct, limiares) {
   if (riscoPct < limiares.baixo) return 'baixo';
-  if (riscoPct < limiares.alto) return 'moderado';
-  if (riscoPct < limiares.alto * 2) return 'alto';
+  if (riscoPct < limiares.alto) return 'alto';
   return 'muito-alto';
 }
 
@@ -97,6 +99,10 @@ export function calcularSCORE2({ idade, sexoFeminino, fumador, sbp, colTotalMmol
   if (!Number.isFinite(s) || s < 80 || s > 240) return { ok: false, motivo: 'Indique a pressão arterial sistólica.' };
   if (!Number.isFinite(tc) || tc <= 0) return { ok: false, motivo: 'Indique o colesterol total.' };
   if (!Number.isFinite(hdl) || hdl <= 0) return { ok: false, motivo: 'Indique o colesterol HDL.' };
+
+  if (a < 70 && diabetes) {
+    return { ok: false, motivo: 'Com diabetes, dos 40 aos 69 anos, use o separador SCORE2-Diabetes.' };
+  }
 
   const sexo = sexoFeminino ? 'f' : 'm';
   const fumo = fumador ? 1 : 0;
@@ -154,12 +160,14 @@ export function calcularSCORE2({ idade, sexoFeminino, fumador, sbp, colTotalMmol
 
   riscoPct = Math.min(Math.max(riscoPct, 0), 100);
   const limiares = limiaresPorIdade(a);
+  const nivel = categorizar(riscoPct, limiares);
 
   return {
     ok: true,
     modelo,
     risco: Math.round(riscoPct * 10) / 10,
-    nivel: categorizar(riscoPct, limiares),
+    nivel,
+    categoria: CATEGORIAS_SCORE2[nivel],
   };
 }
 

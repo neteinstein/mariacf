@@ -41,6 +41,12 @@ test('ibuprofeno recusado abaixo de 5 kg', () => {
   assert.match(r.motivo, /5 kg/);
 });
 
+test('concentração tão alta que a dose arredonda para 0 mL é recusada', () => {
+  const r = calcularDose(10, 'metoclopramida', 500);
+  assert.equal(r.ok, false);
+  assert.match(r.motivo, /0,1 mL/);
+});
+
 test('peso inválido', () => {
   assert.equal(calcularDose('', 'paracetamol', 40).ok, false);
   assert.equal(calcularDose(2, 'paracetamol', 40).ok, false);
@@ -94,9 +100,10 @@ test('amoxicilina + clavulânico: intervalo escolhido e limite diário', () => {
   const r = calcularDose(12, 'amoxiclav', 80, { mgPorKgDia: 45, intervaloHoras: 8 });
   assert.equal(r.tomasPorDia, 3);
   assert.equal(r.mgToma, 180);
+  // Máximo de 3 g/dia de amoxicilina (DGS 007/2012).
   const max = calcularDose(55, 'amoxiclav', 120, { mgPorKgDia: 90 });
   assert.equal(max.limitado, true);
-  assert.equal(max.mgMaxDia, 4000);
+  assert.equal(max.mgMaxDia, 3000);
   assert.equal(max.pesoAdulto, true);
 });
 
@@ -125,6 +132,12 @@ test('azitromicina 40 mg/mL: 12 kg a 10 mg/kg/dia → 120 mg = 3 mL 1×/dia', ()
   assert.equal(r.clavMgToma, null);
 });
 
+test('azitromicina: amigdalite a 12 mg/kg/dia durante 5 dias', () => {
+  const r = calcularDose(15, 'azitromicina', 40, { mgPorKgDia: 12 });
+  assert.equal(r.mgToma, 180);
+  assert.equal(r.ml, 4.5);
+});
+
 test('azitromicina: amigdalite a 20 mg/kg/dia e limite de 500 mg/dia', () => {
   assert.equal(calcularDose(12, 'azitromicina', 40, { mgPorKgDia: 20 }).mgToma, 240);
   const max = calcularDose(30, 'azitromicina', 40, { mgPorKgDia: 20 });
@@ -144,6 +157,17 @@ test('cefuroxima 25 mg/mL: 12 kg a 20 mg/kg/dia → 120 mg = 4,8 mL de 12/12h', 
   assert.equal(r.ml, 4.8);
 });
 
+test('cefuroxima: dose habitual até 125 mg por toma; escrita à mão usa o máximo geral', () => {
+  const r = calcularDose(20, 'cefuroxima', 25, { mgPorKgDia: 20 });
+  assert.equal(r.limitado, true);
+  assert.equal(r.maxMgDia, 250);
+  assert.equal(r.mgToma, 125);
+  assert.equal(r.ml, 5);
+  const p = calcularDose(20, 'cefuroxima', 25, { mgPorKgDia: 20, personalizada: true });
+  assert.equal(p.limitado, false);
+  assert.equal(p.mgToma, 200);
+});
+
 test('cefuroxima: otite a 30 mg/kg/dia e máximo de 250 mg por toma', () => {
   const r = calcularDose(12, 'cefuroxima', 50, { mgPorKgDia: 30 });
   assert.equal(r.mgToma, 180);
@@ -155,23 +179,59 @@ test('cefuroxima: otite a 30 mg/kg/dia e máximo de 250 mg por toma', () => {
   assert.equal(calcularDose(4, 'cefuroxima', 25).ok, false);
 });
 
-test('prednisolona 3 mg/mL: 12 kg a 1 mg/kg/dia → 12 mg = 4 mL 1×/dia; máx. 40 mg/dia', () => {
-  const r = calcularDose(12, 'prednisolona', 3);
+test('prednisolona em comprimidos de 5 mg (Portugal): arredonda ao comprimido inteiro', () => {
+  const r = calcularDose(12, 'prednisolona', 5);
   assert.equal(r.ok, true);
-  assert.equal(r.mgToma, 12);
-  assert.equal(r.ml, 4);
+  assert.equal(r.formulacao.mgPorComprimido, 5);
+  assert.equal(r.mgCalculado, 12);
+  assert.equal(r.comprimidos, 2);
+  assert.equal(r.mgToma, 10);
+  assert.equal(r.ml, null);
   assert.equal(r.tomasPorDia, 1);
-  assert.equal(r.gotas, null);
-  const max = calcularDose(25, 'prednisolona', 3, { mgPorKgDia: 2 });
+  // 2 mg/kg/dia a 12 kg = 24 mg: 25 mg passaria o máximo, por isso 20 mg (4 comprimidos).
+  const alta = calcularDose(12, 'prednisolona', 5, { mgPorKgDia: 2 });
+  assert.equal(alta.comprimidos, 4);
+  assert.equal(alta.mgToma, 20);
+  // Máximo de 40 mg/dia.
+  const max = calcularDose(25, 'prednisolona', 5, { mgPorKgDia: 2 });
   assert.equal(max.limitado, true);
   assert.equal(max.mgToma, 40);
+  assert.equal(max.comprimidos, 8);
+});
+
+test('prednisolona em comprimidos de 20 mg: meios comprimidos; recusa se o arredondamento for grosseiro', () => {
+  const r = calcularDose(15, 'prednisolona', 20, { mgPorKgDia: 2 });
+  assert.equal(r.comprimidos, 1.5);
+  assert.equal(r.mgToma, 30);
+  // 6 kg a 1 mg/kg/dia = 6 mg: o mais próximo seria ½ comprimido (10 mg), longe demais.
+  const bebe = calcularDose(6, 'prednisolona', 20);
+  assert.equal(bebe.ok, false);
+  assert.match(bebe.motivo, /6 mg/);
+  // 3 kg a 1 mg/kg/dia = 3 mg: nem com o comprimido de 5 mg.
+  assert.equal(calcularDose(3, 'prednisolona', 5).ok, false);
+});
+
+test('prednisolona em solução manipulada (concentração escrita à mão), em mL', () => {
+  const r = calcularDose(12, 'prednisolona', 3);
+  assert.equal(r.ok, true);
+  assert.equal(r.comprimidos, null);
+  assert.equal(r.mgToma, 12);
+  assert.equal(r.ml, 4);
+  // Uma solução de 5 mg/mL escrita à mão não se confunde com o comprimido de 5 mg.
+  const s = calcularDose(12, 'prednisolona', 5, { concPersonalizada: true });
+  assert.equal(s.comprimidos, null);
+  assert.equal(s.ml, 2.4);
 });
 
 test('deflazacorte em gotas: 1 gota = 1 mg; limitado a 48 mg/dia', () => {
-  const r = calcularDose(12.4, 'deflazacorte', 22.75, { mgPorKgDia: 1.5 });
-  assert.equal(r.mgToma, 18.6);
-  assert.equal(r.gotas, 19);
-  assert.equal(r.gotasMaxDia, 19);
+  const r = calcularDose(12.4, 'deflazacorte', 22.75, { mgPorKgDia: 1 });
+  assert.equal(r.gotas, 12);
+  assert.equal(r.mgToma, 12);
+  assert.equal(r.gotasMaxDia, 12);
+  // Na dose máxima, a gota inteira arredonda para baixo para não passar 1,5 mg/kg/dia.
+  assert.equal(calcularDose(12.4, 'deflazacorte', 22.75, { mgPorKgDia: 1.5 }).gotas, 18);
+  assert.equal(calcularDose(3, 'deflazacorte', 22.75, { mgPorKgDia: 1.5 }).gotas, 4);
+  assert.equal(calcularDose(12, 'deflazacorte', 22.75, { mgPorKgDia: 1.5 }).gotas, 18);
   const max = calcularDose(40, 'deflazacorte', 22.75, { mgPorKgDia: 1.5 });
   assert.equal(max.limitado, true);
   assert.equal(max.gotas, 48);
@@ -179,14 +239,18 @@ test('deflazacorte em gotas: 1 gota = 1 mg; limitado a 48 mg/dia', () => {
   assert.equal(calcularDose(12, 'deflazacorte', 20).gotas, null);
 });
 
-test('domperidona: 0,25 mg/kg até 3×/dia; 10 mg a partir de 35 kg', () => {
-  const r = calcularDose(12, 'domperidona', 1);
-  assert.equal(r.mgToma, 3);
-  assert.equal(r.ml, 3);
+test('domperidona: só a partir de 35 kg (e 12 anos), 10 mg até 3×/dia', () => {
+  // EMA/CMDh 2019: sem eficácia demonstrada abaixo dos 12 anos ou dos 35 kg.
+  const crianca = calcularDose(12, 'domperidona', 1);
+  assert.equal(crianca.ok, false);
+  assert.match(crianca.motivo, /12 anos e 35 kg/);
+  assert.equal(calcularDose(34.9, 'domperidona', 1).ok, false);
+  const r = calcularDose(35, 'domperidona', 1);
+  assert.equal(r.mgToma, 10);
+  assert.equal(r.ml, 10);
   assert.equal(r.tomasPorDia, 3);
-  assert.equal(calcularDose(9, 'domperidona', 1).mgToma, 2.3);
-  assert.equal(calcularDose(34, 'domperidona', 1).mgToma, 8.5);
-  assert.equal(calcularDose(35, 'domperidona', 1).mgToma, 10);
+  assert.equal(r.mgMaxDia, 30);
+  assert.equal(calcularDose(60, 'domperidona', 1).mgToma, 10);
 });
 
 test('metoclopramida: dose por escalão de peso e recusada abaixo de 10 kg', () => {
@@ -231,6 +295,14 @@ test('desloratadina 0,5 mg/mL: 1 a 5 anos → 1,25 mg = 2,5 mL 1×/dia', () => {
   assert.equal(calcularDose(null, 'desloratadina', 0.5, { idade: '2-5' }).ok, false);
 });
 
+test('amoxicilina na amigdalite: 50 mg/kg/dia até 1 g/dia (DGS 020/2012)', () => {
+  const r = calcularDose(30, 'amoxicilina', 100, { mgPorKgDia: 50 });
+  assert.equal(r.limitado, true);
+  assert.equal(r.maxMgDia, 1000);
+  assert.equal(r.mgToma, 500);
+  assert.equal(r.ml, 5);
+});
+
 test('amoxicilina 50 mg/mL: 12 kg a 50 mg/kg/dia → 300 mg = 6 mL de 12/12h', () => {
   const r = calcularDose(12, 'amoxicilina', 50);
   assert.equal(r.ok, true);
@@ -249,6 +321,7 @@ test('amoxicilina 100 mg/mL: dose alta de 8/8h e limite de 4 g/dia', () => {
   assert.equal(r.ml, 3.6);
   const max = calcularDose(50, 'amoxicilina', 100, { mgPorKgDia: 90 });
   assert.equal(max.limitado, true);
-  assert.equal(max.mgMaxDia, 4000);
+  assert.equal(max.mgMaxDia, 3000);
+  assert.equal(max.mgToma, 1500);
   assert.equal(calcularDose(12, 'amoxicilina', 50, { mgPorKgDia: 10 }).ok, false);
 });

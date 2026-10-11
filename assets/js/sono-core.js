@@ -11,17 +11,17 @@ function soma(respostas, n) {
   return vals.reduce((a, b) => a + b, 0);
 }
 
-/** Epworth: 8 itens, cada um 0–3. */
+/** Epworth: 8 itens, cada um 0–3. Categorias de Johns: 0–10 normal, 11–12 ligeira, 13–15 moderada, 16–24 grave. */
 export function calcularEpworth(respostas = []) {
   const pontos = soma(respostas, 8);
   if (pontos === null) return { ok: false, motivo: 'Responda a todos os itens.' };
 
   let nivel;
   let gravidade;
-  if (pontos <= 7) { nivel = 'baixo'; gravidade = 'Sonolência diurna normal'; }
-  else if (pontos <= 9) { nivel = 'moderado'; gravidade = 'Sonolência diurna ligeiramente elevada'; }
-  else if (pontos <= 15) { nivel = 'alto'; gravidade = 'Sonolência diurna moderadamente elevada'; }
-  else { nivel = 'muito-alto'; gravidade = 'Sonolência diurna elevada'; }
+  if (pontos <= 10) { nivel = 'baixo'; gravidade = 'Sonolência diurna normal'; }
+  else if (pontos <= 12) { nivel = 'moderado'; gravidade = 'Sonolência diurna excessiva ligeira'; }
+  else if (pontos <= 15) { nivel = 'alto'; gravidade = 'Sonolência diurna excessiva moderada'; }
+  else { nivel = 'muito-alto'; gravidade = 'Sonolência diurna excessiva grave'; }
 
   return { ok: true, pontos, max: 24, nivel, gravidade };
 }

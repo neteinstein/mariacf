@@ -37,23 +37,30 @@ test('EPDS: item 10 = 0 não assinala risco mesmo com pontuação alta', () => {
   assert.equal(calcularEPDS(respostas).itemRisco, false);
 });
 
-test('Zarit: 0 → sem sobrecarga', () => {
-  const r = calcularZarit(new Array(22).fill(0));
-  assert.equal(r.pontos, 0);
+test('Zarit: tudo «nunca» → 22, sem sobrecarga', () => {
+  const r = calcularZarit(new Array(22).fill(1));
+  assert.equal(r.pontos, 22);
   assert.equal(r.nivel, 'baixo');
 });
 
-test('Zarit: 88 → sobrecarga intensa', () => {
-  const r = calcularZarit(new Array(22).fill(4));
-  assert.equal(r.pontos, 88);
+test('Zarit: tudo «quase sempre» → 110, sobrecarga intensa', () => {
+  const r = calcularZarit(new Array(22).fill(5));
+  assert.equal(r.pontos, 110);
   assert.equal(r.nivel, 'alto');
 });
 
-test('Zarit: 50 → sobrecarga moderada', () => {
-  const r = calcularZarit(new Array(22).fill(0).map((_, i) => (i < 6 ? 3 : 2)));
-  // soma = 6*3 + 16*2 = 18+32 = 50
-  assert.equal(r.pontos, 50);
-  assert.equal(r.nivel, 'moderado');
+test('Zarit (Sequeira): < 46 sem sobrecarga, 46–56 ligeira, > 56 intensa', () => {
+  const comSoma = (n) => {
+    let resto = n - 22;
+    return calcularZarit(new Array(22).fill(1).map((v) => { const extra = Math.min(4, resto); resto -= extra; return v + extra; }));
+  };
+  assert.equal(comSoma(45).nivel, 'baixo');
+  assert.equal(comSoma(46).nivel, 'moderado');
+  assert.equal(comSoma(46).sobrecarga, 'Sobrecarga ligeira');
+  assert.equal(comSoma(56).nivel, 'moderado');
+  assert.equal(comSoma(57).nivel, 'alto');
+  // Pontuação de 0 a 4 (outra versão) não é aceite: os cortes não se aplicam.
+  assert.equal(calcularZarit(new Array(22).fill(0)).ok, false);
 });
 
 test('Fagerström: 0 → dependência muito baixa', () => {
