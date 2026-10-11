@@ -1785,8 +1785,8 @@ fieldset.step legend + .step-hint {
   line-height: 1.35;
 }
 
-/* Telemóveis: medicamentos em chips só com o nome; depois de escolher, a lista
-   fecha num resumo com "Mudar" e o peso fica logo à vista (ver doses.js). */
+/* Medicamentos em chips só com o nome; depois de escolher, a lista fecha num
+   resumo com "Mudar" e o peso fica logo à vista (ver doses.js). */
 .med-resumo {
   --c: var(--teal);
   --c-soft: var(--teal-soft);
@@ -1855,41 +1855,39 @@ fieldset.step legend + .step-hint {
   scroll-margin-top: 84px;
 }
 
-@media (max-width: 640px) {
-  #med-lista .med-grupo {
-    margin: 12px 0 6px;
-  }
-  #med-lista .med-grupo:first-of-type {
-    margin-top: 2px;
-  }
-  #med-lista .choices-compact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  #med-lista .choice label {
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
-    min-height: 40px;
-    padding: 6px 12px;
-    border-radius: 999px;
-  }
-  #med-lista .choice label:hover {
-    transform: none;
-  }
-  #med-lista .choice .pill {
-    width: 22px;
-    height: 11px;
-    margin: 0;
-    flex: none;
-  }
-  #med-lista .choice .name {
-    font-size: 0.9rem;
-  }
-  #med-lista .choice .brands {
-    display: none;
-  }
+#med-lista .med-grupo {
+  margin: 12px 0 6px;
+}
+#med-lista .med-grupo:first-of-type {
+  margin-top: 2px;
+}
+#med-lista .choices-compact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+#med-lista .choice label {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+#med-lista .choice label:hover {
+  transform: none;
+}
+#med-lista .choice .pill {
+  width: 22px;
+  height: 11px;
+  margin: 0;
+  flex: none;
+}
+#med-lista .choice .name {
+  font-size: 0.9rem;
+}
+#med-lista .choice .brands {
+  display: none;
 }
 
 /* Concentration chips */

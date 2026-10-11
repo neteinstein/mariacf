@@ -309,8 +309,7 @@ document.querySelectorAll('.stepper').forEach((btn) => {
 
 /* ---------- Medicamento ---------- */
 
-/* Telemóveis: depois de escolher, a lista fecha num resumo para o peso ficar à vista. */
-const ecraPequeno = matchMedia('(max-width: 640px)');
+/* Depois de escolher, a lista fecha num resumo para o peso ficar à vista. */
 const movimentoReduzido = matchMedia('(prefers-reduced-motion: reduce)');
 const passoMed = $('#passo-med');
 const medLista = $('#med-lista');
@@ -340,12 +339,8 @@ medMudar.addEventListener('click', () => {
   document.querySelector('input[name="med"]:checked').focus();
 });
 
-ecraPequeno.addEventListener('change', () => {
-  if (!ecraPequeno.matches) abrirListaMed();
-});
-
-// Link partilhado com medicamento: no telemóvel começa já fechado.
-if (ecraPequeno.matches && params.has('med')) fecharListaMed({ rolar: false });
+// Link partilhado com medicamento: começa já fechado.
+if (params.has('med')) fecharListaMed({ rolar: false });
 
 document.querySelectorAll('input[name="med"]').forEach((r) => {
   r.addEventListener('change', () => {
@@ -368,7 +363,7 @@ document.querySelectorAll('input[name="med"]').forEach((r) => {
   });
   // "click" (e não "change") para fechar também ao tocar no que já estava escolhido.
   r.addEventListener('click', () => {
-    if (ecraPequeno.matches) requestAnimationFrame(() => fecharListaMed());
+    requestAnimationFrame(() => fecharListaMed());
   });
 });
 
