@@ -161,7 +161,8 @@ $('#btn-print-epds').addEventListener('click', () => window.print());
 
 /* ---------- Zarit ---------- */
 
-const OPCOES_ZARIT = [['Nunca', 0], ['Raramente', 1], ['Algumas vezes', 2], ['Muitas vezes', 3], ['Quase sempre', 4]];
+// Versão portuguesa (Sequeira): de 1 a 5 pontos por item.
+const OPCOES_ZARIT = [['Nunca', 1], ['Quase nunca', 2], ['Às vezes', 3], ['Muitas vezes', 4], ['Quase sempre', 5]];
 const ZARIT_PERGUNTAS = [
   'Sente que o seu familiar pede mais ajuda do que aquela de que realmente necessita?',
   'Sente que, por causa do tempo que dedica ao seu familiar, já não tem tempo suficiente para si?',
@@ -212,7 +213,7 @@ atualizarZarit();
 
 function resumoZarit(r) {
   return [
-    `Escala de Zarit (sobrecarga do cuidador) — ${r.pontos} / 88`,
+    `Escala de Zarit (sobrecarga do cuidador) — ${r.pontos} / 110`,
     r.sobrecarga,
     '',
     'Informação de apoio — não substitui aconselhamento médico.',
@@ -222,7 +223,7 @@ function resumoZarit(r) {
 
 $('#btn-email-zarit').addEventListener('click', () => {
   if (!zaritAtual) return;
-  const assunto = `Escala de Zarit — ${zaritAtual.pontos} / 88`;
+  const assunto = `Escala de Zarit — ${zaritAtual.pontos} / 110`;
   location.href = `mailto:?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(resumoZarit(zaritAtual))}`;
 });
 
@@ -231,7 +232,7 @@ $('#btn-print-zarit').addEventListener('click', () => window.print());
 /* ---------- Fagerström ---------- */
 
 const FAGERSTROM_PERGUNTAS = [
-  { campo: 'primeiroCigarro', texto: 'Quanto tempo depois de acordar fuma o primeiro cigarro?', opcoes: [['Mais de 60 minutos', 0], ['31 a 60 minutos', 1], ['6 a 30 minutos', 2], ['Menos de 5 minutos', 3]] },
+  { campo: 'primeiroCigarro', texto: 'Quanto tempo depois de acordar fuma o primeiro cigarro?', opcoes: [['Mais de 60 minutos', 0], ['31 a 60 minutos', 1], ['6 a 30 minutos', 2], ['5 minutos ou menos', 3]] },
   { campo: 'dificilNaoFumar', texto: 'Acha difícil não fumar em locais proibidos?', opcoes: [['Não', 0], ['Sim', 1]] },
   { campo: 'cigarroDificilRenunciar', texto: 'A que cigarro custa mais renunciar?', opcoes: [['A outro qualquer', 0], ['Ao primeiro da manhã', 1]] },
   { campo: 'cigarrosPorDia', texto: 'Quantos cigarros fuma por dia?', opcoes: [['10 ou menos', 0], ['11 a 20', 1], ['21 a 30', 2], ['31 ou mais', 3]] },

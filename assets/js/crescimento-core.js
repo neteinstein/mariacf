@@ -80,7 +80,9 @@ export function calcularZScore(indicador, sexoFeminino, x, valor) {
   if (!Number.isFinite(v) || v <= 0) return { ok: false, motivo: 'Indique o valor medido.' };
 
   const [l, m, s] = interpolarLMS(tabela, xNum);
-  const z = zscoreLMS(v, l, m, s);
+  // Indicadores de peso: modelo LMS restrito além de ±3 DP, como nas tabelas da OMS.
+  const pesoBased = indicador === 'peso' || indicador === 'pesoComprimento';
+  const z = pesoBased ? zscoreLMSRestrito(v, l, m, s) : zscoreLMS(v, l, m, s);
   const percentil = percentilDeZ(z);
 
   return {

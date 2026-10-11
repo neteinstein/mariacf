@@ -27,3 +27,11 @@ test('STOP-BANG: 5 fatores → alto', () => {
   assert.equal(r.pontos, 5);
   assert.equal(r.nivel, 'alto');
 });
+
+test('Epworth: categorias de Johns (≤ 10 normal; 11–12 ligeira; 13–15 moderada; ≥ 16 grave)', () => {
+  const comSoma = (n) => calcularEpworth(new Array(8).fill(0).map((_, i) => Math.min(3, Math.max(0, n - i * 3))));
+  assert.equal(comSoma(10).nivel, 'baixo');
+  assert.equal(comSoma(11).nivel, 'moderado');
+  assert.equal(comSoma(13).nivel, 'alto');
+  assert.equal(comSoma(16).nivel, 'muito-alto');
+});

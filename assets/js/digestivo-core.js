@@ -3,6 +3,7 @@
 // Sem dependências do DOM para poder ser testado em Node.
 //
 // Referências: Blatchford O et al., Lancet 2000 (Glasgow-Blatchford Score);
+// ESGE 2021 (Gralnek IM et al., Endoscopy 2021: GBS ≤ 1 pode ser seguido em ambulatório);
 // Rockall TA et al., Gut 1996 (Rockall score); Wu BU et al., Gut 2008
 // (BISAP).
 
@@ -31,9 +32,15 @@ function pontosPAS(pas) {
   return 3;
 }
 
-/** Score de Blatchford: risco de hemorragia digestiva alta. Ureia em mmol/L, Hb em g/dL. */
-export function calcularBlatchford({ ureia, hemoglobina, sexoFeminino, pas, pulso100, melena, sincope, doencaHepatica, insuficienciaCardiaca }) {
-  const ur = Number(ureia);
+// Ureia (não BUN): 1 mmol/L = 6,006 mg/dL.
+export const UREIA_MGDL_POR_MMOL = 6.006;
+
+/**
+ * Score de Blatchford: risco de hemorragia digestiva alta. Hb em g/dL; ureia em
+ * mmol/L (`ureia`) ou em mg/dL, como nas análises em Portugal (`ureiaMgDl`).
+ */
+export function calcularBlatchford({ ureia, ureiaMgDl, hemoglobina, sexoFeminino, pas, pulso100, melena, sincope, doencaHepatica, insuficienciaCardiaca }) {
+  const ur = ureiaMgDl !== undefined ? Number(ureiaMgDl) / UREIA_MGDL_POR_MMOL : Number(ureia);
   const hb = Number(hemoglobina);
   const p = Number(pas);
 
@@ -51,10 +58,10 @@ export function calcularBlatchford({ ureia, hemoglobina, sexoFeminino, pas, puls
     (doencaHepatica ? 2 : 0) +
     (insuficienciaCardiaca ? 2 : 0);
 
-  const nivel = pontos === 0 ? 'baixo' : pontos <= 5 ? 'moderado' : 'alto';
+  const nivel = pontos <= 1 ? 'baixo' : pontos <= 5 ? 'moderado' : 'alto';
   const recomendacao =
-    pontos === 0
-      ? 'Risco muito baixo — considerar vigilância em ambulatório.'
+    pontos <= 1
+      ? 'Risco muito baixo (≤ 1) — pode ser seguido em ambulatório, sem endoscopia urgente (ESGE 2021).'
       : 'Risco não desprezável — referenciar para avaliação hospitalar/endoscopia.';
 
   return { ok: true, pontos, nivel, recomendacao };

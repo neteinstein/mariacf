@@ -592,12 +592,12 @@ function ligarEscala({ prefixo, formId, calcular, escrever, assunto, linhas }) {
 }
 
 const LAWTON_ITENS = [
-  ['telefone', 'Usar o telefone', [['Usa por iniciativa própria ou atende e marca números conhecidos', 1], ['Só atende, ou não usa o telefone', 0]]],
+  ['telefone', 'Usar o telefone', [['Usa por iniciativa própria, marca alguns números conhecidos ou só atende', 1], ['Não usa o telefone', 0]]],
   ['compras', 'Fazer compras', [['Faz todas as compras sozinho(a)', 1], ['Só pequenas compras, precisa de companhia ou é incapaz', 0]]],
   ['refeicoes', 'Preparar refeições', [['Planeia, prepara e serve refeições adequadas', 1], ['Só aquece, prepara de forma inadequada ou precisa que lhe façam', 0]]],
-  ['lida', 'Lida da casa', [['Mantém a casa sozinho(a) ou com ajuda ocasional para tarefas pesadas', 1], ['Não participa em nenhuma tarefa doméstica', 0]]],
+  ['lida', 'Lida da casa', [['Faz tarefas domésticas, mesmo que só ligeiras ou com ajuda', 1], ['Não participa em nenhuma tarefa doméstica', 0]]],
   ['roupa', 'Tratar da roupa', [['Lava toda a sua roupa ou pequenas peças', 1], ['Toda a roupa tem de ser lavada por outros', 0]]],
-  ['transportes', 'Utilizar transportes', [['Viaja sozinho(a) de transporte público ou conduz, ou usa táxi', 1], ['Só viaja acompanhado(a) ou não viaja', 0]]],
+  ['transportes', 'Utilizar transportes', [['Conduz, usa táxi ou anda de transporte público (mesmo que acompanhado(a))', 1], ['Só anda de táxi ou carro com ajuda, ou não viaja', 0]]],
   ['medicacao', 'Gerir a medicação', [['Toma a medicação à hora e na dose certas, sozinho(a)', 1], ['Precisa que lhe preparem as doses, ou é incapaz', 0]]],
   ['dinheiro', 'Gerir o dinheiro', [['Gere as finanças sozinho(a), ou só precisa de ajuda com operações grandes', 1], ['É incapaz de lidar com dinheiro', 0]]],
 ];

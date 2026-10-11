@@ -47,8 +47,8 @@ export function calcularCDS(itens = {}) {
   if (valores.some((v) => !Number.isFinite(v))) return { ok: false, motivo: 'Preencha todos os itens.' };
   const pontos = valores.reduce((a, b) => a + b, 0);
 
-  if (pontos === 0) return { ok: true, pontos, max: 8, nivel: 'baixo', grau: 'Sem desidratação', conduta: 'Manter a alimentação habitual e oferecer líquidos com frequência.' };
-  if (pontos <= 4) return { ok: true, pontos, max: 8, nivel: 'moderado', grau: 'Desidratação ligeira (< 5%)', conduta: 'Solução de reidratação oral (SRO) em pequenos volumes frequentes; reavaliar.' };
+  if (pontos === 0) return { ok: true, pontos, max: 8, nivel: 'baixo', grau: 'Sem desidratação (< 3%)', conduta: 'Manter a alimentação habitual e oferecer líquidos com frequência.' };
+  if (pontos <= 4) return { ok: true, pontos, max: 8, nivel: 'moderado', grau: 'Alguma desidratação (3 a < 6%)', conduta: 'Solução de reidratação oral (SRO) em pequenos volumes frequentes; reavaliar.' };
   return { ok: true, pontos, max: 8, nivel: 'muito-alto', grau: 'Desidratação moderada a grave (≥ 6%)', conduta: 'Avaliação médica urgente: pode precisar de reidratação por sonda ou endovenosa.' };
 }
 

@@ -80,9 +80,9 @@ const CATEGORIAS_G = [
 ];
 
 const CATEGORIAS_A = [
-  { max: 30, id: 'A1', nome: 'Normal a ligeiramente aumentada (< 30 mg/g)' },
-  { max: 300, id: 'A2', nome: 'Moderadamente aumentada (30–300 mg/g)' },
-  { max: Infinity, id: 'A3', nome: 'Gravemente aumentada (> 300 mg/g)' },
+  { id: 'A1', nome: 'Normal a ligeiramente aumentada (< 30 mg/g)' },
+  { id: 'A2', nome: 'Moderadamente aumentada (30–300 mg/g)' },
+  { id: 'A3', nome: 'Gravemente aumentada (> 300 mg/g)' },
 ];
 
 // Mapa de risco KDIGO 2012/2024: linhas G1…G5, colunas A1…A3.
@@ -120,7 +120,10 @@ export function estadiarKDIGO(tfg, acr, unidadeACR = 'mg/g') {
 
   const acrMgG = unidadeACR === 'mg/mmol' ? a * 8.84 : a;
   const g = CATEGORIAS_G.find((c) => t >= c.min);
-  const iA = CATEGORIAS_A.findIndex((c) => acrMgG < c.max);
+  // Limites KDIGO na própria unidade: < 30, 30–300, > 300 mg/g ou < 3, 3–30, > 30 mg/mmol
+  // (converter primeiro deixaria 3 mg/mmol = 26,5 mg/g em A1).
+  const [l1, l2] = unidadeACR === 'mg/mmol' ? [3, 30] : [30, 300];
+  const iA = a < l1 ? 0 : a <= l2 ? 1 : 2;
   const cat = CATEGORIAS_A[iA];
   const nivel = RISCO_KDIGO[g.id][iA];
 

@@ -52,7 +52,8 @@ export function calcularIMC(pesoKg, alturaCm) {
 
   const alturaM = a / 100;
   const imc = p / (alturaM * alturaM);
-  const categoria = classificarIMC(imc);
+  // Classifica o valor mostrado (1 casa decimal): 24,96 aparece como 25,0 e é excesso de peso.
+  const categoria = classificarIMC(arred(imc, 1));
 
   const ascMosteller = Math.sqrt((a * p) / 3600);
   const ascDuBois = 0.007184 * a ** 0.725 * p ** 0.425;

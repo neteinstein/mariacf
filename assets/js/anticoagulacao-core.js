@@ -33,16 +33,17 @@ export function calcularCHA2DS2VASc(fatores = {}) {
     (f.idade65_74 ? 1 : 0) +
     (f.sexoFeminino ? 1 : 0);
 
-  // O ponto do sexo feminino, isolado (sem mais nenhum fator), não é por si só
-  // indicação para anticoagulação (ESC 2020/2024).
-  const apenasSexo = f.sexoFeminino && pontos === 1;
+  // O sexo feminino é um modificador de risco, não um fator por si só: a decisão
+  // usa a pontuação sem esse ponto (homem 1 = mulher 2; homem ≥ 2 = mulher ≥ 3),
+  // como no CHA₂DS₂-VA da ESC 2024.
+  const semSexo = pontos - (f.sexoFeminino ? 1 : 0);
 
   let nivel;
   let recomendacao;
-  if (pontos === 0 || apenasSexo) {
+  if (semSexo === 0) {
     nivel = 'baixo';
     recomendacao = 'Risco baixo — hipocoagulação geralmente não recomendada.';
-  } else if (pontos === 1) {
+  } else if (semSexo === 1) {
     nivel = 'moderado';
     recomendacao = 'Risco intermédio — considerar hipocoagulação oral, individualizando a decisão.';
   } else {

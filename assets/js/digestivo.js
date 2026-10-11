@@ -34,7 +34,7 @@ let blAtual = null;
 function resumoBlatchford(r, dados) {
   const linhas = [
     'Score de Blatchford — risco de hemorragia digestiva alta',
-    `Ureia: ${dados.ureia} mmol/L`,
+    `Ureia: ${dados.ureiaMgDl} mg/dL`,
     `Hemoglobina: ${dados.hemoglobina} g/dL`,
     `PA sistólica: ${dados.pas} mmHg`,
     `Sexo feminino: ${dados.sexoFeminino ? 'sim' : 'não'}`,
@@ -54,7 +54,7 @@ function resumoBlatchford(r, dados) {
 
 function atualizarBlatchford() {
   const dados = {
-    ureia: $('#bl-ureia').value.replace(',', '.'),
+    ureiaMgDl: $('#bl-ureia').value.replace(',', '.'),
     hemoglobina: $('#bl-hb').value.replace(',', '.'),
     sexoFeminino: $('#bl-sexo').checked,
     pas: $('#bl-pas').value,
@@ -162,7 +162,7 @@ let biAtual = null;
 function resumoBISAP(r, dados) {
   const linhas = [
     'BISAP — gravidade de pancreatite aguda (primeiras 24h)',
-    `Ureia elevada (> 25 mg/dL / > 9 mmol/L): ${dados.ureiaElevada ? 'sim' : 'não'}`,
+    `Ureia elevada (BUN > 25 mg/dL = ureia > 53 mg/dL): ${dados.ureiaElevada ? 'sim' : 'não'}`,
     `Estado mental alterado: ${dados.estadoMentalAlterado ? 'sim' : 'não'}`,
     `SIRS: ${dados.sirs ? 'sim' : 'não'}`,
     `Idade > 60 anos: ${dados.idade60 ? 'sim' : 'não'}`,

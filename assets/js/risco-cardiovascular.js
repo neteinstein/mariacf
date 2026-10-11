@@ -7,14 +7,14 @@ const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
 
 const pct = (n) => `${String(n).replace('.', ',')}%`;
 
+// ESC 2021: baixo a moderado, alto e muito alto, com limiares que dependem da idade.
 function faixasRisco(el, { baixo, alto }) {
   el.dataset.max = alto * 3;
   el.dataset.maxRotulo = `${pct(alto * 3)}+`;
   el.dataset.faixas = [
-    `0~${baixo}:baixo:< ${pct(baixo)}`,
-    `${baixo}~${alto}:moderado:${pct(baixo)}–${pct(alto)}`,
-    `${alto}~${alto * 2}:alto:${pct(alto)}–${pct(alto * 2)}`,
-    `${alto * 2}~${alto * 3}:muito-alto:≥ ${pct(alto * 2)}`,
+    `0~${baixo}:baixo:Baixo a moderado (< ${pct(baixo)})`,
+    `${baixo}~${alto}:alto:Alto (${pct(baixo)}–${pct(alto)})`,
+    `${alto}~${alto * 3}:muito-alto:Muito alto (≥ ${pct(alto)})`,
   ].join('|');
 }
 
@@ -65,6 +65,7 @@ function resumoSCORE2(r) {
   if (Number(idade) >= 70) linhas.push(`Diabetes: ${$('#s2-diabetes').checked ? 'sim' : 'não'}`);
   linhas.push(
     `Risco estimado a 10 anos: ${r.risco.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 })}%`,
+    `${r.categoria} para a idade (ESC 2021)`,
     `Modelo: ${r.modelo} (região de risco moderado)`,
     '',
     'Informação de apoio — não substitui aconselhamento médico.',
@@ -74,8 +75,8 @@ function resumoSCORE2(r) {
 }
 
 function atualizarSCORE2() {
+  // A diabetes fica sempre visível: dos 40 aos 69 anos encaminha para o SCORE2-Diabetes.
   const idade = Number(s2Idade.value);
-  $('#s2-diabetes-linha').hidden = idade < 70;
 
   const r = calcularSCORE2({
     idade,
@@ -104,7 +105,7 @@ function atualizarSCORE2() {
   if (acoes) acoes.hidden = false;
   s2Resultado.dataset.nivel = r.nivel;
   $('#s2-risco').textContent = r.risco.toLocaleString('pt-PT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-  $('#s2-modelo').textContent = `Modelo: ${r.modelo} (região de risco moderado)`;
+  $('#s2-modelo').textContent = `${r.categoria} para a idade · ${r.modelo} (região de risco moderado)`;
   faixasRisco($('#s2-escala'), limiaresPorIdade(Number(idade)));
 }
 s2Form.addEventListener('input', atualizarSCORE2);

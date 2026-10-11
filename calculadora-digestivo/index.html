@@ -75,10 +75,11 @@
         <div class="field-row">
           <div class="step">
             <label class="step-label" for="bl-ureia"><span class="step-num">1</span> Ureia</label>
+            <p class="step-hint" id="bl-ureia-hint">Em mg/dL, como nas análises (não é o BUN). Em mmol/L, multiplique por 6.</p>
             <div class="weight">
-              <button class="stepper" type="button" data-alvo="bl-ureia" data-step="-1" aria-label="Diminuir ureia">−</button>
-              <div class="weight-field"><input id="bl-ureia" type="number" inputmode="decimal" min="1" max="60" step="0.5" value="5"><span class="unit">mmol/L</span></div>
-              <button class="stepper" type="button" data-alvo="bl-ureia" data-step="1" aria-label="Aumentar ureia">+</button>
+              <button class="stepper" type="button" data-alvo="bl-ureia" data-step="-5" aria-label="Diminuir ureia">−</button>
+              <div class="weight-field"><input id="bl-ureia" type="number" inputmode="decimal" min="5" max="400" step="1" value="30" aria-describedby="bl-ureia-hint"><span class="unit">mg/dL</span></div>
+              <button class="stepper" type="button" data-alvo="bl-ureia" data-step="5" aria-label="Aumentar ureia">+</button>
             </div>
           </div>
           <div class="step">
@@ -191,7 +192,7 @@
         <fieldset class="step">
           <legend class="step-label"><span class="step-num">B</span> Critérios (primeiras 24h)</legend>
           <div class="checklist">
-            <div class="check-item"><input type="checkbox" id="bi-ureia"><label for="bi-ureia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Ureia elevada</strong><small>&gt; 25 mg/dL (&gt; 9 mmol/L)</small></span><span class="pts">1</span></label></div>
+            <div class="check-item"><input type="checkbox" id="bi-ureia"><label for="bi-ureia"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Ureia elevada</strong><small>BUN &gt; 25 mg/dL = ureia &gt; 53 mg/dL (&gt; 8,9 mmol/L)</small></span><span class="pts">1</span></label></div>
             <div class="check-item"><input type="checkbox" id="bi-mental"><label for="bi-mental"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Estado mental alterado</strong></span><span class="pts">1</span></label></div>
             <div class="check-item"><input type="checkbox" id="bi-sirs"><label for="bi-sirs"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>SIRS</strong><small>≥ 2 de: FC &gt; 90, FR &gt; 20, temperatura &lt; 36 ou &gt; 38 °C, leucócitos alterados</small></span><span class="pts">1</span></label></div>
             <div class="check-item"><input type="checkbox" id="bi-idade"><label for="bi-idade"><span class="box" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="txt"><strong>Idade &gt; 60 anos</strong></span><span class="pts">1</span></label></div>
@@ -229,7 +230,7 @@
         <div class="info-ico" aria-hidden="true">🩸</div>
         <h3>Blatchford</h3>
         <ul>
-          <li>0: risco muito baixo, pode ser seguido em ambulatório · &gt; 0: referenciar para avaliação.</li>
+          <li>0–1: risco muito baixo, pode ser seguido em ambulatório (ESGE 2021) · ≥ 2: referenciar para avaliação.</li>
         </ul>
       </article>
       <article class="panel info-card reveal">

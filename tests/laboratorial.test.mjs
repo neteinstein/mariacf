@@ -71,10 +71,11 @@ test('Anion gap: elevado sinaliza acidose de anion gap aumentado', () => {
   assert.equal(r.nivel, 'alto');
 });
 
-test('Osmolaridade: Na 140, glicemia 90, ureia 28 → normal', () => {
+test('Osmolaridade: Na 140, glicemia 90, ureia 28 mg/dL → normal (ureia ÷ 6, não ÷ 2,8)', () => {
   const r = calcularOsmolaridade(140, 90, 28);
   // 2*140 + 90/18 + 28/2.8 = 280 + 5 + 10 = 295
-  assert.equal(r.osmolaridade, 295);
+  // 280 + 5 + 4,7 = 289,7
+  assert.equal(r.osmolaridade, 290);
   assert.equal(r.nivel, 'baixo');
 });
 

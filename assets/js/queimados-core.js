@@ -26,7 +26,7 @@ export function calcularRegraDosNove(regioesQueimadas = {}) {
   let nivel;
   let gravidade;
   if (pontos < 10) { nivel = 'baixo'; gravidade = 'Queimadura de pequena extensão'; }
-  else if (pontos < 20) { nivel = 'moderado'; gravidade = 'Extensão moderada — considerar referenciação'; }
+  else if (pontos < 20) { nivel = 'moderado'; gravidade = 'Extensão moderada (≥ 10%) — referenciar para avaliação hospitalar'; }
   else { nivel = 'alto'; gravidade = 'Grande queimado — referenciar a centro de queimados'; }
 
   return { ok: true, pontos, max: 100, nivel, gravidade };
