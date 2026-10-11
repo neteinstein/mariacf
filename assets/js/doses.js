@@ -517,6 +517,7 @@ function atualizar() {
   resultado.dataset.med = estado.med;
   const r = calcularDose(estado.peso, estado.med, estado.conc, {
     mgPorKgDia: estado.dose,
+    personalizada: estado.doseCustom,
     intervaloHoras: estado.intervalo,
     idade: estado.idade,
   });
@@ -571,7 +572,7 @@ function atualizar() {
     avisos.push(
       aviso(
         porDia
-          ? `Dose limitada ao máximo de <strong>${nf.format(r.medicamento.maxMgDia)} mg de ${r.medicamento.substancia} por dia</strong>.`
+          ? `Dose limitada ao máximo de <strong>${nf.format(r.maxMgDia)} mg de ${r.medicamento.substancia} por dia</strong>.`
           : `Dose limitada ao máximo de <strong>${nf.format(r.medicamento.maxMgPorToma)} mg por toma</strong>.`,
         'danger'
       )
@@ -589,6 +590,11 @@ function atualizar() {
       aviso(
         `Cada toma tem ${nf.format(r.mgToma)} mg de amoxicilina e ${nf.format(r.clavMgToma)} mg de ácido clavulânico (${nf.format(r.clavMgKgDia)} mg/kg/dia).`
       )
+    );
+  }
+  if (porDia && r.formulacao?.proporcao === '7:1' && r.mgPorKgDia > 45 && !r.clavExcessivo) {
+    avisos.push(
+      aviso('Acima de 45 mg/kg/dia prefira a formulação 14:1: com a 7:1 não há dados abaixo dos 2 anos e a dose de ácido clavulânico aproxima-se do limite.')
     );
   }
   if (porDia && r.formulacao?.proporcao && r.formulacao.proporcao !== '4:1' && r.peso < 5) {
@@ -656,7 +662,7 @@ function resumoTexto(r) {
     if (r.clavMgToma !== null) {
       linhas.push(`Ácido clavulânico: ${nf.format(r.clavMgToma)} mg por toma (${nf.format(r.clavMgKgDia)} mg/kg/dia)`);
     }
-    if (r.limitado) linhas.push(`Dose limitada ao máximo de ${nf.format(r.medicamento.maxMgDia)} mg de ${r.medicamento.substancia} por dia.`);
+    if (r.limitado) linhas.push(`Dose limitada ao máximo de ${nf.format(r.maxMgDia)} mg de ${r.medicamento.substancia} por dia.`);
     linhas.push('Cumprir todos os dias de tratamento indicados pelo médico.');
   } else if (r.escalao) {
     linhas.push(
