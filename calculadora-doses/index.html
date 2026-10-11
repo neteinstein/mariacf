@@ -66,8 +66,17 @@
 
     <div class="calc">
       <form class="panel reveal" id="calc-form" autocomplete="off" novalidate>
-        <fieldset class="step">
+        <fieldset class="step" id="passo-med">
           <legend class="step-label"><span class="step-num">1</span> Medicamento</legend>
+          <div class="med-resumo" id="med-resumo" hidden>
+            <span class="pill" aria-hidden="true"></span>
+            <span class="med-resumo-texto">
+              <span class="name" id="med-resumo-nome"></span>
+              <span class="brands" id="med-resumo-marcas"></span>
+            </span>
+            <button class="med-mudar" type="button" id="med-mudar" aria-expanded="true" aria-controls="med-lista">Mudar</button>
+          </div>
+          <div id="med-lista">
           <p class="med-grupo">Febre e dor</p>
           <div class="choices choices-compact">
             <div class="choice para">
@@ -186,6 +195,7 @@
                 <span class="brands">Atarax®, genéricos</span>
               </label>
             </div>
+          </div>
           </div>
         </fieldset>
 

@@ -309,6 +309,39 @@ document.querySelectorAll('.stepper').forEach((btn) => {
 
 /* ---------- Medicamento ---------- */
 
+/* Depois de escolher, a lista fecha num resumo para o peso ficar à vista. */
+const movimentoReduzido = matchMedia('(prefers-reduced-motion: reduce)');
+const passoMed = $('#passo-med');
+const medLista = $('#med-lista');
+const medResumo = $('#med-resumo');
+const medMudar = $('#med-mudar');
+
+function fecharListaMed({ rolar = true } = {}) {
+  const input = document.querySelector('input[name="med"]:checked');
+  const choice = input.closest('.choice');
+  $('#med-resumo-nome').textContent = choice.querySelector('.name').textContent;
+  $('#med-resumo-marcas').textContent = choice.querySelector('.brands').textContent;
+  medResumo.className = `med-resumo ${['para', 'ibu', 'amox', 'cort'].find((c) => choice.classList.contains(c)) ?? ''}`;
+  medResumo.hidden = false;
+  medLista.hidden = true;
+  medMudar.setAttribute('aria-expanded', 'false');
+  if (rolar) passoMed.scrollIntoView({ behavior: movimentoReduzido.matches ? 'auto' : 'smooth', block: 'start' });
+}
+
+function abrirListaMed() {
+  medResumo.hidden = true;
+  medLista.hidden = false;
+  medMudar.setAttribute('aria-expanded', 'true');
+}
+
+medMudar.addEventListener('click', () => {
+  abrirListaMed();
+  document.querySelector('input[name="med"]:checked').focus();
+});
+
+// Link partilhado com medicamento: começa já fechado.
+if (params.has('med')) fecharListaMed({ rolar: false });
+
 document.querySelectorAll('input[name="med"]').forEach((r) => {
   r.addEventListener('change', () => {
     estado.med = r.value;
@@ -327,6 +360,10 @@ document.querySelectorAll('input[name="med"]').forEach((r) => {
     desenharIdade();
     desenharInfo();
     atualizar();
+  });
+  // "click" (e não "change") para fechar também ao tocar no que já estava escolhido.
+  r.addEventListener('click', () => {
+    requestAnimationFrame(() => fecharListaMed());
   });
 });
 
