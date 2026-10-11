@@ -2,11 +2,13 @@
 // antibióticos, corticoides, antieméticos e anti-histamínicos.
 // Sem dependências do DOM para poder ser testada em Node.
 //
-// Referências: RCM (INFARMED) de Ben-u-ron®, Brufen®, Nurofen®, Ib-u-ron®, Augmentin®,
+// Referências: RCM (INFARMED) de Ben-u-ron®, Brufen®, Nurofen®, Ib-u-ron®, Clamoxyl®, Augmentin®,
 // Zithromax®, Zinnat®, Zamene®, Motilium®, Primperan®, Atarax®, Zyrtec® e Aerius®;
 // recomendações da EMA (domperidona 2014, metoclopramida 2013, hidroxizina 2015).
 //   Paracetamol: 15 mg/kg/toma, de 6/6h, máx. 60 mg/kg/dia (e 1 g/toma).
 //   Ibuprofeno:  10 mg/kg/toma, de 8/8h, máx. 30 mg/kg/dia (e 400 mg/toma).
+//   Amoxicilina: 40–90 mg/kg/dia divididos de 12/12h ou 8/8h (amigdalite 50,
+//     otite e pneumonia 80–90 mg/kg/dia); máx. 4 g/dia.
 //   Amoxicilina + ácido clavulânico: dose diária de amoxicilina (habitual 45,
 //     alta 80–90 mg/kg/dia) dividida de 12/12h (7:1 e 14:1) ou 8/8h (4:1);
 //     ácido clavulânico até 10 mg/kg/dia (15 mg/kg/dia na 4:1); máx. 4 g/dia de amoxicilina.
@@ -75,6 +77,41 @@ export const MEDICAMENTOS = {
     concentracoes: [
       { mgPorMl: 20, rotulo: '20 mg/mL', detalhe: 'Suspensão oral (100 mg em 5 mL)' },
       { mgPorMl: 40, rotulo: '40 mg/mL', detalhe: 'Suspensão oral forte (200 mg em 5 mL)' },
+    ],
+  },
+  amoxicilina: {
+    id: 'amoxicilina',
+    nome: 'Amoxicilina',
+    comoDar: [
+      'Pode dar-se com ou sem alimentos.',
+      'Agite o frasco antes de cada toma; depois de preparado, guarde-o no frigorífico.',
+    ],
+    limites: [
+      '<strong>40–90 mg/kg/dia</strong>, divididos de 12/12 h ou de 8/8 h.',
+      'Amigdalite estreptocócica: 50 mg/kg/dia; otite média e pneumonia: 80–90 mg/kg/dia.',
+      'Máximo de <strong>4 g por dia</strong>.',
+      'Cumpra todos os dias de tratamento indicados, mesmo que a criança melhore.',
+    ],
+    marcas: 'Clamoxyl®, genéricos',
+    grupo: 'antibiotico',
+    antibiotico: true,
+    porDia: true,
+    substancia: 'amoxicilina',
+    doseAdulto: 'habitualmente 500 mg de 8/8 h ou 1 g de 12/12 h',
+    conselho:
+      'Antibiótico só com receita médica. Pode dar-se com ou sem alimentos; cumprir todos os dias indicados, mesmo que a criança melhore. Agitar antes de cada toma; depois de preparado, guardar no frigorífico (veja no folheto quantos dias dura).',
+    doses: [
+      { mgPorKgDia: 50, rotulo: '50 mg/kg/dia', detalhe: 'Dose habitual (ex.: amigdalite)' },
+      { mgPorKgDia: 90, rotulo: '90 mg/kg/dia', detalhe: 'Dose alta (ex.: otite, pneumonia)' },
+    ],
+    mgPorKgDiaMin: 20,
+    mgPorKgDiaMax: 100,
+    intervalos: [12, 8],
+    maxMgDia: 4000,
+    pesoMinimo: 3,
+    concentracoes: [
+      { mgPorMl: 50, rotulo: '250 mg/5 mL', detalhe: 'Suspensão oral' },
+      { mgPorMl: 100, rotulo: '500 mg/5 mL', detalhe: 'Suspensão oral forte' },
     ],
   },
   amoxiclav: {
