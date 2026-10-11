@@ -1785,6 +1785,113 @@ fieldset.step legend + .step-hint {
   line-height: 1.35;
 }
 
+/* Telemóveis: medicamentos em chips só com o nome; depois de escolher, a lista
+   fecha num resumo com "Mudar" e o peso fica logo à vista (ver doses.js). */
+.med-resumo {
+  --c: var(--teal);
+  --c-soft: var(--teal-soft);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 10px 10px 14px;
+  border-radius: 14px;
+  border: 2px solid var(--c);
+  background: linear-gradient(160deg, var(--c-soft), var(--surface-strong) 70%);
+}
+
+.med-resumo.ibu { --c: var(--coral); --c-soft: var(--coral-soft); }
+.med-resumo.amox { --c: var(--violet); --c-soft: var(--violet-soft); }
+.med-resumo.cort { --c: var(--sun); --c-soft: var(--sun-soft); }
+
+.med-resumo .pill {
+  flex: none;
+  width: 30px;
+  height: 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--c) 50%, var(--surface) 50%);
+  border: 2px solid var(--c);
+  transform: rotate(160deg);
+}
+
+.med-resumo-texto {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+}
+
+.med-resumo .name {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.med-resumo .brands {
+  font-size: 0.75rem;
+  color: var(--ink-mute);
+  line-height: 1.35;
+}
+
+.med-mudar {
+  flex: none;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: var(--surface-strong);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.med-mudar:focus-visible {
+  outline: 3px solid var(--c);
+  outline-offset: 2px;
+}
+
+#passo-med {
+  scroll-margin-top: 84px;
+}
+
+@media (max-width: 640px) {
+  #med-lista .med-grupo {
+    margin: 12px 0 6px;
+  }
+  #med-lista .med-grupo:first-of-type {
+    margin-top: 2px;
+  }
+  #med-lista .choices-compact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  #med-lista .choice label {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  #med-lista .choice label:hover {
+    transform: none;
+  }
+  #med-lista .choice .pill {
+    width: 22px;
+    height: 11px;
+    margin: 0;
+    flex: none;
+  }
+  #med-lista .choice .name {
+    font-size: 0.9rem;
+  }
+  #med-lista .choice .brands {
+    display: none;
+  }
+}
+
 /* Concentration chips */
 
 .chips {
