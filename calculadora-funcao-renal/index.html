@@ -70,6 +70,7 @@
       <button class="tabbtn" type="button" data-tab="ckdepi" role="tab" aria-selected="true">CKD-EPI 2021 · eTFG</button>
       <button class="tabbtn" type="button" data-tab="cockcroft" role="tab" aria-selected="false">Cockcroft-Gault · CrCl</button>
       <button class="tabbtn" type="button" data-tab="kdigo" role="tab" aria-selected="false">Estadio KDIGO (G/A)</button>
+      <button class="tabbtn" type="button" data-tab="ajuste" role="tab" aria-selected="false">Ajuste de dose</button>
     </div>
 
     <div class="calc" data-painel="ckdepi">
@@ -283,6 +284,69 @@
       </section>
     </div>
 
+    <div class="calc" data-painel="ajuste" hidden>
+      <form class="panel reveal" id="aj-form" autocomplete="off">
+        <div class="step">
+          <label class="step-label" for="aj-creatinina"><span class="step-num">1</span> Creatinina sérica</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="aj-creatinina" data-step="-0.1" aria-label="Diminuir creatinina sérica">−</button>
+            <div class="weight-field"><input id="aj-creatinina" type="number" inputmode="decimal" min="0.1" max="20" step="0.1" value="1.0"><span class="unit">mg/dL</span></div>
+            <button class="stepper" type="button" data-alvo="aj-creatinina" data-step="0.1" aria-label="Aumentar creatinina sérica">+</button>
+          </div>
+        </div>
+        <div class="step">
+          <label class="step-label" for="aj-idade"><span class="step-num">2</span> Idade</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="aj-idade" data-step="-1" aria-label="Diminuir idade">−</button>
+            <div class="weight-field"><input id="aj-idade" type="number" inputmode="numeric" min="18" max="110" step="1" value="70"><span class="unit">anos</span></div>
+            <button class="stepper" type="button" data-alvo="aj-idade" data-step="1" aria-label="Aumentar idade">+</button>
+          </div>
+        </div>
+        <div class="step">
+          <label class="step-label" for="aj-peso"><span class="step-num">3</span> Peso</label>
+          <div class="weight">
+            <button class="stepper" type="button" data-alvo="aj-peso" data-step="-1" aria-label="Diminuir peso">−</button>
+            <div class="weight-field"><input id="aj-peso" type="number" inputmode="decimal" min="20" max="300" step="1" value="70"><span class="unit">kg</span></div>
+            <button class="stepper" type="button" data-alvo="aj-peso" data-step="1" aria-label="Aumentar peso">+</button>
+          </div>
+        </div>
+        <fieldset class="step">
+          <legend class="step-label"><span class="step-num">4</span> Sexo</legend>
+          <div class="chips">
+            <div class="chip"><input type="radio" name="aj-sexo" id="aj-sexo-f" value="f"><label for="aj-sexo-f"><strong>Feminino</strong></label></div>
+            <div class="chip"><input type="radio" name="aj-sexo" id="aj-sexo-m" value="m" checked><label for="aj-sexo-m"><strong>Masculino</strong></label></div>
+          </div>
+        </fieldset>
+      </form>
+
+      <section class="panel result reveal" id="aj-resultado" aria-live="polite">
+        <div id="aj-ok">
+          <div class="result-head">
+            <div class="result-kicker">Função renal usada no ajuste</div>
+            <div class="stats">
+              <div class="stat"><div class="k">eTFG (CKD-EPI 2021)</div><div class="v"><span id="aj-egfr">0</span> <small>mL/min/1,73 m²</small></div></div>
+              <div class="stat"><div class="k">CrCl (Cockcroft-Gault)</div><div class="v"><span id="aj-crcl">0</span> <small>mL/min</small></div></div>
+            </div>
+          </div>
+          <div class="result-body">
+            <ul class="aj-lista" id="aj-lista"></ul>
+            <p class="aviso-resultado" role="note"><span aria-hidden="true">⚠️</span> Doses para adultos com função renal estável. Confirme sempre no RCM, tenha em conta as interações e o resto da medicação, e não use em lesão renal aguda.</p>
+            <div class="result-actions" id="result-actions-aj">
+              <button class="action-btn" type="button" id="btn-email-aj">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="m4 6 8 7 8-7"/></svg>
+                Enviar por email
+              </button>
+              <button class="action-btn" type="button" id="btn-print-aj">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6z"/></svg>
+                Imprimir
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="empty" id="aj-vazio" hidden><div class="big-emoji" aria-hidden="true">💊</div><p class="motivo" id="aj-motivo"></p></div>
+      </section>
+    </div>
+
     <section class="info-grid">
       <article class="panel info-card reveal">
         <div class="info-ico" aria-hidden="true">🫘</div>
@@ -323,6 +387,7 @@
         <li>Inker LA et al. New creatinine- and cystatin C-based equations to estimate GFR without race (CKD-EPI 2021). N Engl J Med 2021.</li>
         <li>Cockcroft DW, Gault MH. Prediction of creatinine clearance from serum creatinine. Nephron 1976.</li>
         <li>KDIGO 2024 Clinical Practice Guideline for the Evaluation and Management of Chronic Kidney Disease.</li>
+        <li>Ajuste de dose: Resumos das Características do Medicamento (EMA/INFARMED) de Eliquis®, Xarelto®, Lixiana®, Pradaxa®, Januvia®, Neurontin®, Lyrica®, Fosamax® e Actonel®; EMA, revisão da metformina na insuficiência renal (2016).</li>
       </ul>
       <p class="fontes-data">Fórmulas e referências revistas em <time datetime="2026-10-11">outubro de 2026</time>.</p>
     </section>
@@ -340,5 +405,6 @@
 
   <script src="../assets/js/site.js" type="module"></script>
   <script src="../assets/js/funcao-renal.js" type="module"></script>
+  <script src="../assets/js/ajuste-renal.js" type="module"></script>
 </body>
 </html>

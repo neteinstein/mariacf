@@ -232,5 +232,5 @@ $('#btn-email-kdigo').addEventListener('click', () => {
 $('#btn-print-kdigo').addEventListener('click', () => window.print());
 
 const params = new URLSearchParams(location.search);
-const validos = ['ckdepi', 'cockcroft', 'kdigo'];
+const validos = ['ckdepi', 'cockcroft', 'kdigo', 'ajuste'];
 selecionar(validos.includes(params.get('calc')) ? params.get('calc') : 'ckdepi');

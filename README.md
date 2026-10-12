@@ -68,7 +68,7 @@ Os separadores de cada página podem ser abertos diretamente com `?calc=<id>`.
 | ITB e peso ideal/ajustado | `/calculadora-vascular/` | |
 | IMC e ASC | `/calculadora-imc-asc/` | IMC, ASC (Mosteller, Du Bois) e perímetro abdominal |
 | FINDRISC, MUST e risco de fratura | `/calculadora-rastreio/` | |
-| CKD-EPI, Cockcroft-Gault e KDIGO | `/calculadora-funcao-renal/` | eTFG, CrCl e estadiamento G/A |
+| CKD-EPI, Cockcroft-Gault e KDIGO | `/calculadora-funcao-renal/` | eTFG, CrCl, estadiamento G/A e ajuste de dose de 10 fármacos |
 | IPSS | `/calculadora-urologia/` | |
 | Fórmulas laboratoriais | `/calculadora-laboratorial/` | LDL, Na e Ca corrigidos, eAG, anion gap, osmolaridade, água livre, HOMA-IR, conversão de unidades |
 | FIB-4, Child-Pugh e MELD | `/calculadora-hepatica/` | FIB-4, NAFLD fibrosis score, APRI, Child-Pugh, MELD-Na |

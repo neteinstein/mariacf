@@ -54,8 +54,8 @@ export const INDICE = [
  {
   "tipo": "Ferramenta",
   "titulo": "CKD-EPI, Cockcroft-Gault e KDIGO",
-  "texto": "Taxa de filtração glomerular, clearance de creatinina para ajuste de fármacos e estadiamento KDIGO (G/A) da doença renal crónica.",
-  "palavras": "Nefrologia Profissionais CKD-EPI 2021 · eTFG Cockcroft-Gault · CrCl Estadio KDIGO (G/A)",
+  "texto": "Taxa de filtração glomerular, clearance de creatinina, estadiamento KDIGO (G/A) e ajuste de dose de metformina, anticoagulantes diretos, gabapentinoides e outros fármacos.",
+  "palavras": "Nefrologia Profissionais CKD-EPI 2021 · eTFG Cockcroft-Gault · CrCl Estadio KDIGO (G/A) Ajuste de dose",
   "url": "calculadora-funcao-renal/"
  },
  {
