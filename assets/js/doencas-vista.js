@@ -108,7 +108,8 @@ export function emails(d) {
 
 // O corpo da página de uma doença: cabeçalho, separadores por idade e um painel por grupo.
 // Sem JavaScript vêem-se todos os painéis; com JavaScript (data-idade no <html>), só o escolhido.
-export function vistaDoenca(d, i, raiz) {
+// «folheto(grupoId)» devolve o HTML que só aparece na impressão (o código QR desse grupo).
+export function vistaDoenca(d, i, raiz, folheto = () => '') {
   return `<section class="wrap doenca${i % 2 ? ' tint-coral' : ''}" id="doenca" aria-labelledby="doenca-titulo">
     <a class="back-link doenca-voltar" href="../">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 19l-7-7 7-7"/></svg>
@@ -137,6 +138,7 @@ export function vistaDoenca(d, i, raiz) {
     <div class="doenca-painel grupo-${g.id.replace('+', 'mais')}" id="painel-${g.id}" data-grupo="${g.id}" role="tabpanel" aria-labelledby="tab-${g.id}" tabindex="0">
       <h2 class="doenca-grupo-impressao">${g.emoji} Explicação para ${g.nome.toLowerCase()} (${g.idade})</h2>
       ${conteudoGrupo(d, g.id, raiz)}
+      ${folheto(g.id)}
     </div>`
     ).join('')}
     <p class="disclaimer">Informação geral de apoio. Não substitui uma consulta — em caso de dúvida, fale com o seu médico ou ligue SNS 24 (808 24 24 24). Em emergência, ligue 112.</p>

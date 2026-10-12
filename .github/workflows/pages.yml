@@ -25,6 +25,9 @@ jobs:
         with:
           node-version: 22
 
+      - name: Dependências de desenvolvimento
+        run: npm ci
+
       - name: Testes
         run: npm test
 

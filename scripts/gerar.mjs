@@ -8,6 +8,7 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, rmSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import qrcode from 'qrcode-generator';
 import { DOENCAS, GRUPOS } from '../assets/js/doencas-dados.js';
 import { esc, emails, vistaDoenca } from '../assets/js/doencas-vista.js';
 
@@ -17,6 +18,21 @@ const ler = (p) => readFileSync(join(raiz, p), 'utf8');
 
 // JSON dentro de <script>: «</» não pode aparecer tal e qual.
 const jsonScript = (obj, indent) => JSON.stringify(obj, null, indent).replace(/<\//g, '<\\/');
+
+// Código QR (SVG, um único <path>) para o folheto impresso de cada grupo etário.
+export function qrSvg(texto) {
+  const qr = qrcode(0, 'M');
+  qr.addData(texto);
+  qr.make();
+  const n = qr.getModuleCount();
+  const margem = 4;
+  let d = '';
+  for (let y = 0; y < n; y++) {
+    for (let x = 0; x < n; x++) if (qr.isDark(y, x)) d += `M${x + margem} ${y + margem}h1v1h-1z`;
+  }
+  const lado = n + 2 * margem;
+  return `<svg class="folheto-qr-codigo" viewBox="0 0 ${lado} ${lado}" width="96" height="96" role="img" aria-label="Código QR" shape-rendering="crispEdges"><rect width="${lado}" height="${lado}" fill="#fff"/><path d="${d}" fill="#000"/></svg>`;
+}
 
 function paginaDoenca(d, i, molde) {
   const url = `${SITE}doencas/${d.id}/`;
@@ -60,10 +76,15 @@ function paginaDoenca(d, i, molde) {
   </script>`
     );
   return `${cabeca}<main>
-    ${vistaDoenca(d, i, '../../')}
+    ${vistaDoenca(d, i, '../../', (g) => folheto(`${url}?idade=${encodeURIComponent(g)}`))}
   </main>
   <script type="application/json" id="doenca-emails">${jsonScript(emails(d))}</script>
 ${molde.rodape}`;
+}
+
+// No papel: o código QR e o endereço, para voltar à explicação completa (com imagens animadas).
+function folheto(endereco) {
+  return `<div class="folheto-qr">${qrSvg(endereco)}<p>Aponte a câmara do telemóvel para o código para ver esta explicação com imagens animadas, ou abra <strong>${esc(endereco.replace(/^https:\/\//, '').replace(/\?.*$/, ''))}</strong>.</p></div>`;
 }
 
 // O molde das páginas das doenças é a própria página da grelha (doencas/index.html), um nível abaixo.

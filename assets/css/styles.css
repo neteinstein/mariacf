@@ -8366,3 +8366,36 @@ a.inicio-cartao.visto:hover {
     display: none !important;
   }
 }
+
+/* Folheto impresso de cada doença: código QR e endereço no fim de cada grupo (só no papel). */
+.folheto-qr {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  .folheto-qr {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    break-inside: avoid;
+    font-size: 0.85rem;
+  }
+
+  .folheto-qr p {
+    margin: 0;
+  }
+
+  .folheto-qr-codigo {
+    flex: none;
+    width: 26mm;
+    height: 26mm;
+  }
+}

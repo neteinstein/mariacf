@@ -25,3 +25,22 @@ test('cada página de doença tem os cinco grupos, título próprio e ligações
     }
   }
 });
+
+test('o código QR do folheto lê-se e leva à doença e à idade certas', async () => {
+  const { default: jsQR } = await import('jsqr');
+  const { qrSvg } = await import('../scripts/gerar.mjs');
+  const url = 'https://mariacf.pt/doencas/diabetes/?idade=65%2B';
+  const svg = qrSvg(url);
+  const lado = Number(svg.match(/viewBox="0 0 (\d+)/)[1]);
+  const escala = 4;
+  const w = lado * escala;
+  const px = new Uint8ClampedArray(w * w * 4).fill(255);
+  for (const [, x, y] of svg.matchAll(/M(\d+) (\d+)h1v1h-1z/g)) {
+    for (let dy = 0; dy < escala; dy++)
+      for (let dx = 0; dx < escala; dx++) {
+        const i = ((+y * escala + dy) * w + (+x * escala + dx)) * 4;
+        px[i] = px[i + 1] = px[i + 2] = 0;
+      }
+  }
+  assert.equal(jsQR(px, w, w)?.data, url);
+});
