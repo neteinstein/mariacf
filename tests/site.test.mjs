@@ -35,7 +35,8 @@ test('as páginas das calculadoras voltam para a página de ferramentas', () => 
 });
 
 test('o service worker guarda todas as páginas e ficheiros do site', () => {
-  const esperado = ['./', 'manifest.webmanifest', ...paginas.map((d) => `${d}/`), ...ficheirosEm('assets')];
+  const doencas = readdirSync(join(raiz, 'doencas'), { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => `doencas/${e.name}/`);
+  const esperado = ['./', 'manifest.webmanifest', ...paginas.map((d) => `${d}/`), ...doencas, ...ficheirosEm('assets')];
   for (const f of esperado) assert.ok(precache.includes(f), `${f} falta na lista PRECACHE de sw.js`);
 });
 

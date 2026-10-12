@@ -7087,9 +7087,42 @@ a.tool.destaque:hover .tool-deco.mini {
   padding-top: 22px;
 }
 
+/* Página de cada doença (doencas/<id>/): com JavaScript, o <head> escolhe a idade (data-idade no <html>)
+   e só se vê esse painel; sem JavaScript vêem-se todos, cada um com o seu título. */
+html[data-idade] .doenca-painel[data-grupo] {
+  display: none;
+}
+
+html[data-idade='3-5'] .doenca-painel[data-grupo='3-5'],
+html[data-idade='5-12'] .doenca-painel[data-grupo='5-12'],
+html[data-idade='13-17'] .doenca-painel[data-grupo='13-17'],
+html[data-idade='18-65'] .doenca-painel[data-grupo='18-65'],
+html[data-idade='65+'] .doenca-painel[data-grupo='65+'] {
+  display: block;
+}
+
+.doenca-painel + .doenca-painel {
+  margin-top: 26px;
+}
+
+a.idade-tab {
+  text-decoration: none;
+}
+
 /* Só na impressão: para que idade é a folha (os separadores não se imprimem). */
 .doenca-grupo-impressao {
   display: none;
+}
+
+html:not([data-idade]) .doenca-grupo-impressao {
+  display: block;
+  font-size: 1.3rem;
+}
+
+@media screen {
+  html[data-idade] .doenca-painel > .doenca-grupo-impressao + * {
+    margin-top: 0;
+  }
 }
 
 @media print {
