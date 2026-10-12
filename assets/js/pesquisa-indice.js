@@ -479,6 +479,34 @@ export const INDICE = [
   "url": "doencas/ist/"
  },
  {
+  "tipo": "Doença",
+  "titulo": "Infeção urinária",
+  "texto": "Infeção da bexiga (cistite) ou, mais raramente, do rim. Dá ardor a urinar e vontade de urinar muitas vezes. É muito frequente nas mulheres.",
+  "palavras": "Cistite Rins e urologia Infeções cistite ardor a urinar xixi bexiga urina pielonefrite infeção do trato urinário itu micção frequente urgência antibiótico",
+  "url": "doencas/infecao-urinaria/"
+ },
+ {
+  "tipo": "Doença",
+  "titulo": "Otite média aguda",
+  "texto": "Infeção do ouvido médio, por trás do tímpano, muito frequente nas crianças pequenas depois de uma constipação. Dói muito, mas a maioria melhora em 2 a 3 dias.",
+  "palavras": "Dor de ouvidos Infeções otite dor de ouvido ouvidos orelha tímpano pus supuração bebé criança constipação febre audição otite externa piscina",
+  "url": "doencas/otite/"
+ },
+ {
+  "tipo": "Doença",
+  "titulo": "Rinite alérgica",
+  "texto": "Inflamação do nariz por alergia a pólenes, ácaros ou animais: espirros, comichão, nariz a pingar e entupido. Não é grave, mas pode atrapalhar muito o sono e a escola ou o trabalho.",
+  "palavras": "Alergia no nariz Respiratório rinite alergia alérgica espirros nariz entupido pingo comichão pólen primavera ácaros pó gatos cães olhos lacrimejantes febre dos fenos anti-histamínico",
+  "url": "doencas/rinite-alergica/"
+ },
+ {
+  "tipo": "Doença",
+  "titulo": "Obstipação",
+  "texto": "Evacuar poucas vezes, com fezes duras e com esforço. Quase sempre melhora com mais fibras, água, movimento e uma rotina na casa de banho.",
+  "palavras": "Prisão de ventre Digestivo obstipação prisão de ventre intestino preso cocó fezes duras evacuar fibras laxante sanita casa de banho dor de barriga hemorroidas fissura",
+  "url": "doencas/obstipacao/"
+ },
+ {
   "tipo": "Página",
   "titulo": "USF Nova Saúde",
   "texto": "Contactos, horário, morada, como marcar consulta e renovar receitas.",

@@ -24,7 +24,7 @@ e das pastas `calculadora-*`; o teste `tests/site.test.mjs` avisa quando ficam d
 
 ## Doenças
 
-A página de doenças mostra um cartão animado por doença (41, das mais frequentes em Portugal), com pesquisa e
+A página de doenças mostra um cartão animado por doença (45, das mais frequentes em Portugal), com pesquisa e
 filtro por área (`/doencas/?q=colesterol`, `/doencas/?cat=Oncologia`). Ao abrir um cartão, a explicação aparece em separadores
 por idade (Crianças 3–5, Crianças 5–12, Adolescentes 13–17, Adultos 18–65, Séniores 65+), com os botões
 «Enviar por email» e «Imprimir» das ferramentas. O estado fica no URL (`/doencas/?d=diabetes&idade=65+`), por isso

@@ -1514,6 +1514,25 @@ export const ILUSTRACOES = {
     <path class="c-rosa" d="M70 116Q100 92 130 116Q118 134 100 134Q82 134 70 116Z"/>
     <path class="an-piscar fino t-coral" d="M14 60l10 4M12 80h12M14 100l10 -4M186 60l-10 4M188 80h-12M186 100l-10 -4"/>`,
 
+  // Otite: orelha com o ouvido médio inflamado (dói e lateja) e o som abafado.
+  ouvido: () => `
+    <path class="c-pele" d="M92 16C134 8 160 40 154 74C150 98 130 104 126 120C122 138 102 146 88 136C76 128 82 114 90 106C68 98 58 74 62 52C66 32 76 20 92 16Z"/>
+    <path class="fino" d="M98 36C124 30 138 52 132 72C128 84 116 88 112 98"/>
+    <path class="fino" d="M90 60C96 50 112 52 112 64"/>
+    <g class="an-pulsar"><circle class="c-vermelho" cx="100" cy="80" r="12"/><circle class="c-escuro sem" cx="100" cy="80" r="5"/></g>
+    <path class="an-piscar fino t-coral" d="M168 54l12 -6M170 74h14M168 94l12 6"/>
+    <g class="an-piscar d2"><path class="fino fraco" d="M24 60q-8 14 0 28M36 54q-12 20 0 40"/></g>
+    ${germe(44, 124, 7, 'c-sol')}`,
+
+  // Infeção urinária: bexiga com micróbios e a vontade constante de urinar.
+  bexiga: () => `
+    <path class="t-sol grosso" d="M62 20Q70 40 82 50M138 20Q130 40 118 50"/>
+    <g class="an-pulsar-lento"><path class="c-sol-s" d="M100 46C134 46 152 66 150 92C148 116 128 126 112 128V140H88V128C72 126 52 116 50 92C48 66 66 46 100 46Z"/></g>
+    ${cara(100, 92, 16, 'triste')}
+    <g class="an-flutuar">${germe(70, 76, 7)}</g>
+    <g class="an-flutuar d2">${germe(132, 106, 6, 'c-verde')}</g>
+    <path class="an-piscar fino t-coral" d="M22 70l10 4M20 90h12M22 110l10 -4M178 70l-10 4M180 90h-12M178 110l-10 -4"/>`,
+
   lingua: () => `
     ${cabeca(100, 64, 46, { humor: 'feliz' })}
     <ellipse class="c-escuro sem" cx="100" cy="88" rx="18" ry="10"/>

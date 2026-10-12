@@ -4,7 +4,7 @@
 // e atualiza a cache; sem ligação, usa a última versão guardada.
 // A lista PRECACHE é verificada pelos testes (tests/site.test.mjs).
 
-const CACHE = 'mcf-v29';
+const CACHE = 'mcf-v30';
 
 const PRECACHE = [
   './',
@@ -64,15 +64,19 @@ const PRECACHE = [
   'doencas/gripe/',
   'doencas/hepatites/',
   'doencas/hipertensao/',
+  'doencas/infecao-urinaria/',
   'doencas/insuficiencia-cardiaca/',
   'doencas/ist/',
   'doencas/lombalgia/',
   'doencas/mao-pe-boca/',
   'doencas/obesidade-infantil/',
+  'doencas/obstipacao/',
   'doencas/osteoporose/',
+  'doencas/otite/',
   'doencas/paramiloidose/',
   'doencas/parkinson/',
   'doencas/pneumonia/',
+  'doencas/rinite-alergica/',
   'doencas/sarampo/',
   'doencas/tuberculose/',
   'doencas/varicela/',
