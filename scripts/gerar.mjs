@@ -77,6 +77,37 @@ function molde() {
   return { cabeca, rodape: rodape.replace(/^\n/, '') };
 }
 
+// Índice da pesquisa global (assets/js/pesquisa.js): ferramentas, doenças e secções do site.
+// Os URLs são relativos à raiz do site.
+function indicePesquisa() {
+  const limpar = (h) => h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const ferramentas = [...ler('ferramentas/index.html').matchAll(/<a class="tool[^"]*" href="\.\.\/([^"]+)">([\s\S]*?)<\/a>/g)].map(([, url, corpo]) => ({
+    tipo: 'Ferramenta',
+    titulo: limpar(corpo.match(/<div class="tool-title">([\s\S]*?)<\/div>/)[1]),
+    texto: limpar(corpo.match(/<p class="tool-desc">([\s\S]*?)<\/p>/)[1]),
+    // As etiquetas do cartão e os nomes dos separadores da calculadora (CURB-65, Wells, …).
+    palavras: [
+      ...[...corpo.matchAll(/<span class="tag">([^<]+)<\/span>/g)].map((m) => m[1]),
+      ...[...ler(`${url}index.html`).matchAll(/role="tab"[^>]*>([^<]+)</g)].map((m) => m[1].trim()),
+    ].join(' '),
+    url,
+  }));
+  const doencas = DOENCAS.map((d) => ({
+    tipo: 'Doença',
+    titulo: d.nome,
+    texto: d.resumo,
+    palavras: [d.alias, d.categoria, ...(d.tambem || []), d.palavras].filter(Boolean).join(' '),
+    url: `doencas/${d.id}/`,
+  }));
+  const paginas = [
+    { tipo: 'Página', titulo: 'USF Nova Saúde', texto: 'Contactos, horário, morada, como marcar consulta e renovar receitas.', palavras: 'centro de saúde marcar consulta receitas telefone horário mapa', url: 'usf/' },
+    { tipo: 'Página', titulo: 'Contactos úteis do SNS', texto: '112, SNS 24 e outras linhas de ajuda.', palavras: 'emergência 112 sns 24 linha telefone antivenenos saúde mental', url: 'sns/' },
+    { tipo: 'Página', titulo: 'Sobre a Dra. Maria', texto: 'Percurso e artigos da Dra. Maria Cortês Ferreira, médica de família.', palavras: 'médica de família percurso artigos', url: 'sobre/' },
+  ];
+  const itens = [...ferramentas, ...doencas, ...paginas];
+  return `// Gerado por scripts/gerar.mjs (npm run gerar) — não editar à mão.\n// Índice da pesquisa global: ferramentas, doenças e secções do site (URLs relativos à raiz).\n\nexport const INDICE = ${JSON.stringify(itens, null, 1)};\n`;
+}
+
 function sitemap(paginas) {
   const urls = paginas.map((p) => `  <url><loc>${SITE}${p}</loc></url>`).join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
@@ -92,6 +123,7 @@ export function gerar() {
   const seccoes = readdirSync(raiz)
     .filter((d) => !d.startsWith('.') && existsSync(join(raiz, d, 'index.html')))
     .sort();
+  ficheiros['assets/js/pesquisa-indice.js'] = indicePesquisa();
   ficheiros['sitemap.xml'] = sitemap(['', ...seccoes.map((s) => `${s}/`), ...DOENCAS.map((d) => `doencas/${d.id}/`)]);
   return ficheiros;
 }
@@ -110,5 +142,5 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     writeFileSync(join(raiz, caminho), conteudo);
   }
   for (const pasta of obsoletos()) rmSync(join(raiz, pasta), { recursive: true });
-  console.log(`Gerado: ${DOENCAS.length} páginas de doenças e sitemap.xml`);
+  console.log(`Gerado: ${DOENCAS.length} páginas de doenças, índice da pesquisa e sitemap.xml`);
 }

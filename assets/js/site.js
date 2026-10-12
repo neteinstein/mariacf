@@ -2,6 +2,8 @@
 // Os efeitos visuais dos resultados das calculadoras vivem em fx.js.
 
 import './fx.js';
+import { iniciarFavoritos } from './favoritos.js';
+import { iniciarPesquisa } from './pesquisa.js';
 
 const root = document.documentElement;
 const THEME_KEY = 'mcf-theme';
@@ -158,9 +160,18 @@ document.querySelectorAll('.tool').forEach((card) => {
   });
 });
 
+// Raiz do site, a partir do logótipo do cabeçalho (o domínio e a pasta nunca são fixos no código).
+const raizSite = brand ? new URL(brand.getAttribute('href'), document.baseURI) : null;
+
+// Pesquisa global (Ctrl/⌘+K ou «/») e ferramentas favoritas/recentes.
+if (raizSite) {
+  iniciarPesquisa(raizSite);
+  iniciarFavoritos(raizSite);
+}
+
 // Funcionamento sem rede e instalação como aplicação (o service worker vive na raiz do site).
 if ('serviceWorker' in navigator && brand) {
-  const raiz = new URL(brand.getAttribute('href'), document.baseURI);
+  const raiz = raizSite;
   navigator.serviceWorker.register(new URL('sw.js', raiz), { scope: raiz.pathname }).catch(() => {
     /* sem service worker: o site continua a funcionar normalmente com rede */
   });
