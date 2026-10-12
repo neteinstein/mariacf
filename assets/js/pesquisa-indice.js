@@ -109,6 +109,13 @@ export const INDICE = [
  },
  {
   "tipo": "Ferramenta",
+  "titulo": "Contraceção: critérios da OMS",
+  "texto": "Categorias de elegibilidade da OMS (2025) da pílula, implante, injetável e DIU, segundo a idade, o pós-parto, o tabaco e as doenças.",
+  "palavras": "Contraceção Saúde da mulher Profissionais",
+  "url": "calculadora-contracecao/"
+ },
+ {
+  "tipo": "Ferramenta",
   "titulo": "Calendário de vacinas (PNV)",
   "texto": "A partir da data de nascimento: que vacinas do Programa Nacional de Vacinação correspondem a cada idade, e quando.",
   "palavras": "Vacinação Pacientes",

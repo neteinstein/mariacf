@@ -4,11 +4,12 @@
 // e atualiza a cache; sem ligação, usa a última versão guardada.
 // A lista PRECACHE é verificada pelos testes (tests/site.test.mjs).
 
-const CACHE = 'mcf-v30';
+const CACHE = 'mcf-v31';
 
 const PRECACHE = [
   './',
   'calculadora-anticoagulacao/',
+  'calculadora-contracecao/',
   'calculadora-corticoides/',
   'calculadora-crescimento/',
   'calculadora-digestivo/',
@@ -97,6 +98,8 @@ const PRECACHE = [
   'assets/js/anticoagulacao-core.js',
   'assets/js/anticoagulacao.js',
   'assets/js/calc-ui.js',
+  'assets/js/contracecao-core.js',
+  'assets/js/contracecao.js',
   'assets/js/corticoides-core.js',
   'assets/js/corticoides.js',
   'assets/js/crescimento-core.js',

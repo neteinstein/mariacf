@@ -61,6 +61,7 @@ Os separadores de cada página podem ser abertos diretamente com `?calc=<id>`.
 | Calendário de vacinas (PNV) | `/calculadora-vacinas/` | Esquema recomendado do PNV a partir da data de nascimento |
 | Bishop, Apgar e Glasgow pediátrico | `/calculadora-parto-neonatal/` | |
 | Data provável de parto | `/calculadora-dpp/` | DUM ou ecografia, com calendário da vigilância da gravidez |
+| Contraceção: critérios da OMS | `/calculadora-contracecao/` | Categorias de elegibilidade (MEC, 6.ª edição, 2025) de seis métodos por idade, pós-parto e condições |
 | Aumento de peso na gravidez | `/calculadora-gravidez-peso/` | Recomendações IOM 2009 por IMC pré-gravidez |
 | SCORE2 e SCORE2-Diabetes | `/calculadora-risco-cardiovascular/` | |
 | CHA₂DS₂-VASc e HAS-BLED | `/calculadora-anticoagulacao/` | |
