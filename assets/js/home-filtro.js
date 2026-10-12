@@ -67,7 +67,7 @@ if (grid && busca && filtros) {
   botoes.forEach((btn) => {
     btn.addEventListener('click', () => {
       categoriaAtiva = btn.dataset.categoria;
-      botoes.forEach((b) => b.setAttribute('aria-selected', String(b === btn)));
+      botoes.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
       aplicar();
     });
   });
@@ -79,7 +79,7 @@ if (grid && busca && filtros) {
   const catInicial = params.get('cat');
   if (catInicial && botoes.some((b) => b.dataset.categoria === catInicial)) {
     categoriaAtiva = catInicial;
-    botoes.forEach((b) => b.setAttribute('aria-selected', String(b.dataset.categoria === catInicial)));
+    botoes.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.categoria === catInicial)));
   }
 
   aplicar();

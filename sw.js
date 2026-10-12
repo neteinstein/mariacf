@@ -4,11 +4,12 @@
 // e atualiza a cache; sem ligação, usa a última versão guardada.
 // A lista PRECACHE é verificada pelos testes (tests/site.test.mjs).
 
-const CACHE = 'mcf-v27';
+const CACHE = 'mcf-v33';
 
 const PRECACHE = [
   './',
   'calculadora-anticoagulacao/',
+  'calculadora-contracecao/',
   'calculadora-corticoides/',
   'calculadora-crescimento/',
   'calculadora-digestivo/',
@@ -36,12 +37,63 @@ const PRECACHE = [
   'calculadora-vacinas/',
   'calculadora-vascular/',
   'doencas/',
+  'doencas/amigdalite/',
+  'doencas/amiotrofia/',
+  'doencas/ansiedade/',
+  'doencas/artroses/',
+  'doencas/asma/',
+  'doencas/avc/',
+  'doencas/cancro-colorretal/',
+  'doencas/cancro-estomago/',
+  'doencas/cancro-mama/',
+  'doencas/cancro-pele/',
+  'doencas/cancro-prostata/',
+  'doencas/cancro-pulmao/',
+  'doencas/constipacao/',
+  'doencas/covid-19/',
+  'doencas/demencia/',
+  'doencas/depressao/',
+  'doencas/diabetes/',
+  'doencas/dislipidemia/',
+  'doencas/doenca-renal/',
+  'doencas/dpoc/',
+  'doencas/enfarte/',
+  'doencas/escarlatina/',
+  'doencas/fibrilhacao-auricular/',
+  'doencas/figado-alcool/',
+  'doencas/gastroenterite/',
+  'doencas/gripe/',
+  'doencas/hepatites/',
+  'doencas/hipertensao/',
+  'doencas/infecao-urinaria/',
+  'doencas/insuficiencia-cardiaca/',
+  'doencas/ist/',
+  'doencas/lombalgia/',
+  'doencas/mao-pe-boca/',
+  'doencas/obesidade-infantil/',
+  'doencas/obstipacao/',
+  'doencas/osteoporose/',
+  'doencas/otite/',
+  'doencas/paramiloidose/',
+  'doencas/parkinson/',
+  'doencas/pneumonia/',
+  'doencas/rinite-alergica/',
+  'doencas/sarampo/',
+  'doencas/tuberculose/',
+  'doencas/varicela/',
+  'doencas/vih/',
   'ferramentas/',
   'sns/',
   'sobre/',
   'usf/',
   'manifest.webmanifest',
   'assets/css/styles.css',
+  'assets/fonts/fraunces-italico-latin-ext.woff2',
+  'assets/fonts/fraunces-italico-latin.woff2',
+  'assets/fonts/fraunces-latin-ext.woff2',
+  'assets/fonts/fraunces-latin.woff2',
+  'assets/fonts/plus-jakarta-sans-latin-ext.woff2',
+  'assets/fonts/plus-jakarta-sans-latin.woff2',
   'assets/img/favicon.svg',
   'assets/img/icon-180.png',
   'assets/img/icon-192.png',
@@ -49,9 +101,13 @@ const PRECACHE = [
   'assets/img/icon-maskable-512.png',
   'assets/img/maria.jpg',
   'assets/img/og-image.png',
+  'assets/js/ajuste-renal-core.js',
+  'assets/js/ajuste-renal.js',
   'assets/js/anticoagulacao-core.js',
   'assets/js/anticoagulacao.js',
   'assets/js/calc-ui.js',
+  'assets/js/contracecao-core.js',
+  'assets/js/contracecao.js',
   'assets/js/corticoides-core.js',
   'assets/js/corticoides.js',
   'assets/js/crescimento-core.js',
@@ -61,8 +117,10 @@ const PRECACHE = [
   'assets/js/crescimento.js',
   'assets/js/digestivo-core.js',
   'assets/js/digestivo.js',
+  'assets/js/doenca.js',
   'assets/js/doencas-dados.js',
   'assets/js/doencas-ilustracoes.js',
+  'assets/js/doencas-vista.js',
   'assets/js/icones.js',
   'assets/js/inicio.js',
   'assets/js/doencas.js',
@@ -72,6 +130,7 @@ const PRECACHE = [
   'assets/js/dpp.js',
   'assets/js/familia-core.js',
   'assets/js/familia.js',
+  'assets/js/favoritos.js',
   'assets/js/fx.js',
   'assets/js/funcao-renal-core.js',
   'assets/js/funcao-renal.js',
@@ -92,6 +151,8 @@ const PRECACHE = [
   'assets/js/parto-neonatal.js',
   'assets/js/pediatria-core.js',
   'assets/js/pediatria.js',
+  'assets/js/pesquisa-indice.js',
+  'assets/js/pesquisa.js',
   'assets/js/plano-rastreios-core.js',
   'assets/js/plano-rastreios.js',
   'assets/js/queimados-core.js',
@@ -136,28 +197,10 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-const FONTES = ['https://fonts.googleapis.com', 'https://fonts.gstatic.com'];
-
 self.addEventListener('fetch', (event) => {
   const pedido = event.request;
   if (pedido.method !== 'GET') return;
   const url = new URL(pedido.url);
-
-  // Tipos de letra: cache primeiro (não mudam).
-  if (FONTES.includes(url.origin)) {
-    event.respondWith(
-      caches.match(pedido).then(
-        (guardada) =>
-          guardada ||
-          fetch(pedido).then((resposta) => {
-            const copia = resposta.clone();
-            caches.open(CACHE).then((cache) => cache.put(pedido, copia));
-            return resposta;
-          })
-      )
-    );
-    return;
-  }
 
   if (url.origin !== self.location.origin) return;
 

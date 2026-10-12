@@ -25,8 +25,17 @@ jobs:
         with:
           node-version: 22
 
+      - name: Dependências de desenvolvimento
+        run: npm ci
+
       - name: Testes
         run: npm test
+
+      - name: Browser para o teste de acessibilidade
+        run: npx playwright install --with-deps chromium
+
+      - name: Teste de acessibilidade (axe, WCAG 2.1 AA)
+        run: npm run test:a11y
 
       - name: Preparar site
         run: |
@@ -35,7 +44,7 @@ jobs:
           # (testes, configuração do projeto, workflows, git). Isto evita que uma
           # nova pasta de calculadora fique esquecida na lista e dê 404 em produção.
           shopt -s extglob
-          cp -r !(_site|tests|node_modules|.git|.github|package.json|package-lock.json|README.md) _site/
+          cp -r !(_site|tests|scripts|node_modules|.git|.github|package.json|package-lock.json|README.md) _site/
 
       - uses: actions/configure-pages@v5
         if: github.event_name != 'pull_request'

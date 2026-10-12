@@ -2,6 +2,69 @@
    Dra. Maria Cortês Ferreira — Utilitários de Saúde
    ========================================================================== */
 
+/* Tipos de letra alojados no próprio site (sem pedidos a terceiros; também funcionam sem rede).
+   Ficheiros variáveis do Google Fonts (licença SIL Open Font License), só os subconjuntos latinos. */
+
+/* Fraunces itálico — latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/fraunces-italico-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Fraunces itálico — latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/fraunces-italico-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Fraunces — latin-ext */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/fraunces-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Fraunces — latin */
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/fraunces-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Plus Jakarta Sans — latin-ext */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../fonts/plus-jakarta-sans-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* Plus Jakarta Sans — latin */
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../fonts/plus-jakarta-sans-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   --bg: #f9fafc;
   --bg-2: #ecf1f6;
@@ -25,6 +88,7 @@
   --sun: #ecab2e;
   --sun-soft: #fbedd0;
   --danger: #c2413a;
+  --danger-texto: #a8352f; /* texto vermelho sobre --danger-soft (≥ 4,5:1) */
   --danger-soft: #fde4e1;
 
   --blob-1: #c6e1ff;
@@ -110,6 +174,7 @@
     --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2389c3fe' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
     --sun-soft: rgba(255, 200, 97, 0.14);
     --danger: #ff8a80;
+    --danger-texto: var(--danger);
     --danger-soft: rgba(255, 138, 128, 0.14);
     --blob-1: #0e3f6a;
     --blob-2: #263151;
@@ -162,6 +227,7 @@
   --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2389c3fe' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --sun-soft: rgba(255, 200, 97, 0.14);
   --danger: #ff8a80;
+  --danger-texto: var(--danger);
   --danger-soft: rgba(255, 138, 128, 0.14);
   --blob-1: #0e3f6a;
   --blob-2: #263151;
@@ -2307,6 +2373,47 @@ fieldset.step legend + .step-hint {
   background: var(--surface);
 }
 
+/* Fontes de cada calculadora, antes do aviso final */
+.fontes {
+  margin-top: 28px;
+  padding: 20px 24px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+}
+
+.fontes h2 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.fontes ul {
+  margin: 0;
+  padding-left: 1.2em;
+  display: grid;
+  gap: 6px;
+}
+
+.fontes-data {
+  margin: 12px 0 0;
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+}
+
+/* Aviso junto ao resultado nas calculadoras de maior risco (doses, urgência) */
+.aviso-resultado {
+  margin: 16px 0 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--sun-soft);
+  color: var(--ink);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
 .pop {
   animation: pop 0.55s var(--spring);
 }
@@ -2868,7 +2975,8 @@ a.pub:hover {
 
 .tabbtn:hover { transform: translateY(-2px); }
 
-.tabbtn[aria-selected='true'] {
+.tabbtn[aria-selected='true'],
+.tabbtn[aria-pressed='true'] {
   border-color: var(--teal);
   background: linear-gradient(160deg, var(--teal-soft), var(--surface-strong) 70%);
   color: var(--teal);
@@ -4077,7 +4185,8 @@ a.pub:hover {
   animation: fx-subir 0.55s var(--ease);
 }
 
-.tabbtn[aria-selected='true'] {
+.tabbtn[aria-selected='true'],
+.tabbtn[aria-pressed='true'] {
   box-shadow: 0 10px 22px -14px var(--teal);
 }
 
@@ -6500,7 +6609,7 @@ a.tool.destaque:hover .tool-deco.mini {
 .doenca-alerta h3 {
   margin: 0 0 8px;
   font-size: 1.15rem;
-  color: var(--danger);
+  color: var(--danger-texto);
 }
 
 .doenca-alerta ul {
@@ -7087,9 +7196,42 @@ a.tool.destaque:hover .tool-deco.mini {
   padding-top: 22px;
 }
 
+/* Página de cada doença (doencas/<id>/): com JavaScript, o <head> escolhe a idade (data-idade no <html>)
+   e só se vê esse painel; sem JavaScript vêem-se todos, cada um com o seu título. */
+html[data-idade] .doenca-painel[data-grupo] {
+  display: none;
+}
+
+html[data-idade='3-5'] .doenca-painel[data-grupo='3-5'],
+html[data-idade='5-12'] .doenca-painel[data-grupo='5-12'],
+html[data-idade='13-17'] .doenca-painel[data-grupo='13-17'],
+html[data-idade='18-65'] .doenca-painel[data-grupo='18-65'],
+html[data-idade='65+'] .doenca-painel[data-grupo='65+'] {
+  display: block;
+}
+
+.doenca-painel + .doenca-painel {
+  margin-top: 26px;
+}
+
+a.idade-tab {
+  text-decoration: none;
+}
+
 /* Só na impressão: para que idade é a folha (os separadores não se imprimem). */
 .doenca-grupo-impressao {
   display: none;
+}
+
+html:not([data-idade]) .doenca-grupo-impressao {
+  display: block;
+  font-size: 1.3rem;
+}
+
+@media screen {
+  html[data-idade] .doenca-painel > .doenca-grupo-impressao + * {
+    margin-top: 0;
+  }
 }
 
 @media print {
@@ -7113,6 +7255,7 @@ a.tool.destaque:hover .tool-deco.mini {
     --sun: #b9811a;
     --sun-soft: #fbedd0;
     --danger: #c2413a;
+    --danger-texto: #a8352f; /* texto vermelho sobre --danger-soft (≥ 4,5:1) */
     --danger-soft: #fde4e1;
     color-scheme: light;
   }
@@ -8116,5 +8259,382 @@ a.inicio-cartao.visto:hover {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;
+  }
+}
+
+/* ==========================================================================
+   Pesquisa global (pesquisa.js) e ferramentas favoritas/recentes (favoritos.js)
+   ========================================================================== */
+
+.pesquisa-btn {
+  color: var(--ink);
+}
+
+.pesquisa {
+  width: min(640px, calc(100vw - 32px));
+  max-height: min(70vh, 640px);
+  margin: 10vh auto auto;
+  padding: 0;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius);
+  background: var(--surface-strong);
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.pesquisa[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.pesquisa::backdrop {
+  background: rgba(10, 20, 30, 0.45);
+  backdrop-filter: blur(4px);
+}
+
+.pesquisa-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-mute);
+}
+
+.pesquisa-input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: var(--ink);
+  font: 600 1.05rem var(--font-body);
+}
+
+.pesquisa-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+.pesquisa-fechar {
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: none;
+  color: var(--ink-mute);
+  font: 600 0.75rem var(--font-body);
+  cursor: pointer;
+}
+
+.pesquisa-lista {
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.pesquisa-lista:empty {
+  display: none;
+}
+
+.pesquisa-lista a {
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: inherit;
+  text-decoration: none;
+}
+
+.pesquisa-lista [aria-selected='true'] a,
+.pesquisa-lista a:hover {
+  background: var(--tint-soft, var(--teal-soft));
+}
+
+.pesquisa-tipo {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.pesquisa-texto {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pesquisa-dica {
+  margin: 0;
+  padding: 10px 16px 14px;
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+}
+
+.favorito-btn {
+  margin-top: 18px;
+}
+
+.favorito-btn[aria-pressed='true'] svg,
+.tool-favorito svg,
+.atalhos-grupo h3 svg {
+  color: var(--sun);
+}
+
+.tool-favorito {
+  display: inline-flex;
+  margin-left: auto;
+}
+
+.atalhos-ferramentas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px 32px;
+  margin: 0 0 22px;
+}
+
+.atalhos-grupo h3 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 8px;
+  font: 700 0.75rem var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.atalhos-lista {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.atalho {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--surface-strong);
+  color: var(--ink);
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.atalho:hover {
+  border-color: var(--tint, var(--teal));
+}
+
+@media print {
+  .pesquisa-btn,
+  .favorito-btn {
+    display: none !important;
+  }
+}
+
+/* Folheto impresso de cada doença: código QR e endereço no fim de cada grupo (só no papel). */
+.folheto-qr {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  .folheto-qr {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+    break-inside: avoid;
+    font-size: 0.85rem;
+  }
+
+  .folheto-qr p {
+    margin: 0;
+  }
+
+  .folheto-qr-codigo {
+    flex: none;
+    width: 26mm;
+    height: 26mm;
+  }
+}
+
+/* ---------- Contraceção (critérios da OMS) ---------- */
+
+.mec-grupo {
+  margin: 18px 0 8px;
+  font: 700 0.75rem var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.mec-metodos {
+  display: grid;
+  gap: 10px;
+}
+
+.mec-metodo {
+  --c: var(--teal);
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--c);
+  background: var(--surface-strong);
+}
+
+.mec-metodo[data-nivel='moderado'],
+.mec-legenda [data-nivel='moderado'] { --c: var(--sun); }
+.mec-metodo[data-nivel='alto'],
+.mec-legenda [data-nivel='alto'] { --c: var(--coral-forte, var(--coral)); }
+.mec-metodo[data-nivel='muito-alto'],
+.mec-legenda [data-nivel='muito-alto'] { --c: var(--danger); }
+
+.mec-cat {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--c) 16%, transparent);
+  color: var(--ink);
+  font: 700 1.5rem var(--font-display, var(--font-body));
+}
+
+.mec-cat small {
+  font-size: 0.8rem;
+}
+
+.mec-info h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.mec-detalhe,
+.mec-texto {
+  margin: 2px 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.mec-texto {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.mec-razoes {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.mec-razoes b,
+.mec-legenda b {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.6em;
+  margin-right: 6px;
+  padding: 0 4px;
+  border-radius: 6px;
+  background: var(--line);
+  color: var(--ink);
+  font-size: 0.75rem;
+}
+
+.mec-legenda {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.mec-legenda li {
+  --c: var(--teal);
+}
+
+.mec-legenda b {
+  background: color-mix(in srgb, var(--c) 22%, transparent);
+}
+
+@media print {
+  .mec-metodo {
+    break-inside: avoid;
+  }
+}
+
+/* ---------- Função renal: ajuste de dose por fármaco ---------- */
+
+.aj-lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.aj-item {
+  --c: var(--teal);
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--c);
+  background: var(--surface-strong);
+}
+
+.aj-item[data-nivel='ajustar'] { --c: var(--sun); }
+.aj-item[data-nivel='evitar'] { --c: var(--danger); }
+
+.aj-cab {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.aj-estado {
+  flex: none;
+  font: 700 0.7rem var(--font-body);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.aj-dose {
+  margin: 4px 0 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.aj-base {
+  margin: 2px 0 0;
+  font-size: 0.8rem;
+  color: var(--ink-mute);
+}
+
+@media print {
+  .aj-item {
+    break-inside: avoid;
   }
 }

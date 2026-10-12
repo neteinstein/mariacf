@@ -24,18 +24,25 @@ e das pastas `calculadora-*`; o teste `tests/site.test.mjs` avisa quando ficam d
 
 ## Doenças
 
-A página de doenças mostra um cartão animado por doença (41, das mais frequentes em Portugal), com pesquisa e
-filtro por área (`/doencas/?q=colesterol`, `/doencas/?cat=Oncologia`). Ao abrir um cartão, a explicação aparece em separadores
-por idade (Crianças 3–5, Crianças 5–12, Adolescentes 13–17, Adultos 18–65, Séniores 65+), com os botões
-«Enviar por email» e «Imprimir» das ferramentas. O estado fica no URL (`/doencas/?d=diabetes&idade=65+`), por isso
-cada separador pode ser partilhado; a impressão sai sempre com as cores do tema claro.
+A página de doenças mostra um cartão animado por doença (45, das mais frequentes em Portugal), com pesquisa e
+filtro por área (`/doencas/?q=colesterol`, `/doencas/?cat=Oncologia`). Cada doença tem a sua página
+(`/doencas/diabetes/`), com a explicação em separadores por idade (Crianças 3–5, Crianças 5–12, Adolescentes 13–17,
+Adultos 18–65, Séniores 65+) e os botões «Enviar por email» e «Imprimir folheto». A idade fica no URL
+(`/doencas/diabetes/?idade=65%2B`), por isso cada separador pode ser partilhado; as ligações antigas
+(`/doencas/?d=diabetes&idade=65+`) seguem para lá. A impressão sai em A4, com as cores do tema claro e, no fim, um
+código QR que leva de volta à explicação. Sem JavaScript, a página mostra os cinco grupos seguidos.
 
 - `assets/js/doencas-dados.js` — o conteúdo (sem DOM, testado em `tests/doencas.test.mjs`).
   Os 3–5 anos só têm imagens com legendas curtas; os mais velhos juntam texto, mitos e quando procurar ajuda.
   `resumoDoenca()` prepara o texto do email de cada separador.
 - `assets/js/doencas-ilustracoes.js` — ilustrações SVG animadas só com CSS (classes `an-*` em `styles.css`)
   e as miniaturas animadas dos cartões (classes `deco-*`).
-- `assets/js/doencas.js` — a grelha, a pesquisa, os separadores, o email/impressão e a navegação.
+- `assets/js/doencas-vista.js` — o HTML dos cartões e da página de cada doença (sem DOM).
+- `assets/js/doencas.js` — a grelha, a pesquisa e o filtro por área.
+- `assets/js/doenca.js` — os separadores por idade, o email e a impressão na página de cada doença.
+- `scripts/gerar.mjs` — escreve as páginas `doencas/<id>/index.html` (com o código QR do folheto), o índice da
+  pesquisa global e o `sitemap.xml`. Depois de mudar os dados, correr `npm run gerar`; o teste
+  `tests/gerado.test.mjs` falha se os ficheiros gerados estiverem desatualizados.
 - `assets/js/icones.js` — os ícones SVG de linha dos cartões de doenças e de ferramentas (e das etiquetas
   das idades). A página de ferramentas tem os mesmos SVG escritos no HTML, com `data-icone`; o teste
   `tests/icones.test.mjs` confirma que coincidem com a biblioteca.
@@ -45,7 +52,20 @@ factos, tipo de contacto) é texto pequeno em maiúsculas, sem contorno.
 
 Para acrescentar uma doença, basta um novo objeto em `DOENCAS` com os cinco grupos, uma área de `CATEGORIAS`
 e uma miniatura; os testes verificam que as ilustrações referidas existem, que cada grupo tem o tipo de
-conteúdo esperado e que o email de cada separador cabe num link `mailto:`.
+conteúdo esperado e que o email de cada separador cabe num link `mailto:`. Depois, `npm run gerar` cria a página da
+doença e acrescenta-a ao sitemap e à pesquisa (e o teste do service worker pede-a na lista `PRECACHE`).
+
+## Pesquisa, favoritos e páginas de apoio
+
+- **Pesquisa global** (`assets/js/pesquisa.js`): botão de lupa no cabeçalho de todas as páginas, ou Ctrl/⌘+K e «/».
+  Procura em ferramentas (incluindo os nomes dos separadores, como CURB-65), doenças e secções, a partir de
+  `assets/js/pesquisa-indice.js` (gerado; só é carregado quando a caixa abre).
+- **Favoritos e recentes** (`assets/js/favoritos.js`): cada calculadora tem «Guardar nos favoritos»; a página de
+  ferramentas mostra as favoritas e as usadas recentemente. Fica só no browser (`localStorage`).
+- **SEO**: `<link rel="canonical">` e `og:url` em todas as páginas, dados estruturados (JSON-LD) no início, Sobre,
+  USF e doenças, `sitemap.xml`, `robots.txt` e uma página `404.html` com pesquisa.
+- **Fontes clínicas**: cada calculadora termina com a secção «Fontes» e a data da última revisão; o teste
+  `tests/site.test.mjs` exige ambas.
 
 ## Ferramentas
 
@@ -61,13 +81,14 @@ Os separadores de cada página podem ser abertos diretamente com `?calc=<id>`.
 | Calendário de vacinas (PNV) | `/calculadora-vacinas/` | Esquema recomendado do PNV a partir da data de nascimento |
 | Bishop, Apgar e Glasgow pediátrico | `/calculadora-parto-neonatal/` | |
 | Data provável de parto | `/calculadora-dpp/` | DUM ou ecografia, com calendário da vigilância da gravidez |
+| Contraceção: critérios da OMS | `/calculadora-contracecao/` | Categorias de elegibilidade (MEC, 6.ª edição, 2025) de seis métodos por idade, pós-parto e condições |
 | Aumento de peso na gravidez | `/calculadora-gravidez-peso/` | Recomendações IOM 2009 por IMC pré-gravidez |
 | SCORE2 e SCORE2-Diabetes | `/calculadora-risco-cardiovascular/` | |
 | CHA₂DS₂-VASc e HAS-BLED | `/calculadora-anticoagulacao/` | |
 | ITB e peso ideal/ajustado | `/calculadora-vascular/` | |
 | IMC e ASC | `/calculadora-imc-asc/` | IMC, ASC (Mosteller, Du Bois) e perímetro abdominal |
 | FINDRISC, MUST e risco de fratura | `/calculadora-rastreio/` | |
-| CKD-EPI, Cockcroft-Gault e KDIGO | `/calculadora-funcao-renal/` | eTFG, CrCl e estadiamento G/A |
+| CKD-EPI, Cockcroft-Gault e KDIGO | `/calculadora-funcao-renal/` | eTFG, CrCl, estadiamento G/A e ajuste de dose de 10 fármacos |
 | IPSS | `/calculadora-urologia/` | |
 | Fórmulas laboratoriais | `/calculadora-laboratorial/` | LDL, Na e Ca corrigidos, eAG, anion gap, osmolaridade, água livre, HOMA-IR, conversão de unidades |
 | FIB-4, Child-Pugh e MELD | `/calculadora-hepatica/` | FIB-4, NAFLD fibrosis score, APRI, Child-Pugh, MELD-Na |
@@ -101,13 +122,15 @@ LMS oficiais da OMS (padrões 2006 até aos 60 meses, referência 2007 dos 61 ao
    - também há `.fx-pessoas` (100 pessoas, risco em %), `.fx-icones` (um ícone por unidade), `.fx-gauss`
      (curva normal para Z-scores), `.fx-degraus` (níveis em escada) e `.fx-acronimo` (letras que acendem
      com os campos `data-campo`).
-3. Acrescentar o cartão em `ferramentas/index.html` e os ficheiros novos à lista `PRECACHE` de `sw.js`
-   — o teste `tests/site.test.mjs` falha se faltar algum.
+3. Acrescentar o cartão em `ferramentas/index.html`, a secção «Fontes» na página e os ficheiros novos à lista
+   `PRECACHE` de `sw.js` — o teste `tests/site.test.mjs` falha se faltar algum. Correr `npm run gerar` para a
+   ferramenta entrar no índice da pesquisa e no sitemap.
 
 ### Funcionamento sem rede
 
 O site é instalável (`manifest.webmanifest`) e funciona sem ligação graças ao service worker
-`sw.js` («rede primeiro»: com ligação serve sempre a versão mais recente e atualiza a cache).
+`sw.js` («rede primeiro»: com ligação serve sempre a versão mais recente e atualiza a cache). Os tipos de letra
+(Fraunces e Plus Jakarta Sans, licença SIL OFL) estão em `assets/fonts/`, sem pedidos ao Google Fonts.
 
 ### Cores e paletas
 
@@ -131,16 +154,21 @@ nos dois temas; as cores dos níveis de risco (`--sun`, `--coral`, `--danger`) s
 ## Desenvolvimento
 
 ```bash
+npm ci                        # dependências de desenvolvimento (QR code, Playwright, axe-core)
 python3 -m http.server 8000   # abrir http://localhost:8000
 npm test                      # testes da lógica e da integridade do site (Node 18+)
+npm run gerar                 # páginas das doenças, índice da pesquisa e sitemap
+npm run test:a11y             # acessibilidade (axe, WCAG 2.1 AA) de todas as páginas, nos dois temas
 ```
+
+O teste de acessibilidade precisa do Chromium do Playwright (`npx playwright install chromium`).
 
 ## Publicação (GitHub Pages)
 
 O site é publicado pelo workflow `.github/workflows/pages.yml` a cada push para `main`
 (também pode ser corrido à mão em *Actions → Deploy GitHub Pages → Run workflow*).
 O workflow corre os testes e publica todo o repositório (página inicial, `sns/`, `sobre/`, `usf/`, todas as pastas
-`calculadora-*/` e `assets/`), exceto `tests/`, `.github/`, `package.json` e este README.
+`calculadora-*/`, `doencas/` e `assets/`), exceto `tests/`, `scripts/`, `.github/`, `package.json` e este README.
 Nos pull requests corre só os testes e a preparação do site, sem publicar.
 
 Configuração única: em **Settings → Pages → Build and deployment**, escolher *Source: GitHub Actions*.

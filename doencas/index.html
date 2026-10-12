@@ -8,6 +8,8 @@
   <meta name="theme-color" content="#125a98">
   <meta property="og:title" content="Doenças explicadas para todas as idades · Saúde em Família">
   <meta property="og:description" content="Doenças frequentes explicadas a crianças, adolescentes, adultos e séniores.">
+  <link rel="canonical" href="https://mariacf.pt/doencas/">
+  <meta property="og:url" content="https://mariacf.pt/doencas/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Saúde em Família">
   <meta property="og:locale" content="pt_PT">
@@ -19,14 +21,14 @@
   <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="../manifest.webmanifest">
   <link rel="apple-touch-icon" href="../assets/img/icon-180.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../assets/css/styles.css">
   <script>try{var t=localStorage.getItem('mcf-theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t;var p=localStorage.getItem('mcf-palette');if(/^(verde|petroleo|pastel)$/.test(p))document.documentElement.dataset.palette=p}catch(e){}</script>
   <script>
-    // Ao abrir diretamente uma doença, esconder a grelha antes de desenhar a página.
-    if (/[?&]d=/.test(location.search)) document.documentElement.classList.add('com-doenca');
+    // Cada doença tem agora a sua página (doencas/<id>/): as ligações antigas «?d=<id>&idade=<grupo>» seguem para lá.
+    (function () {
+      var p = new URLSearchParams(location.search), d = p.get('d'), idade = p.get('idade');
+      if (d && /^[a-z0-9-]+$/.test(d)) location.replace(d + '/' + (idade ? '?idade=' + encodeURIComponent(idade) : ''));
+    })();
   </script>
 <script data-goatcounter="https://mariacf.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -106,7 +108,6 @@
       <p class="doencas-nota reveal">Procura uma calculadora ou um questionário clínico? Estão em <a href="../ferramentas/">Ferramentas</a>.</p>
     </section>
 
-    <section class="wrap doenca" id="doenca" aria-labelledby="doenca-titulo" hidden></section>
   </main>
 
   <footer class="site-footer">

@@ -3759,6 +3759,360 @@ export const DOENCAS = [
       },
     },
   },
+
+  {
+    id: 'infecao-urinaria',
+    nome: 'Infeção urinária',
+    alias: 'Cistite',
+    icone: 'bexiga',
+    categoria: 'Rins e urologia',
+    tambem: ['Infeções'],
+    palavras: 'cistite ardor a urinar xixi bexiga urina pielonefrite infeção do trato urinário itu micção frequente urgência antibiótico',
+    resumo: 'Infeção da bexiga (cistite) ou, mais raramente, do rim. Dá ardor a urinar e vontade de urinar muitas vezes. É muito frequente nas mulheres.',
+    heroi: 'bexiga',
+    deco: 'rim',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['bexiga', 'Quando o xixi arde, a bexiga está doente'],
+          ['agua', 'Beber água ajuda a limpar a bexiga'],
+          ['relogio', 'Não esperar muito para ir fazer xixi'],
+          ['lavar-maos', 'Limpar sempre da frente para trás'],
+          ['medico', 'O médico vê o xixi e ajuda'],
+          ['abraco', 'Com o remédio certo, fica boa'],
+        ],
+      },
+      '5-12': {
+        intro: 'A infeção urinária acontece quando micróbios entram na bexiga, o saco onde o xixi fica guardado. O xixi passa a arder e dá vontade de ir à casa de banho muitas vezes. O médico pode receitar um remédio que mata os micróbios.',
+        imagens: [
+          ['bexiga', 'Micróbios na bexiga fazem o xixi arder'],
+          ['agua', 'Beber água ao longo do dia'],
+          ['relogio', 'Ir à casa de banho quando apetece, sem esperar'],
+        ],
+        seccoes: [
+          { ico: '🦠', titulo: 'O que é?', texto: 'O xixi é feito nos rins e guardado na bexiga. Às vezes, micróbios que vivem no intestino sobem pelo canal do xixi e instalam-se na bexiga. É mais comum nas meninas, porque o canal é mais curto.' },
+          { ico: '😣', titulo: 'Como se sente?', lista: ['Ardor ou dor ao fazer xixi', 'Vontade de fazer xixi muitas vezes, mesmo que saia pouco', 'Dor na barriga, por baixo do umbigo', 'Às vezes, voltar a fazer xixi na cama ou nas cuecas', 'Febre, se a infeção subir até aos rins'] },
+          { ico: '💧', titulo: 'Como se evita?', lista: ['Beber água ao longo do dia', 'Não aguentar o xixi muito tempo', 'Limpar da frente para trás depois de ir à casa de banho', 'Combater a prisão de ventre: fruta, legumes e água'] },
+          { ico: '💊', titulo: 'Como se trata?', texto: 'O médico pede uma análise ao xixi e, se for preciso, receita um antibiótico. É importante tomá-lo todos os dias até ao fim, mesmo que já não arda.' },
+        ],
+        curiosidade: 'Uma pessoa faz, em média, entre 4 e 7 xixis por dia — e a bexiga de um adulto consegue guardar quase meio litro!',
+      },
+      '13-17': {
+        intro: 'A infeção urinária é frequente nas raparigas e mulheres jovens, sobretudo depois do início da vida sexual. Trata-se bem, mas não deve ser ignorada: se subir até aos rins, pode ser grave.',
+        imagens: [
+          ['bexiga', 'Ardor, urgência e vontade de urinar muitas vezes'],
+          ['agua', 'Hidratação e não adiar a ida à casa de banho'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Sinais típicos', lista: ['Ardor ou dor a urinar', 'Urinar muitas vezes e pouca quantidade', 'Urgência — sensação de não conseguir esperar', 'Dor no fundo da barriga', 'Urina turva ou com sangue'] },
+          { ico: '🛡️', titulo: 'Prevenção', lista: ['Beber água suficiente', 'Urinar depois das relações sexuais', 'Limpar da frente para trás', 'Evitar duches vaginais e produtos perfumados na zona genital', 'Não adiar a ida à casa de banho'] },
+          { ico: '🤔', titulo: 'E se for outra coisa?', texto: 'Ardor a urinar com corrimento, comichão ou feridas genitais pode ser uma infeção vaginal ou uma infeção sexualmente transmissível. Nesses casos, fala com o médico ou procura uma consulta de saúde juvenil — é confidencial.' },
+        ],
+        mitos: [
+          ['Sumo de arando cura a infeção urinária.', 'Não cura. Os estudos sobre prevenção são pouco consistentes. Se houver sintomas, é preciso falar com o médico.'],
+          ['Se o ardor passar, posso parar o antibiótico.', 'Não. Deve tomar-se o antibiótico durante o tempo indicado, para a infeção não voltar.'],
+          ['Só apanha infeções urinárias quem não tem higiene.', 'Falso. Acontece a muitas pessoas saudáveis e cuidadosas; a anatomia e as relações sexuais contam muito.'],
+        ],
+        alerta: { titulo: 'Vai ao médico depressa se…', lista: ['Tiveres febre ou arrepios', 'Doer nas costas, de um lado, abaixo das costelas', 'Vomitares', 'Houver sangue na urina', 'Estiveres grávida ou puderes estar'] },
+      },
+      '18-65': {
+        intro: 'A cistite é uma das infeções mais frequentes nas mulheres: cerca de metade terá pelo menos uma ao longo da vida. Nos homens é menos comum e merece sempre avaliação médica, tal como na gravidez.',
+        imagens: [
+          ['bexiga', 'Cistite: infeção da bexiga'],
+          ['analise', 'A análise à urina ajuda nos casos menos claros'],
+          ['comprimido', 'Antibiótico receitado pelo médico'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Sintomas', lista: ['Ardor ou dor a urinar', 'Vontade frequente e urgente de urinar', 'Dor ou peso no fundo da barriga', 'Urina turva, com cheiro forte ou com sangue'] },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Na mulher saudável, com sintomas típicos, o médico pode receitar o antibiótico sem análises', 'Tomar o antibiótico como indicado, até ao fim', 'Beber água e tomar paracetamol para as dores', 'Não usar antibióticos que sobraram de outras vezes'] },
+          { ico: '🔁', titulo: 'Infeções que se repetem', texto: 'Com duas infeções em seis meses, ou três num ano, vale a pena falar com o médico: pode ser útil pedir uma urocultura, rever hábitos e, em alguns casos, fazer prevenção. Depois da menopausa, o estrogénio vaginal pode reduzir as recorrências.' },
+          { ico: '🤰', titulo: 'Gravidez e homens', texto: 'Na gravidez, mesmo uma infeção sem sintomas deve ser tratada, por isso a urina é analisada nas consultas. No homem, uma infeção urinária pode envolver a próstata e precisa sempre de avaliação médica.' },
+        ],
+        alerta: { titulo: 'Procure ajuda no próprio dia se…', lista: ['Febre, arrepios ou mal-estar geral', 'Dor lombar de um lado (pode ser infeção do rim)', 'Náuseas ou vómitos', 'Gravidez', 'Sintomas que não melhoram em 48 horas de antibiótico'] },
+      },
+      '65+': {
+        intro: 'Depois dos 65 anos, a infeção urinária pode não dar os sintomas habituais: às vezes, o primeiro sinal é confusão, uma queda ou perder o controlo da urina. Por outro lado, ter bactérias na urina sem sintomas é frequente nesta idade e, em geral, não precisa de antibiótico.',
+        imagens: [
+          ['bexiga', 'Ardor e urgência — mas nem sempre'],
+          ['cerebro', 'Confusão súbita pode ser um sinal de infeção'],
+          ['agua', 'Beber água ao longo do dia, mesmo sem sede'],
+          ['medico', 'O médico decide se é preciso antibiótico'],
+        ],
+        seccoes: [
+          { ico: '🧠', titulo: 'Sinais a que estar atento', lista: ['Ardor ou urgência a urinar', 'Confusão ou sonolência que aparecem de repente', 'Perder a urina quando antes não acontecia', 'Febre, arrepios ou mal-estar', 'Quedas sem explicação'] },
+          { ico: '🔬', titulo: 'Urina turva não é sempre infeção', texto: 'Urina turva ou com cheiro forte, sem outros sintomas, não chega para diagnosticar uma infeção. Tratar bactérias na urina sem sintomas não traz benefício e aumenta as resistências aos antibióticos.' },
+          { ico: '💧', titulo: 'Prevenção', lista: ['Beber água regularmente, a não ser que o médico tenha indicado restrição', 'Ir à casa de banho com regularidade', 'Tratar a prisão de ventre', 'Nas mulheres, perguntar ao médico sobre o estrogénio vaginal', 'Nos homens, falar ao médico de dificuldades em esvaziar a bexiga'] },
+        ],
+        alerta: { titulo: 'Ligue ao médico ou ao SNS 24 (808 24 24 24) se…', lista: ['Febre ou arrepios', 'Confusão de aparecimento recente', 'Não conseguir urinar', 'Dor nas costas, de um lado', 'Sinais de desidratação: boca seca, urinar muito pouco'] },
+      },
+    },
+  },
+
+  {
+    id: 'otite',
+    nome: 'Otite média aguda',
+    alias: 'Dor de ouvidos',
+    icone: 'cabeca',
+    categoria: 'Infeções',
+    palavras: 'otite dor de ouvido ouvidos orelha tímpano pus supuração bebé criança constipação febre audição otite externa piscina',
+    resumo: 'Infeção do ouvido médio, por trás do tímpano, muito frequente nas crianças pequenas depois de uma constipação. Dói muito, mas a maioria melhora em 2 a 3 dias.',
+    heroi: 'ouvido',
+    deco: 'cocos',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['ouvido', 'O ouvido está doente e dói'],
+          ['lenco', 'Começa muitas vezes com o nariz entupido'],
+          ['termometro', 'Às vezes, também há febre'],
+          ['comprimido', 'O xarope tira as dores'],
+          ['cama', 'Descansar no colo e na cama'],
+          ['abraco', 'Em poucos dias, o ouvido fica bom'],
+        ],
+      },
+      '5-12': {
+        intro: 'A otite é uma infeção dentro do ouvido, atrás do tímpano — uma pele fininha que vibra com os sons. Aparece muitas vezes depois de uma constipação, porque o canal que liga o nariz ao ouvido fica entupido.',
+        imagens: [
+          ['ouvido', 'Atrás do tímpano junta-se líquido e dói'],
+          ['lenco', 'O nariz entupido ajuda a otite a aparecer'],
+          ['comprimido', 'Remédio para as dores, à hora certa'],
+        ],
+        seccoes: [
+          { ico: '👂', titulo: 'O que é?', texto: 'Entre o nariz e o ouvido há um pequeno canal. Quando estamos constipados, ele fica inchado e o ouvido não consegue escoar o líquido. Os micróbios aproveitam e fazem uma infeção.' },
+          { ico: '😖', titulo: 'Como se sente?', lista: ['Dor de ouvidos, que muitas vezes piora à noite, deitado', 'Febre', 'Ouvir pior, como se o ouvido estivesse tapado', 'Às vezes sai líquido ou pus do ouvido — e a dor alivia'] },
+          { ico: '💊', titulo: 'Como se trata?', lista: ['Paracetamol ou ibuprofeno para as dores e a febre', 'Muitas otites curam sozinhas em 2 a 3 dias', 'O médico decide se é preciso antibiótico', 'Não pôr gotas nem algodão dentro do ouvido sem indicação médica'] },
+          { ico: '🛡️', titulo: 'Como se evita?', lista: ['Ter as vacinas em dia, incluindo a do pneumococo', 'Lavar as mãos com frequência', 'Ninguém deve fumar perto das crianças', 'Limpar o nariz com soro quando está entupido'] },
+        ],
+        curiosidade: 'O tímpano é tão fino como uma folha de papel e, mesmo assim, consegue sentir vibrações minúsculas — é graças a ele que ouvimos!',
+        ligacoes: [{ href: 'calculadora-doses/', texto: 'Doses de paracetamol e ibuprofeno nas crianças' }],
+      },
+      '13-17': {
+        intro: 'Nesta idade, a otite média é menos frequente do que em criança. Mais comum é a otite externa — a «otite das piscinas» —, uma infeção do canal do ouvido depois de muitos banhos ou de usar cotonetes.',
+        imagens: [
+          ['ouvido', 'Otite média: atrás do tímpano'],
+          ['nadar', 'Otite externa: água que fica no canal do ouvido'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Média ou externa?', lista: ['Otite média: dor profunda, ouvido tapado, muitas vezes depois de uma constipação', 'Otite externa: dor ao tocar ou puxar a orelha, comichão, canal inchado', 'Ambas podem fazer sair líquido do ouvido'] },
+          { ico: '🏊', titulo: 'Prevenir a otite externa', lista: ['Secar bem as orelhas depois do banho ou da piscina, inclinando a cabeça', 'Não usar cotonetes dentro do canal', 'Tampões ou touca para quem tem otites repetidas'] },
+          { ico: '🎧', titulo: 'Cuidar da audição', texto: 'Ouvir música alta com auscultadores durante muito tempo pode lesar a audição de forma permanente. Uma regra simples: volume abaixo de 60 % e pausas frequentes.' },
+        ],
+        mitos: [
+          ['A cera é sujidade e tem de ser tirada com cotonetes.', 'A cera protege o ouvido e sai sozinha. Os cotonetes empurram-na para dentro e podem ferir o canal.'],
+          ['Todas as otites precisam de antibiótico.', 'Não. Muitas otites médias curam sozinhas, e a otite externa trata-se geralmente com gotas.'],
+          ['Ir à piscina com uma otite média faz mal.', 'O problema é sobretudo na otite externa ou quando o tímpano está perfurado. Pergunta ao médico quando podes voltar.'],
+        ],
+        alerta: { titulo: 'Vai ao médico se…', lista: ['A dor for muito forte ou durar mais de 2 a 3 dias', 'Sair pus ou sangue do ouvido', 'Ficares a ouvir mal depois de passar a dor', 'Aparecer inchaço ou vermelhidão atrás da orelha'] },
+        ligacoes: [{ href: 'calculadora-doses/', texto: 'Doses de paracetamol e ibuprofeno nas crianças' }],
+      },
+      '18-65': {
+        intro: 'A otite média aguda é sobretudo uma doença das crianças pequenas — é das razões mais comuns de consulta antes dos 3 anos. Nos adultos, a otite externa e a sensação de ouvido tapado depois de uma constipação ou de uma viagem de avião são mais frequentes.',
+        imagens: [
+          ['ouvido', 'Dor, febre e ouvido tapado'],
+          ['lenco', 'Quase sempre depois de uma constipação'],
+          ['medico', 'Muitas vezes, primeiro trata-se a dor e vigia-se'],
+        ],
+        seccoes: [
+          { ico: '👶', titulo: 'Nas crianças', lista: ['Dor (o bebé leva a mão à orelha, chora, dorme mal), febre e irritabilidade', 'O tratamento da dor com paracetamol ou ibuprofeno é sempre importante', 'Em algumas crianças com mais de 6 meses e sintomas ligeiros, o médico pode propor vigiar 48 a 72 horas antes de dar antibiótico', 'Nos bebés com menos de 6 meses, e nos casos mais intensos, costuma dar-se antibiótico'] },
+          { ico: '🛡️', titulo: 'Prevenção', lista: ['Vacinas em dia (pneumococo e gripe)', 'Amamentação nos primeiros meses', 'Casa e carro sem fumo de tabaco', 'Não dar o biberão com o bebé deitado'] },
+          { ico: '✈️', titulo: 'Nos adultos', texto: 'Constipações e viagens de avião podem deixar o ouvido tapado durante dias. Mastigar, engolir ou bocejar na descida do avião ajuda. Uma otite média que se repete ou um ouvido tapado durante semanas deve ser avaliado pelo médico.' },
+        ],
+        alerta: { titulo: 'Procure o médico depressa se…', lista: ['Bebé com menos de 3 meses com febre', 'Inchaço, dor ou vermelhidão atrás da orelha', 'Dor de cabeça forte, rigidez do pescoço ou sonolência', 'Cara descaída de um lado ou tonturas fortes', 'Sem melhoria ao fim de 48 a 72 horas'] },
+        ligacoes: [{ href: 'calculadora-doses/', texto: 'Doses de paracetamol e ibuprofeno nas crianças' }],
+      },
+      '65+': {
+        intro: 'Depois dos 65 anos a otite média é rara. É mais frequente o ouvido «tapado» por cera ou a perda de audição da idade. Nas pessoas com diabetes, uma otite externa com muita dor merece atenção especial.',
+        imagens: [
+          ['ouvido', 'Dor ou ouvido tapado: falar com o médico'],
+          ['medico', 'A cera acumulada pode ser tirada no centro de saúde'],
+          ['glucometro', 'Diabetes e dor de ouvido forte: consulta rápida'],
+          ['conversa', 'Ouvir bem ajuda a manter a memória e a convivência'],
+        ],
+        seccoes: [
+          { ico: '👂', titulo: 'Ouvido tapado', texto: 'A causa mais comum é a cera. Gotas para amolecer a cera podem ajudar; a lavagem deve ser feita por um profissional. Não use cotonetes nem objetos dentro do ouvido.' },
+          { ico: '🩸', titulo: 'Diabetes e ouvidos', texto: 'Nas pessoas com diabetes, uma otite externa com dor muito intensa, que piora à noite e com pus, pode espalhar-se ao osso. Precisa de ser vista pelo médico com rapidez.' },
+          { ico: '🔊', titulo: 'Perda de audição', lista: ['Pedir para repetir, aumentar o volume da televisão ou ter dificuldade em grupo são sinais de alerta', 'Os aparelhos auditivos melhoram a comunicação e a qualidade de vida', 'Perda de audição súbita, num só ouvido, é uma urgência'] },
+        ],
+        alerta: { titulo: 'Procure ajuda no próprio dia se…', lista: ['Perder a audição de repente', 'Dor forte de ouvido, sobretudo com diabetes', 'Febre com pus ou sangue a sair do ouvido', 'Cara descaída de um lado ou tonturas fortes'] },
+      },
+    },
+  },
+
+  {
+    id: 'rinite-alergica',
+    nome: 'Rinite alérgica',
+    alias: 'Alergia no nariz',
+    icone: 'lencos',
+    categoria: 'Respiratório',
+    palavras: 'rinite alergia alérgica espirros nariz entupido pingo comichão pólen primavera ácaros pó gatos cães olhos lacrimejantes febre dos fenos anti-histamínico',
+    resumo: 'Inflamação do nariz por alergia a pólenes, ácaros ou animais: espirros, comichão, nariz a pingar e entupido. Não é grave, mas pode atrapalhar muito o sono e a escola ou o trabalho.',
+    heroi: 'alergenos',
+    deco: 'respiro',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['alergenos', 'O pó e as flores fazem o nariz espirrar'],
+          ['lenco', 'Atchim! O nariz pinga e faz comichão'],
+          ['janela', 'Fechar a janela quando há muito pólen'],
+          ['cama', 'Lençóis lavados e quarto arrumado'],
+          ['medico', 'O médico ajuda o nariz a ficar bem'],
+          ['brincar', 'E depois brincar à vontade!'],
+        ],
+      },
+      '5-12': {
+        intro: 'A rinite alérgica acontece quando o nariz reage a coisas que, para a maioria das pessoas, são inofensivas — como o pólen das plantas, o pó da casa ou o pelo de alguns animais. O nariz pensa que são inimigos e começa a espirrar.',
+        imagens: [
+          ['alergenos', 'Pólen, ácaros e pelo de animais'],
+          ['lenco', 'Espirros, comichão e nariz a pingar'],
+          ['janela', 'Na primavera, janelas fechadas nas horas de mais pólen'],
+        ],
+        seccoes: [
+          { ico: '🤧', titulo: 'Como se sente?', lista: ['Muitos espirros seguidos', 'Nariz a pingar como água, ou entupido', 'Comichão no nariz, nos olhos ou na garganta', 'Olhos vermelhos e com lágrimas', 'Dormir mal e acordar cansado'] },
+          { ico: '🌼', titulo: 'O que causa?', texto: 'Os ácaros do pó vivem nos colchões, almofadas e peluches e dão sintomas todo o ano. O pólen das árvores e das ervas dá sintomas sobretudo na primavera. Os gatos e os cães também podem causar alergia.' },
+          { ico: '🧽', titulo: 'O que ajuda?', lista: ['Lavar o nariz com soro', 'Aspirar e arejar o quarto, com poucos peluches', 'Lavar a roupa da cama todas as semanas, a 60 °C', 'Tomar o medicamento que o médico indicar, todos os dias, se for para tomar assim'] },
+        ],
+        curiosidade: 'Um só pé de ambrósia, uma erva muito alergénica, pode libertar mil milhões de grãos de pólen — tão leves que o vento os leva por muitos quilómetros!',
+      },
+      '13-17': {
+        intro: 'A rinite alérgica é muito frequente na adolescência. Pode parecer «só uma constipação que nunca passa», mas atrapalha o sono, a concentração e até os resultados nos testes. E muitas vezes anda de mãos dadas com a asma.',
+        imagens: [
+          ['alergenos', 'Pólenes, ácaros e animais'],
+          ['sono', 'Nariz entupido à noite = cansaço de dia'],
+          ['inalador', 'Spray nasal de corticoide, usado todos os dias'],
+        ],
+        seccoes: [
+          { ico: '🤧', titulo: 'Rinite ou constipação?', lista: ['Rinite: espirros em salva, comichão, sem febre, dura semanas', 'Constipação: garganta irritada, às vezes febre baixa, passa numa semana', 'Rinite: sintomas repetem-se na mesma época do ano ou com o pó'] },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Lavagens nasais com soro', 'Anti-histamínicos que não dão sono', 'Spray nasal de corticoide: demora alguns dias a fazer efeito e deve ser usado com regularidade', 'Imunoterapia («vacinas da alergia»), decidida pelo imunoalergologista, em alguns casos'] },
+          { ico: '🫁', titulo: 'E a asma?', texto: 'Muitas pessoas com rinite alérgica têm também asma. Tosse à noite, pieira ou falta de ar no desporto devem ser contadas ao médico. Tratar bem o nariz ajuda a controlar a asma.' },
+        ],
+        mitos: [
+          ['Os sprays de corticoide para o nariz são perigosos.', 'Nas doses habituais são seguros, mesmo usados durante muito tempo, porque quase não passam para o sangue.'],
+          ['O spray descongestionante pode usar-se sempre que o nariz entope.', 'Usado mais de 3 a 5 dias seguidos, faz o nariz entupir ainda mais (efeito «ricochete»).'],
+          ['A alergia passa sempre com a idade.', 'Às vezes melhora, mas muitas pessoas mantêm a rinite em adultas. Por isso vale a pena tratá-la bem.'],
+        ],
+        alerta: { titulo: 'Fala com o médico se…', lista: ['Os sintomas não te deixam dormir ou estudar', 'Tiveres tosse, pieira ou falta de ar', 'Tiveres o nariz sempre entupido de um só lado', 'Sangrares do nariz com frequência'] },
+      },
+      '18-65': {
+        intro: 'A rinite alérgica afeta cerca de um em cada quatro portugueses. Não é uma doença grave, mas reduz a qualidade do sono, a concentração e a produtividade. Com o tratamento certo, a maioria das pessoas fica bem controlada.',
+        imagens: [
+          ['alergenos', 'Pólenes na primavera; ácaros todo o ano'],
+          ['lenco', 'Espirros, rinorreia, comichão e congestão'],
+          ['inalador', 'Corticoide nasal: o tratamento mais eficaz'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Sintomas', lista: ['Espirros em salva', 'Nariz a pingar (líquido claro) ou entupido', 'Comichão no nariz, no céu da boca e nos olhos', 'Olhos vermelhos e lacrimejantes', 'Perda do olfato, nos casos mais persistentes'] },
+          { ico: '💊', titulo: 'Tratamento', lista: ['Lavagens nasais com soro fisiológico', 'Anti-histamínicos orais de nova geração (dão pouco sono)', 'Corticoide nasal, todos os dias durante a época de sintomas', 'Descongestionantes nasais só por poucos dias', 'Imunoterapia com alergénios, em casos selecionados'] },
+          { ico: '🏠', titulo: 'Reduzir a exposição', lista: ['Pólenes: consultar o boletim polínico, manter janelas fechadas nas horas de mais pólen, óculos de sol na rua', 'Ácaros: capas antiácaros, lavar a roupa da cama a 60 °C, menos tapetes e alcatifas', 'Animais: mantê-los fora do quarto'] },
+        ],
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Sintomas que não melhoram com o tratamento', 'Tosse, pieira ou falta de ar', 'Obstrução ou hemorragia nasal persistente de um só lado', 'Dor na cara ou corrimento espesso durante mais de 10 dias'] },
+      },
+      '65+': {
+        intro: 'A rinite alérgica tende a ser mais ligeira depois dos 65 anos, mas pode continuar a incomodar. Nesta idade, a escolha dos medicamentos pede mais cuidado: alguns dão sono e aumentam o risco de quedas, e outros sobem a tensão arterial.',
+        imagens: [
+          ['alergenos', 'Pó, pólen ou animais'],
+          ['lenco', 'Espirros e nariz a pingar'],
+          ['quedas', 'Anti-histamínicos antigos dão sono e podem causar quedas'],
+          ['tensiometro', 'Descongestionantes podem subir a tensão'],
+          ['medico', 'Pedir ao médico ou farmacêutico o medicamento mais seguro'],
+        ],
+        seccoes: [
+          { ico: '💊', titulo: 'Medicamentos com mais cuidado', lista: ['Preferir anti-histamínicos de nova geração, que quase não dão sono', 'Evitar os anti-histamínicos antigos: sonolência, confusão, boca seca, dificuldade em urinar', 'Descongestionantes orais ou em spray: podem subir a tensão e acelerar o coração', 'O corticoide nasal e as lavagens com soro são, em geral, boas opções'] },
+          { ico: '💧', titulo: 'Nariz a pingar sem alergia', texto: 'Nos mais velhos é frequente o nariz pingar ao comer ou com o frio, sem alergia. Chama-se rinite não alérgica e trata-se de outra forma — o médico ajuda a distinguir.' },
+          { ico: '🏠', titulo: 'Em casa', lista: ['Arejar a casa e limpar o pó com pano húmido', 'Lavar a roupa da cama a 60 °C', 'Manter os animais fora do quarto'] },
+        ],
+        alerta: { titulo: 'Fale com o médico se…', lista: ['Falta de ar, pieira ou tosse persistente', 'Sangue no nariz que se repete ou nariz entupido sempre do mesmo lado', 'Sonolência ou confusão depois de começar um medicamento para a alergia', 'Febre e dor na cara'] },
+      },
+    },
+  },
+
+  {
+    id: 'obstipacao',
+    nome: 'Obstipação',
+    alias: 'Prisão de ventre',
+    icone: 'intestino',
+    categoria: 'Digestivo',
+    palavras: 'obstipação prisão de ventre intestino preso cocó fezes duras evacuar fibras laxante sanita casa de banho dor de barriga hemorroidas fissura',
+    resumo: 'Evacuar poucas vezes, com fezes duras e com esforço. Quase sempre melhora com mais fibras, água, movimento e uma rotina na casa de banho.',
+    heroi: 'intestino',
+    deco: 'intestino',
+    grupos: {
+      '3-5': {
+        imagens: [
+          ['intestino', 'Quando o cocó fica preso, a barriga dói'],
+          ['fibra', 'Fruta, legumes e pão escuro ajudam'],
+          ['agua', 'Beber água muitas vezes ao dia'],
+          ['correr', 'Correr e brincar põe a barriga a trabalhar'],
+          ['relogio', 'Sentar na sanita depois de comer'],
+          ['abraco', 'Sem pressas e sem medo'],
+        ],
+      },
+      '5-12': {
+        intro: 'Ter prisão de ventre é fazer cocó poucas vezes, duro e com esforço — às vezes até dói. É muito comum nas crianças e quase sempre se resolve com mudanças no que se come e nos hábitos.',
+        imagens: [
+          ['intestino', 'O intestino precisa de fibra e água para trabalhar bem'],
+          ['fibra', 'Fruta com casca, legumes, feijão e pão escuro'],
+          ['correr', 'Mexer o corpo todos os dias'],
+        ],
+        seccoes: [
+          { ico: '🤔', titulo: 'Porque acontece?', texto: 'Às vezes come-se pouca fruta e legumes, bebe-se pouca água ou passa-se muito tempo sentado. E muitas crianças aguentam o cocó porque estão a brincar ou porque não gostam da casa de banho da escola — e quanto mais tempo fica lá dentro, mais duro fica.' },
+          { ico: '🥦', titulo: 'O que ajuda?', lista: ['Fruta e legumes em todas as refeições', 'Beber água em vez de sumos e refrigerantes', 'Correr, saltar, andar de bicicleta', 'Sentar na sanita 5 a 10 minutos depois do pequeno-almoço ou do jantar', 'Um banquinho debaixo dos pés, para os joelhos ficarem acima das ancas'] },
+          { ico: '🚽', titulo: 'Não aguentar', texto: 'Quando o corpo pede para ir à casa de banho, é para ir logo! Aguentar faz o cocó ficar mais duro e doer mais da próxima vez.' },
+          { ico: '💊', titulo: 'E se não chegar?', texto: 'O médico pode receitar um medicamento que amolece o cocó. É seguro e, às vezes, é preciso tomá-lo durante semanas ou meses, até o intestino ganhar boas rotinas.' },
+        ],
+        curiosidade: 'O intestino de um adulto, se fosse esticado, teria mais de 7 metros — é mais comprido do que um autocarro!',
+      },
+      '13-17': {
+        intro: 'A prisão de ventre é frequente na adolescência — horários apertados, pouca água, comida rápida e casas de banho da escola que se evitam. Não é perigosa, mas incomoda e pode causar dor e pequenas feridas no ânus.',
+        imagens: [
+          ['intestino', 'Fezes duras, poucas vezes e com esforço'],
+          ['fibra', 'Fibras: fruta, legumes, leguminosas e cereais integrais'],
+          ['agua', 'Água ao longo do dia'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Como saber', lista: ['Menos de 3 dejeções por semana', 'Fezes duras ou em bolinhas', 'Esforço ou dor para evacuar', 'Sensação de não esvaziar por completo'] },
+          { ico: '✅', titulo: 'O que fazer', lista: ['Pelo menos 5 porções de fruta e legumes por dia', 'Trocar o pão branco por integral', 'Beber água — leva uma garrafa para a escola', 'Exercício físico regular', 'Não adiar a ida à casa de banho', 'Pousar o telemóvel: ficar muito tempo sentado na sanita não ajuda'] },
+          { ico: '🩹', titulo: 'Fissuras e hemorroidas', texto: 'O esforço e as fezes duras podem causar uma pequena fissura no ânus (dor e um pouco de sangue vivo no papel) ou hemorroidas. Melhoram quando as fezes amolecem. Se o sangue se repetir, fala com o médico.' },
+        ],
+        mitos: [
+          ['É obrigatório evacuar todos os dias.', 'Não. Entre 3 vezes por dia e 3 vezes por semana pode ser normal. O que conta é não haver esforço nem dor.'],
+          ['Os laxantes viciam o intestino.', 'Os laxantes que amolecem as fezes, usados como o médico indica, são seguros. Os estimulantes não devem ser usados por conta própria durante muito tempo.'],
+          ['Comer muita fibra sem beber água resolve.', 'A fibra precisa de água para funcionar; sem ela, pode até piorar.'],
+        ],
+        alerta: { titulo: 'Fala com o médico se…', lista: ['Tiveres sangue nas fezes que se repete', 'Perderes peso sem querer', 'Tiveres dor de barriga forte ou vómitos', 'A prisão de ventre não melhorar com as mudanças de hábitos'] },
+      },
+      '18-65': {
+        intro: 'A obstipação afeta muitos adultos, sobretudo mulheres, na gravidez e com a toma de alguns medicamentos. Na maioria das vezes é funcional — sem doença por trás — e melhora com mudanças de estilo de vida.',
+        imagens: [
+          ['intestino', 'Trânsito intestinal lento'],
+          ['fibra', '25 a 30 g de fibra por dia'],
+          ['correr', 'Atividade física regular'],
+        ],
+        seccoes: [
+          { ico: '🔍', titulo: 'Causas frequentes', lista: ['Pouca fibra e pouca água', 'Sedentarismo e mudanças de rotina (viagens, turnos)', 'Gravidez', 'Medicamentos: opioides, ferro, cálcio, alguns antidepressivos e antiácidos', 'Hipotiroidismo e diabetes, menos vezes'] },
+          { ico: '✅', titulo: 'O que fazer', lista: ['Aumentar a fibra aos poucos: fruta, legumes, leguminosas, aveia, cereais integrais', 'Beber 1,5 a 2 litros de água por dia, se não houver contraindicação', 'Caminhar 30 minutos por dia', 'Reservar um tempo depois do pequeno-almoço para ir à casa de banho', 'Usar um banco debaixo dos pés na sanita'] },
+          { ico: '💊', titulo: 'Laxantes', texto: 'Se as medidas gerais não chegarem, os laxantes osmóticos (que retêm água nas fezes) são seguros e eficazes. Os laxantes estimulantes servem para uso ocasional. Fale com o médico ou farmacêutico antes de usar laxantes durante muito tempo.' },
+        ],
+        alerta: { titulo: 'Procure o médico se…', lista: ['Sangue nas fezes ou fezes negras', 'Perda de peso sem explicação', 'Mudança recente e persistente do hábito intestinal, sobretudo depois dos 50 anos', 'Dor abdominal forte com barriga inchada e sem conseguir expelir gases', 'Anemia ou história familiar de cancro do intestino'] },
+        ligacoes: [{ href: 'calculadora-plano-rastreios/', texto: 'Plano de rastreios por idade (cancro do cólon e reto)' }],
+      },
+      '65+': {
+        intro: 'Depois dos 65 anos, a prisão de ventre é muito frequente: o intestino fica mais lento, bebe-se menos, mexe-se menos e tomam-se mais medicamentos. Tratá-la evita desconforto, perda de apetite e, por vezes, complicações.',
+        imagens: [
+          ['intestino', 'Intestino mais lento com a idade'],
+          ['agua', 'Beber água mesmo sem sede'],
+          ['fibra', 'Fruta, legumes e cereais integrais'],
+          ['comprimido', 'Rever os medicamentos com o médico'],
+          ['correr', 'Caminhar todos os dias, ao seu ritmo'],
+        ],
+        seccoes: [
+          { ico: '💊', titulo: 'Medicamentos que prendem o intestino', lista: ['Analgésicos opioides (tramadol, codeína, morfina)', 'Ferro e cálcio', 'Alguns medicamentos para a tensão, a bexiga e a depressão', 'Peça ao médico para rever a lista se a prisão de ventre começou depois de um medicamento novo'] },
+          { ico: '✅', titulo: 'O que ajuda', lista: ['Beber água ao longo do dia, a não ser que o médico tenha limitado os líquidos', 'Ameixas, kiwis, sopa de legumes e pão integral', 'Caminhar dentro e fora de casa', 'Ir à casa de banho sempre à mesma hora e sem pressa', 'Laxantes osmóticos, se o médico indicar'] },
+          { ico: '⚠️', titulo: 'Fecaloma', texto: 'Quando as fezes ficam muito tempo retidas, podem formar uma massa dura no reto (fecaloma). Às vezes aparece uma diarreia líquida que escorre à volta, que pode ser confundida com diarreia. Se isto acontecer, fale com o médico.' },
+        ],
+        alerta: { titulo: 'Procure ajuda depressa se…', lista: ['Barriga muito inchada, com vómitos e sem expelir gases', 'Sangue nas fezes ou fezes negras', 'Perda de peso ou de apetite sem explicação', 'Mudança recente do hábito intestinal', 'Confusão, sobretudo se não evacua há vários dias'] },
+        ligacoes: [{ href: 'calculadora-plano-rastreios/', texto: 'Plano de rastreios por idade (cancro do cólon e reto)' }],
+      },
+    },
+  },
 ];
 
 export const encontrarDoenca = (id) => DOENCAS.find((d) => d.id === id) || null;
