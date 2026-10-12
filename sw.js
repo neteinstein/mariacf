@@ -4,7 +4,7 @@
 // e atualiza a cache; sem ligação, usa a última versão guardada.
 // A lista PRECACHE é verificada pelos testes (tests/site.test.mjs).
 
-const CACHE = 'mcf-v32';
+const CACHE = 'mcf-v33';
 
 const PRECACHE = [
   './',
@@ -88,6 +88,12 @@ const PRECACHE = [
   'usf/',
   'manifest.webmanifest',
   'assets/css/styles.css',
+  'assets/fonts/fraunces-italico-latin-ext.woff2',
+  'assets/fonts/fraunces-italico-latin.woff2',
+  'assets/fonts/fraunces-latin-ext.woff2',
+  'assets/fonts/fraunces-latin.woff2',
+  'assets/fonts/plus-jakarta-sans-latin-ext.woff2',
+  'assets/fonts/plus-jakarta-sans-latin.woff2',
   'assets/img/favicon.svg',
   'assets/img/icon-180.png',
   'assets/img/icon-192.png',
@@ -191,28 +197,10 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-const FONTES = ['https://fonts.googleapis.com', 'https://fonts.gstatic.com'];
-
 self.addEventListener('fetch', (event) => {
   const pedido = event.request;
   if (pedido.method !== 'GET') return;
   const url = new URL(pedido.url);
-
-  // Tipos de letra: cache primeiro (não mudam).
-  if (FONTES.includes(url.origin)) {
-    event.respondWith(
-      caches.match(pedido).then(
-        (guardada) =>
-          guardada ||
-          fetch(pedido).then((resposta) => {
-            const copia = resposta.clone();
-            caches.open(CACHE).then((cache) => cache.put(pedido, copia));
-            return resposta;
-          })
-      )
-    );
-    return;
-  }
 
   if (url.origin !== self.location.origin) return;
 

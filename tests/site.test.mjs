@@ -108,3 +108,11 @@ test('cada calculadora diz as suas fontes e quando foram revistas', () => {
     assert.ok(new Date(data) <= new Date(), `${c}: data de revisão no futuro`);
   }
 });
+
+test('os tipos de letra são do próprio site (sem pedidos ao Google Fonts)', () => {
+  const htmls = ['index.html', '404.html', ...paginas.map((d) => `${d}/index.html`), ...ficheirosEm('doencas').filter((f) => f.endsWith('.html'))];
+  for (const f of htmls) assert.ok(!/fonts\.(googleapis|gstatic)\.com/.test(ler(f)), `${f} ainda carrega tipos de letra do Google`);
+  for (const [, url] of css.matchAll(/url\('\.\.\/(fonts\/[^']+)'\)/g)) {
+    assert.ok(existsSync(join(raiz, 'assets', url)), `${url} não existe`);
+  }
+});
