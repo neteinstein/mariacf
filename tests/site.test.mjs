@@ -96,3 +96,15 @@ test('a página inicial tem um cartão por secção e números certos', async ()
   assert.ok(inicio.includes(`data-contar="${DOENCAS.length}"`), 'o número de doenças na página inicial está desatualizado');
   assert.ok(inicio.includes(`data-contar="${calculadoras.length}"`), 'o número de ferramentas na página inicial está desatualizado');
 });
+
+test('cada calculadora diz as suas fontes e quando foram revistas', () => {
+  for (const c of calculadoras) {
+    const html = ler(`${c}/index.html`);
+    const seccao = html.match(/<section class="fontes[^"]*"[\s\S]*?<\/section>/)?.[0];
+    assert.ok(seccao, `${c}: falta a secção «Fontes»`);
+    assert.ok((seccao.match(/<li>/g) || []).length >= 1, `${c}: secção «Fontes» vazia`);
+    const data = seccao.match(/<time datetime="(\d{4}-\d{2}-\d{2})">/)?.[1];
+    assert.ok(data && !Number.isNaN(Date.parse(data)), `${c}: falta a data de revisão`);
+    assert.ok(new Date(data) <= new Date(), `${c}: data de revisão no futuro`);
+  }
+});
