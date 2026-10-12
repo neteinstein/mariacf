@@ -88,6 +88,7 @@
   --sun: #ecab2e;
   --sun-soft: #fbedd0;
   --danger: #c2413a;
+  --danger-texto: #a8352f; /* texto vermelho sobre --danger-soft (≥ 4,5:1) */
   --danger-soft: #fde4e1;
 
   --blob-1: #c6e1ff;
@@ -173,6 +174,7 @@
     --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2389c3fe' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
     --sun-soft: rgba(255, 200, 97, 0.14);
     --danger: #ff8a80;
+    --danger-texto: var(--danger);
     --danger-soft: rgba(255, 138, 128, 0.14);
     --blob-1: #0e3f6a;
     --blob-2: #263151;
@@ -225,6 +227,7 @@
   --icone-ok: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2389c3fe' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
   --sun-soft: rgba(255, 200, 97, 0.14);
   --danger: #ff8a80;
+  --danger-texto: var(--danger);
   --danger-soft: rgba(255, 138, 128, 0.14);
   --blob-1: #0e3f6a;
   --blob-2: #263151;
@@ -2972,7 +2975,8 @@ a.pub:hover {
 
 .tabbtn:hover { transform: translateY(-2px); }
 
-.tabbtn[aria-selected='true'] {
+.tabbtn[aria-selected='true'],
+.tabbtn[aria-pressed='true'] {
   border-color: var(--teal);
   background: linear-gradient(160deg, var(--teal-soft), var(--surface-strong) 70%);
   color: var(--teal);
@@ -4181,7 +4185,8 @@ a.pub:hover {
   animation: fx-subir 0.55s var(--ease);
 }
 
-.tabbtn[aria-selected='true'] {
+.tabbtn[aria-selected='true'],
+.tabbtn[aria-pressed='true'] {
   box-shadow: 0 10px 22px -14px var(--teal);
 }
 
@@ -6604,7 +6609,7 @@ a.tool.destaque:hover .tool-deco.mini {
 .doenca-alerta h3 {
   margin: 0 0 8px;
   font-size: 1.15rem;
-  color: var(--danger);
+  color: var(--danger-texto);
 }
 
 .doenca-alerta ul {
@@ -7250,6 +7255,7 @@ html:not([data-idade]) .doenca-grupo-impressao {
     --sun: #b9811a;
     --sun-soft: #fbedd0;
     --danger: #c2413a;
+    --danger-texto: #a8352f; /* texto vermelho sobre --danger-soft (≥ 4,5:1) */
     --danger-soft: #fde4e1;
     color-scheme: light;
   }

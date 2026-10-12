@@ -31,6 +31,12 @@ jobs:
       - name: Testes
         run: npm test
 
+      - name: Browser para o teste de acessibilidade
+        run: npx playwright install --with-deps chromium
+
+      - name: Teste de acessibilidade (axe, WCAG 2.1 AA)
+        run: npm run test:a11y
+
       - name: Preparar site
         run: |
           mkdir _site

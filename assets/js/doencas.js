@@ -58,7 +58,7 @@ function escolherCategoria(cat) {
   categoriaAtiva = cat;
   filtros?.querySelectorAll('.tabbtn').forEach((b) => {
     const ativo = b.dataset.categoria === cat;
-    b.setAttribute('aria-selected', String(ativo));
+    b.setAttribute('aria-pressed', String(ativo));
     // Em ecrãs estreitos as áreas deslizam na horizontal: centrar a escolhida.
     if (ativo) filtros.scrollLeft = b.offsetLeft - (filtros.clientWidth - b.offsetWidth) / 2;
   });
@@ -72,7 +72,7 @@ if (grelha) {
     filtros.innerHTML = ['todas', ...CATEGORIAS]
       .map(
         (c) =>
-          `<button class="tabbtn" type="button" data-categoria="${esc(c)}" aria-selected="${c === 'todas'}">${c === 'todas' ? 'Todas' : esc(c)}</button>`
+          `<button class="tabbtn" type="button" data-categoria="${esc(c)}" aria-pressed="${c === 'todas'}">${c === 'todas' ? 'Todas' : esc(c)}</button>`
       )
       .join('');
     filtros.addEventListener('click', (e) => {
