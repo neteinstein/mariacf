@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>COVID-19 · Doenças · Saúde em Família</title>
+  <title>COVID-19: explicação para todas as idades · Saúde em Família</title>
   <meta name="description" content="Infeção pelo coronavírus SARS-CoV-2. Na maioria das pessoas é ligeira, mas pode ser grave nos mais velhos e nos doentes crónicos. Explicado para crianças, adolescentes, adultos e séniores, pela Dra. Maria Cortês Ferreira, médica de família.">
   <meta name="theme-color" content="#125a98">
-  <meta property="og:title" content="COVID-19 · Doenças · Saúde em Família">
+  <meta property="og:title" content="COVID-19: explicação para todas as idades · Saúde em Família">
   <meta property="og:description" content="Infeção pelo coronavírus SARS-CoV-2. Na maioria das pessoas é ligeira, mas pode ser grave nos mais velhos e nos doentes crónicos.">
   <link rel="canonical" href="https://mariacf.pt/doencas/covid-19/">
   <meta property="og:url" content="https://mariacf.pt/doencas/covid-19/">
@@ -37,47 +37,91 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MedicalWebPage",
-    "name": "COVID-19 · Doenças · Saúde em Família",
-    "url": "https://mariacf.pt/doencas/covid-19/",
-    "inLanguage": "pt-PT",
-    "description": "Infeção pelo coronavírus SARS-CoV-2. Na maioria das pessoas é ligeira, mas pode ser grave nos mais velhos e nos doentes crónicos.",
-    "about": {
-      "@type": "MedicalCondition",
-      "name": "COVID-19"
-    },
-    "audience": [
+    "@graph": [
       {
-        "@type": "PeopleAudience",
-        "audienceType": "Crianças (3–5 anos)"
+        "@type": "MedicalWebPage",
+        "@id": "https://mariacf.pt/doencas/covid-19/",
+        "name": "COVID-19: explicação para todas as idades · Saúde em Família",
+        "url": "https://mariacf.pt/doencas/covid-19/",
+        "inLanguage": "pt-PT",
+        "description": "Infeção pelo coronavírus SARS-CoV-2. Na maioria das pessoas é ligeira, mas pode ser grave nos mais velhos e nos doentes crónicos.",
+        "about": {
+          "@type": "MedicalCondition",
+          "name": "COVID-19"
+        },
+        "audience": [
+          {
+            "@type": "PeopleAudience",
+            "audienceType": "Crianças (3–5 anos)"
+          },
+          {
+            "@type": "PeopleAudience",
+            "audienceType": "Crianças (5–12 anos)"
+          },
+          {
+            "@type": "PeopleAudience",
+            "audienceType": "Adolescentes (13–17 anos)"
+          },
+          {
+            "@type": "PeopleAudience",
+            "audienceType": "Adultos (18–65 anos)"
+          },
+          {
+            "@type": "PeopleAudience",
+            "audienceType": "Séniores (65+ anos)"
+          }
+        ],
+        "author": {
+          "@type": "Person",
+          "@id": "https://mariacf.pt/sobre/#maria",
+          "name": "Maria Cortês Ferreira",
+          "honorificPrefix": "Dra.",
+          "jobTitle": "Médica de Medicina Geral e Familiar",
+          "url": "https://mariacf.pt/sobre/"
+        },
+        "reviewedBy": {
+          "@type": "Person",
+          "@id": "https://mariacf.pt/sobre/#maria",
+          "name": "Maria Cortês Ferreira",
+          "honorificPrefix": "Dra.",
+          "jobTitle": "Médica de Medicina Geral e Familiar",
+          "url": "https://mariacf.pt/sobre/"
+        },
+        "isPartOf": {
+          "@type": "WebSite",
+          "@id": "https://mariacf.pt/#site",
+          "name": "Saúde em Família",
+          "url": "https://mariacf.pt/"
+        },
+        "breadcrumb": {
+          "@id": "https://mariacf.pt/doencas/covid-19/#migalhas"
+        }
       },
       {
-        "@type": "PeopleAudience",
-        "audienceType": "Crianças (5–12 anos)"
-      },
-      {
-        "@type": "PeopleAudience",
-        "audienceType": "Adolescentes (13–17 anos)"
-      },
-      {
-        "@type": "PeopleAudience",
-        "audienceType": "Adultos (18–65 anos)"
-      },
-      {
-        "@type": "PeopleAudience",
-        "audienceType": "Séniores (65+ anos)"
+        "@type": "BreadcrumbList",
+        "@id": "https://mariacf.pt/doencas/covid-19/#migalhas",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://mariacf.pt/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Doenças",
+            "item": "https://mariacf.pt/doencas/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "COVID-19",
+            "item": "https://mariacf.pt/doencas/covid-19/"
+          }
+        ]
       }
-    ],
-    "author": {
-      "@type": "Person",
-      "name": "Maria Cortês Ferreira",
-      "url": "https://mariacf.pt/sobre/"
-    },
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Saúde em Família",
-      "url": "https://mariacf.pt/"
-    }
+    ]
   }
   </script>
 <script data-goatcounter="https://stats.mariacf.pt/count"

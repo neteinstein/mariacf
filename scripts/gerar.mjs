@@ -1,5 +1,6 @@
 // Gera os ficheiros do site que derivam de outros: uma página estática por doença
-// (doencas/<id>/index.html, a partir de assets/js/doencas-dados.js) e o sitemap.xml.
+// (doencas/<id>/index.html, a partir de assets/js/doencas-dados.js), os dados estruturados
+// (JSON-LD) das restantes páginas e o sitemap.xml.
 // O site continua sem passo de build: os ficheiros gerados ficam no repositório e o
 // teste tests/gerado.test.mjs falha se estiverem desatualizados.
 //
@@ -34,21 +35,59 @@ export function qrSvg(texto) {
   return `<svg class="folheto-qr-codigo" viewBox="0 0 ${lado} ${lado}" width="96" height="96" role="img" aria-label="Código QR" shape-rendering="crispEdges"><rect width="${lado}" height="${lado}" fill="#fff"/><path d="${d}" fill="#000"/></svg>`;
 }
 
+// Quem escreve e revê o conteúdo, e o site de que cada página faz parte (o mesmo @id da página inicial
+// e da página Sobre, repetido aqui porque os motores de pesquisa não seguem @id entre páginas).
+const MARIA = {
+  '@type': 'Person',
+  '@id': `${SITE}sobre/#maria`,
+  name: 'Maria Cortês Ferreira',
+  honorificPrefix: 'Dra.',
+  jobTitle: 'Médica de Medicina Geral e Familiar',
+  url: `${SITE}sobre/`,
+};
+const SITE_LD = { '@type': 'WebSite', '@id': `${SITE}#site`, name: 'Saúde em Família', url: SITE };
+
+// Caminho de migalhas (BreadcrumbList) a partir da página inicial: [[nome, caminho relativo à raiz], …].
+function migalhas(url, passos) {
+  return {
+    '@type': 'BreadcrumbList',
+    '@id': `${url}#migalhas`,
+    itemListElement: [['Início', ''], ...passos].map(([name, caminho], i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name,
+      item: `${SITE}${caminho}`,
+    })),
+  };
+}
+
+const ldScript = (ld, extra = '') => `<script type="application/ld+json"${extra}>
+  ${jsonScript(ld, 2).replace(/\n/g, '\n  ')}
+  </script>`;
+
 function paginaDoenca(d, i, molde) {
   const url = `${SITE}doencas/${d.id}/`;
-  const titulo = `${d.nome} · Doenças · Saúde em Família`;
+  const titulo = `${d.nome}: explicação para todas as idades · Saúde em Família`;
   const descricao = `${d.resumo} Explicado para crianças, adolescentes, adultos e séniores, pela Dra. Maria Cortês Ferreira, médica de família.`;
   const ld = {
     '@context': 'https://schema.org',
-    '@type': 'MedicalWebPage',
-    name: titulo,
-    url,
-    inLanguage: 'pt-PT',
-    description: d.resumo,
-    about: { '@type': 'MedicalCondition', name: d.nome, ...(d.alias ? { alternateName: d.alias } : {}) },
-    audience: GRUPOS.map((g) => ({ '@type': 'PeopleAudience', audienceType: `${g.nome} (${g.idade})` })),
-    author: { '@type': 'Person', name: 'Maria Cortês Ferreira', url: `${SITE}sobre/` },
-    isPartOf: { '@type': 'WebSite', name: 'Saúde em Família', url: SITE },
+    '@graph': [
+      {
+        '@type': 'MedicalWebPage',
+        '@id': url,
+        name: titulo,
+        url,
+        inLanguage: 'pt-PT',
+        description: d.resumo,
+        about: { '@type': 'MedicalCondition', name: d.nome, ...(d.alias ? { alternateName: d.alias } : {}) },
+        audience: GRUPOS.map((g) => ({ '@type': 'PeopleAudience', audienceType: `${g.nome} (${g.idade})` })),
+        author: MARIA,
+        reviewedBy: MARIA,
+        isPartOf: SITE_LD,
+        breadcrumb: { '@id': `${url}#migalhas` },
+      },
+      migalhas(url, [['Doenças', 'doencas/'], [d.nome, `doencas/${d.id}/`]]),
+    ],
   };
   const grupos = JSON.stringify(GRUPOS.map((g) => g.id));
   const cabeca = molde.cabeca
@@ -71,9 +110,7 @@ function paginaDoenca(d, i, molde) {
       document.documentElement.classList.add('com-doenca');
     })();
   </script>
-  <script type="application/ld+json">
-  ${jsonScript(ld, 2).replace(/\n/g, '\n  ')}
-  </script>`
+  ${ldScript(ld)}`
     );
   return `${cabeca}<main>
     ${vistaDoenca(d, i, '../../', (g) => folheto(`${url}?idade=${encodeURIComponent(g)}`))}
@@ -89,7 +126,7 @@ function folheto(endereco) {
 
 // O molde das páginas das doenças é a própria página da grelha (doencas/index.html), um nível abaixo.
 function molde() {
-  const html = ler('doencas/index.html').replace(/(href|src)="\.\.\//g, '$1="../../').replace('<a href="./" aria-current="page">', '<a href="../" aria-current="page">');
+  const html = semDadosGerados(ler('doencas/index.html')).replace(/(href|src)="\.\.\//g, '$1="../../').replace('<a href="./" aria-current="page">', '<a href="../" aria-current="page">');
   const [cabeca, resto] = html.split('<main>');
   const rodape = resto
     .split('</main>')[1]
@@ -100,8 +137,9 @@ function molde() {
 
 // Índice da pesquisa global (assets/js/pesquisa.js): ferramentas, doenças e secções do site.
 // Os URLs são relativos à raiz do site.
+const limpar = (h) => h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+
 function indicePesquisa() {
-  const limpar = (h) => h.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
   const ferramentas = [...ler('ferramentas/index.html').matchAll(/<a class="tool[^"]*" href="\.\.\/([^"]+)">([\s\S]*?)<\/a>/g)].map(([, url, corpo]) => ({
     tipo: 'Ferramenta',
     titulo: limpar(corpo.match(/<div class="tool-title">([\s\S]*?)<\/div>/)[1]),
@@ -129,8 +167,71 @@ function indicePesquisa() {
   return `// Gerado por scripts/gerar.mjs (npm run gerar) — não editar à mão.\n// Índice da pesquisa global: ferramentas, doenças e secções do site (URLs relativos à raiz).\n\nexport const INDICE = ${JSON.stringify(itens, null, 1)};\n`;
 }
 
+// Dados estruturados (JSON-LD) das páginas escritas à mão, num bloco próprio antes de </head>:
+// migalhas em todas, a calculadora (WebApplication) e a data de revisão em cada ferramenta, e a lista
+// de itens nas páginas de ferramentas e de doenças. Tudo sai do que a própria página já diz.
+const BLOCO_LD = /\n  <script type="application\/ld\+json" data-gerado>[\s\S]*?<\/script>(?=\n<\/head>)/;
+const semDadosGerados = (html) => html.replace(BLOCO_LD, '');
+const nomeDaPagina = (html) => html.match(/<meta property="og:title" content="([^"]*)"/)[1].replace(/ · Saúde em Família$/, '');
+const descricaoDaPagina = (html) => html.match(/<meta name="description" content="([^"]*)"/)[1];
+const desfazer = (t) => t.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+
+// Data em que as fórmulas de uma calculadora foram revistas (secção «Fontes»).
+const revisao = (html) => html.match(/<p class="fontes-data">[\s\S]*?<time datetime="(\d{4}-\d{2}-\d{2})">/)?.[1];
+
+const NOMES_SECCOES = { doencas: 'Doenças', ferramentas: 'Ferramentas', sns: 'Contactos do SNS', sobre: 'Sobre', usf: 'USF Nova Saúde' };
+
+function dadosEstruturados(pasta, html) {
+  const url = `${SITE}${pasta}/`;
+  const nome = desfazer(nomeDaPagina(html));
+  const descricao = desfazer(descricaoDaPagina(html));
+  const pagina = { '@id': url, url, name: nome, description: descricao, inLanguage: 'pt-PT', isPartOf: SITE_LD, breadcrumb: { '@id': `${url}#migalhas` } };
+  let grafo;
+  if (pasta.startsWith('calculadora-')) {
+    grafo = [
+      { '@type': 'MedicalWebPage', ...pagina, lastReviewed: revisao(html), reviewedBy: MARIA, mainEntity: { '@id': `${url}#calculadora` } },
+      {
+        '@type': 'WebApplication',
+        '@id': `${url}#calculadora`,
+        name: nome,
+        description: descricao,
+        url,
+        applicationCategory: 'HealthApplication',
+        operatingSystem: 'Web',
+        browserRequirements: 'Requer JavaScript',
+        inLanguage: 'pt-PT',
+        isAccessibleForFree: true,
+        offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+        author: MARIA,
+      },
+      migalhas(url, [['Ferramentas', 'ferramentas/'], [nome, `${pasta}/`]]),
+    ];
+  } else if (pasta === 'ferramentas' || pasta === 'doencas') {
+    const itens = pasta === 'ferramentas'
+      ? [...html.matchAll(/<a class="tool[^"]*" href="\.\.\/([^"]+)">[\s\S]*?<div class="tool-title">([\s\S]*?)<\/div>/g)].map(([, c, t]) => [desfazer(limpar(t)), c])
+      : DOENCAS.map((d) => [d.nome, `doencas/${d.id}/`]);
+    grafo = [
+      { '@type': 'CollectionPage', ...pagina, mainEntity: { '@id': `${url}#lista` } },
+      {
+        '@type': 'ItemList',
+        '@id': `${url}#lista`,
+        numberOfItems: itens.length,
+        itemListElement: itens.map(([name, caminho], i) => ({ '@type': 'ListItem', position: i + 1, name, url: `${SITE}${caminho}` })),
+      },
+      migalhas(url, [[NOMES_SECCOES[pasta], `${pasta}/`]]),
+    ];
+  } else {
+    // Sobre e USF já descrevem a página e a pessoa ou a unidade no seu próprio bloco: aqui só as migalhas.
+    grafo = [migalhas(url, [[NOMES_SECCOES[pasta] || nome, `${pasta}/`]])];
+  }
+  const ld = ldScript({ '@context': 'https://schema.org', '@graph': grafo }, ' data-gerado');
+  return semDadosGerados(html).replace('\n</head>', `\n  ${ld}\n</head>`);
+}
+
 function sitemap(paginas) {
-  const urls = paginas.map((p) => `  <url><loc>${SITE}${p}</loc></url>`).join('\n');
+  const urls = paginas
+    .map(({ caminho, data }) => `  <url><loc>${SITE}${caminho}</loc>${data ? `<lastmod>${data}</lastmod>` : ''}</url>`)
+    .join('\n');
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`;
 }
 
@@ -144,8 +245,13 @@ export function gerar() {
   const seccoes = readdirSync(raiz)
     .filter((d) => !d.startsWith('.') && existsSync(join(raiz, d, 'index.html')))
     .sort();
+  for (const s of seccoes) ficheiros[`${s}/index.html`] = dadosEstruturados(s, ficheiros[`${s}/index.html`] ?? ler(`${s}/index.html`));
   ficheiros['assets/js/pesquisa-indice.js'] = indicePesquisa();
-  ficheiros['sitemap.xml'] = sitemap(['', ...seccoes.map((s) => `${s}/`), ...DOENCAS.map((d) => `doencas/${d.id}/`)]);
+  ficheiros['sitemap.xml'] = sitemap([
+    { caminho: '' },
+    ...seccoes.map((s) => ({ caminho: `${s}/`, data: revisao(ficheiros[`${s}/index.html`]) })),
+    ...DOENCAS.map((d) => ({ caminho: `doencas/${d.id}/` })),
+  ]);
   return ficheiros;
 }
 
