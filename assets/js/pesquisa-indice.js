@@ -116,6 +116,13 @@ export const INDICE = [
  },
  {
   "tipo": "Ferramenta",
+  "titulo": "Terapêutica hormonal da menopausa",
+  "texto": "Contraindicações da THS, escolha do regime (sequencial, contínuo ou vaginal) e doses equivalentes de estrogénios, segundo o Consenso Nacional sobre Menopausa 2021.",
+  "palavras": "Menopausa Saúde da mulher Profissionais Contraindicações Escolha do regime Doses equivalentes",
+  "url": "calculadora-ths/"
+ },
+ {
+  "tipo": "Ferramenta",
   "titulo": "Calendário de vacinas (PNV)",
   "texto": "A partir da data de nascimento: que vacinas do Programa Nacional de Vacinação correspondem a cada idade, e quando.",
   "palavras": "Vacinação Pacientes",
