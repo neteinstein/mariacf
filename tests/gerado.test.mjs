@@ -6,7 +6,7 @@ import { gerar, obsoletos } from '../scripts/gerar.mjs';
 
 const raiz = new URL('..', import.meta.url).pathname;
 
-test('as páginas das doenças e o sitemap estão atualizados (npm run gerar)', () => {
+test('as páginas das doenças, os dados estruturados e o sitemap estão atualizados (npm run gerar)', () => {
   for (const [caminho, conteudo] of Object.entries(gerar())) {
     assert.ok(existsSync(join(raiz, caminho)), `${caminho} não existe — corra «npm run gerar»`);
     assert.ok(readFileSync(join(raiz, caminho), 'utf8') === conteudo, `${caminho} está desatualizado — corra «npm run gerar»`);
@@ -16,7 +16,7 @@ test('as páginas das doenças e o sitemap estão atualizados (npm run gerar)', 
 
 test('cada página de doença tem os cinco grupos, título próprio e ligações que existem', () => {
   for (const [caminho, html] of Object.entries(gerar())) {
-    if (!caminho.startsWith('doencas/')) continue;
+    if (!caminho.startsWith('doencas/') || caminho === 'doencas/index.html') continue;
     assert.equal(html.match(/role="tabpanel"/g).length, 5, caminho);
     assert.ok(!html.includes('<title>Doenças explicadas'), `${caminho}: título da grelha`);
     for (const [, href] of html.matchAll(/(?:href|src)="(\.\.\/[^"#?]*)/g)) {

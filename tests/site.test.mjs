@@ -116,3 +116,26 @@ test('os tipos de letra são do próprio site (sem pedidos ao Google Fonts)', ()
     assert.ok(existsSync(join(raiz, 'assets', url)), `${url} não existe`);
   }
 });
+
+test('SEO: cada página tem título único, descrição, canonical e dados estruturados válidos', () => {
+  const doencas = readdirSync(join(raiz, 'doencas'), { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => `doencas/${e.name}`);
+  const titulos = new Map();
+  for (const p of ['', ...paginas, ...doencas]) {
+    const f = p ? `${p}/index.html` : 'index.html';
+    const html = ler(f);
+    const titulo = html.match(/<title>([^<]*)<\/title>/)?.[1];
+    assert.ok(titulo, `${f}: falta o <title>`);
+    assert.ok(!titulos.has(titulo), `${f}: o título repete o de ${titulos.get(titulo)}`);
+    titulos.set(titulo, f);
+    const descricao = html.match(/<meta name="description" content="([^"]*)"/)?.[1] ?? '';
+    assert.ok(descricao.length >= 70, `${f}: descrição curta demais para os resultados de pesquisa`);
+    assert.ok(html.includes(`<link rel="canonical" href="https://mariacf.pt/${p ? `${p}/` : ''}">`), `${f}: canonical errado`);
+    const grafo = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)].flatMap((m) => {
+      const ld = JSON.parse(m[1]);
+      return ld['@graph'] || [ld];
+    });
+    const tipos = grafo.map((n) => n['@type']);
+    if (p) assert.ok(tipos.includes('BreadcrumbList'), `${f}: faltam as migalhas (BreadcrumbList)`);
+    if (p.startsWith('calculadora-')) assert.ok(tipos.includes('WebApplication'), `${f}: falta a WebApplication`);
+  }
+});

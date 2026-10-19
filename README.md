@@ -62,8 +62,13 @@ doença e acrescenta-a ao sitemap e à pesquisa (e o teste do service worker ped
   `assets/js/pesquisa-indice.js` (gerado; só é carregado quando a caixa abre).
 - **Favoritos e recentes** (`assets/js/favoritos.js`): cada calculadora tem «Guardar nos favoritos»; a página de
   ferramentas mostra as favoritas e as usadas recentemente. Fica só no browser (`localStorage`).
-- **SEO**: `<link rel="canonical">` e `og:url` em todas as páginas, dados estruturados (JSON-LD) no início, Sobre,
-  USF e doenças, `sitemap.xml`, `robots.txt` e uma página `404.html` com pesquisa.
+- **SEO**: `<link rel="canonical">` e `og:url` em todas as páginas, `sitemap.xml` (com `lastmod` das calculadoras,
+  a partir da data de revisão das «Fontes»), `robots.txt` e uma página `404.html` com pesquisa. Dados estruturados
+  (JSON-LD): o início, Sobre e USF têm o seu bloco escrito à mão; `npm run gerar` acrescenta às restantes páginas um
+  bloco `data-gerado` com as migalhas (BreadcrumbList), a calculadora (MedicalWebPage + WebApplication, com a data de
+  revisão) e a lista de itens das páginas de ferramentas e de doenças, tudo tirado do título, da descrição e das
+  «Fontes» da própria página. Depois de mudar o título ou a descrição de uma página, correr `npm run gerar`.
+  O teste `tests/site.test.mjs` exige títulos únicos, descrições com pelo menos 70 caracteres e JSON-LD válido.
 - **Fontes clínicas**: cada calculadora termina com a secção «Fontes» e a data da última revisão; o teste
   `tests/site.test.mjs` exige ambas.
 
