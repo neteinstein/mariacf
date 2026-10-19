@@ -1,6 +1,6 @@
 # Saúde em Família · Dra. Maria Cortês Ferreira
 
-Coleção de pequenas ferramentas para médicos e pacientes, publicada com GitHub Pages.
+Coleção de pequenas ferramentas para médicos e pacientes, publicada com GitHub Pages e Cloudflare Pages.
 Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 
 ## Páginas
@@ -169,15 +169,31 @@ npm run test:a11y             # acessibilidade (axe, WCAG 2.1 AA) de todas as p�
 
 O teste de acessibilidade precisa do Chromium do Playwright (`npx playwright install chromium`).
 
-## Publicação (GitHub Pages)
+## Publicação (GitHub Pages + Cloudflare Pages)
 
-O site é publicado pelo workflow `.github/workflows/pages.yml` a cada push para `main`
-(também pode ser corrido à mão em *Actions → Deploy GitHub Pages → Run workflow*).
-O workflow corre os testes e publica todo o repositório (página inicial, `sns/`, `sobre/`, `usf/`, todas as pastas
+Estamos num período de transição: o site é publicado **ao mesmo tempo** no GitHub Pages e no Cloudflare Pages.
+
+O workflow `.github/workflows/pages.yml` corre a cada push para `main`
+(também pode ser corrido à mão em *Actions → Deploy (GitHub Pages + Cloudflare Pages) → Run workflow*).
+Corre os testes e prepara o site com todo o repositório (página inicial, `sns/`, `sobre/`, `usf/`, todas as pastas
 `calculadora-*/`, `doencas/` e `assets/`), exceto `tests/`, `scripts/`, `.github/`, `package.json` e este README.
+Esse mesmo artefacto é depois publicado em paralelo pelos jobs `deploy` (GitHub Pages) e `deploy-cloudflare`
+(Cloudflare Pages); uma falha num destino não impede a publicação no outro.
 Nos pull requests corre só os testes e a preparação do site, sem publicar.
 
-Configuração única: em **Settings → Pages → Build and deployment**, escolher *Source: GitHub Actions*.
+Configuração única:
+
+- **GitHub Pages:** em **Settings → Pages → Build and deployment**, escolher *Source: GitHub Actions*.
+- **Cloudflare Pages:**
+  1. Criar o projeto como *Direct Upload* (no painel: *Workers & Pages → Create → Pages → Upload assets*, ou
+     `npx wrangler pages project create mariacf --production-branch=main`).
+  2. Criar um API token com a permissão *Account → Cloudflare Pages → Edit*.
+  3. Em **Settings → Secrets and variables → Actions**, adicionar os segredos `CLOUDFLARE_API_TOKEN` e
+     `CLOUDFLARE_ACCOUNT_ID`. Se o projeto não se chamar `mariacf`, definir também a variável `CLOUDFLARE_PROJECT_NAME`.
+
+  Enquanto os segredos não existirem, o job do Cloudflare é ignorado com um aviso e o GitHub Pages continua a ser publicado.
+  O domínio `mariacf.pt` aponta para um dos dois destinos; quando a transição terminar, basta apontá-lo para o
+  Cloudflare Pages (*Custom domains*) e remover o job `deploy`.
 
 ## Aviso
 

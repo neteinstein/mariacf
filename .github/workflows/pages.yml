@@ -1,4 +1,4 @@
-name: Deploy GitHub Pages
+name: Deploy (GitHub Pages + Cloudflare Pages)
 
 on:
   push:
@@ -63,3 +63,47 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Período de transição: o mesmo site é também publicado no Cloudflare Pages.
+  # Usa o artefacto já preparado pelo job "build", por isso os dois destinos
+  # recebem exatamente os mesmos ficheiros. Falhas aqui não afetam o GitHub Pages.
+  deploy-cloudflare:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: cloudflare-pages
+      url: ${{ steps.deployment.outputs.deployment-url }}
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_PROJECT_NAME: ${{ vars.CLOUDFLARE_PROJECT_NAME || 'mariacf' }}
+    steps:
+      - name: Verificar configuração do Cloudflare
+        id: config
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::warning::Segredos CLOUDFLARE_API_TOKEN/CLOUDFLARE_ACCOUNT_ID em falta; publicação no Cloudflare Pages ignorada."
+            echo "ok=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/download-artifact@v4
+        if: steps.config.outputs.ok == 'true'
+        with:
+          name: github-pages
+
+      - name: Extrair site
+        if: steps.config.outputs.ok == 'true'
+        run: |
+          mkdir _site
+          tar -xf artifact.tar -C _site
+
+      - id: deployment
+        if: steps.config.outputs.ok == 'true'
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ env.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy _site --project-name=${{ env.CLOUDFLARE_PROJECT_NAME }} --branch=main
