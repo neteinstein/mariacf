@@ -2755,6 +2755,191 @@ a.pub:hover {
   }
 }
 
+/* ---------- Apps ---------- */
+
+.app-ficha {
+  display: grid;
+  gap: 20px;
+  padding: 32px;
+  border-radius: calc(var(--radius) + 6px);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.app-cabeca {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.app-icone {
+  flex: none;
+  border-radius: 20px;
+  box-shadow: 0 12px 26px -12px var(--teal);
+}
+
+.app-cabeca h2 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+}
+
+.app-sub {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+.app-desc {
+  margin: 0;
+  max-width: 70ch;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
+}
+
+.app-funcoes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 12px;
+}
+
+.app-funcoes li {
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  padding: 16px 18px;
+  border-radius: calc(var(--radius) - 6px);
+  background: var(--surface-strong);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+}
+
+.app-funcoes strong {
+  color: var(--teal);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.app-loja {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  padding-top: 8px;
+}
+
+/* Botão da Google Play: escuro nos dois temas, como os selos das lojas. */
+.app-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 22px 10px 16px;
+  border-radius: 14px;
+  background: #111820;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #fff;
+  text-decoration: none;
+  line-height: 1.15;
+  transition: transform 0.3s var(--spring), box-shadow 0.3s;
+}
+
+.app-play:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -14px #111820;
+}
+
+.app-play span {
+  display: grid;
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+
+.app-play small {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.app-nota {
+  flex: 1 1 280px;
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink-mute);
+  max-width: 60ch;
+}
+
+/* Ecrãs da app: em linha, a deslizar em ecrãs estreitos. */
+.app-ecras {
+  list-style: none;
+  margin: 0;
+  padding: 6px 4px 18px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(150px, 1fr);
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+}
+
+.app-ecras:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 4px;
+  border-radius: var(--radius);
+}
+
+.app-ecras li {
+  scroll-snap-align: start;
+}
+
+.app-ecras figure {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.app-ecras img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+}
+
+.app-ecras figcaption {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .app-ficha {
+    padding: 22px;
+  }
+  .app-icone {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+  }
+  .app-ecras {
+    grid-auto-columns: 62%;
+  }
+}
+
 /* ---------- IMC / ASC ---------- */
 
 .badge {
@@ -8038,8 +8223,9 @@ html:not([data-idade]) .doenca-grupo-impressao {
   grid-row: span 2;
 }
 
+/* Ao lado do cartão das apps: ocupa as outras duas colunas. */
 .c-sobre {
-  grid-column: 1 / -1;
+  grid-column: span 2;
   flex-direction: row;
   align-items: center;
   gap: 28px;
@@ -8211,6 +8397,7 @@ a.inicio-cartao.visto:hover {
     min-height: 0;
   }
   .c-sobre {
+    grid-column: auto;
     flex-direction: column;
     align-items: flex-start;
   }

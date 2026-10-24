@@ -4,7 +4,7 @@
 // e atualiza a cache; sem ligação, usa a última versão guardada.
 // A lista PRECACHE é verificada pelos testes (tests/site.test.mjs).
 
-const CACHE = 'mcf-v35';
+const CACHE = 'mcf-v36';
 
 const PRECACHE = [
   './',
@@ -84,6 +84,7 @@ const PRECACHE = [
   'doencas/varicela/',
   'doencas/vih/',
   'ferramentas/',
+  'apps/',
   'sns/',
   'sobre/',
   'usf/',
@@ -95,6 +96,13 @@ const PRECACHE = [
   'assets/fonts/fraunces-latin.woff2',
   'assets/fonts/plus-jakarta-sans-latin-ext.woff2',
   'assets/fonts/plus-jakarta-sans-latin.woff2',
+  'assets/img/apps/remedio-em-dia-blisters.webp',
+  'assets/img/apps/remedio-em-dia-definicoes.webp',
+  'assets/img/apps/remedio-em-dia-historico.webp',
+  'assets/img/apps/remedio-em-dia-hoje-escuro.webp',
+  'assets/img/apps/remedio-em-dia-hoje.webp',
+  'assets/img/apps/remedio-em-dia-medicamentos.webp',
+  'assets/img/apps/remedio-em-dia.svg',
   'assets/img/favicon.svg',
   'assets/img/icon-180.png',
   'assets/img/icon-192.png',
