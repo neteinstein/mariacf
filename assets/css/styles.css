@@ -2908,12 +2908,17 @@ a.pub:hover {
   display: grid;
   gap: 12px;
   justify-items: center;
+  align-content: start;
 }
 
 .app-ecras img {
   display: block;
   width: 100%;
   height: auto;
+  /* Proporção fixa: alguns browsers móveis esticavam a imagem na grelha. */
+  aspect-ratio: 540 / 1200;
+  object-fit: cover;
+  align-self: start;
   border-radius: 22px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-lg);
