@@ -105,6 +105,8 @@ export const ICONES = {
     '<circle cx="12" cy="13" r="8"/><path d="M12 5c0-1.5 1.3-2.5 2.5-2"/><path d="M9 12h.01M15 12h.01M10 16c1.2.9 2.8.9 4 0"/>',
   calendarioCoracao:
     '<rect x="3" y="4.5" width="18" height="16.5" rx="2.5"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/><path d="M12 18.5l-2.6-2.5a1.6 1.6 0 0 1 2.6-1.9 1.6 1.6 0 0 1 2.6 1.9z"/>',
+  telemovel:
+    '<rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/><path d="M10 12.5l4-4"/><circle cx="12" cy="10.5" r="3.2"/>',
   capsula:
     '<rect x="2.5" y="8" width="19" height="8" rx="4" transform="rotate(-45 12 12)"/><path d="M9.2 9.2l5.6 5.6"/>',
   seringa:
