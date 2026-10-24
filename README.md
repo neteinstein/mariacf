@@ -8,7 +8,7 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 - `/` — página inicial: apresentação e um cartão por secção, com uma entrada animada
 - `/doencas/` — doenças explicadas para cinco grupos etários
 - `/ferramentas/` — as calculadoras e questionários clínicos
-- `/apps/` — as aplicações da Dra. Maria: Remédio em Dia (gestor de medicação para Android), com os ecrãs e a ligação à Google Play («Disponível brevemente»)
+- `/apps/` — as aplicações da Dra. Maria: Tempus Remedium (gestor de medicação para Android), com os ecrãs e a ligação à Google Play («Disponível brevemente»)
 - `/sns/` — contactos úteis do SNS (112, SNS 24 e outras linhas de ajuda)
 - `/sobre/` — percurso da Dra. Maria e artigos no Ponto SJ
 - `/usf/` — USF Nova Saúde (São Martinho do Campo): contactos, mapa, missão e valores, serviços, coordenação e a Dra. Maria, história, notícias e como marcar consulta
@@ -75,7 +75,7 @@ doença e acrescenta-a ao sitemap e à pesquisa (e o teste do service worker ped
 
 ## Apps
 
-`apps/index.html` apresenta as aplicações. Os ecrãs do Remédio em Dia estão em `assets/img/apps/` (WebP a 540 px,
+`apps/index.html` apresenta as aplicações. Os ecrãs do Tempus Remedium estão em `assets/img/apps/` (WebP a 540 px,
 reduzidos das capturas de `androidApp/src/test/screenshots/` do repositório da app); ao trocá-los, atualizar também a
 lista `PRECACHE` de `sw.js`.
 

@@ -2908,12 +2908,17 @@ a.pub:hover {
   display: grid;
   gap: 12px;
   justify-items: center;
+  align-content: start;
 }
 
 .app-ecras img {
   display: block;
   width: 100%;
   height: auto;
+  /* Proporção fixa: alguns browsers móveis esticavam a imagem na grelha. */
+  aspect-ratio: 540 / 1200;
+  object-fit: cover;
+  align-self: start;
   border-radius: 22px;
   border: 1px solid var(--line);
   box-shadow: var(--shadow-lg);
@@ -6372,15 +6377,19 @@ a.tool.destaque:hover .tool-deco.mini {
 }
 
 @media (max-width: 760px) {
+  /* Pesquisa e tema sobem para a linha da marca; a barra fica com a largura toda. */
   .site-header .wrap:has(.site-nav) {
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    column-gap: 8px;
     row-gap: 10px;
   }
   .header-actions:has(.site-nav) {
-    width: 100%;
+    display: contents;
   }
   .site-nav {
-    flex: 1;
+    grid-column: 1 / -1;
+    grid-row: 2;
     min-width: 0;
     overflow-x: auto;
     scrollbar-width: none;

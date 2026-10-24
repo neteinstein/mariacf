@@ -159,7 +159,7 @@ function indicePesquisa() {
     url: `doencas/${d.id}/`,
   }));
   const paginas = [
-    { tipo: 'Página', titulo: 'Remédio em Dia', texto: 'App de gestão da medicação: o que tomar hoje, o que repor e o histórico das doses.', palavras: 'apps aplicação android telemóvel medicamentos lembretes comprimidos', url: 'apps/' },
+    { tipo: 'Página', titulo: 'Tempus Remedium', texto: 'App de gestão da medicação: o que tomar hoje, o que repor e o histórico das doses.', palavras: 'apps aplicação android telemóvel medicamentos lembretes comprimidos', url: 'apps/' },
     { tipo: 'Página', titulo: 'USF Nova Saúde', texto: 'Contactos, horário, morada, como marcar consulta e renovar receitas.', palavras: 'centro de saúde marcar consulta receitas telefone horário mapa', url: 'usf/' },
     { tipo: 'Página', titulo: 'Contactos úteis do SNS', texto: '112, SNS 24 e outras linhas de ajuda.', palavras: 'emergência 112 sns 24 linha telefone antivenenos saúde mental', url: 'sns/' },
     { tipo: 'Página', titulo: 'Sobre a Dra. Maria', texto: 'Percurso e artigos da Dra. Maria Cortês Ferreira, médica de família.', palavras: 'médica de família percurso artigos', url: 'sobre/' },
