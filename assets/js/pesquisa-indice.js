@@ -522,7 +522,7 @@ export const INDICE = [
  },
  {
   "tipo": "Página",
-  "titulo": "Remédio em Dia",
+  "titulo": "Tempus Remedium",
   "texto": "App de gestão da medicação: o que tomar hoje, o que repor e o histórico das doses.",
   "palavras": "apps aplicação android telemóvel medicamentos lembretes comprimidos",
   "url": "apps/"
