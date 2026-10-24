@@ -159,6 +159,7 @@ function indicePesquisa() {
     url: `doencas/${d.id}/`,
   }));
   const paginas = [
+    { tipo: 'Página', titulo: 'Remédio em Dia', texto: 'App de gestão da medicação: o que tomar hoje, o que repor e o histórico das doses.', palavras: 'apps aplicação android telemóvel medicamentos lembretes comprimidos', url: 'apps/' },
     { tipo: 'Página', titulo: 'USF Nova Saúde', texto: 'Contactos, horário, morada, como marcar consulta e renovar receitas.', palavras: 'centro de saúde marcar consulta receitas telefone horário mapa', url: 'usf/' },
     { tipo: 'Página', titulo: 'Contactos úteis do SNS', texto: '112, SNS 24 e outras linhas de ajuda.', palavras: 'emergência 112 sns 24 linha telefone antivenenos saúde mental', url: 'sns/' },
     { tipo: 'Página', titulo: 'Sobre a Dra. Maria', texto: 'Percurso e artigos da Dra. Maria Cortês Ferreira, médica de família.', palavras: 'médica de família percurso artigos', url: 'sobre/' },
@@ -179,7 +180,7 @@ const desfazer = (t) => t.replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace
 // Data em que as fórmulas de uma calculadora foram revistas (secção «Fontes»).
 const revisao = (html) => html.match(/<p class="fontes-data">[\s\S]*?<time datetime="(\d{4}-\d{2}-\d{2})">/)?.[1];
 
-const NOMES_SECCOES = { doencas: 'Doenças', ferramentas: 'Ferramentas', sns: 'Contactos do SNS', sobre: 'Sobre', usf: 'USF Nova Saúde' };
+const NOMES_SECCOES = { doencas: 'Doenças', ferramentas: 'Ferramentas', apps: 'Apps', sns: 'Contactos do SNS', sobre: 'Sobre', usf: 'USF Nova Saúde' };
 
 function dadosEstruturados(pasta, html) {
   const url = `${SITE}${pasta}/`;
@@ -221,7 +222,7 @@ function dadosEstruturados(pasta, html) {
       migalhas(url, [[NOMES_SECCOES[pasta], `${pasta}/`]]),
     ];
   } else {
-    // Sobre e USF já descrevem a página e a pessoa ou a unidade no seu próprio bloco: aqui só as migalhas.
+    // Sobre, USF e Apps já descrevem a página e a pessoa ou a unidade no seu próprio bloco: aqui só as migalhas.
     grafo = [migalhas(url, [[NOMES_SECCOES[pasta] || nome, `${pasta}/`]])];
   }
   const ld = ldScript({ '@context': 'https://schema.org', '@graph': grafo }, ' data-gerado');

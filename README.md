@@ -8,13 +8,14 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 - `/` — página inicial: apresentação e um cartão por secção, com uma entrada animada
 - `/doencas/` — doenças explicadas para cinco grupos etários
 - `/ferramentas/` — as calculadoras e questionários clínicos
+- `/apps/` — as aplicações da Dra. Maria: Remédio em Dia (gestor de medicação para Android), com os ecrãs e a ligação à Google Play («Disponível brevemente»)
 - `/sns/` — contactos úteis do SNS (112, SNS 24 e outras linhas de ajuda)
 - `/sobre/` — percurso da Dra. Maria e artigos no Ponto SJ
 - `/usf/` — USF Nova Saúde (São Martinho do Campo): contactos, mapa, missão e valores, serviços, coordenação e a Dra. Maria, história, notícias e como marcar consulta
 
 ## Página inicial
 
-`index.html` apresenta o site e tem um cartão por secção (Doenças, Ferramentas, USF, SNS e Sobre).
+`index.html` apresenta o site e tem um cartão por secção (Doenças, Ferramentas, USF, SNS, Apps e Sobre).
 A entrada animada (marca, traçado de ECG e um «furo» que revela a página) vive em CSS, na secção
 «Página inicial» de `styles.css`; `assets/js/inicio.js` trata dos números que contam, dos cartões que surgem
 ao chegar ao ecrã e da inclinação 3D. A entrada só aparece na primeira visita de cada sessão, salta-se com um
@@ -64,13 +65,19 @@ doença e acrescenta-a ao sitemap e à pesquisa (e o teste do service worker ped
   ferramentas mostra as favoritas e as usadas recentemente. Fica só no browser (`localStorage`).
 - **SEO**: `<link rel="canonical">` e `og:url` em todas as páginas, `sitemap.xml` (com `lastmod` das calculadoras,
   a partir da data de revisão das «Fontes»), `robots.txt` e uma página `404.html` com pesquisa. Dados estruturados
-  (JSON-LD): o início, Sobre e USF têm o seu bloco escrito à mão; `npm run gerar` acrescenta às restantes páginas um
+  (JSON-LD): o início, Sobre, USF e Apps têm o seu bloco escrito à mão; `npm run gerar` acrescenta às restantes páginas um
   bloco `data-gerado` com as migalhas (BreadcrumbList), a calculadora (MedicalWebPage + WebApplication, com a data de
   revisão) e a lista de itens das páginas de ferramentas e de doenças, tudo tirado do título, da descrição e das
   «Fontes» da própria página. Depois de mudar o título ou a descrição de uma página, correr `npm run gerar`.
   O teste `tests/site.test.mjs` exige títulos únicos, descrições com pelo menos 70 caracteres e JSON-LD válido.
 - **Fontes clínicas**: cada calculadora termina com a secção «Fontes» e a data da última revisão; o teste
   `tests/site.test.mjs` exige ambas.
+
+## Apps
+
+`apps/index.html` apresenta as aplicações. Os ecrãs do Remédio em Dia estão em `assets/img/apps/` (WebP a 540 px,
+reduzidos das capturas de `androidApp/src/test/screenshots/` do repositório da app); ao trocá-los, atualizar também a
+lista `PRECACHE` de `sw.js`.
 
 ## Ferramentas
 
@@ -173,7 +180,7 @@ O teste de acessibilidade precisa do Chromium do Playwright (`npx playwright ins
 
 O site é publicado pelo workflow `.github/workflows/pages.yml` a cada push para `main`
 (também pode ser corrido à mão em *Actions → Deploy GitHub Pages → Run workflow*).
-O workflow corre os testes e publica todo o repositório (página inicial, `sns/`, `sobre/`, `usf/`, todas as pastas
+O workflow corre os testes e publica todo o repositório (página inicial, `apps/`, `sns/`, `sobre/`, `usf/`, todas as pastas
 `calculadora-*/`, `doencas/` e `assets/`), exceto `tests/`, `scripts/`, `.github/`, `package.json` e este README.
 Nos pull requests corre só os testes e a preparação do site, sem publicar.
 

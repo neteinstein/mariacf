@@ -522,6 +522,13 @@ export const INDICE = [
  },
  {
   "tipo": "Página",
+  "titulo": "Remédio em Dia",
+  "texto": "App de gestão da medicação: o que tomar hoje, o que repor e o histórico das doses.",
+  "palavras": "apps aplicação android telemóvel medicamentos lembretes comprimidos",
+  "url": "apps/"
+ },
+ {
+  "tipo": "Página",
   "titulo": "USF Nova Saúde",
   "texto": "Contactos, horário, morada, como marcar consulta e renovar receitas.",
   "palavras": "centro de saúde marcar consulta receitas telefone horário mapa",
