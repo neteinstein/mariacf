@@ -2886,6 +2886,10 @@ a.pub:hover {
   gap: 12px;
 }
 
+.app-video[hidden] {
+  display: none;
+}
+
 .app-videos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
