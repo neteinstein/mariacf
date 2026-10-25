@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Apps: Tempus Remedium, gestor de medicação · Saúde em Família</title>
-  <meta name="description" content="Aplicações da Dra. Maria Cortês Ferreira. Tempus Remedium: o que tomar hoje e a que horas, os medicamentos a repor e o histórico das doses, sem conta e sem servidor.">
+  <meta name="description" content="Aplicações da Dra. Maria Cortês Ferreira. Tempus Remedium: o que tomar hoje e a que horas, os tratamentos de X em X horas com a dose sugerida pela calculadora, os medicamentos a repor e o histórico das doses, sem conta e sem servidor.">
   <meta name="theme-color" content="#125a98">
   <meta property="og:title" content="Apps · Saúde em Família">
   <meta property="og:description" content="Tempus Remedium: gestor de medicação e doses, em português. Disponível brevemente na Google Play.">
@@ -37,10 +37,22 @@
         "url": "https://mariacf.pt/apps/",
         "operatingSystem": "Android",
         "applicationCategory": "HealthApplication",
-        "inLanguage": "pt-PT",
+        "inLanguage": ["pt-PT", "en", "fr", "de", "es"],
         "isAccessibleForFree": true,
         "image": "https://mariacf.pt/assets/img/apps/tempus-remedium-hoje.webp",
-        "author": { "@id": "https://mariacf.pt/sobre/#maria" }
+        "author": { "@id": "https://mariacf.pt/sobre/#maria" },
+        "subjectOf": { "@id": "https://mariacf.pt/apps/#tempus-remedium-video" }
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://mariacf.pt/apps/#tempus-remedium-video",
+        "name": "Tempus Remedium em 22 segundos",
+        "description": "Escreve-se o antibiótico, a calculadora de doses sugere a dose e o intervalo, e a app avisa a cada toma até ao fim do tratamento.",
+        "thumbnailUrl": "https://mariacf.pt/assets/img/apps/tempus-remedium-video.webp",
+        "contentUrl": "https://mariacf.pt/apps/tempus-remedium.mp4",
+        "uploadDate": "2026-10-25",
+        "duration": "PT22S",
+        "inLanguage": "pt-PT"
       }
     ]
   }
@@ -130,9 +142,11 @@
           <li><strong>Hoje</strong> As doses do dia por manhã, meio-dia, noite e deitar, para marcar como tomadas ou não tomadas.</li>
           <li><strong>Repor em breve</strong> Conta os comprimidos que restam e mostra, em frascos ou em blisters, os que estão a acabar.</li>
           <li><strong>Medicamentos</strong> Nome, dosagem, forma e cor do comprimido, horários, frequência e quantidade em casa.</li>
+          <li><strong>Tratamentos</strong> Antibióticos e outros medicamentos de X em X horas, até ao fim: ao fim de dias, de tomas, numa data ou até acabar a embalagem. Escreve-se o nome e a <a href="../calculadora-doses/">calculadora de doses</a> sugere a dose, o intervalo e a duração.</li>
           <li><strong>Histórico</strong> A adesão dos últimos 30 dias.</li>
           <li><strong>Lembretes</strong> Notificações com «Tomei» e «Adiar 10 min», também no ecrã bloqueado, com a opção de esconder os nomes.</li>
-          <li><strong>Widgets</strong> «Hoje» e «Repor em breve» no ecrã principal do telemóvel.</li>
+          <li><strong>Widgets</strong> «Hoje», «Repor em breve» e «Tratamento» no ecrã principal do telemóvel.</li>
+          <li><strong>Idiomas</strong> Português, inglês, francês, alemão e espanhol.</li>
         </ul>
         <div class="app-loja">
           <a class="app-play" href="https://play.google.com/store/apps/details?id=org.mariacf.tempusremedium" target="_blank" rel="noopener">
@@ -142,6 +156,19 @@
           <p class="app-nota">Sem conta e sem servidor: os dados nunca saem do telemóvel. Apoia a toma da medicação e não substitui o conselho do médico ou do farmacêutico.</p>
         </div>
       </article>
+    </section>
+
+    <section class="profile-section" aria-labelledby="video-titulo">
+      <div class="section-head reveal">
+        <h2 id="video-titulo">Em 22 segundos</h2>
+      </div>
+      <figure class="app-video reveal">
+        <video controls playsinline preload="none" width="1920" height="1080" poster="../assets/img/apps/tempus-remedium-video.webp" aria-describedby="video-legenda">
+          <source src="tempus-remedium.mp4" type="video/mp4">
+          <a href="tempus-remedium.mp4">Ver o vídeo do Tempus Remedium</a>
+        </video>
+        <figcaption id="video-legenda">Escreve-se o antibiótico, a calculadora de doses sugere 6 mL de 12 em 12 horas, e a app avisa a cada toma até ao fim do tratamento. Com música, sem narração.</figcaption>
+      </figure>
     </section>
 
     <section class="profile-section" aria-labelledby="ecras-titulo">
@@ -165,6 +192,18 @@
           <figure>
             <img src="../assets/img/apps/tempus-remedium-blisters.webp" alt="Ecrã Hoje com os medicamentos a repor mostrados em blisters." width="540" height="1200" loading="lazy">
             <figcaption>Repor em breve, em blisters</figcaption>
+          </figure>
+        </li>
+        <li class="reveal">
+          <figure>
+            <img src="../assets/img/apps/tempus-remedium-tratamento.webp" alt="Novo tratamento: escrito «Amoxicilina» e o peso de 12 kg, a calculadora de doses sugere 6 mL de 12 em 12 horas, durante 10 dias." width="540" height="1200" loading="lazy">
+            <figcaption>Novo tratamento, com a calculadora</figcaption>
+          </figure>
+        </li>
+        <li class="reveal">
+          <figure>
+            <img src="../assets/img/apps/tempus-remedium-tratamentos.webp" alt="Ecrã Hoje com o cartão Tratamentos: a próxima toma de amoxicilina às 16:00, 6 mL, faltam 20 tomas, com os botões Saltar e Tomei." width="540" height="1200" loading="lazy">
+            <figcaption>Tratamentos, no ecrã Hoje</figcaption>
           </figure>
         </li>
         <li class="reveal">
