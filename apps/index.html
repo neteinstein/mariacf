@@ -132,13 +132,13 @@
         <h2 id="video-titulo">Em vídeo</h2>
       </div>
       <div class="app-videos">
-        <figure class="app-video reveal">
+        <figure class="app-video reveal" id="video-pt">
           <div class="app-video-quadro">
             <iframe src="https://www.youtube-nocookie.com/embed/gQva1Q-qt84" title="Tempus Remedium: vídeo de apresentação em português" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           <figcaption id="video-legenda">Português: escreve-se o antibiótico, a aplicação tenta auto-completar os dados para ajudar a preencher, e a app avisa a cada toma até ao fim do tratamento. <a href="https://youtu.be/gQva1Q-qt84" target="_blank" rel="noopener">Ver no YouTube</a></figcaption>
         </figure>
-        <figure class="app-video reveal">
+        <figure class="app-video reveal" id="video-en" hidden>
           <div class="app-video-quadro">
             <iframe src="https://www.youtube-nocookie.com/embed/P1bkwbA3uXU" title="Tempus Remedium: presentation video in English" lang="en" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
@@ -241,6 +241,15 @@
     </div>
   </footer>
 
+  <script>
+    // Um só vídeo, conforme o idioma do browser: inglês para quem não usa português.
+    (function () {
+      var l = (navigator.language || 'pt').toLowerCase();
+      if (l.indexOf('pt') === 0) return;
+      var en = document.getElementById('video-en'), pt = document.getElementById('video-pt');
+      if (en && pt) { en.hidden = false; pt.hidden = true; }
+    })();
+  </script>
   <script src="../assets/js/site.js" type="module"></script>
 </body>
 </html>
