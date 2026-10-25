@@ -2879,6 +2879,30 @@ a.pub:hover {
   max-width: 60ch;
 }
 
+/* Vídeo da app: a toda a largura, com os cantos e a sombra dos ecrãs. */
+.app-video {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.app-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border-radius: 22px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lg);
+  background: var(--surface);
+}
+
+.app-video figcaption {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
 /* Ecrãs da app: em linha, a deslizar em ecrãs estreitos. */
 .app-ecras {
   list-style: none;

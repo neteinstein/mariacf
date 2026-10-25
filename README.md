@@ -8,7 +8,7 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 - `/` — página inicial: apresentação e um cartão por secção, com uma entrada animada
 - `/doencas/` — doenças explicadas para cinco grupos etários
 - `/ferramentas/` — as calculadoras e questionários clínicos
-- `/apps/` — as aplicações da Dra. Maria: Tempus Remedium (gestor de medicação para Android), com os ecrãs e a ligação à Google Play («Disponível brevemente»)
+- `/apps/` — as aplicações da Dra. Maria: Tempus Remedium (gestor de medicação para Android), com um vídeo de 22 segundos (`apps/tempus-remedium.mp4`, fora de `assets/` para não entrar na cache do service worker), os ecrãs e a ligação à Google Play («Disponível brevemente»)
 - `/sns/` — contactos úteis do SNS (112, SNS 24 e outras linhas de ajuda)
 - `/sobre/` — percurso da Dra. Maria e artigos no Ponto SJ
 - `/usf/` — USF Nova Saúde (São Martinho do Campo): contactos, mapa, missão e valores, serviços, coordenação e a Dra. Maria, história, notícias e como marcar consulta

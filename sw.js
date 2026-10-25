@@ -4,7 +4,7 @@
 // e atualiza a cache; sem ligação, usa a última versão guardada.
 // A lista PRECACHE é verificada pelos testes (tests/site.test.mjs).
 
-const CACHE = 'mcf-v39';
+const CACHE = 'mcf-v40';
 
 const PRECACHE = [
   './',
@@ -102,6 +102,9 @@ const PRECACHE = [
   'assets/img/apps/tempus-remedium-hoje-escuro.webp',
   'assets/img/apps/tempus-remedium-hoje.webp',
   'assets/img/apps/tempus-remedium-medicamentos.webp',
+  'assets/img/apps/tempus-remedium-tratamento.webp',
+  'assets/img/apps/tempus-remedium-tratamentos.webp',
+  'assets/img/apps/tempus-remedium-video.webp',
   'assets/img/apps/tempus-remedium.svg',
   'assets/img/favicon.svg',
   'assets/img/icon-180.png',
@@ -214,6 +217,8 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(pedido.url);
 
   if (url.origin !== self.location.origin) return;
+  // Vídeos chegam aos pedaços (206) e não se guardam: o browser trata deles.
+  if (url.pathname.endsWith('.mp4')) return;
 
   // Rede primeiro, com a cache como alternativa sem ligação.
   event.respondWith(
