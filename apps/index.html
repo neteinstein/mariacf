@@ -46,12 +46,11 @@
       {
         "@type": "VideoObject",
         "@id": "https://mariacf.pt/apps/#tempus-remedium-video",
-        "name": "Tempus Remedium em 22 segundos",
+        "name": "Tempus Remedium em vídeo",
         "description": "Escreve-se o antibiótico, a aplicação tenta auto-completar os dados para ajudar a preencher, e a app avisa a cada toma até ao fim do tratamento.",
         "thumbnailUrl": "https://mariacf.pt/assets/img/apps/tempus-remedium-video.webp",
-        "contentUrl": "https://mariacf.pt/apps/tempus-remedium.mp4",
+        "embedUrl": "https://www.youtube-nocookie.com/embed/gQva1Q-qt84",
         "uploadDate": "2026-10-25",
-        "duration": "PT22S",
         "inLanguage": "pt-PT"
       }
     ]
@@ -160,15 +159,22 @@
 
     <section class="profile-section" aria-labelledby="video-titulo">
       <div class="section-head reveal">
-        <h2 id="video-titulo">Em 22 segundos</h2>
+        <h2 id="video-titulo">Em vídeo</h2>
       </div>
-      <figure class="app-video reveal">
-        <video controls playsinline preload="none" width="1920" height="1080" poster="../assets/img/apps/tempus-remedium-video.webp" aria-describedby="video-legenda">
-          <source src="tempus-remedium.mp4" type="video/mp4">
-          <a href="tempus-remedium.mp4">Ver o vídeo do Tempus Remedium</a>
-        </video>
-        <figcaption id="video-legenda">Escreve-se o antibiótico, a aplicação tenta auto-completar os dados para ajudar a preencher (6 mL de 12 em 12 horas), e a app avisa a cada toma até ao fim do tratamento. Com música, sem narração.</figcaption>
-      </figure>
+      <div class="app-videos">
+        <figure class="app-video reveal">
+          <div class="app-video-quadro">
+            <iframe src="https://www.youtube-nocookie.com/embed/gQva1Q-qt84" title="Tempus Remedium: vídeo de apresentação em português" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <figcaption id="video-legenda">Português: escreve-se o antibiótico, a aplicação tenta auto-completar os dados para ajudar a preencher, e a app avisa a cada toma até ao fim do tratamento. <a href="https://youtu.be/gQva1Q-qt84" target="_blank" rel="noopener">Ver no YouTube</a></figcaption>
+        </figure>
+        <figure class="app-video reveal">
+          <div class="app-video-quadro">
+            <iframe src="https://www.youtube-nocookie.com/embed/P1bkwbA3uXU" title="Tempus Remedium: presentation video in English" lang="en" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <figcaption lang="en">English version of the video. <a href="https://youtu.be/P1bkwbA3uXU" target="_blank" rel="noopener">Watch on YouTube</a></figcaption>
+        </figure>
+      </div>
     </section>
 
     <section class="profile-section" aria-labelledby="ecras-titulo">
