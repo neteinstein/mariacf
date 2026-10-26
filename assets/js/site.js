@@ -4,6 +4,7 @@
 import './fx.js';
 import { iniciarFavoritos } from './favoritos.js';
 import { iniciarPesquisa } from './pesquisa.js';
+import { iniciarIdioma } from './i18n.js';
 
 const root = document.documentElement;
 const THEME_KEY = 'mcf-theme';
@@ -35,6 +36,9 @@ document.querySelectorAll('.theme-toggle').forEach((btn) => {
     }
   });
 });
+
+// Idioma: botão PT/EN ao lado do tema (o inglês é guardado e vale para todo o site).
+iniciarIdioma();
 
 // Paletas de cor: um círculo por paleta no rodapé. A escolha fica guardada e vale para todo o site.
 // As cores de cada paleta vivem em styles.css (:root[data-palette=…]); 'azul' (Azul sereno) é a predefinida.

@@ -13,6 +13,13 @@ Site 100 % estático (HTML + CSS + JavaScript), sem passo de build.
 - `/sobre/` — percurso da Dra. Maria e artigos no Ponto SJ
 - `/usf/` — USF Nova Saúde (São Martinho do Campo): contactos, mapa, missão e valores, serviços, coordenação e a Dra. Maria, história, notícias e como marcar consulta
 
+## Idioma (PT/EN)
+
+Um botão «EN»/«PT» junto ao botão do tema, em todas as páginas, troca o site entre português e inglês (a escolha fica em
+`localStorage`, chave `mcf-lang`). `assets/js/i18n.js` substitui os textos, atributos acessíveis e meta tags a partir do
+dicionário `assets/js/i18n-en.js` (chave = texto em português, valor = inglês) e traduz também o que o JavaScript acrescenta
+depois. O que não está no dicionário fica em português; para traduzir mais, basta acrescentar entradas.
+
 ## Página inicial
 
 `index.html` apresenta o site e tem um cartão por secção (Doenças, Ferramentas, USF, SNS, Apps e Sobre).
