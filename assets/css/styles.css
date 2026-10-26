@@ -2977,6 +2977,59 @@ a.pub:hover {
   text-align: center;
 }
 
+.ecra-abrir {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.ecra-abrir:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 4px;
+  border-radius: 22px;
+}
+
+.ecra-zoom {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: visible;
+}
+
+.ecra-zoom::backdrop {
+  background: rgba(0, 0, 0, 0.82);
+}
+
+.ecra-zoom img {
+  display: block;
+  height: min(92vh, 1200px);
+  width: auto;
+  max-width: 94vw;
+  object-fit: contain;
+  border-radius: 22px;
+  cursor: zoom-out;
+}
+
+.ecra-fechar {
+  position: absolute;
+  top: -14px;
+  right: -14px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #111;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
 @media (max-width: 640px) {
   .app-ficha {
     padding: 22px;

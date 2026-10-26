@@ -184,55 +184,77 @@
       <ul class="app-ecras" aria-label="Ecrãs do Tempus Remedium" tabindex="0">
         <li class="reveal">
           <figure>
-            <img src="../assets/img/apps/tempus-remedium-hoje.webp" alt="Ecrã Hoje: as doses da manhã, do meio-dia, da noite e de deitar, e os medicamentos a repor em frascos." width="540" height="1200" loading="lazy">
+            <button type="button" class="ecra-abrir" data-grande="../assets/img/apps/tempus-remedium-hoje.webp">
+              <img src="../assets/img/apps/tempus-remedium-hoje.webp" alt="Ecrã Hoje: as doses da manhã, do meio-dia, da noite e de deitar, e os medicamentos a repor em frascos." width="540" height="1200" loading="lazy">
+            </button>
             <figcaption>Hoje</figcaption>
           </figure>
         </li>
         <li class="reveal">
           <figure>
-            <img src="../assets/img/apps/tempus-remedium-hoje-escuro.webp" alt="O mesmo ecrã Hoje no tema escuro." width="540" height="1200" loading="lazy">
+            <button type="button" class="ecra-abrir" data-grande="../assets/img/apps/tempus-remedium-hoje-escuro.webp">
+              <img src="../assets/img/apps/tempus-remedium-hoje-escuro.webp" alt="O mesmo ecrã Hoje no tema escuro." width="540" height="1200" loading="lazy">
+            </button>
             <figcaption>Hoje, no tema escuro</figcaption>
           </figure>
         </li>
         <li class="reveal">
           <figure>
-            <img src="../assets/img/apps/tempus-remedium-blisters.webp" alt="Ecrã Hoje com os medicamentos a repor mostrados em blisters." width="540" height="1200" loading="lazy">
+            <button type="button" class="ecra-abrir" data-grande="../assets/img/apps/tempus-remedium-blisters.webp">
+              <img src="../assets/img/apps/tempus-remedium-blisters.webp" alt="Ecrã Hoje com os medicamentos a repor mostrados em blisters." width="540" height="1200" loading="lazy">
+            </button>
             <figcaption>Repor em breve, em blisters</figcaption>
           </figure>
         </li>
         <li class="reveal">
           <figure>
-            <img src="../assets/img/apps/tempus-remedium-tratamento.webp" alt="Novo tratamento: escrito «Amoxicilina» e o peso de 12 kg, a aplicação auto-completa 6 mL de 12 em 12 horas, durante 10 dias." width="540" height="1200" loading="lazy">
+            <button type="button" class="ecra-abrir" data-grande="../assets/img/apps/tempus-remedium-tratamento.webp">
+              <img src="../assets/img/apps/tempus-remedium-tratamento.webp" alt="Novo tratamento: escrito «Amoxicilina» e o peso de 12 kg, a aplicação auto-completa 6 mL de 12 em 12 horas, durante 10 dias." width="540" height="1200" loading="lazy">
+            </button>
             <figcaption>Novo tratamento, auto-completado</figcaption>
           </figure>
         </li>
         <li class="reveal">
           <figure>
-            <img src="../assets/img/apps/tempus-remedium-tratamentos.webp" alt="Ecrã Hoje com o cartão Tratamentos: a próxima toma de amoxicilina às 16:00, 6 mL, faltam 20 tomas, com os botões Saltar e Tomei." width="540" height="1200" loading="lazy">
+            <button type="button" class="ecra-abrir" data-grande="../assets/img/apps/tempus-remedium-tratamentos.webp">
+              <img src="../assets/img/apps/tempus-remedium-tratamentos.webp" alt="Ecrã Hoje com o cartão Tratamentos: a próxima toma de amoxicilina às 16:00, 6 mL, faltam 20 tomas, com os botões Saltar e Tomei." width="540" height="1200" loading="lazy">
+            </button>
             <figcaption>Tratamentos, no ecrã Hoje</figcaption>
           </figure>
         </li>
         <li class="reveal">
           <figure>
-            <img src="../assets/img/apps/tempus-remedium-medicamentos.webp" alt="Lista de medicamentos com a dosagem, o horário e a quantidade que resta." width="540" height="1200" loading="lazy">
+            <button type="button" class="ecra-abrir" data-grande="../assets/img/apps/tempus-remedium-medicamentos.webp">
+              <img src="../assets/img/apps/tempus-remedium-medicamentos.webp" alt="Lista de medicamentos com a dosagem, o horário e a quantidade que resta." width="540" height="1200" loading="lazy">
+            </button>
             <figcaption>Medicamentos</figcaption>
           </figure>
         </li>
         <li class="reveal">
           <figure>
-            <img src="../assets/img/apps/tempus-remedium-historico.webp" alt="Histórico com a adesão dos últimos 30 dias." width="540" height="1200" loading="lazy">
+            <button type="button" class="ecra-abrir" data-grande="../assets/img/apps/tempus-remedium-historico.webp">
+              <img src="../assets/img/apps/tempus-remedium-historico.webp" alt="Histórico com a adesão dos últimos 30 dias." width="540" height="1200" loading="lazy">
+            </button>
             <figcaption>Histórico</figcaption>
           </figure>
         </li>
         <li class="reveal">
           <figure>
-            <img src="../assets/img/apps/tempus-remedium-definicoes.webp" alt="Definições no tema escuro: a hora de cada toma, o stock em frascos ou em blisters e o tema." width="540" height="1200" loading="lazy">
+            <button type="button" class="ecra-abrir" data-grande="../assets/img/apps/tempus-remedium-definicoes.webp">
+              <img src="../assets/img/apps/tempus-remedium-definicoes.webp" alt="Definições no tema escuro: a hora de cada toma, o stock em frascos ou em blisters e o tema." width="540" height="1200" loading="lazy">
+            </button>
             <figcaption>Definições</figcaption>
           </figure>
         </li>
       </ul>
     </section>
   </main>
+
+
+  <dialog class="ecra-zoom" aria-label="Ecrã ampliado">
+    <form method="dialog"><button class="ecra-fechar" aria-label="Fechar">×</button></form>
+    <img alt="" width="540" height="1200">
+  </dialog>
 
   <footer class="site-footer">
     <div class="wrap">
@@ -248,6 +270,23 @@
       if (l.indexOf('pt') === 0) return;
       var en = document.getElementById('video-en'), pt = document.getElementById('video-pt');
       if (en && pt) { en.hidden = false; pt.hidden = true; }
+    })();
+  </script>
+  <script>
+    // Toque num ecrã para o ver em tamanho grande.
+    (function () {
+      var d = document.querySelector('.ecra-zoom');
+      if (!d || !d.showModal) return;
+      var big = d.querySelector('img');
+      document.querySelectorAll('.ecra-abrir').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var i = b.querySelector('img');
+          big.src = b.dataset.grande;
+          big.alt = i.alt;
+          d.showModal();
+        });
+      });
+      d.addEventListener('click', function (e) { if (e.target !== big) d.close(); });
     })();
   </script>
   <script src="../assets/js/site.js" type="module"></script>
