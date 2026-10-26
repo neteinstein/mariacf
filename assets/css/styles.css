@@ -774,6 +774,13 @@ select {
   background: var(--surface-strong);
 }
 
+.lang-toggle {
+  font: 700 0.8rem/1 inherit;
+  font-family: inherit;
+  letter-spacing: 0.04em;
+  color: inherit;
+}
+
 .theme-toggle .moon { display: none; }
 :root[data-theme='dark'] .theme-toggle .sun { display: none; }
 :root[data-theme='dark'] .theme-toggle .moon { display: block; }
