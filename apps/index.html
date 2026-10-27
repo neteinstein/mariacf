@@ -264,12 +264,15 @@
   </footer>
 
   <script>
-    // Um só vídeo, conforme o idioma do browser: inglês para quem não usa português.
+    // Um só vídeo, conforme o idioma escolhido no botão PT/EN (ver assets/js/i18n.js).
     (function () {
-      var l = (navigator.language || 'pt').toLowerCase();
-      if (l.indexOf('pt') === 0) return;
       var en = document.getElementById('video-en'), pt = document.getElementById('video-pt');
-      if (en && pt) { en.hidden = false; pt.hidden = true; }
+      if (!en || !pt) return;
+      function mostrar(lang) { en.hidden = lang !== 'en'; pt.hidden = lang === 'en'; }
+      var guardado = null;
+      try { guardado = localStorage.getItem('mcf-lang'); } catch (e) {}
+      mostrar(guardado === 'en' ? 'en' : 'pt');
+      document.addEventListener('mcf-idioma', function (e) { mostrar(e.detail.lang); });
     })();
   </script>
   <script>
