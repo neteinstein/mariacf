@@ -245,7 +245,7 @@ export const EN = {
   'Idiomas': 'Languages',
   'Português, inglês, francês, alemão e espanhol.': 'Portuguese, English, French, German and Spanish.',
   'Google Play': 'Google Play',
-  'Disponível brevemente': 'Coming soon',
+  'Disponível no': 'Get it on',
   'Sem conta e sem servidor: os dados nunca saem do telemóvel. Apoia a toma da medicação e não substitui o conselho do médico ou do farmacêutico.':
     'No account and no server: the data never leaves the phone. It supports taking medication and does not replace the advice of the doctor or pharmacist.',
   'Como é por dentro': 'What it looks like inside',
@@ -257,7 +257,7 @@ export const EN = {
   'Aplicações da Dra. Maria Cortês Ferreira. Tempus Remedium: o que tomar hoje e a que horas, os tratamentos de X em X horas, com os dados auto-completados para ajudar a preencher, os medicamentos a repor e o histórico das doses, sem conta e sem servidor.':
     'Apps by Dr. Maria Cortês Ferreira. Tempus Remedium: what to take today and when, treatments every X hours with auto-completed details to help you fill them in, the medicines to refill and the dose history, with no account and no server.',
   'Apps · Saúde em Família': 'Apps · Family Health',
-  'Tempus Remedium: gestor de medicação e doses, em português. Disponível brevemente na Google Play.': 'Tempus Remedium: medication and dose manager, in Portuguese. Coming soon on Google Play.',
+  'Tempus Remedium: gestor de medicação e doses, em português. Disponível na Google Play.': 'Tempus Remedium: medication and dose manager, in Portuguese. Available on Google Play.',
   'Tempus Remedium: vídeo de apresentação em português': 'Tempus Remedium: presentation video in Portuguese',
   'Tempus Remedium: presentation video in English': 'Tempus Remedium: presentation video in English',
   'Ecrãs do Tempus Remedium': 'Tempus Remedium screens',
