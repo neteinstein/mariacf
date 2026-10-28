@@ -2844,38 +2844,65 @@ a.pub:hover {
   padding-top: 8px;
 }
 
-/* Botão da Google Play: escuro nos dois temas, como os selos das lojas. */
+/* Botão da Google Play: a chamada principal da página, no gradiente da marca (como o .btn-primary),
+   maior e com sombra; o branco tem ≥ 5,9:1 sobre as três cores de marca. Ocupa a largura toda em telemóvel. */
 .app-play {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 22px 10px 16px;
-  border-radius: 14px;
-  background: #111820;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  justify-content: center;
+  gap: 14px;
+  min-height: 64px;
+  padding: 12px 30px 12px 22px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, var(--brand-b), var(--brand-a) 55%, var(--brand-c));
+  background: linear-gradient(135deg in oklch, var(--brand-b), var(--brand-a) 55%, var(--brand-c));
+  border: 1px solid rgba(255, 255, 255, 0.24);
   color: #fff;
   text-decoration: none;
   line-height: 1.15;
+  box-shadow: 0 16px 34px -14px var(--brand-a), inset 0 1px 0 rgba(255, 255, 255, 0.22);
   transition: transform 0.3s var(--spring), box-shadow 0.3s;
+}
+
+.app-play svg {
+  flex: none;
+  width: 30px;
+  height: 30px;
 }
 
 .app-play:hover {
   transform: translateY(-2px);
-  box-shadow: 0 14px 28px -14px #111820;
+  box-shadow: 0 22px 40px -14px var(--brand-a), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.app-play:active {
+  transform: translateY(0);
+}
+
+.app-play:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 4px;
+  border-radius: 18px;
 }
 
 .app-play span {
   display: grid;
-  font-weight: 700;
-  font-size: 1.02rem;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
 }
 
 .app-play small {
-  font-size: 0.7rem;
+  font-size: 0.74rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  opacity: 0.85;
+  opacity: 0.92;
+}
+
+/* O mesmo botão logo no topo da página, por baixo da apresentação. */
+.profile-hero .app-play {
+  margin-top: 28px;
 }
 
 .app-nota {
@@ -3055,6 +3082,10 @@ a.pub:hover {
     width: 56px;
     height: 56px;
     border-radius: 16px;
+  }
+  .app-play {
+    display: flex;
+    width: 100%;
   }
   .app-ecras {
     grid-auto-columns: 62%;
