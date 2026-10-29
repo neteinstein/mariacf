@@ -248,7 +248,8 @@ function desenharInfo() {
   ];
   $('#como-dar').innerHTML = comoDar.map((t) => `<li>${t}</li>`).join('');
   $('#limites-med').textContent = `· ${med.nome}`;
-  $('#limites').innerHTML = med.limites.map((t) => `<li>${t}</li>`).join('');
+  const limites = [...med.limites, `<strong>Viu outra dose noutro sítio?</strong> ${med.outrasFontes}`];
+  $('#limites').innerHTML = limites.map((t) => `<li>${t}</li>`).join('');
 }
 
 /* ---------- Idade (doses fixas por idade) ---------- */

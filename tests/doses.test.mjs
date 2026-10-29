@@ -1,6 +1,19 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { calcularDose, seringas, proximasTomas } from '../assets/js/doses-core.js';
+import { calcularDose, seringas, proximasTomas, MEDICAMENTOS } from '../assets/js/doses-core.js';
+
+test('todos os medicamentos explicam porque outras fontes podem dar outra dose', () => {
+  for (const med of Object.values(MEDICAMENTOS)) {
+    assert.ok(med.outrasFontes?.length > 40, med.id);
+  }
+});
+
+test('ibuprofeno: 10 mg/kg de 8/8h fica dentro dos 20–30 mg/kg/dia que a nota indica', () => {
+  const med = MEDICAMENTOS.ibuprofeno;
+  assert.equal(med.mgPorKg * med.tomasPorDia, 30);
+  assert.match(med.outrasFontes, /20 a 30 mg\/kg por dia/);
+  assert.match(med.outrasFontes, /5 a 10 mg\/kg por toma/);
+});
 
 test('paracetamol 40 mg/mL: 10 kg → 150 mg = 3,8 mL de 6/6h', () => {
   const r = calcularDose(10, 'paracetamol', 40);

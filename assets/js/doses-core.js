@@ -7,7 +7,8 @@
 // recomendações da EMA (domperidona 2014 e 2019, metoclopramida 2013, hidroxizina 2015);
 // Normas da DGS 007/2012 (otite média aguda) e 020/2012 (amigdalite aguda).
 //   Paracetamol: 15 mg/kg/toma, de 6/6h, máx. 60 mg/kg/dia (e 1 g/toma).
-//   Ibuprofeno:  10 mg/kg/toma, de 8/8h, máx. 30 mg/kg/dia (e 400 mg/toma).
+//   Ibuprofeno:  10 mg/kg/toma, de 8/8h, máx. 30 mg/kg/dia (e 400 mg/toma). O RCM admite
+//     20–30 mg/kg/dia em 3 ou 4 tomas (5–10 mg/kg/toma): usa-se o valor de cima.
 //   Amoxicilina: 40–90 mg/kg/dia divididos de 8/8h ou 12/12h; amigdalite
 //     estreptocócica 50 mg/kg/dia de 12/12h, máx. 1 g/dia; otite e pneumonia
 //     80–90 mg/kg/dia de 12/12h; máx. 3 g/dia.
@@ -38,6 +39,9 @@
 //   - porIdade: dose fixa por escalão etário (o peso não entra).
 // Formulações com `mgPorGota` dão também a dose em gotas; com `mgPorComprimido`, a dose
 // conta-se em comprimidos (inteiros ou na fração indicada por `partes`).
+//
+// `outrasFontes` explica porque é que outros sites, folhetos ou calculadoras podem dar
+// valores diferentes (e o que não pode mudar), para quem compara várias fontes.
 
 export const MEDICAMENTOS = {
   paracetamol: {
@@ -52,6 +56,10 @@ export const MEDICAMENTOS = {
       'Máximo de <strong>4 tomas em 24 h</strong> (60 mg/kg/dia) e 1 g por toma.',
       'Não ultrapasse as tomas diárias, mesmo que a febre volte.',
     ],
+    outrasFontes:
+      'Pode ver 10 a 15 mg/kg por toma, intervalos de 4 a 8 h ou a tabela por peso do folheto. Muda a ' +
+      'forma de dividir, não o limite: nunca mais de <strong>60 mg/kg em 24 h</strong>. Não junte a ' +
+      'dose de um sítio com o intervalo de outro (15 mg/kg de 4/4 h passa o máximo).',
     marcas: 'Ben-u-ron®, Panasorb®, genéricos',
     grupo: 'febre',
     mgPorKg: 15,
@@ -76,6 +84,11 @@ export const MEDICAMENTOS = {
       'Não usar abaixo de 5 kg sem indicação médica.',
       'Não ultrapasse as tomas diárias, mesmo que a febre volte.',
     ],
+    outrasFontes:
+      'Pode ver doses mais baixas por toma (ex.: 7,5 mg/kg) ou a tabela por peso do folheto (ex.: 300 ' +
+      'mg dos 30 aos 40 kg). O folheto indica <strong>20 a 30 mg/kg por dia</strong> em 3 ou 4 tomas, ' +
+      'ou seja, 5 a 10 mg/kg por toma: aqui usamos 10 mg/kg, o valor de cima. Não junte a dose de um ' +
+      'sítio com o intervalo de outro (10 mg/kg de 6/6 h passa o máximo).',
     marcas: 'Brufen®, Ib-u-ron®, Nurofen®, genéricos',
     grupo: 'febre',
     mgPorKg: 10,
@@ -101,6 +114,10 @@ export const MEDICAMENTOS = {
       'Otite média e pneumonia: 80–90 mg/kg/dia de 12/12 h, até <strong>3 g por dia</strong>.',
       'Cumpra todos os dias de tratamento indicados, mesmo que a criança melhore.',
     ],
+    outrasFontes:
+      'A dose muda com a infeção (40 a 90 mg/kg/dia), por isso cada sítio dá valores diferentes: siga a ' +
+      'dose da receita. Confirme se o valor é <strong>por dia ou por toma</strong>: 90 mg/kg/dia de ' +
+      '12/12 h são 45 mg/kg em cada toma.',
     marcas: 'Clamoxyl®, genéricos',
     grupo: 'antibiotico',
     antibiotico: true,
@@ -136,6 +153,10 @@ export const MEDICAMENTOS = {
       'Ácido clavulânico até 10 mg/kg/dia (15 mg/kg/dia na 4:1); máximo de <strong>3 g/dia</strong> de amoxicilina.',
       'Cumpra todos os dias de tratamento indicados, mesmo que a criança melhore.',
     ],
+    outrasFontes:
+      'Verá doses entre 20 e 90 mg/kg/dia, conforme a infeção e a formulação: siga a dose da receita. A ' +
+      'dose conta só a <strong>amoxicilina</strong> (o primeiro número do rótulo, ex.: 400 em «400 + 57 ' +
+      'mg/5 mL»), não a soma dos dois. Confirme também se o valor é por dia ou por toma.',
     marcas: 'Augmentin®, Clavamox®, genéricos',
     grupo: 'antibiotico',
     antibiotico: true,
@@ -179,6 +200,10 @@ export const MEDICAMENTOS = {
       'Amigdalite estreptocócica (a partir dos 2 anos): 12 mg/kg/dia durante 5 dias ou 20 mg/kg/dia durante 3 dias.',
       'Máximo de <strong>500 mg por dia</strong>.',
     ],
+    outrasFontes:
+      'Há vários esquemas — 3 dias com 10 mg/kg/dia, ou 10 mg/kg no 1.º dia e 5 mg/kg do 2.º ao 5.º — e ' +
+      'o total do tratamento é o mesmo (30 mg/kg); na amigdalite usam-se doses mais altas. Escolha um ' +
+      'esquema e cumpra-o do princípio ao fim, sem misturar.',
     marcas: 'Zithromax®, genéricos',
     grupo: 'antibiotico',
     antibiotico: true,
@@ -213,6 +238,10 @@ export const MEDICAMENTOS = {
       'Otite média (a partir dos 2 anos) e infeções mais graves: 15 mg/kg de 12/12 h, até <strong>250 mg por toma</strong> (500 mg/dia).',
       'Cumpra todos os dias de tratamento indicados, mesmo que a criança melhore.',
     ],
+    outrasFontes:
+      'Pode vê-la escrita por dia (20 a 30 mg/kg/dia) ou por toma (10 a 15 mg/kg de 12/12 h): é a mesma ' +
+      'dose. Sites de outros países usam máximos por toma mais altos; em Portugal o folheto limita a ' +
+      '<strong>125 mg por toma</strong> (250 mg na otite).',
     marcas: 'Zinnat®, genéricos',
     grupo: 'antibiotico',
     antibiotico: true,
@@ -247,6 +276,10 @@ export const MEDICAMENTOS = {
       'Máximo de <strong>40 mg por dia</strong> nas crianças.',
       'Em Portugal só existe em comprimidos (5 mg e 20 mg); a dose arredonda-se ao comprimido ou meio comprimido.',
     ],
+    outrasFontes:
+      'Todos usam 1 a 2 mg/kg/dia, mas o máximo muda: alguns guias (GINA) limitam a 20 mg abaixo dos 2 ' +
+      'anos e a 30 mg dos 2 aos 5 anos, outros vão até 60 mg; aqui o máximo é 40 mg. Na laringite ' +
+      'muitos sítios indicam dexametasona, um corticoide diferente com outra dose: siga a receita.',
     marcas: 'Lepicortinolo®, Prednisolona Labesfal, genéricos',
     grupo: 'corticoide',
     porDia: true,
@@ -282,6 +315,9 @@ export const MEDICAMENTOS = {
       '<strong>0,25–1,5 mg/kg/dia</strong>, 1×/dia.',
       'Nesta calculadora, limitado a 48 mg/dia (equivalente a 40 mg de prednisolona).',
     ],
+    outrasFontes:
+      'Pode ver doses de 0,25 a 1,5 mg/kg/dia, conforme a doença: siga a receita. Nestas gotas ' +
+      '<strong>1 gota = 1 mg</strong>; não use contagens de gotas de outro medicamento ou concentração.',
     marcas: 'Zamene®, genéricos',
     grupo: 'corticoide',
     porDia: true,
@@ -314,6 +350,9 @@ export const MEDICAMENTOS = {
       'Abaixo dos 12 anos ou dos 35 kg não se usa: a eficácia não foi demonstrada (EMA, 2019).',
       'No máximo <strong>1 semana</strong> de tratamento.',
     ],
+    outrasFontes:
+      'Em sites ou folhetos antigos pode ver doses por peso para bebés e crianças (ex.: 0,25 mg/kg). Já ' +
+      'não se usam: desde 2019 só está indicada a partir dos 12 anos e 35 kg, em dose fixa (EMA).',
     marcas: 'Motilium®, genéricos',
     grupo: 'nauseas',
     // Desde 2019 (EMA/CMDh) só para adolescentes a partir dos 12 anos e 35 kg, em dose fixa.
@@ -341,6 +380,11 @@ export const MEDICAMENTOS = {
       'Por toma: 10–14 kg 1 mg; 15–19 kg 2 mg; 20–29 kg 2,5 mg; 30–60 kg 5 mg — até 3×/dia.',
       'No máximo <strong>5 dias</strong> de tratamento.',
     ],
+    outrasFontes:
+      'Em sites ou folhetos antigos pode ver doses para bebés ou para os vómitos da gastroenterite: ' +
+      'deixaram de se recomendar em 2013 (EMA). Também a pode ver por kg (0,1 a 0,15 mg/kg por toma); ' +
+      'aqui usam-se os escalões de peso do folheto, por isso os valores podem não coincidir ao ' +
+      'miligrama.',
     marcas: 'Primperan®, genéricos',
     grupo: 'nauseas',
     // Dose por toma segundo o peso (EMA 2013), até 3 vezes por dia.
@@ -373,6 +417,9 @@ export const MEDICAMENTOS = {
       '12 anos ou mais: <strong>10 mg 1×/dia</strong>.',
       'Não recomendada abaixo dos 2 anos.',
     ],
+    outrasFontes:
+      'Sites de outros países podem dar a dose do dia numa só toma ou indicar doses abaixo dos 2 anos. ' +
+      'Em Portugal o folheto indica as doses acima: dos 2 aos 11 anos, em 2 tomas por dia.',
     marcas: 'Zyrtec®, genéricos',
     grupo: 'alergia',
     porIdade: true,
@@ -400,6 +447,10 @@ export const MEDICAMENTOS = {
       '12 anos ou mais: <strong>5 mg</strong> (10 mL) 1×/dia.',
       'Não recomendada abaixo de 1 ano.',
     ],
+    outrasFontes:
+      'Sites de outros países podem indicar doses a partir dos 6 meses; em Portugal o folheto só a ' +
+      'recomenda a partir de 1 ano. Os mL acima são para a solução a 0,5 mg/mL: confirme a concentração ' +
+      'do frasco.',
     marcas: 'Aerius®, genéricos',
     grupo: 'alergia',
     porIdade: true,
@@ -425,6 +476,10 @@ export const MEDICAMENTOS = {
       'Até 40 kg, não ultrapassar 2 mg/kg/dia; acima, máximo de 100 mg/dia.',
       'Só a partir de 1 ano.',
     ],
+    outrasFontes:
+      'Confirme se a dose que viu é <strong>por dia ou por toma</strong>: 1 a 2 mg/kg/dia divididos em ' +
+      '2 ou 3 tomas são cerca de 0,3 a 1 mg/kg em cada toma. Sites de outros países podem usar máximos ' +
+      'diferentes: siga a receita.',
     marcas: 'Atarax®, genéricos',
     grupo: 'alergia',
     porDia: true,
