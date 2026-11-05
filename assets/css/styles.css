@@ -2901,8 +2901,22 @@ a.pub:hover {
 }
 
 /* O mesmo botão logo no topo da página, por baixo da apresentação. */
-.profile-hero .app-play {
+.profile-hero .app-botoes {
   margin-top: 28px;
+}
+
+.app-botoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+/* Botão secundário (versão web): contorno, sem gradiente. */
+.app-play.app-web {
+  background: var(--surface, transparent);
+  color: var(--ink, inherit);
+  border: 2px solid var(--brand-a);
+  box-shadow: none;
 }
 
 .app-nota {
@@ -3082,6 +3096,9 @@ a.pub:hover {
     width: 56px;
     height: 56px;
     border-radius: 16px;
+  }
+  .app-botoes {
+    flex-direction: column;
   }
   .app-play {
     display: flex;
